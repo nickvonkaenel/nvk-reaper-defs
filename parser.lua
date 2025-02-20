@@ -699,24 +699,37 @@ end
 -- Parse all function blocks in the HTML defs.
 local function parse_all(html)
 	local funcs = {}
-	local augmented = html .. '<a name="END">'
-	-- Pattern: capture each block from <a name="..."><hr></a> until the next <a name="
-	for anchor, block in augmented:gmatch('<a name="(.-)"><hr></a>(.-)<a name="') do
+	-- Remove all hyperlink tags with href so they don't interfere.
+	html = html:gsub('<a%s+href=".-">(.-)</a>', "%1")
+
+	local pos = 1
+	while true do
+		-- Find the next block anchor.
+		local start_pos, end_pos, anchor = html:find('<a name="(.-)"><hr></a>', pos)
+		if not start_pos then
+			break
+		end
+
+		-- Find the start of the next anchor.
+		local next_anchor_pos = html:find('<a name="', end_pos + 1)
+		local block
+		if next_anchor_pos then
+			block = html:sub(end_pos + 1, next_anchor_pos - 1)
+		else
+			block = html:sub(end_pos + 1)
+		end
+
+		-- Skip if the anchor is "END" or if parse_block returns nil.
 		if anchor ~= "END" then
 			local func = parse_block(block)
 			if func then
-				-- Filter out definitions starting with reaper.ImGui or reaper.AK, except reaper.ImGui_GetBuiltinPath
-				if
-					(func.func_name:match("^reaper%.ImGui") or func.func_name:match("^reaper%.AK"))
-					and func.func_name ~= "reaper.ImGui_GetBuiltinPath"
-				then
-				-- Skip this definition.
-				else
-					table.insert(funcs, func)
-				end
+				table.insert(funcs, func)
 			end
 		end
+
+		pos = next_anchor_pos or (#html + 1)
 	end
+
 	return funcs
 end
 
@@ -769,7 +782,6 @@ else
 	r.ShowMessageBox("Could not open file: " .. file_path, "Error", 0)
 	return
 end
-
 --------------------------------------------------------------------------------
 -- Main: Parse the input HTML and generate stubs.
 local funcs = parse_all(html_defs)
