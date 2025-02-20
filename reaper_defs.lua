@@ -22,7 +22,7 @@ reaper = {}
 ---@class (exact) PCM_source : userdata
 ---@class (exact) AudioAccessor : userdata
 ---@class (exact) MediaItem_Take : userdata
----@class (exact) ReaProject : userdata
+---@class (exact) ReaProject : userdata|integer
 ---@class (exact) MediaItem : userdata
 ---@class (exact) MediaTrack : userdata
 ---@class (exact) identifier: userdata
