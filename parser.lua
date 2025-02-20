@@ -723,7 +723,14 @@ local function parse_all(html)
 		if anchor ~= "END" then
 			local func = parse_block(block)
 			if func then
-				table.insert(funcs, func)
+				if
+					(func.func_name:match("^reaper%.ImGui") or func.func_name:match("^reaper%.AK"))
+					and func.func_name ~= "reaper.ImGui_GetBuiltinPath"
+				then
+				-- Skip this definition.
+				else
+					table.insert(funcs, func)
+				end
 			end
 		end
 
