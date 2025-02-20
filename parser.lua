@@ -22,7 +22,7 @@ reaper = {}
 ---@class (exact) PCM_source : userdata
 ---@class (exact) AudioAccessor : userdata
 ---@class (exact) MediaItem_Take : userdata
----@class (exact) ReaProject : userdata|integer
+---@class (exact) ReaProject : userdata
 ---@class (exact) MediaItem : userdata
 ---@class (exact) MediaTrack : userdata
 ---@class (exact) identifier: userdata
@@ -744,6 +744,7 @@ local function generate_stub(func)
 	end
 	for _, p in ipairs(func.params) do
 		local pname = p.optional and (p.name .. "?") or p.name
+		p.type = p.type:gsub("ReaProject", "ReaProject|nil|0")
 		table.insert(lines, string.format("---@param %s %s", pname, p.type))
 	end
 	for _, ret in ipairs(func.ret_types or {}) do

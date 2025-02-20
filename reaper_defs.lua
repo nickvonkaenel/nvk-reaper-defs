@@ -22,7 +22,7 @@ reaper = {}
 ---@class (exact) PCM_source : userdata
 ---@class (exact) AudioAccessor : userdata
 ---@class (exact) MediaItem_Take : userdata
----@class (exact) ReaProject : userdata|integer
+---@class (exact) ReaProject : userdata
 ---@class (exact) MediaItem : userdata
 ---@class (exact) MediaTrack : userdata
 ---@class (exact) identifier: userdata
@@ -562,7 +562,7 @@ function reaper.ImGui_GetBuiltinPath() end
 function reaper.AddMediaItemToTrack(tr) end
 
 ---Returns the index of the created marker/region, or -1 on failure. Supply wantidx>=0 if you want a particular index number, but you'll get a different index number a region and wantidx is already in use.
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 ---@param isrgn boolean
 ---@param pos number
 ---@param rgnend number
@@ -572,7 +572,7 @@ function reaper.AddMediaItemToTrack(tr) end
 function reaper.AddProjectMarker(proj, isrgn, pos, rgnend, name, wantidx) end
 
 ---Returns the index of the created marker/region, or -1 on failure. Supply wantidx>=0 if you want a particular index number, but you'll get a different index number a region and wantidx is already in use. color should be 0 (default color), or ColorToNative(r,g,b)|0x1000000
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 ---@param isrgn boolean
 ---@param pos number
 ---@param rgnend number
@@ -596,7 +596,7 @@ function reaper.AddRemoveReaScript(add, sectionID, scriptfn, commit) end
 function reaper.AddTakeToMediaItem(item) end
 
 ---Deprecated. Use SetTempoTimeSigMarker with ptidx=-1.
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 ---@param timepos number
 ---@param bpm number
 ---@param timesig_num integer
@@ -612,7 +612,7 @@ function reaper.AddTempoTimeSigMarker(proj, timepos, bpm, timesig_num, timesig_d
 ---@param centermode integer
 function reaper.adjustZoom(amt, forceset, doupd, centermode) end
 
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 ---@return boolean retval
 function reaper.AnyTrackSolo(proj) end
 
@@ -630,7 +630,7 @@ function reaper.APITest() end
 ---value: amount to nudge by, or value to set to
 ---reverse: in nudge mode, nudges left (otherwise ignored)
 ---copies: in nudge duplicate mode, number of copies (otherwise ignored)
----@param project ReaProject
+---@param project ReaProject|nil|0
 ---@param nudgeflag integer
 ---@param nudgewhat integer
 ---@param nudgeunits integer
@@ -742,29 +742,29 @@ function reaper.CountEnvelopePoints(envelope) end
 function reaper.CountEnvelopePointsEx(envelope, autoitem_idx) end
 
 ---count the number of items in the project (proj=0 for active project)
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 ---@return integer retval
 function reaper.CountMediaItems(proj) end
 
 ---num_markersOut and num_regionsOut may be NULL.
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 ---@return integer retval
 ---@return integer num_markers
 ---@return integer num_regions
 function reaper.CountProjectMarkers(proj) end
 
 ---Discouraged, because GetSelectedMediaItem can be inefficient if media items are added, rearranged, or deleted in between calls. Instead see CountMediaItems, GetMediaItem, IsMediaItemSelected.
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 ---@return integer retval
 function reaper.CountSelectedMediaItems(proj) end
 
 ---Count the number of selected tracks in the project (proj=0 for active project). This function ignores the master track, see CountSelectedTracks2.
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 ---@return integer retval
 function reaper.CountSelectedTracks(proj) end
 
 ---Count the number of selected tracks in the project (proj=0 for active project).
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 ---@param wantmaster boolean
 ---@return integer retval
 function reaper.CountSelectedTracks2(proj, wantmaster) end
@@ -780,13 +780,13 @@ function reaper.CountTakeEnvelopes(take) end
 function reaper.CountTakes(item) end
 
 ---Count the number of FX parameter knobs displayed on the track control panel.
----@param project ReaProject
+---@param project ReaProject|nil|0
 ---@param track MediaTrack
 ---@return integer retval
 function reaper.CountTCPFXParms(project, track) end
 
 ---Count the number of tempo/time signature markers in the project. See GetTempoTimeSigMarker, SetTempoTimeSigMarker, AddTempoTimeSigMarker.
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 ---@return integer retval
 function reaper.CountTempoTimeSigMarkers(proj) end
 
@@ -801,7 +801,7 @@ function reaper.CountTrackEnvelopes(track) end
 function reaper.CountTrackMediaItems(track) end
 
 ---count the number of tracks in the project (proj=0 for active project)
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 ---@return integer retval
 function reaper.CountTracks(proj) end
 
@@ -1113,14 +1113,14 @@ function reaper.DeleteEnvelopePointRangeEx(envelope, autoitem_idx, time_start, t
 function reaper.DeleteExtState(section, key, persist) end
 
 ---Delete a marker.  proj==NULL for the active project.
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 ---@param markrgnindexnumber integer
 ---@param isrgn boolean
 ---@return boolean retval
 function reaper.DeleteProjectMarker(proj, markrgnindexnumber, isrgn) end
 
 ---Differs from DeleteProjectMarker only in that markrgnidx is 0 for the first marker/region, 1 for the next, etc (see EnumProjectMarkers3), rather than representing the displayed marker/region ID number (see SetProjectMarker4).
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 ---@param markrgnidx integer
 ---@return boolean retval
 function reaper.DeleteProjectMarkerByIndex(proj, markrgnidx) end
@@ -1139,7 +1139,7 @@ function reaper.DeleteTakeMarker(take, idx) end
 function reaper.DeleteTakeStretchMarkers(take, idx, countIn) end
 
 ---Delete a tempo/time signature marker.
----@param project ReaProject
+---@param project ReaProject|nil|0
 ---@param markerindex integer
 ---@return boolean retval
 function reaper.DeleteTempoTimeSigMarker(project, markerindex) end
@@ -1206,7 +1206,7 @@ function reaper.DockWindowRefreshForHWND(hwnd) end
 function reaper.DockWindowRemove(hwnd) end
 
 ---Open the tempo/time signature marker editor dialog.
----@param project ReaProject
+---@param project ReaProject|nil|0
 ---@param markerindex integer
 ---@return boolean retval
 function reaper.EditTempoTimeSigMarker(project, markerindex) end
@@ -1262,7 +1262,7 @@ function reaper.EnumPitchShiftSubModes(mode, submode) end
 ---@return integer markrgnindexnumber
 function reaper.EnumProjectMarkers(idx) end
 
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 ---@param idx integer
 ---@return integer retval
 ---@return boolean isrgn
@@ -1272,7 +1272,7 @@ function reaper.EnumProjectMarkers(idx) end
 ---@return integer markrgnindexnumber
 function reaper.EnumProjectMarkers2(proj, idx) end
 
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 ---@param idx integer
 ---@return integer retval
 ---@return boolean isrgn
@@ -1290,7 +1290,7 @@ function reaper.EnumProjectMarkers3(proj, idx) end
 function reaper.EnumProjects(idx) end
 
 ---Enumerate the data stored with the project for a specific extname. Returns false when there is no more data. See SetProjExtState, GetProjExtState.
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 ---@param extname string
 ---@param idx integer
 ---@return boolean retval
@@ -1299,7 +1299,7 @@ function reaper.EnumProjects(idx) end
 function reaper.EnumProjExtState(proj, extname, idx) end
 
 ---Enumerate which tracks will be rendered within this region when using the region render matrix. When called with rendertrack==0, the function returns the first track that will be rendered (which may be the master track); rendertrack==1 will return the next track rendered, and so on. The function returns NULL when there are no more tracks that will be rendered within this region.
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 ---@param regionindex integer
 ---@param rendertrack integer
 ---@return MediaTrack retval
@@ -1314,7 +1314,7 @@ function reaper.EnumRegionRenderMatrix(proj, regionindex, rendertrack) end
 function reaper.EnumTrackMIDIProgramNames(track, programNumber, programName) end
 
 ---returns false if there are no plugins on the track that support MIDI programs,or if all programs have been enumerated
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 ---@param track MediaTrack
 ---@param programNumber integer
 ---@param programName string 
@@ -1377,7 +1377,7 @@ function reaper.ExecProcess(cmdline, timeoutmsec) end
 function reaper.file_exists(path) end
 
 ---Find the tempo/time signature marker that falls at or before this time position (the marker that is in effect as of this time position).
----@param project ReaProject
+---@param project ReaProject|nil|0
 ---@param time number
 ---@return integer retval
 function reaper.FindTempoTimeSigMarker(project, time) end
@@ -1445,7 +1445,7 @@ function reaper.GetActionShortcutDesc(section, cmdID, shortcutidx) end
 function reaper.GetActiveTake(item) end
 
 ---returns the bitwise OR of all project play states (1=playing, 2=pause, 4=recording)
----@param ignoreProject ReaProject
+---@param ignoreProject ReaProject|nil|0
 ---@return integer retval
 function reaper.GetAllProjectPlayStates(ignoreProject) end
 
@@ -1521,7 +1521,7 @@ function reaper.GetCursorContext2(want_last_valid) end
 function reaper.GetCursorPosition() end
 
 ---edit cursor position
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 ---@return number retval
 function reaper.GetCursorPositionEx(proj) end
 
@@ -1647,7 +1647,7 @@ function reaper.GetFocusedFX() end
 function reaper.GetFocusedFX2() end
 
 ---returns free disk space in megabytes, pathIdx 0 for normal, 1 for alternate.
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 ---@param pathidx integer
 ---@return integer retval
 function reaper.GetFreeDiskSpaceForRecordPath(proj, pathidx) end
@@ -1712,7 +1712,7 @@ function reaper.GetItemStateChunk(item, str, isundo) end
 function reaper.GetLastColorThemeFile() end
 
 ---Get the last project marker before time, and/or the project region that includes time. markeridx and regionidx are returned not necessarily as the displayed marker/region index, but as the index that can be passed to EnumProjectMarkers. Either or both of markeridx and regionidx may be NULL. See EnumProjectMarkers.
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 ---@param time number
 ---@return integer markeridx
 ---@return integer regionidx
@@ -1735,7 +1735,7 @@ function reaper.GetMainHwnd() end
 ---@return integer retval
 function reaper.GetMasterMuteSoloFlags() end
 
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 ---@return MediaTrack retval
 function reaper.GetMasterTrack(proj) end
 
@@ -1758,7 +1758,7 @@ function reaper.GetMaxMidiOutputs() end
 function reaper.GetMediaFileMetadata(mediaSource, identifier) end
 
 ---get an item from a project by item count (zero-based) (proj=0 for active project)
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 ---@param itemidx integer
 ---@return MediaItem retval
 function reaper.GetMediaItem(proj, itemidx) end
@@ -1842,7 +1842,7 @@ function reaper.GetMediaItemTake_Source(take) end
 ---@return MediaTrack retval
 function reaper.GetMediaItemTake_Track(take) end
 
----@param project ReaProject
+---@param project ReaProject|nil|0
 ---@param guidGUID string
 ---@return MediaItem_Take retval
 function reaper.GetMediaItemTakeByGUID(project, guidGUID) end
@@ -2081,12 +2081,12 @@ function reaper.GetPlayPosition() end
 function reaper.GetPlayPosition2() end
 
 ---returns position of next audio block being processed
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 ---@return number retval
 function reaper.GetPlayPosition2Ex(proj) end
 
 ---returns latency-compensated actual-what-you-hear position
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 ---@return number retval
 function reaper.GetPlayPositionEx(proj) end
 
@@ -2095,16 +2095,16 @@ function reaper.GetPlayPositionEx(proj) end
 function reaper.GetPlayState() end
 
 ---&1=playing, &2=paused, &4=is recording
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 ---@return integer retval
 function reaper.GetPlayStateEx(proj) end
 
 ---returns length of project (maximum of end of media item, markers, end of regions, tempo map
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 ---@return number retval
 function reaper.GetProjectLength(proj) end
 
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 ---@return string buf
 function reaper.GetProjectName(proj) end
 
@@ -2113,17 +2113,17 @@ function reaper.GetProjectName(proj) end
 function reaper.GetProjectPath() end
 
 ---Get the project recording path.
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 ---@return string buf
 function reaper.GetProjectPathEx(proj) end
 
 ---returns an integer that changes when the project state changes
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 ---@return integer retval
 function reaper.GetProjectStateChangeCount(proj) end
 
 ---Gets project time offset in seconds (project settings - project start time). If rndframe is true, the offset is rounded to a multiple of the project frame size.
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 ---@param rndframe boolean
 ---@return number retval
 function reaper.GetProjectTimeOffset(proj, rndframe) end
@@ -2135,13 +2135,13 @@ function reaper.GetProjectTimeSignature() end
 
 ---Gets basic time signature (beats per minute, numerator of time signature in bpi)
 ---this does not reflect tempo envelopes but is purely what is set in the project settings.
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 ---@return number bpm
 ---@return number bpi
 function reaper.GetProjectTimeSignature2(proj) end
 
 ---Get the value previously associated with this extname and key, the last time the project was saved. See SetProjExtState, EnumProjExtState.
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 ---@param extname string
 ---@param key string
 ---@return integer retval
@@ -2153,36 +2153,36 @@ function reaper.GetProjExtState(proj, extname, key) end
 function reaper.GetResourcePath() end
 
 ---get the currently selected envelope, returns NULL/nil if no envelope is selected
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 ---@return TrackEnvelope retval
 function reaper.GetSelectedEnvelope(proj) end
 
 ---Discouraged, because GetSelectedMediaItem can be inefficient if media items are added, rearranged, or deleted in between calls. Instead see CountMediaItems, GetMediaItem, IsMediaItemSelected.
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 ---@param selitem integer
 ---@return MediaItem retval
 function reaper.GetSelectedMediaItem(proj, selitem) end
 
 ---Get a selected track from a project (proj=0 for active project) by selected track count (zero-based). This function ignores the master track, see GetSelectedTrack2.
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 ---@param seltrackidx integer
 ---@return MediaTrack retval
 function reaper.GetSelectedTrack(proj, seltrackidx) end
 
 ---Get a selected track from a project (proj=0 for active project) by selected track count (zero-based).
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 ---@param seltrackidx integer
 ---@param wantmaster boolean
 ---@return MediaTrack retval
 function reaper.GetSelectedTrack2(proj, seltrackidx, wantmaster) end
 
 ---get the currently selected track envelope, returns NULL/nil if no envelope is selected
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 ---@return TrackEnvelope retval
 function reaper.GetSelectedTrackEnvelope(proj) end
 
 ---Gets or sets the arrange view start/end time for screen coordinates. use screen_x_start=screen_x_end=0 to use the full arrange view's start/end time
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 ---@param isSet boolean
 ---@param screen_x_start integer
 ---@param screen_x_end integer
@@ -2201,7 +2201,7 @@ function reaper.GetSet_ArrangeView2(proj, isSet, screen_x_start, screen_x_end, s
 ---@return number end
 function reaper.GetSet_LoopTimeRange(isSet, isLoop, start, end, allowautoseek) end
 
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 ---@param isSet boolean
 ---@param isLoop boolean
 ---@param start number 
@@ -2334,14 +2334,14 @@ function reaper.GetSetMediaItemTakeInfo_String(tk, parmname, stringNeedBig, setN
 function reaper.GetSetMediaTrackInfo_String(tr, parmname, stringNeedBig, setNewValue) end
 
 ---deprecated, see GetSetProjectInfo_String with desc="PROJECT_AUTHOR"
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 ---@param set boolean
 ---@param author string 
 ---@return string author
 function reaper.GetSetProjectAuthor(proj, set, author) end
 
 ---Get or set the arrange view grid division. 0.25=quarter note, 1.0/3.0=half note triplet, etc. swingmode can be 1 for swing enabled, swingamt is -1..1. swingmode can be 3 for measure-grid. Returns grid configuration flags
----@param project ReaProject
+---@param project ReaProject|nil|0
 ---@param set boolean
 ---@param division? number 
 ---@param swingmode? integer 
@@ -2372,7 +2372,7 @@ function reaper.GetSetProjectGrid(project, set, division, swingmode, swingamt) e
 ---RENDER_FADEOUTSHAPE: render fade-out shape
 ---PROJECT_SRATE : sample rate (ignored unless PROJECT_SRATE_USE set)
 ---PROJECT_SRATE_USE : set to 1 if project sample rate is used
----@param project ReaProject
+---@param project ReaProject|nil|0
 ---@param desc string
 ---@param value number
 ---@param is_set boolean
@@ -2400,7 +2400,7 @@ function reaper.GetSetProjectInfo(project, desc, value, is_set) end
 ---RENDER_FORMAT2 : base64-encoded secondary sink configuration. Callers can also pass a simple 4-byte string (non-base64-encoded), e.g. "evaw" or "l3pm", to use default settings for that sink type, or "" to disable secondary render.
 ---&nbsp;&nbsp;&nbsp;&nbsp;Formats available on this machine:
 ---&nbsp;&nbsp;&nbsp;&nbsp;"wave" "aiff" "caff" "raw " "mp3l" "wvpk" "OggS" "flac" "ddp " "iso " "oggv" "FFMP" "XAVF" "GIF " "LCF "
----@param project ReaProject
+---@param project ReaProject|nil|0
 ---@param desc string
 ---@param valuestrNeedBig string 
 ---@param is_set boolean
@@ -2409,7 +2409,7 @@ function reaper.GetSetProjectInfo(project, desc, value, is_set) end
 function reaper.GetSetProjectInfo_String(project, desc, valuestrNeedBig, is_set) end
 
 ---gets or sets project notes, notesNeedBig_sz is ignored when setting
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 ---@param set boolean
 ---@param notes string 
 ---@return string notes
@@ -2421,13 +2421,13 @@ function reaper.GetSetProjectNotes(proj, set, notes) end
 function reaper.GetSetRepeat(val) end
 
 ----1 == query,0=clear,1=set,>1=toggle . returns new value
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 ---@param val integer
 ---@return integer retval
 function reaper.GetSetRepeatEx(proj, val) end
 
 ---Gets or sets the attribute flag of a tempo/time signature marker. flag &1=sets time signature and starts new measure, &2=does not set tempo, &4=allow previous partial measure if starting new measure, &8=set new metronome pattern if starting new measure, &16=reset ruler grid if starting new measure
----@param project ReaProject
+---@param project ReaProject|nil|0
 ---@param point_index integer
 ---@param flag integer
 ---@param is_set boolean
@@ -2617,7 +2617,7 @@ function reaper.GetTakeStretchMarker(take, idx) end
 function reaper.GetTakeStretchMarkerSlope(take, idx) end
 
 ---Get information about a specific FX parameter knob (see CountTCPFXParms).
----@param project ReaProject
+---@param project ReaProject|nil|0
 ---@param track MediaTrack
 ---@param index integer
 ---@return boolean retval
@@ -2636,7 +2636,7 @@ function reaper.GetTCPFXParm(project, track, index) end
 function reaper.GetTempoMatchPlayRate(source, srcscale, position, mult) end
 
 ---Get information about a tempo/time signature marker. See CountTempoTimeSigMarkers, SetTempoTimeSigMarker, AddTempoTimeSigMarker.
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 ---@param ptidx integer
 ---@return boolean retval
 ---@return number timepos
@@ -2687,7 +2687,7 @@ function reaper.GetTooltipWindow() end
 function reaper.GetTouchedOrFocusedFX(mode) end
 
 ---get a track from a project by track count (zero-based) (proj=0 for active project)
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 ---@param trackidx integer
 ---@return MediaTrack retval
 function reaper.GetTrack(proj, trackidx) end
@@ -2753,14 +2753,14 @@ function reaper.GetTrackMIDILyrics(track, flag) end
 function reaper.GetTrackMIDINoteName(track, pitch, chan) end
 
 ---Get note/CC name. pitch 128 for CC0 name, 129 for CC1 name, etc. See SetTrackMIDINoteNameEx
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 ---@param track MediaTrack
 ---@param pitch integer
 ---@param chan integer
 ---@return string retval
 function reaper.GetTrackMIDINoteNameEx(proj, track, pitch, chan) end
 
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 ---@param track MediaTrack
 ---@return integer note_lo
 ---@return integer note_hi
@@ -2921,13 +2921,13 @@ function reaper.GetUserFileNameForRead(filenameNeed4096, title, defext) end
 function reaper.GetUserInputs(title, num_inputs, captions_csv, retvals_csv) end
 
 ---Go to marker. If use_timeline_order==true, marker_index 1 refers to the first marker on the timeline.  If use_timeline_order==false, marker_index 1 refers to the first marker with the user-editable index of 1.
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 ---@param marker_index integer
 ---@param use_timeline_order boolean
 function reaper.GoToMarker(proj, marker_index, use_timeline_order) end
 
 ---Seek to region after current region finishes playing (smooth seek). If use_timeline_order==true, region_index 1 refers to the first region on the timeline.  If use_timeline_order==false, region_index 1 refers to the first region with the user-editable index of 1.
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 ---@param region_index integer
 ---@param use_timeline_order boolean
 function reaper.GoToRegion(proj, region_index, use_timeline_order) end
@@ -2961,7 +2961,7 @@ function reaper.HasExtState(section, key) end
 function reaper.HasTrackMIDIPrograms(track) end
 
 ---returns name of track plugin that is supplying MIDI programs,or NULL if there is none
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 ---@param track MediaTrack
 ---@return string retval
 function reaper.HasTrackMIDIProgramsEx(proj, track) end
@@ -3032,7 +3032,7 @@ function reaper.InsertMediaSection(file, mode, startpct, endpct, pitchshift) end
 function reaper.InsertTrackAtIndex(idx, wantDefaults) end
 
 ---inserts a track in project proj at idx, this will be clamped to 0..CountTracks(proj). flags&1 for default envelopes/FX, otherwise no enabled fx/envelopes will be added.
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 ---@param idx integer
 ---@param flags integer
 function reaper.InsertTrackInProject(proj, idx, flags) end
@@ -3049,7 +3049,7 @@ function reaper.IsMediaExtension(ext, wantOthers) end
 function reaper.IsMediaItemSelected(item) end
 
 ---Is the project dirty (needing save)? Always returns 0 if 'undo/prompt to save' is disabled in preferences.
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 ---@return integer retval
 function reaper.IsProjectDirty(proj) end
 
@@ -3142,7 +3142,7 @@ function reaper.LICE_ClipLine(pX1, pY1, pX2, pY2, xLo, yLo, xHi, yHi) end
 function reaper.LocalizeString(src_string, section, flags) end
 
 ---Move the loop selection left or right. Returns true if snap is enabled.
----@param project ReaProject
+---@param project ReaProject|nil|0
 ---@param direction integer
 ---@return boolean retval
 function reaper.Loop_OnArrow(project, direction) end
@@ -3155,7 +3155,7 @@ function reaper.Main_OnCommand(command, flag) end
 ---Performs an action belonging to the main action section. To perform non-native actions (ReaScripts, custom or extension plugins' actions) safely, see NamedCommandLookup().
 ---@param command integer
 ---@param flag integer
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 function reaper.Main_OnCommandEx(command, flag, proj) end
 
 ---opens a project. will prompt the user to save unless name is prefixed with 'noprompt:'. If name is prefixed with 'template:', project file will be loaded as a template.
@@ -3164,12 +3164,12 @@ function reaper.Main_OnCommandEx(command, flag, proj) end
 function reaper.Main_openProject(name) end
 
 ---Save the project.
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 ---@param forceSaveAsIn boolean
 function reaper.Main_SaveProject(proj, forceSaveAsIn) end
 
 ---Save the project. options: &1=save selected tracks as track template, &2=include media with track template, &4=include envelopes with track template. See Main_openProject, Main_SaveProject.
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 ---@param filename string
 ---@param options integer
 function reaper.Main_SaveProjectEx(proj, filename, options) end
@@ -3178,7 +3178,7 @@ function reaper.Main_SaveProjectEx(proj, filename, options) end
 function reaper.Main_UpdateLoopInfo(ignoremask) end
 
 ---Marks project as dirty (needing save) if 'undo/prompt to save' is enabled in preferences.
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 function reaper.MarkProjectDirty(proj) end
 
 ---If track is supplied, item is ignored
@@ -3186,12 +3186,12 @@ function reaper.MarkProjectDirty(proj) end
 ---@param item MediaItem
 function reaper.MarkTrackItemsDirty(track, item) end
 
----@param project ReaProject
+---@param project ReaProject|nil|0
 ---@return number retval
 function reaper.Master_GetPlayRate(project) end
 
 ---@param time_s number
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 ---@return number retval
 function reaper.Master_GetPlayRateAtTime(time_s, proj) end
 
@@ -3716,21 +3716,21 @@ function reaper.NamedCommandLookup(command_name) end
 function reaper.OnPauseButton() end
 
 ---direct way to simulate pause button hit
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 function reaper.OnPauseButtonEx(proj) end
 
 ---direct way to simulate play button hit
 function reaper.OnPlayButton() end
 
 ---direct way to simulate play button hit
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 function reaper.OnPlayButtonEx(proj) end
 
 ---direct way to simulate stop button hit
 function reaper.OnStopButton() end
 
 ---direct way to simulate stop button hit
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 function reaper.OnStopButtonEx(proj) end
 
 ---@param fn string
@@ -3946,11 +3946,11 @@ function reaper.ScaleToEnvelopeMode(scaling_mode, val) end
 ---@return KbdSectionInfo retval
 function reaper.SectionFromUniqueID(uniqueID) end
 
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 ---@param selected boolean
 function reaper.SelectAllMediaItems(proj, selected) end
 
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 function reaper.SelectProjectInstance(proj) end
 
 ---Sends a MIDI message to output device specified by output. Message is sent in immediate mode. Lua example of how to pack the message string:
@@ -3971,7 +3971,7 @@ function reaper.SetActiveTake(take) end
 function reaper.SetAutomationMode(mode, onlySel) end
 
 ---set current BPM in project, set wantUndo=true to add undo point
----@param __proj ReaProject
+---@param __proj ReaProject|nil|0
 ---@param bpm number
 ---@param wantUndo boolean
 function reaper.SetCurrentBPM(__proj, bpm, wantUndo) end
@@ -3986,7 +3986,7 @@ function reaper.SetCursorContext(mode, envIn) end
 ---@param seekplay boolean
 function reaper.SetEditCurPos(time, moveview, seekplay) end
 
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 ---@param time number
 ---@param moveview boolean
 ---@param seekplay boolean
@@ -4211,7 +4211,7 @@ function reaper.SetMediaItemTakeInfo_Value(take, parmname, newvalue) end
 function reaper.SetMediaTrackInfo_Value(tr, parmname, newvalue) end
 
 ---Set the MIDI editor grid division. 0.25=quarter note, 1.0/3.0=half note tripet, etc.
----@param project ReaProject
+---@param project ReaProject|nil|0
 ---@param division number
 function reaper.SetMIDIEditorGrid(project, division) end
 
@@ -4245,7 +4245,7 @@ function reaper.SetMouseModifier(context, modifier_flag, action) end
 function reaper.SetOnlyTrackSelected(track) end
 
 ---Set the arrange view grid division. 0.25=quarter note, 1.0/3.0=half note triplet, etc.
----@param project ReaProject
+---@param project ReaProject|nil|0
 ---@param division number
 function reaper.SetProjectGrid(project, division) end
 
@@ -4259,7 +4259,7 @@ function reaper.SetProjectGrid(project, division) end
 function reaper.SetProjectMarker(markrgnindexnumber, isrgn, pos, rgnend, name) end
 
 ---Note: this function can't clear a marker's name (an empty string will leave the name unchanged), see SetProjectMarker4.
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 ---@param markrgnindexnumber integer
 ---@param isrgn boolean
 ---@param pos number
@@ -4269,7 +4269,7 @@ function reaper.SetProjectMarker(markrgnindexnumber, isrgn, pos, rgnend, name) e
 function reaper.SetProjectMarker2(proj, markrgnindexnumber, isrgn, pos, rgnend, name) end
 
 ---Note: this function can't clear a marker's name (an empty string will leave the name unchanged), see SetProjectMarker4.
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 ---@param markrgnindexnumber integer
 ---@param isrgn boolean
 ---@param pos number
@@ -4280,7 +4280,7 @@ function reaper.SetProjectMarker2(proj, markrgnindexnumber, isrgn, pos, rgnend, 
 function reaper.SetProjectMarker3(proj, markrgnindexnumber, isrgn, pos, rgnend, name, color) end
 
 ---color should be 0 to not change, or ColorToNative(r,g,b)|0x1000000, flags&1 to clear name
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 ---@param markrgnindexnumber integer
 ---@param isrgn boolean
 ---@param pos number
@@ -4292,7 +4292,7 @@ function reaper.SetProjectMarker3(proj, markrgnindexnumber, isrgn, pos, rgnend, 
 function reaper.SetProjectMarker4(proj, markrgnindexnumber, isrgn, pos, rgnend, name, color, flags) end
 
 ---See SetProjectMarkerByIndex2.
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 ---@param markrgnidx integer
 ---@param isrgn boolean
 ---@param pos number
@@ -4304,7 +4304,7 @@ function reaper.SetProjectMarker4(proj, markrgnindexnumber, isrgn, pos, rgnend, 
 function reaper.SetProjectMarkerByIndex(proj, markrgnidx, isrgn, pos, rgnend, IDnumber, name, color) end
 
 ---Differs from SetProjectMarker4 in that markrgnidx is 0 for the first marker/region, 1 for the next, etc (see EnumProjectMarkers3), rather than representing the displayed marker/region ID number (see SetProjectMarker3). Function will fail if attempting to set a duplicate ID number for a region (duplicate ID numbers for markers are OK). , flags&1 to clear name. If flags&2, markers will not be re-sorted, and after making updates, you MUST call SetProjectMarkerByIndex2 with markrgnidx=-1 and flags&2 to force re-sort/UI updates.
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 ---@param markrgnidx integer
 ---@param isrgn boolean
 ---@param pos number
@@ -4317,7 +4317,7 @@ function reaper.SetProjectMarkerByIndex(proj, markrgnidx, isrgn, pos, rgnend, ID
 function reaper.SetProjectMarkerByIndex2(proj, markrgnidx, isrgn, pos, rgnend, IDnumber, name, color, flags) end
 
 ---Save a key/value pair for a specific extension, to be restored the next time this specific project is loaded. Typically extname will be the name of a reascript or extension section. If key is NULL or "", all extended data for that extname will be deleted.  If val is NULL or "", the data previously associated with that key will be deleted. Returns the size of the state for this extname. See GetProjExtState, EnumProjExtState.
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 ---@param extname string
 ---@param key string
 ---@param value string
@@ -4325,7 +4325,7 @@ function reaper.SetProjectMarkerByIndex2(proj, markrgnidx, isrgn, pos, rgnend, I
 function reaper.SetProjExtState(proj, extname, key, value) end
 
 ---Add (flag > 0) or remove (flag < 0) a track from this region when using the region render matrix. If adding, flag==2 means force mono, flag==4 means force stereo, flag==N means force N/2 channels.
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 ---@param regionindex integer
 ---@param track MediaTrack
 ---@param flag integer
@@ -4356,7 +4356,7 @@ function reaper.SetTakeStretchMarker(take, idx, pos, srcposIn) end
 function reaper.SetTakeStretchMarkerSlope(take, idx, slope) end
 
 ---Set parameters of a tempo/time signature marker. Provide either timepos (with measurepos=-1, beatpos=-1), or measurepos and beatpos (with timepos=-1). If timesig_num and timesig_denom are zero, the previous time signature will be used. ptidx=-1 will insert a new tempo/time signature marker. See CountTempoTimeSigMarkers, GetTempoTimeSigMarker, AddTempoTimeSigMarker.
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 ---@param ptidx integer
 ---@param timepos number
 ---@param measurepos integer
@@ -5165,7 +5165,7 @@ function reaper.SetTrackMIDILyrics(track, flag, str) end
 function reaper.SetTrackMIDINoteName(track, pitch, chan, name) end
 
 ---channel < 0 assigns note name to all channels. pitch 128 assigns name for CC0, pitch 129 for CC1, etc.
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 ---@param track MediaTrack
 ---@param pitch integer
 ---@param chan integer
@@ -5314,7 +5314,7 @@ function reaper.ShowPopupMenu(name, x, y, hwndParent, ctx, ctx2, ctx3) end
 ---@return number retval
 function reaper.SLIDER2DB(y) end
 
----@param project ReaProject
+---@param project ReaProject|nil|0
 ---@param time_pos number
 ---@return number retval
 function reaper.SnapToGrid(project, time_pos) end
@@ -5695,26 +5695,26 @@ function reaper.ThemeLayout_SetParameter(wp, value, persist) end
 function reaper.time_precise() end
 
 ---convert a beat position (or optionally a beats+measures if measures is non-NULL) to time.
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 ---@param tpos number
 ---@param measuresIn? integer
 ---@return number retval
 function reaper.TimeMap2_beatsToTime(proj, tpos, measuresIn) end
 
 ---get the effective BPM at the time (seconds) position (i.e. 2x in /8 signatures)
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 ---@param time number
 ---@return number retval
 function reaper.TimeMap2_GetDividedBpmAtTime(proj, time) end
 
 ---when does the next time map (tempo or time sig) change occur
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 ---@param time number
 ---@return number retval
 function reaper.TimeMap2_GetNextChangeTime(proj, time) end
 
 ---converts project QN position to time.
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 ---@param qn number
 ---@return number retval
 function reaper.TimeMap2_QNToTime(proj, qn) end
@@ -5724,7 +5724,7 @@ function reaper.TimeMap2_QNToTime(proj, qn) end
 ---if cml is non-NULL, will be set to current measure length in beats (i.e. time signature numerator)
 ---if fullbeats is non-NULL, and measures is non-NULL, fullbeats will get the full beat count (same value returned if measures is NULL).
 ---if cdenom is non-NULL, will be set to the current time signature denominator.
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 ---@param tpos number
 ---@return number retval
 ---@return integer? measures
@@ -5734,13 +5734,13 @@ function reaper.TimeMap2_QNToTime(proj, qn) end
 function reaper.TimeMap2_timeToBeats(proj, tpos) end
 
 ---converts project time position to QN position.
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 ---@param tpos number
 ---@return number retval
 function reaper.TimeMap2_timeToQN(proj, tpos) end
 
 ---Gets project framerate, and optionally whether it is drop-frame timecode
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 ---@return number retval
 ---@return boolean dropFrame
 function reaper.TimeMap_curFrameRate(proj) end
@@ -5751,7 +5751,7 @@ function reaper.TimeMap_curFrameRate(proj) end
 function reaper.TimeMap_GetDividedBpmAtTime(time) end
 
 ---Get the QN position and time signature information for the start of a measure. Return the time in seconds of the measure start.
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 ---@param measure integer
 ---@return number retval
 ---@return number qn_start
@@ -5762,7 +5762,7 @@ function reaper.TimeMap_GetDividedBpmAtTime(time) end
 function reaper.TimeMap_GetMeasureInfo(proj, measure) end
 
 ---Fills in a string representing the active metronome pattern. For example, in a 7/8 measure divided 3+4, the pattern might be "ABCABCD". For backwards compatibility, by default the function will return 1 for each primary beat and 2 for each non-primary beat, so "1221222" in this example, and does not support triplets. If buf is set to "EXTENDED", the function will return the full string as displayed in the pattern editor, including all beat types and triplet representations. Pass in "SET:string" with a correctly formed pattern string matching the current time signature numerator to set the click pattern. The time signature numerator can be deduced from the returned string, and the function returns the time signature denominator.
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 ---@param time number
 ---@param pattern string 
 ---@return integer retval
@@ -5770,7 +5770,7 @@ function reaper.TimeMap_GetMeasureInfo(proj, measure) end
 function reaper.TimeMap_GetMetronomePattern(proj, time, pattern) end
 
 ---get the effective time signature and tempo
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 ---@param time number
 ---@return integer timesig_num
 ---@return integer timesig_denom
@@ -5778,7 +5778,7 @@ function reaper.TimeMap_GetMetronomePattern(proj, time, pattern) end
 function reaper.TimeMap_GetTimeSigAtTime(proj, time) end
 
 ---Find which measure the given QN position falls in.
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 ---@param qn number
 ---@return integer retval
 ---@return number? qnMeasureStart
@@ -5791,7 +5791,7 @@ function reaper.TimeMap_QNToMeasures(proj, qn) end
 function reaper.TimeMap_QNToTime(qn) end
 
 ---Converts project quarter note count (QN) to time. QN is counted from the start of the project, regardless of any partial measures. See TimeMap2_QNToTime
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 ---@param qn number
 ---@return number retval
 function reaper.TimeMap_QNToTime_abs(proj, qn) end
@@ -5802,7 +5802,7 @@ function reaper.TimeMap_QNToTime_abs(proj, qn) end
 function reaper.TimeMap_timeToQN(tpos) end
 
 ---Converts project time position to quarter note count (QN). QN is counted from the start of the project, regardless of any partial measures. See TimeMap2_timeToQN
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 ---@param tpos number
 ---@return number retval
 function reaper.TimeMap_timeToQN_abs(proj, tpos) end
@@ -6311,26 +6311,26 @@ function reaper.TrackList_UpdateAllExternalSurfaces() end
 function reaper.Undo_BeginBlock() end
 
 ---call to start a new block
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 function reaper.Undo_BeginBlock2(proj) end
 
 ---returns string of next action,if able,NULL if not
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 ---@return string retval
 function reaper.Undo_CanRedo2(proj) end
 
 ---returns string of last action,if able,NULL if not
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 ---@return string retval
 function reaper.Undo_CanUndo2(proj) end
 
 ---nonzero if success
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 ---@return integer retval
 function reaper.Undo_DoRedo2(proj) end
 
 ---nonzero if success
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 ---@return integer retval
 function reaper.Undo_DoUndo2(proj) end
 
@@ -6340,7 +6340,7 @@ function reaper.Undo_DoUndo2(proj) end
 function reaper.Undo_EndBlock(descchange, extraflags) end
 
 ---call to end the block,with extra flags if any,and a description
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 ---@param descchange string
 ---@param extraflags integer
 function reaper.Undo_EndBlock2(proj, descchange, extraflags) end
@@ -6350,11 +6350,11 @@ function reaper.Undo_EndBlock2(proj, descchange, extraflags) end
 function reaper.Undo_OnStateChange(descchange) end
 
 ---limited state change to items
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 ---@param descchange string
 function reaper.Undo_OnStateChange2(proj, descchange) end
 
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 ---@param name string
 ---@param item MediaItem
 function reaper.Undo_OnStateChange_Item(proj, name, item) end
@@ -6366,7 +6366,7 @@ function reaper.Undo_OnStateChange_Item(proj, name, item) end
 function reaper.Undo_OnStateChangeEx(descchange, whichStates, trackparm) end
 
 ---trackparm=-1 by default,or if updating one fx chain,you can specify track index
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 ---@param descchange string
 ---@param whichStates integer
 ---@param trackparm integer
@@ -6379,7 +6379,7 @@ function reaper.UpdateArrange() end
 function reaper.UpdateItemInProject(item) end
 
 ---Recalculate lane arrangement for fixed lane tracks, including auto-removing empty lanes at the bottom of the track
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 ---@return boolean retval
 function reaper.UpdateItemLanes(proj) end
 
@@ -6393,7 +6393,7 @@ function reaper.UpdateTimeline() end
 function reaper.ValidatePtr(pointer, ctypename) end
 
 ---Return true if the pointer is a valid object of the right type in proj (proj is ignored if pointer is itself a project). Supported types are: ReaProject*, MediaTrack*, MediaItem*, MediaItem_Take*, TrackEnvelope* and PCM_source*.
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 ---@param pointer userdata
 ---@param ctypename string
 ---@return boolean retval
@@ -6640,7 +6640,7 @@ function reaper.BR_EnvSortPoints(envelope) end
 function reaper.BR_EnvValueAtPos(envelope, position) end
 
 ---[BR] Deprecated, see GetSet_ArrangeView2 (REAPER v5.12pre4+) -- Get start and end time position of arrange view. To set arrange view instead, see BR_SetArrangeView.
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 ---@return number startTime
 ---@return number endTime
 function reaper.BR_GetArrangeView(proj) end
@@ -6656,7 +6656,7 @@ function reaper.BR_GetClosestGridDivision(position) end
 function reaper.BR_GetCurrentTheme() end
 
 ---[BR] Get media item from GUID string. Note that the GUID must be enclosed in braces {}. To get item's GUID as a string, see BR_GetMediaItemGUID.
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 ---@param guidStringIn string
 ---@return MediaItem retval
 function reaper.BR_GetMediaItemByGUID(proj, guidStringIn) end
@@ -6690,7 +6690,7 @@ function reaper.BR_GetMediaItemTakeGUID(take) end
 function reaper.BR_GetMediaSourceProperties(take) end
 
 ---[BR] Get media track from GUID string. Note that the GUID must be enclosed in braces {}. To get track's GUID as a string, see GetSetMediaTrackInfo_String.
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 ---@param guidStringIn string
 ---@return MediaTrack retval
 function reaper.BR_GetMediaTrackByGUID(proj, guidStringIn) end
@@ -6885,7 +6885,7 @@ function reaper.BR_MIDI_CCLaneReplace(midiEditor, laneId, newCC) end
 function reaper.BR_PositionAtMouseCursor(checkRuler) end
 
 ---[BR] Deprecated, see GetSet_ArrangeView2 (REAPER v5.12pre4+) -- Set start and end time position of arrange view. To get arrange view instead, see BR_GetArrangeView.
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 ---@param startTime number
 ---@param endTime number
 function reaper.BR_SetArrangeView(proj, startTime, endTime) end
@@ -7501,7 +7501,7 @@ function reaper.CF_GetTakeFXChain(take) end
 function reaper.CF_GetTrackFXChain(track) end
 
 ---Return a handle to the given track FX chain window. Set wantInputChain to get the track's input/monitoring FX chain.
----@param project ReaProject
+---@param project ReaProject|nil|0
 ---@param track MediaTrack
 ---@param wantInputChain boolean
 ---@return FxChain retval
@@ -7573,7 +7573,7 @@ function reaper.CF_Preview_GetValue(preview, name) end
 function reaper.CF_Preview_Play(preview) end
 
 ---@param preview CF_Preview
----@param project ReaProject
+---@param project ReaProject|nil|0
 ---@param track MediaTrack
 ---@return boolean retval
 function reaper.CF_Preview_SetOutputTrack(preview, project, track) end
@@ -13114,11 +13114,11 @@ function reaper.ImGui__setshim(version, symbol_name) end
 ---Internal use only.
 function reaper.ImGui__shim() end
 
----@param project ReaProject
+---@param project ReaProject|nil|0
 ---@return string retval
 function reaper.JB_GetSWSExtraProjectNotes(project) end
 
----@param project ReaProject
+---@param project ReaProject|nil|0
 ---@param str string
 function reaper.JB_SetSWSExtraProjectNotes(project, str) end
 
@@ -15256,12 +15256,12 @@ function reaper.NF_Win32_GetSystemMetrics(nIndex) end
 function reaper.NVK_CountFolderItemChildren(folderItem) end
 
 ---[NVK] Counts the number of NVK Folder Items in a given project. 0 = active project.
----@param project ReaProject
+---@param project ReaProject|nil|0
 ---@return integer retval
 function reaper.NVK_CountFolderItems(project) end
 
 ---[NVK] Counts the number of selected NVK Folder Items in a given project. 0 = active project.
----@param project ReaProject
+---@param project ReaProject|nil|0
 ---@return integer retval
 function reaper.NVK_CountSelectedFolderItems(project) end
 
@@ -15275,7 +15275,7 @@ function reaper.NVK_CountTrackFolderItems(track) end
 function reaper.NVK_GetClipboardText() end
 
 ---[NVK] Gets the NVK Folder Item at the given index in the given project. 0 = active project.
----@param project ReaProject
+---@param project ReaProject|nil|0
 ---@param index integer
 ---@return MediaItem retval
 function reaper.NVK_GetFolderItem(project, index) end
@@ -15287,7 +15287,7 @@ function reaper.NVK_GetFolderItem(project, index) end
 function reaper.NVK_GetFolderItemChild(folderItem, index) end
 
 ---[NVK] Gets the selected NVK Folder Item at the given index in the given project. 0 = active project.
----@param project ReaProject
+---@param project ReaProject|nil|0
 ---@param index integer
 ---@return MediaItem retval
 function reaper.NVK_GetSelectedFolderItem(project, index) end
@@ -15318,7 +15318,7 @@ function reaper.NVK_IsFolderItemSelected(item) end
 function reaper.NVK_SaveClipboardImageToFile(filename) end
 
 ---[NVK] Selects all NVK Folder Items in the given project. 0 = active project. selected = true to select, false to unselect, defaults to true.
----@param project ReaProject
+---@param project ReaProject|nil|0
 ---@param selectedIn? boolean
 function reaper.NVK_SelectAllFolderItems(project, selectedIn) end
 
@@ -15447,7 +15447,7 @@ function reaper.SNM_DeleteFastString(str) end
 function reaper.SNM_GetDoubleConfigVar(varname, errvalue) end
 
 ---[S&M] See SNM_GetDoubleConfigVar.
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 ---@param varname string
 ---@param errvalue number
 ---@return number retval
@@ -15470,7 +15470,7 @@ function reaper.SNM_GetFastStringLength(str) end
 function reaper.SNM_GetIntConfigVar(varname, errvalue) end
 
 ---[S&M] See SNM_GetIntConfigVar.
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 ---@param varname string
 ---@param errvalue integer
 ---@return integer retval
@@ -15484,7 +15484,7 @@ function reaper.SNM_GetIntConfigVarEx(proj, varname, errvalue) end
 function reaper.SNM_GetLongConfigVar(varname) end
 
 ---[S&M] See SNM_GetLongConfigVar.
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 ---@param varname string
 ---@return boolean retval
 ---@return integer high
@@ -15492,13 +15492,13 @@ function reaper.SNM_GetLongConfigVar(varname) end
 function reaper.SNM_GetLongConfigVarEx(proj, varname) end
 
 ---[S&M] Gets a take by GUID as string. The GUID must be enclosed in braces {}. To get take GUID as string, see BR_GetMediaItemTakeGUID
----@param project ReaProject
+---@param project ReaProject|nil|0
 ---@param guid string
 ---@return MediaItem_Take retval
 function reaper.SNM_GetMediaItemTakeByGUID(project, guid) end
 
 ---[S&M] Gets a marker/region name. Returns true if marker/region found.
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 ---@param num integer
 ---@param isrgn boolean
 ---@param name WDL_FastString
@@ -15577,7 +15577,7 @@ function reaper.SNM_SelectResourceBookmark(name) end
 function reaper.SNM_SetDoubleConfigVar(varname, newvalue) end
 
 ---[S&M] See SNM_SetDoubleConfigVar.
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 ---@param varname string
 ---@param newvalue number
 ---@return boolean retval
@@ -15596,7 +15596,7 @@ function reaper.SNM_SetFastString(str, newstr) end
 function reaper.SNM_SetIntConfigVar(varname, newvalue) end
 
 ---[S&M] See SNM_SetIntConfigVar.
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 ---@param varname string
 ---@param newvalue integer
 ---@return boolean retval
@@ -15610,7 +15610,7 @@ function reaper.SNM_SetIntConfigVarEx(proj, varname, newvalue) end
 function reaper.SNM_SetLongConfigVar(varname, newHighValue, newLowValue) end
 
 ---[S&M] SNM_SetLongConfigVar.
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 ---@param varname string
 ---@param newHighValue integer
 ---@param newLowValue integer
@@ -15618,7 +15618,7 @@ function reaper.SNM_SetLongConfigVar(varname, newHighValue, newLowValue) end
 function reaper.SNM_SetLongConfigVarEx(proj, varname, newHighValue, newLowValue) end
 
 ---[S&M] Deprecated, see SetProjectMarker4 -- Same function as SetProjectMarker3() except it can set empty names "".
----@param proj ReaProject
+---@param proj ReaProject|nil|0
 ---@param num integer
 ---@param isrgn boolean
 ---@param pos number
