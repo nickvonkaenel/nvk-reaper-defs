@@ -771,7 +771,7 @@ if file_path == "" or not r.file_exists(file_path) then
 	if not retval then
 		return
 	end
-	file_path = new_path
+	file_path = new_path:gsub("^file:/+", "")
 	r.SetExtState("ReaScript_API_Generator", "html_file_path", file_path, true)
 end
 
