@@ -10455,7 +10455,6 @@
 ---
 --- **Text \& Scalar Input > Flags > Callback features**
 ---
-
 ---
 --- ---
 ---
@@ -10481,7 +10480,6 @@
 ---
 --- **Text \& Scalar Input > Flags > Callback features**
 ---
-
 ---
 --- ---
 ---
@@ -10506,7 +10504,6 @@
 ---
 --- **Text \& Scalar Input > Flags > Callback features**
 ---
-
 ---
 --- ---
 ---
@@ -10533,7 +10530,6 @@
 ---
 --- **Text \& Scalar Input > Flags > Callback features**
 ---
-
 ---
 --- ---
 ---
@@ -10558,7 +10554,6 @@
 ---
 --- **Text \& Scalar Input > Flags > Callback features**
 ---
-
 ---
 --- ---
 ---
@@ -10583,7 +10578,6 @@
 ---
 --- **Text \& Scalar Input > Flags > Inputs**
 ---
-
 ---
 --- ---
 ---
@@ -10609,7 +10603,6 @@
 ---
 --- **Text \& Scalar Input > Flags > Inputs**
 ---
-
 ---
 --- ---
 ---
@@ -10635,7 +10628,6 @@
 ---
 --- **Text \& Scalar Input > Flags > Inputs**
 ---
-
 ---
 --- ---
 ---
@@ -10661,7 +10653,6 @@
 ---
 --- **Text \& Scalar Input > Flags > Inputs**
 ---
-
 ---
 --- ---
 ---
@@ -10686,7 +10677,6 @@
 ---
 --- **Text \& Scalar Input > Flags > Other options**
 ---
-
 ---
 --- ---
 ---
@@ -10711,7 +10701,6 @@
 ---
 --- **Text \& Scalar Input > Flags > Other options**
 ---
-
 ---
 --- ---
 ---
@@ -10737,7 +10726,6 @@
 ---
 --- **Text \& Scalar Input > Flags > Other options**
 ---
-
 ---
 --- ---
 ---
@@ -10762,7 +10750,6 @@
 ---
 --- **Text \& Scalar Input > Flags > Other options**
 ---
-
 ---
 --- ---
 ---
@@ -10787,7 +10774,6 @@
 ---
 --- **Text \& Scalar Input > Flags > Other options**
 ---
-
 ---
 --- ---
 ---
@@ -10812,7 +10798,6 @@
 ---
 --- **Text \& Scalar Input > Flags > Other options**
 ---
-
 ---
 --- ---
 ---
@@ -10837,7 +10822,6 @@
 ---
 --- **Text \& Scalar Input > Flags > Other options**
 ---
-
 ---
 --- ---
 ---
@@ -10862,7 +10846,6 @@
 ---
 --- **Text \& Scalar Input > Flags > Other options**
 ---
-
 ---
 --- ---
 ---
@@ -12476,7 +12459,6 @@
 --- @since 0.1
 --- @field FocusedFlags_RootWindow integer
 local ImGui = {}
-
 --- @alias nil​ nil
 --- @class (exact) ImGui_Resource         : userdata
 --- @class (exact) ImGui_DrawList         : userdata
@@ -12491,7 +12473,6 @@ local ImGui = {}
 --- @class (exact) ImGui_TextFilter       : ImGui_Resource
 --- @class (exact) LICE_IBitmap           : userdata
 --- @diagnostic disable: keyword
-
 --- **Button > ArrowButton**
 ---
 --- Square button with an arrow shape. 'dir' is one of the Dir_* values
@@ -12513,7 +12494,6 @@ local ImGui = {}
 --- @param dir integer
 --- @return boolean retval
 function ImGui.ArrowButton(ctx, str_id, dir) end
-
 --- **Button > Button**
 ---
 --- ---
@@ -12534,7 +12514,6 @@ function ImGui.ArrowButton(ctx, str_id, dir) end
 --- @param size_h? number default value = `0.0`
 --- @return boolean retval
 function ImGui.Button(ctx, label, size_w, size_h) end
-
 --- **Button > Checkbox**
 ---
 --- ---
@@ -12555,7 +12534,6 @@ function ImGui.Button(ctx, label, size_w, size_h) end
 --- @return boolean retval
 --- @return boolean v
 function ImGui.Checkbox(ctx, label, v) end
-
 --- **Button > CheckboxFlags**
 ---
 --- ---
@@ -12577,7 +12555,6 @@ function ImGui.Checkbox(ctx, label, v) end
 --- @return boolean retval
 --- @return integer flags
 function ImGui.CheckboxFlags(ctx, label, flags, flags_value) end
-
 --- **Button > InvisibleButton**
 ---
 --- Flexible button behavior without the visuals, frequently useful to build
@@ -12602,7 +12579,6 @@ function ImGui.CheckboxFlags(ctx, label, flags, flags_value) end
 --- @param flags? integer default value = `ButtonFlags_None`
 --- @return boolean retval
 function ImGui.InvisibleButton(ctx, str_id, size_w, size_h, flags) end
-
 --- **Button > PopButtonRepeat**
 ---
 --- See PushButtonRepeat
@@ -12621,7 +12597,6 @@ function ImGui.InvisibleButton(ctx, str_id, size_w, size_h, flags) end
 --- @since 0.1
 --- @param ctx ImGui_Context
 function ImGui.PopButtonRepeat(ctx) end
-
 --- **Button > PushButtonRepeat**
 ---
 --- In 'repeat' mode, Button*() functions return repeated true in a typematic
@@ -12645,7 +12620,6 @@ function ImGui.PopButtonRepeat(ctx) end
 --- @param ctx ImGui_Context
 --- @param repeat boolean
 function ImGui.PushButtonRepeat(ctx, repeat) end
-
 --- **Button > RadioButton**
 ---
 --- Use with e.g. if (RadioButton("one", my_value==1)) { my_value = 1; }
@@ -12667,7 +12641,6 @@ function ImGui.PushButtonRepeat(ctx, repeat) end
 --- @param active boolean
 --- @return boolean retval
 function ImGui.RadioButton(ctx, label, active) end
-
 --- **Button > RadioButtonEx**
 ---
 --- Shortcut to handle RadioButton's example pattern when value is an integer
@@ -12691,7 +12664,6 @@ function ImGui.RadioButton(ctx, label, active) end
 --- @return boolean retval
 --- @return integer v
 function ImGui.RadioButtonEx(ctx, label, v, v_button) end
-
 --- **Button > SmallButton**
 ---
 --- Button with StyleVar_FramePadding.y == 0 to easily embed within text.
@@ -12712,7 +12684,6 @@ function ImGui.RadioButtonEx(ctx, label, v, v_button) end
 --- @param label string
 --- @return boolean retval
 function ImGui.SmallButton(ctx, label) end
-
 --- **Color Edit > ColorButton**
 ---
 --- Display a color square/button, hover for details, return true when pressed.
@@ -12736,7 +12707,6 @@ function ImGui.SmallButton(ctx, label) end
 --- @param size_h? number default value = `0.0`
 --- @return boolean retval
 function ImGui.ColorButton(ctx, desc_id, col_rgba, flags, size_w, size_h) end
-
 --- **Color Edit > ColorEdit3**
 ---
 --- Color is in 0xXXRRGGBB. XX is ignored and will not be modified.
@@ -12758,7 +12728,6 @@ function ImGui.ColorButton(ctx, desc_id, col_rgba, flags, size_w, size_h) end
 --- @return boolean retval
 --- @return integer col_rgb
 function ImGui.ColorEdit3(ctx, label, col_rgb, flags) end
-
 --- **Color Edit > ColorEdit4**
 ---
 --- Color is in 0xRRGGBBAA or, if ColorEditFlags_NoAlpha is set, 0xXXRRGGBB
@@ -12781,7 +12750,6 @@ function ImGui.ColorEdit3(ctx, label, col_rgb, flags) end
 --- @return boolean retval
 --- @return integer col_rgba
 function ImGui.ColorEdit4(ctx, label, col_rgba, flags) end
-
 --- **Color Edit > ColorPicker3**
 ---
 --- Color is in 0xXXRRGGBB. XX is ignored and will not be modified.
@@ -12803,7 +12771,6 @@ function ImGui.ColorEdit4(ctx, label, col_rgba, flags) end
 --- @return boolean retval
 --- @return integer col_rgb
 function ImGui.ColorPicker3(ctx, label, col_rgb, flags) end
-
 --- **Color Edit > ColorPicker4**
 ---
 --- ---
@@ -12824,7 +12791,6 @@ function ImGui.ColorPicker3(ctx, label, col_rgb, flags) end
 --- @return boolean retval
 --- @return integer col_rgba
 function ImGui.ColorPicker4(ctx, label, col_rgba, flags, ref_col) end
-
 --- **Color Edit > SetColorEditOptions**
 ---
 --- Picker type, etc. User will be able to change many settings, unless you pass
@@ -12843,7 +12809,6 @@ function ImGui.ColorPicker4(ctx, label, col_rgba, flags, ref_col) end
 --- @param ctx ImGui_Context
 --- @param flags integer
 function ImGui.SetColorEditOptions(ctx, flags) end
-
 --- **Combo \& List > Combo Box \(Dropdown\) > BeginCombo**
 ---
 --- The BeginCombo/EndCombo API allows you to manage your contents and selection
@@ -12859,7 +12824,6 @@ function ImGui.SetColorEditOptions(ctx, flags) end
 --- @nodiscard
 --- @return boolean retval
 function ImGui.BeginCombo(ctx, label, preview_value, flags) end
-
 --- **Combo \& List > Combo Box \(Dropdown\) > Combo**
 ---
 --- Helper over BeginCombo/EndCombo for convenience purpose. Each item must be
@@ -12876,7 +12840,6 @@ function ImGui.BeginCombo(ctx, label, preview_value, flags) end
 --- @return boolean retval
 --- @return integer current_item
 function ImGui.Combo(ctx, label, current_item, items, popup_max_height_in_items) end
-
 --- **Combo \& List > Combo Box \(Dropdown\) > EndCombo**
 ---
 --- Only call EndCombo() if BeginCombo returns true!
@@ -12886,7 +12849,6 @@ function ImGui.Combo(ctx, label, current_item, items, popup_max_height_in_items)
 --- @since 0.1
 --- @param ctx ImGui_Context
 function ImGui.EndCombo(ctx) end
-
 --- **Combo \& List > List Boxes > BeginListBox**
 ---
 --- Open a framed scrolling region.
@@ -12922,7 +12884,6 @@ function ImGui.EndCombo(ctx) end
 --- @nodiscard
 --- @return boolean retval
 function ImGui.BeginListBox(ctx, label, size_w, size_h) end
-
 --- **Combo \& List > List Boxes > EndListBox**
 ---
 --- Only call EndListBox() if BeginListBox returned true!
@@ -12939,7 +12900,6 @@ function ImGui.BeginListBox(ctx, label, size_w, size_h) end
 --- @since 0.1
 --- @param ctx ImGui_Context
 function ImGui.EndListBox(ctx) end
-
 --- **Combo \& List > List Boxes > ListBox**
 ---
 --- This is an helper over BeginListBox/EndListBox for convenience purpose.
@@ -12964,7 +12924,6 @@ function ImGui.EndListBox(ctx) end
 --- @return boolean retval
 --- @return integer current_item
 function ImGui.ListBox(ctx, label, current_item, items, height_in_items) end
-
 --- **Combo \& List > Selectables > Selectable**
 ---
 --- ---
@@ -12988,7 +12947,6 @@ function ImGui.ListBox(ctx, label, current_item, items, height_in_items) end
 --- @return boolean retval
 --- @return boolean p_selected
 function ImGui.Selectable(ctx, label, p_selected, flags, size_w, size_h) end
-
 --- **Context > Attach**
 ---
 --- Link the object's lifetime to the given context.
@@ -13008,7 +12966,6 @@ function ImGui.Selectable(ctx, label, p_selected, flags, size_w, size_h) end
 --- @param ctx ImGui_Context
 --- @param obj ImGui_Resource
 function ImGui.Attach(ctx, obj) end
-
 --- **Context > CreateContext**
 ---
 --- Create a new ReaImGui context.
@@ -13025,7 +12982,6 @@ function ImGui.Attach(ctx, obj) end
 --- @nodiscard
 --- @return ImGui_Context retval
 function ImGui.CreateContext(label, config_flags) end
-
 --- **Context > Detach**
 ---
 --- Unlink the object's lifetime. Unattached objects are automatically destroyed
@@ -13038,7 +12994,6 @@ function ImGui.CreateContext(label, config_flags) end
 --- @param ctx ImGui_Context
 --- @param obj ImGui_Resource
 function ImGui.Detach(ctx, obj) end
-
 --- **Context > GetDeltaTime**
 ---
 --- Time elapsed since last frame, in seconds.
@@ -13049,7 +13004,6 @@ function ImGui.Detach(ctx, obj) end
 --- @param ctx ImGui_Context
 --- @return number retval
 function ImGui.GetDeltaTime(ctx) end
-
 --- **Context > GetFrameCount**
 ---
 --- Get global imgui frame count. incremented by 1 every frame.
@@ -13060,7 +13014,6 @@ function ImGui.GetDeltaTime(ctx) end
 --- @param ctx ImGui_Context
 --- @return integer retval
 function ImGui.GetFrameCount(ctx) end
-
 --- **Context > GetFramerate**
 ---
 --- Estimate of application framerate (rolling average over 60 frames, based on
@@ -13072,7 +13025,6 @@ function ImGui.GetFrameCount(ctx) end
 --- @param ctx ImGui_Context
 --- @return number retval
 function ImGui.GetFramerate(ctx) end
-
 --- **Context > GetTime**
 ---
 --- Get global imgui time. Incremented every frame.
@@ -13083,7 +13035,6 @@ function ImGui.GetFramerate(ctx) end
 --- @param ctx ImGui_Context
 --- @return number retval
 function ImGui.GetTime(ctx) end
-
 --- **Context > Options > GetConfigVar**
 ---
 --- ---
@@ -13093,7 +13044,6 @@ function ImGui.GetTime(ctx) end
 --- @param var_idx integer
 --- @return number retval
 function ImGui.GetConfigVar(ctx, var_idx) end
-
 --- **Context > Options > SetConfigVar**
 ---
 --- ---
@@ -13103,7 +13053,6 @@ function ImGui.GetConfigVar(ctx, var_idx) end
 --- @param var_idx integer
 --- @param value number
 function ImGui.SetConfigVar(ctx, var_idx, value) end
-
 --- **Drag \& Drop > AcceptDragDropPayload**
 ---
 --- Accept contents of a given type. If DragDropFlags_AcceptBeforeDelivery is set
@@ -13131,7 +13080,6 @@ function ImGui.SetConfigVar(ctx, var_idx, value) end
 --- @return boolean retval
 --- @return string payload
 function ImGui.AcceptDragDropPayload(ctx, type, _1, flags) end
-
 --- **Drag \& Drop > AcceptDragDropPayloadFiles**
 ---
 --- Accept a list of dropped files. See AcceptDragDropPayload and GetDragDropPayloadFile.
@@ -13157,7 +13105,6 @@ function ImGui.AcceptDragDropPayload(ctx, type, _1, flags) end
 --- @return boolean retval
 --- @return integer count
 function ImGui.AcceptDragDropPayloadFiles(ctx, _1, flags) end
-
 --- **Drag \& Drop > AcceptDragDropPayloadRGB**
 ---
 --- Accept a RGB color. See AcceptDragDropPayload.
@@ -13183,7 +13130,6 @@ function ImGui.AcceptDragDropPayloadFiles(ctx, _1, flags) end
 --- @return boolean retval
 --- @return integer rgb
 function ImGui.AcceptDragDropPayloadRGB(ctx, _1, flags) end
-
 --- **Drag \& Drop > AcceptDragDropPayloadRGBA**
 ---
 --- Accept a RGBA color. See AcceptDragDropPayload.
@@ -13209,7 +13155,6 @@ function ImGui.AcceptDragDropPayloadRGB(ctx, _1, flags) end
 --- @return boolean retval
 --- @return integer rgba
 function ImGui.AcceptDragDropPayloadRGBA(ctx, _1, flags) end
-
 --- **Drag \& Drop > BeginDragDropSource**
 ---
 --- Call after submitting an item which may be dragged. when this return true,
@@ -13239,7 +13184,6 @@ function ImGui.AcceptDragDropPayloadRGBA(ctx, _1, flags) end
 --- @nodiscard
 --- @return boolean retval
 function ImGui.BeginDragDropSource(ctx, flags) end
-
 --- **Drag \& Drop > BeginDragDropTarget**
 ---
 --- Call after submitting an item that may receive a payload.
@@ -13264,7 +13208,6 @@ function ImGui.BeginDragDropSource(ctx, flags) end
 --- @nodiscard
 --- @return boolean retval
 function ImGui.BeginDragDropTarget(ctx) end
-
 --- **Drag \& Drop > EndDragDropSource**
 ---
 --- Only call EndDragDropSource() if BeginDragDropSource returns true!
@@ -13286,7 +13229,6 @@ function ImGui.BeginDragDropTarget(ctx) end
 --- @since 0.1
 --- @param ctx ImGui_Context
 function ImGui.EndDragDropSource(ctx) end
-
 --- **Drag \& Drop > EndDragDropTarget**
 ---
 --- Only call EndDragDropTarget() if BeginDragDropTarget returns true!
@@ -13308,7 +13250,6 @@ function ImGui.EndDragDropSource(ctx) end
 --- @since 0.1
 --- @param ctx ImGui_Context
 function ImGui.EndDragDropTarget(ctx) end
-
 --- **Drag \& Drop > GetDragDropPayload**
 ---
 --- Peek directly into the current payload from anywhere.
@@ -13336,7 +13277,6 @@ function ImGui.EndDragDropTarget(ctx) end
 --- @return boolean is_preview
 --- @return boolean is_delivery
 function ImGui.GetDragDropPayload(ctx) end
-
 --- **Drag \& Drop > GetDragDropPayloadFile**
 ---
 --- Get a filename from the list of dropped files.
@@ -13362,7 +13302,6 @@ function ImGui.GetDragDropPayload(ctx) end
 --- @return boolean retval
 --- @return string filename
 function ImGui.GetDragDropPayloadFile(ctx, index) end
-
 --- **Drag \& Drop > SetDragDropPayload**
 ---
 --- The type is a user defined string of maximum 32 characters.
@@ -13390,7 +13329,6 @@ function ImGui.GetDragDropPayloadFile(ctx, index) end
 --- @param cond? integer default value = `Cond_Always`
 --- @return boolean retval
 function ImGui.SetDragDropPayload(ctx, type, data, cond) end
-
 --- **Drag \& Slider > Drag Sliders > DragDouble**
 ---
 --- ---
@@ -13437,7 +13375,6 @@ function ImGui.SetDragDropPayload(ctx, type, data, cond) end
 --- @return boolean retval
 --- @return number v
 function ImGui.DragDouble(ctx, label, v, v_speed, v_min, v_max, format, flags) end
-
 --- **Drag \& Slider > Drag Sliders > DragDouble2**
 ---
 --- ---
@@ -13486,7 +13423,6 @@ function ImGui.DragDouble(ctx, label, v, v_speed, v_min, v_max, format, flags) e
 --- @return number v1
 --- @return number v2
 function ImGui.DragDouble2(ctx, label, v1, v2, v_speed, v_min, v_max, format, flags) end
-
 --- **Drag \& Slider > Drag Sliders > DragDouble3**
 ---
 --- ---
@@ -13537,7 +13473,6 @@ function ImGui.DragDouble2(ctx, label, v1, v2, v_speed, v_min, v_max, format, fl
 --- @return number v2
 --- @return number v3
 function ImGui.DragDouble3(ctx, label, v1, v2, v3, v_speed, v_min, v_max, format, flags) end
-
 --- **Drag \& Slider > Drag Sliders > DragDouble4**
 ---
 --- ---
@@ -13590,7 +13525,6 @@ function ImGui.DragDouble3(ctx, label, v1, v2, v3, v_speed, v_min, v_max, format
 --- @return number v3
 --- @return number v4
 function ImGui.DragDouble4(ctx, label, v1, v2, v3, v4, v_speed, v_min, v_max, format, flags) end
-
 --- **Drag \& Slider > Drag Sliders > DragDoubleN**
 ---
 --- ---
@@ -13636,7 +13570,6 @@ function ImGui.DragDouble4(ctx, label, v1, v2, v3, v4, v_speed, v_min, v_max, fo
 --- @param flags? integer default value = `SliderFlags_None`
 --- @return boolean retval
 function ImGui.DragDoubleN(ctx, label, values, speed, min, max, format, flags) end
-
 --- **Drag \& Slider > Drag Sliders > DragFloatRange2**
 ---
 --- ---
@@ -13686,7 +13619,6 @@ function ImGui.DragDoubleN(ctx, label, values, speed, min, max, format, flags) e
 --- @return number v_current_min
 --- @return number v_current_max
 function ImGui.DragFloatRange2(ctx, label, v_current_min, v_current_max, v_speed, v_min, v_max, format, format_max, flags) end
-
 --- **Drag \& Slider > Drag Sliders > DragInt**
 ---
 --- ---
@@ -13733,7 +13665,6 @@ function ImGui.DragFloatRange2(ctx, label, v_current_min, v_current_max, v_speed
 --- @return boolean retval
 --- @return integer v
 function ImGui.DragInt(ctx, label, v, v_speed, v_min, v_max, format, flags) end
-
 --- **Drag \& Slider > Drag Sliders > DragInt2**
 ---
 --- ---
@@ -13782,7 +13713,6 @@ function ImGui.DragInt(ctx, label, v, v_speed, v_min, v_max, format, flags) end
 --- @return integer v1
 --- @return integer v2
 function ImGui.DragInt2(ctx, label, v1, v2, v_speed, v_min, v_max, format, flags) end
-
 --- **Drag \& Slider > Drag Sliders > DragInt3**
 ---
 --- ---
@@ -13833,7 +13763,6 @@ function ImGui.DragInt2(ctx, label, v1, v2, v_speed, v_min, v_max, format, flags
 --- @return integer v2
 --- @return integer v3
 function ImGui.DragInt3(ctx, label, v1, v2, v3, v_speed, v_min, v_max, format, flags) end
-
 --- **Drag \& Slider > Drag Sliders > DragInt4**
 ---
 --- ---
@@ -13886,7 +13815,6 @@ function ImGui.DragInt3(ctx, label, v1, v2, v3, v_speed, v_min, v_max, format, f
 --- @return integer v3
 --- @return integer v4
 function ImGui.DragInt4(ctx, label, v1, v2, v3, v4, v_speed, v_min, v_max, format, flags) end
-
 --- **Drag \& Slider > Drag Sliders > DragIntRange2**
 ---
 --- ---
@@ -13936,7 +13864,6 @@ function ImGui.DragInt4(ctx, label, v1, v2, v3, v4, v_speed, v_min, v_max, forma
 --- @return integer v_current_min
 --- @return integer v_current_max
 function ImGui.DragIntRange2(ctx, label, v_current_min, v_current_max, v_speed, v_min, v_max, format, format_max, flags) end
-
 --- **Drag \& Slider > Regular Sliders > SliderAngle**
 ---
 --- ---
@@ -13969,7 +13896,6 @@ function ImGui.DragIntRange2(ctx, label, v_current_min, v_current_max, v_speed, 
 --- @return boolean retval
 --- @return number v_rad
 function ImGui.SliderAngle(ctx, label, v_rad, v_degrees_min, v_degrees_max, format, flags) end
-
 --- **Drag \& Slider > Regular Sliders > SliderDouble**
 ---
 --- ---
@@ -14002,7 +13928,6 @@ function ImGui.SliderAngle(ctx, label, v_rad, v_degrees_min, v_degrees_max, form
 --- @return boolean retval
 --- @return number v
 function ImGui.SliderDouble(ctx, label, v, v_min, v_max, format, flags) end
-
 --- **Drag \& Slider > Regular Sliders > SliderDouble2**
 ---
 --- ---
@@ -14037,7 +13962,6 @@ function ImGui.SliderDouble(ctx, label, v, v_min, v_max, format, flags) end
 --- @return number v1
 --- @return number v2
 function ImGui.SliderDouble2(ctx, label, v1, v2, v_min, v_max, format, flags) end
-
 --- **Drag \& Slider > Regular Sliders > SliderDouble3**
 ---
 --- ---
@@ -14074,7 +13998,6 @@ function ImGui.SliderDouble2(ctx, label, v1, v2, v_min, v_max, format, flags) en
 --- @return number v2
 --- @return number v3
 function ImGui.SliderDouble3(ctx, label, v1, v2, v3, v_min, v_max, format, flags) end
-
 --- **Drag \& Slider > Regular Sliders > SliderDouble4**
 ---
 --- ---
@@ -14113,7 +14036,6 @@ function ImGui.SliderDouble3(ctx, label, v1, v2, v3, v_min, v_max, format, flags
 --- @return number v3
 --- @return number v4
 function ImGui.SliderDouble4(ctx, label, v1, v2, v3, v4, v_min, v_max, format, flags) end
-
 --- **Drag \& Slider > Regular Sliders > SliderDoubleN**
 ---
 --- ---
@@ -14145,7 +14067,6 @@ function ImGui.SliderDouble4(ctx, label, v1, v2, v3, v4, v_min, v_max, format, f
 --- @param flags? integer default value = `SliderFlags_None`
 --- @return boolean retval
 function ImGui.SliderDoubleN(ctx, label, values, v_min, v_max, format, flags) end
-
 --- **Drag \& Slider > Regular Sliders > SliderInt**
 ---
 --- ---
@@ -14178,7 +14099,6 @@ function ImGui.SliderDoubleN(ctx, label, values, v_min, v_max, format, flags) en
 --- @return boolean retval
 --- @return integer v
 function ImGui.SliderInt(ctx, label, v, v_min, v_max, format, flags) end
-
 --- **Drag \& Slider > Regular Sliders > SliderInt2**
 ---
 --- ---
@@ -14213,7 +14133,6 @@ function ImGui.SliderInt(ctx, label, v, v_min, v_max, format, flags) end
 --- @return integer v1
 --- @return integer v2
 function ImGui.SliderInt2(ctx, label, v1, v2, v_min, v_max, format, flags) end
-
 --- **Drag \& Slider > Regular Sliders > SliderInt3**
 ---
 --- ---
@@ -14250,7 +14169,6 @@ function ImGui.SliderInt2(ctx, label, v1, v2, v_min, v_max, format, flags) end
 --- @return integer v2
 --- @return integer v3
 function ImGui.SliderInt3(ctx, label, v1, v2, v3, v_min, v_max, format, flags) end
-
 --- **Drag \& Slider > Regular Sliders > SliderInt4**
 ---
 --- ---
@@ -14289,7 +14207,6 @@ function ImGui.SliderInt3(ctx, label, v1, v2, v3, v_min, v_max, format, flags) e
 --- @return integer v3
 --- @return integer v4
 function ImGui.SliderInt4(ctx, label, v1, v2, v3, v4, v_min, v_max, format, flags) end
-
 --- **Drag \& Slider > Regular Sliders > VSliderDouble**
 ---
 --- ---
@@ -14324,7 +14241,6 @@ function ImGui.SliderInt4(ctx, label, v1, v2, v3, v4, v_min, v_max, format, flag
 --- @return boolean retval
 --- @return number v
 function ImGui.VSliderDouble(ctx, label, size_w, size_h, v, v_min, v_max, format, flags) end
-
 --- **Drag \& Slider > Regular Sliders > VSliderInt**
 ---
 --- ---
@@ -14359,7 +14275,6 @@ function ImGui.VSliderDouble(ctx, label, size_w, size_h, v, v_min, v_max, format
 --- @return boolean retval
 --- @return integer v
 function ImGui.VSliderInt(ctx, label, size_w, size_h, v, v_min, v_max, format, flags) end
-
 --- **Draw List > DrawList\_PopClipRect**
 ---
 --- See DrawList_PushClipRect
@@ -14383,7 +14298,6 @@ function ImGui.VSliderInt(ctx, label, size_w, size_h, v, v_min, v_max, format, f
 --- @since 0.1
 --- @param draw_list ImGui_DrawList
 function ImGui.DrawList_PopClipRect(draw_list) end
-
 --- **Draw List > DrawList\_PushClipRect**
 ---
 --- Render-level scissoring. Prefer using higher-level PushClipRect to affect
@@ -14413,7 +14327,6 @@ function ImGui.DrawList_PopClipRect(draw_list) end
 --- @param clip_rect_max_y number
 --- @param intersect_with_current_clip_rect? boolean default value = `false`
 function ImGui.DrawList_PushClipRect(draw_list, clip_rect_min_x, clip_rect_min_y, clip_rect_max_x, clip_rect_max_y, intersect_with_current_clip_rect) end
-
 --- **Draw List > DrawList\_PushClipRectFullScreen**
 ---
 --- ---
@@ -14435,7 +14348,6 @@ function ImGui.DrawList_PushClipRect(draw_list, clip_rect_min_x, clip_rect_min_y
 --- @since 0.1
 --- @param draw_list ImGui_DrawList
 function ImGui.DrawList_PushClipRectFullScreen(draw_list) end
-
 --- **Draw List > GetBackgroundDrawList**
 ---
 --- This draw list will be the first rendering one. Useful to quickly draw
@@ -14461,7 +14373,6 @@ function ImGui.DrawList_PushClipRectFullScreen(draw_list) end
 --- @param ctx ImGui_Context
 --- @return ImGui_DrawList retval
 function ImGui.GetBackgroundDrawList(ctx) end
-
 --- **Draw List > GetForegroundDrawList**
 ---
 --- This draw list will be the last rendered one. Useful to quickly draw
@@ -14487,7 +14398,6 @@ function ImGui.GetBackgroundDrawList(ctx) end
 --- @param ctx ImGui_Context
 --- @return ImGui_DrawList retval
 function ImGui.GetForegroundDrawList(ctx) end
-
 --- **Draw List > GetWindowDrawList**
 ---
 --- The draw list associated to the current window, to append your own drawing primitives
@@ -14512,7 +14422,6 @@ function ImGui.GetForegroundDrawList(ctx) end
 --- @param ctx ImGui_Context
 --- @return ImGui_DrawList retval
 function ImGui.GetWindowDrawList(ctx) end
-
 --- **Draw List > Primitives > DrawList\_AddBezierCubic**
 ---
 --- Cubic Bezier (4 control points)
@@ -14563,7 +14472,6 @@ function ImGui.GetWindowDrawList(ctx) end
 --- @param thickness number
 --- @param num_segments? integer default value = `0`
 function ImGui.DrawList_AddBezierCubic(draw_list, p1_x, p1_y, p2_x, p2_y, p3_x, p3_y, p4_x, p4_y, col_rgba, thickness, num_segments) end
-
 --- **Draw List > Primitives > DrawList\_AddBezierQuadratic**
 ---
 --- Quadratic Bezier (3 control points)
@@ -14612,7 +14520,6 @@ function ImGui.DrawList_AddBezierCubic(draw_list, p1_x, p1_y, p2_x, p2_y, p3_x, 
 --- @param thickness number
 --- @param num_segments? integer default value = `0`
 function ImGui.DrawList_AddBezierQuadratic(draw_list, p1_x, p1_y, p2_x, p2_y, p3_x, p3_y, col_rgba, thickness, num_segments) end
-
 --- **Draw List > Primitives > DrawList\_AddCircle**
 ---
 --- Use "num_segments == 0" to automatically calculate tessellation (preferred).
@@ -14658,7 +14565,6 @@ function ImGui.DrawList_AddBezierQuadratic(draw_list, p1_x, p1_y, p2_x, p2_y, p3
 --- @param num_segments? integer default value = `0`
 --- @param thickness? number default value = `1.0`
 function ImGui.DrawList_AddCircle(draw_list, center_x, center_y, radius, col_rgba, num_segments, thickness) end
-
 --- **Draw List > Primitives > DrawList\_AddCircleFilled**
 ---
 --- Use "num_segments == 0" to automatically calculate tessellation (preferred).
@@ -14703,7 +14609,6 @@ function ImGui.DrawList_AddCircle(draw_list, center_x, center_y, radius, col_rgb
 --- @param col_rgba integer
 --- @param num_segments? integer default value = `0`
 function ImGui.DrawList_AddCircleFilled(draw_list, center_x, center_y, radius, col_rgba, num_segments) end
-
 --- **Draw List > Primitives > DrawList\_AddConcavePolyFilled**
 ---
 --- Concave polygon fill is more expensive than convex one: it has O(N^2) complexity.
@@ -14745,7 +14650,6 @@ function ImGui.DrawList_AddCircleFilled(draw_list, center_x, center_y, radius, c
 --- @param points reaper.array
 --- @param col_rgba integer
 function ImGui.DrawList_AddConcavePolyFilled(draw_list, points, col_rgba) end
-
 --- **Draw List > Primitives > DrawList\_AddConvexPolyFilled**
 ---
 --- Note: Anti-aliased filling requires points to be in clockwise order.
@@ -14787,7 +14691,6 @@ function ImGui.DrawList_AddConcavePolyFilled(draw_list, points, col_rgba) end
 --- @param points reaper.array
 --- @param col_rgba integer
 function ImGui.DrawList_AddConvexPolyFilled(draw_list, points, col_rgba) end
-
 --- **Draw List > Primitives > DrawList\_AddEllipse**
 ---
 --- ---
@@ -14833,7 +14736,6 @@ function ImGui.DrawList_AddConvexPolyFilled(draw_list, points, col_rgba) end
 --- @param num_segments? integer default value = `0`
 --- @param thickness? number default value = `1.0`
 function ImGui.DrawList_AddEllipse(draw_list, center_x, center_y, radius_x, radius_y, col_rgba, rot, num_segments, thickness) end
-
 --- **Draw List > Primitives > DrawList\_AddEllipseFilled**
 ---
 --- ---
@@ -14878,7 +14780,6 @@ function ImGui.DrawList_AddEllipse(draw_list, center_x, center_y, radius_x, radi
 --- @param rot? number default value = `0.0`
 --- @param num_segments? integer default value = `0`
 function ImGui.DrawList_AddEllipseFilled(draw_list, center_x, center_y, radius_x, radius_y, col_rgba, rot, num_segments) end
-
 --- **Draw List > Primitives > DrawList\_AddImage**
 ---
 --- ---
@@ -14926,7 +14827,6 @@ function ImGui.DrawList_AddEllipseFilled(draw_list, center_x, center_y, radius_x
 --- @param uv_max_y? number default value = `1.0`
 --- @param col_rgba? integer default value = `0xFFFFFFFF`
 function ImGui.DrawList_AddImage(draw_list, image, p_min_x, p_min_y, p_max_x, p_max_y, uv_min_x, uv_min_y, uv_max_x, uv_max_y, col_rgba) end
-
 --- **Draw List > Primitives > DrawList\_AddImageQuad**
 ---
 --- ---
@@ -14982,7 +14882,6 @@ function ImGui.DrawList_AddImage(draw_list, image, p_min_x, p_min_y, p_max_x, p_
 --- @param uv4_y? number default value = `1.0`
 --- @param col_rgba? integer default value = `0xFFFFFFFF`
 function ImGui.DrawList_AddImageQuad(draw_list, image, p1_x, p1_y, p2_x, p2_y, p3_x, p3_y, p4_x, p4_y, uv1_x, uv1_y, uv2_x, uv2_y, uv3_x, uv3_y, uv4_x, uv4_y, col_rgba) end
-
 --- **Draw List > Primitives > DrawList\_AddImageRounded**
 ---
 --- ---
@@ -15032,7 +14931,6 @@ function ImGui.DrawList_AddImageQuad(draw_list, image, p1_x, p1_y, p2_x, p2_y, p
 --- @param rounding number
 --- @param flags? integer default value = `DrawFlags_None`
 function ImGui.DrawList_AddImageRounded(draw_list, image, p_min_x, p_min_y, p_max_x, p_max_y, uv_min_x, uv_min_y, uv_max_x, uv_max_y, col_rgba, rounding, flags) end
-
 --- **Draw List > Primitives > DrawList\_AddLine**
 ---
 --- ---
@@ -15076,7 +14974,6 @@ function ImGui.DrawList_AddImageRounded(draw_list, image, p_min_x, p_min_y, p_ma
 --- @param col_rgba integer
 --- @param thickness? number default value = `1.0`
 function ImGui.DrawList_AddLine(draw_list, p1_x, p1_y, p2_x, p2_y, col_rgba, thickness) end
-
 --- **Draw List > Primitives > DrawList\_AddNgon**
 ---
 --- ---
@@ -15120,7 +15017,6 @@ function ImGui.DrawList_AddLine(draw_list, p1_x, p1_y, p2_x, p2_y, col_rgba, thi
 --- @param num_segments integer
 --- @param thickness? number default value = `1.0`
 function ImGui.DrawList_AddNgon(draw_list, center_x, center_y, radius, col_rgba, num_segments, thickness) end
-
 --- **Draw List > Primitives > DrawList\_AddNgonFilled**
 ---
 --- ---
@@ -15163,7 +15059,6 @@ function ImGui.DrawList_AddNgon(draw_list, center_x, center_y, radius, col_rgba,
 --- @param col_rgba integer
 --- @param num_segments integer
 function ImGui.DrawList_AddNgonFilled(draw_list, center_x, center_y, radius, col_rgba, num_segments) end
-
 --- **Draw List > Primitives > DrawList\_AddPolyline**
 ---
 --- Points is a list of x,y coordinates.
@@ -15207,7 +15102,6 @@ function ImGui.DrawList_AddNgonFilled(draw_list, center_x, center_y, radius, col
 --- @param flags integer
 --- @param thickness number
 function ImGui.DrawList_AddPolyline(draw_list, points, col_rgba, flags, thickness) end
-
 --- **Draw List > Primitives > DrawList\_AddQuad**
 ---
 --- ---
@@ -15255,7 +15149,6 @@ function ImGui.DrawList_AddPolyline(draw_list, points, col_rgba, flags, thicknes
 --- @param col_rgba integer
 --- @param thickness? number default value = `1.0`
 function ImGui.DrawList_AddQuad(draw_list, p1_x, p1_y, p2_x, p2_y, p3_x, p3_y, p4_x, p4_y, col_rgba, thickness) end
-
 --- **Draw List > Primitives > DrawList\_AddQuadFilled**
 ---
 --- ---
@@ -15302,7 +15195,6 @@ function ImGui.DrawList_AddQuad(draw_list, p1_x, p1_y, p2_x, p2_y, p3_x, p3_y, p
 --- @param p4_y number
 --- @param col_rgba integer
 function ImGui.DrawList_AddQuadFilled(draw_list, p1_x, p1_y, p2_x, p2_y, p3_x, p3_y, p4_x, p4_y, col_rgba) end
-
 --- **Draw List > Primitives > DrawList\_AddRect**
 ---
 --- ---
@@ -15348,7 +15240,6 @@ function ImGui.DrawList_AddQuadFilled(draw_list, p1_x, p1_y, p2_x, p2_y, p3_x, p
 --- @param flags? integer default value = `DrawFlags_None`
 --- @param thickness? number default value = `1.0`
 function ImGui.DrawList_AddRect(draw_list, p_min_x, p_min_y, p_max_x, p_max_y, col_rgba, rounding, flags, thickness) end
-
 --- **Draw List > Primitives > DrawList\_AddRectFilled**
 ---
 --- ---
@@ -15393,7 +15284,6 @@ function ImGui.DrawList_AddRect(draw_list, p_min_x, p_min_y, p_max_x, p_max_y, c
 --- @param rounding? number default value = `0.0`
 --- @param flags? integer default value = `DrawFlags_None`
 function ImGui.DrawList_AddRectFilled(draw_list, p_min_x, p_min_y, p_max_x, p_max_y, col_rgba, rounding, flags) end
-
 --- **Draw List > Primitives > DrawList\_AddRectFilledMultiColor**
 ---
 --- ---
@@ -15439,7 +15329,6 @@ function ImGui.DrawList_AddRectFilled(draw_list, p_min_x, p_min_y, p_max_x, p_ma
 --- @param col_bot_right integer
 --- @param col_bot_left integer
 function ImGui.DrawList_AddRectFilledMultiColor(draw_list, p_min_x, p_min_y, p_max_x, p_max_y, col_upr_left, col_upr_right, col_bot_right, col_bot_left) end
-
 --- **Draw List > Primitives > DrawList\_AddText**
 ---
 --- ---
@@ -15481,7 +15370,6 @@ function ImGui.DrawList_AddRectFilledMultiColor(draw_list, p_min_x, p_min_y, p_m
 --- @param col_rgba integer
 --- @param text string
 function ImGui.DrawList_AddText(draw_list, x, y, col_rgba, text) end
-
 --- **Draw List > Primitives > DrawList\_AddTextEx**
 ---
 --- The last pushed font is used if font is nil.
@@ -15534,7 +15422,6 @@ function ImGui.DrawList_AddText(draw_list, x, y, col_rgba, text) end
 --- @param cpu_fine_clip_rect_max_x? number default value = `nil`
 --- @param cpu_fine_clip_rect_max_y? number default value = `nil`
 function ImGui.DrawList_AddTextEx(draw_list, font, font_size, pos_x, pos_y, col_rgba, text, wrap_width, cpu_fine_clip_rect_min_x, cpu_fine_clip_rect_min_y, cpu_fine_clip_rect_max_x, cpu_fine_clip_rect_max_y) end
-
 --- **Draw List > Primitives > DrawList\_AddTriangle**
 ---
 --- ---
@@ -15580,7 +15467,6 @@ function ImGui.DrawList_AddTextEx(draw_list, font, font_size, pos_x, pos_y, col_
 --- @param col_rgba integer
 --- @param thickness? number default value = `1.0`
 function ImGui.DrawList_AddTriangle(draw_list, p1_x, p1_y, p2_x, p2_y, p3_x, p3_y, col_rgba, thickness) end
-
 --- **Draw List > Primitives > DrawList\_AddTriangleFilled**
 ---
 --- ---
@@ -15625,7 +15511,6 @@ function ImGui.DrawList_AddTriangle(draw_list, p1_x, p1_y, p2_x, p2_y, p3_x, p3_
 --- @param p3_y number
 --- @param col_rgba integer
 function ImGui.DrawList_AddTriangleFilled(draw_list, p1_x, p1_y, p2_x, p2_y, p3_x, p3_y, col_rgba) end
-
 --- **Draw List > Splitter > CreateDrawListSplitter**
 ---
 --- ---
@@ -15673,7 +15558,6 @@ function ImGui.DrawList_AddTriangleFilled(draw_list, p1_x, p1_y, p2_x, p2_y, p3_
 --- @nodiscard
 --- @return ImGui_DrawListSplitter retval
 function ImGui.CreateDrawListSplitter(draw_list) end
-
 --- **Draw List > Splitter > DrawListSplitter\_Clear**
 ---
 --- ---
@@ -15719,7 +15603,6 @@ function ImGui.CreateDrawListSplitter(draw_list) end
 --- @since 0.7.1
 --- @param splitter ImGui_DrawListSplitter
 function ImGui.DrawListSplitter_Clear(splitter) end
-
 --- **Draw List > Splitter > DrawListSplitter\_Merge**
 ---
 --- ---
@@ -15765,7 +15648,6 @@ function ImGui.DrawListSplitter_Clear(splitter) end
 --- @since 0.7.1
 --- @param splitter ImGui_DrawListSplitter
 function ImGui.DrawListSplitter_Merge(splitter) end
-
 --- **Draw List > Splitter > DrawListSplitter\_SetCurrentChannel**
 ---
 --- ---
@@ -15812,7 +15694,6 @@ function ImGui.DrawListSplitter_Merge(splitter) end
 --- @param splitter ImGui_DrawListSplitter
 --- @param channel_idx integer
 function ImGui.DrawListSplitter_SetCurrentChannel(splitter, channel_idx) end
-
 --- **Draw List > Splitter > DrawListSplitter\_Split**
 ---
 --- ---
@@ -15859,7 +15740,6 @@ function ImGui.DrawListSplitter_SetCurrentChannel(splitter, channel_idx) end
 --- @param splitter ImGui_DrawListSplitter
 --- @param count integer
 function ImGui.DrawListSplitter_Split(splitter, count) end
-
 --- **Draw List > Stateful Path > DrawList\_PathArcTo**
 ---
 --- ---
@@ -15893,7 +15773,6 @@ function ImGui.DrawListSplitter_Split(splitter, count) end
 --- @param a_max number
 --- @param num_segments? integer default value = `0`
 function ImGui.DrawList_PathArcTo(draw_list, center_x, center_y, radius, a_min, a_max, num_segments) end
-
 --- **Draw List > Stateful Path > DrawList\_PathArcToFast**
 ---
 --- Use precomputed angles for a 12 steps circle.
@@ -15928,7 +15807,6 @@ function ImGui.DrawList_PathArcTo(draw_list, center_x, center_y, radius, a_min, 
 --- @param a_min_of_12 integer
 --- @param a_max_of_12 integer
 function ImGui.DrawList_PathArcToFast(draw_list, center_x, center_y, radius, a_min_of_12, a_max_of_12) end
-
 --- **Draw List > Stateful Path > DrawList\_PathBezierCubicCurveTo**
 ---
 --- Cubic Bezier (4 control points)
@@ -15965,7 +15843,6 @@ function ImGui.DrawList_PathArcToFast(draw_list, center_x, center_y, radius, a_m
 --- @param p4_y number
 --- @param num_segments? integer default value = `0`
 function ImGui.DrawList_PathBezierCubicCurveTo(draw_list, p2_x, p2_y, p3_x, p3_y, p4_x, p4_y, num_segments) end
-
 --- **Draw List > Stateful Path > DrawList\_PathBezierQuadraticCurveTo**
 ---
 --- Quadratic Bezier (3 control points)
@@ -16000,7 +15877,6 @@ function ImGui.DrawList_PathBezierCubicCurveTo(draw_list, p2_x, p2_y, p3_x, p3_y
 --- @param p3_y number
 --- @param num_segments? integer default value = `0`
 function ImGui.DrawList_PathBezierQuadraticCurveTo(draw_list, p2_x, p2_y, p3_x, p3_y, num_segments) end
-
 --- **Draw List > Stateful Path > DrawList\_PathClear**
 ---
 --- ---
@@ -16028,7 +15904,6 @@ function ImGui.DrawList_PathBezierQuadraticCurveTo(draw_list, p2_x, p2_y, p3_x, 
 --- @since 0.1
 --- @param draw_list ImGui_DrawList
 function ImGui.DrawList_PathClear(draw_list) end
-
 --- **Draw List > Stateful Path > DrawList\_PathEllipticalArcTo**
 ---
 --- Ellipse
@@ -16066,7 +15941,6 @@ function ImGui.DrawList_PathClear(draw_list) end
 --- @param a_max number
 --- @param num_segments? integer default value = `0`
 function ImGui.DrawList_PathEllipticalArcTo(draw_list, center_x, center_y, radius_x, radius_y, rot, a_min, a_max, num_segments) end
-
 --- **Draw List > Stateful Path > DrawList\_PathFillConcave**
 ---
 --- ---
@@ -16095,7 +15969,6 @@ function ImGui.DrawList_PathEllipticalArcTo(draw_list, center_x, center_y, radiu
 --- @param draw_list ImGui_DrawList
 --- @param col_rgba integer
 function ImGui.DrawList_PathFillConcave(draw_list, col_rgba) end
-
 --- **Draw List > Stateful Path > DrawList\_PathFillConvex**
 ---
 --- ---
@@ -16124,7 +15997,6 @@ function ImGui.DrawList_PathFillConcave(draw_list, col_rgba) end
 --- @param draw_list ImGui_DrawList
 --- @param col_rgba integer
 function ImGui.DrawList_PathFillConvex(draw_list, col_rgba) end
-
 --- **Draw List > Stateful Path > DrawList\_PathLineTo**
 ---
 --- ---
@@ -16154,7 +16026,6 @@ function ImGui.DrawList_PathFillConvex(draw_list, col_rgba) end
 --- @param pos_x number
 --- @param pos_y number
 function ImGui.DrawList_PathLineTo(draw_list, pos_x, pos_y) end
-
 --- **Draw List > Stateful Path > DrawList\_PathRect**
 ---
 --- ---
@@ -16188,7 +16059,6 @@ function ImGui.DrawList_PathLineTo(draw_list, pos_x, pos_y) end
 --- @param rounding? number default value = `0.0`
 --- @param flags? integer default value = `DrawFlags_None`
 function ImGui.DrawList_PathRect(draw_list, rect_min_x, rect_min_y, rect_max_x, rect_max_y, rounding, flags) end
-
 --- **Draw List > Stateful Path > DrawList\_PathStroke**
 ---
 --- ---
@@ -16219,7 +16089,6 @@ function ImGui.DrawList_PathRect(draw_list, rect_min_x, rect_min_y, rect_max_x, 
 --- @param flags? integer default value = `DrawFlags_None`
 --- @param thickness? number default value = `1.0`
 function ImGui.DrawList_PathStroke(draw_list, col_rgba, flags, thickness) end
-
 --- **Font > CreateFont**
 ---
 --- Load a font matching a font family name or from a font file.
@@ -16259,7 +16128,6 @@ function ImGui.DrawList_PathStroke(draw_list, col_rgba, flags, thickness) end
 --- @nodiscard
 --- @return ImGui_Font retval
 function ImGui.CreateFont(family_or_file, size, flags) end
-
 --- **Font > CreateFontFromMem**
 ---
 --- Requires REAPER v6.44 or newer for EEL and Lua. Use CreateFont or
@@ -16295,7 +16163,6 @@ function ImGui.CreateFont(family_or_file, size, flags) end
 --- @nodiscard
 --- @return ImGui_Font retval
 function ImGui.CreateFontFromMem(data, size, flags) end
-
 --- **Font > GetFont**
 ---
 --- Get the current font
@@ -16324,7 +16191,6 @@ function ImGui.CreateFontFromMem(data, size, flags) end
 --- @param ctx ImGui_Context
 --- @return ImGui_Font retval
 function ImGui.GetFont(ctx) end
-
 --- **Font > GetFontSize**
 ---
 --- Get current font size (= height in pixels) of current font with current scale
@@ -16354,7 +16220,6 @@ function ImGui.GetFont(ctx) end
 --- @param ctx ImGui_Context
 --- @return number retval
 function ImGui.GetFontSize(ctx) end
-
 --- **Font > PopFont**
 ---
 --- See PushFont.
@@ -16382,7 +16247,6 @@ function ImGui.GetFontSize(ctx) end
 --- @since 0.4
 --- @param ctx ImGui_Context
 function ImGui.PopFont(ctx) end
-
 --- **Font > PushFont**
 ---
 --- Change the current font. Use nil to push the default font.
@@ -16412,7 +16276,6 @@ function ImGui.PopFont(ctx) end
 --- @param ctx ImGui_Context
 --- @param font ImGui_Font|nil
 function ImGui.PushFont(ctx, font) end
-
 --- **Function > CreateFunctionFromEEL**
 ---
 --- Compile an EEL program.
@@ -16439,7 +16302,6 @@ function ImGui.PushFont(ctx, font) end
 --- @nodiscard
 --- @return ImGui_Function retval
 function ImGui.CreateFunctionFromEEL(code) end
-
 --- **Function > Function\_Execute**
 ---
 --- ---
@@ -16457,7 +16319,6 @@ function ImGui.CreateFunctionFromEEL(code) end
 --- @since 0.8.5
 --- @param func ImGui_Function
 function ImGui.Function_Execute(func) end
-
 --- **Function > Function\_GetValue**
 ---
 --- ---
@@ -16477,7 +16338,6 @@ function ImGui.Function_Execute(func) end
 --- @param name string
 --- @return number retval
 function ImGui.Function_GetValue(func, name) end
-
 --- **Function > Function\_GetValue\_Array**
 ---
 --- Copy the values in the function's memory starting at the address stored
@@ -16500,7 +16360,6 @@ function ImGui.Function_GetValue(func, name) end
 --- @param name string
 --- @param values reaper.array
 function ImGui.Function_GetValue_Array(func, name, values) end
-
 --- **Function > Function\_GetValue\_String**
 ---
 --- Read from a string slot or a named string (when name starts with a `#`).
@@ -16522,7 +16381,6 @@ function ImGui.Function_GetValue_Array(func, name, values) end
 --- @param name string
 --- @return string value
 function ImGui.Function_GetValue_String(func, name) end
-
 --- **Function > Function\_SetValue**
 ---
 --- ---
@@ -16542,7 +16400,6 @@ function ImGui.Function_GetValue_String(func, name) end
 --- @param name string
 --- @param value number
 function ImGui.Function_SetValue(func, name, value) end
-
 --- **Function > Function\_SetValue\_Array**
 ---
 --- Copy the values in the array to the function's memory at the address stored
@@ -16565,7 +16422,6 @@ function ImGui.Function_SetValue(func, name, value) end
 --- @param name string
 --- @param values reaper.array
 function ImGui.Function_SetValue_Array(func, name, values) end
-
 --- **Function > Function\_SetValue\_String**
 ---
 --- Write to a string slot or a named string (when name starts with a `#`).
@@ -16587,7 +16443,6 @@ function ImGui.Function_SetValue_Array(func, name, values) end
 --- @param name string
 --- @param value string
 function ImGui.Function_SetValue_String(func, name, value) end
-
 --- **Image > CreateImage**
 ---
 --- The returned object is valid as long as it is used in each defer cycle
@@ -16618,7 +16473,6 @@ function ImGui.Function_SetValue_String(func, name, value) end
 --- @nodiscard
 --- @return ImGui_Image retval
 function ImGui.CreateImage(file, flags) end
-
 --- **Image > CreateImageFromLICE**
 ---
 --- Copies pixel data from a LICE bitmap created using JS_LICE_CreateBitmap.
@@ -16646,7 +16500,6 @@ function ImGui.CreateImage(file, flags) end
 --- @nodiscard
 --- @return ImGui_Image retval
 function ImGui.CreateImageFromLICE(bitmap, flags) end
-
 --- **Image > CreateImageFromMem**
 ---
 --- Requires REAPER v6.44 or newer for EEL and Lua. Load from a file using
@@ -16675,7 +16528,6 @@ function ImGui.CreateImageFromLICE(bitmap, flags) end
 --- @nodiscard
 --- @return ImGui_Image retval
 function ImGui.CreateImageFromMem(data, flags) end
-
 --- **Image > Image**
 ---
 --- Adds 2.0 to the provided size if a border is visible.
@@ -16709,7 +16561,6 @@ function ImGui.CreateImageFromMem(data, flags) end
 --- @param tint_col_rgba? integer default value = `0xFFFFFFFF`
 --- @param border_col_rgba? integer default value = `0x00000000`
 function ImGui.Image(ctx, image, image_size_w, image_size_h, uv0_x, uv0_y, uv1_x, uv1_y, tint_col_rgba, border_col_rgba) end
-
 --- **Image > ImageButton**
 ---
 --- Adds StyleVar_FramePadding*2.0 to provided size.
@@ -16745,7 +16596,6 @@ function ImGui.Image(ctx, image, image_size_w, image_size_h, uv0_x, uv0_y, uv1_x
 --- @param tint_col_rgba? integer default value = `0xFFFFFFFF`
 --- @return boolean retval
 function ImGui.ImageButton(ctx, str_id, image, image_size_w, image_size_h, uv0_x, uv0_y, uv1_x, uv1_y, bg_col_rgba, tint_col_rgba) end
-
 --- **Image > Image\_GetSize**
 ---
 --- ---
@@ -16770,7 +16620,6 @@ function ImGui.ImageButton(ctx, str_id, image, image_size_w, image_size_h, uv0_x
 --- @return number w
 --- @return number h
 function ImGui.Image_GetSize(image) end
-
 --- **Image > Image Set > CreateImageSet**
 ---
 --- ---
@@ -16814,7 +16663,6 @@ function ImGui.Image_GetSize(image) end
 --- @nodiscard
 --- @return ImGui_ImageSet retval
 function ImGui.CreateImageSet() end
-
 --- **Image > Image Set > ImageSet\_Add**
 ---
 --- 'img' cannot be another ImageSet.
@@ -16861,7 +16709,6 @@ function ImGui.CreateImageSet() end
 --- @param scale number
 --- @param image ImGui_Image
 function ImGui.ImageSet_Add(set, scale, image) end
-
 --- **Item \& Status > BeginDisabled**
 ---
 --- Disable all user interactions and dim items visuals
@@ -16882,7 +16729,6 @@ function ImGui.ImageSet_Add(set, scale, image) end
 --- @param ctx ImGui_Context
 --- @param disabled? boolean default value = `true`
 function ImGui.BeginDisabled(ctx, disabled) end
-
 --- **Item \& Status > DebugStartItemPicker**
 ---
 --- ---
@@ -16890,7 +16736,6 @@ function ImGui.BeginDisabled(ctx, disabled) end
 --- @since 0.9
 --- @param ctx ImGui_Context
 function ImGui.DebugStartItemPicker(ctx) end
-
 --- **Item \& Status > EndDisabled**
 ---
 --- See BeginDisabled.
@@ -16900,7 +16745,6 @@ function ImGui.DebugStartItemPicker(ctx) end
 --- @since 0.5.5
 --- @param ctx ImGui_Context
 function ImGui.EndDisabled(ctx) end
-
 --- **Item \& Status > SetNextItemAllowOverlap**
 ---
 --- Allow next item to be overlapped by a subsequent item.
@@ -16913,7 +16757,6 @@ function ImGui.EndDisabled(ctx) end
 --- @since 0.9
 --- @param ctx ImGui_Context
 function ImGui.SetNextItemAllowOverlap(ctx) end
-
 --- **Item \& Status > Dimensions > CalcItemWidth**
 ---
 --- Width of item given pushed settings and current cursor position.
@@ -16925,7 +16768,6 @@ function ImGui.SetNextItemAllowOverlap(ctx) end
 --- @param ctx ImGui_Context
 --- @return number retval
 function ImGui.CalcItemWidth(ctx) end
-
 --- **Item \& Status > Dimensions > GetItemRectMax**
 ---
 --- Get lower-right bounding rectangle of the last item (screen space)
@@ -16937,7 +16779,6 @@ function ImGui.CalcItemWidth(ctx) end
 --- @return number x
 --- @return number y
 function ImGui.GetItemRectMax(ctx) end
-
 --- **Item \& Status > Dimensions > GetItemRectMin**
 ---
 --- Get upper-left bounding rectangle of the last item (screen space)
@@ -16949,7 +16790,6 @@ function ImGui.GetItemRectMax(ctx) end
 --- @return number x
 --- @return number y
 function ImGui.GetItemRectMin(ctx) end
-
 --- **Item \& Status > Dimensions > GetItemRectSize**
 ---
 --- Get size of last item
@@ -16961,7 +16801,6 @@ function ImGui.GetItemRectMin(ctx) end
 --- @return number w
 --- @return number h
 function ImGui.GetItemRectSize(ctx) end
-
 --- **Item \& Status > Dimensions > PopItemWidth**
 ---
 --- See PushItemWidth
@@ -16971,7 +16810,6 @@ function ImGui.GetItemRectSize(ctx) end
 --- @since 0.1
 --- @param ctx ImGui_Context
 function ImGui.PopItemWidth(ctx) end
-
 --- **Item \& Status > Dimensions > PushItemWidth**
 ---
 --- Push width of items for common large "item+label" widgets.
@@ -16987,7 +16825,6 @@ function ImGui.PopItemWidth(ctx) end
 --- @param ctx ImGui_Context
 --- @param item_width number
 function ImGui.PushItemWidth(ctx, item_width) end
-
 --- **Item \& Status > Dimensions > SetNextItemWidth**
 ---
 --- Set width of the _next_ common large "item+label" widget.
@@ -17002,7 +16839,6 @@ function ImGui.PushItemWidth(ctx, item_width) end
 --- @param ctx ImGui_Context
 --- @param item_width number
 function ImGui.SetNextItemWidth(ctx, item_width) end
-
 --- **Item \& Status > Focus \& Activation > PopTabStop**
 ---
 --- See PushTabStop
@@ -17020,7 +16856,6 @@ function ImGui.SetNextItemWidth(ctx, item_width) end
 --- @since 0.8.5
 --- @param ctx ImGui_Context
 function ImGui.PopTabStop(ctx) end
-
 --- **Item \& Status > Focus \& Activation > PushTabStop**
 ---
 --- Allow focusing using TAB/Shift-TAB, enabled by default but you can disable it
@@ -17040,7 +16875,6 @@ function ImGui.PopTabStop(ctx) end
 --- @param ctx ImGui_Context
 --- @param tab_stop boolean
 function ImGui.PushTabStop(ctx, tab_stop) end
-
 --- **Item \& Status > Focus \& Activation > SetItemDefaultFocus**
 ---
 --- Make last item the default focused item of a window.
@@ -17058,7 +16892,6 @@ function ImGui.PushTabStop(ctx, tab_stop) end
 --- @since 0.1
 --- @param ctx ImGui_Context
 function ImGui.SetItemDefaultFocus(ctx) end
-
 --- **Item \& Status > Focus \& Activation > SetKeyboardFocusHere**
 ---
 --- Focus keyboard on the next widget. Use positive 'offset' to access sub
@@ -17078,7 +16911,6 @@ function ImGui.SetItemDefaultFocus(ctx) end
 --- @param ctx ImGui_Context
 --- @param offset? integer default value = `0`
 function ImGui.SetKeyboardFocusHere(ctx, offset) end
-
 --- **Item \& Status > Item\/Widgets Utilities and Query Functions > IsAnyItemActive**
 ---
 --- ---
@@ -17096,7 +16928,6 @@ function ImGui.SetKeyboardFocusHere(ctx, offset) end
 --- @param ctx ImGui_Context
 --- @return boolean retval
 function ImGui.IsAnyItemActive(ctx) end
-
 --- **Item \& Status > Item\/Widgets Utilities and Query Functions > IsAnyItemFocused**
 ---
 --- ---
@@ -17114,7 +16945,6 @@ function ImGui.IsAnyItemActive(ctx) end
 --- @param ctx ImGui_Context
 --- @return boolean retval
 function ImGui.IsAnyItemFocused(ctx) end
-
 --- **Item \& Status > Item\/Widgets Utilities and Query Functions > IsAnyItemHovered**
 ---
 --- ---
@@ -17132,7 +16962,6 @@ function ImGui.IsAnyItemFocused(ctx) end
 --- @param ctx ImGui_Context
 --- @return boolean retval
 function ImGui.IsAnyItemHovered(ctx) end
-
 --- **Item \& Status > Item\/Widgets Utilities and Query Functions > IsItemActivated**
 ---
 --- Was the last item just made active (item was previously inactive).
@@ -17152,7 +16981,6 @@ function ImGui.IsAnyItemHovered(ctx) end
 --- @param ctx ImGui_Context
 --- @return boolean retval
 function ImGui.IsItemActivated(ctx) end
-
 --- **Item \& Status > Item\/Widgets Utilities and Query Functions > IsItemActive**
 ---
 --- Is the last item active? (e.g. button being held, text field being edited.
@@ -17174,7 +17002,6 @@ function ImGui.IsItemActivated(ctx) end
 --- @param ctx ImGui_Context
 --- @return boolean retval
 function ImGui.IsItemActive(ctx) end
-
 --- **Item \& Status > Item\/Widgets Utilities and Query Functions > IsItemClicked**
 ---
 --- Is the last item clicked? (e.g. button/node just clicked on)
@@ -17199,7 +17026,6 @@ function ImGui.IsItemActive(ctx) end
 --- @param mouse_button? integer default value = `MouseButton_Left`
 --- @return boolean retval
 function ImGui.IsItemClicked(ctx, mouse_button) end
-
 --- **Item \& Status > Item\/Widgets Utilities and Query Functions > IsItemDeactivated**
 ---
 --- Was the last item just made inactive (item was previously active).
@@ -17220,7 +17046,6 @@ function ImGui.IsItemClicked(ctx, mouse_button) end
 --- @param ctx ImGui_Context
 --- @return boolean retval
 function ImGui.IsItemDeactivated(ctx) end
-
 --- **Item \& Status > Item\/Widgets Utilities and Query Functions > IsItemDeactivatedAfterEdit**
 ---
 --- Was the last item just made inactive and made a value change when it was
@@ -17245,7 +17070,6 @@ function ImGui.IsItemDeactivated(ctx) end
 --- @param ctx ImGui_Context
 --- @return boolean retval
 function ImGui.IsItemDeactivatedAfterEdit(ctx) end
-
 --- **Item \& Status > Item\/Widgets Utilities and Query Functions > IsItemEdited**
 ---
 --- Did the last item modify its underlying value this frame? or was pressed?
@@ -17266,7 +17090,6 @@ function ImGui.IsItemDeactivatedAfterEdit(ctx) end
 --- @param ctx ImGui_Context
 --- @return boolean retval
 function ImGui.IsItemEdited(ctx) end
-
 --- **Item \& Status > Item\/Widgets Utilities and Query Functions > IsItemFocused**
 ---
 --- Is the last item focused for keyboard/gamepad navigation?
@@ -17286,7 +17109,6 @@ function ImGui.IsItemEdited(ctx) end
 --- @param ctx ImGui_Context
 --- @return boolean retval
 function ImGui.IsItemFocused(ctx) end
-
 --- **Item \& Status > Item\/Widgets Utilities and Query Functions > IsItemHovered**
 ---
 --- Is the last item hovered? (and usable, aka not blocked by a popup, etc.).
@@ -17308,7 +17130,6 @@ function ImGui.IsItemFocused(ctx) end
 --- @param flags? integer default value = `HoveredFlags_None`
 --- @return boolean retval
 function ImGui.IsItemHovered(ctx, flags) end
-
 --- **Item \& Status > Item\/Widgets Utilities and Query Functions > IsItemVisible**
 ---
 --- Is the last item visible? (items may be out of sight because of clipping/scrolling)
@@ -17328,7 +17149,6 @@ function ImGui.IsItemHovered(ctx, flags) end
 --- @param ctx ImGui_Context
 --- @return boolean retval
 function ImGui.IsItemVisible(ctx) end
-
 --- **Keyboard \& Mouse > Keyboard > GetInputQueueCharacter**
 ---
 --- Read from ImGui's character input queue.
@@ -17342,7 +17162,6 @@ function ImGui.IsItemVisible(ctx) end
 --- @return boolean retval
 --- @return integer unicode_char
 function ImGui.GetInputQueueCharacter(ctx, idx) end
-
 --- **Keyboard \& Mouse > Keyboard > GetKeyDownDuration**
 ---
 --- Duration the keyboard key has been down (0.0 == just pressed)
@@ -17354,7 +17173,6 @@ function ImGui.GetInputQueueCharacter(ctx, idx) end
 --- @param key integer
 --- @return number retval
 function ImGui.GetKeyDownDuration(ctx, key) end
-
 --- **Keyboard \& Mouse > Keyboard > GetKeyMods**
 ---
 --- Flags for the Ctrl/Shift/Alt/Super keys. Uses Mod_* values.
@@ -17365,7 +17183,6 @@ function ImGui.GetKeyDownDuration(ctx, key) end
 --- @param ctx ImGui_Context
 --- @return integer retval
 function ImGui.GetKeyMods(ctx) end
-
 --- **Keyboard \& Mouse > Keyboard > GetKeyPressedAmount**
 ---
 --- Uses provided repeat rate/delay. Return a count, most often 0 or 1 but might
@@ -17380,7 +17197,6 @@ function ImGui.GetKeyMods(ctx) end
 --- @param rate number
 --- @return integer retval
 function ImGui.GetKeyPressedAmount(ctx, key, repeat_delay, rate) end
-
 --- **Keyboard \& Mouse > Keyboard > IsKeyDown**
 ---
 --- Is key being held.
@@ -17392,7 +17208,6 @@ function ImGui.GetKeyPressedAmount(ctx, key, repeat_delay, rate) end
 --- @param key integer
 --- @return boolean retval
 function ImGui.IsKeyDown(ctx, key) end
-
 --- **Keyboard \& Mouse > Keyboard > IsKeyPressed**
 ---
 --- Was key pressed (went from !Down to Down)?
@@ -17406,7 +17221,6 @@ function ImGui.IsKeyDown(ctx, key) end
 --- @param repeat? boolean default value = `true`
 --- @return boolean retval
 function ImGui.IsKeyPressed(ctx, key, repeat) end
-
 --- **Keyboard \& Mouse > Keyboard > IsKeyReleased**
 ---
 --- Was key released (went from Down to !Down)?
@@ -17418,7 +17232,6 @@ function ImGui.IsKeyPressed(ctx, key, repeat) end
 --- @param key integer
 --- @return boolean retval
 function ImGui.IsKeyReleased(ctx, key) end
-
 --- **Keyboard \& Mouse > Keyboard > SetNextFrameWantCaptureKeyboard**
 ---
 --- Request capture of keyboard shortcuts in REAPER's global scope for the next frame.
@@ -17429,7 +17242,6 @@ function ImGui.IsKeyReleased(ctx, key) end
 --- @param ctx ImGui_Context
 --- @param want_capture_keyboard boolean
 function ImGui.SetNextFrameWantCaptureKeyboard(ctx, want_capture_keyboard) end
-
 --- **Keyboard \& Mouse > Mouse > GetMouseClickedCount**
 ---
 --- Return the number of successive mouse-clicks at the time where a click happen (otherwise 0).
@@ -17455,7 +17267,6 @@ function ImGui.SetNextFrameWantCaptureKeyboard(ctx, want_capture_keyboard) end
 --- @param button integer
 --- @return integer retval
 function ImGui.GetMouseClickedCount(ctx, button) end
-
 --- **Keyboard \& Mouse > Mouse > GetMouseClickedPos**
 ---
 --- ---
@@ -17480,7 +17291,6 @@ function ImGui.GetMouseClickedCount(ctx, button) end
 --- @return number x
 --- @return number y
 function ImGui.GetMouseClickedPos(ctx, button) end
-
 --- **Keyboard \& Mouse > Mouse > GetMouseDelta**
 ---
 --- Mouse delta. Note that this is zero if either current or previous position
@@ -17508,7 +17318,6 @@ function ImGui.GetMouseClickedPos(ctx, button) end
 --- @return number x
 --- @return number y
 function ImGui.GetMouseDelta(ctx) end
-
 --- **Keyboard \& Mouse > Mouse > GetMouseDownDuration**
 ---
 --- Duration the mouse button has been down (0.0 == just clicked)
@@ -17534,7 +17343,6 @@ function ImGui.GetMouseDelta(ctx) end
 --- @param button integer
 --- @return number retval
 function ImGui.GetMouseDownDuration(ctx, button) end
-
 --- **Keyboard \& Mouse > Mouse > GetMouseDragDelta**
 ---
 --- Return the delta from the initial clicking position while the mouse button is
@@ -17567,7 +17375,6 @@ function ImGui.GetMouseDownDuration(ctx, button) end
 --- @return number x
 --- @return number y
 function ImGui.GetMouseDragDelta(ctx, _1, _2, button, lock_threshold) end
-
 --- **Keyboard \& Mouse > Mouse > GetMousePos**
 ---
 --- ---
@@ -17591,7 +17398,6 @@ function ImGui.GetMouseDragDelta(ctx, _1, _2, button, lock_threshold) end
 --- @return number x
 --- @return number y
 function ImGui.GetMousePos(ctx) end
-
 --- **Keyboard \& Mouse > Mouse > GetMousePosOnOpeningCurrentPopup**
 ---
 --- Retrieve mouse position at the time of opening popup we have BeginPopup()
@@ -17618,7 +17424,6 @@ function ImGui.GetMousePos(ctx) end
 --- @return number x
 --- @return number y
 function ImGui.GetMousePosOnOpeningCurrentPopup(ctx) end
-
 --- **Keyboard \& Mouse > Mouse > GetMouseWheel**
 ---
 --- Vertical: 1 unit scrolls about 5 lines text. >0 scrolls Up, <0 scrolls Down.
@@ -17648,7 +17453,6 @@ function ImGui.GetMousePosOnOpeningCurrentPopup(ctx) end
 --- @return number vertical
 --- @return number horizontal
 function ImGui.GetMouseWheel(ctx) end
-
 --- **Keyboard \& Mouse > Mouse > IsAnyMouseDown**
 ---
 --- Is any mouse button held?
@@ -17673,7 +17477,6 @@ function ImGui.GetMouseWheel(ctx) end
 --- @param ctx ImGui_Context
 --- @return boolean retval
 function ImGui.IsAnyMouseDown(ctx) end
-
 --- **Keyboard \& Mouse > Mouse > IsMouseClicked**
 ---
 --- Did mouse button clicked? (went from !Down to Down).
@@ -17701,7 +17504,6 @@ function ImGui.IsAnyMouseDown(ctx) end
 --- @param repeat? boolean default value = `false`
 --- @return boolean retval
 function ImGui.IsMouseClicked(ctx, button, repeat) end
-
 --- **Keyboard \& Mouse > Mouse > IsMouseDoubleClicked**
 ---
 --- Did mouse button double-clicked? Same as GetMouseClickedCount() == 2.
@@ -17728,7 +17530,6 @@ function ImGui.IsMouseClicked(ctx, button, repeat) end
 --- @param button integer
 --- @return boolean retval
 function ImGui.IsMouseDoubleClicked(ctx, button) end
-
 --- **Keyboard \& Mouse > Mouse > IsMouseDown**
 ---
 --- Is mouse button held?
@@ -17754,7 +17555,6 @@ function ImGui.IsMouseDoubleClicked(ctx, button) end
 --- @param button integer
 --- @return boolean retval
 function ImGui.IsMouseDown(ctx, button) end
-
 --- **Keyboard \& Mouse > Mouse > IsMouseDragging**
 ---
 --- Is mouse dragging? (uses ConfigVar_MouseDragThreshold if lock_threshold < 0.0)
@@ -17781,7 +17581,6 @@ function ImGui.IsMouseDown(ctx, button) end
 --- @param lock_threshold? number default value = `-1.0`
 --- @return boolean retval
 function ImGui.IsMouseDragging(ctx, button, lock_threshold) end
-
 --- **Keyboard \& Mouse > Mouse > IsMouseHoveringRect**
 ---
 --- Is mouse hovering given bounding rect (in screen space).
@@ -17813,7 +17612,6 @@ function ImGui.IsMouseDragging(ctx, button, lock_threshold) end
 --- @param clip? boolean default value = `true`
 --- @return boolean retval
 function ImGui.IsMouseHoveringRect(ctx, r_min_x, r_min_y, r_max_x, r_max_y, clip) end
-
 --- **Keyboard \& Mouse > Mouse > IsMousePosValid**
 ---
 --- ---
@@ -17838,7 +17636,6 @@ function ImGui.IsMouseHoveringRect(ctx, r_min_x, r_min_y, r_max_x, r_max_y, clip
 --- @param mouse_pos_y? number default value = `nil`
 --- @return boolean retval
 function ImGui.IsMousePosValid(ctx, mouse_pos_x, mouse_pos_y) end
-
 --- **Keyboard \& Mouse > Mouse > IsMouseReleased**
 ---
 --- Did mouse button released? (went from Down to !Down)
@@ -17864,7 +17661,6 @@ function ImGui.IsMousePosValid(ctx, mouse_pos_x, mouse_pos_y) end
 --- @param button integer
 --- @return boolean retval
 function ImGui.IsMouseReleased(ctx, button) end
-
 --- **Keyboard \& Mouse > Mouse > ResetMouseDragDelta**
 ---
 --- ---
@@ -17887,7 +17683,6 @@ function ImGui.IsMouseReleased(ctx, button) end
 --- @param ctx ImGui_Context
 --- @param button? integer default value = `MouseButton_Left`
 function ImGui.ResetMouseDragDelta(ctx, button) end
-
 --- **Keyboard \& Mouse > Mouse > Mouse Cursor > GetMouseCursor**
 ---
 --- Get desired mouse cursor shape, reset every frame. This is updated during the frame.
@@ -17912,7 +17707,6 @@ function ImGui.ResetMouseDragDelta(ctx, button) end
 --- @param ctx ImGui_Context
 --- @return integer retval
 function ImGui.GetMouseCursor(ctx) end
-
 --- **Keyboard \& Mouse > Mouse > Mouse Cursor > SetMouseCursor**
 ---
 --- Set desired mouse cursor shape. See MouseCursor_* for possible values.
@@ -17937,7 +17731,6 @@ function ImGui.GetMouseCursor(ctx) end
 --- @param ctx ImGui_Context
 --- @param cursor_type integer
 function ImGui.SetMouseCursor(ctx, cursor_type) end
-
 --- **Keyboard \& Mouse > Shortcuts > IsKeyChordPressed**
 ---
 --- Was key chord (mods + key) pressed? You can pass e.g. `Mod_Ctrl | Key_S`
@@ -17976,7 +17769,6 @@ function ImGui.SetMouseCursor(ctx, cursor_type) end
 --- @param key_chord integer
 --- @return boolean retval
 function ImGui.IsKeyChordPressed(ctx, key_chord) end
-
 --- **Keyboard \& Mouse > Shortcuts > SetNextItemShortcut**
 ---
 --- ---
@@ -18011,7 +17803,6 @@ function ImGui.IsKeyChordPressed(ctx, key_chord) end
 --- @param key_chord integer
 --- @param flags? integer default value = `InputFlags_None`
 function ImGui.SetNextItemShortcut(ctx, key_chord, flags) end
-
 --- **Keyboard \& Mouse > Shortcuts > Shortcut**
 ---
 --- ---
@@ -18047,7 +17838,6 @@ function ImGui.SetNextItemShortcut(ctx, key_chord, flags) end
 --- @param flags? integer default value = `InputFlags_None`
 --- @return boolean retval
 function ImGui.Shortcut(ctx, key_chord, flags) end
-
 --- **Layout > BeginGroup**
 ---
 --- Lock horizontal starting position. See EndGroup.
@@ -18057,7 +17847,6 @@ function ImGui.Shortcut(ctx, key_chord, flags) end
 --- @since 0.1
 --- @param ctx ImGui_Context
 function ImGui.BeginGroup(ctx) end
-
 --- **Layout > Dummy**
 ---
 --- Add a dummy item of given size. unlike InvisibleButton, Dummy() won't take the
@@ -18070,7 +17859,6 @@ function ImGui.BeginGroup(ctx) end
 --- @param size_w number
 --- @param size_h number
 function ImGui.Dummy(ctx, size_w, size_h) end
-
 --- **Layout > EndGroup**
 ---
 --- Unlock horizontal starting position + capture the whole group bounding box
@@ -18084,7 +17872,6 @@ function ImGui.Dummy(ctx, size_w, size_h) end
 --- @since 0.8
 --- @param ctx ImGui_Context
 function ImGui.EndGroup(ctx) end
-
 --- **Layout > Indent**
 ---
 --- Move content position toward the right, by 'indent_w', or
@@ -18096,7 +17883,6 @@ function ImGui.EndGroup(ctx) end
 --- @param ctx ImGui_Context
 --- @param indent_w? number default value = `0.0`
 function ImGui.Indent(ctx, indent_w) end
-
 --- **Layout > NewLine**
 ---
 --- Undo a SameLine() or force a new line when in a horizontal-layout context.
@@ -18106,7 +17892,6 @@ function ImGui.Indent(ctx, indent_w) end
 --- @since 0.1
 --- @param ctx ImGui_Context
 function ImGui.NewLine(ctx) end
-
 --- **Layout > SameLine**
 ---
 --- Call between widgets or groups to layout them horizontally.
@@ -18119,7 +17904,6 @@ function ImGui.NewLine(ctx) end
 --- @param offset_from_start_x? number default value = `0.0`
 --- @param spacing? number default value = `-1.0`
 function ImGui.SameLine(ctx, offset_from_start_x, spacing) end
-
 --- **Layout > Separator**
 ---
 --- Separator, generally horizontal. inside a menu bar or in horizontal layout
@@ -18130,7 +17914,6 @@ function ImGui.SameLine(ctx, offset_from_start_x, spacing) end
 --- @since 0.1
 --- @param ctx ImGui_Context
 function ImGui.Separator(ctx) end
-
 --- **Layout > SeparatorText**
 ---
 --- Text formatted with an horizontal line
@@ -18141,7 +17924,6 @@ function ImGui.Separator(ctx) end
 --- @param ctx ImGui_Context
 --- @param label string
 function ImGui.SeparatorText(ctx, label) end
-
 --- **Layout > Spacing**
 ---
 --- Add vertical spacing.
@@ -18151,7 +17933,6 @@ function ImGui.SeparatorText(ctx, label) end
 --- @since 0.1
 --- @param ctx ImGui_Context
 function ImGui.Spacing(ctx) end
-
 --- **Layout > Unindent**
 ---
 --- Move content position back to the left, by 'indent_w', or
@@ -18163,7 +17944,6 @@ function ImGui.Spacing(ctx) end
 --- @param ctx ImGui_Context
 --- @param indent_w? number default value = `0.0`
 function ImGui.Unindent(ctx, indent_w) end
-
 --- **Layout > Clipping > IsRectVisible**
 ---
 --- Test if rectangle (of given size, starting from cursor position) is
@@ -18184,7 +17964,6 @@ function ImGui.Unindent(ctx, indent_w) end
 --- @param size_h number
 --- @return boolean retval
 function ImGui.IsRectVisible(ctx, size_w, size_h) end
-
 --- **Layout > Clipping > IsRectVisibleEx**
 ---
 --- Test if rectangle (in screen space) is visible / not clipped. to perform
@@ -18207,7 +17986,6 @@ function ImGui.IsRectVisible(ctx, size_w, size_h) end
 --- @param rect_max_y number
 --- @return boolean retval
 function ImGui.IsRectVisibleEx(ctx, rect_min_x, rect_min_y, rect_max_x, rect_max_y) end
-
 --- **Layout > Clipping > PopClipRect**
 ---
 --- See PushClipRect
@@ -18224,7 +18002,6 @@ function ImGui.IsRectVisibleEx(ctx, rect_min_x, rect_min_y, rect_max_x, rect_max
 --- @since 0.1
 --- @param ctx ImGui_Context
 function ImGui.PopClipRect(ctx) end
-
 --- **Layout > Clipping > PushClipRect**
 ---
 --- ---
@@ -18244,7 +18021,6 @@ function ImGui.PopClipRect(ctx) end
 --- @param clip_rect_max_y number
 --- @param intersect_with_current_clip_rect boolean
 function ImGui.PushClipRect(ctx, clip_rect_min_x, clip_rect_min_y, clip_rect_max_x, clip_rect_max_y, intersect_with_current_clip_rect) end
-
 --- **Layout > Layout Cursor Positioning > GetCursorPos**
 ---
 --- Cursor position in window
@@ -18267,7 +18043,6 @@ function ImGui.PushClipRect(ctx, clip_rect_min_x, clip_rect_min_y, clip_rect_max
 --- @return number x
 --- @return number y
 function ImGui.GetCursorPos(ctx) end
-
 --- **Layout > Layout Cursor Positioning > GetCursorPosX**
 ---
 --- Cursor X position in window
@@ -18289,7 +18064,6 @@ function ImGui.GetCursorPos(ctx) end
 --- @param ctx ImGui_Context
 --- @return number retval
 function ImGui.GetCursorPosX(ctx) end
-
 --- **Layout > Layout Cursor Positioning > GetCursorPosY**
 ---
 --- Cursor Y position in window
@@ -18311,7 +18085,6 @@ function ImGui.GetCursorPosX(ctx) end
 --- @param ctx ImGui_Context
 --- @return number retval
 function ImGui.GetCursorPosY(ctx) end
-
 --- **Layout > Layout Cursor Positioning > GetCursorScreenPos**
 ---
 --- Cursor position in absolute screen coordinates (useful to work with the DrawList API).
@@ -18334,7 +18107,6 @@ function ImGui.GetCursorPosY(ctx) end
 --- @return number x
 --- @return number y
 function ImGui.GetCursorScreenPos(ctx) end
-
 --- **Layout > Layout Cursor Positioning > GetCursorStartPos**
 ---
 --- Initial cursor position in window coordinates.
@@ -18357,7 +18129,6 @@ function ImGui.GetCursorScreenPos(ctx) end
 --- @return number x
 --- @return number y
 function ImGui.GetCursorStartPos(ctx) end
-
 --- **Layout > Layout Cursor Positioning > SetCursorPos**
 ---
 --- Cursor position in window
@@ -18380,7 +18151,6 @@ function ImGui.GetCursorStartPos(ctx) end
 --- @param local_pos_x number
 --- @param local_pos_y number
 function ImGui.SetCursorPos(ctx, local_pos_x, local_pos_y) end
-
 --- **Layout > Layout Cursor Positioning > SetCursorPosX**
 ---
 --- Cursor X position in window
@@ -18402,7 +18172,6 @@ function ImGui.SetCursorPos(ctx, local_pos_x, local_pos_y) end
 --- @param ctx ImGui_Context
 --- @param local_x number
 function ImGui.SetCursorPosX(ctx, local_x) end
-
 --- **Layout > Layout Cursor Positioning > SetCursorPosY**
 ---
 --- Cursor Y position in window
@@ -18424,7 +18193,6 @@ function ImGui.SetCursorPosX(ctx, local_x) end
 --- @param ctx ImGui_Context
 --- @param local_y number
 function ImGui.SetCursorPosY(ctx, local_y) end
-
 --- **Layout > Layout Cursor Positioning > SetCursorScreenPos**
 ---
 --- Cursor position in absolute screen coordinates.
@@ -18447,7 +18215,6 @@ function ImGui.SetCursorPosY(ctx, local_y) end
 --- @param pos_x number
 --- @param pos_y number
 function ImGui.SetCursorScreenPos(ctx, pos_x, pos_y) end
-
 --- **List Clipper > CreateListClipper**
 ---
 --- The returned clipper object is only valid for the given context and is valid
@@ -18501,7 +18268,6 @@ function ImGui.SetCursorScreenPos(ctx, pos_x, pos_y) end
 --- @nodiscard
 --- @return ImGui_ListClipper retval
 function ImGui.CreateListClipper(ctx) end
-
 --- **List Clipper > ListClipper\_Begin**
 ---
 --- - items_count: Use INT_MAX if you don't know how many items you have
@@ -18558,7 +18324,6 @@ function ImGui.CreateListClipper(ctx) end
 --- @param items_count integer
 --- @param items_height? number default value = `-1.0`
 function ImGui.ListClipper_Begin(clipper, items_count, items_height) end
-
 --- **List Clipper > ListClipper\_End**
 ---
 --- Automatically called on the last call of ListClipper_Step that returns false.
@@ -18609,7 +18374,6 @@ function ImGui.ListClipper_Begin(clipper, items_count, items_height) end
 --- @since 0.1
 --- @param clipper ImGui_ListClipper
 function ImGui.ListClipper_End(clipper) end
-
 --- **List Clipper > ListClipper\_GetDisplayRange**
 ---
 --- ---
@@ -18660,7 +18424,6 @@ function ImGui.ListClipper_End(clipper) end
 --- @return integer display_start
 --- @return integer display_end
 function ImGui.ListClipper_GetDisplayRange(clipper) end
-
 --- **List Clipper > ListClipper\_IncludeItemByIndex**
 ---
 --- Call ListClipper_IncludeItemByIndex or ListClipper_IncludeItemsByIndex before
@@ -18717,7 +18480,6 @@ function ImGui.ListClipper_GetDisplayRange(clipper) end
 --- @param clipper ImGui_ListClipper
 --- @param item_index integer
 function ImGui.ListClipper_IncludeItemByIndex(clipper, item_index) end
-
 --- **List Clipper > ListClipper\_IncludeItemsByIndex**
 ---
 --- See ListClipper_IncludeItemByIndex.
@@ -18772,7 +18534,6 @@ function ImGui.ListClipper_IncludeItemByIndex(clipper, item_index) end
 --- @param item_begin integer
 --- @param item_end integer
 function ImGui.ListClipper_IncludeItemsByIndex(clipper, item_begin, item_end) end
-
 --- **List Clipper > ListClipper\_Step**
 ---
 --- Call until it returns false. The display_start/display_end fields from
@@ -18825,7 +18586,6 @@ function ImGui.ListClipper_IncludeItemsByIndex(clipper, item_begin, item_end) en
 --- @param clipper ImGui_ListClipper
 --- @return boolean retval
 function ImGui.ListClipper_Step(clipper) end
-
 --- **Menu > BeginMenu**
 ---
 --- Create a sub-menu entry. only call EndMenu if this returns true!
@@ -18839,7 +18599,6 @@ function ImGui.ListClipper_Step(clipper) end
 --- @nodiscard
 --- @return boolean retval
 function ImGui.BeginMenu(ctx, label, enabled) end
-
 --- **Menu > BeginMenuBar**
 ---
 --- Append to menu-bar of current window (requires WindowFlags_MenuBar flag set
@@ -18852,7 +18611,6 @@ function ImGui.BeginMenu(ctx, label, enabled) end
 --- @nodiscard
 --- @return boolean retval
 function ImGui.BeginMenuBar(ctx) end
-
 --- **Menu > EndMenu**
 ---
 --- Only call EndMenu() if BeginMenu returns true!
@@ -18862,7 +18620,6 @@ function ImGui.BeginMenuBar(ctx) end
 --- @since 0.1
 --- @param ctx ImGui_Context
 function ImGui.EndMenu(ctx) end
-
 --- **Menu > EndMenuBar**
 ---
 --- Only call EndMenuBar if BeginMenuBar returns true!
@@ -18872,7 +18629,6 @@ function ImGui.EndMenu(ctx) end
 --- @since 0.1
 --- @param ctx ImGui_Context
 function ImGui.EndMenuBar(ctx) end
-
 --- **Menu > MenuItem**
 ---
 --- Return true when activated. Shortcuts are displayed for convenience but not
@@ -18890,7 +18646,6 @@ function ImGui.EndMenuBar(ctx) end
 --- @return boolean retval
 --- @return boolean p_selected
 function ImGui.MenuItem(ctx, label, shortcut, p_selected, enabled) end
-
 --- **Plot > PlotHistogram**
 ---
 --- ---
@@ -18912,7 +18667,6 @@ function ImGui.MenuItem(ctx, label, shortcut, p_selected, enabled) end
 --- @param graph_size_w? number default value = `0.0`
 --- @param graph_size_h? number default value = `0.0`
 function ImGui.PlotHistogram(ctx, label, values, values_offset, overlay_text, scale_min, scale_max, graph_size_w, graph_size_h) end
-
 --- **Plot > PlotLines**
 ---
 --- ---
@@ -18934,7 +18688,6 @@ function ImGui.PlotHistogram(ctx, label, values, values_offset, overlay_text, sc
 --- @param graph_size_w? number default value = `0.0`
 --- @param graph_size_h? number default value = `0.0`
 function ImGui.PlotLines(ctx, label, values, values_offset, overlay_text, scale_min, scale_max, graph_size_w, graph_size_h) end
-
 --- **Popup \& Modal > BeginPopup**
 ---
 --- Query popup state, if open start appending into the window. Call EndPopup
@@ -18971,7 +18724,6 @@ function ImGui.PlotLines(ctx, label, values, values_offset, overlay_text, scale_
 --- @nodiscard
 --- @return boolean retval
 function ImGui.BeginPopup(ctx, str_id, flags) end
-
 --- **Popup \& Modal > BeginPopupModal**
 ---
 --- Block every interaction behind the window, cannot be closed by user, add a
@@ -19009,7 +18761,6 @@ function ImGui.BeginPopup(ctx, str_id, flags) end
 --- @return boolean retval
 --- @return boolean p_open
 function ImGui.BeginPopupModal(ctx, name, p_open, flags) end
-
 --- **Popup \& Modal > CloseCurrentPopup**
 ---
 --- Manually close the popup we have begin-ed into.
@@ -19042,7 +18793,6 @@ function ImGui.BeginPopupModal(ctx, name, p_open, flags) end
 --- @since 0.1
 --- @param ctx ImGui_Context
 function ImGui.CloseCurrentPopup(ctx) end
-
 --- **Popup \& Modal > EndPopup**
 ---
 --- Only call EndPopup() if BeginPopup*() returns true!
@@ -19072,7 +18822,6 @@ function ImGui.CloseCurrentPopup(ctx) end
 --- @since 0.8
 --- @param ctx ImGui_Context
 function ImGui.EndPopup(ctx) end
-
 --- **Popup \& Modal > IsPopupOpen**
 ---
 --- Return true if the popup is open at the current BeginPopup level of the
@@ -19111,7 +18860,6 @@ function ImGui.EndPopup(ctx) end
 --- @param flags? integer default value = `PopupFlags_None`
 --- @return boolean retval
 function ImGui.IsPopupOpen(ctx, str_id, flags) end
-
 --- **Popup \& Modal > OpenPopup**
 ---
 --- Set popup state to open (don't call every frame!).
@@ -19150,7 +18898,6 @@ function ImGui.IsPopupOpen(ctx, str_id, flags) end
 --- @param str_id string
 --- @param popup_flags? integer default value = `PopupFlags_None`
 function ImGui.OpenPopup(ctx, str_id, popup_flags) end
-
 --- **Popup \& Modal > OpenPopupOnItemClick**
 ---
 --- Helper to open popup when clicked on last item. return true when just opened.
@@ -19184,7 +18931,6 @@ function ImGui.OpenPopup(ctx, str_id, popup_flags) end
 --- @param str_id? string default value = `nil`
 --- @param popup_flags? integer default value = `PopupFlags_MouseButtonRight`
 function ImGui.OpenPopupOnItemClick(ctx, str_id, popup_flags) end
-
 --- **Popup \& Modal > Open\+Begin Combined Helpers > BeginPopupContextItem**
 ---
 --- This is a helper to handle the simplest case of associating one named popup
@@ -19241,7 +18987,6 @@ function ImGui.OpenPopupOnItemClick(ctx, str_id, popup_flags) end
 --- @nodiscard
 --- @return boolean retval
 function ImGui.BeginPopupContextItem(ctx, str_id, popup_flags) end
-
 --- **Popup \& Modal > Open\+Begin Combined Helpers > BeginPopupContextWindow**
 ---
 --- Open+begin popup when clicked on current window.
@@ -19291,7 +19036,6 @@ function ImGui.BeginPopupContextItem(ctx, str_id, popup_flags) end
 --- @nodiscard
 --- @return boolean retval
 function ImGui.BeginPopupContextWindow(ctx, str_id, popup_flags) end
-
 --- **Popup \& Modal > Tooltips > BeginItemTooltip**
 ---
 --- Begin/append a tooltip window if preceding item was hovered. Shortcut for
@@ -19331,7 +19075,6 @@ function ImGui.BeginPopupContextWindow(ctx, str_id, popup_flags) end
 --- @nodiscard
 --- @return boolean retval
 function ImGui.BeginItemTooltip(ctx) end
-
 --- **Popup \& Modal > Tooltips > BeginTooltip**
 ---
 --- Begin/append a tooltip window.
@@ -19370,7 +19113,6 @@ function ImGui.BeginItemTooltip(ctx) end
 --- @nodiscard
 --- @return boolean retval
 function ImGui.BeginTooltip(ctx) end
-
 --- **Popup \& Modal > Tooltips > EndTooltip**
 ---
 --- Only call EndTooltip() if BeginTooltip()/BeginItemTooltip() returns true.
@@ -19407,7 +19149,6 @@ function ImGui.BeginTooltip(ctx) end
 --- @since 0.8
 --- @param ctx ImGui_Context
 function ImGui.EndTooltip(ctx) end
-
 --- **Popup \& Modal > Tooltips > SetItemTooltip**
 ---
 --- Set a text-only tooltip if preceding item was hovered.
@@ -19447,7 +19188,6 @@ function ImGui.EndTooltip(ctx) end
 --- @param ctx ImGui_Context
 --- @param text string
 function ImGui.SetItemTooltip(ctx, text) end
-
 --- **Popup \& Modal > Tooltips > SetTooltip**
 ---
 --- Set a text-only tooltip. Often used after a IsItemHovered() check.
@@ -19488,7 +19228,6 @@ function ImGui.SetItemTooltip(ctx, text) end
 --- @param ctx ImGui_Context
 --- @param text string
 function ImGui.SetTooltip(ctx, text) end
-
 --- **Style > Colors > DebugFlashStyleColor**
 ---
 --- ---
@@ -19497,7 +19236,6 @@ function ImGui.SetTooltip(ctx, text) end
 --- @param ctx ImGui_Context
 --- @param idx integer
 function ImGui.DebugFlashStyleColor(ctx, idx) end
-
 --- **Style > Colors > GetColor**
 ---
 --- Retrieve given style color with style alpha applied and optional extra alpha
@@ -19511,7 +19249,6 @@ function ImGui.DebugFlashStyleColor(ctx, idx) end
 --- @param alpha_mul? number default value = `1.0`
 --- @return integer retval
 function ImGui.GetColor(ctx, idx, alpha_mul) end
-
 --- **Style > Colors > GetColorEx**
 ---
 --- Retrieve given color with style alpha applied, packed as a 32-bit value (RGBA).
@@ -19524,7 +19261,6 @@ function ImGui.GetColor(ctx, idx, alpha_mul) end
 --- @param alpha_mul? number default value = `1.0`
 --- @return integer retval
 function ImGui.GetColorEx(ctx, col_rgba, alpha_mul) end
-
 --- **Style > Colors > GetStyleColor**
 ---
 --- Retrieve style color as stored in ImGuiStyle structure.
@@ -19538,7 +19274,6 @@ function ImGui.GetColorEx(ctx, col_rgba, alpha_mul) end
 --- @param idx integer
 --- @return integer retval
 function ImGui.GetStyleColor(ctx, idx) end
-
 --- **Style > Colors > PopStyleColor**
 ---
 --- ---
@@ -19547,7 +19282,6 @@ function ImGui.GetStyleColor(ctx, idx) end
 --- @param ctx ImGui_Context
 --- @param count? integer default value = `1`
 function ImGui.PopStyleColor(ctx, count) end
-
 --- **Style > Colors > PushStyleColor**
 ---
 --- Temporarily modify a style color.
@@ -19561,7 +19295,6 @@ function ImGui.PopStyleColor(ctx, count) end
 --- @param idx integer
 --- @param col_rgba integer
 function ImGui.PushStyleColor(ctx, idx, col_rgba) end
-
 --- **Style > Variables > GetStyleVar**
 ---
 --- ---
@@ -19572,7 +19305,6 @@ function ImGui.PushStyleColor(ctx, idx, col_rgba) end
 --- @return number val1
 --- @return number val2
 function ImGui.GetStyleVar(ctx, var_idx) end
-
 --- **Style > Variables > PopStyleVar**
 ---
 --- Reset a style variable.
@@ -19583,7 +19315,6 @@ function ImGui.GetStyleVar(ctx, var_idx) end
 --- @param ctx ImGui_Context
 --- @param count? integer default value = `1`
 function ImGui.PopStyleVar(ctx, count) end
-
 --- **Style > Variables > PushStyleVar**
 ---
 --- Temporarily modify a style variable.
@@ -19598,7 +19329,6 @@ function ImGui.PopStyleVar(ctx, count) end
 --- @param val1 number
 --- @param val2? number default value = `nil`
 function ImGui.PushStyleVar(ctx, var_idx, val1, val2) end
-
 --- **Tab Bar > BeginTabBar**
 ---
 --- Create and append into a TabBar.
@@ -19612,7 +19342,6 @@ function ImGui.PushStyleVar(ctx, var_idx, val1, val2) end
 --- @nodiscard
 --- @return boolean retval
 function ImGui.BeginTabBar(ctx, str_id, flags) end
-
 --- **Tab Bar > EndTabBar**
 ---
 --- Only call EndTabBar() if BeginTabBar() returns true!
@@ -19622,7 +19351,6 @@ function ImGui.BeginTabBar(ctx, str_id, flags) end
 --- @since 0.1
 --- @param ctx ImGui_Context
 function ImGui.EndTabBar(ctx) end
-
 --- **Tab Bar > Tab Item > BeginTabItem**
 ---
 --- Create a Tab. Returns true if the Tab is selected.
@@ -19639,7 +19367,6 @@ function ImGui.EndTabBar(ctx) end
 --- @return boolean retval
 --- @return boolean p_open
 function ImGui.BeginTabItem(ctx, label, p_open, flags) end
-
 --- **Tab Bar > Tab Item > EndTabItem**
 ---
 --- Only call EndTabItem() if BeginTabItem() returns true!
@@ -19649,7 +19376,6 @@ function ImGui.BeginTabItem(ctx, label, p_open, flags) end
 --- @since 0.1
 --- @param ctx ImGui_Context
 function ImGui.EndTabItem(ctx) end
-
 --- **Tab Bar > Tab Item > SetTabItemClosed**
 ---
 --- Notify TabBar or Docking system of a closed tab/window ahead
@@ -19663,7 +19389,6 @@ function ImGui.EndTabItem(ctx) end
 --- @param ctx ImGui_Context
 --- @param tab_or_docked_window_label string
 function ImGui.SetTabItemClosed(ctx, tab_or_docked_window_label) end
-
 --- **Tab Bar > Tab Item > TabItemButton**
 ---
 --- Create a Tab behaving like a button. Return true when clicked.
@@ -19677,7 +19402,6 @@ function ImGui.SetTabItemClosed(ctx, tab_or_docked_window_label) end
 --- @param flags? integer default value = `TabItemFlags_None`
 --- @return boolean retval
 function ImGui.TabItemButton(ctx, label, flags) end
-
 --- **Table > BeginTable**
 ---
 --- ---
@@ -19725,7 +19449,6 @@ function ImGui.TabItemButton(ctx, label, flags) end
 --- @nodiscard
 --- @return boolean retval
 function ImGui.BeginTable(ctx, str_id, columns, flags, outer_size_w, outer_size_h, inner_width) end
-
 --- **Table > EndTable**
 ---
 --- Only call EndTable() if BeginTable() returns true!
@@ -19767,7 +19490,6 @@ function ImGui.BeginTable(ctx, str_id, columns, flags, outer_size_w, outer_size_
 --- @since 0.8
 --- @param ctx ImGui_Context
 function ImGui.EndTable(ctx) end
-
 --- **Table > TableGetColumnCount**
 ---
 --- Return number of columns (value passed to BeginTable).
@@ -19810,7 +19532,6 @@ function ImGui.EndTable(ctx) end
 --- @param ctx ImGui_Context
 --- @return integer retval
 function ImGui.TableGetColumnCount(ctx) end
-
 --- **Table > TableGetColumnIndex**
 ---
 --- Return current column index.
@@ -19853,7 +19574,6 @@ function ImGui.TableGetColumnCount(ctx) end
 --- @param ctx ImGui_Context
 --- @return integer retval
 function ImGui.TableGetColumnIndex(ctx) end
-
 --- **Table > TableGetRowIndex**
 ---
 --- Return current row index.
@@ -19896,7 +19616,6 @@ function ImGui.TableGetColumnIndex(ctx) end
 --- @param ctx ImGui_Context
 --- @return integer retval
 function ImGui.TableGetRowIndex(ctx) end
-
 --- **Table > TableNextColumn**
 ---
 --- Append into the next column (or first column of next row if currently in
@@ -19940,7 +19659,6 @@ function ImGui.TableGetRowIndex(ctx) end
 --- @param ctx ImGui_Context
 --- @return boolean retval
 function ImGui.TableNextColumn(ctx) end
-
 --- **Table > TableNextRow**
 ---
 --- Append into the first cell of a new row.
@@ -19984,7 +19702,6 @@ function ImGui.TableNextColumn(ctx) end
 --- @param row_flags? integer default value = `TableRowFlags_None`
 --- @param min_row_height? number default value = `0.0`
 function ImGui.TableNextRow(ctx, row_flags, min_row_height) end
-
 --- **Table > TableSetColumnIndex**
 ---
 --- Append into the specified column. Return true when column is visible.
@@ -20028,7 +19745,6 @@ function ImGui.TableNextRow(ctx, row_flags, min_row_height) end
 --- @param column_n integer
 --- @return boolean retval
 function ImGui.TableSetColumnIndex(ctx, column_n) end
-
 --- **Table > Background > TableSetBgColor**
 ---
 --- Change the color of a cell, row, or column.
@@ -20093,7 +19809,6 @@ function ImGui.TableSetColumnIndex(ctx, column_n) end
 --- @param color_rgba integer
 --- @param column_n? integer default value = `-1`
 function ImGui.TableSetBgColor(ctx, target, color_rgba, column_n) end
-
 --- **Table > Header \& Columns > TableAngledHeadersRow**
 ---
 --- Submit a row with angled headers for every column with the
@@ -20155,7 +19870,6 @@ function ImGui.TableSetBgColor(ctx, target, color_rgba, column_n) end
 --- @since 0.1
 --- @param ctx ImGui_Context
 function ImGui.TableAngledHeadersRow(ctx) end
-
 --- **Table > Header \& Columns > TableGetColumnFlags**
 ---
 --- Return column flags so you can query their Enabled/Visible/Sorted/Hovered
@@ -20219,7 +19933,6 @@ function ImGui.TableAngledHeadersRow(ctx) end
 --- @param column_n? integer default value = `-1`
 --- @return integer retval
 function ImGui.TableGetColumnFlags(ctx, column_n) end
-
 --- **Table > Header \& Columns > TableGetColumnName**
 ---
 --- Return "" if column didn't have a name declared by TableSetupColumn.
@@ -20283,7 +19996,6 @@ function ImGui.TableGetColumnFlags(ctx, column_n) end
 --- @param column_n? integer default value = `-1`
 --- @return string retval
 function ImGui.TableGetColumnName(ctx, column_n) end
-
 --- **Table > Header \& Columns > TableGetHoveredColumn**
 ---
 --- Returns hovered column or -1 when table is not hovered. Returns columns_count
@@ -20348,7 +20060,6 @@ function ImGui.TableGetColumnName(ctx, column_n) end
 --- @param ctx ImGui_Context
 --- @return integer retval
 function ImGui.TableGetHoveredColumn(ctx) end
-
 --- **Table > Header \& Columns > TableHeader**
 ---
 --- Submit one header cell manually (rarely used). See TableSetupColumn.
@@ -20410,7 +20121,6 @@ function ImGui.TableGetHoveredColumn(ctx) end
 --- @param ctx ImGui_Context
 --- @param label string
 function ImGui.TableHeader(ctx, label) end
-
 --- **Table > Header \& Columns > TableHeadersRow**
 ---
 --- Submit a row with headers cells based on data provided to TableSetupColumn
@@ -20472,7 +20182,6 @@ function ImGui.TableHeader(ctx, label) end
 --- @since 0.1
 --- @param ctx ImGui_Context
 function ImGui.TableHeadersRow(ctx) end
-
 --- **Table > Header \& Columns > TableSetColumnEnabled**
 ---
 --- Change user-accessible enabled/disabled state of a column, set to false to
@@ -20545,7 +20254,6 @@ function ImGui.TableHeadersRow(ctx) end
 --- @param column_n integer
 --- @param v boolean
 function ImGui.TableSetColumnEnabled(ctx, column_n, v) end
-
 --- **Table > Header \& Columns > TableSetupColumn**
 ---
 --- Use to specify label, resizing policy, default width/weight, id,
@@ -20611,7 +20319,6 @@ function ImGui.TableSetColumnEnabled(ctx, column_n, v) end
 --- @param init_width_or_weight? number default value = `0.0`
 --- @param user_id? integer default value = `0`
 function ImGui.TableSetupColumn(ctx, label, flags, init_width_or_weight, user_id) end
-
 --- **Table > Header \& Columns > TableSetupScrollFreeze**
 ---
 --- Lock columns/rows so they stay visible when scrolled.
@@ -20674,7 +20381,6 @@ function ImGui.TableSetupColumn(ctx, label, flags, init_width_or_weight, user_id
 --- @param cols integer
 --- @param rows integer
 function ImGui.TableSetupScrollFreeze(ctx, cols, rows) end
-
 --- **Table > Sorting > TableGetColumnSortSpecs**
 ---
 --- Sorting specification for one column of a table.
@@ -20730,7 +20436,6 @@ function ImGui.TableSetupScrollFreeze(ctx, cols, rows) end
 --- @return integer column_user_id
 --- @return integer sort_direction
 function ImGui.TableGetColumnSortSpecs(ctx, id) end
-
 --- **Table > Sorting > TableNeedSort**
 ---
 --- Return true once when sorting specs have changed since last call,
@@ -20777,7 +20482,6 @@ function ImGui.TableGetColumnSortSpecs(ctx, id) end
 --- @return boolean retval
 --- @return boolean has_specs
 function ImGui.TableNeedSort(ctx) end
-
 --- **Text > AlignTextToFramePadding**
 ---
 --- Vertically align upcoming text baseline to StyleVar_FramePadding.y so that it
@@ -20789,7 +20493,6 @@ function ImGui.TableNeedSort(ctx) end
 --- @since 0.1
 --- @param ctx ImGui_Context
 function ImGui.AlignTextToFramePadding(ctx) end
-
 --- **Text > Bullet**
 ---
 --- Draw a small circle + keep the cursor on the same line.
@@ -20801,7 +20504,6 @@ function ImGui.AlignTextToFramePadding(ctx) end
 --- @since 0.1
 --- @param ctx ImGui_Context
 function ImGui.Bullet(ctx) end
-
 --- **Text > BulletText**
 ---
 --- Shortcut for Bullet + Text.
@@ -20812,7 +20514,6 @@ function ImGui.Bullet(ctx) end
 --- @param ctx ImGui_Context
 --- @param text string
 function ImGui.BulletText(ctx, text) end
-
 --- **Text > CalcTextSize**
 ---
 --- ---
@@ -20827,7 +20528,6 @@ function ImGui.BulletText(ctx, text) end
 --- @return number w
 --- @return number h
 function ImGui.CalcTextSize(ctx, text, _1, _2, hide_text_after_double_hash, wrap_width) end
-
 --- **Text > DebugTextEncoding**
 ---
 --- Helper tool to diagnose between text encoding issues and font loading issues.
@@ -20839,7 +20539,6 @@ function ImGui.CalcTextSize(ctx, text, _1, _2, hide_text_after_double_hash, wrap
 --- @param ctx ImGui_Context
 --- @param text string
 function ImGui.DebugTextEncoding(ctx, text) end
-
 --- **Text > GetFrameHeight**
 ---
 --- GetFontSize + StyleVar_FramePadding.y * 2
@@ -20850,7 +20549,6 @@ function ImGui.DebugTextEncoding(ctx, text) end
 --- @param ctx ImGui_Context
 --- @return number retval
 function ImGui.GetFrameHeight(ctx) end
-
 --- **Text > GetFrameHeightWithSpacing**
 ---
 --- GetFontSize + StyleVar_FramePadding.y * 2 + StyleVar_ItemSpacing.y
@@ -20862,7 +20560,6 @@ function ImGui.GetFrameHeight(ctx) end
 --- @param ctx ImGui_Context
 --- @return number retval
 function ImGui.GetFrameHeightWithSpacing(ctx) end
-
 --- **Text > GetTextLineHeight**
 ---
 --- Same as GetFontSize
@@ -20873,7 +20570,6 @@ function ImGui.GetFrameHeightWithSpacing(ctx) end
 --- @param ctx ImGui_Context
 --- @return number retval
 function ImGui.GetTextLineHeight(ctx) end
-
 --- **Text > GetTextLineHeightWithSpacing**
 ---
 --- GetFontSize + StyleVar_ItemSpacing.y
@@ -20885,7 +20581,6 @@ function ImGui.GetTextLineHeight(ctx) end
 --- @param ctx ImGui_Context
 --- @return number retval
 function ImGui.GetTextLineHeightWithSpacing(ctx) end
-
 --- **Text > LabelText**
 ---
 --- Display text+label aligned the same way as value+label widgets
@@ -20897,7 +20592,6 @@ function ImGui.GetTextLineHeightWithSpacing(ctx) end
 --- @param label string
 --- @param text string
 function ImGui.LabelText(ctx, label, text) end
-
 --- **Text > PopTextWrapPos**
 ---
 --- ---
@@ -20905,7 +20599,6 @@ function ImGui.LabelText(ctx, label, text) end
 --- @since 0.1
 --- @param ctx ImGui_Context
 function ImGui.PopTextWrapPos(ctx) end
-
 --- **Text > PushTextWrapPos**
 ---
 --- Push word-wrapping position for Text*() commands.
@@ -20920,7 +20613,6 @@ function ImGui.PopTextWrapPos(ctx) end
 --- @param ctx ImGui_Context
 --- @param wrap_local_pos_x? number default value = `0.0`
 function ImGui.PushTextWrapPos(ctx, wrap_local_pos_x) end
-
 --- **Text > Text**
 ---
 --- ---
@@ -20929,7 +20621,6 @@ function ImGui.PushTextWrapPos(ctx, wrap_local_pos_x) end
 --- @param ctx ImGui_Context
 --- @param text string
 function ImGui.Text(ctx, text) end
-
 --- **Text > TextColored**
 ---
 --- Shortcut for PushStyleColor(Col_Text, color); Text(text); PopStyleColor();
@@ -20941,7 +20632,6 @@ function ImGui.Text(ctx, text) end
 --- @param col_rgba integer
 --- @param text string
 function ImGui.TextColored(ctx, col_rgba, text) end
-
 --- **Text > TextDisabled**
 ---
 --- ---
@@ -20950,7 +20640,6 @@ function ImGui.TextColored(ctx, col_rgba, text) end
 --- @param ctx ImGui_Context
 --- @param text string
 function ImGui.TextDisabled(ctx, text) end
-
 --- **Text > TextWrapped**
 ---
 --- Shortcut for PushTextWrapPos(0.0); Text(text); PopTextWrapPos();.
@@ -20964,7 +20653,6 @@ function ImGui.TextDisabled(ctx, text) end
 --- @param ctx ImGui_Context
 --- @param text string
 function ImGui.TextWrapped(ctx, text) end
-
 --- **Text \& Scalar Input > InputDouble**
 ---
 --- ---
@@ -20980,7 +20668,6 @@ function ImGui.TextWrapped(ctx, text) end
 --- @return boolean retval
 --- @return number v
 function ImGui.InputDouble(ctx, label, v, step, step_fast, format, flags) end
-
 --- **Text \& Scalar Input > InputDouble2**
 ---
 --- ---
@@ -20996,7 +20683,6 @@ function ImGui.InputDouble(ctx, label, v, step, step_fast, format, flags) end
 --- @return number v1
 --- @return number v2
 function ImGui.InputDouble2(ctx, label, v1, v2, format, flags) end
-
 --- **Text \& Scalar Input > InputDouble3**
 ---
 --- ---
@@ -21014,7 +20700,6 @@ function ImGui.InputDouble2(ctx, label, v1, v2, format, flags) end
 --- @return number v2
 --- @return number v3
 function ImGui.InputDouble3(ctx, label, v1, v2, v3, format, flags) end
-
 --- **Text \& Scalar Input > InputDouble4**
 ---
 --- ---
@@ -21034,7 +20719,6 @@ function ImGui.InputDouble3(ctx, label, v1, v2, v3, format, flags) end
 --- @return number v3
 --- @return number v4
 function ImGui.InputDouble4(ctx, label, v1, v2, v3, v4, format, flags) end
-
 --- **Text \& Scalar Input > InputDoubleN**
 ---
 --- ---
@@ -21049,7 +20733,6 @@ function ImGui.InputDouble4(ctx, label, v1, v2, v3, v4, format, flags) end
 --- @param flags? integer default value = `InputTextFlags_None`
 --- @return boolean retval
 function ImGui.InputDoubleN(ctx, label, values, step, step_fast, format, flags) end
-
 --- **Text \& Scalar Input > InputInt**
 ---
 --- ---
@@ -21064,7 +20747,6 @@ function ImGui.InputDoubleN(ctx, label, values, step, step_fast, format, flags) 
 --- @return boolean retval
 --- @return integer v
 function ImGui.InputInt(ctx, label, v, step, step_fast, flags) end
-
 --- **Text \& Scalar Input > InputInt2**
 ---
 --- ---
@@ -21079,7 +20761,6 @@ function ImGui.InputInt(ctx, label, v, step, step_fast, flags) end
 --- @return integer v1
 --- @return integer v2
 function ImGui.InputInt2(ctx, label, v1, v2, flags) end
-
 --- **Text \& Scalar Input > InputInt3**
 ---
 --- ---
@@ -21096,7 +20777,6 @@ function ImGui.InputInt2(ctx, label, v1, v2, flags) end
 --- @return integer v2
 --- @return integer v3
 function ImGui.InputInt3(ctx, label, v1, v2, v3, flags) end
-
 --- **Text \& Scalar Input > InputInt4**
 ---
 --- ---
@@ -21115,7 +20795,6 @@ function ImGui.InputInt3(ctx, label, v1, v2, v3, flags) end
 --- @return integer v3
 --- @return integer v4
 function ImGui.InputInt4(ctx, label, v1, v2, v3, v4, flags) end
-
 --- **Text \& Scalar Input > InputText**
 ---
 --- ---
@@ -21129,7 +20808,6 @@ function ImGui.InputInt4(ctx, label, v1, v2, v3, v4, flags) end
 --- @return boolean retval
 --- @return string buf
 function ImGui.InputText(ctx, label, buf, flags, callback) end
-
 --- **Text \& Scalar Input > InputTextMultiline**
 ---
 --- ---
@@ -21145,7 +20823,6 @@ function ImGui.InputText(ctx, label, buf, flags, callback) end
 --- @return boolean retval
 --- @return string buf
 function ImGui.InputTextMultiline(ctx, label, buf, size_w, size_h, flags, callback) end
-
 --- **Text \& Scalar Input > InputTextWithHint**
 ---
 --- ---
@@ -21160,7 +20837,6 @@ function ImGui.InputTextMultiline(ctx, label, buf, size_w, size_h, flags, callba
 --- @return boolean retval
 --- @return string buf
 function ImGui.InputTextWithHint(ctx, label, hint, buf, flags, callback) end
-
 --- **Text Filter > CreateTextFilter**
 ---
 --- Valid while used every frame unless attached to a context (see Attach).
@@ -21185,7 +20861,6 @@ function ImGui.InputTextWithHint(ctx, label, hint, buf, flags, callback) end
 --- @nodiscard
 --- @return ImGui_TextFilter retval
 function ImGui.CreateTextFilter(default_filter) end
-
 --- **Text Filter > TextFilter\_Clear**
 ---
 --- ---
@@ -21206,7 +20881,6 @@ function ImGui.CreateTextFilter(default_filter) end
 --- @since 0.5.6
 --- @param filter ImGui_TextFilter
 function ImGui.TextFilter_Clear(filter) end
-
 --- **Text Filter > TextFilter\_Draw**
 ---
 --- Helper calling InputText+TextFilter_Set
@@ -21233,7 +20907,6 @@ function ImGui.TextFilter_Clear(filter) end
 --- @param width? number default value = `0.0`
 --- @return boolean retval
 function ImGui.TextFilter_Draw(filter, ctx, label, width) end
-
 --- **Text Filter > TextFilter\_Get**
 ---
 --- ---
@@ -21255,7 +20928,6 @@ function ImGui.TextFilter_Draw(filter, ctx, label, width) end
 --- @param filter ImGui_TextFilter
 --- @return string retval
 function ImGui.TextFilter_Get(filter) end
-
 --- **Text Filter > TextFilter\_IsActive**
 ---
 --- ---
@@ -21277,7 +20949,6 @@ function ImGui.TextFilter_Get(filter) end
 --- @param filter ImGui_TextFilter
 --- @return boolean retval
 function ImGui.TextFilter_IsActive(filter) end
-
 --- **Text Filter > TextFilter\_PassFilter**
 ---
 --- ---
@@ -21300,7 +20971,6 @@ function ImGui.TextFilter_IsActive(filter) end
 --- @param text string
 --- @return boolean retval
 function ImGui.TextFilter_PassFilter(filter, text) end
-
 --- **Text Filter > TextFilter\_Set**
 ---
 --- ---
@@ -21322,7 +20992,6 @@ function ImGui.TextFilter_PassFilter(filter, text) end
 --- @param filter ImGui_TextFilter
 --- @param filter_text string
 function ImGui.TextFilter_Set(filter, filter_text) end
-
 --- **Tree Node > CollapsingHeader**
 ---
 --- Returns true when opened but do not indent nor push into the ID stack
@@ -21346,7 +21015,6 @@ function ImGui.TextFilter_Set(filter, filter_text) end
 --- @return boolean retval
 --- @return boolean p_visible
 function ImGui.CollapsingHeader(ctx, label, p_visible, flags) end
-
 --- **Tree Node > GetTreeNodeToLabelSpacing**
 ---
 --- Horizontal distance preceding label when using TreeNode*() or Bullet()
@@ -21358,7 +21026,6 @@ function ImGui.CollapsingHeader(ctx, label, p_visible, flags) end
 --- @param ctx ImGui_Context
 --- @return number retval
 function ImGui.GetTreeNodeToLabelSpacing(ctx) end
-
 --- **Tree Node > IsItemToggledOpen**
 ---
 --- Was the last item open state toggled? Set by TreeNode.
@@ -21369,7 +21036,6 @@ function ImGui.GetTreeNodeToLabelSpacing(ctx) end
 --- @param ctx ImGui_Context
 --- @return boolean retval
 function ImGui.IsItemToggledOpen(ctx) end
-
 --- **Tree Node > SetNextItemOpen**
 ---
 --- Set next TreeNode/CollapsingHeader open state.
@@ -21382,7 +21048,6 @@ function ImGui.IsItemToggledOpen(ctx) end
 --- @param is_open boolean
 --- @param cond? integer default value = `Cond_Always`
 function ImGui.SetNextItemOpen(ctx, is_open, cond) end
-
 --- **Tree Node > TreeNode**
 ---
 --- TreeNode functions return true when the node is open, in which case you need
@@ -21396,7 +21061,6 @@ function ImGui.SetNextItemOpen(ctx, is_open, cond) end
 --- @param flags? integer default value = `TreeNodeFlags_None`
 --- @return boolean retval
 function ImGui.TreeNode(ctx, label, flags) end
-
 --- **Tree Node > TreeNodeEx**
 ---
 --- Helper variation to easily decorelate the id from the displayed string.
@@ -21412,7 +21076,6 @@ function ImGui.TreeNode(ctx, label, flags) end
 --- @param flags? integer default value = `TreeNodeFlags_None`
 --- @return boolean retval
 function ImGui.TreeNodeEx(ctx, str_id, label, flags) end
-
 --- **Tree Node > TreePop**
 ---
 --- Unindent()+PopID()
@@ -21422,7 +21085,6 @@ function ImGui.TreeNodeEx(ctx, str_id, label, flags) end
 --- @since 0.1
 --- @param ctx ImGui_Context
 function ImGui.TreePop(ctx) end
-
 --- **Tree Node > TreePush**
 ---
 --- Indent()+PushID(). Already called by TreeNode when returning true,
@@ -21434,7 +21096,6 @@ function ImGui.TreePop(ctx) end
 --- @param ctx ImGui_Context
 --- @param str_id string
 function ImGui.TreePush(ctx, str_id) end
-
 --- **Utility > GetBuiltinPath**
 ---
 --- Returns the path to the directory containing imgui.lua, imgui.py and gfx2imgui.lua.
@@ -21444,7 +21105,6 @@ function ImGui.TreePush(ctx, str_id) end
 --- @since 0.9
 --- @return string retval
 function ImGui.GetBuiltinPath() end
-
 --- **Utility > GetVersion**
 ---
 --- ---
@@ -21454,7 +21114,6 @@ function ImGui.GetBuiltinPath() end
 --- @return integer imgui_version_num
 --- @return string reaimgui_version
 function ImGui.GetVersion() end
-
 --- **Utility > NumericLimits\_Double**
 ---
 --- Returns DBL_MIN and DBL_MAX for this system.
@@ -21465,7 +21124,6 @@ function ImGui.GetVersion() end
 --- @return number min
 --- @return number max
 function ImGui.NumericLimits_Double() end
-
 --- **Utility > NumericLimits\_Float**
 ---
 --- Returns FLT_MIN and FLT_MAX for this system.
@@ -21476,7 +21134,6 @@ function ImGui.NumericLimits_Double() end
 --- @return number min
 --- @return number max
 function ImGui.NumericLimits_Float() end
-
 --- **Utility > NumericLimits\_Int**
 ---
 --- Returns INT_MIN and INT_MAX for this system.
@@ -21487,7 +21144,6 @@ function ImGui.NumericLimits_Float() end
 --- @return integer min
 --- @return integer max
 function ImGui.NumericLimits_Int() end
-
 --- **Utility > PointConvertNative**
 ---
 --- Convert a position from the current platform's native coordinate position
@@ -21506,7 +21162,6 @@ function ImGui.NumericLimits_Int() end
 --- @return number x
 --- @return number y
 function ImGui.PointConvertNative(ctx, x, y, to_native) end
-
 --- **Utility > ProgressBar**
 ---
 --- Fraction < 0.0 displays an indeterminate progress bar animation since v0.9.1.
@@ -21521,7 +21176,6 @@ function ImGui.PointConvertNative(ctx, x, y, to_native) end
 --- @param size_arg_h? number default value = `0.0`
 --- @param overlay? string default value = `nil`
 function ImGui.ProgressBar(ctx, fraction, size_arg_w, size_arg_h, overlay) end
-
 --- **Utility > ValidatePtr**
 ---
 --- Return whether the given pointer is a valid instance of one of the following
@@ -21545,7 +21199,6 @@ function ImGui.ProgressBar(ctx, fraction, size_arg_w, size_arg_h, overlay) end
 --- @param type string
 --- @return boolean retval
 function ImGui.ValidatePtr(pointer, type) end
-
 --- **Utility > Clipboard > GetClipboardText**
 ---
 --- ---
@@ -21554,7 +21207,6 @@ function ImGui.ValidatePtr(pointer, type) end
 --- @param ctx ImGui_Context
 --- @return string retval
 function ImGui.GetClipboardText(ctx) end
-
 --- **Utility > Clipboard > SetClipboardText**
 ---
 --- See also the LogToClipboard function to capture GUI into clipboard,
@@ -21566,7 +21218,6 @@ function ImGui.GetClipboardText(ctx) end
 --- @param ctx ImGui_Context
 --- @param text string
 function ImGui.SetClipboardText(ctx, text) end
-
 --- **Utility > Color Conversion > ColorConvertDouble4ToU32**
 ---
 --- Pack 0..1 RGBA values into a 32-bit integer (0xRRGGBBAA).
@@ -21580,7 +21231,6 @@ function ImGui.SetClipboardText(ctx, text) end
 --- @param a number
 --- @return integer retval
 function ImGui.ColorConvertDouble4ToU32(r, g, b, a) end
-
 --- **Utility > Color Conversion > ColorConvertHSVtoRGB**
 ---
 --- Convert HSV values (0..1) into RGB (0..1).
@@ -21595,7 +21245,6 @@ function ImGui.ColorConvertDouble4ToU32(r, g, b, a) end
 --- @return number g
 --- @return number b
 function ImGui.ColorConvertHSVtoRGB(h, s, v) end
-
 --- **Utility > Color Conversion > ColorConvertNative**
 ---
 --- Convert a native color coming from REAPER or 0xRRGGBB to native.
@@ -21607,7 +21256,6 @@ function ImGui.ColorConvertHSVtoRGB(h, s, v) end
 --- @param rgb integer
 --- @return integer retval
 function ImGui.ColorConvertNative(rgb) end
-
 --- **Utility > Color Conversion > ColorConvertRGBtoHSV**
 ---
 --- Convert RGB values (0..1) into HSV (0..1).
@@ -21622,7 +21270,6 @@ function ImGui.ColorConvertNative(rgb) end
 --- @return number s
 --- @return number v
 function ImGui.ColorConvertRGBtoHSV(r, g, b) end
-
 --- **Utility > Color Conversion > ColorConvertU32ToDouble4**
 ---
 --- Unpack a 32-bit integer (0xRRGGBBAA) into separate RGBA values (0..1).
@@ -21636,7 +21283,6 @@ function ImGui.ColorConvertRGBtoHSV(r, g, b) end
 --- @return number b
 --- @return number a
 function ImGui.ColorConvertU32ToDouble4(rgba) end
-
 --- **Utility > ID Stack\/Scope > PopID**
 ---
 --- Pop from the ID stack.
@@ -21666,7 +21312,6 @@ function ImGui.ColorConvertU32ToDouble4(rgba) end
 --- @since 0.1
 --- @param ctx ImGui_Context
 function ImGui.PopID(ctx) end
-
 --- **Utility > ID Stack\/Scope > PushID**
 ---
 --- Push string into the ID stack.
@@ -21697,7 +21342,6 @@ function ImGui.PopID(ctx) end
 --- @param ctx ImGui_Context
 --- @param str_id string
 function ImGui.PushID(ctx, str_id) end
-
 --- **Utility > Logging\/Capture > LogFinish**
 ---
 --- Stop logging (close file, etc.)
@@ -21714,7 +21358,6 @@ function ImGui.PushID(ctx, str_id) end
 --- @since 0.1
 --- @param ctx ImGui_Context
 function ImGui.LogFinish(ctx) end
-
 --- **Utility > Logging\/Capture > LogText**
 ---
 --- Pass text data straight to log (without being displayed)
@@ -21732,7 +21375,6 @@ function ImGui.LogFinish(ctx) end
 --- @param ctx ImGui_Context
 --- @param text string
 function ImGui.LogText(ctx, text) end
-
 --- **Utility > Logging\/Capture > LogToClipboard**
 ---
 --- Start logging all text output from the interface to the OS clipboard.
@@ -21751,7 +21393,6 @@ function ImGui.LogText(ctx, text) end
 --- @param ctx ImGui_Context
 --- @param auto_open_depth? integer default value = `-1`
 function ImGui.LogToClipboard(ctx, auto_open_depth) end
-
 --- **Utility > Logging\/Capture > LogToFile**
 ---
 --- Start logging all text output from the interface to a file.
@@ -21771,7 +21412,6 @@ function ImGui.LogToClipboard(ctx, auto_open_depth) end
 --- @param auto_open_depth? integer default value = `-1`
 --- @param filename? string default value = `nil`
 function ImGui.LogToFile(ctx, auto_open_depth, filename) end
-
 --- **Utility > Logging\/Capture > LogToTTY**
 ---
 --- Start logging all text output from the interface to the TTY (stdout).
@@ -21789,7 +21429,6 @@ function ImGui.LogToFile(ctx, auto_open_depth, filename) end
 --- @param ctx ImGui_Context
 --- @param auto_open_depth? integer default value = `-1`
 function ImGui.LogToTTY(ctx, auto_open_depth) end
-
 --- **Viewport > GetMainViewport**
 ---
 --- Currently represents REAPER's main window (arrange view).
@@ -21801,7 +21440,6 @@ function ImGui.LogToTTY(ctx, auto_open_depth) end
 --- @param ctx ImGui_Context
 --- @return ImGui_Viewport retval
 function ImGui.GetMainViewport(ctx) end
-
 --- **Viewport > GetWindowViewport**
 ---
 --- Get viewport currently associated to the current window.
@@ -21812,7 +21450,6 @@ function ImGui.GetMainViewport(ctx) end
 --- @param ctx ImGui_Context
 --- @return ImGui_Viewport retval
 function ImGui.GetWindowViewport(ctx) end
-
 --- **Viewport > Viewport\_GetCenter**
 ---
 --- Center of the viewport.
@@ -21824,7 +21461,6 @@ function ImGui.GetWindowViewport(ctx) end
 --- @return number x
 --- @return number y
 function ImGui.Viewport_GetCenter(viewport) end
-
 --- **Viewport > Viewport\_GetPos**
 ---
 --- Main Area: Position of the viewport
@@ -21836,7 +21472,6 @@ function ImGui.Viewport_GetCenter(viewport) end
 --- @return number x
 --- @return number y
 function ImGui.Viewport_GetPos(viewport) end
-
 --- **Viewport > Viewport\_GetSize**
 ---
 --- Main Area: Size of the viewport.
@@ -21848,7 +21483,6 @@ function ImGui.Viewport_GetPos(viewport) end
 --- @return number w
 --- @return number h
 function ImGui.Viewport_GetSize(viewport) end
-
 --- **Viewport > Work Area > Viewport\_GetWorkCenter**
 ---
 --- Center of the viewport's work area.
@@ -21866,7 +21500,6 @@ function ImGui.Viewport_GetSize(viewport) end
 --- @return number x
 --- @return number y
 function ImGui.Viewport_GetWorkCenter(viewport) end
-
 --- **Viewport > Work Area > Viewport\_GetWorkPos**
 ---
 --- >= Viewport_GetPos
@@ -21884,7 +21517,6 @@ function ImGui.Viewport_GetWorkCenter(viewport) end
 --- @return number x
 --- @return number y
 function ImGui.Viewport_GetWorkPos(viewport) end
-
 --- **Viewport > Work Area > Viewport\_GetWorkSize**
 ---
 --- <= Viewport_GetSize
@@ -21902,7 +21534,6 @@ function ImGui.Viewport_GetWorkPos(viewport) end
 --- @return number w
 --- @return number h
 function ImGui.Viewport_GetWorkSize(viewport) end
-
 --- **Window > Begin**
 ---
 --- Push window to the stack and start appending to it.
@@ -21933,7 +21564,6 @@ function ImGui.Viewport_GetWorkSize(viewport) end
 --- @return boolean retval
 --- @return boolean p_open
 function ImGui.Begin(ctx, name, p_open, flags) end
-
 --- **Window > End**
 ---
 --- Pop window from the stack. See Begin.
@@ -21950,7 +21580,6 @@ function ImGui.Begin(ctx, name, p_open, flags) end
 --- @since 0.8
 --- @param ctx ImGui_Context
 function ImGui.End(ctx) end
-
 --- **Window > Child Windows > BeginChild**
 ---
 --- Manual sizing (each axis can use a different setting e.g. size_w=0 and size_h=400):
@@ -21993,7 +21622,6 @@ function ImGui.End(ctx) end
 --- @nodiscard
 --- @return boolean retval
 function ImGui.BeginChild(ctx, str_id, size_w, size_h, child_flags, window_flags) end
-
 --- **Window > Child Windows > EndChild**
 ---
 --- See BeginChild.
@@ -22018,7 +21646,6 @@ function ImGui.BeginChild(ctx, str_id, size_w, size_h, child_flags, window_flags
 --- @since 0.8
 --- @param ctx ImGui_Context
 function ImGui.EndChild(ctx) end
-
 --- **Window > Content Region > GetContentRegionAvail**
 ---
 --- == GetContentRegionMax() - GetCursorPos()
@@ -22044,7 +21671,6 @@ function ImGui.EndChild(ctx) end
 --- @return number x
 --- @return number y
 function ImGui.GetContentRegionAvail(ctx) end
-
 --- **Window > Content Region > GetContentRegionMax**
 ---
 --- Current content boundaries (typically window boundaries including scrolling,
@@ -22071,7 +21697,6 @@ function ImGui.GetContentRegionAvail(ctx) end
 --- @return number x
 --- @return number y
 function ImGui.GetContentRegionMax(ctx) end
-
 --- **Window > Content Region > GetWindowContentRegionMax**
 ---
 --- Content boundaries max (roughly (0,0)+Size-Scroll) where Size can be
@@ -22098,7 +21723,6 @@ function ImGui.GetContentRegionMax(ctx) end
 --- @return number x
 --- @return number y
 function ImGui.GetWindowContentRegionMax(ctx) end
-
 --- **Window > Content Region > GetWindowContentRegionMin**
 ---
 --- Content boundaries min (roughly (0,0)-Scroll), in window coordinates.
@@ -22124,7 +21748,6 @@ function ImGui.GetWindowContentRegionMax(ctx) end
 --- @return number x
 --- @return number y
 function ImGui.GetWindowContentRegionMin(ctx) end
-
 --- **Window > Debug Windows > ShowAboutWindow**
 ---
 --- Create About window.
@@ -22144,7 +21767,6 @@ function ImGui.GetWindowContentRegionMin(ctx) end
 --- @param p_open? boolean default value = `nil`
 --- @return boolean p_open
 function ImGui.ShowAboutWindow(ctx, p_open) end
-
 --- **Window > Debug Windows > ShowDebugLogWindow**
 ---
 --- Create Debug Log window. display a simplified log of important dear imgui events.
@@ -22163,7 +21785,6 @@ function ImGui.ShowAboutWindow(ctx, p_open) end
 --- @param p_open? boolean default value = `nil`
 --- @return boolean p_open
 function ImGui.ShowDebugLogWindow(ctx, p_open) end
-
 --- **Window > Debug Windows > ShowIDStackToolWindow**
 ---
 --- Create Stack Tool window. Hover items with mouse to query information about
@@ -22183,7 +21804,6 @@ function ImGui.ShowDebugLogWindow(ctx, p_open) end
 --- @param p_open? boolean default value = `nil`
 --- @return boolean p_open
 function ImGui.ShowIDStackToolWindow(ctx, p_open) end
-
 --- **Window > Debug Windows > ShowMetricsWindow**
 ---
 --- Create Metrics/Debugger window.
@@ -22203,7 +21823,6 @@ function ImGui.ShowIDStackToolWindow(ctx, p_open) end
 --- @param p_open? boolean default value = `nil`
 --- @return boolean p_open
 function ImGui.ShowMetricsWindow(ctx, p_open) end
-
 --- **Window > Docking > GetWindowDockID**
 ---
 --- ---
@@ -22234,7 +21853,6 @@ function ImGui.ShowMetricsWindow(ctx, p_open) end
 --- @param ctx ImGui_Context
 --- @return integer retval
 function ImGui.GetWindowDockID(ctx) end
-
 --- **Window > Docking > IsWindowDocked**
 ---
 --- Is current window docked into another window or a REAPER docker?
@@ -22267,7 +21885,6 @@ function ImGui.GetWindowDockID(ctx) end
 --- @param ctx ImGui_Context
 --- @return boolean retval
 function ImGui.IsWindowDocked(ctx) end
-
 --- **Window > Docking > SetNextWindowDockID**
 ---
 --- ---
@@ -22299,7 +21916,6 @@ function ImGui.IsWindowDocked(ctx) end
 --- @param dock_id integer
 --- @param cond? integer default value = `Cond_Always`
 function ImGui.SetNextWindowDockID(ctx, dock_id, cond) end
-
 --- **Window > Properties > GetWindowDpiScale**
 ---
 --- Get DPI scale currently associated to the current window's viewport
@@ -22328,7 +21944,6 @@ function ImGui.SetNextWindowDockID(ctx, dock_id, cond) end
 --- @param ctx ImGui_Context
 --- @return number retval
 function ImGui.GetWindowDpiScale(ctx) end
-
 --- **Window > Properties > GetWindowHeight**
 ---
 --- Get current window height (shortcut for (GetWindowSize().h).
@@ -22356,7 +21971,6 @@ function ImGui.GetWindowDpiScale(ctx) end
 --- @param ctx ImGui_Context
 --- @return number retval
 function ImGui.GetWindowHeight(ctx) end
-
 --- **Window > Properties > GetWindowPos**
 ---
 --- Get current window position in screen space (note: it is unlikely you need to
@@ -22386,7 +22000,6 @@ function ImGui.GetWindowHeight(ctx) end
 --- @return number x
 --- @return number y
 function ImGui.GetWindowPos(ctx) end
-
 --- **Window > Properties > GetWindowSize**
 ---
 --- Get current window size (note: it is unlikely you need to use this.
@@ -22416,7 +22029,6 @@ function ImGui.GetWindowPos(ctx) end
 --- @return number w
 --- @return number h
 function ImGui.GetWindowSize(ctx) end
-
 --- **Window > Properties > GetWindowWidth**
 ---
 --- Get current window width (shortcut for (GetWindowSize().w).
@@ -22444,7 +22056,6 @@ function ImGui.GetWindowSize(ctx) end
 --- @param ctx ImGui_Context
 --- @return number retval
 function ImGui.GetWindowWidth(ctx) end
-
 --- **Window > Properties > IsWindowAppearing**
 ---
 --- Use after Begin/BeginPopup/BeginPopupModal to tell if a window just opened.
@@ -22472,7 +22083,6 @@ function ImGui.GetWindowWidth(ctx) end
 --- @param ctx ImGui_Context
 --- @return boolean retval
 function ImGui.IsWindowAppearing(ctx) end
-
 --- **Window > Properties > IsWindowFocused**
 ---
 --- Is current window focused? or its root/child, depending on flags.
@@ -22502,7 +22112,6 @@ function ImGui.IsWindowAppearing(ctx) end
 --- @param flags? integer default value = `FocusedFlags_None`
 --- @return boolean retval
 function ImGui.IsWindowFocused(ctx, flags) end
-
 --- **Window > Properties > IsWindowHovered**
 ---
 --- Is current window hovered and hoverable (e.g. not blocked by a popup/modal)?
@@ -22532,7 +22141,6 @@ function ImGui.IsWindowFocused(ctx, flags) end
 --- @param flags? integer default value = `HoveredFlags_None`
 --- @return boolean retval
 function ImGui.IsWindowHovered(ctx, flags) end
-
 --- **Window > Properties > SetNextWindowBgAlpha**
 ---
 --- Set next window background color alpha. Helper to easily override the Alpha
@@ -22562,7 +22170,6 @@ function ImGui.IsWindowHovered(ctx, flags) end
 --- @param ctx ImGui_Context
 --- @param alpha number
 function ImGui.SetNextWindowBgAlpha(ctx, alpha) end
-
 --- **Window > Properties > SetNextWindowCollapsed**
 ---
 --- Set next window collapsed state.
@@ -22591,7 +22198,6 @@ function ImGui.SetNextWindowBgAlpha(ctx, alpha) end
 --- @param collapsed boolean
 --- @param cond? integer default value = `Cond_Always`
 function ImGui.SetNextWindowCollapsed(ctx, collapsed, cond) end
-
 --- **Window > Properties > SetNextWindowContentSize**
 ---
 --- Set next window content size (~ scrollable client area, which enforce the
@@ -22622,7 +22228,6 @@ function ImGui.SetNextWindowCollapsed(ctx, collapsed, cond) end
 --- @param size_w number
 --- @param size_h number
 function ImGui.SetNextWindowContentSize(ctx, size_w, size_h) end
-
 --- **Window > Properties > SetNextWindowFocus**
 ---
 --- Set next window to be focused / top-most.
@@ -22649,7 +22254,6 @@ function ImGui.SetNextWindowContentSize(ctx, size_w, size_h) end
 --- @since 0.1
 --- @param ctx ImGui_Context
 function ImGui.SetNextWindowFocus(ctx) end
-
 --- **Window > Properties > SetNextWindowPos**
 ---
 --- Set next window position. Use pivot=(0.5,0.5) to center on given point, etc.
@@ -22681,7 +22285,6 @@ function ImGui.SetNextWindowFocus(ctx) end
 --- @param pivot_x? number default value = `0.0`
 --- @param pivot_y? number default value = `0.0`
 function ImGui.SetNextWindowPos(ctx, pos_x, pos_y, cond, pivot_x, pivot_y) end
-
 --- **Window > Properties > SetNextWindowScroll**
 ---
 --- Set next window scrolling value (use < 0.0 to not affect a given axis).
@@ -22710,7 +22313,6 @@ function ImGui.SetNextWindowPos(ctx, pos_x, pos_y, cond, pivot_x, pivot_y) end
 --- @param scroll_x number
 --- @param scroll_y number
 function ImGui.SetNextWindowScroll(ctx, scroll_x, scroll_y) end
-
 --- **Window > Properties > SetNextWindowSize**
 ---
 --- Set next window size. set axis to 0.0 to force an auto-fit on this axis.
@@ -22740,7 +22342,6 @@ function ImGui.SetNextWindowScroll(ctx, scroll_x, scroll_y) end
 --- @param size_h number
 --- @param cond? integer default value = `Cond_Always`
 function ImGui.SetNextWindowSize(ctx, size_w, size_h, cond) end
-
 --- **Window > Properties > SetNextWindowSizeConstraints**
 ---
 --- Set next window size limits. Use 0.0 or FLT_MAX (second return value of
@@ -22778,7 +22379,6 @@ function ImGui.SetNextWindowSize(ctx, size_w, size_h, cond) end
 --- @param size_max_h number
 --- @param custom_callback? ImGui_Function default value = `nil`
 function ImGui.SetNextWindowSizeConstraints(ctx, size_min_w, size_min_h, size_max_w, size_max_h, custom_callback) end
-
 --- **Window > Properties > SetWindowCollapsed**
 ---
 --- (Not recommended) Set current window collapsed state.
@@ -22808,7 +22408,6 @@ function ImGui.SetNextWindowSizeConstraints(ctx, size_min_w, size_min_h, size_ma
 --- @param collapsed boolean
 --- @param cond? integer default value = `Cond_Always`
 function ImGui.SetWindowCollapsed(ctx, collapsed, cond) end
-
 --- **Window > Properties > SetWindowCollapsedEx**
 ---
 --- Set named window collapsed state.
@@ -22838,7 +22437,6 @@ function ImGui.SetWindowCollapsed(ctx, collapsed, cond) end
 --- @param collapsed boolean
 --- @param cond? integer default value = `Cond_Always`
 function ImGui.SetWindowCollapsedEx(ctx, name, collapsed, cond) end
-
 --- **Window > Properties > SetWindowFocus**
 ---
 --- (Not recommended) Set current window to be focused / top-most.
@@ -22866,7 +22464,6 @@ function ImGui.SetWindowCollapsedEx(ctx, name, collapsed, cond) end
 --- @since 0.5
 --- @param ctx ImGui_Context
 function ImGui.SetWindowFocus(ctx) end
-
 --- **Window > Properties > SetWindowFocusEx**
 ---
 --- Set named window to be focused / top-most. Use an empty name to remove focus.
@@ -22894,7 +22491,6 @@ function ImGui.SetWindowFocus(ctx) end
 --- @param ctx ImGui_Context
 --- @param name string
 function ImGui.SetWindowFocusEx(ctx, name) end
-
 --- **Window > Properties > SetWindowPos**
 ---
 --- (Not recommended) Set current window position - call within Begin/End.
@@ -22925,7 +22521,6 @@ function ImGui.SetWindowFocusEx(ctx, name) end
 --- @param pos_y number
 --- @param cond? integer default value = `Cond_Always`
 function ImGui.SetWindowPos(ctx, pos_x, pos_y, cond) end
-
 --- **Window > Properties > SetWindowPosEx**
 ---
 --- Set named window position.
@@ -22956,7 +22551,6 @@ function ImGui.SetWindowPos(ctx, pos_x, pos_y, cond) end
 --- @param pos_y number
 --- @param cond? integer default value = `Cond_Always`
 function ImGui.SetWindowPosEx(ctx, name, pos_x, pos_y, cond) end
-
 --- **Window > Properties > SetWindowSize**
 ---
 --- (Not recommended) Set current window size - call within Begin/End.
@@ -22988,7 +22582,6 @@ function ImGui.SetWindowPosEx(ctx, name, pos_x, pos_y, cond) end
 --- @param size_h number
 --- @param cond? integer default value = `Cond_Always`
 function ImGui.SetWindowSize(ctx, size_w, size_h, cond) end
-
 --- **Window > Properties > SetWindowSizeEx**
 ---
 --- Set named window size. Set axis to 0.0 to force an auto-fit on this axis.
@@ -23019,7 +22612,6 @@ function ImGui.SetWindowSize(ctx, size_w, size_h, cond) end
 --- @param size_h number
 --- @param cond? integer default value = `Cond_Always`
 function ImGui.SetWindowSizeEx(ctx, name, size_w, size_h, cond) end
-
 --- **Window > Scrolling > GetScrollMaxX**
 ---
 --- Get maximum scrolling amount ~~ ContentSize.x - WindowSize.x - DecorationsSize.x
@@ -23047,7 +22639,6 @@ function ImGui.SetWindowSizeEx(ctx, name, size_w, size_h, cond) end
 --- @param ctx ImGui_Context
 --- @return number retval
 function ImGui.GetScrollMaxX(ctx) end
-
 --- **Window > Scrolling > GetScrollMaxY**
 ---
 --- Get maximum scrolling amount ~~ ContentSize.y - WindowSize.y - DecorationsSize.y
@@ -23075,7 +22666,6 @@ function ImGui.GetScrollMaxX(ctx) end
 --- @param ctx ImGui_Context
 --- @return number retval
 function ImGui.GetScrollMaxY(ctx) end
-
 --- **Window > Scrolling > GetScrollX**
 ---
 --- Get scrolling amount [0 .. GetScrollMaxX()]
@@ -23103,7 +22693,6 @@ function ImGui.GetScrollMaxY(ctx) end
 --- @param ctx ImGui_Context
 --- @return number retval
 function ImGui.GetScrollX(ctx) end
-
 --- **Window > Scrolling > GetScrollY**
 ---
 --- Get scrolling amount [0 .. GetScrollMaxY()]
@@ -23131,7 +22720,6 @@ function ImGui.GetScrollX(ctx) end
 --- @param ctx ImGui_Context
 --- @return number retval
 function ImGui.GetScrollY(ctx) end
-
 --- **Window > Scrolling > SetScrollFromPosX**
 ---
 --- Adjust scrolling amount to make given position visible.
@@ -23161,7 +22749,6 @@ function ImGui.GetScrollY(ctx) end
 --- @param local_x number
 --- @param center_x_ratio? number default value = `0.5`
 function ImGui.SetScrollFromPosX(ctx, local_x, center_x_ratio) end
-
 --- **Window > Scrolling > SetScrollFromPosY**
 ---
 --- Adjust scrolling amount to make given position visible.
@@ -23191,7 +22778,6 @@ function ImGui.SetScrollFromPosX(ctx, local_x, center_x_ratio) end
 --- @param local_y number
 --- @param center_y_ratio? number default value = `0.5`
 function ImGui.SetScrollFromPosY(ctx, local_y, center_y_ratio) end
-
 --- **Window > Scrolling > SetScrollHereX**
 ---
 --- Adjust scrolling amount to make current cursor position visible.
@@ -23222,7 +22808,6 @@ function ImGui.SetScrollFromPosY(ctx, local_y, center_y_ratio) end
 --- @param ctx ImGui_Context
 --- @param center_x_ratio? number default value = `0.5`
 function ImGui.SetScrollHereX(ctx, center_x_ratio) end
-
 --- **Window > Scrolling > SetScrollHereY**
 ---
 --- Adjust scrolling amount to make current cursor position visible.
@@ -23253,7 +22838,6 @@ function ImGui.SetScrollHereX(ctx, center_x_ratio) end
 --- @param ctx ImGui_Context
 --- @param center_y_ratio? number default value = `0.5`
 function ImGui.SetScrollHereY(ctx, center_y_ratio) end
-
 --- **Window > Scrolling > SetScrollX**
 ---
 --- Set scrolling amount [0 .. GetScrollMaxX()]
@@ -23281,7 +22865,6 @@ function ImGui.SetScrollHereY(ctx, center_y_ratio) end
 --- @param ctx ImGui_Context
 --- @param scroll_x number
 function ImGui.SetScrollX(ctx, scroll_x) end
-
 --- **Window > Scrolling > SetScrollY**
 ---
 --- Set scrolling amount [0 .. GetScrollMaxY()]
@@ -23309,7 +22892,6 @@ function ImGui.SetScrollX(ctx, scroll_x) end
 --- @param ctx ImGui_Context
 --- @param scroll_y number
 function ImGui.SetScrollY(ctx, scroll_y) end
-
 --- @param api_version string
 --- @return ImGui
 return function(api_version) end
