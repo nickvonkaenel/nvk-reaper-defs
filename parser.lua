@@ -25,10 +25,10 @@ reaper = {}
 ---@class (exact) ReaProject : userdata
 ---@class (exact) MediaItem : userdata
 ---@class (exact) MediaTrack : userdata
----@class (exact) identifier: userdata
 ---@class (exact) unsupported: boolean?
 
-
+]]
+local footer = [[
 ---Causes gmem_read()/gmem_write() to read EEL2/JSFX/Video shared memory segment named by parameter. Set to empty string to detach. 6.20+: returns previous shared memory segment name.Must be called, before you can use a specific gmem-variable-index with gmem_write!
 ---@param sharedMemoryName string
 ---@return string former_attached_gmemname
@@ -740,6 +740,64 @@ local function parse_all(html)
 	return funcs
 end
 
+--[[
+
+---@param gGUID string 
+---@return string gGUID
+function reaper.genGuid(gGUID) end
+
+should be
+
+---@return string retval
+function reaper.genGuid() end
+-------------------------
+seems like most functions which return a string have the variable changed to retval
+buf
+hashNeed128
+filenamebuf
+typebuf
+action
+author
+notes
+GUID
+destNeed64
+out
+strNeed64
+gGUID
+fn
+guidString
+double
+class
+---------------
+GetSet_ArrangeView2: start_time and end_time are optional
+GetThemeColor: flags is optional
+LocalizeString: flags is optional
+Main_SaveProjectEx: forceSaveAsIn is optional
+SetCursorContext: envIn is optional
+ShowPopupMenu: everything except name and y optional? seems odd that x would be optional
+JS_Composite_Unlink: bitmap is optional
+JS_Window_Create: ownerHWND is optional
+JS_Window_SetParent: parentHWND is optional
+JS_Window_SetZOrder: insertAfterHWND is optional
+JS_Zip_Close: zipHandle is optional
+---------------
+GetItemEditingTime2 is missing first return value in sexan defs
+---------------
+functions missing in sexan defs:
+GetSetTempoTimeSigMarkerFlag
+GetSetTrackGroupMembershipEx
+---------------
+less thans (<) are flipped in sexan defs
+---------------
+my_getViewport is missing return values in my defs
+---------------
+SetThemeColor includes a ton of current RGB colors that probably aren't necessary
+---------------
+BR_GetMouseCursorContext has a completely jank chart in the description
+---------------
+unsupported is replaced with optional boolean
+]]
+
 --------------------------------------------------------------------------------
 -- Generate the annotated Lua stub for a given parsed function.
 local function generate_stub(func)
@@ -751,12 +809,17 @@ local function generate_stub(func)
 	end
 	for _, p in ipairs(func.params) do
 		local pname = p.optional and (p.name .. "?") or p.name
-		p.type = p.type:gsub("ReaProject", "ReaProject|nil|0")
+		p.type = p.type:gsub("ReaProject", "ReaProject|nil|0", 1)
+		p.type = p.type:gsub("KbdSectionInfo", "KbdSectionInfo|integer", 1)
+		p.type = p.type:gsub("desttrIn", "desttrIn?", 1)
+		p.type = p.type:gsub("%s+$", "") -- remove trailing space
+		-- return variables labeled as buf were changed to retval
 		table.insert(lines, string.format("---@param %s %s", pname, p.type))
 	end
 	for _, ret in ipairs(func.ret_types or {}) do
 		local trimmed_type = ret.type:gsub("%s+$", "")
 		local rettype = trimmed_type .. (ret.optional and "?" or "")
+		rettype = rettype:gsub("identifier", "userdata", 1)
 		table.insert(lines, string.format("---@return %s %s", rettype, ret.name))
 	end
 	local param_names = {}
@@ -798,6 +861,7 @@ for _, func in ipairs(funcs) do
 	table.insert(output, generate_stub(func))
 	table.insert(output, "") -- add a blank line between functions
 end
+table.insert(output, footer)
 
 local output_path = debug.getinfo(1, "S").source:match("@(.*)[\\/].*$") .. "/reaper_defs.lua"
 local output_file = io.open(output_path, "w")

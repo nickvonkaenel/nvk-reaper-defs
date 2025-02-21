@@ -25,536 +25,8 @@ reaper = {}
 ---@class (exact) ReaProject : userdata
 ---@class (exact) MediaItem : userdata
 ---@class (exact) MediaTrack : userdata
----@class (exact) identifier: userdata
 ---@class (exact) unsupported: boolean?
 
-
----Causes gmem_read()/gmem_write() to read EEL2/JSFX/Video shared memory segment named by parameter. Set to empty string to detach. 6.20+: returns previous shared memory segment name.Must be called, before you can use a specific gmem-variable-index with gmem_write!
----@param sharedMemoryName string
----@return string former_attached_gmemname
-function reaper.gmem_attach(sharedMemoryName) end
-
----Read (number) value from shared memory attached-to by gmem_attach(). index can be [0..1<<25).returns nil if not available
----@param index integer
----@return number retval
-function reaper.gmem_read(index) end
-
----Write (number) value to shared memory attached-to by gmem_attach(). index can be [0..1<<25).Before you can write into a currently unused variable with index "index", you must call gmem_attach first!
----@param index integer
----@param value number
-function reaper.gmem_write(index, value) end
-
-
---- @class reaper.array : { [integer]: number }
-local reaper_array = {}
-
----Creates a new reaper.array object of maximum and initial size size, if specified, or from the size/values of a table/array. Both size and table/array can be specified, the size parameter will override the table/array size.
---- @overload fun(table: reaper.array): reaper.array
---- @overload fun(table: reaper.array, size: integer): reaper.array
---- @overload fun(size: integer, table: reaper.array): reaper.array
---- @param size integer
---- @return reaper.array
-function reaper.new_array(size) end
-
----Sets the value of zero or more items in the array. If value not specified, 0.0 is used. offset is 1-based, if size omitted then the maximum amount available will be set.
----@param value? number|string
----@param offset? integer
----@param size? integer
----@return boolean retval
-function reaper_array.clear(value, offset, size) end
-
----Convolves complex value pairs from reaper.array, starting at 1-based srcoffs, reading/writing to 1-based destoffs. size is in normal items (so it must be even)
----@param src? reaper.array
----@param srcoffs? integer
----@param size? integer
----@param destoffs? integer
----@return integer retval
-function reaper_array.convolve(src, srcoffs, size, destoffs) end
-
----Copies values from reaper.array or table, starting at 1-based srcoffs, writing to 1-based destoffs.
----@param src? reaper.array
----@param srcoffs? integer
----@param size? integer
----@param destoffs? integer
----@return integer retval
-function reaper_array.copy(src, srcoffs, size, destoffs) end
-
----Performs a forward FFT of size. size must be a power of two between 4 and 32768 inclusive. If permute is specified and true, the values will be shuffled following the FFT to be in normal order.
----@param size integer
----@param permute? boolean
----@param offset? integer
----@return boolean retval
-function reaper_array.fft(size, permute, offset) end
-
----Performs a forward real->complex FFT of size. size must be a power of two between 4 and 32768 inclusive. If permute is specified and true, the values will be shuffled following the FFT to be in normal order.
----@param size integer
----@param permute? boolean
----@param offset? integer
----@return boolean retval
-function reaper_array.fft_real(size, permute, offset) end
-
----Returns the maximum (allocated) size of the array.
----@return integer size
-function reaper_array.get_alloc() end
-
----Performs a backwards FFT of size. size must be a power of two between 4 and 32768 inclusive. If permute is specified and true, the values will be shuffled before the IFFT to be in fft-order.
----@param size integer
----@param permute? boolean
----@param offset? integer
----@return boolean retval
-function reaper_array.ifft(size, permute, offset) end
-
----Performs a backwards complex->real FFT of size. size must be a power of two between 4 and 32768 inclusive. If permute is specified and true, the values will be shuffled before the IFFT to be in fft-order.
----@param size integer
----@param permute? boolean
----@param offset? integer
----@return boolean retval
-function reaper_array.ifft_real(size, permute, offset) end
-
----Multiplies values from reaper.array, starting at 1-based srcoffs, reading/writing to 1-based destoffs.
----@param src? reaper.array
----@param srcoffs? integer
----@param size? integer
----@param destoffs? number
----@return integer retvals
-function reaper_array.multiply(src, srcoffs, size, destoffs) end
-
----Resizes an array object to size. size must be [0..max_size].
----@param size integer
----@return boolean retval
-function reaper_array.resize(size) end
-
----Returns a new table with values from items in the array. Offset is 1-based and if size is omitted all available values are used.
----@param offset? integer
----@param size? integer
----@return table new_table
-function reaper_array.table(offset, size) end
-
---- @class gfx
---- @field r number current red component (0..1) used by drawing operations.
---- @field g number current green component (0..1) used by drawing operations.
---- @field b number current blue component (0..1) used by drawing operations.
---- @field a2 number  current alpha component (0..1) used by drawing operations when writing solid colors (normally ignored but useful when creating transparent images).
---- @field a number alpha for drawing (1=normal).
---- @field mode number blend mode for drawing. Set mode to 0 for default options. Add 1.0 for additive blend mode (if you wish to do subtractive, set gfx.a to negative and use gfx.mode as additive). Add 2.0 to disable source alpha for gfx.blit(). Add 4.0 to disable filtering for gfx.blit().
---- @field w number width of the UI framebuffer.
---- @field h number height of the UI framebuffer.
---- @field x number current graphics position X. Some drawing functions use as start position and update.
---- @field y number current graphics position Y. Some drawing functions use as start position and update.
---- @field clear number if greater than -1.0, framebuffer will be cleared to that color. the color for this one is packed RGB (0..255), i.e. red+green*256+blue*65536. The default is 0 (black).
---- @field dest number destination for drawing operations, -1 is main framebuffer, set to 0..1024-1 to have drawing operations go to an offscreen buffer (or loaded image).
---- @field texth number the (READ-ONLY) height of a line of text in the current font. Do not modify this variable.
---- @field ext_retina number to support hidpi/retina, callers should set to 1.0 on initialization, this value will be updated to value greater than 1.0 (such as 2.0) if retina/hidpi. On macOS gfx.w/gfx.h/etc will be doubled, but on other systems gfx.w/gfx.h will remain the same and gfx.ext_retina is a scaling hint for drawing.
---- @field mouse_x number current X coordinate of the mouse relative to the graphics window.
---- @field mouse_y number current Y coordinate of the mouse relative to the graphics window.
---- @field mouse_wheel number wheel position, will change typically by 120 or a multiple thereof, the caller should clear the state to 0 after reading it.
---- @field mouse_hwheel number horizontal wheel positions, will change typically by 120 or a multiple thereof, the caller should clear the state to 0 after reading it.
---- @field mouse_cap number a bitfield of mouse and keyboard modifier state:
-gfx = {}
-
----Draws an arc of the circle centered at x,y, with ang1/ang2 being specified in radians.
----@param x number
----@param y number
----@param r number
----@param ang1 number
----@param ang2 number
----@param antialias? number
-function gfx.arc(x, y, r, ang1, ang2, antialias) end
-
----Blits(draws) the content of source-image to another source-image or an opened window.Copies from source (-1 = main framebuffer, or an image from gfx.loadimg() etc), using current opacity and copy mode (set with gfx.a, gfx.mode).If destx/desty are not specified, gfx.x/gfx.y will be used as the destination position.scale (1.0 is unscaled) will be used only if destw/desth are not specified.rotation is an angle in radianssrcx/srcy/srcw/srch specify the source rectangle (if omitted srcw/srch default to image size)destx/desty/destw/desth specify destination rectangle (if not specified destw/desth default to srcw/srch * scale).
----@param source number
----@param scale number
----@param rotation number
----@param srcx? number
----@param srcy? number
----@param srcw? number
----@param srch? number
----@param destx? number
----@param desty? number
----@param destw? number
----@param desth? number
----@param rotxoffs? number
----@param rotyoffs? number
----@return number source
-function gfx.blit(source, scale, rotation, srcx, srcy, srcw, srch, destx, desty, destw, desth, rotxoffs, rotyoffs) end
-
----Deprecated, use gfx.blit instead.Note: the naming of the function might be misleading, as it has nothing to do with blitting of text, but rather is called Blit Ext.
----@param source number
----@param coordinatelist number
----@param rotation number
----@return number retval
-function gfx.blitext(source, coordinatelist, rotation) end
-
----Blurs the region of the screen between gfx.x,gfx.y and x,y, and updates gfx.x,gfx.y to x,y.
----@param x number
----@param y number
-function gfx.blurto(x, y) end
-
----Draws a circle, optionally filling/antialiasing. 
----@param x number
----@param y number
----@param r number
----@param fill? number
----@param antialias? number
-function gfx.circle(x, y, r, fill, antialias) end
-
----Converts the coordinates x,y to screen coordinates, returns those values.
----@param x number
----@param y number
----@return number convx
----@return number convy
-function gfx.clienttoscreen(x, y) end
-
----Blits from srcimg(srcs,srct,srcw,srch) to destination (destx,desty,destw,desth). Source texture coordinates are s/t, dsdx represents the change in s coordinate for each x pixel, dtdy represents the change in t coordinate for each y pixel, etc. dsdxdy represents the change in dsdx for each line. If usecliprect is specified and 0, then srcw/srch are ignored.This function allows you to manipulate the image, which you want to blit, by transforming, moving or cropping it.To do rotation, you can manipulate dtdx and dsdy together.
----@param srcimg number
----@param srcs number
----@param srct number
----@param srcw number
----@param srch number
----@param destx number
----@param desty number
----@param destw number
----@param desth number
----@param dsdx number
----@param dtdx number
----@param dsdy number
----@param dtdy number
----@param dsdxdy number
----@param dtdxdy number
----@param usecliprect? number
----@return number retval
-function gfx.deltablit(srcimg, srcs, srct, srcw, srch, destx, desty, destw, desth, dsdx, dtdx, dsdy, dtdy, dsdxdy, dtdxdy, usecliprect) end
-
----Queries or sets the docking-state of the gfx.init()-window.
----Call with v=-1 to query docked state, otherwise v>=0 to set docked state. 
----State is &1 if docked, second byte is docker index (or last docker index if undocked). If you pass numbers to wx-wh, you can query window size and position additionally to the dock-stateA specific docking index does not necessarily represent a specific docker, means, you can not query/set left docker top, but rather all dockers that exist in the current screenset.
----So the first queried/set docker can be top-left-docker or the top docker or even one of the bottom dockers.
----The order doesn't seem to make any sense. Especially with more than 16 windows docked in the current screenset.
----@param v number
----@param wx? number
----@param wy? number
----@param ww? number
----@param wh? number
----@return number querystate
----@return number|nil window_x_position
----@return number|nil window_y_position
----@return number|nil window_width
----@return number|nil window_height
-function gfx.dock(v, wx, wy, ww, wh) end
-
----Draws the character (can be a numeric ASCII code as well), to gfx.x, gfx.y, and moves gfx.x over by the size of the character.
----@param char number
----@return number char
-function gfx.drawchar(char) end
-
----Draws the number n with ndigits of precision to gfx.x, gfx.y, and updates gfx.x to the right side of the drawing. The text height is gfx.texth.
----@param n number
----@param ndigits number
----@return number retval
-function gfx.drawnumber(n, ndigits) end
-
----Draws a string at gfx.x, gfx.y, and updates gfx.x/gfx.y so that subsequent draws will occur in a similar place.You can optionally set a clipping area for the text, if you set parameter flags&256 and the parameters right and bottom.On Windows, fonts with a size > 255 may have trouble of being displayed correctly, due problems with the font-rendering and the alpha-channel. <a href="https://forum.cockos.com/showpost.php?p=2311977&postcount=7">Justin's post about this.</a>
----To overcome this, try this to disable the alpha-channel: 
----By default, gfx.blit() blits with alpha channel. You can disable this behavior by setting "gfx.mode=2" before calling gfx.blit().
----@param str string
----@param flags? number
----@param right? number
----@param bottom? number
----@return number retval
-function gfx.drawstr(str, flags, right, bottom) end
-
----If char is 0 or omitted, returns a character from the keyboard queue, or 0 if no character is available, or -1 if the graphics window is not open. If char is specified and nonzero, that character's status will be checked, and the function will return greater than 0 if it is pressed. Note that calling gfx.getchar() at least once causes gfx.mouse_cap to reflect keyboard modifiers even when the mouse is not captured.</p><p>Common values are standard ASCII, such as 'a', 'A', '=' and '1', but for many keys multi-byte values are used, including 'home', 'up', 'down', 'left', 'rght', 'f1'.. 'f12', 'pgup', 'pgdn', 'ins', and 'del'<br>
----Modified and special keys can also be returned, including:<br>
----
----* Ctrl/Cmd+A..Ctrl+Z as 1..26
----* Ctrl/Cmd+Alt+A..Z as 257..282
----* Alt+A..Z as 'A'+256..'Z'+256
----* 27 for ESC
----* 13 for Enter
----* ' ' for space
----* 65536 for query of special flags, returns:1 (supported), 2=window has focus, 4=window is visible
----If unichar is specified, it will be set to the unicode value of the key if available (and the return value may be the unicode value or a raw key value as described above, depending). If unichar is not specified, unicode codepoints greater than 255 will be returned as 24 + value<br>
----@param character? number
----@param unicode_char? number
----@return number charactercode
-function gfx.getchar(character, unicode_char) end
-
----Returns filenames, drag'n'dropped into a window created by gfx.init().
----Use idx to get a specific filename, that has been dropped into the gfx.init()-window.When returned filename starts with @fx: it is an fx dropped.
----      
----Does NOT support mediaitems/takes or other Reaper-objects!It MUST be called BEFORE calling gfx.update, as gfx.update flushes the filelist accessible with gfx.getdropfile.
----@param idx number
----@return number retval
----@return string|nil filename
-function gfx.getdropfile(idx) end
-
----Returns current font index, and the actual font face used by this font (if available).Use gfx.setfont to set a font for a specific index.
----@return number fontindex
----@return string fontface
-function gfx.getfont() end
-
----Retrieves the dimensions of an image specified by handle, returns w, h pair.
----Handle is basically a frame-buffer.
----@param handle number
----@return number w
----@return number h
-function gfx.getimgdim(handle) end
-
----Returns r,g,b values [0..1] of the pixel at (gfx.x,gfx.y)
----@return number r
----@return number g
----@return number b
-function gfx.getpixel() end
-
----Fills a gradient rectangle with the color and alpha specified. drdx-dadx reflect the adjustment (per-pixel) applied for each pixel moved to the right, drdy-dady are the adjustment applied for each pixel moved toward the bottom. Normally drdx=adjustamount/w, drdy=adjustamount/h, etc.
----@param x number
----@param y number
----@param w number
----@param h number
----@param r number
----@param g number
----@param b number
----@param a number
----@param drdx? number
----@param dgdx? number
----@param dbdx? number
----@param dadx? number
----@param drdy? number
----@param dgdy? number
----@param dbdy? number
----@param dady? number
----@return number retval
-function gfx.gradrect(x, y, w, h, r, g, b, a, drdx, dgdx, dbdx, dadx, drdy, dgdy, dbdy, dady) end
-
----Initializes the graphics window with title name. Suggested width and height can be specified.Once the graphics window is open, gfx.update() should be called periodically. Only one graphics-window can be opened per script! Calling gfx.ini after a window has been opened has no effect.To resize/reposition the window, call gfx.init again and pass an empty string as name-parameter.To retitle the window, run gfx.init again with the new title as parameter name.To get the current window-states, dimensions, etc, you can use gfx.dock).
----@param name string
----@param width? number
----@param height? number
----@param dockstate? number
----@param xpos? number
----@param ypos? number
----@return number retval
-function gfx.init(name, width, height, dockstate, xpos, ypos) end
-
----Draws a line from x,y to x2,y2, and if aa is not specified or 0.5 or greater, it will be antialiased. 
----@param x number
----@param y number
----@param x2 number
----@param y2 number
----@param aa? number
----@return number retval
-function gfx.line(x, y, x2, y2, aa) end
-
----Draws a line from gfx.x,gfx.y to x,y. If aa is 0.5 or greater, then antialiasing is used. Updates gfx.x and gfx.y to x,y.
----@param x number
----@param y number
----@param aa number
----@return number retval
-function gfx.lineto(x, y, aa) end
-
----Load image from filename into slot 0..1024-1 specified by image. Returns the image index if success, otherwise -1 if failure. The image will be resized to the dimensions of the image file. 
----@param image number
----@param filename string
----@return number retval
-function gfx.loadimg(image, filename) end
-
----Measures the drawing dimensions of a character with the current font (as set by gfx.setfont). Returns width and height of character.
----@param char number
----@return number width
----@return number height
-function gfx.measurechar(char) end
-
----Measures the drawing dimensions of a string with the current font (as set by gfx.setfont). Returns width and height of string.
----@param str string
----@return number width
----@return number height
-function gfx.measurestr(str) end
-
----Multiplies each pixel within the given rectangle(x,y,w,h) by the mul_*-parameters and optionally adds add_*-parameters, and updates in-place. Useful for changing brightness/contrast, or other effects.The multiplied values usually affect only pixels, that are not black(0,0,0,0), while the added values affect all pixels.
----@param x number
----@param y number
----@param w number
----@param h number
----@param mul_r number
----@param mul_g number
----@param mul_b number
----@param mul_a? number
----@param add_r? number
----@param add_g? number
----@param add_b? number
----@param add_a? number
----@return number retval
-function gfx.muladdrect(x, y, w, h, mul_r, mul_g, mul_b, mul_a, add_r, add_g, add_b, add_a) end
-
----Formats and draws a string at gfx.x, gfx.y, and updates gfx.x/gfx.y accordingly (the latter only if the formatted string contains newline). For more information on format strings, see sprintf()
----* %% = %
----* %s = string from parameter
----* %d = parameter as integer
----* %i = parameter as integer
----* %u = parameter as unsigned integer
----* %x = parameter as hex (lowercase) integer
----* %X = parameter as hex (uppercase) integer
----* %c = parameter as character
----* %f = parameter as floating point
----* %e = parameter as floating point (scientific notation, lowercase)
----* %E = parameter as floating point (scientific notation, uppercase)
----* %g = parameter as floating point (shortest representation, lowercase)
----* %G = parameter as floating point (shortest representation, uppercase)
----
----Many standard C printf() modifiers can be used, including:    
----* %.10s = string, but only print up to 10 characters
----* %-10s = string, left justified to 10 characters
----* %10s = string, right justified to 10 characters
----* %+f = floating point, always show sign
----* %.4f = floating point, minimum of 4 digits after decimal point
----* %10d = integer, minimum of 10 digits (space padded)
----* %010f = integer, minimum of 10 digits (zero padded)Values for format specifiers can be specified as additional parameters to gfx.printf, or within {} in the format specifier (such as %{varname}d, in that case a global variable is always used).
----@param format string
----@param ... any
----@return number retval
-function gfx.printf(format, ...) end
-
----Closes the graphics window.
----@return number retval
-function gfx.quit() end
-
----Fills a rectangle at x,y, w,h pixels in dimension, filled by default. 
----@param x number
----@param y number
----@param w number
----@param h number
----@param filled? number
----@return number retval
-function gfx.rect(x, y, w, h, filled) end
-
----Fills a rectangle from gfx.x,gfx.y to x,y. Updates gfx.x,gfx.y to x,y. 
----@param x number
----@param y number
----@return number x_coordinate
-function gfx.rectto(x, y) end
-
----Draws a rectangle with rounded corners. 
----@param x number
----@param y number
----@param w number
----@param h number
----@param radius number
----@param antialias? number
----@return number retval
-function gfx.roundrect(x, y, w, h, radius, antialias) end
-
----Converts the screen coordinates x,y to client coordinates, returns those values.
----@param x number
----@param y number
----@return number convx
----@return number convy
-function gfx.screentoclient(x, y) end
-
----Sets color, drawing mode and optionally the drawing-image-source-destination.
----If sets the corresponding gfx-variables.
----Sets gfx.r/gfx.g/gfx.b/gfx.a2/gfx.mode sets gfx.dest if final parameter specified
----@param r number
----@param g? number
----@param b? number
----@param a2? number
----@param mode? number
----@param dest? number
----@return number retval
-function gfx.set(r, g, b, a2, mode, dest) end
-
----Sets the mouse cursor. resource_id is a value like 32512 (for an arrow cursor), custom_cursor_name is a string like "arrow" (for the REAPER custom arrow cursor). resource_id must be nonzero, but custom_cursor_name is optional.examples for resource_id:
----* 101, enter text
----* 102, hourglass
----* 103, cross
----* 104, arrow up
----* 105, arrows to left up AND right down
----* 106, arrows to left down AND right up
----* 107, arrows to left AND right
----* 108, arrows to up AND down
----* 109, arrows to up, down, left and right
----* 110, stop sign
----* 111, arrow with hourglass
----* 112, arrow with question mark
----* 113, a pen
----* 114, hand with index finger pointing
----* 115, a square
----* 116, arrow with cd
----    
----works only with gfx-window opened.
----@param resource_id? number
----@param custom_cursor_name? string
----@return number retval
-function gfx.setcursor(resource_id, custom_cursor_name) end
-
----Can select a font and optionally configure it. After calling gfx_setfont(), gfx_texth may be updated to reflect the new average line height.
----@param idx number
----@param fontface? string
----@param sz? number
----@param flags? number
----@return number retval
-function gfx.setfont(idx, fontface, sz, flags) end
-
----Resize image referenced by index 0..1024-1, width and height must be 0-8192. The contents of the image will be undefined after the resize.
----@param image number
----@param w number
----@param h number
----@return number retval
-function gfx.setimgdim(image, w, h) end
-
----Writes a pixel of r,g,b to gfx.x,gfx.y.
----@param r number
----@param g number
----@param b number
----@return number retval
-function gfx.setpixel(r, g, b) end
-
----Shows a popup menu at gfx_x,gfx_y. 
----str is a list of fields separated by | characters. Each field represents a menu item.
----Fields can start with special characters:# : grayed out
----* ! : checked
----* \> : this menu item shows a submenu
----* < : last item in the current submenu
----* & : before a character makes it underlined as the quick-access-character for this menu-item
----An empty field || will appear as a separator in the menu. Example:<br>
----selection = gfx.showmenu("first item, followed by separator||!second item, checked|>third item which spawns a submenu|#first item in submenu, grayed out|>second and last item in submenu|fourth item in top menu")gfx.showmenu returns 0 if the user selected nothing from the menu, 1 if the first field is selected, etc.
----Note: It skips submenus and separators in the selection-number, so a if menu_string="Entry1||<Entry two|Entry three" will only return 1 for entry1 and 2 for Entry three but nothing for <Entry and ||.
----@param menu_string string
----@return number selection
-function gfx.showmenu(menu_string) end
-
----Blits to destination at (destx,desty), size (destw,desth). div_w and div_h should be 2..64, and table should point to a table of 2*div_w*div_h values (table can be a regular table or (for less overhead) a reaper.array). Each pair in the table represents a S,T coordinate in the source image, and the table is treated as a left-right, top-bottom list of texture coordinates, which will then be rendered to the destination.
----
----@param srcimg number
----@param destx number
----@param desty number
----@param destw number
----@param desth number
----@param div_w number
----@param div_h number
----@param table table|reaper.array
----@return number retval
-function gfx.transformblit(srcimg, destx, desty, destw, desth, div_w, div_h, table) end
-
----Draws a filled triangle, or any convex polygon. 
----@param x1 number
----@param y1 number
----@param x2 number
----@param y2 number
----@param x3 number
----@param y3 number
----@param x4? number
----@param y4? number
----@param ... number
----@return number retval
-function gfx.triangle(x1, y1, x2, y2, x3, y3, x4, y4, ... ) end
-
----Updates the graphics display, if opened
----@return number retval
-function gfx.update() end
-
----Returns the path to the directory containing imgui.lua, imgui.py and gfx2imgui.lua.
----@return string path
-function reaper.ImGui_GetBuiltinPath() end
 
 ---creates a new media item.
 ---@param tr MediaTrack
@@ -715,7 +187,7 @@ function reaper.ColorToNative(r, g, b) end
 
 ---Returns the number of shortcuts that exist for the given command ID.
 ---see GetActionShortcutDesc, DeleteActionShortcut, DoActionShortcutDialog.
----@param section KbdSectionInfo
+---@param section KbdSectionInfo|integer
 ---@param cmdID integer
 ---@return integer retval
 function reaper.CountActionShortcuts(section, cmdID) end
@@ -1073,7 +545,7 @@ function reaper.DB2SLIDER(x) end
 
 ---Delete the specific shortcut for the given command ID.
 ---See CountActionShortcuts, GetActionShortcutDesc, DoActionShortcutDialog.
----@param section KbdSectionInfo
+---@param section KbdSectionInfo|integer
 ---@param cmdID integer
 ---@param shortcutidx integer
 ---@return boolean retval
@@ -1160,7 +632,7 @@ function reaper.DestroyAudioAccessor(accessor) end
 ---Open the action shortcut dialog to edit or add a shortcut for the given command ID. If (shortcutidx >= 0 && shortcutidx < CountActionShortcuts()), that specific shortcut will be replaced, otherwise a new shortcut will be added.
 ---See CountActionShortcuts, GetActionShortcutDesc, DeleteActionShortcut.
 ---@param hwnd HWND
----@param section KbdSectionInfo
+---@param section KbdSectionInfo|integer
 ---@param cmdID integer
 ---@param shortcutidx integer
 ---@return boolean retval
@@ -1308,7 +780,7 @@ function reaper.EnumRegionRenderMatrix(proj, regionindex, rendertrack) end
 ---returns false if there are no plugins on the track that support MIDI programs,or if all programs have been enumerated
 ---@param track integer
 ---@param programNumber integer
----@param programName string 
+---@param programName string
 ---@return boolean retval
 ---@return string programName
 function reaper.EnumTrackMIDIProgramNames(track, programNumber, programName) end
@@ -1317,7 +789,7 @@ function reaper.EnumTrackMIDIProgramNames(track, programNumber, programName) end
 ---@param proj ReaProject|nil|0
 ---@param track MediaTrack
 ---@param programNumber integer
----@param programName string 
+---@param programName string
 ---@return boolean retval
 ---@return string programName
 function reaper.EnumTrackMIDIProgramNamesEx(proj, track, programNumber, programName) end
@@ -1384,7 +856,7 @@ function reaper.FindTempoTimeSigMarker(project, time) end
 
 ---Format tpos (which is time in seconds) as hh:mm:ss.sss. See format_timestr_pos, format_timestr_len.
 ---@param tpos number
----@param buf string 
+---@param buf string
 ---@return string buf
 function reaper.format_timestr(tpos, buf) end
 
@@ -1397,7 +869,7 @@ function reaper.format_timestr(tpos, buf) end
 ---5=h:m:s:f
 ---offset is start of where the length will be calculated from
 ---@param tpos number
----@param buf string 
+---@param buf string
 ---@param offset number
 ---@param modeoverride integer
 ---@return string buf
@@ -1411,12 +883,12 @@ function reaper.format_timestr_len(tpos, buf, offset, modeoverride) end
 ---4=samples
 ---5=h:m:s:f
 ---@param tpos number
----@param buf string 
+---@param buf string
 ---@param modeoverride integer
 ---@return string buf
 function reaper.format_timestr_pos(tpos, buf, modeoverride) end
 
----@param gGUID string 
+---@param gGUID string
 ---@return string gGUID
 function reaper.genGuid(gGUID) end
 
@@ -1432,7 +904,7 @@ function reaper.get_ini_file() end
 
 ---Get the text description of a specific shortcut for the given command ID.
 ---See CountActionShortcuts,DeleteActionShortcut,DoActionShortcutDialog.
----@param section KbdSectionInfo
+---@param section KbdSectionInfo|integer
 ---@param cmdID integer
 ---@param shortcutidx integer
 ---@return boolean retval
@@ -1465,7 +937,7 @@ function reaper.GetAudioAccessorEndTime(accessor) end
 
 ---Deprecated. See AudioAccessorStateChanged instead.
 ---@param accessor AudioAccessor
----@param hashNeed128 string 
+---@param hashNeed128 string
 ---@return string hashNeed128
 function reaper.GetAudioAccessorHash(accessor, hashNeed128) end
 
@@ -1483,7 +955,7 @@ function reaper.GetAudioAccessorHash(accessor, hashNeed128) end
 ---@param numchannels integer
 ---@param starttime_sec number
 ---@param numsamplesperchannel integer
----@param samplebuffer reaper.array 
+---@param samplebuffer reaper.array
 ---@return integer retval
 function reaper.GetAudioAccessorSamples(accessor, samplerate, numchannels, starttime_sec, numsamplesperchannel, samplebuffer) end
 
@@ -1611,7 +1083,7 @@ function reaper.GetEnvelopeScalingMode(env) end
 
 ---Gets the RPPXML state of an envelope, returns true if successful. Undo flag is a performance/caching hint.
 ---@param env TrackEnvelope
----@param str string 
+---@param str string
 ---@param isundo boolean
 ---@return boolean retval
 ---@return string str
@@ -1702,7 +1174,7 @@ function reaper.GetItemProjectContext(item) end
 
 ---Gets the RPPXML state of an item, returns true if successful. Undo flag is a performance/caching hint.
 ---@param item MediaItem
----@param str string 
+---@param str string
 ---@param isundo boolean
 ---@return boolean retval
 ---@return string str
@@ -1828,7 +1300,7 @@ function reaper.GetMediaItemTake_Item(take) end
 ---@param numchannels integer
 ---@param numsamplesperchannel integer
 ---@param want_extra_type integer
----@param buf reaper.array 
+---@param buf reaper.array
 ---@return integer retval
 function reaper.GetMediaItemTake_Peaks(take, peakrate, starttime, numchannels, numsamplesperchannel, want_extra_type, buf) end
 
@@ -1980,14 +1452,14 @@ function reaper.GetMediaTrackInfo_Value(tr, parmname) end
 
 ---returns true if device present
 ---@param dev integer
----@param nameout string 
+---@param nameout string
 ---@return boolean retval
 ---@return string nameout
 function reaper.GetMIDIInputName(dev, nameout) end
 
 ---returns true if device present
 ---@param dev integer
----@param nameout string 
+---@param nameout string
 ---@return boolean retval
 ---@return string nameout
 function reaper.GetMIDIOutputName(dev, nameout) end
@@ -2059,14 +1531,14 @@ function reaper.GetPeakFileName(fn) end
 
 ---get the peak file name for a given file (can be either filename.reapeaks,or a hashed filename in another path)
 ---@param fn string
----@param buf string 
+---@param buf string
 ---@param forWrite boolean
 ---@return string buf
 function reaper.GetPeakFileNameEx(fn, buf, forWrite) end
 
 ---Like GetPeakFileNameEx, but you can specify peaksfileextension such as ".reapeaks"
 ---@param fn string
----@param buf string 
+---@param buf string
 ---@param forWrite boolean
 ---@param peaksfileextension string
 ---@return string buf
@@ -2186,16 +1658,16 @@ function reaper.GetSelectedTrackEnvelope(proj) end
 ---@param isSet boolean
 ---@param screen_x_start integer
 ---@param screen_x_end integer
----@param start_time number 
----@param end_time number 
+---@param start_time number
+---@param end_time number
 ---@return number start_time
 ---@return number end_time
 function reaper.GetSet_ArrangeView2(proj, isSet, screen_x_start, screen_x_end, start_time, end_time) end
 
 ---@param isSet boolean
 ---@param isLoop boolean
----@param start number 
----@param end number 
+---@param start number
+---@param end number
 ---@param allowautoseek boolean
 ---@return number start
 ---@return number end
@@ -2204,8 +1676,8 @@ function reaper.GetSet_LoopTimeRange(isSet, isLoop, start, end, allowautoseek) e
 ---@param proj ReaProject|nil|0
 ---@param isSet boolean
 ---@param isLoop boolean
----@param start number 
----@param end number 
+---@param start number
+---@param end number
 ---@param allowautoseek boolean
 ---@return number start
 ---@return number end
@@ -2236,7 +1708,7 @@ function reaper.GetSetAutomationItemInfo(env, autoitem_idx, desc, value, is_set)
 ---@param env TrackEnvelope
 ---@param autoitem_idx integer
 ---@param desc string
----@param valuestrNeedBig string 
+---@param valuestrNeedBig string
 ---@param is_set boolean
 ---@return boolean retval
 ---@return string valuestrNeedBig
@@ -2252,7 +1724,7 @@ function reaper.GetSetAutomationItemInfo_String(env, autoitem_idx, desc, valuest
 ---Note that when writing some of these attributes you will need to manually update the arrange and/or track panels, see TrackList_AdjustWindows
 ---@param env TrackEnvelope
 ---@param parmname string
----@param stringNeedBig string 
+---@param stringNeedBig string
 ---@param setNewValue boolean
 ---@return boolean retval
 ---@return string stringNeedBig
@@ -2260,14 +1732,14 @@ function reaper.GetSetEnvelopeInfo_String(env, parmname, stringNeedBig, setNewVa
 
 ---deprecated -- see SetEnvelopeStateChunk, GetEnvelopeStateChunk
 ---@param env TrackEnvelope
----@param str string 
+---@param str string
 ---@return boolean retval
 ---@return string str
 function reaper.GetSetEnvelopeState(env, str) end
 
 ---deprecated -- see SetEnvelopeStateChunk, GetEnvelopeStateChunk
 ---@param env TrackEnvelope
----@param str string 
+---@param str string
 ---@param isundo boolean
 ---@return boolean retval
 ---@return string str
@@ -2275,14 +1747,14 @@ function reaper.GetSetEnvelopeState2(env, str, isundo) end
 
 ---deprecated -- see SetItemStateChunk, GetItemStateChunk
 ---@param item MediaItem
----@param str string 
+---@param str string
 ---@return boolean retval
 ---@return string str
 function reaper.GetSetItemState(item, str) end
 
 ---deprecated -- see SetItemStateChunk, GetItemStateChunk
 ---@param item MediaItem
----@param str string 
+---@param str string
 ---@param isundo boolean
 ---@return boolean retval
 ---@return string str
@@ -2294,7 +1766,7 @@ function reaper.GetSetItemState2(item, str, isundo) end
 ---GUID : GUID * : 16-byte GUID, can query or update. If using a _String() function, GUID is a string {xyz-...}.
 ---@param item MediaItem
 ---@param parmname string
----@param stringNeedBig string 
+---@param stringNeedBig string
 ---@param setNewValue boolean
 ---@return boolean retval
 ---@return string stringNeedBig
@@ -2306,7 +1778,7 @@ function reaper.GetSetMediaItemInfo_String(item, parmname, stringNeedBig, setNew
 ---GUID : GUID * : 16-byte GUID, can query or update. If using a _String() function, GUID is a string {xyz-...}.
 ---@param tk MediaItem_Take
 ---@param parmname string
----@param stringNeedBig string 
+---@param stringNeedBig string
 ---@param setNewValue boolean
 ---@return boolean retval
 ---@return string stringNeedBig
@@ -2327,7 +1799,7 @@ function reaper.GetSetMediaItemTakeInfo_String(tk, parmname, stringNeedBig, setN
 ---GUID : GUID * : 16-byte GUID, can query or update. If using a _String() function, GUID is a string {xyz-...}.
 ---@param tr MediaTrack
 ---@param parmname string
----@param stringNeedBig string 
+---@param stringNeedBig string
 ---@param setNewValue boolean
 ---@return boolean retval
 ---@return string stringNeedBig
@@ -2336,16 +1808,16 @@ function reaper.GetSetMediaTrackInfo_String(tr, parmname, stringNeedBig, setNewV
 ---deprecated, see GetSetProjectInfo_String with desc="PROJECT_AUTHOR"
 ---@param proj ReaProject|nil|0
 ---@param set boolean
----@param author string 
+---@param author string
 ---@return string author
 function reaper.GetSetProjectAuthor(proj, set, author) end
 
 ---Get or set the arrange view grid division. 0.25=quarter note, 1.0/3.0=half note triplet, etc. swingmode can be 1 for swing enabled, swingamt is -1..1. swingmode can be 3 for measure-grid. Returns grid configuration flags
 ---@param project ReaProject|nil|0
 ---@param set boolean
----@param division? number 
----@param swingmode? integer 
----@param swingamt? number 
+---@param division? number
+---@param swingmode? integer
+---@param swingamt? number
 ---@return integer retval
 ---@return number? division
 ---@return integer? swingmode
@@ -2402,7 +1874,7 @@ function reaper.GetSetProjectInfo(project, desc, value, is_set) end
 ---&nbsp;&nbsp;&nbsp;&nbsp;"wave" "aiff" "caff" "raw " "iso " "ddp " "flac" "mp3l" "oggv" "OggS" "FFMP" "WMF " "GIF " "LCF " "wvpk"
 ---@param project ReaProject|nil|0
 ---@param desc string
----@param valuestrNeedBig string 
+---@param valuestrNeedBig string
 ---@param is_set boolean
 ---@return boolean retval
 ---@return string valuestrNeedBig
@@ -2411,7 +1883,7 @@ function reaper.GetSetProjectInfo_String(project, desc, valuestrNeedBig, is_set)
 ---gets or sets project notes, notesNeedBig_sz is ignored when setting
 ---@param proj ReaProject|nil|0
 ---@param set boolean
----@param notes string 
+---@param notes string
 ---@return string notes
 function reaper.GetSetProjectNotes(proj, set, notes) end
 
@@ -2543,7 +2015,7 @@ function reaper.GetSetTrackGroupMembershipHigh(tr, groupname, setmask, setvalue)
 ---@param category integer
 ---@param sendidx integer
 ---@param parmname string
----@param stringNeedBig string 
+---@param stringNeedBig string
 ---@param setNewValue boolean
 ---@return boolean retval
 ---@return string stringNeedBig
@@ -2551,14 +2023,14 @@ function reaper.GetSetTrackSendInfo_String(tr, category, sendidx, parmname, stri
 
 ---deprecated -- see SetTrackStateChunk, GetTrackStateChunk
 ---@param track MediaTrack
----@param str string 
+---@param str string
 ---@return boolean retval
 ---@return string str
 function reaper.GetSetTrackState(track, str) end
 
 ---deprecated -- see SetTrackStateChunk, GetTrackStateChunk
 ---@param track MediaTrack
----@param str string 
+---@param str string
 ---@param isundo boolean
 ---@return boolean retval
 ---@return string str
@@ -2871,7 +2343,7 @@ function reaper.GetTrackState(track) end
 
 ---Gets the RPPXML state of a track, returns true if successful. Undo flag is a performance/caching hint.
 ---@param track MediaTrack
----@param str string 
+---@param str string
 ---@param isundo boolean
 ---@return boolean retval
 ---@return string str
@@ -2902,7 +2374,7 @@ function reaper.GetTrackUIVolPan(track) end
 function reaper.GetUnderrunTime() end
 
 ---returns true if the user selected a valid file, false if the user canceled the dialog
----@param filenameNeed4096 string 
+---@param filenameNeed4096 string
 ---@param title string
 ---@param defext string
 ---@return boolean retval
@@ -2915,7 +2387,7 @@ function reaper.GetUserFileNameForRead(filenameNeed4096, title, defext) end
 ---@param title string
 ---@param num_inputs integer
 ---@param captions_csv string
----@param retvals_csv string 
+---@param retvals_csv string
 ---@return boolean retval
 ---@return string retvals_csv
 function reaper.GetUserInputs(title, num_inputs, captions_csv, retvals_csv) end
@@ -2945,7 +2417,7 @@ function reaper.GSC_mainwnd(t) end
 
 ---dest should be at least 64 chars long to be safe
 ---@param gGUID string
----@param destNeed64 string 
+---@param destNeed64 string
 ---@return string destNeed64
 function reaper.guidToString(gGUID, destNeed64) end
 
@@ -2971,7 +2443,7 @@ function reaper.HasTrackMIDIProgramsEx(proj, track) end
 function reaper.Help_Set(helpstring, is_temporary_help) end
 
 ---@param in string
----@param out string 
+---@param out string
 ---@return string out
 function reaper.image_resolve_fn(in, out) end
 
@@ -3107,22 +2579,22 @@ function reaper.joystick_getpov(dev, pov) end
 ---@return boolean retval
 function reaper.joystick_update(dev) end
 
----@param section KbdSectionInfo
+---@param section KbdSectionInfo|integer
 ---@param idx integer
 ---@return integer retval
 ---@return string name
 function reaper.kbd_enumerateActions(section, idx) end
 
 ---@param cmd integer
----@param section KbdSectionInfo
+---@param section KbdSectionInfo|integer
 ---@return string retval
 function reaper.kbd_getTextFromCmd(cmd, section) end
 
 ---Returns false if the line is entirely offscreen.
----@param pX1 integer 
----@param pY1 integer 
----@param pX2 integer 
----@param pY2 integer 
+---@param pX1 integer
+---@param pY1 integer
+---@param pX2 integer
+---@param pY2 integer
 ---@param xLo integer
 ---@param yLo integer
 ---@param xHi integer
@@ -3418,11 +2890,11 @@ function reaper.MIDI_GetScale(take) end
 ---Get MIDI meta-event properties. Allowable types are -1:sysex (msg should not include bounding F0..F7), 1-14:MIDI text event types, 15=REAPER notation event. For all other meta-messages, type is returned as -2 and msg returned as all zeroes. See MIDI_GetEvt.
 ---@param take MediaItem_Take
 ---@param textsyxevtidx integer
----@param selected? boolean 
----@param muted? boolean 
----@param ppqpos? number 
----@param type? integer 
----@param msg? string 
+---@param selected? boolean
+---@param muted? boolean
+---@param ppqpos? number
+---@param type? integer
+---@param msg? string
 ---@return boolean retval
 ---@return boolean? selected
 ---@return boolean? muted
@@ -3517,7 +2989,7 @@ function reaper.MIDI_SetAllEvts(take, buf) end
 ---@param ccidx integer
 ---@param selectedIn? boolean
 ---@param mutedIn? boolean
----@param ppqposIn? number 
+---@param ppqposIn? number
 ---@param chanmsgIn? integer
 ---@param chanIn? integer
 ---@param msg2In? integer
@@ -3540,7 +3012,7 @@ function reaper.MIDI_SetCCShape(take, ccidx, shape, beztension, noSortIn) end
 ---@param evtidx integer
 ---@param selectedIn? boolean
 ---@param mutedIn? boolean
----@param ppqposIn? number 
+---@param ppqposIn? number
 ---@param msg? string
 ---@param noSortIn? boolean
 ---@return boolean retval
@@ -3558,8 +3030,8 @@ function reaper.MIDI_SetItemExtents(item, startQN, endQN) end
 ---@param noteidx integer
 ---@param selectedIn? boolean
 ---@param mutedIn? boolean
----@param startppqposIn? number 
----@param endppqposIn? number 
+---@param startppqposIn? number
+---@param endppqposIn? number
 ---@param chanIn? integer
 ---@param pitchIn? integer
 ---@param velIn? integer
@@ -3572,7 +3044,7 @@ function reaper.MIDI_SetNote(take, noteidx, selectedIn, mutedIn, startppqposIn, 
 ---@param textsyxevtidx integer
 ---@param selectedIn? boolean
 ---@param mutedIn? boolean
----@param ppqposIn? number 
+---@param ppqposIn? number
 ---@param typeIn? integer
 ---@param msg? string
 ---@param noSortIn? boolean
@@ -3660,25 +3132,25 @@ function reaper.MIDIEditor_SetSetting_int(midieditor, setting_desc, setting) end
 
 ---Get or set MIDI editor settings for this track. pitchwheelrange: semitones up or down. flags &1: snap pitch lane edits to semitones if pitchwheel range is defined.
 ---@param track MediaTrack
----@param pitchwheelrange integer 
----@param flags integer 
+---@param pitchwheelrange integer
+---@param flags integer
 ---@param is_set boolean
 ---@return integer pitchwheelrange
 ---@return integer flags
 function reaper.MIDIEditorFlagsForTrack(track, pitchwheelrange, flags, is_set) end
 
----@param strNeed64 string 
+---@param strNeed64 string
 ---@param pan number
 ---@return string strNeed64
 function reaper.mkpanstr(strNeed64, pan) end
 
----@param strNeed64 string 
+---@param strNeed64 string
 ---@param vol number
 ---@param pan number
 ---@return string strNeed64
 function reaper.mkvolpanstr(strNeed64, vol, pan) end
 
----@param strNeed64 string 
+---@param strNeed64 string
 ---@param vol number
 ---@return string strNeed64
 function reaper.mkvolstr(strNeed64, vol) end
@@ -3745,7 +3217,7 @@ function reaper.OpenMediaExplorer(mediafn, play) end
 
 ---Send an OSC message directly to REAPER. The value argument may be NULL. The message will be matched against the default OSC patterns.
 ---@param message string
----@param valueIn? number 
+---@param valueIn? number
 function reaper.OscLocalMessageToHost(message, valueIn) end
 
 ---Parse hh:mm:ss.sss time string, return time in seconds (or 0.0 on error). See parse_timestr_pos, parse_timestr_len.
@@ -3830,7 +3302,7 @@ function reaper.PCM_Source_Destroy(src) end
 ---@param numchannels integer
 ---@param numsamplesperchannel integer
 ---@param want_extra_type integer
----@param buf reaper.array 
+---@param buf reaper.array
 ---@return integer retval
 function reaper.PCM_Source_GetPeaks(src, peakrate, starttime, numchannels, numsamplesperchannel, want_extra_type, buf) end
 
@@ -3882,7 +3354,7 @@ function reaper.RefreshToolbar2(section_id, command_id) end
 
 ---Makes a filename "in" relative to the current project, if any.
 ---@param in string
----@param out string 
+---@param out string
 ---@return string out
 function reaper.relative_fn(in, out) end
 
@@ -3914,13 +3386,13 @@ function reaper.Resample_EnumModes(mode) end
 
 ---See resolve_fn2.
 ---@param in string
----@param out string 
+---@param out string
 ---@return string out
 function reaper.resolve_fn(in, out) end
 
 ---Resolves a filename "in" by using project settings etc. If no file found, out will be a copy of in.
 ---@param in string
----@param out string 
+---@param out string
 ---@param checkSubDir? string
 ---@return string out
 function reaper.resolve_fn2(in, out, checkSubDir) end
@@ -3995,10 +3467,10 @@ function reaper.SetEditCurPos2(proj, time, moveview, seekplay) end
 ---Set attributes of an envelope point. Values that are not supplied will be ignored. If setting multiple points at once, set noSort=true, and call Envelope_SortPoints when done. See SetEnvelopePointEx.
 ---@param envelope TrackEnvelope
 ---@param ptidx integer
----@param timeIn? number 
----@param valueIn? number 
+---@param timeIn? number
+---@param valueIn? number
 ---@param shapeIn? integer
----@param tensionIn? number 
+---@param tensionIn? number
 ---@param selectedIn? boolean
 ---@param noSortIn? boolean
 ---@return boolean retval
@@ -4013,10 +3485,10 @@ function reaper.SetEnvelopePoint(envelope, ptidx, timeIn, valueIn, shapeIn, tens
 ---@param envelope TrackEnvelope
 ---@param autoitem_idx integer
 ---@param ptidx integer
----@param timeIn? number 
----@param valueIn? number 
+---@param timeIn? number
+---@param valueIn? number
 ---@param shapeIn? integer
----@param tensionIn? number 
+---@param tensionIn? number
 ---@param selectedIn? boolean
 ---@param noSortIn? boolean
 ---@return boolean retval
@@ -4335,7 +3807,7 @@ function reaper.SetRegionRenderMatrix(proj, regionindex, track, flag) end
 ---@param take MediaItem_Take
 ---@param idx integer
 ---@param nameIn string
----@param srcposIn? number 
+---@param srcposIn? number
 ---@param colorIn? integer
 ---@return integer retval
 function reaper.SetTakeMarker(take, idx, nameIn, srcposIn, colorIn) end
@@ -4344,7 +3816,7 @@ function reaper.SetTakeMarker(take, idx, nameIn, srcposIn, colorIn) end
 ---@param take MediaItem_Take
 ---@param idx integer
 ---@param pos number
----@param srcposIn? number 
+---@param srcposIn? number
 ---@return integer retval
 function reaper.SetTakeStretchMarker(take, idx, pos, srcposIn) end
 
@@ -5285,7 +4757,7 @@ function reaper.SetTrackUIVolume(track, volume, relative, done, igngroupflags) e
 ---@return number retval
 function reaper.SetTrackUIWidth(track, width, relative, done, igngroupflags) end
 
----@param section KbdSectionInfo
+---@param section KbdSectionInfo|integer
 ---@param callerWnd HWND
 function reaper.ShowActionList(section, callerWnd) end
 
@@ -5334,7 +4806,7 @@ function reaper.Splash_GetWnd() end
 function reaper.SplitMediaItem(item, position) end
 
 ---@param str string
----@param gGUID string 
+---@param gGUID string
 ---@return string gGUID
 function reaper.stringToGuid(str, gGUID) end
 
@@ -5395,7 +4867,7 @@ function reaper.TakeFX_FormatParamValue(take, fx, param, val) end
 ---@param fx integer
 ---@param param integer
 ---@param value number
----@param buf string 
+---@param buf string
 ---@return boolean retval
 ---@return string buf
 function reaper.TakeFX_FormatParamValueNormalized(take, fx, param, value, buf) end
@@ -5764,7 +5236,7 @@ function reaper.TimeMap_GetMeasureInfo(proj, measure) end
 ---Fills in a string representing the active metronome pattern. For example, in a 7/8 measure divided 3+4, the pattern might be "ABCABCD". For backwards compatibility, by default the function will return 1 for each primary beat and 2 for each non-primary beat, so "1221222" in this example, and does not support triplets. If buf is set to "EXTENDED", the function will return the full string as displayed in the pattern editor, including all beat types and triplet representations. Pass in "SET:string" with a correctly formed pattern string matching the current time signature numerator to set the click pattern. The time signature numerator can be deduced from the returned string, and the function returns the time signature denominator.
 ---@param proj ReaProject|nil|0
 ---@param time number
----@param pattern string 
+---@param pattern string
 ---@return integer retval
 ---@return string pattern
 function reaper.TimeMap_GetMetronomePattern(proj, time, pattern) end
@@ -5884,7 +5356,7 @@ function reaper.TrackFX_FormatParamValue(track, fx, param, val) end
 ---@param fx integer
 ---@param param integer
 ---@param value number
----@param buf string 
+---@param buf string
 ---@return boolean retval
 ---@return string buf
 function reaper.TrackFX_FormatParamValueNormalized(track, fx, param, value, buf) end
@@ -6673,7 +6145,7 @@ function reaper.BR_GetMouseCursorContext_Item() end
 ---ccLaneVal: value in CC lane under mouse cursor (0-127 or 0-16383)
 ---ccLaneId: lane position, counting from the top (0 based)
 ---Note: due to API limitations, if mouse is over inline MIDI editor with some note rows hidden, noteRow will be -1
----@return identifier retval
+---@return userdata retval
 ---@return boolean inlineEditor
 ---@return integer noteRow
 ---@return integer ccLane
@@ -6892,7 +6364,7 @@ function reaper.BR_Win32_ClientToScreen(hwnd, xIn, yIn) end
 ---@param windowName string
 ---@param searchClass boolean
 ---@param searchName boolean
----@return identifier retval
+---@return userdata retval
 function reaper.BR_Win32_FindWindowEx(hwndParent, hwndChildAfter, className, windowName, searchClass, searchName) end
 
 ---[BR] Equivalent to win32 API GET_X_LPARAM().
@@ -6927,19 +6399,19 @@ function reaper.BR_Win32_GetConstant(constantName) end
 function reaper.BR_Win32_GetCursorPos() end
 
 ---[BR] Equivalent to win32 API GetFocus().
----@return identifier retval
+---@return userdata retval
 function reaper.BR_Win32_GetFocus() end
 
 ---[BR] Equivalent to win32 API GetForegroundWindow().
----@return identifier retval
+---@return userdata retval
 function reaper.BR_Win32_GetForegroundWindow() end
 
 ---[BR] Alternative to GetMainHwnd. REAPER seems to have problems with extensions using HWND type for exported functions so all BR_Win32 functions use void* instead of HWND type
----@return identifier retval
+---@return userdata retval
 function reaper.BR_Win32_GetMainHwnd() end
 
 ---[BR] Get mixer window HWND. isDockedOut will be set to true if mixer is docked
----@return identifier retval
+---@return userdata retval
 ---@return boolean isDocked
 function reaper.BR_Win32_GetMixerHwnd() end
 
@@ -6957,7 +6429,7 @@ function reaper.BR_Win32_GetMonitorRectFromRect(workingAreaOnly, leftIn, topIn, 
 
 ---[BR] Equivalent to win32 API GetParent().
 ---@param hwnd userdata
----@return identifier retval
+---@return userdata retval
 function reaper.BR_Win32_GetParent(hwnd) end
 
 ---[BR] Equivalent to win32 API GetPrivateProfileString(). For example, you can use this to get values from REAPER.ini.
@@ -6972,7 +6444,7 @@ function reaper.BR_Win32_GetPrivateProfileString(sectionName, keyName, defaultSt
 ---[BR] Equivalent to win32 API GetWindow().
 ---@param hwnd userdata
 ---@param cmd integer
----@return identifier retval
+---@return userdata retval
 function reaper.BR_Win32_GetWindow(hwnd, cmd) end
 
 ---[BR] Equivalent to win32 API GetWindowLong().
@@ -7062,7 +6534,7 @@ function reaper.BR_Win32_MAKEWORD(low, high) end
 function reaper.BR_Win32_MAKEWPARAM(low, high) end
 
 ---[BR] Alternative to MIDIEditor_GetActive. REAPER seems to have problems with extensions using HWND type for exported functions so all BR_Win32 functions use void* instead of HWND type.
----@return identifier retval
+---@return userdata retval
 function reaper.BR_Win32_MIDIEditor_GetActive() end
 
 ---[BR] Equivalent to win32 API ClientToScreen().
@@ -7083,7 +6555,7 @@ function reaper.BR_Win32_SendMessage(hwnd, msg, lParam, wParam) end
 
 ---[BR] Equivalent to win32 API SetFocus().
 ---@param hwnd userdata
----@return identifier retval
+---@return userdata retval
 function reaper.BR_Win32_SetFocus(hwnd) end
 
 ---[BR] Equivalent to win32 API SetForegroundWindow().
@@ -7127,13 +6599,13 @@ function reaper.BR_Win32_ShowWindow(hwnd, cmdShow) end
 
 ---[BR] Convert string to HWND. To convert HWND back to string, see BR_Win32_HwndToString.
 ---@param string string
----@return identifier retval
+---@return userdata retval
 function reaper.BR_Win32_StringToHwnd(string) end
 
 ---[BR] Equivalent to win32 API WindowFromPoint().
 ---@param x integer
 ---@param y integer
----@return identifier retval
+---@return userdata retval
 function reaper.BR_Win32_WindowFromPoint(x, y) end
 
 ---[BR] Equivalent to win32 API WritePrivateProfileString(). For example, you can use this to write to REAPER.ini. You can pass an empty string as value to delete a key.
@@ -7221,7 +6693,7 @@ function reaper.CF_GetMediaSourceBitRate(src) end
 ---Get the value of the given metadata field (eg. DESC, ORIG, ORIGREF, DATE, TIME, UMI, CODINGHISTORY for BWF).
 ---@param src PCM_source
 ---@param name string
----@param out string 
+---@param out string
 ---@return boolean retval
 ---@return string out
 function reaper.CF_GetMediaSourceMetadata(src, name, out) end
@@ -7283,7 +6755,7 @@ function reaper.CF_NormalizeUTF8(input, mode) end
 ---@param offset number
 ---@param length number
 ---@param reverse boolean
----@param fadeIn? number 
+---@param fadeIn? number
 ---@return boolean retval
 function reaper.CF_PCM_Source_SetSectionInfo(section, source, offset, length, reverse, fadeIn) end
 
@@ -7607,7 +7079,7 @@ function reaper.JS_File_Stat(filePath) end
 function reaper.JS_GDI_Blit(destHDC, dstx, dsty, sourceHDC, srcx, srxy, width, height, mode) end
 
 ---@param color integer
----@return identifier retval
+---@return userdata retval
 function reaper.JS_GDI_CreateFillBrush(color) end
 
 ---Parameters:
@@ -7622,12 +7094,12 @@ function reaper.JS_GDI_CreateFillBrush(color) end
 ---@param underline boolean
 ---@param strike boolean
 ---@param fontName string
----@return identifier retval
+---@return userdata retval
 function reaper.JS_GDI_CreateFont(height, weight, angle, italic, underline, strike, fontName) end
 
 ---@param width integer
 ---@param color integer
----@return identifier retval
+---@return userdata retval
 function reaper.JS_GDI_CreatePen(width, color) end
 
 ---@param GDIObject userdata
@@ -7678,12 +7150,12 @@ function reaper.JS_GDI_FillRoundRect(deviceHDC, left, top, right, bottom, xrnd, 
 
 ---Returns the device context for the client area of the specified window.
 ---@param windowHWND userdata
----@return identifier retval
+---@return userdata retval
 function reaper.JS_GDI_GetClientDC(windowHWND) end
 
 ---Returns a device context for the entire screen.
 ---WARNING: Only available on Windows, not Linux or macOS.
----@return identifier retval
+---@return userdata retval
 function reaper.JS_GDI_GetScreenDC() end
 
 ---@param GUIElement string
@@ -7696,7 +7168,7 @@ function reaper.JS_GDI_GetTextColor(deviceHDC) end
 
 ---Returns the device context for the entire window, including title bar and frame.
 ---@param windowHWND userdata
----@return identifier retval
+---@return userdata retval
 function reaper.JS_GDI_GetWindowDC(windowHWND) end
 
 ---@param deviceHDC userdata
@@ -7724,7 +7196,7 @@ function reaper.JS_GDI_ReleaseDC(deviceHDC, windowHWND) end
 ---Activates a font, pen, or fill brush for subsequent drawing in the specified device context.
 ---@param deviceHDC userdata
 ---@param GDIObject userdata
----@return identifier retval
+---@return userdata retval
 function reaper.JS_GDI_SelectObject(deviceHDC, GDIObject) end
 
 ---@param deviceHDC userdata
@@ -7861,10 +7333,10 @@ function reaper.JS_LICE_Clear(bitmap, color) end
 ---@param isSysBitmap boolean
 ---@param width integer
 ---@param height integer
----@return identifier retval
+---@return userdata retval
 function reaper.JS_LICE_CreateBitmap(isSysBitmap, width, height) end
 
----@return identifier retval
+---@return userdata retval
 function reaper.JS_LICE_CreateFont() end
 
 ---Deletes the bitmap, and also unlinks bitmap from any composited window.
@@ -7945,7 +7417,7 @@ function reaper.JS_LICE_FillRect(bitmap, x, y, w, h, color, alpha, mode) end
 function reaper.JS_LICE_FillTriangle(bitmap, x1, y1, x2, y2, x3, y3, color, alpha, mode) end
 
 ---@param bitmap userdata
----@return identifier retval
+---@return userdata retval
 function reaper.JS_LICE_GetDC(bitmap) end
 
 ---@param bitmap userdata
@@ -8006,24 +7478,24 @@ function reaper.JS_LICE_ListAllBitmaps() end
 
 ---Returns a system LICE bitmap containing the JPEG.
 ---@param filename string
----@return identifier retval
+---@return userdata retval
 function reaper.JS_LICE_LoadJPG(filename) end
 
 ---Returns a system LICE bitmap containing the JPEG.
 ---@param buffer string
 ---@param bufsize integer
----@return identifier retval
+---@return userdata retval
 function reaper.JS_LICE_LoadJPGFromMemory(buffer, bufsize) end
 
 ---Returns a system LICE bitmap containing the PNG.
 ---@param filename string
----@return identifier retval
+---@return userdata retval
 function reaper.JS_LICE_LoadPNG(filename) end
 
 ---Returns a system LICE bitmap containing the PNG.
 ---@param buffer string
 ---@param bufsize integer
----@return identifier retval
+---@return userdata retval
 function reaper.JS_LICE_LoadPNGFromMemory(buffer, bufsize) end
 
 ---@param text string
@@ -8174,7 +7646,7 @@ function reaper.JS_ListView_EnumSelItems(listviewHWND, index) end
 function reaper.JS_ListView_GetFocusedItem(listviewHWND) end
 
 ---@param listviewHWND userdata
----@return identifier retval
+---@return userdata retval
 function reaper.JS_ListView_GetHeader(listviewHWND) end
 
 ---Returns the text and state of specified item.
@@ -8278,7 +7750,7 @@ function reaper.JS_MIDIEditor_ListAll() end
 
 ---Allocates memory for general use by functions that require memory buffers.
 ---@param sizeBytes integer
----@return identifier retval
+---@return userdata retval
 function reaper.JS_Mem_Alloc(sizeBytes) end
 
 ---Frees memory that was previously allocated by JS_Mem_Alloc.
@@ -8296,7 +7768,7 @@ function reaper.JS_Mem_FromString(mallocPointer, offset, packedString, stringLen
 
 ---On Windows, retrieves a handle to the current mouse cursor.
 ---On Linux and macOS, retrieves a handle to the last cursor set by REAPER or its extensions via SWELL.
----@return identifier retval
+---@return userdata retval
 function reaper.JS_Mouse_GetCursor() end
 
 ---Retrieves the states of mouse buttons and modifiers keys.
@@ -8310,7 +7782,7 @@ function reaper.JS_Mouse_GetState(flags) end
 ---cursorNumber: Same as used for gfx.setcursor, and includes some of Windows' predefined cursors (with numbers > 32000; refer to documentation for the Win32 C++ function LoadCursor), and REAPER's own cursors (with numbers < 2000).
 ---If successful, returns a handle to the cursor, which can be used in JS_Mouse_SetCursor.
 ---@param cursorNumber integer
----@return identifier retval
+---@return userdata retval
 function reaper.JS_Mouse_LoadCursor(cursorNumber) end
 
 ---Loads a cursor from a .cur file.
@@ -8321,7 +7793,7 @@ function reaper.JS_Mouse_LoadCursor(cursorNumber) end
 ---If successful, returns a handle to the cursor, which can be used in JS_Mouse_SetCursor.
 ---@param pathAndFileName string
 ---@param forceNewLoad unsupported
----@return identifier retval
+---@return userdata retval
 function reaper.JS_Mouse_LoadCursorFromFile(pathAndFileName, forceNewLoad) end
 
 ---Sets the mouse cursor.  (Only lasts while script is running, and for a single "defer" cycle.)
@@ -8582,9 +8054,9 @@ function reaper.JS_Window_ClientToScreen(windowHWND, x, y) end
 ---@param y integer
 ---@param w integer
 ---@param h integer
----@param style? string 
+---@param style? string
 ---@param ownerHWND userdata
----@return identifier retval
+---@return userdata retval
 ---@return string? style
 function reaper.JS_Window_Create(title, className, x, y, w, h, style, ownerHWND) end
 
@@ -8616,7 +8088,7 @@ function reaper.JS_Window_EnableMetal(windowHWND) end
 --- * exact: Match entire title, or match substring of title.
 ---@param title string
 ---@param exact boolean
----@return identifier retval
+---@return userdata retval
 function reaper.JS_Window_Find(title, exact) end
 
 ---Returns a HWND to a child window whose title matches the specified string.
@@ -8625,14 +8097,14 @@ function reaper.JS_Window_Find(title, exact) end
 ---@param parentHWND userdata
 ---@param title string
 ---@param exact boolean
----@return identifier retval
+---@return userdata retval
 function reaper.JS_Window_FindChild(parentHWND, title, exact) end
 
 ---Similar to the C++ WIN32 function GetDlgItem, this function finds child windows by ID.
 ---(The ID of a window may be retrieved by JS_Window_GetLongPtr.)
 ---@param parentHWND userdata
 ---@param ID integer
----@return identifier retval
+---@return userdata retval
 function reaper.JS_Window_FindChildByID(parentHWND, ID) end
 
 ---Returns a handle to a child window whose class and title match the specified strings.
@@ -8642,7 +8114,7 @@ function reaper.JS_Window_FindChildByID(parentHWND, ID) end
 ---@param childHWND userdata
 ---@param className string
 ---@param title string
----@return identifier retval
+---@return userdata retval
 function reaper.JS_Window_FindEx(parentHWND, childHWND, className, title) end
 
 ---Returns a HWND to a top-level window whose title matches the specified string.
@@ -8650,7 +8122,7 @@ function reaper.JS_Window_FindEx(parentHWND, childHWND, className, title) end
 --- * exact: Match entire title length, or match substring of title. In both cases, matching is not case sensitive.
 ---@param title string
 ---@param exact boolean
----@return identifier retval
+---@return userdata retval
 function reaper.JS_Window_FindTop(title, exact) end
 
 ---Retrieves a HWND to the window that contains the specified point.
@@ -8659,7 +8131,7 @@ function reaper.JS_Window_FindTop(title, exact) end
 --- * On macOS, screen coordinates are relative to the *bottom* left corner of the primary display, and the positive Y-axis points upward.
 ---@param x integer
 ---@param y integer
----@return identifier retval
+---@return userdata retval
 function reaper.JS_Window_FromPoint(x, y) end
 
 ---WARNING: May not be fully implemented on macOS and Linux.
@@ -8688,11 +8160,11 @@ function reaper.JS_Window_GetClientRect(windowHWND) end
 function reaper.JS_Window_GetClientSize(windowHWND) end
 
 ---Retrieves a HWND to the window that has the keyboard focus, if the window is attached to the calling thread's message queue.
----@return identifier retval
+---@return userdata retval
 function reaper.JS_Window_GetFocus() end
 
 ---Retrieves a HWND to the top-level foreground window (the window with which the user is currently working).
----@return identifier retval
+---@return userdata retval
 function reaper.JS_Window_GetForeground() end
 
 ---Similar to JS_Window_GetLongPtr, but returns the information as a number instead of a pointer. 
@@ -8710,13 +8182,13 @@ function reaper.JS_Window_GetLong(windowHWND, info) end
 ---If the function fails, a null pointer is returned.
 ---@param windowHWND userdata
 ---@param info string
----@return identifier retval
+---@return userdata retval
 function reaper.JS_Window_GetLongPtr(windowHWND, info) end
 
 ---Retrieves a HWND to the specified window's parent or owner.
 ---Returns NULL if the window is unowned or if the function otherwise fails.
 ---@param windowHWND userdata
----@return identifier retval
+---@return userdata retval
 function reaper.JS_Window_GetParent(windowHWND) end
 
 ---Retrieves the screen coordinates of the bounding rectangle of the specified window.
@@ -8737,7 +8209,7 @@ function reaper.JS_Window_GetRect(windowHWND) end
 ---(Refer to documentation for Win32 C++ function GetWindow.)
 ---@param windowHWND userdata
 ---@param relation string
----@return identifier retval
+---@return userdata retval
 function reaper.JS_Window_GetRelated(windowHWND, relation) end
 
 ---Retrieves the scroll information of a window.
@@ -8777,7 +8249,7 @@ function reaper.JS_Window_GetViewportFromRect(x1, y1, x2, y2, wantWork) end
 
 ---Converts an address to a handle (such as a HWND) that can be utilized by REAPER and other API functions.
 ---@param address number
----@return identifier retval
+---@return userdata retval
 function reaper.JS_Window_HandleFromAddress(address) end
 
 ---Similar to the Win32 function InvalidateRect.
@@ -8923,7 +8395,7 @@ function reaper.JS_Window_SetOpacity(windowHWND, mode, value) end
 ---Only on WindowsOS: If parentHWND is not specified, the desktop window becomes the new parent window.
 ---@param childHWND userdata
 ---@param parentHWND userdata
----@return identifier retval
+---@return userdata retval
 function reaper.JS_Window_SetParent(childHWND, parentHWND) end
 
 ---Interface to the Win32/swell function SetWindowPos, with which window position, size, Z-order and visibility can be set, and new frame styles can be applied.
@@ -8935,8 +8407,8 @@ function reaper.JS_Window_SetParent(childHWND, parentHWND) end
 ---@param top integer
 ---@param width integer
 ---@param height integer
----@param ZOrder? string 
----@param flags? string 
+---@param ZOrder? string
+---@param flags? string
 ---@return boolean retval
 ---@return string? ZOrder
 ---@return string? flags
@@ -8955,7 +8427,7 @@ function reaper.JS_Window_SetScrollPos(windowHWND, scrollbar, position) end
 ---style may include any combination of standard window styles, such as "POPUP" for a frameless window, or "CAPTION,SIZEBOX,SYSMENU" for a standard framed window.
 ---On Linux and macOS, "MAXIMIZE" has not yet been implmented, and the remaining styles may appear slightly different from their WindowsOS counterparts.
 ---@param windowHWND userdata
----@param style string 
+---@param style string
 ---@return boolean retval
 ---@return string style
 function reaper.JS_Window_SetStyle(windowHWND, style) end
@@ -9099,7 +8571,7 @@ function reaper.JS_Zip_ListAllEntries(zipHandle) end
 ---@param zipFile string
 ---@param mode string
 ---@param compressionLevel integer
----@return identifier retval
+---@return userdata retval
 ---@return integer retval
 function reaper.JS_Zip_Open(zipFile, mode, compressionLevel) end
 
@@ -9684,13 +9156,13 @@ function reaper.sm_getPort() end
 function reaper.sm_getadvance() end
 
 ---Return's metadata for a record.
----@param filepath string 
+---@param filepath string
 ---@return string retval
 ---@return string filepath
 function reaper.sm_metadata(filepath) end
 
 ---Query Soundminer from nvk_CREATE.
----@param query string 
+---@param query string
 ---@param offset integer
 ---@param maxlimit integer
 ---@return string retval
@@ -9704,7 +9176,7 @@ function reaper.sm_nvk_CREATE(query, offset, maxlimit) end
 function reaper.sm_nvk_CREATE_current(offset, maxlimit) end
 
 ---Return's a real filepath for a file, resolving it as necesary. Return's nil if offline.
----@param path string 
+---@param path string
 ---@return string retval
 ---@return string path
 function reaper.sm_resolvepath(path) end
@@ -9721,3 +9193,530 @@ function reaper.sm_setformat(format) end
 ---ReaScript/EEL2 Built-in Function List
 ---@return string retval
 function reaper.sm_version() end
+
+---Causes gmem_read()/gmem_write() to read EEL2/JSFX/Video shared memory segment named by parameter. Set to empty string to detach. 6.20+: returns previous shared memory segment name.Must be called, before you can use a specific gmem-variable-index with gmem_write!
+---@param sharedMemoryName string
+---@return string former_attached_gmemname
+function reaper.gmem_attach(sharedMemoryName) end
+
+---Read (number) value from shared memory attached-to by gmem_attach(). index can be [0..1<<25).returns nil if not available
+---@param index integer
+---@return number retval
+function reaper.gmem_read(index) end
+
+---Write (number) value to shared memory attached-to by gmem_attach(). index can be [0..1<<25).Before you can write into a currently unused variable with index "index", you must call gmem_attach first!
+---@param index integer
+---@param value number
+function reaper.gmem_write(index, value) end
+
+
+--- @class reaper.array : { [integer]: number }
+local reaper_array = {}
+
+---Creates a new reaper.array object of maximum and initial size size, if specified, or from the size/values of a table/array. Both size and table/array can be specified, the size parameter will override the table/array size.
+--- @overload fun(table: reaper.array): reaper.array
+--- @overload fun(table: reaper.array, size: integer): reaper.array
+--- @overload fun(size: integer, table: reaper.array): reaper.array
+--- @param size integer
+--- @return reaper.array
+function reaper.new_array(size) end
+
+---Sets the value of zero or more items in the array. If value not specified, 0.0 is used. offset is 1-based, if size omitted then the maximum amount available will be set.
+---@param value? number|string
+---@param offset? integer
+---@param size? integer
+---@return boolean retval
+function reaper_array.clear(value, offset, size) end
+
+---Convolves complex value pairs from reaper.array, starting at 1-based srcoffs, reading/writing to 1-based destoffs. size is in normal items (so it must be even)
+---@param src? reaper.array
+---@param srcoffs? integer
+---@param size? integer
+---@param destoffs? integer
+---@return integer retval
+function reaper_array.convolve(src, srcoffs, size, destoffs) end
+
+---Copies values from reaper.array or table, starting at 1-based srcoffs, writing to 1-based destoffs.
+---@param src? reaper.array
+---@param srcoffs? integer
+---@param size? integer
+---@param destoffs? integer
+---@return integer retval
+function reaper_array.copy(src, srcoffs, size, destoffs) end
+
+---Performs a forward FFT of size. size must be a power of two between 4 and 32768 inclusive. If permute is specified and true, the values will be shuffled following the FFT to be in normal order.
+---@param size integer
+---@param permute? boolean
+---@param offset? integer
+---@return boolean retval
+function reaper_array.fft(size, permute, offset) end
+
+---Performs a forward real->complex FFT of size. size must be a power of two between 4 and 32768 inclusive. If permute is specified and true, the values will be shuffled following the FFT to be in normal order.
+---@param size integer
+---@param permute? boolean
+---@param offset? integer
+---@return boolean retval
+function reaper_array.fft_real(size, permute, offset) end
+
+---Returns the maximum (allocated) size of the array.
+---@return integer size
+function reaper_array.get_alloc() end
+
+---Performs a backwards FFT of size. size must be a power of two between 4 and 32768 inclusive. If permute is specified and true, the values will be shuffled before the IFFT to be in fft-order.
+---@param size integer
+---@param permute? boolean
+---@param offset? integer
+---@return boolean retval
+function reaper_array.ifft(size, permute, offset) end
+
+---Performs a backwards complex->real FFT of size. size must be a power of two between 4 and 32768 inclusive. If permute is specified and true, the values will be shuffled before the IFFT to be in fft-order.
+---@param size integer
+---@param permute? boolean
+---@param offset? integer
+---@return boolean retval
+function reaper_array.ifft_real(size, permute, offset) end
+
+---Multiplies values from reaper.array, starting at 1-based srcoffs, reading/writing to 1-based destoffs.
+---@param src? reaper.array
+---@param srcoffs? integer
+---@param size? integer
+---@param destoffs? number
+---@return integer retvals
+function reaper_array.multiply(src, srcoffs, size, destoffs) end
+
+---Resizes an array object to size. size must be [0..max_size].
+---@param size integer
+---@return boolean retval
+function reaper_array.resize(size) end
+
+---Returns a new table with values from items in the array. Offset is 1-based and if size is omitted all available values are used.
+---@param offset? integer
+---@param size? integer
+---@return table new_table
+function reaper_array.table(offset, size) end
+
+--- @class gfx
+--- @field r number current red component (0..1) used by drawing operations.
+--- @field g number current green component (0..1) used by drawing operations.
+--- @field b number current blue component (0..1) used by drawing operations.
+--- @field a2 number  current alpha component (0..1) used by drawing operations when writing solid colors (normally ignored but useful when creating transparent images).
+--- @field a number alpha for drawing (1=normal).
+--- @field mode number blend mode for drawing. Set mode to 0 for default options. Add 1.0 for additive blend mode (if you wish to do subtractive, set gfx.a to negative and use gfx.mode as additive). Add 2.0 to disable source alpha for gfx.blit(). Add 4.0 to disable filtering for gfx.blit().
+--- @field w number width of the UI framebuffer.
+--- @field h number height of the UI framebuffer.
+--- @field x number current graphics position X. Some drawing functions use as start position and update.
+--- @field y number current graphics position Y. Some drawing functions use as start position and update.
+--- @field clear number if greater than -1.0, framebuffer will be cleared to that color. the color for this one is packed RGB (0..255), i.e. red+green*256+blue*65536. The default is 0 (black).
+--- @field dest number destination for drawing operations, -1 is main framebuffer, set to 0..1024-1 to have drawing operations go to an offscreen buffer (or loaded image).
+--- @field texth number the (READ-ONLY) height of a line of text in the current font. Do not modify this variable.
+--- @field ext_retina number to support hidpi/retina, callers should set to 1.0 on initialization, this value will be updated to value greater than 1.0 (such as 2.0) if retina/hidpi. On macOS gfx.w/gfx.h/etc will be doubled, but on other systems gfx.w/gfx.h will remain the same and gfx.ext_retina is a scaling hint for drawing.
+--- @field mouse_x number current X coordinate of the mouse relative to the graphics window.
+--- @field mouse_y number current Y coordinate of the mouse relative to the graphics window.
+--- @field mouse_wheel number wheel position, will change typically by 120 or a multiple thereof, the caller should clear the state to 0 after reading it.
+--- @field mouse_hwheel number horizontal wheel positions, will change typically by 120 or a multiple thereof, the caller should clear the state to 0 after reading it.
+--- @field mouse_cap number a bitfield of mouse and keyboard modifier state:
+gfx = {}
+
+---Draws an arc of the circle centered at x,y, with ang1/ang2 being specified in radians.
+---@param x number
+---@param y number
+---@param r number
+---@param ang1 number
+---@param ang2 number
+---@param antialias? number
+function gfx.arc(x, y, r, ang1, ang2, antialias) end
+
+---Blits(draws) the content of source-image to another source-image or an opened window.Copies from source (-1 = main framebuffer, or an image from gfx.loadimg() etc), using current opacity and copy mode (set with gfx.a, gfx.mode).If destx/desty are not specified, gfx.x/gfx.y will be used as the destination position.scale (1.0 is unscaled) will be used only if destw/desth are not specified.rotation is an angle in radianssrcx/srcy/srcw/srch specify the source rectangle (if omitted srcw/srch default to image size)destx/desty/destw/desth specify destination rectangle (if not specified destw/desth default to srcw/srch * scale).
+---@param source number
+---@param scale number
+---@param rotation number
+---@param srcx? number
+---@param srcy? number
+---@param srcw? number
+---@param srch? number
+---@param destx? number
+---@param desty? number
+---@param destw? number
+---@param desth? number
+---@param rotxoffs? number
+---@param rotyoffs? number
+---@return number source
+function gfx.blit(source, scale, rotation, srcx, srcy, srcw, srch, destx, desty, destw, desth, rotxoffs, rotyoffs) end
+
+---Deprecated, use gfx.blit instead.Note: the naming of the function might be misleading, as it has nothing to do with blitting of text, but rather is called Blit Ext.
+---@param source number
+---@param coordinatelist number
+---@param rotation number
+---@return number retval
+function gfx.blitext(source, coordinatelist, rotation) end
+
+---Blurs the region of the screen between gfx.x,gfx.y and x,y, and updates gfx.x,gfx.y to x,y.
+---@param x number
+---@param y number
+function gfx.blurto(x, y) end
+
+---Draws a circle, optionally filling/antialiasing. 
+---@param x number
+---@param y number
+---@param r number
+---@param fill? number
+---@param antialias? number
+function gfx.circle(x, y, r, fill, antialias) end
+
+---Converts the coordinates x,y to screen coordinates, returns those values.
+---@param x number
+---@param y number
+---@return number convx
+---@return number convy
+function gfx.clienttoscreen(x, y) end
+
+---Blits from srcimg(srcs,srct,srcw,srch) to destination (destx,desty,destw,desth). Source texture coordinates are s/t, dsdx represents the change in s coordinate for each x pixel, dtdy represents the change in t coordinate for each y pixel, etc. dsdxdy represents the change in dsdx for each line. If usecliprect is specified and 0, then srcw/srch are ignored.This function allows you to manipulate the image, which you want to blit, by transforming, moving or cropping it.To do rotation, you can manipulate dtdx and dsdy together.
+---@param srcimg number
+---@param srcs number
+---@param srct number
+---@param srcw number
+---@param srch number
+---@param destx number
+---@param desty number
+---@param destw number
+---@param desth number
+---@param dsdx number
+---@param dtdx number
+---@param dsdy number
+---@param dtdy number
+---@param dsdxdy number
+---@param dtdxdy number
+---@param usecliprect? number
+---@return number retval
+function gfx.deltablit(srcimg, srcs, srct, srcw, srch, destx, desty, destw, desth, dsdx, dtdx, dsdy, dtdy, dsdxdy, dtdxdy, usecliprect) end
+
+---Queries or sets the docking-state of the gfx.init()-window.
+---Call with v=-1 to query docked state, otherwise v>=0 to set docked state. 
+---State is &1 if docked, second byte is docker index (or last docker index if undocked). If you pass numbers to wx-wh, you can query window size and position additionally to the dock-stateA specific docking index does not necessarily represent a specific docker, means, you can not query/set left docker top, but rather all dockers that exist in the current screenset.
+---So the first queried/set docker can be top-left-docker or the top docker or even one of the bottom dockers.
+---The order doesn't seem to make any sense. Especially with more than 16 windows docked in the current screenset.
+---@param v number
+---@param wx? number
+---@param wy? number
+---@param ww? number
+---@param wh? number
+---@return number querystate
+---@return number|nil window_x_position
+---@return number|nil window_y_position
+---@return number|nil window_width
+---@return number|nil window_height
+function gfx.dock(v, wx, wy, ww, wh) end
+
+---Draws the character (can be a numeric ASCII code as well), to gfx.x, gfx.y, and moves gfx.x over by the size of the character.
+---@param char number
+---@return number char
+function gfx.drawchar(char) end
+
+---Draws the number n with ndigits of precision to gfx.x, gfx.y, and updates gfx.x to the right side of the drawing. The text height is gfx.texth.
+---@param n number
+---@param ndigits number
+---@return number retval
+function gfx.drawnumber(n, ndigits) end
+
+---Draws a string at gfx.x, gfx.y, and updates gfx.x/gfx.y so that subsequent draws will occur in a similar place.You can optionally set a clipping area for the text, if you set parameter flags&256 and the parameters right and bottom.On Windows, fonts with a size > 255 may have trouble of being displayed correctly, due problems with the font-rendering and the alpha-channel. <a href="https://forum.cockos.com/showpost.php?p=2311977&postcount=7">Justin's post about this.</a>
+---To overcome this, try this to disable the alpha-channel: 
+---By default, gfx.blit() blits with alpha channel. You can disable this behavior by setting "gfx.mode=2" before calling gfx.blit().
+---@param str string
+---@param flags? number
+---@param right? number
+---@param bottom? number
+---@return number retval
+function gfx.drawstr(str, flags, right, bottom) end
+
+---If char is 0 or omitted, returns a character from the keyboard queue, or 0 if no character is available, or -1 if the graphics window is not open. If char is specified and nonzero, that character's status will be checked, and the function will return greater than 0 if it is pressed. Note that calling gfx.getchar() at least once causes gfx.mouse_cap to reflect keyboard modifiers even when the mouse is not captured.</p><p>Common values are standard ASCII, such as 'a', 'A', '=' and '1', but for many keys multi-byte values are used, including 'home', 'up', 'down', 'left', 'rght', 'f1'.. 'f12', 'pgup', 'pgdn', 'ins', and 'del'<br>
+---Modified and special keys can also be returned, including:<br>
+---
+---* Ctrl/Cmd+A..Ctrl+Z as 1..26
+---* Ctrl/Cmd+Alt+A..Z as 257..282
+---* Alt+A..Z as 'A'+256..'Z'+256
+---* 27 for ESC
+---* 13 for Enter
+---* ' ' for space
+---* 65536 for query of special flags, returns:1 (supported), 2=window has focus, 4=window is visible
+---If unichar is specified, it will be set to the unicode value of the key if available (and the return value may be the unicode value or a raw key value as described above, depending). If unichar is not specified, unicode codepoints greater than 255 will be returned as 24 + value<br>
+---@param character? number
+---@param unicode_char? number
+---@return number charactercode
+function gfx.getchar(character, unicode_char) end
+
+---Returns filenames, drag'n'dropped into a window created by gfx.init().
+---Use idx to get a specific filename, that has been dropped into the gfx.init()-window.When returned filename starts with @fx: it is an fx dropped.
+---      
+---Does NOT support mediaitems/takes or other Reaper-objects!It MUST be called BEFORE calling gfx.update, as gfx.update flushes the filelist accessible with gfx.getdropfile.
+---@param idx number
+---@return number retval
+---@return string|nil filename
+function gfx.getdropfile(idx) end
+
+---Returns current font index, and the actual font face used by this font (if available).Use gfx.setfont to set a font for a specific index.
+---@return number fontindex
+---@return string fontface
+function gfx.getfont() end
+
+---Retrieves the dimensions of an image specified by handle, returns w, h pair.
+---Handle is basically a frame-buffer.
+---@param handle number
+---@return number w
+---@return number h
+function gfx.getimgdim(handle) end
+
+---Returns r,g,b values [0..1] of the pixel at (gfx.x,gfx.y)
+---@return number r
+---@return number g
+---@return number b
+function gfx.getpixel() end
+
+---Fills a gradient rectangle with the color and alpha specified. drdx-dadx reflect the adjustment (per-pixel) applied for each pixel moved to the right, drdy-dady are the adjustment applied for each pixel moved toward the bottom. Normally drdx=adjustamount/w, drdy=adjustamount/h, etc.
+---@param x number
+---@param y number
+---@param w number
+---@param h number
+---@param r number
+---@param g number
+---@param b number
+---@param a number
+---@param drdx? number
+---@param dgdx? number
+---@param dbdx? number
+---@param dadx? number
+---@param drdy? number
+---@param dgdy? number
+---@param dbdy? number
+---@param dady? number
+---@return number retval
+function gfx.gradrect(x, y, w, h, r, g, b, a, drdx, dgdx, dbdx, dadx, drdy, dgdy, dbdy, dady) end
+
+---Initializes the graphics window with title name. Suggested width and height can be specified.Once the graphics window is open, gfx.update() should be called periodically. Only one graphics-window can be opened per script! Calling gfx.ini after a window has been opened has no effect.To resize/reposition the window, call gfx.init again and pass an empty string as name-parameter.To retitle the window, run gfx.init again with the new title as parameter name.To get the current window-states, dimensions, etc, you can use gfx.dock).
+---@param name string
+---@param width? number
+---@param height? number
+---@param dockstate? number
+---@param xpos? number
+---@param ypos? number
+---@return number retval
+function gfx.init(name, width, height, dockstate, xpos, ypos) end
+
+---Draws a line from x,y to x2,y2, and if aa is not specified or 0.5 or greater, it will be antialiased. 
+---@param x number
+---@param y number
+---@param x2 number
+---@param y2 number
+---@param aa? number
+---@return number retval
+function gfx.line(x, y, x2, y2, aa) end
+
+---Draws a line from gfx.x,gfx.y to x,y. If aa is 0.5 or greater, then antialiasing is used. Updates gfx.x and gfx.y to x,y.
+---@param x number
+---@param y number
+---@param aa number
+---@return number retval
+function gfx.lineto(x, y, aa) end
+
+---Load image from filename into slot 0..1024-1 specified by image. Returns the image index if success, otherwise -1 if failure. The image will be resized to the dimensions of the image file. 
+---@param image number
+---@param filename string
+---@return number retval
+function gfx.loadimg(image, filename) end
+
+---Measures the drawing dimensions of a character with the current font (as set by gfx.setfont). Returns width and height of character.
+---@param char number
+---@return number width
+---@return number height
+function gfx.measurechar(char) end
+
+---Measures the drawing dimensions of a string with the current font (as set by gfx.setfont). Returns width and height of string.
+---@param str string
+---@return number width
+---@return number height
+function gfx.measurestr(str) end
+
+---Multiplies each pixel within the given rectangle(x,y,w,h) by the mul_*-parameters and optionally adds add_*-parameters, and updates in-place. Useful for changing brightness/contrast, or other effects.The multiplied values usually affect only pixels, that are not black(0,0,0,0), while the added values affect all pixels.
+---@param x number
+---@param y number
+---@param w number
+---@param h number
+---@param mul_r number
+---@param mul_g number
+---@param mul_b number
+---@param mul_a? number
+---@param add_r? number
+---@param add_g? number
+---@param add_b? number
+---@param add_a? number
+---@return number retval
+function gfx.muladdrect(x, y, w, h, mul_r, mul_g, mul_b, mul_a, add_r, add_g, add_b, add_a) end
+
+---Formats and draws a string at gfx.x, gfx.y, and updates gfx.x/gfx.y accordingly (the latter only if the formatted string contains newline). For more information on format strings, see sprintf()
+---* %% = %
+---* %s = string from parameter
+---* %d = parameter as integer
+---* %i = parameter as integer
+---* %u = parameter as unsigned integer
+---* %x = parameter as hex (lowercase) integer
+---* %X = parameter as hex (uppercase) integer
+---* %c = parameter as character
+---* %f = parameter as floating point
+---* %e = parameter as floating point (scientific notation, lowercase)
+---* %E = parameter as floating point (scientific notation, uppercase)
+---* %g = parameter as floating point (shortest representation, lowercase)
+---* %G = parameter as floating point (shortest representation, uppercase)
+---
+---Many standard C printf() modifiers can be used, including:    
+---* %.10s = string, but only print up to 10 characters
+---* %-10s = string, left justified to 10 characters
+---* %10s = string, right justified to 10 characters
+---* %+f = floating point, always show sign
+---* %.4f = floating point, minimum of 4 digits after decimal point
+---* %10d = integer, minimum of 10 digits (space padded)
+---* %010f = integer, minimum of 10 digits (zero padded)Values for format specifiers can be specified as additional parameters to gfx.printf, or within {} in the format specifier (such as %{varname}d, in that case a global variable is always used).
+---@param format string
+---@param ... any
+---@return number retval
+function gfx.printf(format, ...) end
+
+---Closes the graphics window.
+---@return number retval
+function gfx.quit() end
+
+---Fills a rectangle at x,y, w,h pixels in dimension, filled by default. 
+---@param x number
+---@param y number
+---@param w number
+---@param h number
+---@param filled? number
+---@return number retval
+function gfx.rect(x, y, w, h, filled) end
+
+---Fills a rectangle from gfx.x,gfx.y to x,y. Updates gfx.x,gfx.y to x,y. 
+---@param x number
+---@param y number
+---@return number x_coordinate
+function gfx.rectto(x, y) end
+
+---Draws a rectangle with rounded corners. 
+---@param x number
+---@param y number
+---@param w number
+---@param h number
+---@param radius number
+---@param antialias? number
+---@return number retval
+function gfx.roundrect(x, y, w, h, radius, antialias) end
+
+---Converts the screen coordinates x,y to client coordinates, returns those values.
+---@param x number
+---@param y number
+---@return number convx
+---@return number convy
+function gfx.screentoclient(x, y) end
+
+---Sets color, drawing mode and optionally the drawing-image-source-destination.
+---If sets the corresponding gfx-variables.
+---Sets gfx.r/gfx.g/gfx.b/gfx.a2/gfx.mode sets gfx.dest if final parameter specified
+---@param r number
+---@param g? number
+---@param b? number
+---@param a2? number
+---@param mode? number
+---@param dest? number
+---@return number retval
+function gfx.set(r, g, b, a2, mode, dest) end
+
+---Sets the mouse cursor. resource_id is a value like 32512 (for an arrow cursor), custom_cursor_name is a string like "arrow" (for the REAPER custom arrow cursor). resource_id must be nonzero, but custom_cursor_name is optional.examples for resource_id:
+---* 101, enter text
+---* 102, hourglass
+---* 103, cross
+---* 104, arrow up
+---* 105, arrows to left up AND right down
+---* 106, arrows to left down AND right up
+---* 107, arrows to left AND right
+---* 108, arrows to up AND down
+---* 109, arrows to up, down, left and right
+---* 110, stop sign
+---* 111, arrow with hourglass
+---* 112, arrow with question mark
+---* 113, a pen
+---* 114, hand with index finger pointing
+---* 115, a square
+---* 116, arrow with cd
+---    
+---works only with gfx-window opened.
+---@param resource_id? number
+---@param custom_cursor_name? string
+---@return number retval
+function gfx.setcursor(resource_id, custom_cursor_name) end
+
+---Can select a font and optionally configure it. After calling gfx_setfont(), gfx_texth may be updated to reflect the new average line height.
+---@param idx number
+---@param fontface? string
+---@param sz? number
+---@param flags? number
+---@return number retval
+function gfx.setfont(idx, fontface, sz, flags) end
+
+---Resize image referenced by index 0..1024-1, width and height must be 0-8192. The contents of the image will be undefined after the resize.
+---@param image number
+---@param w number
+---@param h number
+---@return number retval
+function gfx.setimgdim(image, w, h) end
+
+---Writes a pixel of r,g,b to gfx.x,gfx.y.
+---@param r number
+---@param g number
+---@param b number
+---@return number retval
+function gfx.setpixel(r, g, b) end
+
+---Shows a popup menu at gfx_x,gfx_y. 
+---str is a list of fields separated by | characters. Each field represents a menu item.
+---Fields can start with special characters:# : grayed out
+---* ! : checked
+---* \> : this menu item shows a submenu
+---* < : last item in the current submenu
+---* & : before a character makes it underlined as the quick-access-character for this menu-item
+---An empty field || will appear as a separator in the menu. Example:<br>
+---selection = gfx.showmenu("first item, followed by separator||!second item, checked|>third item which spawns a submenu|#first item in submenu, grayed out|>second and last item in submenu|fourth item in top menu")gfx.showmenu returns 0 if the user selected nothing from the menu, 1 if the first field is selected, etc.
+---Note: It skips submenus and separators in the selection-number, so a if menu_string="Entry1||<Entry two|Entry three" will only return 1 for entry1 and 2 for Entry three but nothing for <Entry and ||.
+---@param menu_string string
+---@return number selection
+function gfx.showmenu(menu_string) end
+
+---Blits to destination at (destx,desty), size (destw,desth). div_w and div_h should be 2..64, and table should point to a table of 2*div_w*div_h values (table can be a regular table or (for less overhead) a reaper.array). Each pair in the table represents a S,T coordinate in the source image, and the table is treated as a left-right, top-bottom list of texture coordinates, which will then be rendered to the destination.
+---
+---@param srcimg number
+---@param destx number
+---@param desty number
+---@param destw number
+---@param desth number
+---@param div_w number
+---@param div_h number
+---@param table table|reaper.array
+---@return number retval
+function gfx.transformblit(srcimg, destx, desty, destw, desth, div_w, div_h, table) end
+
+---Draws a filled triangle, or any convex polygon. 
+---@param x1 number
+---@param y1 number
+---@param x2 number
+---@param y2 number
+---@param x3 number
+---@param y3 number
+---@param x4? number
+---@param y4? number
+---@param ... number
+---@return number retval
+function gfx.triangle(x1, y1, x2, y2, x3, y3, x4, y4, ... ) end
+
+---Updates the graphics display, if opened
+---@return number retval
+function gfx.update() end
+
+---Returns the path to the directory containing imgui.lua, imgui.py and gfx2imgui.lua.
+---@return string path
+function reaper.ImGui_GetBuiltinPath() end
