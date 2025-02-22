@@ -281,7 +281,7 @@ function reaper.CountTracks(proj) end
 ---@param track MediaTrack
 ---@param starttime number
 ---@param endtime number
----@param qnIn? boolean
+---@param qnIn boolean?
 ---@return MediaItem retval
 function reaper.CreateNewMIDIItemInProj(track, starttime, endtime, qnIn) end
 
@@ -606,7 +606,7 @@ function reaper.DeleteTakeMarker(take, idx) end
 ---Deletes one or more stretch markers. Returns number of stretch markers deleted.
 ---@param take MediaItem_Take
 ---@param idx integer
----@param countIn? integer
+---@param countIn integer?
 ---@return integer retval
 function reaper.DeleteTakeStretchMarkers(take, idx, countIn) end
 
@@ -888,9 +888,6 @@ function reaper.format_timestr_len(tpos, buf, offset, modeoverride) end
 ---@return string buf
 function reaper.format_timestr_pos(tpos, buf, modeoverride) end
 
----@param gGUID string
----@return string gGUID
-function reaper.genGuid(gGUID) end
 
 ---gets ini configuration variable value as string
 ---@param name string
@@ -1658,8 +1655,8 @@ function reaper.GetSelectedTrackEnvelope(proj) end
 ---@param isSet boolean
 ---@param screen_x_start integer
 ---@param screen_x_end integer
----@param start_time number
----@param end_time number
+---@param start_time number?
+---@param end_time number?
 ---@return number start_time
 ---@return number end_time
 function reaper.GetSet_ArrangeView2(proj, isSet, screen_x_start, screen_x_end, start_time, end_time) end
@@ -1815,9 +1812,9 @@ function reaper.GetSetProjectAuthor(proj, set, author) end
 ---Get or set the arrange view grid division. 0.25=quarter note, 1.0/3.0=half note triplet, etc. swingmode can be 1 for swing enabled, swingamt is -1..1. swingmode can be 3 for measure-grid. Returns grid configuration flags
 ---@param project ReaProject|nil|0
 ---@param set boolean
----@param division? number
----@param swingmode? integer
----@param swingamt? number
+---@param division number?
+---@param swingmode integer?
+---@param swingamt number?
 ---@return integer retval
 ---@return number? division
 ---@return integer? swingmode
@@ -1871,7 +1868,7 @@ function reaper.GetSetProjectInfo(project, desc, value, is_set) end
 ---RENDER_FORMAT : base64-encoded sink configuration (see project files, etc). Callers can also pass a simple 4-byte string (non-base64-encoded), e.g. "evaw" or "l3pm", to use default settings for that sink type.
 ---RENDER_FORMAT2 : base64-encoded secondary sink configuration. Callers can also pass a simple 4-byte string (non-base64-encoded), e.g. "evaw" or "l3pm", to use default settings for that sink type, or "" to disable secondary render.
 ---&nbsp;&nbsp;&nbsp;&nbsp;Formats available on this machine:
----&nbsp;&nbsp;&nbsp;&nbsp;"wave" "aiff" "caff" "raw " "iso " "ddp " "flac" "mp3l" "oggv" "OggS" "FFMP" "WMF " "GIF " "LCF " "wvpk"
+---&nbsp;&nbsp;&nbsp;&nbsp;"wave" "aiff" "caff" "raw " "mp3l" "wvpk" "OggS" "flac" "ddp " "iso " "oggv" "FFMP" "XAVF" "GIF " "LCF "
 ---@param project ReaProject|nil|0
 ---@param desc string
 ---@param valuestrNeedBig string
@@ -2122,7 +2119,7 @@ function reaper.GetTempoTimeSigMarker(proj, ptidx) end
 
 ---Returns the theme color specified, or -1 on failure. If the low bit of flags is set, the color as originally specified by the theme (before any transformations) is returned, otherwise the current (possibly transformed and modified) color is returned. See SetThemeColor for a list of valid ini_key.
 ---@param ini_key string
----@param flags integer
+---@param flags integer?
 ---@return integer retval
 function reaper.GetThemeColor(ini_key, flags) end
 
@@ -2462,7 +2459,7 @@ function reaper.InsertAutomationItem(env, pool_id, position, length) end
 ---@param shape integer
 ---@param tension number
 ---@param selected boolean
----@param noSortIn? boolean
+---@param noSortIn boolean?
 ---@return boolean retval
 function reaper.InsertEnvelopePoint(envelope, time, value, shape, tension, selected, noSortIn) end
 
@@ -2479,7 +2476,7 @@ function reaper.InsertEnvelopePoint(envelope, time, value, shape, tension, selec
 ---@param shape integer
 ---@param tension number
 ---@param selected boolean
----@param noSortIn? boolean
+---@param noSortIn boolean?
 ---@return boolean retval
 function reaper.InsertEnvelopePointEx(envelope, autoitem_idx, time, value, shape, tension, selected, noSortIn) end
 
@@ -2609,7 +2606,7 @@ function reaper.LICE_ClipLine(pX1, pY1, pX2, pY2, xLo, yLo, xHi, yHi) end
 ---Returns a localized version of src_string, in section section. flags can have 1 set to only localize if sprintf-style formatting matches the original.
 ---@param src_string string
 ---@param section string
----@param flags integer
+---@param flags integer?
 ---@return string retval
 function reaper.LocalizeString(src_string, section, flags) end
 
@@ -2890,11 +2887,11 @@ function reaper.MIDI_GetScale(take) end
 ---Get MIDI meta-event properties. Allowable types are -1:sysex (msg should not include bounding F0..F7), 1-14:MIDI text event types, 15=REAPER notation event. For all other meta-messages, type is returned as -2 and msg returned as all zeroes. See MIDI_GetEvt.
 ---@param take MediaItem_Take
 ---@param textsyxevtidx integer
----@param selected? boolean
----@param muted? boolean
----@param ppqpos? number
----@param type? integer
----@param msg? string
+---@param selected boolean?
+---@param muted boolean?
+---@param ppqpos number?
+---@param type integer?
+---@param msg string?
 ---@return boolean retval
 ---@return boolean? selected
 ---@return boolean? muted
@@ -2945,7 +2942,7 @@ function reaper.MIDI_InsertEvt(take, selected, muted, ppqpos, bytestr) end
 ---@param chan integer
 ---@param pitch integer
 ---@param vel integer
----@param noSortIn? boolean
+---@param noSortIn boolean?
 ---@return boolean retval
 function reaper.MIDI_InsertNote(take, selected, muted, startppqpos, endppqpos, chan, pitch, vel, noSortIn) end
 
@@ -2987,14 +2984,14 @@ function reaper.MIDI_SetAllEvts(take, buf) end
 ---Set MIDI CC event properties. Properties passed as NULL will not be set. set noSort if setting multiple events, then call MIDI_Sort when done.
 ---@param take MediaItem_Take
 ---@param ccidx integer
----@param selectedIn? boolean
----@param mutedIn? boolean
----@param ppqposIn? number
----@param chanmsgIn? integer
----@param chanIn? integer
----@param msg2In? integer
----@param msg3In? integer
----@param noSortIn? boolean
+---@param selectedIn boolean?
+---@param mutedIn boolean?
+---@param ppqposIn number?
+---@param chanmsgIn integer?
+---@param chanIn integer?
+---@param msg2In integer?
+---@param msg3In integer?
+---@param noSortIn boolean?
 ---@return boolean retval
 function reaper.MIDI_SetCC(take, ccidx, selectedIn, mutedIn, ppqposIn, chanmsgIn, chanIn, msg2In, msg3In, noSortIn) end
 
@@ -3003,18 +3000,18 @@ function reaper.MIDI_SetCC(take, ccidx, selectedIn, mutedIn, ppqposIn, chanmsgIn
 ---@param ccidx integer
 ---@param shape integer
 ---@param beztension number
----@param noSortIn? boolean
+---@param noSortIn boolean?
 ---@return boolean retval
 function reaper.MIDI_SetCCShape(take, ccidx, shape, beztension, noSortIn) end
 
 ---Set MIDI event properties. Properties passed as NULL will not be set.  set noSort if setting multiple events, then call MIDI_Sort when done.
 ---@param take MediaItem_Take
 ---@param evtidx integer
----@param selectedIn? boolean
----@param mutedIn? boolean
----@param ppqposIn? number
----@param msg? string
----@param noSortIn? boolean
+---@param selectedIn boolean?
+---@param mutedIn boolean?
+---@param ppqposIn number?
+---@param msg string?
+---@param noSortIn boolean?
 ---@return boolean retval
 function reaper.MIDI_SetEvt(take, evtidx, selectedIn, mutedIn, ppqposIn, msg, noSortIn) end
 
@@ -3028,26 +3025,26 @@ function reaper.MIDI_SetItemExtents(item, startQN, endQN) end
 ---Set MIDI note properties. Properties passed as NULL (or negative values) will not be set. Set noSort if setting multiple events, then call MIDI_Sort when done. Setting multiple note start positions at once is done more safely by deleting and re-inserting the notes.
 ---@param take MediaItem_Take
 ---@param noteidx integer
----@param selectedIn? boolean
----@param mutedIn? boolean
----@param startppqposIn? number
----@param endppqposIn? number
----@param chanIn? integer
----@param pitchIn? integer
----@param velIn? integer
----@param noSortIn? boolean
+---@param selectedIn boolean?
+---@param mutedIn boolean?
+---@param startppqposIn number?
+---@param endppqposIn number?
+---@param chanIn integer?
+---@param pitchIn integer?
+---@param velIn integer?
+---@param noSortIn boolean?
 ---@return boolean retval
 function reaper.MIDI_SetNote(take, noteidx, selectedIn, mutedIn, startppqposIn, endppqposIn, chanIn, pitchIn, velIn, noSortIn) end
 
 ---Set MIDI text or sysex event properties. Properties passed as NULL will not be set. Allowable types are -1:sysex (msg should not include bounding F0..F7), 1-14:MIDI text event types, 15=REAPER notation event. set noSort if setting multiple events, then call MIDI_Sort when done.
 ---@param take MediaItem_Take
 ---@param textsyxevtidx integer
----@param selectedIn? boolean
----@param mutedIn? boolean
----@param ppqposIn? number
----@param typeIn? integer
----@param msg? string
----@param noSortIn? boolean
+---@param selectedIn boolean?
+---@param mutedIn boolean?
+---@param ppqposIn number?
+---@param typeIn integer?
+---@param msg string?
+---@param noSortIn boolean?
 ---@return boolean retval
 function reaper.MIDI_SetTextSysexEvt(take, textsyxevtidx, selectedIn, mutedIn, ppqposIn, typeIn, msg, noSortIn) end
 
@@ -3168,16 +3165,6 @@ function reaper.MoveMediaItemToTrack(item, desttr) end
 ---@param mute boolean
 function reaper.MuteAllTracks(mute) end
 
----@param r_left integer
----@param r_top integer
----@param r_right integer
----@param r_bot integer
----@param sr_left integer
----@param sr_top integer
----@param sr_right integer
----@param sr_bot integer
----@param wantWorkArea boolean
-function reaper.my_getViewport(r_left, r_top, r_right, r_bot, sr_left, sr_top, sr_right, sr_bot, wantWorkArea) end
 
 ---Get the command ID number for named command that was registered by an extension such as "_SWS_ABOUT" or "_113088d11ae641c193a2b7ede3041ad5" for a ReaScript or a custom action.
 ---@param command_name string
@@ -3217,7 +3204,7 @@ function reaper.OpenMediaExplorer(mediafn, play) end
 
 ---Send an OSC message directly to REAPER. The value argument may be NULL. The message will be matched against the default OSC patterns.
 ---@param message string
----@param valueIn? number
+---@param valueIn number?
 function reaper.OscLocalMessageToHost(message, valueIn) end
 
 ---Parse hh:mm:ss.sss time string, return time in seconds (or 0.0 on error). See parse_timestr_pos, parse_timestr_len.
@@ -3393,7 +3380,7 @@ function reaper.resolve_fn(in, out) end
 ---Resolves a filename "in" by using project settings etc. If no file found, out will be a copy of in.
 ---@param in string
 ---@param out string
----@param checkSubDir? string
+---@param checkSubDir string?
 ---@return string out
 function reaper.resolve_fn2(in, out, checkSubDir) end
 
@@ -3450,7 +3437,7 @@ function reaper.SetCurrentBPM(__proj, bpm, wantUndo) end
 
 ---You must use this to change the focus programmatically. mode=0 to focus track panels, 1 to focus the arrange window, 2 to focus the arrange window and select env (or env==NULL to clear the current track/take envelope selection)
 ---@param mode integer
----@param envIn TrackEnvelope
+---@param envIn TrackEnvelope?
 function reaper.SetCursorContext(mode, envIn) end
 
 ---@param time number
@@ -3467,12 +3454,12 @@ function reaper.SetEditCurPos2(proj, time, moveview, seekplay) end
 ---Set attributes of an envelope point. Values that are not supplied will be ignored. If setting multiple points at once, set noSort=true, and call Envelope_SortPoints when done. See SetEnvelopePointEx.
 ---@param envelope TrackEnvelope
 ---@param ptidx integer
----@param timeIn? number
----@param valueIn? number
----@param shapeIn? integer
----@param tensionIn? number
----@param selectedIn? boolean
----@param noSortIn? boolean
+---@param timeIn number?
+---@param valueIn number?
+---@param shapeIn integer?
+---@param tensionIn number?
+---@param selectedIn boolean?
+---@param noSortIn boolean?
 ---@return boolean retval
 function reaper.SetEnvelopePoint(envelope, ptidx, timeIn, valueIn, shapeIn, tensionIn, selectedIn, noSortIn) end
 
@@ -3485,12 +3472,12 @@ function reaper.SetEnvelopePoint(envelope, ptidx, timeIn, valueIn, shapeIn, tens
 ---@param envelope TrackEnvelope
 ---@param autoitem_idx integer
 ---@param ptidx integer
----@param timeIn? number
----@param valueIn? number
----@param shapeIn? integer
----@param tensionIn? number
----@param selectedIn? boolean
----@param noSortIn? boolean
+---@param timeIn number?
+---@param valueIn number?
+---@param shapeIn integer?
+---@param tensionIn number?
+---@param selectedIn boolean?
+---@param noSortIn boolean?
 ---@return boolean retval
 function reaper.SetEnvelopePointEx(envelope, autoitem_idx, ptidx, timeIn, valueIn, shapeIn, tensionIn, selectedIn, noSortIn) end
 
@@ -3807,8 +3794,8 @@ function reaper.SetRegionRenderMatrix(proj, regionindex, track, flag) end
 ---@param take MediaItem_Take
 ---@param idx integer
 ---@param nameIn string
----@param srcposIn? number
----@param colorIn? integer
+---@param srcposIn number?
+---@param colorIn integer?
 ---@return integer retval
 function reaper.SetTakeMarker(take, idx, nameIn, srcposIn, colorIn) end
 
@@ -3816,7 +3803,7 @@ function reaper.SetTakeMarker(take, idx, nameIn, srcposIn, colorIn) end
 ---@param take MediaItem_Take
 ---@param idx integer
 ---@param pos number
----@param srcposIn? number
+---@param srcposIn number?
 ---@return integer retval
 function reaper.SetTakeStretchMarker(take, idx, pos, srcposIn) end
 
@@ -3843,762 +3830,386 @@ function reaper.SetTempoTimeSigMarker(proj, ptidx, timepos, measurepos, beatpos,
 ---Temporarily updates the theme color to the color specified (or the theme default color if -1 is specified). Returns -1 on failure, otherwise returns the color (or transformed-color). Note that the UI is not updated by this, the caller should call UpdateArrange() etc as necessary. If the low bit of flags is set, any color transformations are bypassed. To read a value see GetThemeColor.
 ---Currently valid ini_keys:
 ---col_main_bg2 : Main window/transport background
------ current RGB: 40,40,40
 ---col_main_text2 : Main window/transport text
------ current RGB: 108,108,108
 ---col_main_textshadow : Main window text shadow (ignored if too close to text color)
------ current RGB: 51,51,51
 ---col_main_3dhl : Main window 3D highlight
------ current RGB: 40,40,40
 ---col_main_3dsh : Main window 3D shadow
------ current RGB: 40,40,40
 ---col_main_resize2 : Main window pane resize mouseover
------ current RGB: 20,160,140
 ---col_main_text : Themed window text
------ current RGB: 36,36,36
 ---col_main_bg : Themed window background
------ current RGB: 172,172,172
 ---col_main_editbk : Themed window edit background
------ current RGB: 221,221,221
 ---col_nodarkmodemiscwnd : Do not use window theming on macOS dark mode
 ----- bool 00000000
 ---col_transport_editbk : Transport edit background
------ current RGB: 51,51,51
 ---col_toolbar_text : Toolbar button text
------ current RGB: 159,159,159
 ---col_toolbar_text_on : Toolbar button enabled text
------ current RGB: 26,188,152
 ---col_toolbar_frame : Toolbar frame when floating or docked
------ current RGB: 71,78,78
 ---toolbararmed_color : Toolbar button armed color
------ current RGB: 20,160,140
 ---toolbararmed_drawmode : Toolbar button armed fill mode
------ blendmode 000300fe
 ---io_text : I/O window text
------ current RGB: 36,36,36
 ---io_3dhl : I/O window 3D highlight
------ current RGB: 40,40,40
 ---io_3dsh : I/O window 3D shadow
------ current RGB: 205,205,205
 ---genlist_bg : Window list background
------ current RGB: 210,210,210
 ---genlist_fg : Window list text
------ current RGB: 40,40,40
 ---genlist_grid : Window list grid lines
------ current RGB: 166,166,166
 ---genlist_selbg : Window list selected row
------ current RGB: 35,103,91
 ---genlist_selfg : Window list selected text
------ current RGB: 255,255,255
 ---genlist_seliabg : Window list selected row (inactive)
------ current RGB: 177,177,177
 ---genlist_seliafg : Window list selected text (inactive)
------ current RGB: 0,0,0
 ---genlist_hilite : Window list highlighted text
------ current RGB: 0,0,224
 ---genlist_hilite_sel : Window list highlighted selected text
------ current RGB: 192,192,255
 ---col_buttonbg : Button background
------ current RGB: 0,0,0
 ---col_tcp_text : Track panel text
------ current RGB: 18,26,29
 ---col_tcp_textsel : Track panel (selected) text
------ current RGB: 18,26,29
 ---col_seltrack : Selected track control panel background
------ current RGB: 100,100,100
 ---col_seltrack2 : Unselected track control panel background (enabled with a checkbox above)
------ current RGB: 100,100,100
 ---tcplocked_color : Locked track control panel overlay color
------ current RGB: 51,51,51
 ---tcplocked_drawmode : Locked track control panel fill mode
------ blendmode 0002c000
 ---col_tracklistbg : Empty track list area
------ current RGB: 40,40,40
 ---col_mixerbg : Empty mixer list area
------ current RGB: 40,40,40
 ---col_arrangebg : Empty arrange view area
------ current RGB: 40,40,40
 ---arrange_vgrid : Empty arrange view area vertical grid shading
------ current RGB: 40,40,40
 ---col_fadearm : Fader background when automation recording
------ current RGB: 198,17,60
 ---col_fadearm2 : Fader background when automation playing
------ current RGB: 17,168,135
 ---col_fadearm3 : Fader background when in inactive touch/latch
------ current RGB: 168,113,17
 ---col_tl_fg : Timeline foreground
------ current RGB: 116,116,116
 ---col_tl_fg2 : Timeline foreground (secondary markings)
------ current RGB: 92,92,92
 ---col_tl_bg : Timeline background
------ current RGB: 40,40,40
 ---col_tl_bgsel : Time selection color
------ current RGB: 255,255,255
 ---timesel_drawmode : Time selection fill mode
------ blendmode 00021100
 ---col_tl_bgsel2 : Timeline background (in loop points)
------ current RGB: 130,136,136
 ---col_trans_bg : Transport status background
------ current RGB: 255,0,0
 ---col_trans_fg : Transport status text
------ current RGB: 200,200,200
 ---playrate_edited : Project play rate control when not 1.0
------ current RGB: 0,255,172
 ---selitem_dot : Media item selection indicator
------ current RGB: 255,255,255
 ---col_mi_label : Media item label
------ current RGB: 210,210,210
 ---col_mi_label_sel : Media item label (selected)
------ current RGB: 255,255,255
 ---col_mi_label_float : Floating media item label
------ current RGB: 172,172,172
 ---col_mi_label_float_sel : Floating media item label (selected)
------ current RGB: 235,235,235
 ---col_mi_bg2 : Media item background (odd tracks)
------ current RGB: 100,100,100
 ---col_mi_bg : Media item background (even tracks)
------ current RGB: 100,100,100
 ---col_tr1_itembgsel : Media item background selected (odd tracks)
------ current RGB: 100,100,100
 ---col_tr2_itembgsel : Media item background selected (even tracks)
------ current RGB: 100,100,100
 ---itembg_drawmode : Media item background fill mode
------ blendmode 00030000
 ---col_tr1_peaks : Media item peaks (odd tracks)
------ current RGB: 32,32,32
 ---col_tr2_peaks : Media item peaks (even tracks)
------ current RGB: 32,32,32
 ---col_tr1_ps2 : Media item peaks when selected (odd tracks)
------ current RGB: 0,0,0
 ---col_tr2_ps2 : Media item peaks when selected (even tracks)
------ current RGB: 0,0,0
 ---col_peaksedge : Media item peaks edge highlight (odd tracks)
------ current RGB: 42,42,42
 ---col_peaksedge2 : Media item peaks edge highlight (even tracks)
------ current RGB: 42,42,42
 ---col_peaksedgesel : Media item peaks edge highlight when selected (odd tracks)
------ current RGB: 225,225,225
 ---col_peaksedgesel2 : Media item peaks edge highlight when selected (even tracks)
------ current RGB: 225,225,225
 ---cc_chase_drawmode : Media item MIDI CC peaks fill mode
------ blendmode 00024000
 ---col_peaksfade : Media item peaks when active in crossfade editor (fade-out)
------ current RGB: 0,255,0
 ---col_peaksfade2 : Media item peaks when active in crossfade editor (fade-in)
------ current RGB: 255,0,0
 ---col_mi_fades : Media item fade/volume controls
------ current RGB: 128,128,128
 ---fadezone_color : Media item fade quiet zone fill color
------ current RGB: 128,140,125
 ---fadezone_drawmode : Media item fade quiet zone fill mode
------ blendmode 000300fe
 ---fadearea_color : Media item fade full area fill color
------ current RGB: 32,35,31
 ---fadearea_drawmode : Media item fade full area fill mode
------ blendmode 00020000
 ---col_mi_fade2 : Media item edges of controls
------ current RGB: 170,170,170
 ---col_mi_fade2_drawmode : Media item edges of controls blend mode
------ blendmode 00020000
 ---item_grouphl : Media item edge when selected via grouping
------ current RGB: 19,118,97
 ---col_offlinetext : Media item "offline" text
------ current RGB: 48,66,71
 ---col_stretchmarker : Media item stretch marker line
------ current RGB: 197,197,197
 ---col_stretchmarker_h0 : Media item stretch marker handle (1x)
------ current RGB: 157,157,157
 ---col_stretchmarker_h1 : Media item stretch marker handle (>1x)
------ current RGB: 58,134,255
 ---col_stretchmarker_h2 : Media item stretch marker handle (-- current RGB: 189,19,19
 ---col_stretchmarker_b : Media item stretch marker handle edge
------ current RGB: 255,255,255
 ---col_stretchmarkerm : Media item stretch marker blend mode
------ blendmode 0002b300
 ---col_stretchmarker_text : Media item stretch marker text
------ current RGB: 174,174,174
 ---col_stretchmarker_tm : Media item transient guide handle
------ current RGB: 0,234,0
 ---take_marker : Media item take marker
------ current RGB: 172,172,172
 ---take_marker_sel : Media item take marker when item selected
------ current RGB: 212,212,212
 ---selitem_tag : Selected media item bar color
------ current RGB: 255,255,255
 ---activetake_tag : Active media item take bar color
------ current RGB: 255,255,255
 ---col_tr1_bg : Track background (odd tracks)
------ current RGB: 40,40,40
 ---col_tr2_bg : Track background (even tracks)
------ current RGB: 40,40,40
 ---selcol_tr1_bg : Selected track background (odd tracks)
------ current RGB: 45,45,45
 ---selcol_tr2_bg : Selected track background (even tracks)
------ current RGB: 45,45,45
 ---track_lane_tabcol : Track fixed lane button
------ current RGB: 95,127,95
 ---track_lanesolo_tabcol : Track fixed lane button when only this lane plays
------ current RGB: 240,240,16
 ---track_lanesolo_text : Track fixed lane button text
------ current RGB: 200,200,200
 ---track_lane_gutter : Track fixed lane add area
------ current RGB: 128,128,128
 ---track_lane_gutter_drawmode : Track fixed lane add fill mode
------ blendmode 00024000
 ---col_tr1_divline : Track divider line (odd tracks)
------ current RGB: 28,28,28
 ---col_tr2_divline : Track divider line (even tracks)
------ current RGB: 28,28,28
 ---col_envlane1_divline : Envelope lane divider line (odd tracks)
------ current RGB: 114,120,120
 ---col_envlane2_divline : Envelope lane divider line (even tracks)
------ current RGB: 114,120,120
 ---mute_overlay_col : Muted/unsoloed track/item overlay color
------ current RGB: 48,48,48
 ---mute_overlay_mode : Muted/unsoloed track/item overlay mode
------ blendmode 0002cc03
 ---inactive_take_overlay_col : Inactive take/lane overlay color
------ current RGB: 48,48,48
 ---inactive_take_overlay_mode : Inactive take/lane overlay mode
------ blendmode 00028000
 ---locked_overlay_col : Locked track/item overlay color
------ current RGB: 0,0,0
 ---locked_overlay_mode : Locked track/item overlay mode
------ blendmode 00025c03
 ---marquee_fill : Marquee fill
------ current RGB: 128,128,110
 ---marquee_drawmode : Marquee fill mode
------ blendmode 000299ff
 ---marquee_outline : Marquee outline
------ current RGB: 255,255,255
 ---marqueezoom_fill : Marquee zoom fill
------ current RGB: 255,255,255
 ---marqueezoom_drawmode : Marquee zoom fill mode
------ blendmode 00024002
 ---marqueezoom_outline : Marquee zoom outline
------ current RGB: 0,255,0
 ---areasel_fill : Razor edit area fill
------ current RGB: 31,233,192
 ---areasel_drawmode : Razor edit area fill mode
------ blendmode 00022601
 ---areasel_outline : Razor edit area outline
------ current RGB: 0,251,201
 ---areasel_outlinemode : Razor edit area outline mode
------ blendmode 0002c000
 ---linkedlane_fill : Fixed lane comp area fill
------ current RGB: 255,203,0
 ---linkedlane_fillmode : Fixed lane comp area fill mode
------ blendmode 00020c01
 ---linkedlane_outline : Fixed lane comp area outline
------ current RGB: 255,237,164
 ---linkedlane_outlinemode : Fixed lane comp area outline mode
------ blendmode 0002c000
 ---linkedlane_unsynced : Fixed lane comp lane unsynced media item
------ current RGB: 0,198,255
 ---linkedlane_unsynced_mode : Fixed lane comp lane unsynced media item mode
------ blendmode 00028000
 ---col_cursor : Edit cursor
------ current RGB: 51,152,135
 ---col_cursor2 : Edit cursor (alternate)
------ current RGB: 51,152,135
 ---playcursor_color : Play cursor
------ current RGB: 239,200,82
 ---playcursor_drawmode : Play cursor mode
------ blendmode 00028000
 ---col_gridlines2 : Grid lines (start of measure)
------ current RGB: 0,0,0
 ---col_gridlines2dm : Grid lines (start of measure) - draw mode
------ blendmode 00030000
 ---col_gridlines3 : Grid lines (start of beats)
------ current RGB: 0,0,0
 ---col_gridlines3dm : Grid lines (start of beats) - draw mode
------ blendmode 00028000
 ---col_gridlines : Grid lines (in between beats)
------ current RGB: 0,0,0
 ---col_gridlines1dm : Grid lines (in between beats) - draw mode
------ blendmode 00025900
 ---guideline_color : Editing guide line
------ current RGB: 0,157,153
 ---guideline_drawmode : Editing guide mode
------ blendmode 0002c000
 ---mouseitem_color : Mouse position indicator
------ current RGB: 196,255,196
 ---mouseitem_mode : Mouse position indicator mode
------ blendmode 00028000
 ---region : Regions
------ current RGB: 103,106,110
 ---region_lane_bg : Region lane background
------ current RGB: 40,40,40
 ---region_lane_text : Region text
------ current RGB: 200,200,200
 ---region_edge : Region edge
------ current RGB: 116,116,116
 ---region_edge_sel : Region text and edge (selected)
------ current RGB: 255,255,255
 ---marker : Markers
------ current RGB: 45,111,220
 ---marker_lane_bg : Marker lane background
------ current RGB: 40,40,40
 ---marker_lane_text : Marker text
------ current RGB: 230,230,230
 ---marker_edge : Marker edge
------ current RGB: 128,128,128
 ---marker_edge_sel : Marker text and edge (selected)
------ current RGB: 255,255,255
 ---col_tsigmark : Time signature change marker
------ current RGB: 14,18,17
 ---ts_lane_bg : Time signature lane background
------ current RGB: 40,40,40
 ---ts_lane_text : Time signature lane text
------ current RGB: 165,165,165
 ---timesig_sel_bg : Time signature marker selected background
------ current RGB: 160,0,0
 ---col_routinghl1 : Routing matrix row highlight
------ current RGB: 255,255,192
 ---col_routinghl2 : Routing matrix column highlight
------ current RGB: 128,128,255
 ---col_routingact : Routing matrix input activity highlight
------ current RGB: 64,255,64
 ---col_vudoint : Theme has interlaced VU meters
 ----- bool 00000000
 ---col_vuclip : VU meter clip indicator
------ current RGB: 187,37,0
 ---col_vutop : VU meter top
------ current RGB: 0,254,149
 ---col_vumid : VU meter middle
------ current RGB: 0,218,173
 ---col_vubot : VU meter bottom
------ current RGB: 0,191,191
 ---col_vuintcol : VU meter interlace/edge color
------ current RGB: 32,32,32
 ---vu_gr_bgcol : VU meter gain reduction background
------ current RGB: 32,32,32
 ---vu_gr_fgcol : VU meter gain reduction indicator
------ current RGB: 224,224,0
 ---col_vumidi : VU meter midi activity
------ current RGB: 255,196,0
 ---col_vuind1 : VU (indicator) - no signal
------ current RGB: 32,32,32
 ---col_vuind2 : VU (indicator) - low signal
------ current RGB: 0,40,0
 ---col_vuind3 : VU (indicator) - med signal
------ current RGB: 32,255,0
 ---col_vuind4 : VU (indicator) - hot signal
------ current RGB: 255,255,0
 ---mcp_sends_normal : Sends text: normal
------ current RGB: 191,191,191
 ---mcp_sends_muted : Sends text: muted
------ current RGB: 216,61,61
 ---mcp_send_midihw : Sends text: MIDI hardware
------ current RGB: 0,221,176
 ---mcp_sends_levels : Sends level
------ current RGB: 48,66,71
 ---mcp_fx_normal : FX insert text: normal
------ current RGB: 220,220,220
 ---mcp_fx_bypassed : FX insert text: bypassed
------ current RGB: 211,138,65
 ---mcp_fx_offlined : FX insert text: offline
------ current RGB: 216,61,61
 ---mcp_fxparm_normal : FX parameter text: normal
------ current RGB: 163,163,163
 ---mcp_fxparm_bypassed : FX parameter text: bypassed
------ current RGB: 211,120,65
 ---mcp_fxparm_offlined : FX parameter text: offline
------ current RGB: 216,61,61
 ---tcp_list_scrollbar : List scrollbar (track panel)
------ current RGB: 50,50,50
 ---tcp_list_scrollbar_mode : List scrollbar (track panel) - draw mode
------ blendmode 00028000
 ---tcp_list_scrollbar_mouseover : List scrollbar mouseover (track panel)
------ current RGB: 30,30,30
 ---tcp_list_scrollbar_mouseover_mode : List scrollbar mouseover (track panel) - draw mode
------ blendmode 00028000
 ---mcp_list_scrollbar : List scrollbar (mixer panel)
------ current RGB: 140,140,140
 ---mcp_list_scrollbar_mode : List scrollbar (mixer panel) - draw mode
------ blendmode 00028000
 ---mcp_list_scrollbar_mouseover : List scrollbar mouseover (mixer panel)
------ current RGB: 64,191,159
 ---mcp_list_scrollbar_mouseover_mode : List scrollbar mouseover (mixer panel) - draw mode
------ blendmode 00028000
 ---midi_rulerbg : MIDI editor ruler background
------ current RGB: 40,40,40
 ---midi_rulerfg : MIDI editor ruler text
------ current RGB: 154,154,154
 ---midi_grid2 : MIDI editor grid line (start of measure)
------ current RGB: 255,255,255
 ---midi_griddm2 : MIDI editor grid line (start of measure) - draw mode
------ blendmode 00021e00
 ---midi_grid3 : MIDI editor grid line (start of beats)
------ current RGB: 0,0,0
 ---midi_griddm3 : MIDI editor grid line (start of beats) - draw mode
------ blendmode 00023300
 ---midi_grid1 : MIDI editor grid line (between beats)
------ current RGB: 0,0,0
 ---midi_griddm1 : MIDI editor grid line (between beats) - draw mode
------ blendmode 00021e00
 ---midi_trackbg1 : MIDI editor background color (naturals)
------ current RGB: 46,46,46
 ---midi_trackbg2 : MIDI editor background color (sharps/flats)
------ current RGB: 40,40,40
 ---midi_trackbg_outer1 : MIDI editor background color, out of bounds (naturals)
------ current RGB: 36,36,36
 ---midi_trackbg_outer2 : MIDI editor background color, out of bounds (sharps/flats)
------ current RGB: 36,36,36
 ---midi_selpitch1 : MIDI editor background color, selected pitch (naturals)
------ current RGB: 18,129,104
 ---midi_selpitch2 : MIDI editor background color, selected pitch (sharps/flats)
------ current RGB: 18,129,104
 ---midi_selbg : MIDI editor time selection color
------ current RGB: 255,255,255
 ---midi_selbg_drawmode : MIDI editor time selection fill mode
------ blendmode 00021001
 ---midi_gridhc : MIDI editor CC horizontal center line
------ current RGB: 0,0,0
 ---midi_gridhcdm : MIDI editor CC horizontal center line - draw mode
------ blendmode 00030000
 ---midi_gridh : MIDI editor CC horizontal line
------ current RGB: 0,0,0
 ---midi_gridhdm : MIDI editor CC horizontal line - draw mode
------ blendmode 00028000
 ---midi_ccbut : MIDI editor CC lane add/remove buttons
------ current RGB: 60,60,60
 ---midi_ccbut_text : MIDI editor CC lane button text
------ current RGB: 40,40,40
 ---midi_ccbut_arrow : MIDI editor CC lane button arrow
------ current RGB: 60,60,60
 ---midioct : MIDI editor octave line color
------ current RGB: 36,36,36
 ---midi_inline_trackbg1 : MIDI inline background color (naturals)
------ current RGB: 0,0,0
 ---midi_inline_trackbg2 : MIDI inline background color (sharps/flats)
------ current RGB: 0,0,0
 ---midioct_inline : MIDI inline octave line color
------ current RGB: 36,36,36
 ---midi_endpt : MIDI editor end marker
------ current RGB: 19,189,153
 ---midi_notebg : MIDI editor note, unselected (midi_note_colormap overrides)
------ current RGB: 0,0,0
 ---midi_notefg : MIDI editor note, selected (midi_note_colormap overrides)
------ current RGB: 255,255,255
 ---midi_notemute : MIDI editor note, muted, unselected (midi_note_colormap overrides)
------ current RGB: 128,0,0
 ---midi_notemute_sel : MIDI editor note, muted, selected (midi_note_colormap overrides)
------ current RGB: 255,0,0
 ---midi_itemctl : MIDI editor note controls
------ current RGB: 0,0,0
 ---midi_ofsn : MIDI editor note (offscreen)
------ current RGB: 73,73,73
 ---midi_ofsnsel : MIDI editor note (offscreen, selected)
------ current RGB: 19,189,153
 ---midi_editcurs : MIDI editor cursor
------ current RGB: 51,152,135
 ---midi_pkey1 : MIDI piano key color (naturals background, sharps/flats text)
------ current RGB: 235,235,235
 ---midi_pkey2 : MIDI piano key color (sharps/flats background, naturals text)
------ current RGB: 30,30,30
 ---midi_pkey3 : MIDI piano key color (selected)
------ current RGB: 130,130,130
 ---midi_noteon_flash : MIDI piano key note-on flash
------ current RGB: 29,207,169
 ---midi_leftbg : MIDI piano pane background
------ current RGB: 172,172,172
 ---midifont_col_light_unsel : MIDI editor note text and control color, unselected (light)
------ current RGB: 255,255,255
 ---midifont_col_dark_unsel : MIDI editor note text and control color, unselected (dark)
------ current RGB: 0,0,0
 ---midifont_mode_unsel : MIDI editor note text and control mode, unselected
------ blendmode 00028000
 ---midifont_col_light : MIDI editor note text and control color (light)
------ current RGB: 255,255,255
 ---midifont_col_dark : MIDI editor note text and control color (dark)
------ current RGB: 0,0,0
 ---midifont_mode : MIDI editor note text and control mode
------ blendmode 0002c000
 ---score_bg : MIDI notation editor background
------ current RGB: 255,255,255
 ---score_fg : MIDI notation editor staff/notation/text
------ current RGB: 0,0,0
 ---score_sel : MIDI notation editor selected staff/notation/text
------ current RGB: 0,0,255
 ---score_timesel : MIDI notation editor time selection
------ current RGB: 255,255,224
 ---score_loop : MIDI notation editor loop points, selected pitch
------ current RGB: 255,192,0
 ---midieditorlist_bg : MIDI list editor background
------ current RGB: 84,84,84
 ---midieditorlist_fg : MIDI list editor text
------ current RGB: 224,224,224
 ---midieditorlist_grid : MIDI list editor grid lines
------ current RGB: 171,177,177
 ---midieditorlist_selbg : MIDI list editor selected row
------ current RGB: 138,138,138
 ---midieditorlist_selfg : MIDI list editor selected text
------ current RGB: 240,240,240
 ---midieditorlist_seliabg : MIDI list editor selected row (inactive)
------ current RGB: 240,240,240
 ---midieditorlist_seliafg : MIDI list editor selected text (inactive)
------ current RGB: 0,0,0
 ---midieditorlist_bg2 : MIDI list editor background (secondary)
------ current RGB: 170,176,176
 ---midieditorlist_fg2 : MIDI list editor text (secondary)
------ current RGB: 68,70,70
 ---midieditorlist_selbg2 : MIDI list editor selected row (secondary)
------ current RGB: 214,217,217
 ---midieditorlist_selfg2 : MIDI list editor selected text (secondary)
------ current RGB: 75,77,77
 ---col_explorer_sel : Media explorer selection
------ current RGB: 255,255,255
 ---col_explorer_seldm : Media explorer selection mode
------ blendmode 00026600
 ---col_explorer_seledge : Media explorer selection edge
------ current RGB: 201,201,201
 ---explorer_grid : Media explorer grid, markers
------ current RGB: 235,235,235
 ---explorer_pitchtext : Media explorer pitch detection text
------ current RGB: 255,255,255
 ---docker_shadow : Tab control shadow
------ current RGB: 40,40,40
 ---docker_selface : Tab control selected tab
------ current RGB: 40,40,40
 ---docker_unselface : Tab control unselected tab
------ current RGB: 42,42,42
 ---docker_text : Tab control text
------ current RGB: 150,150,150
 ---docker_text_sel : Tab control text selected tab
------ current RGB: 0,0,0
 ---docker_bg : Tab control background
------ current RGB: 60,60,60
 ---windowtab_bg : Tab control background in windows
------ current RGB: 60,60,60
 ---auto_item_unsel : Envelope: Unselected automation item
------ current RGB: 109,120,117
 ---col_env1 : Envelope: Volume (pre-FX)
------ current RGB: 29,207,169
 ---col_env2 : Envelope: Volume
------ current RGB: 29,207,169
 ---env_trim_vol : Envelope: Trim Volume
------ current RGB: 0,0,0
 ---col_env3 : Envelope: Pan (pre-FX)
------ current RGB: 255,0,0
 ---col_env4 : Envelope: Pan
------ current RGB: 255,150,0
 ---env_track_mute : Envelope: Mute
------ current RGB: 192,0,0
 ---col_env5 : Envelope: Master playrate
------ current RGB: 157,157,157
 ---col_env6 : Envelope: Master tempo
------ current RGB: 0,255,255
 ---col_env7 : Envelope: Width / Send volume
------ current RGB: 128,0,0
 ---col_env8 : Envelope: Send pan
------ current RGB: 0,128,128
 ---col_env9 : Envelope: Send volume 2
------ current RGB: 0,128,192
 ---col_env10 : Envelope: Send pan 2
------ current RGB: 0,64,0
 ---env_sends_mute : Envelope: Send mute
------ current RGB: 192,192,0
 ---col_env11 : Envelope: Audio hardware output volume
------ current RGB: 0,255,255
 ---col_env12 : Envelope: Audio hardware output pan
------ current RGB: 255,255,0
 ---col_env13 : Envelope: FX parameter 1
------ current RGB: 128,0,255
 ---col_env14 : Envelope: FX parameter 2
------ current RGB: 64,128,128
 ---col_env15 : Envelope: FX parameter 3
------ current RGB: 0,0,255
 ---col_env16 : Envelope: FX parameter 4
------ current RGB: 255,0,128
 ---env_item_vol : Envelope: Item take volume
------ current RGB: 29,207,169
 ---env_item_pan : Envelope: Item take pan
------ current RGB: 216,151,60
 ---env_item_mute : Envelope: Item take mute
------ current RGB: 164,36,59
 ---env_item_pitch : Envelope: Item take pitch
------ current RGB: 58,134,255
 ---wiring_grid2 : Wiring: Background
------ current RGB: 46,46,46
 ---wiring_grid : Wiring: Background grid lines
------ current RGB: 51,51,51
 ---wiring_border : Wiring: Box border
------ current RGB: 153,153,153
 ---wiring_tbg : Wiring: Box background
------ current RGB: 38,38,38
 ---wiring_ticon : Wiring: Box foreground
------ current RGB: 204,204,204
 ---wiring_recbg : Wiring: Record section background
------ current RGB: 101,77,77
 ---wiring_recitem : Wiring: Record section foreground
------ current RGB: 63,33,33
 ---wiring_media : Wiring: Media
------ current RGB: 32,64,32
 ---wiring_recv : Wiring: Receives
------ current RGB: 92,92,92
 ---wiring_send : Wiring: Sends
------ current RGB: 92,92,92
 ---wiring_fader : Wiring: Fader
------ current RGB: 128,128,192
 ---wiring_parent : Wiring: Master/Parent
------ current RGB: 64,128,128
 ---wiring_parentwire_border : Wiring: Master/Parent wire border
------ current RGB: 100,100,100
 ---wiring_parentwire_master : Wiring: Master/Parent to master wire
------ current RGB: 192,192,192
 ---wiring_parentwire_folder : Wiring: Master/Parent to parent folder wire
------ current RGB: 128,128,128
 ---wiring_pin_normal : Wiring: Pins normal
------ current RGB: 192,192,192
 ---wiring_pin_connected : Wiring: Pins connected
------ current RGB: 96,144,96
 ---wiring_pin_disconnected : Wiring: Pins disconnected
------ current RGB: 64,32,32
 ---wiring_horz_col : Wiring: Horizontal pin connections
------ current RGB: 72,72,72
 ---wiring_sendwire : Wiring: Send hanging wire
------ current RGB: 128,128,128
 ---wiring_hwoutwire : Wiring: Hardware output wire
------ current RGB: 128,128,128
 ---wiring_recinputwire : Wiring: Record input wire
------ current RGB: 255,128,128
 ---wiring_hwout : Wiring: System hardware outputs
------ current RGB: 64,64,64
 ---wiring_recinput : Wiring: System record inputs
------ current RGB: 128,64,64
 ---wiring_activity : Wiring: Activity lights
------ current RGB: 64,255,64
 ---autogroup : Automatic track group
------ current RGB: 255,255,255
 ---group_0 : Group #1
------ current RGB: 255,0,0
 ---group_1 : Group #2
------ current RGB: 0,255,0
 ---group_2 : Group #3
------ current RGB: 0,0,255
 ---group_3 : Group #4
------ current RGB: 255,255,0
 ---group_4 : Group #5
------ current RGB: 255,0,255
 ---group_5 : Group #6
------ current RGB: 0,255,255
 ---group_6 : Group #7
------ current RGB: 192,0,0
 ---group_7 : Group #8
------ current RGB: 0,192,0
 ---group_8 : Group #9
------ current RGB: 0,0,192
 ---group_9 : Group #10
------ current RGB: 192,192,0
 ---group_10 : Group #11
------ current RGB: 192,0,192
 ---group_11 : Group #12
------ current RGB: 0,192,192
 ---group_12 : Group #13
------ current RGB: 128,0,0
 ---group_13 : Group #14
------ current RGB: 0,128,0
 ---group_14 : Group #15
------ current RGB: 0,0,128
 ---group_15 : Group #16
------ current RGB: 128,128,0
 ---group_16 : Group #17
------ current RGB: 128,0,128
 ---group_17 : Group #18
------ current RGB: 0,128,128
 ---group_18 : Group #19
------ current RGB: 192,128,0
 ---group_19 : Group #20
------ current RGB: 0,192,128
 ---group_20 : Group #21
------ current RGB: 0,128,192
 ---group_21 : Group #22
------ current RGB: 192,128,0
 ---group_22 : Group #23
------ current RGB: 128,0,192
 ---group_23 : Group #24
------ current RGB: 128,192,0
 ---group_24 : Group #25
------ current RGB: 64,0,0
 ---group_25 : Group #26
------ current RGB: 0,64,0
 ---group_26 : Group #27
------ current RGB: 0,0,64
 ---group_27 : Group #28
------ current RGB: 64,64,0
 ---group_28 : Group #29
------ current RGB: 64,0,64
 ---group_29 : Group #30
------ current RGB: 0,64,64
 ---group_30 : Group #31
------ current RGB: 64,0,64
 ---group_31 : Group #32
------ current RGB: 0,64,64
 ---group_32 : Group #33
------ current RGB: 128,255,255
 ---group_33 : Group #34
------ current RGB: 128,0,128
 ---group_34 : Group #35
------ current RGB: 1,255,128
 ---group_35 : Group #36
------ current RGB: 128,0,255
 ---group_36 : Group #37
------ current RGB: 1,255,255
 ---group_37 : Group #38
------ current RGB: 1,0,128
 ---group_38 : Group #39
------ current RGB: 128,255,224
 ---group_39 : Group #40
------ current RGB: 128,63,128
 ---group_40 : Group #41
------ current RGB: 32,255,128
 ---group_41 : Group #42
------ current RGB: 128,63,224
 ---group_42 : Group #43
------ current RGB: 32,255,224
 ---group_43 : Group #44
------ current RGB: 32,63,128
 ---group_44 : Group #45
------ current RGB: 128,255,192
 ---group_45 : Group #46
------ current RGB: 128,127,128
 ---group_46 : Group #47
------ current RGB: 64,255,128
 ---group_47 : Group #48
------ current RGB: 128,127,192
 ---group_48 : Group #49
------ current RGB: 64,255,192
 ---group_49 : Group #50
------ current RGB: 64,127,128
 ---group_50 : Group #51
------ current RGB: 128,127,224
 ---group_51 : Group #52
------ current RGB: 64,63,128
 ---group_52 : Group #53
------ current RGB: 32,127,128
 ---group_53 : Group #54
------ current RGB: 128,127,224
 ---group_54 : Group #55
------ current RGB: 32,255,192
 ---group_55 : Group #56
------ current RGB: 128,63,192
 ---group_56 : Group #57
------ current RGB: 128,255,160
 ---group_57 : Group #58
------ current RGB: 128,191,128
 ---group_58 : Group #59
------ current RGB: 96,255,128
 ---group_59 : Group #60
------ current RGB: 128,191,160
 ---group_60 : Group #61
------ current RGB: 96,255,160
 ---group_61 : Group #62
------ current RGB: 96,191,128
 ---group_62 : Group #63
------ current RGB: 96,255,160
 ---group_63 : Group #64
------ current RGB: 96,191,128
 ---@param ini_key string
 ---@param color integer
 ---@param flags integer
@@ -4774,12 +4385,12 @@ function reaper.ShowMessageBox(msg, title, type) end
 
 ---shows a context menu, valid names include: track_input, track_panel, track_area, track_routing, item, ruler, envelope, envelope_point, envelope_item. ctxOptional can be a track pointer for track_*, item pointer for item* (but is optional). for envelope_point, ctx2Optional has point index, ctx3Optional has item index (0=main envelope, 1=first AI). for envelope_item, ctx2Optional has AI index (1=first AI)
 ---@param name string
----@param x integer
----@param y integer
----@param hwndParent HWND
----@param ctx userdata
----@param ctx2 integer
----@param ctx3 integer
+---@param x integer?
+---@param y integer?
+---@param hwndParent HWND?
+---@param ctx userdata?
+---@param ctx2 integer?
+---@param ctx3 integer?
 function reaper.ShowPopupMenu(name, x, y, hwndParent, ctx, ctx2, ctx3) end
 
 ---@param y number
@@ -5169,7 +4780,7 @@ function reaper.time_precise() end
 ---convert a beat position (or optionally a beats+measures if measures is non-NULL) to time.
 ---@param proj ReaProject|nil|0
 ---@param tpos number
----@param measuresIn? integer
+---@param measuresIn integer?
 ---@return number retval
 function reaper.TimeMap2_beatsToTime(proj, tpos, measuresIn) end
 
@@ -5990,7 +5601,7 @@ function reaper.BR_EnvSetPoint(envelope, id, position, value, shape, selected, b
 ---@param laneHeight integer
 ---@param defaultShape integer
 ---@param faderScaling boolean
----@param automationItemsOptionsIn? integer
+---@param automationItemsOptionsIn integer?
 function reaper.BR_EnvSetProperties(envelope, active, visible, armed, inLane, laneHeight, defaultShape, faderScaling, automationItemsOptionsIn) end
 
 ---[BR] Sort envelope points by position. The only reason to call this is if sorted points are explicitly needed after editing them with BR_EnvSetPoint. Note that you do not have to call this before doing BR_EnvFree since it does handle unsorted points too.
@@ -6616,6 +6227,147 @@ function reaper.BR_Win32_WindowFromPoint(x, y) end
 ---@return boolean retval
 function reaper.BR_Win32_WritePrivateProfileString(sectionName, keyName, value, filePath) end
 
+---Get audio buffer timing information. This is the length (size) of audio buffer in samples, sample rate and 'latest audio buffer switch wall clock time' in seconds.
+---@return integer len
+---@return number srate
+---@return number time
+function reaper.Blink_GetAudioBufferTimingInfo() end
+
+---Get session beat value corresponding to given time for given quantum.
+---@param time number
+---@param quantum number
+---@return number retval
+function reaper.Blink_GetBeatAtTime(time, quantum) end
+
+---Clock used by Blink.
+---@return number retval
+function reaper.Blink_GetClockNow() end
+
+---Is Blink currently enabled?
+---@return boolean retval
+function reaper.Blink_GetEnabled() end
+
+---Is Blink Master?
+---@return boolean retval
+function reaper.Blink_GetMaster() end
+
+---How many peers are currently connected in Link session?
+---@return integer retval
+function reaper.Blink_GetNumPeers() end
+
+---Get session phase at given time for given quantum.
+---@param time number
+---@param quantum number
+---@return number retval
+function reaper.Blink_GetPhaseAtTime(time, quantum) end
+
+---Is transport playing?
+---@return boolean retval
+function reaper.Blink_GetPlaying() end
+
+---Is Blink Puppet?
+---@return boolean retval
+function reaper.Blink_GetPuppet() end
+
+---Get quantum.
+---@return number retval
+function reaper.Blink_GetQuantum() end
+
+---Is start/stop synchronization enabled?
+---@return boolean retval
+function reaper.Blink_GetStartStopSyncEnabled() end
+
+---Tempo of timeline, in quarter note Beats Per Minute.
+---@return number retval
+function reaper.Blink_GetTempo() end
+
+---Get time at which given beat occurs for given quantum.
+---@param beat number
+---@param quantum number
+---@return number retval
+function reaper.Blink_GetTimeAtBeat(beat, quantum) end
+
+---Get time at which transport start/stop occurs.
+---@return number retval
+function reaper.Blink_GetTimeForPlaying() end
+
+---Get timeline offset. This is the offset between REAPER timeline and Link session timeline.
+---@return number retval
+function reaper.Blink_GetTimelineOffset() end
+
+---Get Blink version.
+---@return number retval
+function reaper.Blink_GetVersion() end
+
+---Convenience function to attempt to map given beat to time when transport is starting to play in context of given quantum. This function evaluates to a no-op if GetPlaying() equals false.
+---@param beat number
+---@param quantum number
+function reaper.Blink_SetBeatAtStartPlayingTimeRequest(beat, quantum) end
+
+---Rudely re-map beat/time relationship for all peers in Link session.
+---@param bpm number
+---@param time number
+---@param quantum number
+function reaper.Blink_SetBeatAtTimeForce(bpm, time, quantum) end
+
+---Attempt to map given beat to given time in context of given quantum.
+---@param bpm number
+---@param time number
+---@param quantum number
+function reaper.Blink_SetBeatAtTimeRequest(bpm, time, quantum) end
+
+---Captures REAPER Transport commands and 'Tempo: Increase/Decrease current project tempo by' commands and broadcasts them into Link session. When used with Master or Puppet mode enabled, provides better integration between REAPER and Link session transport and tempos.
+---@param enable boolean
+function reaper.Blink_SetCaptureTransportCommands(enable) end
+
+---Enable/disable Blink. In Blink methods transport, tempo and timeline refer to Link session, not local REAPER instance.
+---@param enable boolean
+function reaper.Blink_SetEnabled(enable) end
+
+---Set launch offset. This is used to compensate for possible constant REAPER transport launch delay, if such exists.
+---@param offset number
+function reaper.Blink_SetLaunchOffset(offset) end
+
+---Set Blink as Master. Puppet needs to be enabled first. Same as Puppet, but possible beat offset is broadcast to Link session, effectively forcing local REAPER timeline on peers. Only one, if any, Blink should be Master in Link session.
+---@param enable boolean
+function reaper.Blink_SetMaster(enable) end
+
+---Set if transport should be playing or stopped, taking effect at given time.
+---@param playing boolean
+---@param time number
+function reaper.Blink_SetPlaying(playing, time) end
+
+---Convenience function to start or stop transport at given time and attempt to map given beat to this time in context of given quantum.
+---@param playing boolean
+---@param time number
+---@param beat number
+---@param quantum number
+function reaper.Blink_SetPlayingAndBeatAtTimeRequest(playing, time, beat, quantum) end
+
+---Set Blink as Puppet. When enabled, Blink attempts to synchronize local REAPER tempo to Link session tempo by adjusting current active tempo/time signature marker, or broadcasts local REAPER tempo changes into Link session, and attempts to correct possible offset by adjusting REAPER playrate. Based on cumulative single beat phase since Link session transport start, regardless of quantum.
+---@param enable boolean
+function reaper.Blink_SetPuppet(enable) end
+
+---Set quantum. Usually this is set to length of one measure/bar in quarter notes.
+---@param quantum number
+function reaper.Blink_SetQuantum(quantum) end
+
+---Enable start/stop synchronization.
+---@param enable boolean
+function reaper.Blink_SetStartStopSyncEnabled(enable) end
+
+---Set timeline tempo to given bpm value.
+---@param bpm number
+function reaper.Blink_SetTempo(bpm) end
+
+---Set tempo to given bpm value, taking effect (heard from speakers)at given wall clock time.
+---@param bpm number
+---@param time number
+function reaper.Blink_SetTempoAtTime(bpm, time) end
+
+---Transport start/stop.
+function reaper.Blink_StartStop() end
+
 ---Create a new preview object. Does not take ownership of the source (don't forget to destroy it unless it came from a take!). See CF_Preview_Play and the others CF_Preview_* functions.
 ---The preview object is automatically destroyed at the end of a defer cycle if at least one of these conditions are met:
 ---- playback finished
@@ -6755,7 +6507,7 @@ function reaper.CF_NormalizeUTF8(input, mode) end
 ---@param offset number
 ---@param length number
 ---@param reverse boolean
----@param fadeIn? number
+---@param fadeIn number?
 ---@return boolean retval
 function reaper.CF_PCM_Source_SetSectionInfo(section, source, offset, length, reverse, fadeIn) end
 
@@ -6834,7 +6586,7 @@ function reaper.CF_SelectTrackFX(track, index) end
 ---@param hwnd userdata
 ---@param section integer
 ---@param key integer
----@param modifiersIn? integer
+---@param modifiersIn integer?
 ---@return boolean retval
 function reaper.CF_SendActionShortcut(hwnd, section, key, modifiersIn) end
 
@@ -6893,6 +6645,143 @@ function reaper.FNG_GetMidiNoteIntProperty(midiNote, property) end
 ---@param property string
 ---@param value integer
 function reaper.FNG_SetMidiNoteIntProperty(midiNote, property, value) end
+
+---Clears ReaFab control map, optionally based on matching idString. Returns true on success.
+---@param idStringIn string?
+---@return boolean retval
+function reaper.Fab_Clear(idStringIn) end
+
+---Runs ReaFab actions/commands. First parameter (command) is ReaFab command number, e.g. 3 for 3rd encoder rotation. Second parameter (val) is MIDI CC Relative value. Value 1 is increment of 1, 127 is decrement of 1. 2 is inc 2, 126 is dec 2 and so on. For button press (commands 9-32) a value of 127 is recommended.
+---@param command integer
+---@param val integer
+---@return boolean retval
+function reaper.Fab_Do(command, val) end
+
+---Dumps current control mapping into .lua file under ResourcePath/Scripts/reafab_dump-timestamp.lua
+function reaper.Fab_Dump() end
+
+---Returns target FX and parameter index for given ReaFab command in context of selected track and ReaFab FX index. Valid command range 1 ... 24. Returns false if no such command mapping is found. Returns param index -1 for ReaFab internal band change command.
+---@param command integer
+---@return boolean retval
+---@return integer fx
+---@return integer param
+function reaper.Fab_Get(command) end
+
+---Creates control mapping for ReaFab command.
+---fxId e.g. "ReaComp".
+---command 1-8 for encoders, 9-24 for buttons.
+---paramId e.g. "Ratio".
+---control 1 = direct, 2 = band selector, 3 = cycle, 4 = invert, 5 = force toggle, 6 = force range, 7 = 5 and 6, 8 = force continuous.
+---bands define, if target fx has multiple identical target bands. In this case, paramId must include 00 placeholder, e.g. "Band 00 Gain".
+---step overrides built-in default step of ~0.001 for continuous parameters.
+---accel overrides built-in default control acceleration step of 1.0.
+---minval & maxval override default detected target param value range.
+---Prefixing paramId with "-" reverses direction; useful for creating separate next/previous mappings for bands or list type value navigation.
+---@param fxId string
+---@param command integer
+---@param paramId string
+---@param control integer
+---@param bandsIn integer?
+---@param stepIn number?
+---@param accelIn number?
+---@param minvalIn number?
+---@param maxvalIn number?
+---@return boolean retval
+function reaper.Fab_Map(fxId, command, paramId, control, bandsIn, stepIn, accelIn, minvalIn, maxvalIn) end
+
+---Reads from a config file in the GUtilities folder in Reaper's resource folder
+---@param fileName string
+---@param category string
+---@param key string
+---@return boolean retval
+---@return string value
+function reaper.GU_Config_Read(fileName, category, key) end
+
+---Writes a config file to the GUtilities folder in Reaper's resource folder
+---@param fileName string
+---@param category string
+---@param key string
+---@param value string
+---@return boolean retval
+function reaper.GU_Config_Write(fileName, category, key, value) end
+
+---Returns count and filesize in megabytes for all valid media files within the path. Returns -1 if path is invalid. Flags can be passed as an argument to determine which media files are valid. A flag with a value of -1 will reset the cache, otherwise, the following flags can be used: ALL = 0, WAV = 1, AIFF = 2, FLAC = 4, MP3 = 8, OGG = 16, BWF = 32, W64 = 64, WAVPACK = 128, GIF = 256, MP4 = 512
+---@param path string
+---@param flags integer
+---@return integer retval
+---@return number fileSize
+function reaper.GU_Filesystem_CountMediaFiles(path, flags) end
+
+---Returns the next valid file in a directory each time this function is called with the same path. Returns an empty string if path does not contain any more valid files. Flags can be passed as an argument to determine which media files are valid. A flag with a value of -1 will reset the cache, otherwise, the following flags can be used: ALL = 0, WAV = 1, AIFF = 2, FLAC = 4, MP3 = 8, OGG = 16, BWF = 32, W64 = 64, WAVPACK = 128, GIF = 256, MP4 = 512
+---@param path string
+---@param flags integer
+---@return string path
+function reaper.GU_Filesystem_EnumerateMediaFiles(path, flags) end
+
+---Returns the first found file's path from within a given path. Returns an empty string if not found
+---@param path string
+---@param fileName string
+---@return string path
+function reaper.GU_Filesystem_FindFileInPath(path, fileName) end
+
+---Checks if file or directory exists
+---@param path string
+---@return boolean retval
+function reaper.GU_Filesystem_PathExists(path) end
+
+---Gets the current GUtilitiesAPI version
+---@return string version
+function reaper.GU_GUtilitiesAPI_GetVersion() end
+
+---Gets a PCM_source's sample value at a point in time (seconds)
+---@param source PCM_source
+---@param time number
+---@return number retval
+function reaper.GU_PCM_Source_GetSampleValue(source, time) end
+
+---Checks if PCM_source has embedded Media Cue Markers
+---@param source PCM_source
+---@return boolean retval
+function reaper.GU_PCM_Source_HasRegion(source) end
+
+---Checks if PCM_source is mono by comparing all channels
+---@param source PCM_source
+---@return boolean retval
+function reaper.GU_PCM_Source_IsMono(source) end
+
+---Returns duration in seconds for PCM_source from start til peak threshold is breached. Returns -1 if invalid
+---@param source PCM_source
+---@param bufferSize integer
+---@param threshold number
+---@return number retval
+function reaper.GU_PCM_Source_TimeToPeak(source, bufferSize, threshold) end
+
+---Returns duration in seconds for PCM_source from end til peak threshold is breached in reverse. Returns -1 if invalid
+---@param source PCM_source
+---@param bufferSize integer
+---@param threshold number
+---@return number retval
+function reaper.GU_PCM_Source_TimeToPeakR(source, bufferSize, threshold) end
+
+---Returns duration in seconds for PCM_source from start til RMS threshold is breached. Returns -1 if invalid
+---@param source PCM_source
+---@param bufferSize integer
+---@param threshold number
+---@return number retval
+function reaper.GU_PCM_Source_TimeToRMS(source, bufferSize, threshold) end
+
+---Returns duration in seconds for PCM_source from end til RMS threshold is breached in reverse. Returns -1 if invalid
+---@param source PCM_source
+---@param bufferSize integer
+---@param threshold number
+---@return number retval
+function reaper.GU_PCM_Source_TimeToRMSR(source, bufferSize, threshold) end
+
+---Returns a string by parsing wildcards relative to the supplied MediaItem_Take
+---@param take MediaItem_Take
+---@param input string
+---@return string value
+function reaper.GU_WildcardParseTake(take, input) end
 
 ---Returns the path to the directory containing imgui.lua, imgui.py and gfx2imgui.lua.
 ---@return string retval
@@ -6998,7 +6887,7 @@ function reaper.JS_Composite_ListBitmaps(windowHWND) end
 --- * autoUpdate is an optional parameter. If unlinking a single bitmap and autoUpdate is true, the function will automatically re-draw the window to remove the blitted image.
 ---If no bitmap is specified, all bitmaps composited to the window will be unlinked -- even those by other scripts.
 ---@param windowHWND userdata
----@param bitmap userdata
+---@param bitmap userdata?
 ---@param autoUpdate unsupported
 function reaper.JS_Composite_Unlink(windowHWND, bitmap, autoUpdate) end
 
@@ -7075,7 +6964,7 @@ function reaper.JS_File_Stat(filePath) end
 ---@param srxy integer
 ---@param width integer
 ---@param height integer
----@param mode? string
+---@param mode string?
 function reaper.JS_GDI_Blit(destHDC, dstx, dsty, sourceHDC, srcx, srxy, width, height, mode) end
 
 ---@param color integer
@@ -7230,7 +7119,7 @@ function reaper.JS_GDI_SetTextColor(deviceHDC, color) end
 ---@param srxy integer
 ---@param srcw integer
 ---@param srch integer
----@param mode? string
+---@param mode string?
 function reaper.JS_GDI_StretchBlit(destHDC, dstx, dsty, dstw, dsth, sourceHDC, srcx, srxy, srcw, srch, mode) end
 
 ---@param headerHWND userdata
@@ -8054,8 +7943,8 @@ function reaper.JS_Window_ClientToScreen(windowHWND, x, y) end
 ---@param y integer
 ---@param w integer
 ---@param h integer
----@param style? string
----@param ownerHWND userdata
+---@param style string?
+---@param ownerHWND userdata?
 ---@return userdata retval
 ---@return string? style
 function reaper.JS_Window_Create(title, className, x, y, w, h, style, ownerHWND) end
@@ -8394,7 +8283,7 @@ function reaper.JS_Window_SetOpacity(windowHWND, mode, value) end
 ---If successful, returns a handle to the previous parent window.
 ---Only on WindowsOS: If parentHWND is not specified, the desktop window becomes the new parent window.
 ---@param childHWND userdata
----@param parentHWND userdata
+---@param parentHWND userdata?
 ---@return userdata retval
 function reaper.JS_Window_SetParent(childHWND, parentHWND) end
 
@@ -8407,8 +8296,8 @@ function reaper.JS_Window_SetParent(childHWND, parentHWND) end
 ---@param top integer
 ---@param width integer
 ---@param height integer
----@param ZOrder? string
----@param flags? string
+---@param ZOrder string?
+---@param flags string?
 ---@return boolean retval
 ---@return string? ZOrder
 ---@return string? flags
@@ -8446,7 +8335,7 @@ function reaper.JS_Window_SetTitle(windowHWND, title) end
 ---* InsertAfterHWND: For compatibility with older versions, this parameter is still available, and is optional. If ZOrder is "INSERTAFTER", insertAfterHWND must be a handle to the window behind which windowHWND will be placed in the Z order, equivalent to setting ZOrder to this HWND; otherwise, insertAfterHWND is ignored and can be left out (or it can simply be set to the same value as windowHWND).
 ---@param windowHWND userdata
 ---@param ZOrder string
----@param insertAfterHWND userdata
+---@param insertAfterHWND userdata?
 ---@return boolean retval
 function reaper.JS_Window_SetZOrder(windowHWND, ZOrder, insertAfterHWND) end
 
@@ -8463,7 +8352,7 @@ function reaper.JS_Window_Update(windowHWND) end
 
 ---Closes the zip archive, using either the file name or the zip handle. Finalizes entries and releases resources.
 ---@param zipFile string
----@param zipHandle userdata
+---@param zipHandle userdata?
 ---@return integer retval
 function reaper.JS_Zip_Close(zipFile, zipHandle) end
 
@@ -8574,6 +8463,264 @@ function reaper.JS_Zip_ListAllEntries(zipHandle) end
 ---@return userdata retval
 ---@return integer retval
 function reaper.JS_Zip_Open(zipFile, mode, compressionLevel) end
+
+---Do. Call this function to run one ReaLlm cycle. Use this function to run ReaLlm on arbitrary time intervals e.g. from a deferred script.
+function reaper.Llm_Do() end
+
+---Get paths. Returns a string of the form "start:fx#1.fx#2...;track:fxs;...;end:fxs" where track is the track number and fx is the fx index. The string is truncated to pathStringOut_sz. 1-based indexing is used. If no MediaTrack* start is provided, all monitored input tracks are used. If no MediaTrack* end is provided, all hardware output tracks are used. If includeFx is true, the fx indices are included.
+---@param includeFx boolean
+---@param startIn  MediaTrack
+---@param endIn MediaTrack
+---@return string pathString
+function reaper.Llm_GetPaths(includeFx, startIn, endIn) end
+
+---Get safed. Returns a string of the form "track:fx;track:fx;..." where track is the track number and fx is the fx index. The string is truncated to safeStringOut_sz. 1-based indexing is used. The string is followed by a | delimited list of fx names that have been set safed.
+---@return string safeString
+function reaper.Llm_GetSafed() end
+
+---Get version. Returns the version of the plugin as integers and the commit hash as a string. The string is truncated to commitOut_sz.
+---@return integer major
+---@return integer minor
+---@return integer patch
+---@return integer build
+---@return string commit
+function reaper.Llm_GetVersion() end
+
+---Set clear safe. Set clear_manually_safed_fx = true to clear manually safed fx
+---@param clear_manually_safed_fx boolean
+function reaper.Llm_SetClearSafe(clear_manually_safed_fx) end
+
+---Set keep pdc
+---@param enable boolean
+function reaper.Llm_SetKeepPdc(enable) end
+
+---Set to include MonitoringFX. In REAPER land this means the fx on the master track record fx chain. Indexed as fx# + 0x1000000, 0-based.
+---@param enable boolean
+function reaper.Llm_SetMonitoringFX(enable) end
+
+---Set parameter change. Set val1 = val2 to clear change. Set parameter_index = -666 to clear all changes. Use this function to set parameter changes between values val1 and val2 for fx_name and parameter_index instead of disabling the effect. Use custom fx names to identify individual fx.
+---@param fx_name string
+---@param parameter_index integer
+---@param val1 number
+---@param val2 number
+function reaper.Llm_SetParameterChange(fx_name, parameter_index, val1, val2) end
+
+---Set pdc limit as factor of audio buffer size.
+---@param pdc_factor number
+function reaper.Llm_SetPdcLimit(pdc_factor) end
+
+---Set safed. Set isSet = true to safe fx name. Set isSet = false to unsafe fx name.
+---@param fx_name string
+---@param isSet boolean
+---@return string fx_name
+function reaper.Llm_SetSafed(fx_name, isSet) end
+
+---Get current button state.
+---@param device integer
+---@param button integer
+---@return integer retval
+function reaper.MCULive_GetButtonValue(device, button) end
+
+---Get MIDI input or output dev ID. type 0 is input dev, type 1 is output dev. device < 0 returns number of MCULive devices.
+---@param device integer
+---@param type integer
+---@return integer retval
+function reaper.MCULive_GetDevice(device, type) end
+
+---Returns zero-indexed encoder parameter value. 0 = lastpos, 1 = lasttouch
+---@param device integer
+---@param encIdx integer
+---@param param integer
+---@return number retval
+function reaper.MCULive_GetEncoderValue(device, encIdx, param) end
+
+---Returns zero-indexed fader parameter value. 0 = lastpos, 1 = lasttouch, 2 = lastmove (any fader)
+---@param device integer
+---@param faderIdx integer
+---@param param integer
+---@return number retval
+function reaper.MCULive_GetFaderValue(device, faderIdx, param) end
+
+---Gets MIDI message from input buffer/queue. Gets (pops/pulls) indexed message (status, data1, data2 and frame_offset) from queue and retval is total size/length left in queue. E.g. continuously read all indiviual messages with deferred script. Frame offset resolution is 1/1024000 seconds, not audio samples. Long messages are returned as optional strings of byte characters. msgIdx -1 returns size (length) of buffer. Read also non-MCU devices by creating MCULive device with their input.
+---@param device integer
+---@param msgIdx integer
+---@return integer retval
+---@return integer status
+---@return integer data1
+---@return integer data2
+---@return integer frame_offset
+---@return string? msg
+function reaper.MCULive_GetMIDIMessage(device, msgIdx) end
+
+---Maps MCU Live device# button# to REAPER command ID. E.g. reaper.MCULive_Map(0,0x5b, 40340) maps MCU Rewind to "Track: Unsolo all tracks". Or remap button to another button if your MCU button layout doesnt play nicely with default MCULive mappings. By default range 0x00 .. 0x2d is in use. Button numbers are second column (prefixed with 0x) e.g. '90 5e' 0x5e for 'transport : play', roughly. 
+---mcu documentation: 
+---mcu=>pc: 
+---  the mcu seems to send, when it boots (or is reset) f0 00 00 66 14 01 58 59 5a 57 18 61 05 57 18 61 05 f7 
+---  ex vv vv    :   volume fader move, x=0..7, 8=master, vv vv is int14 
+---  b0 1x vv    :   pan fader move, x=0..7, vv has 40 set if negative, low bits 0-31 are move amount 
+---  b0 3c vv    :   jog wheel move, 01 or 41 
+---  to the extent the buttons below have leds, you can set them by sending these messages, with 7f for on, 1 for blink, 0 for off. 
+---  90 0x vv    :   rec arm push x=0..7 (vv:..) 
+---  90 0x vv    :   solo push x=8..f (vv:..) 
+---  90 1x vv    :   mute push x=0..7 (vv:..) 
+---  90 1x vv    :   selected push x=8..f (vv:..) 
+---  90 2x vv    :   pan knob push, x=0..7 (vv:..) 
+---  90 28 vv    :   assignment track 
+---  90 29 vv    :   assignment send 
+---  90 2a vv    :   assignment pan/surround 
+---  90 2b vv    :   assignment plug-in 
+---  90 2c vv    :   assignment eq 
+---  90 2d vv    :   assignment instrument 
+---  90 2e vv    :   bank down button (vv: 00=release, 7f=push) 
+---  90 2f vv    :   channel down button (vv: ..) 
+---  90 30 vv    :   bank up button (vv:..) 
+---  90 31 vv    :   channel up button (vv:..) 
+---  90 32 vv    :   flip button 
+---  90 33 vv    :   global view button 
+---  90 34 vv    :   name/value display button 
+---  90 35 vv    :   smpte/beats mode switch (vv:..) 
+---  90 36 vv    :   f1 
+---  90 37 vv    :   f2 
+---  90 38 vv    :   f3 
+---  90 39 vv    :   f4 
+---  90 3a vv    :   f5 
+---  90 3b vv    :   f6 
+---  90 3c vv    :   f7 
+---  90 3d vv    :   f8 
+---  90 3e vv    :   global view : midi tracks 
+---  90 3f vv    :   global view : inputs 
+---  90 40 vv    :   global view : audio tracks 
+---  90 41 vv    :   global view : audio instrument 
+---  90 42 vv    :   global view : aux 
+---  90 43 vv    :   global view : busses 
+---  90 44 vv    :   global view : outputs 
+---  90 45 vv    :   global view : user 
+---  90 46 vv    :   shift modifier (vv:..) 
+---  90 47 vv    :   option modifier 
+---  90 48 vv    :   control modifier 
+---  90 49 vv    :   alt modifier 
+---  90 4a vv    :   automation read/off 
+---  90 4b vv    :   automation write 
+---  90 4c vv    :   automation trim 
+---  90 4d vv    :   automation touch 
+---  90 4e vv    :   automation latch 
+---  90 4f vv    :   automation group 
+---  90 50 vv    :   utilities save 
+---  90 51 vv    :   utilities undo 
+---  90 52 vv    :   utilities cancel 
+---  90 53 vv    :   utilities enter 
+---  90 54 vv    :   marker 
+---  90 55 vv    :   nudge 
+---  90 56 vv    :   cycle 
+---  90 57 vv    :   drop 
+---  90 58 vv    :   replace 
+---  90 59 vv    :   click 
+---  90 5a vv    :   solo 
+---  90 5b vv    :   transport rewind (vv:..) 
+---  90 5c vv    :   transport ffwd (vv:..) 
+---  90 5d vv    :   transport pause (vv:..) 
+---  90 5e vv    :   transport play (vv:..) 
+---  90 5f vv    :   transport record (vv:..) 
+---  90 60 vv    :   up arrow button  (vv:..) 
+---  90 61 vv    :   down arrow button 1 (vv:..) 
+---  90 62 vv    :   left arrow button 1 (vv:..) 
+---  90 63 vv    :   right arrow button 1 (vv:..) 
+---  90 64 vv    :   zoom button (vv:..) 
+---  90 65 vv    :   scrub button (vv:..) 
+---  90 6x vv    :   fader touch x=8..f 
+---  90 70 vv    :   master fader touch 
+---pc=>mcu: 
+---  f0 00 00 66 14 12 xx <data> f7   : update lcd. xx=offset (0-112), string. display is 55 chars wide, second line begins at 56, though. 
+---  f0 00 00 66 14 08 00 f7          : reset mcu 
+---  f0 00 00 66 14 20 0x 03 f7       : put track in vu meter mode, x=track   
+---  90 73 vv : rude solo light (vv: 7f=on, 00=off, 01=blink) 
+---  b0 3x vv : pan display, x=0..7, vv=1..17 (hex) or so 
+---  b0 4x vv : right to left of leds. if 0x40 set in vv, dot below char is set (x=0..11) 
+---  d0 yx    : update vu meter, y=track, x=0..d=volume, e=clip on, f=clip off 
+---  ex vv vv : set volume fader, x=track index, 8=master
+---@param device integer
+---@param button integer
+---@param command_id integer
+---@param isRemap boolean
+---@return integer retval
+function reaper.MCULive_Map(device, button, command_id, isRemap) end
+
+---Reset device. device < 0 resets all and returns number of devices.
+---@param device integer
+---@return integer retval
+function reaper.MCULive_Reset(device) end
+
+---Sends MIDI message to device. If string is provided, individual bytes are not sent. Returns number of sent bytes.
+---@param device integer
+---@param status integer
+---@param data1 integer
+---@param data2 integer
+---@param msgIn string?
+---@return integer retval
+function reaper.MCULive_SendMIDIMessage(device, status, data1, data2, msgIn) end
+
+---Set button as MIDI passthrough.
+---@param device integer
+---@param button integer
+---@param isSet boolean
+---@return integer retval
+function reaper.MCULive_SetButtonPassthrough(device, button, isSet) end
+
+---Buttons function as press only by default. Set false for press and release function.
+---@param device integer
+---@param button integer
+---@param isSet boolean
+---@return integer retval
+function reaper.MCULive_SetButtonPressOnly(device, button, isSet) end
+
+---Set button led/mode/state. Value 0 = off,1 = blink, 0x7f = on, usually.
+---@param device integer
+---@param button integer
+---@param value integer
+---@return integer retval
+function reaper.MCULive_SetButtonValue(device, button, value) end
+
+---Enables/disables default out-of-the-box operation.
+---@param device integer
+---@param isSet boolean
+function reaper.MCULive_SetDefault(device, isSet) end
+
+---Write to display. 112 characters, 56 per row.
+---@param device integer
+---@param pos integer
+---@param message string
+---@param pad integer
+function reaper.MCULive_SetDisplay(device, pos, message, pad) end
+
+---Set encoder to value 0 ... 1.0. Type 0 = linear, 1 = track volume, 2 = pan. Returns scaled value.
+---@param device integer
+---@param encIdx integer
+---@param val number
+---@param type integer
+---@return integer retval
+function reaper.MCULive_SetEncoderValue(device, encIdx, val, type) end
+
+---Set fader to value 0 ... 1.0. Type 0 = linear, 1 = track volume, 2 = pan. Returns scaled value.
+---@param device integer
+---@param faderIdx integer
+---@param val number
+---@param type integer
+---@return integer retval
+function reaper.MCULive_SetFaderValue(device, faderIdx, val, type) end
+
+---Set meter value 0 ... 1.0. Type 0 = linear, 1 = track volume (with decay).
+---@param device integer
+---@param meterIdx integer
+---@param val number
+---@param type integer
+---@return integer retval
+function reaper.MCULive_SetMeterValue(device, meterIdx, val, type) end
+
+---1 : surface split point device index 
+---2 : 'mode-is-global' bitmask/flags, first 6 bits
+---@param option integer
+---@param value integer
+function reaper.MCULive_SetOption(option, value) end
 
 ---This function combines all other NF_Peak/RMS functions in a single one and additionally returns peak RMS positions. Lua example code here. Note: It's recommended to use this function with ReaScript/Lua as it provides reaper.array objects. If using this function with other scripting languages, you must provide arrays in the reaper.array format.
 ---@param item MediaItem
@@ -8775,6 +8922,87 @@ function reaper.NF_UpdateSWSMarkerRegionSubWindow() end
 ---@param nIndex integer
 ---@return integer retval
 function reaper.NF_Win32_GetSystemMetrics(nIndex) end
+
+---[NVK] Counts the number of child items under the given NVK Folder Item.
+---@param folderItem MediaItem
+---@return integer retval
+function reaper.NVK_CountFolderItemChildren(folderItem) end
+
+---[NVK] Counts the number of NVK Folder Items in a given project. 0 = active project.
+---@param project ReaProject|nil|0
+---@return integer retval
+function reaper.NVK_CountFolderItems(project) end
+
+---[NVK] Counts the number of selected NVK Folder Items in a given project. 0 = active project.
+---@param project ReaProject|nil|0
+---@return integer retval
+function reaper.NVK_CountSelectedFolderItems(project) end
+
+---[NVK] Counts the number of NVK Folder Items on a given track.
+---@param track MediaTrack
+---@return integer retval
+function reaper.NVK_CountTrackFolderItems(track) end
+
+---[NVK] Gets the clipboard text.
+---@return string retval
+function reaper.NVK_GetClipboardText() end
+
+---[NVK] Gets the NVK Folder Item at the given index in the given project. 0 = active project.
+---@param project ReaProject|nil|0
+---@param index integer
+---@return MediaItem retval
+function reaper.NVK_GetFolderItem(project, index) end
+
+---[NVK] Gets the child item of the given NVK Folder Item at the given index.
+---@param folderItem MediaItem
+---@param index integer
+---@return MediaItem retval
+function reaper.NVK_GetFolderItemChild(folderItem, index) end
+
+---[NVK] Gets the selected NVK Folder Item at the given index in the given project. 0 = active project.
+---@param project ReaProject|nil|0
+---@param index integer
+---@return MediaItem retval
+function reaper.NVK_GetSelectedFolderItem(project, index) end
+
+---[NVK] Gets the NVK Folder Item at the given index on the given track.
+---@param track MediaTrack
+---@param index integer
+---@return MediaItem retval
+function reaper.NVK_GetTrackFolderItem(track, index) end
+
+---[NVK] Returns the version of the NVK Reaper API.
+---@return string retval
+function reaper.NVK_GetVersion() end
+
+---[NVK] Checks if the given item is an NVK Folder Item.
+---@param item MediaItem
+---@return boolean retval
+function reaper.NVK_IsFolderItem(item) end
+
+---[NVK] Checks if the given NVK Folder Item is selected.
+---@param item MediaItem
+---@return boolean retval
+function reaper.NVK_IsFolderItemSelected(item) end
+
+---[NVK] Saves the clipboard image to a specified file path and returns the file path if successful.
+---@param filename string
+---@return string retval
+function reaper.NVK_SaveClipboardImageToFile(filename) end
+
+---[NVK] Selects all NVK Folder Items in the given project. 0 = active project. selected = true to select, false to unselect, defaults to true.
+---@param project ReaProject|nil|0
+---@param selectedIn boolean?
+function reaper.NVK_SelectAllFolderItems(project, selectedIn) end
+
+---[NVK] Sets the clipboard text to the given string.
+---@param str string
+function reaper.NVK_SetClipboardText(str) end
+
+---[NVK] Sets the given NVK Folder Item to be selected (true) or unselected (false).
+---@param item MediaItem
+---@param selected boolean
+function reaper.NVK_SetFolderItemSelected(item, selected) end
 
 ---Show the about dialog of the given package entry.
 ---The repository index is downloaded asynchronously if the cached copy doesn't exist or is older than one week.
@@ -9138,7 +9366,7 @@ function reaper.Xen_GetMediaSourceSamples(src, destbuf, destbufoffset, numframes
 ---@param source PCM_source
 ---@param gain number
 ---@param loop boolean
----@param outputchanindexIn? integer
+---@param outputchanindexIn integer?
 ---@return integer retval
 function reaper.Xen_StartSourcePreview(source, gain, loop, outputchanindexIn) end
 
@@ -9146,6 +9374,15 @@ function reaper.Xen_StartSourcePreview(source, gain, loop, outputchanindexIn) en
 ---@param preview_id integer
 ---@return integer retval
 function reaper.Xen_StopSourcePreview(preview_id) end
+
+---Plays source and provides int to allow for stopping it later
+---@param source PCM_source
+---@param gain number
+---@param playrate number
+---@param loop boolean
+---@param track MediaTrack
+---@return integer retval
+function reaper.nvk_StartSourcePreview(source, gain, playrate, loop, track) end
 
 ---Get the current http communication port from Soundminer.
 ---@return integer retval

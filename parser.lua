@@ -789,7 +789,7 @@ GetSetTrackGroupMembershipEx
 ---------------
 less thans (<) are flipped in sexan defs
 ---------------
-my_getViewport is missing return values in my defs
+my_getViewport is missing return values in reaper documentation
 ---------------
 SetThemeColor includes a ton of current RGB colors that probably aren't necessary
 ---------------
@@ -798,25 +798,136 @@ BR_GetMouseCursorContext has a completely jank chart in the description
 unsupported is replaced with optional boolean
 ]]
 
+local param_type_substitutions = {
+	{ "ReaProject", "ReaProject|nil|0" },
+	{ "KbdSectionInfo", "KbdSectionInfo|integer" },
+	{ "desttrIn", "desttrIn?" },
+	{ "%s+$", "" }, -- remove trailing space
+}
+
+local optional_params = {
+	GetSet_ArrangeView2 = {
+		start_time = true,
+		end_time = true,
+	},
+	GetThemeColor = {
+		flags = true,
+	},
+	LocalizeString = {
+		flags = true,
+	},
+	Main_SaveProjectEx = {
+		forceSaveAsIn = true,
+	},
+	SetCursorContext = {
+		envIn = true,
+	},
+	ShowPopupMenu = {
+		x = true,
+		y = true,
+		hwndParent = true,
+		ctx = true,
+		ctx2 = true,
+		ctx3 = true,
+	},
+	JS_Composite_Unlink = {
+		bitmap = true,
+	},
+	JS_Window_Create = {
+		ownerHWND = true,
+	},
+	JS_Window_SetParent = {
+		parentHWND = true,
+	},
+	JS_Window_SetZOrder = {
+		insertAfterHWND = true,
+	},
+	JS_Zip_Close = {
+		zipHandle = true,
+	},
+}
+
+local manual_overrides = {
+	genGuid = [[---Generates a new GUID string e.g. {35C37676-7CFF-7E46-BB14-FA0CC7C04BEB}
+---@return string gGUID
+function reaper.genGuid() end]],
+	my_getViewport = [[---@param r_left integer
+---@param r_top integer
+---@param r_right integer
+---@param r_bot integer
+---@param sr_left integer
+---@param sr_top integer
+---@param sr_right integer
+---@param sr_bot integer
+---@param wantWorkArea boolean
+---@return integer left
+---@return integer top
+---@return integer right
+---@return integer bottom
+function reaper.my_getViewport(r_left, r_top, r_right, r_bot, sr_left, sr_top, sr_right, sr_bot, wantWorkArea) end]],
+	["reaper.BR_GetMouseCursorContext"] = [[---[BR] Get mouse cursor context. Each parameter returns information in a form of string as specified in the table below.
+---
+---+------------+----------------+------------------------------------------------+
+---| Window     | Segment        | Details                                        |
+---+------------+----------------+------------------------------------------------+
+---| unknown    | ""             | ""                                             |
+---+------------+----------------+------------------------------------------------+
+---| ruler      | region_lane    | ""                                             |
+---|            | marker_lane    | ""                                             |
+---|            | tempo_lane     | ""                                             |
+---|            | timeline       | ""                                             |
+---+------------+----------------+------------------------------------------------+
+---| transport  | ""             | ""                                             |
+---+------------+----------------+------------------------------------------------+
+---| tcp        | track          | ""                                             |
+---|            | envelope       | ""                                             |
+---|            | empty          | ""                                             |
+---+------------+----------------+------------------------------------------------+
+---| mcp        | track          | ""                                             |
+---|            | empty          | ""                                             |
+---+------------+----------------+------------------------------------------------+
+---| arrange    | track          | empty, item, item_stretch_marker,              |
+---|            |                | env_point, env_segment                         |
+---|            | envelope       | empty, env_point, env_segment                  |
+---|            | empty          | ""                                             |
+---+------------+----------------+------------------------------------------------+
+---| midi_editor| unknown        | ""                                             |
+---|            | ruler          | ""                                             |
+---|            | piano          | ""                                             |
+---|            | notes          | ""                                             |
+---|            | cc_lane        | cc_selector, cc_lane                           |
+---+------------+----------------+------------------------------------------------+
+---To get more info on stuff that was found under mouse cursor see BR_GetMouseCursorContext_Envelope, BR_GetMouseCursorContext_Item, BR_GetMouseCursorContext_MIDI, BR_GetMouseCursorContext_Position, BR_GetMouseCursorContext_Take, BR_GetMouseCursorContext_Track 
+---@return string window
+---@return string segment
+---@return string details
+function reaper.BR_GetMouseCursorContext() end]],
+}
+
 --------------------------------------------------------------------------------
 -- Generate the annotated Lua stub for a given parsed function.
 local function generate_stub(func)
+	local short_name = func.func_name:gsub("^reaper%.", "", 1)
+	if manual_overrides[short_name] then
+		return manual_overrides[func.func_name]
+	end
 	local lines = {}
 	if func.description and #func.description > 0 then
 		for line in func.description:gmatch("[^\n]+") do
-			table.insert(lines, "---" .. line)
+			-- remove SetThemeColor additional info
+			if not line:find("^-- current RGB") and not line:find("^-- blendmode") then
+				table.insert(lines, "---" .. line)
+			end
 		end
 	end
 	for _, p in ipairs(func.params) do
-		local pname = p.optional and (p.name .. "?") or p.name
-		p.type = p.type:gsub("ReaProject", "ReaProject|nil|0", 1)
-		p.type = p.type:gsub("KbdSectionInfo", "KbdSectionInfo|integer", 1)
-		p.type = p.type:gsub("desttrIn", "desttrIn?", 1)
-		p.type = p.type:gsub("%s+$", "") -- remove trailing space
-		-- return variables labeled as buf were changed to retval
-		table.insert(lines, string.format("---@param %s %s", pname, p.type))
+		local optional = optional_params[short_name] and optional_params[short_name][p.name] or p.optional
+		for _, sub in ipairs(param_type_substitutions) do
+			p.type = p.type:gsub(sub[1], sub[2], 1)
+		end
+		table.insert(lines, string.format("---@param %s %s", p.name, p.type .. (optional and "?" or "")))
 	end
-	for _, ret in ipairs(func.ret_types or {}) do
+	for i, ret in ipairs(func.ret_types or {}) do
 		local trimmed_type = ret.type:gsub("%s+$", "")
 		local rettype = trimmed_type .. (ret.optional and "?" or "")
 		rettype = rettype:gsub("identifier", "userdata", 1)
@@ -868,7 +979,7 @@ local output_file = io.open(output_path, "w")
 if output_file then
 	output_file:write(table.concat(output, "\n"))
 	output_file:close()
-	reaper.ShowMessageBox("Stubs written to: " .. output_path, "Success", 0)
+	reaper.ShowConsoleMsg("Stubs written to: " .. output_path)
 else
 	reaper.ShowMessageBox("Could not write to file: " .. output_path, "Error", 0)
 end
