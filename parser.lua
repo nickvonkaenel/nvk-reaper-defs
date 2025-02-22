@@ -28,7 +28,56 @@ reaper = {}
 ---@class (exact) unsupported: boolean?
 
 ]]
-local footer = [[
+local footer = [[---is_new_value,filename,sectionID,cmdID,mode,resolution,val,contextstr = reaper.get_action_context()
+---Returns contextual information about the script, typically MIDI/OSC input values.
+---val will be set to a relative or absolute value depending on mode (=0: absolute mode, >0: relative modes).
+---resolution=127 for 7-bit resolution, =16383 for 14-bit resolution.
+---sectionID, and cmdID will be set to -1 if the script is not part of the action list.
+---mode, resolution and val will be set to -1 if the script was not triggered via MIDI/OSC.
+---contextstr may be empty or one of:<br>
+---
+---* midi:XX[:YY] (one or two bytes hex)
+---* [wheel|hwheel|mtvert|mthorz|mtzoom|mtrot|mediakbd]:flags
+---* key:flags:keycode
+---* osc:/msg[:f=FloatValue|:s=StringValue]
+---* KBD_OnMainActionEx
+---
+---(flags may include V=virtkey, S=shift, A=alt/option, C=control/command, W=win/control)
+---@return boolean is_new_value
+---@return string filename
+---@return integer sectionID
+---@return integer cmdID
+---@return integer mode
+---@return integer resolution
+---@return number val
+---@return string contextstr
+function reaper.get_action_context() end
+
+---Adds code to be called back by REAPER. Used to create persistent ReaScripts that continue to run and respond to input, while the user does other tasks. Identical to runloop().
+---Note that no undo point will be automatically created when the script finishes, unless you create it explicitly.
+---@param function function
+---@return boolean retval
+function reaper.defer(function) end
+
+---Adds code to be called back by REAPER. Used to create persistent ReaScripts that continue to run and respond to input, while the user does other tasks. Identical to defer().
+---Note that no undo point will be automatically created when the script finishes, unless you create it explicitly.
+---@param function function
+---@return boolean retval
+function reaper.runloop(function) end
+
+---Adds code to be executed when the script finishes or is ended by the user. Typically used to clean up after the user terminates defer() or runloop() code.
+---@param function function
+---@return boolean retval
+function reaper.atexit(function) end
+
+---Sets action options for the script.
+---* flag&1: script will auto-terminate if re-launched while already running
+---* flag&2: if (flag&1) is set, script will re-launch after auto-terminating
+---* flag&4: set script toggle state on
+---* flag&8: set script toggle state off
+---@param flag integer
+function reaper.set_action_options(flag) end
+
 ---Causes gmem_read()/gmem_write() to read EEL2/JSFX/Video shared memory segment named by parameter. Set to empty string to detach. 6.20+: returns previous shared memory segment name.Must be called, before you can use a specific gmem-variable-index with gmem_write!
 ---@param sharedMemoryName string
 ---@return string former_attached_gmemname
@@ -904,13 +953,32 @@ function reaper.my_getViewport(r_left, r_top, r_right, r_bot, sr_left, sr_top, s
 function reaper.BR_GetMouseCursorContext() end]],
 }
 
+local snippets = {}
+local snippets_overrides = {}
+--[[
+{ [short_name] = { 
+	prefix = "r." .. short_name,
+	scope = "lua",
+	body = "r." .. short_name .. "${1:param}, ${2:param})$0",
+	description = description,
+	},
+}
+]]
 --------------------------------------------------------------------------------
 -- Generate the annotated Lua stub for a given parsed function.
 local function generate_stub(func)
 	local short_name = func.func_name:gsub("^reaper%.", "", 1)
+	local snippet_name = "r." .. short_name
+	if snippets_overrides[short_name] then
+		snippets[short_name] = snippets_overrides[short_name]
+	end
 	if manual_overrides[short_name] then
 		return manual_overrides[func.func_name]
 	end
+	local snippet = {
+		prefix = snippet_name,
+		scope = "lua",
+	}
 	local lines = {}
 	if func.description and #func.description > 0 then
 		for line in func.description:gmatch("[^\n]+") do
@@ -920,13 +988,18 @@ local function generate_stub(func)
 			end
 		end
 	end
-	for _, p in ipairs(func.params) do
+	snippet.description = func.description
+	snippet.body = snippet_name .. "("
+	local body_params = {}
+	for i, p in ipairs(func.params) do
 		local optional = optional_params[short_name] and optional_params[short_name][p.name] or p.optional
 		for _, sub in ipairs(param_type_substitutions) do
 			p.type = p.type:gsub(sub[1], sub[2], 1)
 		end
 		table.insert(lines, string.format("---@param %s %s", p.name, p.type .. (optional and "?" or "")))
+		table.insert(body_params, string.format("{%s:%s}", i, p.name))
 	end
+	snippet.body = snippet.body .. table.concat(body_params, ", ") .. ")$0"
 	for i, ret in ipairs(func.ret_types or {}) do
 		local trimmed_type = ret.type:gsub("%s+$", "")
 		local rettype = trimmed_type .. (ret.optional and "?" or "")
@@ -938,7 +1011,40 @@ local function generate_stub(func)
 		table.insert(param_names, p.name)
 	end
 	table.insert(lines, string.format("function %s(%s) end", func.func_name, table.concat(param_names, ", ")))
+	snippets[short_name] = snippet
 	return table.concat(lines, "\n")
+end
+
+local function snippets_to_json()
+	local str = "{\n"
+	local keys = {}
+	for k in pairs(snippets) do
+		table.insert(keys, k)
+	end
+	table.sort(keys)
+	local key_tbl = {}
+	for _, k in ipairs(keys) do
+		local snippet = snippets[k]
+		table.insert(
+			key_tbl,
+			string.format(
+				'\t"%s lua": {\n\t\t"prefix": "%s",\n\t\t"scope": "lua",\n\t\t"body": "%s"\n\t\t"description": "%s"\n\t}',
+				k,
+				snippet.prefix,
+				snippet.body,
+				snippet.description
+					:gsub("\n", "\\n")
+					:gsub('"', "'")
+					:gsub("\t", "\\t")
+					:gsub("\r", "\\r")
+					:gsub("\\'", "'")
+					:gsub("\\n\\n", "\\n")
+			)
+		)
+	end
+	str = str .. table.concat(key_tbl, ",\n")
+	str = str .. "\n}"
+	return str
 end
 
 local r = reaper
@@ -974,12 +1080,23 @@ for _, func in ipairs(funcs) do
 end
 table.insert(output, footer)
 
-local output_path = debug.getinfo(1, "S").source:match("@(.*)[\\/].*$") .. "/reaper_defs.lua"
-local output_file = io.open(output_path, "w")
-if output_file then
-	output_file:write(table.concat(output, "\n"))
-	output_file:close()
-	reaper.ShowConsoleMsg("Stubs written to: " .. output_path)
-else
-	reaper.ShowMessageBox("Could not write to file: " .. output_path, "Error", 0)
+local snippets_str = snippets_to_json()
+
+local script_path = debug.getinfo(1, "S").source:match("@(.*)[\\/].*$")
+local output_path = script_path .. "/reaper_defs.lua"
+local snippets_path = script_path .. "/snippets.json"
+
+local function write_file(path, content)
+	local file = io.open(path, "w")
+	if file then
+		file:write(content)
+		file:close()
+		reaper.ShowConsoleMsg("File written to: " .. path)
+	else
+		reaper.ShowMessageBox("Could not write to file: " .. path, "Error", 0)
+	end
+	return file
 end
+
+write_file(output_path, table.concat(output, "\n"))
+write_file(snippets_path, snippets_str)
