@@ -1588,8 +1588,7 @@ local script_path = debug.getinfo(1, "S").source:match("@(.*)[\\/].*$")
 local output_path = script_path .. "/reaper_defs.lua"
 local snippets_path = script_path .. "/snippets.json"
 local imgui_path = script_path .. "/imgui_defs.lua"
-
-local nvim_path = "Users/nvk/.config/nvim/snippets/lua/reascript-api.json"
+local nvim_path = os.getenv("HOME") .. "/.config/nvim/snippets/lua/reascript-api.json"
 
 defs_to_snippets(read_file(imgui_path))
 local snippets_str = snippets_to_json()
@@ -1608,4 +1607,6 @@ end
 
 write_file(output_path, table.concat(output, "\n"))
 write_file(snippets_path, snippets_str)
-write_file(nvim_path, snippets_str)
+if r.file_exists(nvim_path) then
+	write_file(nvim_path, snippets_str)
+end
