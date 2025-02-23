@@ -596,13 +596,13 @@
 	"BR_EnvGetPoint lua": {
 		"prefix": "r.BR_EnvGetPoint",
 		"scope": "lua",
-		"body": "r.BR_EnvGetPoint(${1:envelope}, ${2:id})$0",
+		"body": "rv, position, value, shape, selected, bezier = r.BR_EnvGetPoint(${1:envelope}, ${2:id})$0",
 		"description": "[BR] Get envelope point by id (zero-based) from the envelope object allocated with BR_EnvAlloc. Returns true on success."
 	},
 	"BR_EnvGetProperties lua": {
 		"prefix": "r.BR_EnvGetProperties",
 		"scope": "lua",
-		"body": "r.BR_EnvGetProperties(${1:envelope})$0",
+		"body": "active, visible, armed, inLane, laneHeight, defaultShape, minValue, maxValue, centerValue, type, faderScaling, automationItemsOptions = r.BR_EnvGetProperties(${1:envelope})$0",
 		"description": "[BR] Get envelope properties for the envelope object allocated with BR_EnvAlloc.\nactive: true if envelope is active\nvisible: true if envelope is visible\narmed: true if envelope is armed\ninLane: true if envelope has it's own envelope lane\nlaneHeight: envelope lane override height. 0 for none, otherwise size in pixels\ndefaultShape: default point shape: 0->Linear, 1->Square, 2->Slow start/end, 3->Fast start, 4->Fast end, 5->Bezier\nminValue: minimum envelope value\nmaxValue: maximum envelope value\ntype: envelope type: 0->Volume, 1->Volume (Pre-FX), 2->Pan, 3->Pan (Pre-FX), 4->Width, 5->Width (Pre-FX), 6->Mute, 7->Pitch, 8->Playrate, 9->Tempo map, 10->Parameter\nfaderScaling: true if envelope uses fader scaling\nautomationItemsOptions: -1->project default, &1=0->don't attach to underl. env., &1->attach to underl. env. on right side,  &2->attach to underl. env. on both sides, &4: bypass underl. env."
 	},
 	"BR_EnvSetPoint lua": {
@@ -632,7 +632,7 @@
 	"BR_GetArrangeView lua": {
 		"prefix": "r.BR_GetArrangeView",
 		"scope": "lua",
-		"body": "r.BR_GetArrangeView(0)$0",
+		"body": "startTime, endTime = r.BR_GetArrangeView(0)$0",
 		"description": "[BR] Deprecated, see GetSet_ArrangeView2 (REAPER v5.12pre4+) -- Get start and end time position of arrange view. To set arrange view instead, see BR_SetArrangeView."
 	},
 	"BR_GetClosestGridDivision lua": {
@@ -644,7 +644,7 @@
 	"BR_GetCurrentTheme lua": {
 		"prefix": "r.BR_GetCurrentTheme",
 		"scope": "lua",
-		"body": "r.BR_GetCurrentTheme()$0",
+		"body": "themePath, themeName = r.BR_GetCurrentTheme()$0",
 		"description": "[BR] Get current theme information. themePathOut is set to full theme path and themeNameOut is set to theme name excluding any path info and extension"
 	},
 	"BR_GetMediaItemByGUID lua": {
@@ -662,7 +662,7 @@
 	"BR_GetMediaItemImageResource lua": {
 		"prefix": "r.BR_GetMediaItemImageResource",
 		"scope": "lua",
-		"body": "r.BR_GetMediaItemImageResource(${1:item})$0",
+		"body": "rv, image, imageFlags = r.BR_GetMediaItemImageResource(${1:item})$0",
 		"description": "[BR] Get currently loaded image resource and its flags for a given item. Returns false if there is no image resource set. To set image resource, see BR_SetMediaItemImageResource."
 	},
 	"BR_GetMediaItemTakeGUID lua": {
@@ -674,7 +674,7 @@
 	"BR_GetMediaSourceProperties lua": {
 		"prefix": "r.BR_GetMediaSourceProperties",
 		"scope": "lua",
-		"body": "r.BR_GetMediaSourceProperties(${1:take})$0",
+		"body": "rv, section, start, length, fade, reverse = r.BR_GetMediaSourceProperties(${1:take})$0",
 		"description": "[BR] Get take media source properties as they appear in Item properties. Returns false if take can't have them (MIDI items etc.).\nTo set source properties, see BR_SetMediaSourceProperties."
 	},
 	"BR_GetMediaTrackByGUID lua": {
@@ -698,7 +698,7 @@
 	"BR_GetMediaTrackLayouts lua": {
 		"prefix": "r.BR_GetMediaTrackLayouts",
 		"scope": "lua",
-		"body": "r.BR_GetMediaTrackLayouts(${1:track})$0",
+		"body": "mcpLayoutName, tcpLayoutName = r.BR_GetMediaTrackLayouts(${1:track})$0",
 		"description": "[BR] Deprecated, see GetSetMediaTrackInfo (REAPER v5.02+). Get media track layouts for MCP and TCP. Empty string ('') means that layout is set to the default layout. To set media track layouts, see BR_SetMediaTrackLayouts."
 	},
 	"BR_GetMediaTrackSendInfo_Envelope lua": {
@@ -722,25 +722,25 @@
 	"BR_GetMidiTakePoolGUID lua": {
 		"prefix": "r.BR_GetMidiTakePoolGUID",
 		"scope": "lua",
-		"body": "r.BR_GetMidiTakePoolGUID(${1:take})$0",
+		"body": "rv, guidString = r.BR_GetMidiTakePoolGUID(${1:take})$0",
 		"description": "[BR] Get MIDI take pool GUID as a string (guidStringOut_sz should be at least 64). Returns true if take is pooled."
 	},
 	"BR_GetMidiTakeTempoInfo lua": {
 		"prefix": "r.BR_GetMidiTakeTempoInfo",
 		"scope": "lua",
-		"body": "r.BR_GetMidiTakeTempoInfo(${1:take})$0",
+		"body": "rv, ignoreProjTempo, bpm, num, den = r.BR_GetMidiTakeTempoInfo(${1:take})$0",
 		"description": "[BR] Get 'ignore project tempo' information for MIDI take. Returns true if take can ignore project tempo (no matter if it's actually ignored), otherwise false."
 	},
 	"BR_GetMouseCursorContext lua": {
 		"prefix": "r.BR_GetMouseCursorContext",
 		"scope": "lua",
-		"body": "r.BR_GetMouseCursorContext()$0",
+		"body": "window, segment, details = r.BR_GetMouseCursorContext()$0",
 		"description": "[BR] Get mouse cursor context. Each parameter returns information in a form of string as specified in the table below.\nTo get more info on stuff that was found under mouse cursor see BR_GetMouseCursorContext_Envelope, BR_GetMouseCursorContext_Item, BR_GetMouseCursorContext_MIDI, BR_GetMouseCursorContext_Position, BR_GetMouseCursorContext_Take, BR_GetMouseCursorContext_Track \nWindow Segment Details                                            unknown          ''            ''                                                             ruler            region_lane     ''                                                                                                                        marker_lane     ''                                                                                                                        tempo_lane      ''                                                                                                                        timeline        ''                                                             transport        ''            ''                                                             tcp              track           ''                                                                                                                        envelope        ''                                                                                                                        empty           ''                                                             mcp              track           ''                                                                                                                        empty           ''                                                             arrange          track           empty,\nitem, item_stretch_marker,\nenv_point, env_segment                                                              envelope        empty, env_point, env_segment                                                                                               empty           ''                                                             midi_editor      unknown         ''                                                                                                                        ruler           ''                                                                                                                        piano           ''                                                                                                                        notes           ''                                                                                                                        cc_lane         cc_selector, cc_lane"
 	},
 	"BR_GetMouseCursorContext_Envelope lua": {
 		"prefix": "r.BR_GetMouseCursorContext_Envelope",
 		"scope": "lua",
-		"body": "r.BR_GetMouseCursorContext_Envelope()$0",
+		"body": "rv, takeEnvelope = r.BR_GetMouseCursorContext_Envelope()$0",
 		"description": "[BR] Returns envelope that was captured with the last call to BR_GetMouseCursorContext. In case the envelope belongs to take, takeEnvelope will be true."
 	},
 	"BR_GetMouseCursorContext_Item lua": {
@@ -752,7 +752,7 @@
 	"BR_GetMouseCursorContext_MIDI lua": {
 		"prefix": "r.BR_GetMouseCursorContext_MIDI",
 		"scope": "lua",
-		"body": "r.BR_GetMouseCursorContext_MIDI()$0",
+		"body": "rv, inlineEditor, noteRow, ccLane, ccLaneVal, ccLaneId = r.BR_GetMouseCursorContext_MIDI()$0",
 		"description": "[BR] Returns midi editor under mouse cursor that was captured with the last call to BR_GetMouseCursorContext.\ninlineEditor: if mouse was captured in inline MIDI editor, this will be true (consequentially, returned MIDI editor will be NULL)\nnoteRow: note row or piano key under mouse cursor (0-127)\nccLane: CC lane under mouse cursor (CC0-127=CC, 0x100|(0-31)=14-bit CC, 0x200=velocity, 0x201=pitch, 0x202=program, 0x203=channel pressure, 0x204=bank/program select, 0x205=text, 0x206=sysex, 0x207=off velocity, 0x208=notation events)\nccLaneVal: value in CC lane under mouse cursor (0-127 or 0-16383)\nccLaneId: lane position, counting from the top (0 based)\nNote: due to API limitations, if mouse is over inline MIDI editor with some note rows hidden, noteRow will be -1"
 	},
 	"BR_GetMouseCursorContext_Position lua": {
@@ -902,7 +902,7 @@
 	"BR_TrackFX_GetFXModuleName lua": {
 		"prefix": "r.BR_TrackFX_GetFXModuleName",
 		"scope": "lua",
-		"body": "r.BR_TrackFX_GetFXModuleName(${1:track}, ${2:fx})$0",
+		"body": "rv, name = r.BR_TrackFX_GetFXModuleName(${1:track}, ${2:fx})$0",
 		"description": "[BR] Deprecated, see TrackFX_GetNamedConfigParm/'fx_ident' (v6.37+). Get the exact name (like effect.dll, effect.vst3, etc...) of an FX."
 	},
 	"BR_Win32_CB_FindString lua": {
@@ -950,7 +950,7 @@
 	"BR_Win32_GetCursorPos lua": {
 		"prefix": "r.BR_Win32_GetCursorPos",
 		"scope": "lua",
-		"body": "r.BR_Win32_GetCursorPos()$0",
+		"body": "rv, x, y = r.BR_Win32_GetCursorPos()$0",
 		"description": "[BR] Equivalent to win32 API GetCursorPos()."
 	},
 	"BR_Win32_GetFocus lua": {
@@ -974,13 +974,13 @@
 	"BR_Win32_GetMixerHwnd lua": {
 		"prefix": "r.BR_Win32_GetMixerHwnd",
 		"scope": "lua",
-		"body": "r.BR_Win32_GetMixerHwnd()$0",
+		"body": "rv, isDocked = r.BR_Win32_GetMixerHwnd()$0",
 		"description": "[BR] Get mixer window HWND. isDockedOut will be set to true if mixer is docked"
 	},
 	"BR_Win32_GetMonitorRectFromRect lua": {
 		"prefix": "r.BR_Win32_GetMonitorRectFromRect",
 		"scope": "lua",
-		"body": "r.BR_Win32_GetMonitorRectFromRect(${1:workingAreaOnly}, ${2:leftIn}, ${3:topIn}, ${4:rightIn}, ${5:bottomIn})$0",
+		"body": "left, top, right, bottom = r.BR_Win32_GetMonitorRectFromRect(${1:workingAreaOnly}, ${2:leftIn}, ${3:topIn}, ${4:rightIn}, ${5:bottomIn})$0",
 		"description": "[BR] Get coordinates for screen which is nearest to supplied coordinates. Pass workingAreaOnly as true to get screen coordinates excluding taskbar (or menu bar on OSX)."
 	},
 	"BR_Win32_GetParent lua": {
@@ -992,7 +992,7 @@
 	"BR_Win32_GetPrivateProfileString lua": {
 		"prefix": "r.BR_Win32_GetPrivateProfileString",
 		"scope": "lua",
-		"body": "r.BR_Win32_GetPrivateProfileString(${1:sectionName}, ${2:keyName}, ${3:defaultString}, ${4:filePath})$0",
+		"body": "rv, string = r.BR_Win32_GetPrivateProfileString(${1:sectionName}, ${2:keyName}, ${3:defaultString}, ${4:filePath})$0",
 		"description": "[BR] Equivalent to win32 API GetPrivateProfileString(). For example, you can use this to get values from REAPER.ini."
 	},
 	"BR_Win32_GetWindow lua": {
@@ -1010,13 +1010,13 @@
 	"BR_Win32_GetWindowRect lua": {
 		"prefix": "r.BR_Win32_GetWindowRect",
 		"scope": "lua",
-		"body": "r.BR_Win32_GetWindowRect(${1:hwnd})$0",
+		"body": "rv, left, top, right, bottom = r.BR_Win32_GetWindowRect(${1:hwnd})$0",
 		"description": "[BR] Equivalent to win32 API GetWindowRect()."
 	},
 	"BR_Win32_GetWindowText lua": {
 		"prefix": "r.BR_Win32_GetWindowText",
 		"scope": "lua",
-		"body": "r.BR_Win32_GetWindowText(${1:hwnd})$0",
+		"body": "rv, text = r.BR_Win32_GetWindowText(${1:hwnd})$0",
 		"description": "[BR] Equivalent to win32 API GetWindowText()."
 	},
 	"BR_Win32_HIBYTE lua": {
@@ -1166,7 +1166,7 @@
 	"Blink_GetAudioBufferTimingInfo lua": {
 		"prefix": "r.Blink_GetAudioBufferTimingInfo",
 		"scope": "lua",
-		"body": "r.Blink_GetAudioBufferTimingInfo()$0",
+		"body": "len, srate, time = r.Blink_GetAudioBufferTimingInfo()$0",
 		"description": "Get audio buffer timing information. This is the length (size) of audio buffer in samples, sample rate and 'latest audio buffer switch wall clock time' in seconds."
 	},
 	"Blink_GetBeatAtTime lua": {
@@ -1430,7 +1430,7 @@
 	"CF_GetMediaSourceMetadata lua": {
 		"prefix": "r.CF_GetMediaSourceMetadata",
 		"scope": "lua",
-		"body": "r.CF_GetMediaSourceMetadata(${1:src}, ${2:name}, ${3:out})$0",
+		"body": "rv, out = r.CF_GetMediaSourceMetadata(${1:src}, ${2:name}, ${3:out})$0",
 		"description": "Get the value of the given metadata field (eg. DESC, ORIG, ORIGREF, DATE, TIME, UMI, CODINGHISTORY for BWF)."
 	},
 	"CF_GetMediaSourceOnline lua": {
@@ -1442,7 +1442,7 @@
 	"CF_GetMediaSourceRPP lua": {
 		"prefix": "r.CF_GetMediaSourceRPP",
 		"scope": "lua",
-		"body": "r.CF_GetMediaSourceRPP(${1:src})$0",
+		"body": "rv, fn = r.CF_GetMediaSourceRPP(${1:src})$0",
 		"description": "Get the project associated with this source (BWF, subproject...)."
 	},
 	"CF_GetSWSVersion lua": {
@@ -1496,13 +1496,13 @@
 	"CF_Preview_GetPeak lua": {
 		"prefix": "r.CF_Preview_GetPeak",
 		"scope": "lua",
-		"body": "r.CF_Preview_GetPeak(${1:preview}, ${2:channel})$0",
+		"body": "rv, peakvol = r.CF_Preview_GetPeak(${1:preview}, ${2:channel})$0",
 		"description": "Return the maximum sample value played since the last read. Refresh speed depends on buffer size."
 	},
 	"CF_Preview_GetValue lua": {
 		"prefix": "r.CF_Preview_GetValue",
 		"scope": "lua",
-		"body": "r.CF_Preview_GetValue(${1:preview}, ${2:name})$0",
+		"body": "rv, value = r.CF_Preview_GetValue(${1:preview}, ${2:name})$0",
 		"description": "Supported attributes:\nB_LOOP         seek to the beginning when reaching the end of the source\nB_PPITCH       preserve pitch when changing playback rate\nD_FADEINLEN    length in seconds of playback fade in\nD_FADEOUTLEN   length in seconds of playback fade out\nD_LENGTH       (read only) length of the source * playback rate\nD_MEASUREALIGN >0 = wait until the next bar before starting playback (note: this causes playback to silently continue when project is paused and previewing through a track)\nD_PAN          playback pan\nD_PITCH        pitch adjustment in semitones\nD_PLAYRATE     playback rate (0.01..100)\nD_POSITION     current playback position\nD_VOLUME       playback volume\nI_OUTCHAN      first hardware output channel (&1024=mono, reads -1 when playing through a track, see CF_Preview_SetOutputTrack)\nI_PITCHMODE    highest 16 bits=pitch shift mode (see EnumPitchShiftModes), lower 16 bits=pitch shift submode (see EnumPitchShiftSubModes)"
 	},
 	"CF_Preview_Play lua": {
@@ -2300,13 +2300,13 @@
 	"Envelope_GetParentTake lua": {
 		"prefix": "r.Envelope_GetParentTake",
 		"scope": "lua",
-		"body": "r.Envelope_GetParentTake(${1:env})$0",
+		"body": "rv, index, index2 = r.Envelope_GetParentTake(${1:env})$0",
 		"description": "If take envelope, gets the take from the envelope. If FX, indexOut set to FX index, index2Out set to parameter index, otherwise -1."
 	},
 	"Envelope_GetParentTrack lua": {
 		"prefix": "r.Envelope_GetParentTrack",
 		"scope": "lua",
-		"body": "r.Envelope_GetParentTrack(${1:env})$0",
+		"body": "rv, index, index2 = r.Envelope_GetParentTrack(${1:env})$0",
 		"description": "If track envelope, gets the track from the envelope. If FX, indexOut set to FX index, index2Out set to parameter index, otherwise -1."
 	},
 	"Envelope_SortPoints lua": {
@@ -2390,7 +2390,7 @@
 	"Fab_Get lua": {
 		"prefix": "r.Fab_Get",
 		"scope": "lua",
-		"body": "r.Fab_Get(${1:command})$0",
+		"body": "rv, fx, param = r.Fab_Get(${1:command})$0",
 		"description": "Returns target FX and parameter index for given ReaFab command in context of selected track and ReaFab FX index. Valid command range 1 ... 24. Returns false if no such command mapping is found. Returns param index -1 for ReaFab internal band change command."
 	},
 	"Fab_Map lua": {
@@ -2510,7 +2510,7 @@
 	"GetActionShortcutDesc lua": {
 		"prefix": "r.GetActionShortcutDesc",
 		"scope": "lua",
-		"body": "r.GetActionShortcutDesc(${1:section}, ${2:cmdID}, ${3:shortcutidx})$0",
+		"body": "rv, desc = r.GetActionShortcutDesc(${1:section}, ${2:cmdID}, ${3:shortcutidx})$0",
 		"description": "Get the text description of a specific shortcut for the given command ID.\nSee CountActionShortcuts,DeleteActionShortcut,DoActionShortcutDialog."
 	},
 	"GetActiveTake lua": {
@@ -2534,7 +2534,7 @@
 	"GetArmedCommand lua": {
 		"prefix": "r.GetArmedCommand",
 		"scope": "lua",
-		"body": "r.GetArmedCommand()$0",
+		"body": "rv, sec = r.GetArmedCommand()$0",
 		"description": "gets the currently armed command and section name (returns 0 if nothing armed). section name is empty-string for main section."
 	},
 	"GetAudioAccessorEndTime lua": {
@@ -2564,7 +2564,7 @@
 	"GetAudioDeviceInfo lua": {
 		"prefix": "r.GetAudioDeviceInfo",
 		"scope": "lua",
-		"body": "r.GetAudioDeviceInfo(${1:attribute})$0",
+		"body": "rv, desc = r.GetAudioDeviceInfo(${1:attribute})$0",
 		"description": "get information about the currently open audio device. attribute can be MODE, IDENT_IN, IDENT_OUT, BSIZE, SRATE, BPS. returns false if unknown attribute or device not open."
 	},
 	"GetConfigWantsDock lua": {
@@ -2624,13 +2624,13 @@
 	"GetEnvelopeName lua": {
 		"prefix": "r.GetEnvelopeName",
 		"scope": "lua",
-		"body": "r.GetEnvelopeName(${1:env})$0",
+		"body": "rv, buf = r.GetEnvelopeName(${1:env})$0",
 		"description": ""
 	},
 	"GetEnvelopePoint lua": {
 		"prefix": "r.GetEnvelopePoint",
 		"scope": "lua",
-		"body": "r.GetEnvelopePoint(${1:envelope}, ${2:ptidx})$0",
+		"body": "rv, time, value, shape, tension, selected = r.GetEnvelopePoint(${1:envelope}, ${2:ptidx})$0",
 		"description": "Get the attributes of an envelope point. See GetEnvelopePointEx."
 	},
 	"GetEnvelopePointByTime lua": {
@@ -2648,7 +2648,7 @@
 	"GetEnvelopePointEx lua": {
 		"prefix": "r.GetEnvelopePointEx",
 		"scope": "lua",
-		"body": "r.GetEnvelopePointEx(${1:envelope}, ${2:autoitem_idx}, ${3:ptidx})$0",
+		"body": "rv, time, value, shape, tension, selected = r.GetEnvelopePointEx(${1:envelope}, ${2:autoitem_idx}, ${3:ptidx})$0",
 		"description": "Get the attributes of an envelope point.\nautoitem_idx=-1 for the underlying envelope, 0 for the first automation item on the envelope, etc.\nFor automation items, pass autoitem_idx|0x10000000 to base ptidx on the number of points in one full loop iteration,\neven if the automation item is trimmed so that not all points are visible.\nOtherwise, ptidx will be based on the number of visible points in the automation item, including all loop iterations.\nSee CountEnvelopePointsEx, SetEnvelopePointEx, InsertEnvelopePointEx, DeleteEnvelopePointEx."
 	},
 	"GetEnvelopeScalingMode lua": {
@@ -2660,7 +2660,7 @@
 	"GetEnvelopeStateChunk lua": {
 		"prefix": "r.GetEnvelopeStateChunk",
 		"scope": "lua",
-		"body": "r.GetEnvelopeStateChunk(${1:env}, ${2:str}, ${3:isundo})$0",
+		"body": "rv, str = r.GetEnvelopeStateChunk(${1:env}, ${2:str}, ${3:isundo})$0",
 		"description": "Gets the RPPXML state of an envelope, returns true if successful. Undo flag is a performance/caching hint."
 	},
 	"GetEnvelopeUIState lua": {
@@ -2690,13 +2690,13 @@
 	"GetFocusedFX lua": {
 		"prefix": "r.GetFocusedFX",
 		"scope": "lua",
-		"body": "r.GetFocusedFX()$0",
+		"body": "rv, tracknumber, itemnumber, fxnumber = r.GetFocusedFX()$0",
 		"description": "This function is deprecated (returns GetFocusedFX2()&3), see GetTouchedOrFocusedFX."
 	},
 	"GetFocusedFX2 lua": {
 		"prefix": "r.GetFocusedFX2",
 		"scope": "lua",
-		"body": "r.GetFocusedFX2()$0",
+		"body": "rv, tracknumber, itemnumber, fxnumber = r.GetFocusedFX2()$0",
 		"description": "Return value has 1 set if track FX, 2 if take/item FX, 4 set if FX is no longer focused but still open. tracknumber==0 means the master track, 1 means track 1, etc. itemnumber is zero-based (or -1 if not an item). For interpretation of fxnumber, see GetLastTouchedFX. Deprecated, see GetTouchedOrFocusedFX"
 	},
 	"GetFreeDiskSpaceForRecordPath lua": {
@@ -2732,19 +2732,19 @@
 	"GetInputOutputLatency lua": {
 		"prefix": "r.GetInputOutputLatency",
 		"scope": "lua",
-		"body": "r.GetInputOutputLatency()$0",
+		"body": "inputlatency, outputLatency = r.GetInputOutputLatency()$0",
 		"description": "Gets the audio device input/output latency in samples"
 	},
 	"GetItemEditingTime2 lua": {
 		"prefix": "r.GetItemEditingTime2",
 		"scope": "lua",
-		"body": "r.GetItemEditingTime2()$0",
+		"body": "num, which_item, flags = r.GetItemEditingTime2()$0",
 		"description": "returns time of relevant edit, set which_item to the pcm_source (if applicable), flags (if specified) will be set to 1 for edge resizing, 2 for fade change, 4 for item move, 8 for item slip edit (edit cursor time or start of item)"
 	},
 	"GetItemFromPoint lua": {
 		"prefix": "r.GetItemFromPoint",
 		"scope": "lua",
-		"body": "r.GetItemFromPoint(${1:screen_x}, ${2:screen_y}, ${3:allow_locked})$0",
+		"body": "rv, take = r.GetItemFromPoint(${1:screen_x}, ${2:screen_y}, ${3:allow_locked})$0",
 		"description": "Returns the first item at the screen coordinates specified. If allow_locked is false, locked items are ignored. If takeOutOptional specified, returns the take hit. See GetThingFromPoint."
 	},
 	"GetItemProjectContext lua": {
@@ -2756,7 +2756,7 @@
 	"GetItemStateChunk lua": {
 		"prefix": "r.GetItemStateChunk",
 		"scope": "lua",
-		"body": "r.GetItemStateChunk(${1:item}, ${2:str}, ${3:isundo})$0",
+		"body": "rv, str = r.GetItemStateChunk(${1:item}, ${2:str}, ${3:isundo})$0",
 		"description": "Gets the RPPXML state of an item, returns true if successful. Undo flag is a performance/caching hint."
 	},
 	"GetLastColorThemeFile lua": {
@@ -2768,13 +2768,13 @@
 	"GetLastMarkerAndCurRegion lua": {
 		"prefix": "r.GetLastMarkerAndCurRegion",
 		"scope": "lua",
-		"body": "r.GetLastMarkerAndCurRegion(0, ${2:time})$0",
+		"body": "markeridx, regionidx = r.GetLastMarkerAndCurRegion(0, ${2:time})$0",
 		"description": "Get the last project marker before time, and/or the project region that includes time. markeridx and regionidx are returned not necessarily as the displayed marker/region index, but as the index that can be passed to EnumProjectMarkers. Either or both of markeridx and regionidx may be NULL. See EnumProjectMarkers."
 	},
 	"GetLastTouchedFX lua": {
 		"prefix": "r.GetLastTouchedFX",
 		"scope": "lua",
-		"body": "r.GetLastTouchedFX()$0",
+		"body": "rv, tracknumber, fxnumber, paramnumber = r.GetLastTouchedFX()$0",
 		"description": "Returns true if the last touched FX parameter is valid, false otherwise. The low word of tracknumber is the 1-based track index -- 0 means the master track, 1 means track 1, etc. If the high word of tracknumber is nonzero, it refers to the 1-based item index (1 is the first item on the track, etc). For track FX, the low 24 bits of fxnumber refer to the FX index in the chain, and if the next 8 bits are 01, then the FX is record FX. For item FX, the low word defines the FX index in the chain, and the high word defines the take number. Deprecated, see GetTouchedOrFocusedFX."
 	},
 	"GetLastTouchedTrack lua": {
@@ -2786,13 +2786,13 @@
 	"GetMIDIInputName lua": {
 		"prefix": "r.GetMIDIInputName",
 		"scope": "lua",
-		"body": "r.GetMIDIInputName(${1:dev}, ${2:nameout})$0",
+		"body": "rv, nameout = r.GetMIDIInputName(${1:dev}, ${2:nameout})$0",
 		"description": "returns true if device present"
 	},
 	"GetMIDIOutputName lua": {
 		"prefix": "r.GetMIDIOutputName",
 		"scope": "lua",
-		"body": "r.GetMIDIOutputName(${1:dev}, ${2:nameout})$0",
+		"body": "rv, nameout = r.GetMIDIOutputName(${1:dev}, ${2:nameout})$0",
 		"description": "returns true if device present"
 	},
 	"GetMainHwnd lua": {
@@ -2834,7 +2834,7 @@
 	"GetMediaFileMetadata lua": {
 		"prefix": "r.GetMediaFileMetadata",
 		"scope": "lua",
-		"body": "r.GetMediaFileMetadata(${1:mediaSource}, ${2:identifier})$0",
+		"body": "rv, buf = r.GetMediaFileMetadata(${1:mediaSource}, ${2:identifier})$0",
 		"description": "Get text-based metadata from a media file for a given identifier. Call with identifier='' to list all identifiers contained in the file, separated by newlines. May return '[Binary data]' for metadata that REAPER doesn't handle."
 	},
 	"GetMediaItem lua": {
@@ -2918,7 +2918,7 @@
 	"GetMediaSourceLength lua": {
 		"prefix": "r.GetMediaSourceLength",
 		"scope": "lua",
-		"body": "r.GetMediaSourceLength(${1:source})$0",
+		"body": "num, lengthIsQN = r.GetMediaSourceLength(${1:source})$0",
 		"description": "Returns the length of the source media. If the media source is beat-based, the length will be in quarter notes, otherwise it will be in seconds."
 	},
 	"GetMediaSourceNumChannels lua": {
@@ -2966,7 +2966,7 @@
 	"GetMousePosition lua": {
 		"prefix": "r.GetMousePosition",
 		"scope": "lua",
-		"body": "r.GetMousePosition()$0",
+		"body": "x, y = r.GetMousePosition()$0",
 		"description": "get mouse position in screen coordinates"
 	},
 	"GetNumAudioInputs lua": {
@@ -3086,7 +3086,7 @@
 	"GetProjExtState lua": {
 		"prefix": "r.GetProjExtState",
 		"scope": "lua",
-		"body": "r.GetProjExtState(0, ${2:extname}, ${3:key})$0",
+		"body": "rv, val = r.GetProjExtState(0, ${2:extname}, ${3:key})$0",
 		"description": "Get the value previously associated with this extname and key, the last time the project was saved. See SetProjExtState, EnumProjExtState."
 	},
 	"GetProjectLength lua": {
@@ -3128,13 +3128,13 @@
 	"GetProjectTimeSignature lua": {
 		"prefix": "r.GetProjectTimeSignature",
 		"scope": "lua",
-		"body": "r.GetProjectTimeSignature()$0",
+		"body": "bpm, bpi = r.GetProjectTimeSignature()$0",
 		"description": "deprecated"
 	},
 	"GetProjectTimeSignature2 lua": {
 		"prefix": "r.GetProjectTimeSignature2",
 		"scope": "lua",
-		"body": "r.GetProjectTimeSignature2(0)$0",
+		"body": "bpm, bpi = r.GetProjectTimeSignature2(0)$0",
 		"description": "Gets basic time signature (beats per minute, numerator of time signature in bpi)\nthis does not reflect tempo envelopes but is purely what is set in the project settings."
 	},
 	"GetResourcePath lua": {
@@ -3182,55 +3182,55 @@
 	"GetSetAutomationItemInfo_String lua": {
 		"prefix": "r.GetSetAutomationItemInfo_String",
 		"scope": "lua",
-		"body": "r.GetSetAutomationItemInfo_String(${1:env}, ${2:autoitem_idx}, ${3:desc}, ${4:valuestrNeedBig}, ${5:is_set})$0",
+		"body": "rv, valuestrNeedBig = r.GetSetAutomationItemInfo_String(${1:env}, ${2:autoitem_idx}, ${3:desc}, ${4:valuestrNeedBig}, ${5:is_set})$0",
 		"description": "Get or set automation item information. autoitem_idx=0 for the first automation item on an envelope, 1 for the second item, etc. returns true on success. desc can be any of the following:\nP_POOL_NAME : char * : name of the underlying automation item pool\nP_POOL_EXT:xyz : char * : extension-specific persistent data"
 	},
 	"GetSetEnvelopeInfo_String lua": {
 		"prefix": "r.GetSetEnvelopeInfo_String",
 		"scope": "lua",
-		"body": "r.GetSetEnvelopeInfo_String(${1:env}, ${2:parmname}, ${3:stringNeedBig}, ${4:setNewValue})$0",
+		"body": "rv, stringNeedBig = r.GetSetEnvelopeInfo_String(${1:env}, ${2:parmname}, ${3:stringNeedBig}, ${4:setNewValue})$0",
 		"description": "Gets/sets an attribute string:\nACTIVE : active state (bool as a string '0' or '1')\nARM : armed state (bool...)\nVISIBLE : visible state (bool...)\nSHOWLANE : show envelope in separate lane (bool...)\nGUID : (read-only) GUID as a string {xyz-....}\nP_EXT:xyz : extension-specific persistent data\nNote that when writing some of these attributes you will need to manually update the arrange and/or track panels, see TrackList_AdjustWindows"
 	},
 	"GetSetEnvelopeState lua": {
 		"prefix": "r.GetSetEnvelopeState",
 		"scope": "lua",
-		"body": "r.GetSetEnvelopeState(${1:env}, ${2:str})$0",
+		"body": "rv, str = r.GetSetEnvelopeState(${1:env}, ${2:str})$0",
 		"description": "deprecated -- see SetEnvelopeStateChunk, GetEnvelopeStateChunk"
 	},
 	"GetSetEnvelopeState2 lua": {
 		"prefix": "r.GetSetEnvelopeState2",
 		"scope": "lua",
-		"body": "r.GetSetEnvelopeState2(${1:env}, ${2:str}, ${3:isundo})$0",
+		"body": "rv, str = r.GetSetEnvelopeState2(${1:env}, ${2:str}, ${3:isundo})$0",
 		"description": "deprecated -- see SetEnvelopeStateChunk, GetEnvelopeStateChunk"
 	},
 	"GetSetItemState lua": {
 		"prefix": "r.GetSetItemState",
 		"scope": "lua",
-		"body": "r.GetSetItemState(${1:item}, ${2:str})$0",
+		"body": "rv, str = r.GetSetItemState(${1:item}, ${2:str})$0",
 		"description": "deprecated -- see SetItemStateChunk, GetItemStateChunk"
 	},
 	"GetSetItemState2 lua": {
 		"prefix": "r.GetSetItemState2",
 		"scope": "lua",
-		"body": "r.GetSetItemState2(${1:item}, ${2:str}, ${3:isundo})$0",
+		"body": "rv, str = r.GetSetItemState2(${1:item}, ${2:str}, ${3:isundo})$0",
 		"description": "deprecated -- see SetItemStateChunk, GetItemStateChunk"
 	},
 	"GetSetMediaItemInfo_String lua": {
 		"prefix": "r.GetSetMediaItemInfo_String",
 		"scope": "lua",
-		"body": "r.GetSetMediaItemInfo_String(${1:item}, ${2:parmname}, ${3:stringNeedBig}, ${4:setNewValue})$0",
+		"body": "rv, stringNeedBig = r.GetSetMediaItemInfo_String(${1:item}, ${2:parmname}, ${3:stringNeedBig}, ${4:setNewValue})$0",
 		"description": "Gets/sets an item attribute string:\nP_NOTES : char * : item note text (do not write to returned pointer, use setNewValue to update)\nP_EXT:xyz : char * : extension-specific persistent data\nGUID : GUID * : 16-byte GUID, can query or update. If using a _String() function, GUID is a string {xyz-...}."
 	},
 	"GetSetMediaItemTakeInfo_String lua": {
 		"prefix": "r.GetSetMediaItemTakeInfo_String",
 		"scope": "lua",
-		"body": "r.GetSetMediaItemTakeInfo_String(${1:tk}, ${2:parmname}, ${3:stringNeedBig}, ${4:setNewValue})$0",
+		"body": "rv, stringNeedBig = r.GetSetMediaItemTakeInfo_String(${1:tk}, ${2:parmname}, ${3:stringNeedBig}, ${4:setNewValue})$0",
 		"description": "Gets/sets a take attribute string:\nP_NAME : char * : take name\nP_EXT:xyz : char * : extension-specific persistent data\nGUID : GUID * : 16-byte GUID, can query or update. If using a _String() function, GUID is a string {xyz-...}."
 	},
 	"GetSetMediaTrackInfo_String lua": {
 		"prefix": "r.GetSetMediaTrackInfo_String",
 		"scope": "lua",
-		"body": "r.GetSetMediaTrackInfo_String(${1:tr}, ${2:parmname}, ${3:stringNeedBig}, ${4:setNewValue})$0",
+		"body": "rv, stringNeedBig = r.GetSetMediaTrackInfo_String(${1:tr}, ${2:parmname}, ${3:stringNeedBig}, ${4:setNewValue})$0",
 		"description": "Get or set track string attributes.\nP_NAME : char * : track name (on master returns NULL)\nP_ICON : const char * : track icon (full filename, or relative to resource_path/data/track_icons)\nP_LANENAME:n : char * : lane name (returns NULL for non-fixed-lane-tracks)\nP_MCP_LAYOUT : const char * : layout name\nP_RAZOREDITS : const char * : list of razor edit areas, as space-separated triples of start time, end time, and envelope GUID string.\n  Example: '0.0 1.0 \\'\\' 0.0 1.0 '{xyz-...}'\nP_RAZOREDITS_EXT : const char * : list of razor edit areas, as comma-separated sets of space-separated tuples of start time, end time, optional: envelope GUID string, fixed/fipm top y-position, fixed/fipm bottom y-position.\n  Example: '0.0 1.0,0.0 1.0 '{xyz-...}',1.0 2.0 '' 0.25 0.75'\nP_TCP_LAYOUT : const char * : layout name\nP_EXT:xyz : char * : extension-specific persistent data\nP_UI_RECT:tcp.mute : char * : read-only, allows querying screen position + size of track WALTER elements (tcp.size queries screen position and size of entire TCP, etc).\nGUID : GUID * : 16-byte GUID, can query or update. If using a _String() function, GUID is a string {xyz-...}."
 	},
 	"GetSetProjectAuthor lua": {
@@ -3242,7 +3242,7 @@
 	"GetSetProjectGrid lua": {
 		"prefix": "r.GetSetProjectGrid",
 		"scope": "lua",
-		"body": "r.GetSetProjectGrid(0, ${2:set}, ${3:division}, ${4:swingmode}, ${5:swingamt})$0",
+		"body": "rv, division, swingmode, swingamt = r.GetSetProjectGrid(0, ${2:set}, ${3:division}, ${4:swingmode}, ${5:swingamt})$0",
 		"description": "Get or set the arrange view grid division. 0.25=quarter note, 1.0/3.0=half note triplet, etc. swingmode can be 1 for swing enabled, swingamt is -1..1. swingmode can be 3 for measure-grid. Returns grid configuration flags"
 	},
 	"GetSetProjectInfo lua": {
@@ -3254,7 +3254,7 @@
 	"GetSetProjectInfo_String lua": {
 		"prefix": "r.GetSetProjectInfo_String",
 		"scope": "lua",
-		"body": "r.GetSetProjectInfo_String(0, ${2:desc}, ${3:valuestrNeedBig}, ${4:is_set})$0",
+		"body": "rv, valuestrNeedBig = r.GetSetProjectInfo_String(0, ${2:desc}, ${3:valuestrNeedBig}, ${4:is_set})$0",
 		"description": "Get or set project information.\nPROJECT_NAME : project file name (read-only, is_set will be ignored)\nPROJECT_TITLE : title field from Project Settings/Notes dialog\nPROJECT_AUTHOR : author field from Project Settings/Notes dialog\nTRACK_GROUP_NAME:X : track group name, X should be 1..64\nMARKER_GUID:X : get the GUID (unique ID) of the marker or region with index X, where X is the index passed to EnumProjectMarkers, not necessarily the displayed number (read-only)\nMARKER_INDEX_FROM_GUID:{GUID} : get the GUID index of the marker or region with GUID {GUID} (read-only)\nOPENCOPY_CFGIDX : integer for the configuration of format to use when creating copies/applying FX. 0=wave (auto-depth), 1=APPLYFX_FORMAT, 2=RECORD_FORMAT\nRECORD_PATH : recording directory -- may be blank or a relative path, to get the effective path see GetProjectPathEx()\nRECORD_PATH_SECONDARY : secondary recording directory\nRECORD_FORMAT : base64-encoded sink configuration (see project files, etc). Callers can also pass a simple 4-byte string (non-base64-encoded), e.g. 'evaw' or 'l3pm', to use default settings for that sink type.\nAPPLYFX_FORMAT : base64-encoded sink configuration (see project files, etc). Used only if RECFMT_OPENCOPY is set to 1. Callers can also pass a simple 4-byte string (non-base64-encoded), e.g. 'evaw' or 'l3pm', to use default settings for that sink type.\nRENDER_FILE : render directory\nRENDER_PATTERN : render file name (may contain wildcards)\nRENDER_METADATA : get or set the metadata saved with the project (not metadata embedded in project media). Example, ID3 album name metadata: valuestr='ID3:TALB' to get, valuestr='ID3:TALB|my album name' to set. Call with valuestr='' and is_set=false to get a semicolon-separated list of defined project metadata identifiers.\nRENDER_TARGETS : semicolon separated list of files that would be written if the project is rendered using the most recent render settings\nRENDER_STATS : (read-only) semicolon separated list of statistics for the most recently rendered files. call with valuestr='XXX' to run an action (for example, '42437'=dry run render selected items) before returning statistics.\nRENDER_FORMAT : base64-encoded sink configuration (see project files, etc). Callers can also pass a simple 4-byte string (non-base64-encoded), e.g. 'evaw' or 'l3pm', to use default settings for that sink type.\nRENDER_FORMAT2 : base64-encoded secondary sink configuration. Callers can also pass a simple 4-byte string (non-base64-encoded), e.g. 'evaw' or 'l3pm', to use default settings for that sink type, or '' to disable secondary render.\n&nbsp;&nbsp;&nbsp;&nbsp;Formats available on this machine:\n&nbsp;&nbsp;&nbsp;&nbsp;'wave' 'aiff' 'caff' 'raw ' 'mp3l' 'wvpk' 'OggS' 'flac' 'ddp ' 'iso ' 'oggv' 'FFMP' 'XAVF' 'GIF ' 'LCF '"
 	},
 	"GetSetProjectNotes lua": {
@@ -3302,37 +3302,37 @@
 	"GetSetTrackSendInfo_String lua": {
 		"prefix": "r.GetSetTrackSendInfo_String",
 		"scope": "lua",
-		"body": "r.GetSetTrackSendInfo_String(${1:tr}, ${2:category}, ${3:sendidx}, ${4:parmname}, ${5:stringNeedBig}, ${6:setNewValue})$0",
+		"body": "rv, stringNeedBig = r.GetSetTrackSendInfo_String(${1:tr}, ${2:category}, ${3:sendidx}, ${4:parmname}, ${5:stringNeedBig}, ${6:setNewValue})$0",
 		"description": "Gets/sets a send attribute string:\nP_EXT:xyz : char * : extension-specific persistent data"
 	},
 	"GetSetTrackState lua": {
 		"prefix": "r.GetSetTrackState",
 		"scope": "lua",
-		"body": "r.GetSetTrackState(${1:track}, ${2:str})$0",
+		"body": "rv, str = r.GetSetTrackState(${1:track}, ${2:str})$0",
 		"description": "deprecated -- see SetTrackStateChunk, GetTrackStateChunk"
 	},
 	"GetSetTrackState2 lua": {
 		"prefix": "r.GetSetTrackState2",
 		"scope": "lua",
-		"body": "r.GetSetTrackState2(${1:track}, ${2:str}, ${3:isundo})$0",
+		"body": "rv, str = r.GetSetTrackState2(${1:track}, ${2:str}, ${3:isundo})$0",
 		"description": "deprecated -- see SetTrackStateChunk, GetTrackStateChunk"
 	},
 	"GetSet_ArrangeView2 lua": {
 		"prefix": "r.GetSet_ArrangeView2",
 		"scope": "lua",
-		"body": "r.GetSet_ArrangeView2(0, ${2:isSet}, ${3:screen_x_start}, ${4:screen_x_end}, ${5:start_time}, ${6:end_time})$0",
+		"body": "start_time, end_time = r.GetSet_ArrangeView2(0, ${2:isSet}, ${3:screen_x_start}, ${4:screen_x_end}, ${5:start_time}, ${6:end_time})$0",
 		"description": "Gets or sets the arrange view start/end time for screen coordinates. use screen_x_start=screen_x_end=0 to use the full arrange view's start/end time"
 	},
 	"GetSet_LoopTimeRange lua": {
 		"prefix": "r.GetSet_LoopTimeRange",
 		"scope": "lua",
-		"body": "r.GetSet_LoopTimeRange(${1:isSet}, ${2:isLoop}, ${3:start}, ${4:end}, ${5:allowautoseek})$0",
+		"body": "start, end = r.GetSet_LoopTimeRange(${1:isSet}, ${2:isLoop}, ${3:start}, ${4:end}, ${5:allowautoseek})$0",
 		"description": ""
 	},
 	"GetSet_LoopTimeRange2 lua": {
 		"prefix": "r.GetSet_LoopTimeRange2",
 		"scope": "lua",
-		"body": "r.GetSet_LoopTimeRange2(0, ${2:isSet}, ${3:isLoop}, ${4:start}, ${5:end}, ${6:allowautoseek})$0",
+		"body": "start, end = r.GetSet_LoopTimeRange2(0, ${2:isSet}, ${3:isLoop}, ${4:start}, ${5:end}, ${6:allowautoseek})$0",
 		"description": ""
 	},
 	"GetSubProjectFromSource lua": {
@@ -3344,7 +3344,7 @@
 	"GetTCPFXParm lua": {
 		"prefix": "r.GetTCPFXParm",
 		"scope": "lua",
-		"body": "r.GetTCPFXParm(0, ${2:track}, ${3:index})$0",
+		"body": "rv, fxindex, parmidx = r.GetTCPFXParm(0, ${2:track}, ${3:index})$0",
 		"description": "Get information about a specific FX parameter knob (see CountTCPFXParms)."
 	},
 	"GetTake lua": {
@@ -3368,7 +3368,7 @@
 	"GetTakeMarker lua": {
 		"prefix": "r.GetTakeMarker",
 		"scope": "lua",
-		"body": "r.GetTakeMarker(${1:take}, ${2:idx})$0",
+		"body": "num, name, color = r.GetTakeMarker(${1:take}, ${2:idx})$0",
 		"description": "Get information about a take marker. Returns the position in media item source time, or -1 if the take marker does not exist. See GetNumTakeMarkers, SetTakeMarker, DeleteTakeMarker"
 	},
 	"GetTakeName lua": {
@@ -3386,7 +3386,7 @@
 	"GetTakeStretchMarker lua": {
 		"prefix": "r.GetTakeStretchMarker",
 		"scope": "lua",
-		"body": "r.GetTakeStretchMarker(${1:take}, ${2:idx})$0",
+		"body": "rv, pos, srcpos = r.GetTakeStretchMarker(${1:take}, ${2:idx})$0",
 		"description": "Gets information on a stretch marker, idx is 0..n. Returns -1 if stretch marker not valid. posOut will be set to position in item, srcposOutOptional will be set to source media position. Returns index. if input index is -1, the following marker is found using position (or source position if position is -1). If position/source position are used to find marker position, their values are not updated."
 	},
 	"GetTakeStretchMarkerSlope lua": {
@@ -3398,13 +3398,13 @@
 	"GetTempoMatchPlayRate lua": {
 		"prefix": "r.GetTempoMatchPlayRate",
 		"scope": "lua",
-		"body": "r.GetTempoMatchPlayRate(${1:source}, ${2:srcscale}, ${3:position}, ${4:mult})$0",
+		"body": "rv, rate, targetlen = r.GetTempoMatchPlayRate(${1:source}, ${2:srcscale}, ${3:position}, ${4:mult})$0",
 		"description": "finds the playrate and target length to insert this item stretched to a round power-of-2 number of bars, between 1/8 and 256"
 	},
 	"GetTempoTimeSigMarker lua": {
 		"prefix": "r.GetTempoTimeSigMarker",
 		"scope": "lua",
-		"body": "r.GetTempoTimeSigMarker(0, ${2:ptidx})$0",
+		"body": "rv, timepos, measurepos, beatpos, bpm, timesig_num, timesig_denom, lineartempo = r.GetTempoTimeSigMarker(0, ${2:ptidx})$0",
 		"description": "Get information about a tempo/time signature marker. See CountTempoTimeSigMarkers, SetTempoTimeSigMarker, AddTempoTimeSigMarker."
 	},
 	"GetThemeColor lua": {
@@ -3416,7 +3416,7 @@
 	"GetThingFromPoint lua": {
 		"prefix": "r.GetThingFromPoint",
 		"scope": "lua",
-		"body": "r.GetThingFromPoint(${1:screen_x}, ${2:screen_y})$0",
+		"body": "rv, info = r.GetThingFromPoint(${1:screen_x}, ${2:screen_y})$0",
 		"description": "Hit tests a point in screen coordinates. Updates infoOut with information such as 'arrange', 'fx_chain', 'fx_0' (first FX in chain, floating), 'spacer_0' (spacer before first track). If a track panel is hit, string will begin with 'tcp' or 'mcp' or 'tcp.mute' etc (future versions may append additional information). May return NULL with valid info string to indicate non-track thing."
 	},
 	"GetToggleCommandState lua": {
@@ -3440,7 +3440,7 @@
 	"GetTouchedOrFocusedFX lua": {
 		"prefix": "r.GetTouchedOrFocusedFX",
 		"scope": "lua",
-		"body": "r.GetTouchedOrFocusedFX(${1:mode})$0",
+		"body": "rv, trackidx, itemidx, takeidx, fxidx, parm = r.GetTouchedOrFocusedFX(${1:mode})$0",
 		"description": "mode can be 0 to query last touched parameter, or 1 to query currently focused FX. Returns false if failed. If successful, trackIdxOut will be track index (-1 is master track, 0 is first track). itemidxOut will be 0-based item index if an item, or -1 if not an item. takeidxOut will be 0-based take index. fxidxOut will be FX index, potentially with 0x2000000 set to signify container-addressing, or with 0x1000000 set to signify record-input FX. parmOut will be set to the parameter index if querying last-touched. parmOut will have 1 set if querying focused state and FX is no longer focused but still open."
 	},
 	"GetTrack lua": {
@@ -3488,7 +3488,7 @@
 	"GetTrackFromPoint lua": {
 		"prefix": "r.GetTrackFromPoint",
 		"scope": "lua",
-		"body": "r.GetTrackFromPoint(${1:screen_x}, ${2:screen_y})$0",
+		"body": "rv, info = r.GetTrackFromPoint(${1:screen_x}, ${2:screen_y})$0",
 		"description": "Returns the track from the screen coordinates specified. If the screen coordinates refer to a window associated to the track (such as FX), the track will be returned. infoOutOptional will be set to 1 if it is likely an envelope, 2 if it is likely a track FX. For a free item positioning or fixed lane track, the second byte of infoOutOptional will be set to the (approximate, for fipm tracks) item lane underneath the mouse. See GetThingFromPoint."
 	},
 	"GetTrackGUID lua": {
@@ -3500,7 +3500,7 @@
 	"GetTrackMIDILyrics lua": {
 		"prefix": "r.GetTrackMIDILyrics",
 		"scope": "lua",
-		"body": "r.GetTrackMIDILyrics(${1:track}, ${2:flag})$0",
+		"body": "rv, buf = r.GetTrackMIDILyrics(${1:track}, ${2:flag})$0",
 		"description": "Get all MIDI lyrics on the track. Lyrics will be returned as one string with tabs between each word. flag&1: double tabs at the end of each measure and triple tabs when skipping measures, flag&2: each lyric is preceded by its beat position in the project (example with flag=2: '1.1.2\\tLyric for measure 1 beat 2\\t2.1.1\\tLyric for measure 2 beat 1\t'). See SetTrackMIDILyrics"
 	},
 	"GetTrackMIDINoteName lua": {
@@ -3518,7 +3518,7 @@
 	"GetTrackMIDINoteRange lua": {
 		"prefix": "r.GetTrackMIDINoteRange",
 		"scope": "lua",
-		"body": "r.GetTrackMIDINoteRange(0, ${2:track})$0",
+		"body": "note_lo, note_hi = r.GetTrackMIDINoteRange(0, ${2:track})$0",
 		"description": ""
 	},
 	"GetTrackMediaItem lua": {
@@ -3530,7 +3530,7 @@
 	"GetTrackName lua": {
 		"prefix": "r.GetTrackName",
 		"scope": "lua",
-		"body": "r.GetTrackName(${1:track})$0",
+		"body": "rv, buf = r.GetTrackName(${1:track})$0",
 		"description": "Returns 'MASTER' for master track, 'Track N' if track has no name."
 	},
 	"GetTrackNumMediaItems lua": {
@@ -3548,19 +3548,19 @@
 	"GetTrackReceiveName lua": {
 		"prefix": "r.GetTrackReceiveName",
 		"scope": "lua",
-		"body": "r.GetTrackReceiveName(${1:track}, ${2:recv_index})$0",
+		"body": "rv, buf = r.GetTrackReceiveName(${1:track}, ${2:recv_index})$0",
 		"description": "See GetTrackSendName."
 	},
 	"GetTrackReceiveUIMute lua": {
 		"prefix": "r.GetTrackReceiveUIMute",
 		"scope": "lua",
-		"body": "r.GetTrackReceiveUIMute(${1:track}, ${2:recv_index})$0",
+		"body": "rv, mute = r.GetTrackReceiveUIMute(${1:track}, ${2:recv_index})$0",
 		"description": "See GetTrackSendUIMute."
 	},
 	"GetTrackReceiveUIVolPan lua": {
 		"prefix": "r.GetTrackReceiveUIVolPan",
 		"scope": "lua",
-		"body": "r.GetTrackReceiveUIVolPan(${1:track}, ${2:recv_index})$0",
+		"body": "rv, volume, pan = r.GetTrackReceiveUIVolPan(${1:track}, ${2:recv_index})$0",
 		"description": "See GetTrackSendUIVolPan."
 	},
 	"GetTrackSendInfo_Value lua": {
@@ -3572,67 +3572,67 @@
 	"GetTrackSendName lua": {
 		"prefix": "r.GetTrackSendName",
 		"scope": "lua",
-		"body": "r.GetTrackSendName(${1:track}, ${2:send_index})$0",
+		"body": "rv, buf = r.GetTrackSendName(${1:track}, ${2:send_index})$0",
 		"description": "send_idx>=0 for hw ouputs, >=nb_of_hw_ouputs for sends. See GetTrackReceiveName."
 	},
 	"GetTrackSendUIMute lua": {
 		"prefix": "r.GetTrackSendUIMute",
 		"scope": "lua",
-		"body": "r.GetTrackSendUIMute(${1:track}, ${2:send_index})$0",
+		"body": "rv, mute = r.GetTrackSendUIMute(${1:track}, ${2:send_index})$0",
 		"description": "send_idx>=0 for hw ouputs, >=nb_of_hw_ouputs for sends. See GetTrackReceiveUIMute."
 	},
 	"GetTrackSendUIVolPan lua": {
 		"prefix": "r.GetTrackSendUIVolPan",
 		"scope": "lua",
-		"body": "r.GetTrackSendUIVolPan(${1:track}, ${2:send_index})$0",
+		"body": "rv, volume, pan = r.GetTrackSendUIVolPan(${1:track}, ${2:send_index})$0",
 		"description": "send_idx>=0 for hw ouputs, >=nb_of_hw_ouputs for sends. See GetTrackReceiveUIVolPan."
 	},
 	"GetTrackState lua": {
 		"prefix": "r.GetTrackState",
 		"scope": "lua",
-		"body": "r.GetTrackState(${1:track})$0",
+		"body": "str, flags = r.GetTrackState(${1:track})$0",
 		"description": "Gets track state, returns track name.\nflags will be set to:\n&1=folder\n&2=selected\n&4=has fx enabled\n&8=muted\n&16=soloed\n&32=SIP'd (with &16)\n&64=rec armed\n&128=rec monitoring on\n&256=rec monitoring auto\n&512=hide from TCP\n&1024=hide from MCP"
 	},
 	"GetTrackStateChunk lua": {
 		"prefix": "r.GetTrackStateChunk",
 		"scope": "lua",
-		"body": "r.GetTrackStateChunk(${1:track}, ${2:str}, ${3:isundo})$0",
+		"body": "rv, str = r.GetTrackStateChunk(${1:track}, ${2:str}, ${3:isundo})$0",
 		"description": "Gets the RPPXML state of a track, returns true if successful. Undo flag is a performance/caching hint."
 	},
 	"GetTrackUIMute lua": {
 		"prefix": "r.GetTrackUIMute",
 		"scope": "lua",
-		"body": "r.GetTrackUIMute(${1:track})$0",
+		"body": "rv, mute = r.GetTrackUIMute(${1:track})$0",
 		"description": ""
 	},
 	"GetTrackUIPan lua": {
 		"prefix": "r.GetTrackUIPan",
 		"scope": "lua",
-		"body": "r.GetTrackUIPan(${1:track})$0",
+		"body": "rv, pan1, pan2, panmode = r.GetTrackUIPan(${1:track})$0",
 		"description": ""
 	},
 	"GetTrackUIVolPan lua": {
 		"prefix": "r.GetTrackUIVolPan",
 		"scope": "lua",
-		"body": "r.GetTrackUIVolPan(${1:track})$0",
+		"body": "rv, volume, pan = r.GetTrackUIVolPan(${1:track})$0",
 		"description": ""
 	},
 	"GetUnderrunTime lua": {
 		"prefix": "r.GetUnderrunTime",
 		"scope": "lua",
-		"body": "r.GetUnderrunTime()$0",
+		"body": "audio_xrun, media_xrun, curtime = r.GetUnderrunTime()$0",
 		"description": "retrieves the last timestamps of audio xrun (yellow-flash, if available), media xrun (red-flash), and the current time stamp (all milliseconds)"
 	},
 	"GetUserFileNameForRead lua": {
 		"prefix": "r.GetUserFileNameForRead",
 		"scope": "lua",
-		"body": "r.GetUserFileNameForRead(${1:filenameNeed4096}, ${2:title}, ${3:defext})$0",
+		"body": "rv, filenameNeed4096 = r.GetUserFileNameForRead(${1:filenameNeed4096}, ${2:title}, ${3:defext})$0",
 		"description": "returns true if the user selected a valid file, false if the user canceled the dialog"
 	},
 	"GetUserInputs lua": {
 		"prefix": "r.GetUserInputs",
 		"scope": "lua",
-		"body": "r.GetUserInputs(${1:title}, ${2:num_inputs}, ${3:captions_csv}, ${4:retvals_csv})$0",
+		"body": "rv, retvals_csv = r.GetUserInputs(${1:title}, ${2:num_inputs}, ${3:captions_csv}, ${4:retvals_csv})$0",
 		"description": "Get values from the user.\nIf a caption begins with *, for example '*password', the edit field will not display the input text.\nMaximum fields is 16. Values are returned as a comma-separated string. Returns false if the user canceled the dialog. You can supply special extra information via additional caption fields: extrawidth=XXX to increase text field width, separator=X to use a different separator for returned fields."
 	},
 	"GoToMarker lua": {
@@ -6170,7 +6170,7 @@
 	"JS_Actions_GetShortcutDesc lua": {
 		"prefix": "r.JS_Actions_GetShortcutDesc",
 		"scope": "lua",
-		"body": "r.JS_Actions_GetShortcutDesc(${1:section}, ${2:cmdID}, ${3:shortcutidx})$0",
+		"body": "rv, desc = r.JS_Actions_GetShortcutDesc(${1:section}, ${2:cmdID}, ${3:shortcutidx})$0",
 		"description": "Section:\n0 = Main, 100 = Main (alt recording), 32060 = MIDI Editor, 32061 = MIDI Event List Editor, 32062 = MIDI Inline Editor, 32063 = Media Explorer."
 	},
 	"JS_Byte lua": {
@@ -6668,7 +6668,7 @@
 	"JS_ListView_GetFocusedItem lua": {
 		"prefix": "r.JS_ListView_GetFocusedItem",
 		"scope": "lua",
-		"body": "r.JS_ListView_GetFocusedItem(${1:listviewHWND})$0",
+		"body": "rv, text = r.JS_ListView_GetFocusedItem(${1:listviewHWND})$0",
 		"description": "Returns the index and text of the focused item, if any."
 	},
 	"JS_ListView_GetHeader lua": {
@@ -6680,7 +6680,7 @@
 	"JS_ListView_GetItem lua": {
 		"prefix": "r.JS_ListView_GetItem",
 		"scope": "lua",
-		"body": "r.JS_ListView_GetItem(${1:listviewHWND}, ${2:index}, ${3:subItem})$0",
+		"body": "text, state = r.JS_ListView_GetItem(${1:listviewHWND}, ${2:index}, ${3:subItem})$0",
 		"description": "Returns the text and state of specified item."
 	},
 	"JS_ListView_GetItemCount lua": {
@@ -6692,7 +6692,7 @@
 	"JS_ListView_GetItemRect lua": {
 		"prefix": "r.JS_ListView_GetItemRect",
 		"scope": "lua",
-		"body": "r.JS_ListView_GetItemRect(${1:listviewHWND}, ${2:index})$0",
+		"body": "rv, left, top, right, bottom = r.JS_ListView_GetItemRect(${1:listviewHWND}, ${2:index})$0",
 		"description": "Returns client coordinates of the item."
 	},
 	"JS_ListView_GetItemState lua": {
@@ -7022,13 +7022,13 @@
 	"JS_Window_GetClientRect lua": {
 		"prefix": "r.JS_Window_GetClientRect",
 		"scope": "lua",
-		"body": "r.JS_Window_GetClientRect(${1:windowHWND})$0",
+		"body": "rv, left, top, right, bottom = r.JS_Window_GetClientRect(${1:windowHWND})$0",
 		"description": "Retrieves the screen coordinates of the client area rectangle of the specified window.\nNOTES:\n * Unlike the C++ function GetClientRect, this function returns the screen coordinates, not the width and height. To get the client size, use GetClientSize.\n * The pixel at (right, bottom) lies immediately outside the rectangle.\n * On Windows and Linux, screen coordinates are relative to *upper* left corner of the primary display, and the positive Y-axis points downward.\n * On macOS, screen coordinates are relative to the *bottom* left corner of the primary display, and the positive Y-axis points upward."
 	},
 	"JS_Window_GetClientSize lua": {
 		"prefix": "r.JS_Window_GetClientSize",
 		"scope": "lua",
-		"body": "r.JS_Window_GetClientSize(${1:windowHWND})$0",
+		"body": "rv, width, height = r.JS_Window_GetClientSize(${1:windowHWND})$0",
 		"description": ""
 	},
 	"JS_Window_GetFocus lua": {
@@ -7064,7 +7064,7 @@
 	"JS_Window_GetRect lua": {
 		"prefix": "r.JS_Window_GetRect",
 		"scope": "lua",
-		"body": "r.JS_Window_GetRect(${1:windowHWND})$0",
+		"body": "rv, left, top, right, bottom = r.JS_Window_GetRect(${1:windowHWND})$0",
 		"description": "Retrieves the screen coordinates of the bounding rectangle of the specified window.\nNOTES:\n * On Windows and Linux, coordinates are relative to *upper* left corner of the primary display, and the positive Y-axis points downward.\n * On macOS, coordinates are relative to the *bottom* left corner of the primary display, and the positive Y-axis points upward.\n * The pixel at (right, bottom) lies immediately outside the rectangle."
 	},
 	"JS_Window_GetRelated lua": {
@@ -7076,7 +7076,7 @@
 	"JS_Window_GetScrollInfo lua": {
 		"prefix": "r.JS_Window_GetScrollInfo",
 		"scope": "lua",
-		"body": "r.JS_Window_GetScrollInfo(${1:windowHWND}, ${2:scrollbar})$0",
+		"body": "rv, position, pageSize, min, max, trackPos = r.JS_Window_GetScrollInfo(${1:windowHWND}, ${2:scrollbar})$0",
 		"description": "Retrieves the scroll information of a window.\nParameters:\n * windowHWND: The window that contains the scrollbar. This is usually a child window, not a top-level, framed window.\n * scrollbar: 'v' (or 'SB_VERT', or 'VERT') for vertical scroll, 'h' (or 'SB_HORZ' or 'HORZ') for horizontal.\nReturns:\n * Leftmost or topmost visible pixel position, as well as the visible page size, the range minimum and maximum, and scroll box tracking position."
 	},
 	"JS_Window_GetTitle lua": {
@@ -7088,7 +7088,7 @@
 	"JS_Window_GetViewportFromRect lua": {
 		"prefix": "r.JS_Window_GetViewportFromRect",
 		"scope": "lua",
-		"body": "r.JS_Window_GetViewportFromRect(${1:x1}, ${2:y1}, ${3:x2}, ${4:y2}, ${5:wantWork})$0",
+		"body": "left, top, right, bottom = r.JS_Window_GetViewportFromRect(${1:x1}, ${2:y1}, ${3:x2}, ${4:y2}, ${5:wantWork})$0",
 		"description": "Retrieves the dimensions of the display monitor that has the largest area of intersection with the specified rectangle.\nIf the monitor is not the primary display, some of the rectangle's coordinates may be negative.\nwantWork: Returns the work area of the display, which excludes the system taskbar or application desktop toolbars."
 	},
 	"JS_Window_HandleFromAddress lua": {
@@ -7358,7 +7358,7 @@
 	"Llm_GetVersion lua": {
 		"prefix": "r.Llm_GetVersion",
 		"scope": "lua",
-		"body": "r.Llm_GetVersion()$0",
+		"body": "major, minor, patch, build, commit = r.Llm_GetVersion()$0",
 		"description": "Get version. Returns the version of the plugin as integers and the commit hash as a string. The string is truncated to commitOut_sz."
 	},
 	"Llm_SetClearSafe lua": {
@@ -7442,7 +7442,7 @@
 	"MCULive_GetMIDIMessage lua": {
 		"prefix": "r.MCULive_GetMIDIMessage",
 		"scope": "lua",
-		"body": "r.MCULive_GetMIDIMessage(${1:device}, ${2:msgIdx})$0",
+		"body": "rv, status, data1, data2, frame_offset, msg = r.MCULive_GetMIDIMessage(${1:device}, ${2:msgIdx})$0",
 		"description": "Gets MIDI message from input buffer/queue. Gets (pops/pulls) indexed message (status, data1, data2 and frame_offset) from queue and retval is total size/length left in queue. E.g. continuously read all indiviual messages with deferred script. Frame offset resolution is 1/1024000 seconds, not audio samples. Long messages are returned as optional strings of byte characters. msgIdx -1 returns size (length) of buffer. Read also non-MCU devices by creating MCULive device with their input."
 	},
 	"MCULive_Map lua": {
@@ -7550,7 +7550,7 @@
 	"MIDIEditor_GetSetting_str lua": {
 		"prefix": "r.MIDIEditor_GetSetting_str",
 		"scope": "lua",
-		"body": "r.MIDIEditor_GetSetting_str(${1:midieditor}, ${2:setting_desc})$0",
+		"body": "rv, buf = r.MIDIEditor_GetSetting_str(${1:midieditor}, ${2:setting_desc})$0",
 		"description": "Get settings from a MIDI editor. setting_desc can be:\nlast_clicked_cc_lane: returns text description ('velocity', 'pitch', etc)\nscale: returns the scale record, for example '102034050607' for a major scale\nlist_X: if viewing list view, returns string describing event at row X (0-based). String will have a list of key=value pairs, e.g. 'pos=4.0 len=4.0 offvel=127 msg=90317F'. pos/len times are in QN, len/offvel may not be present if event is not a note. other keys which may be present include pos_pq/len_pq, sel, mute, ccval14, ccshape, ccbeztension.\nif setting_desc is unsupported, the function returns false.\nSee MIDIEditor_GetActive, MIDIEditor_GetSetting_int"
 	},
 	"MIDIEditor_GetTake lua": {
@@ -7640,43 +7640,43 @@
 	"MIDI_GetAllEvts lua": {
 		"prefix": "r.MIDI_GetAllEvts",
 		"scope": "lua",
-		"body": "r.MIDI_GetAllEvts(${1:take})$0",
+		"body": "rv, buf = r.MIDI_GetAllEvts(${1:take})$0",
 		"description": "Get all MIDI data. MIDI buffer is returned as a list of { int offset, char flag, int msglen, unsigned char msg[] }.\noffset: MIDI ticks from previous event\nflag: &1=selected &2=muted\nflag high 4 bits for CC shape: &16=linear, &32=slow start/end, &16|32=fast start, &64=fast end, &64|16=bezier\nmsg: the MIDI message.\nA meta-event of type 0xF followed by 'CCBZ ' and 5 more bytes represents bezier curve data for the previous MIDI event: 1 byte for the bezier type (usually 0) and 4 bytes for the bezier tension as a float.\nFor tick intervals longer than a 32 bit word can represent, zero-length meta events may be placed between valid events.\nSee MIDI_SetAllEvts."
 	},
 	"MIDI_GetCC lua": {
 		"prefix": "r.MIDI_GetCC",
 		"scope": "lua",
-		"body": "r.MIDI_GetCC(${1:take}, ${2:ccidx})$0",
+		"body": "rv, selected, muted, ppqpos, chanmsg, chan, msg2, msg3 = r.MIDI_GetCC(${1:take}, ${2:ccidx})$0",
 		"description": "Get MIDI CC event properties."
 	},
 	"MIDI_GetCCShape lua": {
 		"prefix": "r.MIDI_GetCCShape",
 		"scope": "lua",
-		"body": "r.MIDI_GetCCShape(${1:take}, ${2:ccidx})$0",
+		"body": "rv, shape, beztension = r.MIDI_GetCCShape(${1:take}, ${2:ccidx})$0",
 		"description": "Get CC shape and bezier tension. See MIDI_GetCC, MIDI_SetCCShape"
 	},
 	"MIDI_GetEvt lua": {
 		"prefix": "r.MIDI_GetEvt",
 		"scope": "lua",
-		"body": "r.MIDI_GetEvt(${1:take}, ${2:evtidx})$0",
+		"body": "rv, selected, muted, ppqpos, msg = r.MIDI_GetEvt(${1:take}, ${2:evtidx})$0",
 		"description": "Get MIDI event properties."
 	},
 	"MIDI_GetGrid lua": {
 		"prefix": "r.MIDI_GetGrid",
 		"scope": "lua",
-		"body": "r.MIDI_GetGrid(${1:take})$0",
+		"body": "num, swing, noteLen = r.MIDI_GetGrid(${1:take})$0",
 		"description": "Returns the most recent MIDI editor grid size for this MIDI take, in QN. Swing is between 0 and 1. Note length is 0 if it follows the grid size."
 	},
 	"MIDI_GetHash lua": {
 		"prefix": "r.MIDI_GetHash",
 		"scope": "lua",
-		"body": "r.MIDI_GetHash(${1:take}, ${2:notesonly})$0",
+		"body": "rv, hash = r.MIDI_GetHash(${1:take}, ${2:notesonly})$0",
 		"description": "Get a string that only changes when the MIDI data changes. If notesonly==true, then the string changes only when the MIDI notes change. See MIDI_GetTrackHash"
 	},
 	"MIDI_GetNote lua": {
 		"prefix": "r.MIDI_GetNote",
 		"scope": "lua",
-		"body": "r.MIDI_GetNote(${1:take}, ${2:noteidx})$0",
+		"body": "rv, selected, muted, startppqpos, endppqpos, chan, pitch, vel = r.MIDI_GetNote(${1:take}, ${2:noteidx})$0",
 		"description": "Get MIDI note properties."
 	},
 	"MIDI_GetPPQPosFromProjQN lua": {
@@ -7718,25 +7718,25 @@
 	"MIDI_GetRecentInputEvent lua": {
 		"prefix": "r.MIDI_GetRecentInputEvent",
 		"scope": "lua",
-		"body": "r.MIDI_GetRecentInputEvent(${1:idx})$0",
+		"body": "rv, buf, ts, devIdx, projPos, projLoopCnt = r.MIDI_GetRecentInputEvent(${1:idx})$0",
 		"description": "Gets a recent MIDI input event from the global history. idx=0 for the most recent event, which also latches to the latest MIDI event state (to get a more recent list, calling with idx=0 is necessary). idx=1 next most recent event, returns a non-zero sequence number for the event, or zero if no more events. tsOut will be set to the timestamp in samples relative to the current position (0 is current, -48000 is one second ago, etc). devIdxOut will have the low 16 bits set to the input device index, and 0x10000 will be set if device was enabled only for control. projPosOut will be set to project position in seconds if project was playing back at time of event, otherwise -1. Large SysEx events will not be included in this event list."
 	},
 	"MIDI_GetScale lua": {
 		"prefix": "r.MIDI_GetScale",
 		"scope": "lua",
-		"body": "r.MIDI_GetScale(${1:take})$0",
+		"body": "rv, root, scale, name = r.MIDI_GetScale(${1:take})$0",
 		"description": "Get the active scale in the media source, if any. root 0=C, 1=C#, etc. scale &0x1=root, &0x2=minor 2nd, &0x4=major 2nd, &0x8=minor 3rd, &0xF=fourth, etc."
 	},
 	"MIDI_GetTextSysexEvt lua": {
 		"prefix": "r.MIDI_GetTextSysexEvt",
 		"scope": "lua",
-		"body": "r.MIDI_GetTextSysexEvt(${1:take}, ${2:textsyxevtidx}, ${3:selected}, ${4:muted}, ${5:ppqpos}, ${6:type}, ${7:msg})$0",
+		"body": "rv, selected, muted, ppqpos, type, msg = r.MIDI_GetTextSysexEvt(${1:take}, ${2:textsyxevtidx}, ${3:selected}, ${4:muted}, ${5:ppqpos}, ${6:type}, ${7:msg})$0",
 		"description": "Get MIDI meta-event properties. Allowable types are -1:sysex (msg should not include bounding F0..F7), 1-14:MIDI text event types, 15=REAPER notation event. For all other meta-messages, type is returned as -2 and msg returned as all zeroes. See MIDI_GetEvt."
 	},
 	"MIDI_GetTrackHash lua": {
 		"prefix": "r.MIDI_GetTrackHash",
 		"scope": "lua",
-		"body": "r.MIDI_GetTrackHash(${1:track}, ${2:notesonly})$0",
+		"body": "rv, hash = r.MIDI_GetTrackHash(${1:track}, ${2:notesonly})$0",
 		"description": "Get a string that only changes when the MIDI data changes. If notesonly==true, then the string changes only when the MIDI notes change. See MIDI_GetHash"
 	},
 	"MIDI_InsertCC lua": {
@@ -7910,7 +7910,7 @@
 	"Menu_GetHash lua": {
 		"prefix": "r.Menu_GetHash",
 		"scope": "lua",
-		"body": "r.Menu_GetHash(${1:menuname}, ${2:flag})$0",
+		"body": "rv, hash = r.Menu_GetHash(${1:menuname}, ${2:flag})$0",
 		"description": "Get a string that only changes when menu/toolbar entries are added or removed (not re-ordered). Can be used to determine if a customized menu/toolbar differs from the default, or if the default changed after a menu/toolbar was customized. flag==0: current default menu/toolbar; flag==1: current customized menu/toolbar; flag==2: default menu/toolbar at the time the current menu/toolbar was most recently customized, if it was customized in REAPER v7.08 or later."
 	},
 	"MoveEditCursor lua": {
@@ -7994,7 +7994,7 @@
 	"NF_GetGlobalStartupAction lua": {
 		"prefix": "r.NF_GetGlobalStartupAction",
 		"scope": "lua",
-		"body": "r.NF_GetGlobalStartupAction()$0",
+		"body": "rv, desc, cmdId = r.NF_GetGlobalStartupAction()$0",
 		"description": "Gets action description and command ID number (for native actions) or named command IDs / identifier strings (for extension actions /ReaScripts) if global startup action is set, otherwise empty string. Returns false on failure."
 	},
 	"NF_GetMediaItemAverageRMS lua": {
@@ -8012,7 +8012,7 @@
 	"NF_GetMediaItemMaxPeakAndMaxPeakPos lua": {
 		"prefix": "r.NF_GetMediaItemMaxPeakAndMaxPeakPos",
 		"scope": "lua",
-		"body": "r.NF_GetMediaItemMaxPeakAndMaxPeakPos(${1:item})$0",
+		"body": "num, maxPeakPos = r.NF_GetMediaItemMaxPeakAndMaxPeakPos(${1:item})$0",
 		"description": "See NF_GetMediaItemMaxPeak, additionally returns maxPeakPos (relative to item position)."
 	},
 	"NF_GetMediaItemPeakRMS_NonWindowed lua": {
@@ -8030,13 +8030,13 @@
 	"NF_GetProjectStartupAction lua": {
 		"prefix": "r.NF_GetProjectStartupAction",
 		"scope": "lua",
-		"body": "r.NF_GetProjectStartupAction()$0",
+		"body": "rv, desc, cmdId = r.NF_GetProjectStartupAction()$0",
 		"description": "Gets action description and command ID number (for native actions) or named command IDs / identifier strings (for extension actions /ReaScripts) if project startup action is set, otherwise empty string. Returns false on failure."
 	},
 	"NF_GetProjectTrackSelectionAction lua": {
 		"prefix": "r.NF_GetProjectTrackSelectionAction",
 		"scope": "lua",
-		"body": "r.NF_GetProjectTrackSelectionAction()$0",
+		"body": "rv, desc, cmdId = r.NF_GetProjectTrackSelectionAction()$0",
 		"description": "Gets action description and command ID number (for native actions) or named command IDs / identifier strings (for extension actions /ReaScripts) if project track selection action is set, otherwise empty string. Returns false on failure."
 	},
 	"NF_GetSWSMarkerRegionSub lua": {
@@ -8054,13 +8054,13 @@
 	"NF_GetSWS_RMSoptions lua": {
 		"prefix": "r.NF_GetSWS_RMSoptions",
 		"scope": "lua",
-		"body": "r.NF_GetSWS_RMSoptions()$0",
+		"body": "target, windowSize = r.NF_GetSWS_RMSoptions()$0",
 		"description": "Get SWS analysis/normalize options. See NF_SetSWS_RMSoptions."
 	},
 	"NF_GetThemeDefaultTCPHeights lua": {
 		"prefix": "r.NF_GetThemeDefaultTCPHeights",
 		"scope": "lua",
-		"body": "r.NF_GetThemeDefaultTCPHeights()$0",
+		"body": "supercollapsed, collapsed, small, recarm = r.NF_GetThemeDefaultTCPHeights()$0",
 		"description": ""
 	},
 	"NF_ReadAudioFileBitrate lua": {
@@ -8114,7 +8114,7 @@
 	"NF_TakeFX_GetFXModuleName lua": {
 		"prefix": "r.NF_TakeFX_GetFXModuleName",
 		"scope": "lua",
-		"body": "r.NF_TakeFX_GetFXModuleName(${1:item}, ${2:fx})$0",
+		"body": "rv, name = r.NF_TakeFX_GetFXModuleName(${1:item}, ${2:fx})$0",
 		"description": "Deprecated, see TakeFX_GetNamedConfigParm/'fx_ident' (v6.37+). See BR_TrackFX_GetFXModuleName. fx: counted consecutively across all takes (zero-based)."
 	},
 	"NF_UpdateSWSMarkerRegionSubWindow lua": {
@@ -8342,7 +8342,7 @@
 	"PCM_Source_GetSectionInfo lua": {
 		"prefix": "r.PCM_Source_GetSectionInfo",
 		"scope": "lua",
-		"body": "r.PCM_Source_GetSectionInfo(${1:src})$0",
+		"body": "rv, offs, len, rev = r.PCM_Source_GetSectionInfo(${1:src})$0",
 		"description": "If a section/reverse block, retrieves offset/len/reverse. return true if success"
 	},
 	"PluginWantsAlwaysRunFx lua": {
@@ -8408,19 +8408,19 @@
 	"ReaPack_GetEntryInfo lua": {
 		"prefix": "r.ReaPack_GetEntryInfo",
 		"scope": "lua",
-		"body": "r.ReaPack_GetEntryInfo(${1:entry})$0",
+		"body": "rv, repo, cat, pkg, desc, type, ver, author, flags, fileCount = r.ReaPack_GetEntryInfo(${1:entry})$0",
 		"description": "Get the repository name, category, package name, package description, package type, the currently installed version, author name, flags (&1=Pinned, &2=BleedingEdge) and how many files are owned by the given package entry.\ntype: 1=script, 2=extension, 3=effect, 4=data, 5=theme, 6=langpack, 7=webinterface"
 	},
 	"ReaPack_GetOwner lua": {
 		"prefix": "r.ReaPack_GetOwner",
 		"scope": "lua",
-		"body": "r.ReaPack_GetOwner(${1:fn})$0",
+		"body": "rv, error = r.ReaPack_GetOwner(${1:fn})$0",
 		"description": "Returns the package entry owning the given file.\nDelete the returned object from memory after use with ReaPack_FreeEntry."
 	},
 	"ReaPack_GetRepositoryInfo lua": {
 		"prefix": "r.ReaPack_GetRepositoryInfo",
 		"scope": "lua",
-		"body": "r.ReaPack_GetRepositoryInfo(${1:name})$0",
+		"body": "rv, url, enabled, autoInstall = r.ReaPack_GetRepositoryInfo(${1:name})$0",
 		"description": "Get the infos of the given repository.\nautoInstall: 0=manual, 1=when sychronizing, 2=obey user setting"
 	},
 	"ReaPack_ProcessQueue lua": {
@@ -8552,13 +8552,13 @@
 	"SNM_GetLongConfigVar lua": {
 		"prefix": "r.SNM_GetLongConfigVar",
 		"scope": "lua",
-		"body": "r.SNM_GetLongConfigVar(${1:varname})$0",
+		"body": "rv, high, low = r.SNM_GetLongConfigVar(${1:varname})$0",
 		"description": "[S&M] Reads a 64-bit integer preference split in two 32-bit integers (look in project prefs first, then in general prefs). Returns false if failed (e.g. varname not found)."
 	},
 	"SNM_GetLongConfigVarEx lua": {
 		"prefix": "r.SNM_GetLongConfigVarEx",
 		"scope": "lua",
-		"body": "r.SNM_GetLongConfigVarEx(0, ${2:varname})$0",
+		"body": "rv, high, low = r.SNM_GetLongConfigVarEx(0, ${2:varname})$0",
 		"description": "[S&M] See SNM_GetLongConfigVar."
 	},
 	"SNM_GetMediaItemTakeByGUID lua": {
@@ -9206,7 +9206,7 @@
 	"TakeFX_GetFXName lua": {
 		"prefix": "r.TakeFX_GetFXName",
 		"scope": "lua",
-		"body": "r.TakeFX_GetFXName(${1:take}, ${2:fx})$0",
+		"body": "rv, buf = r.TakeFX_GetFXName(${1:take}, ${2:fx})$0",
 		"description": "FX indices can have 0x2000000 added to them, in which case they will be used to address FX in containers. To address a container, the 1-based subitem is multiplied by one plus the count of the FX chain and added to the 1-based container item index. e.g. to address the third item in the container at the second position of the track FX chain for tr, the index would be 0x2000000 + 3*(TrackFX_GetCount(tr)+1) + 2. This can be extended to sub-containers using TrackFX_GetNamedConfigParm with container_count and similar logic. In REAPER v7.06+, you can use the much more convenient method to navigate hierarchies, see TrackFX_GetNamedConfigParm with parent_container and container_item.X."
 	},
 	"TakeFX_GetFloatingWindow lua": {
@@ -9218,19 +9218,19 @@
 	"TakeFX_GetFormattedParamValue lua": {
 		"prefix": "r.TakeFX_GetFormattedParamValue",
 		"scope": "lua",
-		"body": "r.TakeFX_GetFormattedParamValue(${1:take}, ${2:fx}, ${3:param})$0",
+		"body": "rv, buf = r.TakeFX_GetFormattedParamValue(${1:take}, ${2:fx}, ${3:param})$0",
 		"description": "FX indices can have 0x2000000 added to them, in which case they will be used to address FX in containers. To address a container, the 1-based subitem is multiplied by one plus the count of the FX chain and added to the 1-based container item index. e.g. to address the third item in the container at the second position of the track FX chain for tr, the index would be 0x2000000 + 3*(TrackFX_GetCount(tr)+1) + 2. This can be extended to sub-containers using TrackFX_GetNamedConfigParm with container_count and similar logic. In REAPER v7.06+, you can use the much more convenient method to navigate hierarchies, see TrackFX_GetNamedConfigParm with parent_container and container_item.X."
 	},
 	"TakeFX_GetIOSize lua": {
 		"prefix": "r.TakeFX_GetIOSize",
 		"scope": "lua",
-		"body": "r.TakeFX_GetIOSize(${1:take}, ${2:fx})$0",
+		"body": "rv, inputPins, outputPins = r.TakeFX_GetIOSize(${1:take}, ${2:fx})$0",
 		"description": "Gets the number of input/output pins for FX if available, returns plug-in type or -1 on error FX indices can have 0x2000000 added to them, in which case they will be used to address FX in containers. To address a container, the 1-based subitem is multiplied by one plus the count of the FX chain and added to the 1-based container item index. e.g. to address the third item in the container at the second position of the track FX chain for tr, the index would be 0x2000000 + 3*(TrackFX_GetCount(tr)+1) + 2. This can be extended to sub-containers using TrackFX_GetNamedConfigParm with container_count and similar logic. In REAPER v7.06+, you can use the much more convenient method to navigate hierarchies, see TrackFX_GetNamedConfigParm with parent_container and container_item.X."
 	},
 	"TakeFX_GetNamedConfigParm lua": {
 		"prefix": "r.TakeFX_GetNamedConfigParm",
 		"scope": "lua",
-		"body": "r.TakeFX_GetNamedConfigParm(${1:take}, ${2:fx}, ${3:parmname})$0",
+		"body": "rv, buf = r.TakeFX_GetNamedConfigParm(${1:take}, ${2:fx}, ${3:parmname})$0",
 		"description": "gets plug-in specific named configuration value (returns true on success). see TrackFX_GetNamedConfigParm FX indices can have 0x2000000 added to them, in which case they will be used to address FX in containers. To address a container, the 1-based subitem is multiplied by one plus the count of the FX chain and added to the 1-based container item index. e.g. to address the third item in the container at the second position of the track FX chain for tr, the index would be 0x2000000 + 3*(TrackFX_GetCount(tr)+1) + 2. This can be extended to sub-containers using TrackFX_GetNamedConfigParm with container_count and similar logic. In REAPER v7.06+, you can use the much more convenient method to navigate hierarchies, see TrackFX_GetNamedConfigParm with parent_container and container_item.X."
 	},
 	"TakeFX_GetNumParams lua": {
@@ -9254,13 +9254,13 @@
 	"TakeFX_GetParam lua": {
 		"prefix": "r.TakeFX_GetParam",
 		"scope": "lua",
-		"body": "r.TakeFX_GetParam(${1:take}, ${2:fx}, ${3:param})$0",
+		"body": "num, minval, maxval = r.TakeFX_GetParam(${1:take}, ${2:fx}, ${3:param})$0",
 		"description": "FX indices can have 0x2000000 added to them, in which case they will be used to address FX in containers. To address a container, the 1-based subitem is multiplied by one plus the count of the FX chain and added to the 1-based container item index. e.g. to address the third item in the container at the second position of the track FX chain for tr, the index would be 0x2000000 + 3*(TrackFX_GetCount(tr)+1) + 2. This can be extended to sub-containers using TrackFX_GetNamedConfigParm with container_count and similar logic. In REAPER v7.06+, you can use the much more convenient method to navigate hierarchies, see TrackFX_GetNamedConfigParm with parent_container and container_item.X."
 	},
 	"TakeFX_GetParamEx lua": {
 		"prefix": "r.TakeFX_GetParamEx",
 		"scope": "lua",
-		"body": "r.TakeFX_GetParamEx(${1:take}, ${2:fx}, ${3:param})$0",
+		"body": "num, minval, maxval, midval = r.TakeFX_GetParamEx(${1:take}, ${2:fx}, ${3:param})$0",
 		"description": "FX indices can have 0x2000000 added to them, in which case they will be used to address FX in containers. To address a container, the 1-based subitem is multiplied by one plus the count of the FX chain and added to the 1-based container item index. e.g. to address the third item in the container at the second position of the track FX chain for tr, the index would be 0x2000000 + 3*(TrackFX_GetCount(tr)+1) + 2. This can be extended to sub-containers using TrackFX_GetNamedConfigParm with container_count and similar logic. In REAPER v7.06+, you can use the much more convenient method to navigate hierarchies, see TrackFX_GetNamedConfigParm with parent_container and container_item.X."
 	},
 	"TakeFX_GetParamFromIdent lua": {
@@ -9272,13 +9272,13 @@
 	"TakeFX_GetParamIdent lua": {
 		"prefix": "r.TakeFX_GetParamIdent",
 		"scope": "lua",
-		"body": "r.TakeFX_GetParamIdent(${1:take}, ${2:fx}, ${3:param})$0",
+		"body": "rv, buf = r.TakeFX_GetParamIdent(${1:take}, ${2:fx}, ${3:param})$0",
 		"description": "gets an identifying string for the parameter FX indices can have 0x2000000 added to them, in which case they will be used to address FX in containers. To address a container, the 1-based subitem is multiplied by one plus the count of the FX chain and added to the 1-based container item index. e.g. to address the third item in the container at the second position of the track FX chain for tr, the index would be 0x2000000 + 3*(TrackFX_GetCount(tr)+1) + 2. This can be extended to sub-containers using TrackFX_GetNamedConfigParm with container_count and similar logic. In REAPER v7.06+, you can use the much more convenient method to navigate hierarchies, see TrackFX_GetNamedConfigParm with parent_container and container_item.X."
 	},
 	"TakeFX_GetParamName lua": {
 		"prefix": "r.TakeFX_GetParamName",
 		"scope": "lua",
-		"body": "r.TakeFX_GetParamName(${1:take}, ${2:fx}, ${3:param})$0",
+		"body": "rv, buf = r.TakeFX_GetParamName(${1:take}, ${2:fx}, ${3:param})$0",
 		"description": "FX indices can have 0x2000000 added to them, in which case they will be used to address FX in containers. To address a container, the 1-based subitem is multiplied by one plus the count of the FX chain and added to the 1-based container item index. e.g. to address the third item in the container at the second position of the track FX chain for tr, the index would be 0x2000000 + 3*(TrackFX_GetCount(tr)+1) + 2. This can be extended to sub-containers using TrackFX_GetNamedConfigParm with container_count and similar logic. In REAPER v7.06+, you can use the much more convenient method to navigate hierarchies, see TrackFX_GetNamedConfigParm with parent_container and container_item.X."
 	},
 	"TakeFX_GetParamNormalized lua": {
@@ -9290,25 +9290,25 @@
 	"TakeFX_GetParameterStepSizes lua": {
 		"prefix": "r.TakeFX_GetParameterStepSizes",
 		"scope": "lua",
-		"body": "r.TakeFX_GetParameterStepSizes(${1:take}, ${2:fx}, ${3:param})$0",
+		"body": "rv, step, smallstep, largestep, istoggle = r.TakeFX_GetParameterStepSizes(${1:take}, ${2:fx}, ${3:param})$0",
 		"description": "FX indices can have 0x2000000 added to them, in which case they will be used to address FX in containers. To address a container, the 1-based subitem is multiplied by one plus the count of the FX chain and added to the 1-based container item index. e.g. to address the third item in the container at the second position of the track FX chain for tr, the index would be 0x2000000 + 3*(TrackFX_GetCount(tr)+1) + 2. This can be extended to sub-containers using TrackFX_GetNamedConfigParm with container_count and similar logic. In REAPER v7.06+, you can use the much more convenient method to navigate hierarchies, see TrackFX_GetNamedConfigParm with parent_container and container_item.X."
 	},
 	"TakeFX_GetPinMappings lua": {
 		"prefix": "r.TakeFX_GetPinMappings",
 		"scope": "lua",
-		"body": "r.TakeFX_GetPinMappings(${1:take}, ${2:fx}, ${3:isoutput}, ${4:pin})$0",
+		"body": "rv, high32 = r.TakeFX_GetPinMappings(${1:take}, ${2:fx}, ${3:isoutput}, ${4:pin})$0",
 		"description": "gets the effective channel mapping bitmask for a particular pin. high32Out will be set to the high 32 bits. Add 0x1000000 to pin index in order to access the second 64 bits of mappings independent of the first 64 bits. FX indices can have 0x2000000 added to them, in which case they will be used to address FX in containers. To address a container, the 1-based subitem is multiplied by one plus the count of the FX chain and added to the 1-based container item index. e.g. to address the third item in the container at the second position of the track FX chain for tr, the index would be 0x2000000 + 3*(TrackFX_GetCount(tr)+1) + 2. This can be extended to sub-containers using TrackFX_GetNamedConfigParm with container_count and similar logic. In REAPER v7.06+, you can use the much more convenient method to navigate hierarchies, see TrackFX_GetNamedConfigParm with parent_container and container_item.X."
 	},
 	"TakeFX_GetPreset lua": {
 		"prefix": "r.TakeFX_GetPreset",
 		"scope": "lua",
-		"body": "r.TakeFX_GetPreset(${1:take}, ${2:fx})$0",
+		"body": "rv, presetname = r.TakeFX_GetPreset(${1:take}, ${2:fx})$0",
 		"description": "Get the name of the preset currently showing in the REAPER dropdown, or the full path to a factory preset file for VST3 plug-ins (.vstpreset). See TakeFX_SetPreset. FX indices can have 0x2000000 added to them, in which case they will be used to address FX in containers. To address a container, the 1-based subitem is multiplied by one plus the count of the FX chain and added to the 1-based container item index. e.g. to address the third item in the container at the second position of the track FX chain for tr, the index would be 0x2000000 + 3*(TrackFX_GetCount(tr)+1) + 2. This can be extended to sub-containers using TrackFX_GetNamedConfigParm with container_count and similar logic. In REAPER v7.06+, you can use the much more convenient method to navigate hierarchies, see TrackFX_GetNamedConfigParm with parent_container and container_item.X."
 	},
 	"TakeFX_GetPresetIndex lua": {
 		"prefix": "r.TakeFX_GetPresetIndex",
 		"scope": "lua",
-		"body": "r.TakeFX_GetPresetIndex(${1:take}, ${2:fx})$0",
+		"body": "rv, numberOfPresets = r.TakeFX_GetPresetIndex(${1:take}, ${2:fx})$0",
 		"description": "Returns current preset index, or -1 if error. numberOfPresetsOut will be set to total number of presets available. See TakeFX_SetPresetByIndex FX indices can have 0x2000000 added to them, in which case they will be used to address FX in containers. To address a container, the 1-based subitem is multiplied by one plus the count of the FX chain and added to the 1-based container item index. e.g. to address the third item in the container at the second position of the track FX chain for tr, the index would be 0x2000000 + 3*(TrackFX_GetCount(tr)+1) + 2. This can be extended to sub-containers using TrackFX_GetNamedConfigParm with container_count and similar logic. In REAPER v7.06+, you can use the much more convenient method to navigate hierarchies, see TrackFX_GetNamedConfigParm with parent_container and container_item.X."
 	},
 	"TakeFX_GetUserPresetFilename lua": {
@@ -9392,13 +9392,13 @@
 	"ThemeLayout_GetLayout lua": {
 		"prefix": "r.ThemeLayout_GetLayout",
 		"scope": "lua",
-		"body": "r.ThemeLayout_GetLayout(${1:section}, ${2:idx})$0",
+		"body": "rv, name = r.ThemeLayout_GetLayout(${1:section}, ${2:idx})$0",
 		"description": "Gets theme layout information. section can be 'global' for global layout override, 'seclist' to enumerate a list of layout sections, otherwise a layout section such as 'mcp', 'tcp', 'trans', etc. idx can be -1 to query the current value, -2 to get the description of the section (if not global), -3 will return the current context DPI-scaling (256=normal, 512=retina, etc), or 0..x. returns false if failed."
 	},
 	"ThemeLayout_GetParameter lua": {
 		"prefix": "r.ThemeLayout_GetParameter",
 		"scope": "lua",
-		"body": "r.ThemeLayout_GetParameter(${1:wp})$0",
+		"body": "str, desc, value, defValue, minValue, maxValue = r.ThemeLayout_GetParameter(${1:wp})$0",
 		"description": "returns theme layout parameter. return value is cfg-name, or nil/empty if out of range."
 	},
 	"ThemeLayout_RefreshAll lua": {
@@ -9464,19 +9464,19 @@
 	"TimeMap_GetMeasureInfo lua": {
 		"prefix": "r.TimeMap_GetMeasureInfo",
 		"scope": "lua",
-		"body": "r.TimeMap_GetMeasureInfo(0, ${2:measure})$0",
+		"body": "num, qn_start, qn_end, timesig_num, timesig_denom, tempo = r.TimeMap_GetMeasureInfo(0, ${2:measure})$0",
 		"description": "Get the QN position and time signature information for the start of a measure. Return the time in seconds of the measure start."
 	},
 	"TimeMap_GetMetronomePattern lua": {
 		"prefix": "r.TimeMap_GetMetronomePattern",
 		"scope": "lua",
-		"body": "r.TimeMap_GetMetronomePattern(0, ${2:time}, ${3:pattern})$0",
+		"body": "rv, pattern = r.TimeMap_GetMetronomePattern(0, ${2:time}, ${3:pattern})$0",
 		"description": "Fills in a string representing the active metronome pattern. For example, in a 7/8 measure divided 3+4, the pattern might be 'ABCABCD'. For backwards compatibility, by default the function will return 1 for each primary beat and 2 for each non-primary beat, so '1221222' in this example, and does not support triplets. If buf is set to 'EXTENDED', the function will return the full string as displayed in the pattern editor, including all beat types and triplet representations. Pass in 'SET:string' with a correctly formed pattern string matching the current time signature numerator to set the click pattern. The time signature numerator can be deduced from the returned string, and the function returns the time signature denominator."
 	},
 	"TimeMap_GetTimeSigAtTime lua": {
 		"prefix": "r.TimeMap_GetTimeSigAtTime",
 		"scope": "lua",
-		"body": "r.TimeMap_GetTimeSigAtTime(0, ${2:time})$0",
+		"body": "timesig_num, timesig_denom, tempo = r.TimeMap_GetTimeSigAtTime(0, ${2:time})$0",
 		"description": "get the effective time signature and tempo"
 	},
 	"TimeMap_QNToMeasures lua": {
@@ -9602,7 +9602,7 @@
 	"TrackFX_GetEQParam lua": {
 		"prefix": "r.TrackFX_GetEQParam",
 		"scope": "lua",
-		"body": "r.TrackFX_GetEQParam(${1:track}, ${2:fxidx}, ${3:paramidx})$0",
+		"body": "rv, bandtype, bandidx, paramtype, normval = r.TrackFX_GetEQParam(${1:track}, ${2:fxidx}, ${3:paramidx})$0",
 		"description": "Returns false if track/fxidx is not ReaEQ.\nBandtype: -1=master gain, 0=hipass, 1=loshelf, 2=band, 3=notch, 4=hishelf, 5=lopass, 6=bandpass, 7=parallel bandpass.\nBandidx (ignored for master gain): 0=target first band matching bandtype, 1=target 2nd band matching bandtype, etc.\nParamtype (ignored for master gain): 0=freq, 1=gain, 2=Q.\nSee TrackFX_GetEQ, TrackFX_SetEQParam, TrackFX_GetEQBandEnabled, TrackFX_SetEQBandEnabled. FX indices for tracks can have 0x1000000 added to them in order to reference record input FX (normal tracks) or hardware output FX (master track). FX indices can have 0x2000000 added to them, in which case they will be used to address FX in containers. To address a container, the 1-based subitem is multiplied by one plus the count of the FX chain and added to the 1-based container item index. e.g. to address the third item in the container at the second position of the track FX chain for tr, the index would be 0x2000000 + 3*(TrackFX_GetCount(tr)+1) + 2. This can be extended to sub-containers using TrackFX_GetNamedConfigParm with container_count and similar logic. In REAPER v7.06+, you can use the much more convenient method to navigate hierarchies, see TrackFX_GetNamedConfigParm with parent_container and container_item.X."
 	},
 	"TrackFX_GetEnabled lua": {
@@ -9620,7 +9620,7 @@
 	"TrackFX_GetFXName lua": {
 		"prefix": "r.TrackFX_GetFXName",
 		"scope": "lua",
-		"body": "r.TrackFX_GetFXName(${1:track}, ${2:fx})$0",
+		"body": "rv, buf = r.TrackFX_GetFXName(${1:track}, ${2:fx})$0",
 		"description": "FX indices for tracks can have 0x1000000 added to them in order to reference record input FX (normal tracks) or hardware output FX (master track). FX indices can have 0x2000000 added to them, in which case they will be used to address FX in containers. To address a container, the 1-based subitem is multiplied by one plus the count of the FX chain and added to the 1-based container item index. e.g. to address the third item in the container at the second position of the track FX chain for tr, the index would be 0x2000000 + 3*(TrackFX_GetCount(tr)+1) + 2. This can be extended to sub-containers using TrackFX_GetNamedConfigParm with container_count and similar logic. In REAPER v7.06+, you can use the much more convenient method to navigate hierarchies, see TrackFX_GetNamedConfigParm with parent_container and container_item.X."
 	},
 	"TrackFX_GetFloatingWindow lua": {
@@ -9632,13 +9632,13 @@
 	"TrackFX_GetFormattedParamValue lua": {
 		"prefix": "r.TrackFX_GetFormattedParamValue",
 		"scope": "lua",
-		"body": "r.TrackFX_GetFormattedParamValue(${1:track}, ${2:fx}, ${3:param})$0",
+		"body": "rv, buf = r.TrackFX_GetFormattedParamValue(${1:track}, ${2:fx}, ${3:param})$0",
 		"description": "FX indices for tracks can have 0x1000000 added to them in order to reference record input FX (normal tracks) or hardware output FX (master track). FX indices can have 0x2000000 added to them, in which case they will be used to address FX in containers. To address a container, the 1-based subitem is multiplied by one plus the count of the FX chain and added to the 1-based container item index. e.g. to address the third item in the container at the second position of the track FX chain for tr, the index would be 0x2000000 + 3*(TrackFX_GetCount(tr)+1) + 2. This can be extended to sub-containers using TrackFX_GetNamedConfigParm with container_count and similar logic. In REAPER v7.06+, you can use the much more convenient method to navigate hierarchies, see TrackFX_GetNamedConfigParm with parent_container and container_item.X."
 	},
 	"TrackFX_GetIOSize lua": {
 		"prefix": "r.TrackFX_GetIOSize",
 		"scope": "lua",
-		"body": "r.TrackFX_GetIOSize(${1:track}, ${2:fx})$0",
+		"body": "rv, inputPins, outputPins = r.TrackFX_GetIOSize(${1:track}, ${2:fx})$0",
 		"description": "Gets the number of input/output pins for FX if available, returns plug-in type or -1 on error FX indices for tracks can have 0x1000000 added to them in order to reference record input FX (normal tracks) or hardware output FX (master track). FX indices can have 0x2000000 added to them, in which case they will be used to address FX in containers. To address a container, the 1-based subitem is multiplied by one plus the count of the FX chain and added to the 1-based container item index. e.g. to address the third item in the container at the second position of the track FX chain for tr, the index would be 0x2000000 + 3*(TrackFX_GetCount(tr)+1) + 2. This can be extended to sub-containers using TrackFX_GetNamedConfigParm with container_count and similar logic. In REAPER v7.06+, you can use the much more convenient method to navigate hierarchies, see TrackFX_GetNamedConfigParm with parent_container and container_item.X."
 	},
 	"TrackFX_GetInstrument lua": {
@@ -9650,7 +9650,7 @@
 	"TrackFX_GetNamedConfigParm lua": {
 		"prefix": "r.TrackFX_GetNamedConfigParm",
 		"scope": "lua",
-		"body": "r.TrackFX_GetNamedConfigParm(${1:track}, ${2:fx}, ${3:parmname})$0",
+		"body": "rv, buf = r.TrackFX_GetNamedConfigParm(${1:track}, ${2:fx}, ${3:parmname})$0",
 		"description": "gets plug-in specific named configuration value (returns true on success). \nSupported values for read:\npdc : PDC latency\nin_pin_X : name of input pin X\nout_pin_X : name of output pin X\nfx_type : type string\nfx_ident : type-specific identifier\nfx_name : name of FX (also supported as original_name)\nGainReduction_dB : [ReaComp + other supported compressors]\nparent_container : FX ID of parent container, if any (v7.06+)\ncontainer_count : [Container] number of FX in container\ncontainer_item.X : FX ID of item in container (first item is container_item.0) (v7.06+)\nparam.X.container_map.hint_id : unique ID of mapping (preserved if mapping order changes)\nparam.X.container_map.delete : read this value in order to remove the mapping for this parameter\ncontainer_map.add : read from this value to add a new container parameter mapping -- will return new parameter index (accessed via param.X.container_map.*)\ncontainer_map.add.FXID.PARMIDX : read from this value to add/get container parameter mapping for FXID/PARMIDX -- will return the parameter index (accessed via param.X.container_map.*). FXID can be a full address (must be a child of the container) or a 0-based sub-index (v7.06+).\ncontainer_map.get.FXID.PARMIDX : read from this value to get container parameter mapping for FXID/PARMIDX -- will return the parameter index (accessed via param.X.container_map.*). FXID can be a full address (must be a child of the container) or a 0-based sub-index (v7.06+).\nchain_pdc_actual : returns the actual chain latency in samples, only valid after playback has commenced, may be rounded up to block size.\nchain_pdc_reporting : returns the reported chain latency, always valid, not rounded to block size.\nSupported values for read/write:\nvst_chunk[_program] : base64-encoded VST-specific chunk.\nclap_chunk : base64-encoded CLAP-specific chunk.\nparam.X.lfo.[active,dir,phase,speed,strength,temposync,free,shape] : parameter moduation LFO state\nparam.X.acs.[active,dir,strength,attack,release,dblo,dbhi,chan,stereo,x2,y2] : parameter modulation ACS state\nparam.X.plink.[active,scale,offset,effect,param,midi_bus,midi_chan,midi_msg,midi_msg2] : parameter link/MIDI link: set effect=-100 to support midi_*\nparam.X.mod.[active,baseline,visible] : parameter module global settings\nparam.X.learn.[midi1,midi2,osc] : first two bytes of MIDI message, or OSC string if set\nparam.X.learn.mode : absolution/relative mode flag (0: Absolute, 1: 127=-1,1=+1, 2: 63=-1, 65=+1, 3: 65=-1, 1=+1, 4: toggle if nonzero)\nparam.X.learn.flags : &1=selected track only, &2=soft takeover, &4=focused FX only, &8=LFO retrigger, &16=visible FX only\nparam.X.container_map.fx_index : index of FX contained in container\nparam.X.container_map.fx_parm : parameter index of parameter of FX contained in container\nparam.X.container_map.aliased_name : name of parameter (if user-renamed, otherwise fails)\nBANDTYPEx, BANDENABLEDx : band configuration [ReaEQ]\nTHRESHOLD, CEILING, TRUEPEAK : [ReaLimit]\nNUMCHANNELS, NUMSPEAKERS, RESETCHANNELS : [ReaSurroundPan]\nITEMx : [ReaVerb] state configuration line, when writing should be followed by a write of DONE\nFILE, FILEx, -FILEx, +FILEx, -FILE* : [RS5k] file list, -/+ prefixes are write-only, when writing any, should be followed by a write of DONE\nMODE, RSMODE : [RS5k] general mode, resample mode\nVIDEO_CODE : [video processor] code\nforce_auto_bypass : 0 or 1 - force auto-bypass plug-in on silence\nparallel : 0, 1 or 2 - 1=process plug-in in parallel with previous, 2=process plug-in parallel and merge MIDI\ninstance_oversample_shift : instance oversampling shift amount, 0=none, 1=~96k, 2=~192k, etc. When setting requires playback stop/start to take effect\nchain_oversample_shift : chain oversampling shift amount, 0=none, 1=~96k, 2=~192k, etc. When setting requires playback stop/start to take effect\nchain_pdc_mode : chain PDC mode (0=classic, 1=new-default, 2=ignore PDC, 3=hwcomp-master)\nchain_sel : selected/visible FX in chain\nrenamed_name : renamed FX instance name (empty string = not renamed)\ncontainer_nch : number of internal channels for container\ncontainer_nch_in : number of input pins for container\ncontainer_nch_out : number of output pints for container\ncontainer_nch_feedback : number of internal feedback channels enabled in container\nfocused : reading returns 1 if focused. Writing a positive value to this sets the FX UI as 'last focused.'\nlast_touched : reading returns two integers, one indicates whether FX is the last-touched FX, the second indicates which parameter was last touched. Writing a negative value ensures this plug-in is not set as last touched, otherwise the FX is set 'last touched,' and last touched parameter index is set to the value in the string (if valid).\n FX indices for tracks can have 0x1000000 added to them in order to reference record input FX (normal tracks) or hardware output FX (master track). FX indices can have 0x2000000 added to them, in which case they will be used to address FX in containers. To address a container, the 1-based subitem is multiplied by one plus the count of the FX chain and added to the 1-based container item index. e.g. to address the third item in the container at the second position of the track FX chain for tr, the index would be 0x2000000 + 3*(TrackFX_GetCount(tr)+1) + 2. This can be extended to sub-containers using TrackFX_GetNamedConfigParm with container_count and similar logic. In REAPER v7.06+, you can use the much more convenient method to navigate hierarchies, see TrackFX_GetNamedConfigParm with parent_container and container_item.X."
 	},
 	"TrackFX_GetNumParams lua": {
@@ -9674,13 +9674,13 @@
 	"TrackFX_GetParam lua": {
 		"prefix": "r.TrackFX_GetParam",
 		"scope": "lua",
-		"body": "r.TrackFX_GetParam(${1:track}, ${2:fx}, ${3:param})$0",
+		"body": "num, minval, maxval = r.TrackFX_GetParam(${1:track}, ${2:fx}, ${3:param})$0",
 		"description": "FX indices for tracks can have 0x1000000 added to them in order to reference record input FX (normal tracks) or hardware output FX (master track). FX indices can have 0x2000000 added to them, in which case they will be used to address FX in containers. To address a container, the 1-based subitem is multiplied by one plus the count of the FX chain and added to the 1-based container item index. e.g. to address the third item in the container at the second position of the track FX chain for tr, the index would be 0x2000000 + 3*(TrackFX_GetCount(tr)+1) + 2. This can be extended to sub-containers using TrackFX_GetNamedConfigParm with container_count and similar logic. In REAPER v7.06+, you can use the much more convenient method to navigate hierarchies, see TrackFX_GetNamedConfigParm with parent_container and container_item.X."
 	},
 	"TrackFX_GetParamEx lua": {
 		"prefix": "r.TrackFX_GetParamEx",
 		"scope": "lua",
-		"body": "r.TrackFX_GetParamEx(${1:track}, ${2:fx}, ${3:param})$0",
+		"body": "num, minval, maxval, midval = r.TrackFX_GetParamEx(${1:track}, ${2:fx}, ${3:param})$0",
 		"description": "FX indices for tracks can have 0x1000000 added to them in order to reference record input FX (normal tracks) or hardware output FX (master track). FX indices can have 0x2000000 added to them, in which case they will be used to address FX in containers. To address a container, the 1-based subitem is multiplied by one plus the count of the FX chain and added to the 1-based container item index. e.g. to address the third item in the container at the second position of the track FX chain for tr, the index would be 0x2000000 + 3*(TrackFX_GetCount(tr)+1) + 2. This can be extended to sub-containers using TrackFX_GetNamedConfigParm with container_count and similar logic. In REAPER v7.06+, you can use the much more convenient method to navigate hierarchies, see TrackFX_GetNamedConfigParm with parent_container and container_item.X."
 	},
 	"TrackFX_GetParamFromIdent lua": {
@@ -9692,13 +9692,13 @@
 	"TrackFX_GetParamIdent lua": {
 		"prefix": "r.TrackFX_GetParamIdent",
 		"scope": "lua",
-		"body": "r.TrackFX_GetParamIdent(${1:track}, ${2:fx}, ${3:param})$0",
+		"body": "rv, buf = r.TrackFX_GetParamIdent(${1:track}, ${2:fx}, ${3:param})$0",
 		"description": "gets an identifying string for the parameter FX indices for tracks can have 0x1000000 added to them in order to reference record input FX (normal tracks) or hardware output FX (master track). FX indices can have 0x2000000 added to them, in which case they will be used to address FX in containers. To address a container, the 1-based subitem is multiplied by one plus the count of the FX chain and added to the 1-based container item index. e.g. to address the third item in the container at the second position of the track FX chain for tr, the index would be 0x2000000 + 3*(TrackFX_GetCount(tr)+1) + 2. This can be extended to sub-containers using TrackFX_GetNamedConfigParm with container_count and similar logic. In REAPER v7.06+, you can use the much more convenient method to navigate hierarchies, see TrackFX_GetNamedConfigParm with parent_container and container_item.X."
 	},
 	"TrackFX_GetParamName lua": {
 		"prefix": "r.TrackFX_GetParamName",
 		"scope": "lua",
-		"body": "r.TrackFX_GetParamName(${1:track}, ${2:fx}, ${3:param})$0",
+		"body": "rv, buf = r.TrackFX_GetParamName(${1:track}, ${2:fx}, ${3:param})$0",
 		"description": "FX indices for tracks can have 0x1000000 added to them in order to reference record input FX (normal tracks) or hardware output FX (master track). FX indices can have 0x2000000 added to them, in which case they will be used to address FX in containers. To address a container, the 1-based subitem is multiplied by one plus the count of the FX chain and added to the 1-based container item index. e.g. to address the third item in the container at the second position of the track FX chain for tr, the index would be 0x2000000 + 3*(TrackFX_GetCount(tr)+1) + 2. This can be extended to sub-containers using TrackFX_GetNamedConfigParm with container_count and similar logic. In REAPER v7.06+, you can use the much more convenient method to navigate hierarchies, see TrackFX_GetNamedConfigParm with parent_container and container_item.X."
 	},
 	"TrackFX_GetParamNormalized lua": {
@@ -9710,25 +9710,25 @@
 	"TrackFX_GetParameterStepSizes lua": {
 		"prefix": "r.TrackFX_GetParameterStepSizes",
 		"scope": "lua",
-		"body": "r.TrackFX_GetParameterStepSizes(${1:track}, ${2:fx}, ${3:param})$0",
+		"body": "rv, step, smallstep, largestep, istoggle = r.TrackFX_GetParameterStepSizes(${1:track}, ${2:fx}, ${3:param})$0",
 		"description": "FX indices for tracks can have 0x1000000 added to them in order to reference record input FX (normal tracks) or hardware output FX (master track). FX indices can have 0x2000000 added to them, in which case they will be used to address FX in containers. To address a container, the 1-based subitem is multiplied by one plus the count of the FX chain and added to the 1-based container item index. e.g. to address the third item in the container at the second position of the track FX chain for tr, the index would be 0x2000000 + 3*(TrackFX_GetCount(tr)+1) + 2. This can be extended to sub-containers using TrackFX_GetNamedConfigParm with container_count and similar logic. In REAPER v7.06+, you can use the much more convenient method to navigate hierarchies, see TrackFX_GetNamedConfigParm with parent_container and container_item.X."
 	},
 	"TrackFX_GetPinMappings lua": {
 		"prefix": "r.TrackFX_GetPinMappings",
 		"scope": "lua",
-		"body": "r.TrackFX_GetPinMappings(${1:tr}, ${2:fx}, ${3:isoutput}, ${4:pin})$0",
+		"body": "rv, high32 = r.TrackFX_GetPinMappings(${1:tr}, ${2:fx}, ${3:isoutput}, ${4:pin})$0",
 		"description": "gets the effective channel mapping bitmask for a particular pin. high32Out will be set to the high 32 bits. Add 0x1000000 to pin index in order to access the second 64 bits of mappings independent of the first 64 bits. FX indices for tracks can have 0x1000000 added to them in order to reference record input FX (normal tracks) or hardware output FX (master track). FX indices can have 0x2000000 added to them, in which case they will be used to address FX in containers. To address a container, the 1-based subitem is multiplied by one plus the count of the FX chain and added to the 1-based container item index. e.g. to address the third item in the container at the second position of the track FX chain for tr, the index would be 0x2000000 + 3*(TrackFX_GetCount(tr)+1) + 2. This can be extended to sub-containers using TrackFX_GetNamedConfigParm with container_count and similar logic. In REAPER v7.06+, you can use the much more convenient method to navigate hierarchies, see TrackFX_GetNamedConfigParm with parent_container and container_item.X."
 	},
 	"TrackFX_GetPreset lua": {
 		"prefix": "r.TrackFX_GetPreset",
 		"scope": "lua",
-		"body": "r.TrackFX_GetPreset(${1:track}, ${2:fx})$0",
+		"body": "rv, presetname = r.TrackFX_GetPreset(${1:track}, ${2:fx})$0",
 		"description": "Get the name of the preset currently showing in the REAPER dropdown, or the full path to a factory preset file for VST3 plug-ins (.vstpreset). See TrackFX_SetPreset. FX indices for tracks can have 0x1000000 added to them in order to reference record input FX (normal tracks) or hardware output FX (master track). FX indices can have 0x2000000 added to them, in which case they will be used to address FX in containers. To address a container, the 1-based subitem is multiplied by one plus the count of the FX chain and added to the 1-based container item index. e.g. to address the third item in the container at the second position of the track FX chain for tr, the index would be 0x2000000 + 3*(TrackFX_GetCount(tr)+1) + 2. This can be extended to sub-containers using TrackFX_GetNamedConfigParm with container_count and similar logic. In REAPER v7.06+, you can use the much more convenient method to navigate hierarchies, see TrackFX_GetNamedConfigParm with parent_container and container_item.X."
 	},
 	"TrackFX_GetPresetIndex lua": {
 		"prefix": "r.TrackFX_GetPresetIndex",
 		"scope": "lua",
-		"body": "r.TrackFX_GetPresetIndex(${1:track}, ${2:fx})$0",
+		"body": "rv, numberOfPresets = r.TrackFX_GetPresetIndex(${1:track}, ${2:fx})$0",
 		"description": "Returns current preset index, or -1 if error. numberOfPresetsOut will be set to total number of presets available. See TrackFX_SetPresetByIndex FX indices for tracks can have 0x1000000 added to them in order to reference record input FX (normal tracks) or hardware output FX (master track). FX indices can have 0x2000000 added to them, in which case they will be used to address FX in containers. To address a container, the 1-based subitem is multiplied by one plus the count of the FX chain and added to the 1-based container item index. e.g. to address the third item in the container at the second position of the track FX chain for tr, the index would be 0x2000000 + 3*(TrackFX_GetCount(tr)+1) + 2. This can be extended to sub-containers using TrackFX_GetNamedConfigParm with container_count and similar logic. In REAPER v7.06+, you can use the much more convenient method to navigate hierarchies, see TrackFX_GetNamedConfigParm with parent_container and container_item.X."
 	},
 	"TrackFX_GetRecChainVisible lua": {

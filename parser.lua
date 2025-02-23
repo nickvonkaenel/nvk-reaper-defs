@@ -1460,11 +1460,26 @@ local function generate_stub(func)
 		end
 	end
 	snippet.body = snippet.body .. table.concat(body_params, ", ") .. ")$0"
+	local retvals = {}
 	for i, ret in ipairs(func.ret_types or {}) do
 		local trimmed_type = ret.type:gsub("%s+$", "")
 		local rettype = trimmed_type .. (ret.optional and "?" or "")
 		rettype = rettype:gsub("identifier", "userdata", 1)
-		table.insert(lines, string.format("---@return %s %s", rettype, ret.name))
+		local retname = ret.name
+		if retname == "retval" then
+			if ret.type == "string" then
+				retname = "str"
+			elseif ret.type == "number" then
+				retname = "num"
+			else
+				retname = "rv"
+			end
+		end
+		table.insert(lines, string.format("---@return %s %s", rettype, retname))
+		table.insert(retvals, retname)
+	end
+	if #retvals > 1 and func.func_name:find("Get") then
+		snippet.body = table.concat(retvals, ", ") .. " = " .. snippet.body
 	end
 	local param_names = {}
 	for _, p in ipairs(func.params) do
