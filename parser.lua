@@ -1390,21 +1390,21 @@ function reaper.BR_GetMouseCursorContext() end]],
 local snippets = {}
 local snippets_overrides = {
 	genGuid = {
-		prefix = "reaper.genGuid",
+		prefix = "r.genGuid",
 		scope = "lua",
-		body = "reaper.genGuid()$0",
+		body = "r.genGuid()$0",
 		description = "Generates a new GUID string e.g. {35C37676-7CFF-7E46-BB14-FA0CC7C04BEB}",
 	},
 	my_getViewport = {
-		prefix = "reaper.my_getViewport",
+		prefix = "r.my_getViewport",
 		scope = "lua",
 		body = "reaper.my_getViewport(${1:r_left}, ${2:r_top}, ${3:r_right}, ${4:r_bot}, ${5:sr_left}, ${6:sr_top}, ${7:sr_right}, ${8:sr_bot}, ${9:wantWorkArea})$0",
 		description = "Get the current viewport and the work area",
 	},
 	BR_GetMouseCursorContext = {
-		prefix = "reaper.BR_GetMouseCursorContext",
+		prefix = "r.BR_GetMouseCursorContext",
 		scope = "lua",
-		body = "reaper.BR_GetMouseCursorContext()$0",
+		body = "r.BR_GetMouseCursorContext()$0",
 		description = "Get mouse cursor context. Each parameter returns information in a form of string as specified in the table below.",
 	},
 }
@@ -1426,7 +1426,7 @@ local function generate_stub(func)
 		snippets[short_name] = snippets_overrides[short_name]
 	end
 	if manual_overrides[short_name] then
-		return manual_overrides[func.func_name]
+		return manual_overrides[short_name]
 	end
 	local snippet = {
 		prefix = snippet_name,

@@ -888,6 +888,9 @@ function reaper.format_timestr_len(tpos, buf, offset, modeoverride) end
 ---@return string buf
 function reaper.format_timestr_pos(tpos, buf, modeoverride) end
 
+---Generates a new GUID string e.g. {35C37676-7CFF-7E46-BB14-FA0CC7C04BEB}
+---@return string gGUID
+function reaper.genGuid() end
 
 ---gets ini configuration variable value as string
 ---@param name string
@@ -3165,6 +3168,20 @@ function reaper.MoveMediaItemToTrack(item, desttr) end
 ---@param mute boolean
 function reaper.MuteAllTracks(mute) end
 
+---@param r_left integer
+---@param r_top integer
+---@param r_right integer
+---@param r_bot integer
+---@param sr_left integer
+---@param sr_top integer
+---@param sr_right integer
+---@param sr_bot integer
+---@param wantWorkArea boolean
+---@return integer left
+---@return integer top
+---@return integer right
+---@return integer bottom
+function reaper.my_getViewport(r_left, r_top, r_right, r_bot, sr_left, sr_top, sr_right, sr_bot, wantWorkArea) end
 
 ---Get the command ID number for named command that was registered by an extension such as "_SWS_ABOUT" or "_113088d11ae641c193a2b7ede3041ad5" for a ReaScript or a custom action.
 ---@param command_name string
