@@ -9431,6 +9431,56 @@ function reaper.sm_setformat(format) end
 ---@return string retval
 function reaper.sm_version() end
 
+---is_new_value,filename,sectionID,cmdID,mode,resolution,val,contextstr = reaper.get_action_context()
+---Returns contextual information about the script, typically MIDI/OSC input values.
+---val will be set to a relative or absolute value depending on mode (=0: absolute mode, >0: relative modes).
+---resolution=127 for 7-bit resolution, =16383 for 14-bit resolution.
+---sectionID, and cmdID will be set to -1 if the script is not part of the action list.
+---mode, resolution and val will be set to -1 if the script was not triggered via MIDI/OSC.
+---contextstr may be empty or one of:<br>
+---
+---* midi:XX[:YY] (one or two bytes hex)
+---* [wheel|hwheel|mtvert|mthorz|mtzoom|mtrot|mediakbd]:flags
+---* key:flags:keycode
+---* osc:/msg[:f=FloatValue|:s=StringValue]
+---* KBD_OnMainActionEx
+---
+---(flags may include V=virtkey, S=shift, A=alt/option, C=control/command, W=win/control)
+---@return boolean is_new_value
+---@return string filename
+---@return integer sectionID
+---@return integer cmdID
+---@return integer mode
+---@return integer resolution
+---@return number val
+---@return string contextstr
+function reaper.get_action_context() end
+
+---Adds code to be called back by REAPER. Used to create persistent ReaScripts that continue to run and respond to input, while the user does other tasks. Identical to runloop().
+---Note that no undo point will be automatically created when the script finishes, unless you create it explicitly.
+---@param function function
+---@return boolean retval
+function reaper.defer(function) end
+
+---Adds code to be called back by REAPER. Used to create persistent ReaScripts that continue to run and respond to input, while the user does other tasks. Identical to defer().
+---Note that no undo point will be automatically created when the script finishes, unless you create it explicitly.
+---@param function function
+---@return boolean retval
+function reaper.runloop(function) end
+
+---Adds code to be executed when the script finishes or is ended by the user. Typically used to clean up after the user terminates defer() or runloop() code.
+---@param function function
+---@return boolean retval
+function reaper.atexit(function) end
+
+---Sets action options for the script.
+---* flag&1: script will auto-terminate if re-launched while already running
+---* flag&2: if (flag&1) is set, script will re-launch after auto-terminating
+---* flag&4: set script toggle state on
+---* flag&8: set script toggle state off
+---@param flag integer
+function reaper.set_action_options(flag) end
+
 ---Causes gmem_read()/gmem_write() to read EEL2/JSFX/Video shared memory segment named by parameter. Set to empty string to detach. 6.20+: returns previous shared memory segment name.Must be called, before you can use a specific gmem-variable-index with gmem_write!
 ---@param sharedMemoryName string
 ---@return string former_attached_gmemname
