@@ -1388,7 +1388,26 @@ function reaper.BR_GetMouseCursorContext() end]],
 }
 
 local snippets = {}
-local snippets_overrides = {}
+local snippets_overrides = {
+	genGuid = {
+		prefix = "reaper.genGuid",
+		scope = "lua",
+		body = "reaper.genGuid()$0",
+		description = "Generates a new GUID string e.g. {35C37676-7CFF-7E46-BB14-FA0CC7C04BEB}",
+	},
+	my_getViewport = {
+		prefix = "reaper.my_getViewport",
+		scope = "lua",
+		body = "reaper.my_getViewport(${1:r_left}, ${2:r_top}, ${3:r_right}, ${4:r_bot}, ${5:sr_left}, ${6:sr_top}, ${7:sr_right}, ${8:sr_bot}, ${9:wantWorkArea})$0",
+		description = "Get the current viewport and the work area",
+	},
+	BR_GetMouseCursorContext = {
+		prefix = "reaper.BR_GetMouseCursorContext",
+		scope = "lua",
+		body = "reaper.BR_GetMouseCursorContext()$0",
+		description = "Get mouse cursor context. Each parameter returns information in a form of string as specified in the table below.",
+	},
+}
 --[[
 { [short_name] = { 
 	prefix = "r." .. short_name,
@@ -1414,24 +1433,31 @@ local function generate_stub(func)
 		scope = "lua",
 	}
 	local lines = {}
+	local description = {}
 	if func.description and #func.description > 0 then
 		for line in func.description:gmatch("[^\n]+") do
 			-- remove SetThemeColor additional info
 			if not line:find("^-- current RGB") and not line:find("^-- blendmode") then
 				table.insert(lines, "---" .. line)
+				table.insert(description, line)
 			end
 		end
 	end
-	snippet.description = func.description
+	snippet.description = table.concat(description, "\n")
 	snippet.body = snippet_name .. "("
 	local body_params = {}
 	for i, p in ipairs(func.params) do
 		local optional = optional_params[short_name] and optional_params[short_name][p.name] or p.optional
+		local p_type = p.type
 		for _, sub in ipairs(param_type_substitutions) do
-			p.type = p.type:gsub(sub[1], sub[2], 1)
+			p_type = p_type:gsub(sub[1], sub[2], 1)
 		end
-		table.insert(lines, string.format("---@param %s %s", p.name, p.type .. (optional and "?" or "")))
-		table.insert(body_params, string.format("{%s:%s}", i, p.name))
+		table.insert(lines, string.format("---@param %s %s", p.name, p_type .. (optional and "?" or "")))
+		if p.type == "ReaProject" then
+			table.insert(body_params, "0")
+		else
+			table.insert(body_params, string.format("${%s:%s}", i, p.name))
+		end
 	end
 	snippet.body = snippet.body .. table.concat(body_params, ", ") .. ")$0"
 	for i, ret in ipairs(func.ret_types or {}) do
@@ -1463,16 +1489,17 @@ local function snippets_to_json()
 		table.insert(
 			key_tbl,
 			string.format(
-				'\t"%s lua": {\n\t\t"prefix": "%s",\n\t\t"scope": "lua",\n\t\t"body": "%s"\n\t\t"description": "%s"\n\t}',
+				'\t"%s lua": {\n\t\t"prefix": "%s",\n\t\t"scope": "lua",\n\t\t"body": "%s",\n\t\t"description": "%s"\n\t}',
 				k,
 				snippet.prefix,
 				snippet.body,
 				snippet.description
+					:gsub("\\'", "'")
+					:gsub("\\", "\\\\")
 					:gsub("\n", "\\n")
 					:gsub('"', "'")
 					:gsub("\t", "\\t")
 					:gsub("\r", "\\r")
-					:gsub("\\'", "'")
 					:gsub("\\n\\n", "\\n")
 			)
 		)
@@ -1485,9 +1512,18 @@ end
 local function defs_to_snippets(defs)
 	for desc, func, args in defs:gmatch("(.-)\nfunction%s+(.-)%((.-)%)%s*end\n") do
 		local args_tbl = {}
+		local i = 1
 		for arg in args:gmatch("[^,]+") do
 			arg = arg:gsub("%s", "")
-			table.insert(args_tbl, arg)
+			if arg == "ctx" then
+				table.insert(args_tbl, "ctx")
+			else
+				table.insert(args_tbl, string.format("${%s:%s}", i, arg))
+			end
+			if func == "ImGui.SameLine" then -- special case since we don't really use the other args
+				break
+			end
+			i = i + 1
 		end
 		local desc_tbl = {}
 		local fields_found = false
@@ -1514,7 +1550,6 @@ end
 
 local r = reaper
 
-local html_defs
 local file_path = r.GetExtState("ReaScript_API_Generator", "html_file_path")
 
 if file_path == "" or not r.file_exists(file_path) then
@@ -1554,6 +1589,8 @@ local output_path = script_path .. "/reaper_defs.lua"
 local snippets_path = script_path .. "/snippets.json"
 local imgui_path = script_path .. "/imgui_defs.lua"
 
+local nvim_path = "Users/nvk/.config/nvim/snippets/lua/reascript-api.json"
+
 defs_to_snippets(read_file(imgui_path))
 local snippets_str = snippets_to_json()
 
@@ -1571,3 +1608,4 @@ end
 
 write_file(output_path, table.concat(output, "\n"))
 write_file(snippets_path, snippets_str)
+write_file(nvim_path, snippets_str)
