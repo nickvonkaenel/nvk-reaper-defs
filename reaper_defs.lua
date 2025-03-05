@@ -297,7 +297,7 @@ function reaper.CreateTrackAudioAccessor(track) end
 
 ---Create a send/receive (desttrInOptional!=NULL), or a hardware output (desttrInOptional==NULL) with default properties, return >=0 on success (== new send/receive index). See RemoveTrackSend, GetSetTrackSendInfo, GetTrackSendInfo_Value, SetTrackSendInfo_Value.
 ---@param tr MediaTrack
----@param desttrIn MediaTrack
+---@param desttrIn MediaTrack?
 ---@return integer rv
 function reaper.CreateTrackSend(tr, desttrIn) end
 

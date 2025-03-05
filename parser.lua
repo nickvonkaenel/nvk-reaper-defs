@@ -1328,6 +1328,9 @@ local optional_params = {
 	JS_Zip_Close = {
 		zipHandle = true,
 	},
+	CreateTrackSend = {
+		desttrIn = true,
+	},
 }
 
 local manual_overrides = {
