@@ -1606,7 +1606,21 @@ local script_path = debug.getinfo(1, "S").source:match("@(.*)[\\/].*$")
 local output_path = script_path .. "/reaper_defs.lua"
 local snippets_path = script_path .. "/snippets.json"
 local imgui_path = script_path .. "/imgui_defs.lua"
-local nvim_path = os.getenv("HOME") .. "/.config/nvim/snippets/lua/reascript-api.json"
+local function get_nvim_snippets_path()
+	local home = os.getenv("HOME")
+	local appdata = os.getenv("APPDATA")
+	local path_separator = package.config:sub(1, 1) -- Gets the OS path separator (\ for Windows, / for Unix)
+
+	if home and path_separator == "/" then
+		-- Unix-like systems (macOS, Linux)
+		return home .. "/.config/nvim/snippets/lua/reascript-api.json"
+	elseif appdata then
+		-- Windows
+		return appdata .. "\\nvim\\snippets\\lua\\reascript-api.json"
+	end
+end
+
+local nvim_path = get_nvim_snippets_path()
 
 defs_to_snippets(read_file(imgui_path))
 local snippets_str = snippets_to_json()
