@@ -1531,11 +1531,11 @@ local function defs_to_snippets(defs)
 	local field_section, functions = defs:match("(.-)\nlocal ImGui.-keyword\n(.+)")
 
 	for desc, field, field_type in field_section:gmatch("(.-)@field%s+(.-)%s(.-)\n") do
-		local desc_tbl = {}
+		local desc_tbl = {
+			"@type " .. field_type .. "\n---",
+		}
 		for line in desc:gmatch("([^\n]+)") do
-			if line:find("^--- @") then
-				break
-			elseif line == "---" or line == "--- ---" then
+			if line == "---" or line == "--- ---" then
 				-- ignore
 			else
 				line = line:gsub("\\", "") -- remove unnecessary escapes
