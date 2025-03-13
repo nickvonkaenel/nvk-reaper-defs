@@ -1528,7 +1528,29 @@ local function snippets_to_json()
 end
 
 local function defs_to_snippets(defs)
-	for desc, func, args in defs:gmatch("(.-)\nfunction%s+(.-)%((.-)%)%s*end\n") do
+	local field_section, functions = defs:match("(.-)\nlocal ImGui.-keyword\n(.+)")
+
+	for desc, field, field_type in field_section:gmatch("(.-)@field%s+(.-)%s(.-)\n") do
+		local desc_tbl = {}
+		for line in desc:gmatch("([^\n]+)") do
+			if line:find("^--- @") then
+				break
+			elseif line == "---" or line == "--- ---" then
+				-- ignore
+			else
+				line = line:gsub("\\", "") -- remove unnecessary escapes
+				table.insert(desc_tbl, line:match("^%s*%-%-%-%s*(.+)%s*$"))
+			end
+		end
+		snippets[field] = {
+			prefix = "ImGui." .. field,
+			scope = "lua",
+			body = "ImGui." .. field .. "$0",
+			description = table.concat(desc_tbl, "\n"),
+		}
+	end
+
+	for desc, func, args in functions:gmatch("(.-)\nfunction%s+(.-)%((.-)%)%s*end\n") do
 		local args_tbl = {}
 		local i = 1
 		for arg in args:gmatch("[^,]+") do
@@ -1561,7 +1583,7 @@ local function defs_to_snippets(defs)
 			prefix = func,
 			scope = "lua",
 			body = func .. "(" .. table.concat(args_tbl, ", ") .. ")$0",
-			description = table.concat(desc_tbl, "\\n"),
+			description = table.concat(desc_tbl, "\n"),
 		}
 	end
 end
