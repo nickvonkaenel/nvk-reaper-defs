@@ -1652,9 +1652,9 @@ local function write_file(path, content)
 	if file then
 		file:write(content)
 		file:close()
-		reaper.ShowConsoleMsg("File written to: " .. path)
+		reaper.ShowConsoleMsg("\nFile written to: " .. path)
 	else
-		reaper.ShowMessageBox("Could not write to file: " .. path, "Error", 0)
+		reaper.ShowMessageBox("\nCould not write to file: " .. path, "Error", 0)
 	end
 	return file
 end
