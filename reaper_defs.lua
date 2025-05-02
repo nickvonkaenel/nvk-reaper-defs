@@ -218,7 +218,7 @@ function reaper.CountEnvelopePointsEx(envelope, autoitem_idx) end
 ---@return integer rv
 function reaper.CountMediaItems(proj) end
 
----num_markersOut and num_regionsOut may be NULL.
+---discouraged. see GetNumRegionsOrMarkers, GetRegionOrMarker. num_markersOut and num_regionsOut may be NULL.
 ---@param proj ReaProject|nil|0
 ---@return integer rv
 ---@return integer num_markers
@@ -300,6 +300,14 @@ function reaper.CreateTrackAudioAccessor(track) end
 ---@param desttrIn MediaTrack?
 ---@return integer rv
 function reaper.CreateTrackSend(tr, desttrIn) end
+
+---Run a command from the Crossfade Editor section of the actions list.
+---@param command integer
+function reaper.CrossfadeEditor_OnCommand(command) end
+
+---Show or hide the Crossfade Editor window
+---@param show boolean
+function reaper.CrossfadeEditor_Show(show) end
 
 ---call this to force flushing of the undo states after using CSurf_On*Change()
 ---@param force boolean
@@ -725,6 +733,7 @@ function reaper.EnumPitchShiftModes(mode) end
 ---@return string str
 function reaper.EnumPitchShiftSubModes(mode, submode) end
 
+---discouraged. see GetNumRegionsOrMarkers, GetRegionOrMarker
 ---@param idx integer
 ---@return integer rv
 ---@return boolean isrgn
@@ -734,6 +743,7 @@ function reaper.EnumPitchShiftSubModes(mode, submode) end
 ---@return integer markrgnindexnumber
 function reaper.EnumProjectMarkers(idx) end
 
+---discouraged. see GetNumRegionsOrMarkers, GetRegionOrMarker
 ---@param proj ReaProject|nil|0
 ---@param idx integer
 ---@return integer rv
@@ -744,6 +754,7 @@ function reaper.EnumProjectMarkers(idx) end
 ---@return integer markrgnindexnumber
 function reaper.EnumProjectMarkers2(proj, idx) end
 
+---discouraged. see GetNumRegionsOrMarkers, GetRegionOrMarker
 ---@param proj ReaProject|nil|0
 ---@param idx integer
 ---@return integer rv
@@ -1336,6 +1347,35 @@ function reaper.GetMediaItemTakeByGUID(project, guidGUID) end
 ---I_RECPASSID : int * : record pass ID
 ---I_TAKEFX_NCH : int * : number of internal audio channels for per-take FX to use (OK to call with setNewValue, but the returned value is read-only)
 ---I_CUSTOMCOLOR : int * : custom color, OS dependent color|0x1000000 (i.e. ColorToNative(r,g,b)|0x1000000). If you do not |0x1000000, then it will not be used, but will store the color
+---IP_SPECEDIT:CNT : int : spectral edit count (read-only)
+---IP_SPECEDIT:DELETE:x : int : read or write this key to remove the spectral edit specified
+---IP_SPECEDIT:ADD : int : read or write this key to add a new spectral edit (returns index)
+---IP_SPECEDIT:SORT : int : read or write this key to re-sort spectral edits (be sure to do this following a position change or insert of new edit)
+---I_SPECEDIT:FFT_SIZE : int * : FFT size used by spectral edits for this take
+---D_SPECEDIT:x:POSITION : double * : position of spectral edit start (changing this requires a resort of spectral edits)
+---D_SPECEDIT:x:LENGTH : double * : length of spectral edit
+---F_SPECEDIT:x:GAIN : float * : gain of spectral edit
+---F_SPECEDIT:x:FADE_IN : float * : fade-in size 0..1
+---F_SPECEDIT:x:FADE_OUT : float * : fade-out size 0..1
+---F_SPECEDIT:x:FADE_LOW : float * : fade-lf size 0..1
+---F_SPECEDIT:x:FADE_HI : float * : fade-hf size 0..1
+---I_SPECEDIT:x:CHAN : int * : channel index, -1 for omni
+---I_SPECEDIT:x:FLAGS : int * : flags, &1=bypassed, &2=solo
+---F_SPECEDIT:x:GATE_THRESH : float * : gate threshold
+---F_SPECEDIT:x:GATE_FLOOR : float * : gate floor
+---F_SPECEDIT:x:COMP_THRESH : float * : comp threshold
+---F_SPECEDIT:x:COMP_RATIO : float * : comp ratio
+---B_SPECEDIT:x:SELECTED : bool * : selection state
+---I_SPECEDIT:x:TOPFREQ_CNT : int * : (read-only) number of top frequency-points
+---I_SPECEDIT:x:TOPFREQ_ADD:pos:val : int * : reading or writing will insert top frequency-point with position/value pair, returns index
+---I_SPECEDIT:x:TOPFREQ_DEL:y : int * : reading or writing will delete top frequency-point y. there will always be at least one point.
+---F_SPECEDIT:x:TOPFREQ_POS:y : float * : (read-only) get position of top frequency-point y
+---F_SPECEDIT:x:TOPFREQ_FREQ:y : float * : (read-only) get frequency of top frequency-point y
+---I_SPECEDIT:x:BOTFREQ_CNT : int * : number of bottom frequency-points
+---I_SPECEDIT:x:BOTFREQ_ADD:pos:val : int * : reading or writing will insert bottom frequency-point with position/value pair, returns index
+---I_SPECEDIT:x:BOTFREQ_DEL:y : int * : reading or writing will delete bottom frequency-point y. there will always be at least one point.
+---F_SPECEDIT:x:BOTFREQ_POS:y : float * : (read-only) get position of bottom frequency-point y
+---F_SPECEDIT:x:BOTFREQ_FREQ:y : float * : (read-only) get frequency of bottom frequency-point y
 ---IP_TAKENUMBER : int : take number (read-only, returns the take number directly)
 ---P_TRACK : pointer to MediaTrack (read-only)
 ---P_ITEM : pointer to MediaItem (read-only)
@@ -1499,6 +1539,11 @@ function reaper.GetNumMIDIInputs() end
 ---@return integer rv
 function reaper.GetNumMIDIOutputs() end
 
+---the total number of regions and markers in the project. See GetRegionOrMarker, GetRegionOrMarkerInfo_Value, SetRegionOrMarkerInfo_Value, GetSetRegionOrMarkerInfo_String
+---@param proj ReaProject|nil|0
+---@return integer rv
+function reaper.GetNumRegionsOrMarkers(proj) end
+
 ---Returns number of take markers. See GetTakeMarker, SetTakeMarker, DeleteTakeMarker
 ---@param take MediaItem_Take
 ---@return integer rv
@@ -1619,6 +1664,20 @@ function reaper.GetProjectTimeSignature2(proj) end
 ---@return integer rv
 ---@return string val
 function reaper.GetProjExtState(proj, extname, key) end
+
+---get a single region or marker by internal index, or if index < 0, by GUID. See GetNumRegionsOrMarkers, GetRegionOrMarkerInfo_Value, SetRegionOrMarkerInfo_Value, GetSetRegionOrMarkerInfo_String
+---@param proj ReaProject|nil|0
+---@param index integer
+---@param guidStr string
+---@return ProjectMarker rv
+function reaper.GetRegionOrMarker(proj, index, guidStr) end
+
+---"D_STARTPOS", "D_ENDPOS" (= D_STARTPOS for markers), "I_INDEX" (internal index), "I_NUMBER" (displayed index number), "I_LANENUMBER", "I_CUSTOMCOLOR", "I_DISPLAYEDCOLOR", "B_ISREGION", "B_UISEL", "B_HIDDEN". See GetNumRegionsOrMarkers, GetRegionOrMarker, SetRegionOrMarkerInfo_Value, GetSetRegionOrMarkerInfo_String
+---@param proj ReaProject|nil|0
+---@param regionOrMarker ProjectMarker
+---@param parameterName string
+---@return number num
+function reaper.GetRegionOrMarkerInfo_Value(proj, regionOrMarker, parameterName) end
 
 ---returns path where ini files are stored, other things are in subdirectories.
 ---@return string str
@@ -1835,15 +1894,21 @@ function reaper.GetSetProjectGrid(project, set, division, swingmode, swingamt) e
 ---RENDER_TAILMS : tail length in ms to render (only used if RENDER_BOUNDSFLAG and RENDER_TAILFLAG are set)
 ---RENDER_ADDTOPROJ : &1=add rendered files to project, &2=do not render files that are likely silent
 ---RENDER_DITHER : &1=dither, &2=noise shaping, &4=dither stems, &8=noise shaping on stems
----RENDER_NORMALIZE: &1=enable, (&14==0)=LUFS-I, (&14==2)=RMS, (&14==4)=peak, (&14==6)=true peak, (&14==8)=LUFS-M max, (&14==10)=LUFS-S max, (&4128==32)=normalize stems to common gain based on master, &64=enable brickwall limit, &128=brickwall limit true peak, (&2304==256)=only normalize files that are too loud, (&2304==2048)=only normalize files that are too quiet, &512=apply fade-in, &1024=apply fade-out, (&4128==4096)=normalize to loudest file, (&4128==4128)=normalize as if one long file, &8192=adjust mono media additional -3dB
----RENDER_NORMALIZE_TARGET: render normalization target as amplitude, so 0.5 means -6.02dB, 0.25 means -12.04dB, etc
----RENDER_BRICKWALL: render brickwall limit as amplitude, so 0.5 means -6.02dB, 0.25 means -12.04dB, etc
+---RENDER_NORMALIZE: &1=enable, (&14==0)=LUFS-I, (&14==2)=RMS, (&14==4)=peak, (&14==6)=true peak, (&14==8)=LUFS-M max, (&14==10)=LUFS-S max, &64=enable brickwall limit, &128=brickwall limit true peak, (&(256|2048)==256)=only normalize files that are too loud, (&(256|2048)==2048)=only normalize files that are too quiet, &512=apply fade-in, &1024=apply fade-out, (&(32|4096)==32)=normalize stems as if files play together (common gain), (&(32|4096)==4096)=normalize to loudest file, (&(32|4096)==4128)=normalize as if files play together, &8192=adjust mono media additional -3dB, &(1<<16)=pad start with silence, &(2<<16)=pad end with silence, &(4<<16)=disable all render postprocessing, &(32<<16)=limit as if files play together
+---RENDER_NORMALIZE_TARGET: render normalization target (0.5 means -6.02dB, requires RENDER_NORMALIZE&1)
+---RENDER_BRICKWALL: render brickwall limit (0.5 means -6.02dB, requires RENDER_NORMALIZE&64)
 ---RENDER_FADEIN: render fade-in (0.001 means 1 ms, requires RENDER_NORMALIZE&512)
 ---RENDER_FADEOUT: render fade-out (0.001 means 1 ms, requires RENDER_NORMALIZE&1024)
 ---RENDER_FADEINSHAPE: render fade-in shape
 ---RENDER_FADEOUTSHAPE: render fade-out shape
----PROJECT_SRATE : sample rate (ignored unless PROJECT_SRATE_USE set)
+---RENDER_PADSTART: pad render start with silence (0.001 means 1ms, requires RENDER_NORMALIZE&(1<<16))RENDER_PADEND: pad render end with silence (0.001 means 1ms, requires RENDER_NORMALIZE&(2<<16))PROJECT_SRATE : sample rate (ignored unless PROJECT_SRATE_USE set)
 ---PROJECT_SRATE_USE : set to 1 if project sample rate is used
+---RULER_DEFAULT_REGION_LANE_VISIBLE : 1 if default region lane is visible (preference to hide all regions not enabled and ruler tall enough to display), 0 otherwise (read-only)
+---RULER_DEFAULT_MARKER_LANE_VISIBLE : 1 if default marker lane is visible (preference to hide all markers not enabled and ruler tall enough to display), 0 otherwise (read-only)
+---RULER_LANE_COLOR:X : ruler lane default color, color&0x1000000 if used, X should be 0..8
+---RULER_LANE_HIDDEN:X : 1 if ruler lane is hidden, 0 otherwise
+---RULER_LANE_VISIBLE:X : 1 if ruler lane is visible (not hidden and ruler tall enough to display), 0 otherwise (read-only)
+---RULER_LANE_TIMEBASE:X : ruler lane default timebase, -1=project default, 0=time, 1=beats (position, length, rate), 2=beats (position only), X should be 0..8
 ---@param project ReaProject|nil|0
 ---@param desc string
 ---@param value number
@@ -1856,13 +1921,15 @@ function reaper.GetSetProjectInfo(project, desc, value, is_set) end
 ---PROJECT_TITLE : title field from Project Settings/Notes dialog
 ---PROJECT_AUTHOR : author field from Project Settings/Notes dialog
 ---TRACK_GROUP_NAME:X : track group name, X should be 1..64
----MARKER_GUID:X : get the GUID (unique ID) of the marker or region with index X, where X is the index passed to EnumProjectMarkers, not necessarily the displayed number (read-only)
----MARKER_INDEX_FROM_GUID:{GUID} : get the GUID index of the marker or region with GUID {GUID} (read-only)
+---RULER_LANE_NAME:X : ruler lane name, X should be 0..8
+---MARKER_GUID:X : discouraged. see GetRegionOrMarker, GetSetRegionOrMarkerInfo_String
+---MARKER_INDEX_FROM_GUID:{GUID} : discouraged. see GetRegionOrMarker, GetSetRegionOrMarkerInfo_String
 ---OPENCOPY_CFGIDX : integer for the configuration of format to use when creating copies/applying FX. 0=wave (auto-depth), 1=APPLYFX_FORMAT, 2=RECORD_FORMAT
 ---RECORD_PATH : recording directory -- may be blank or a relative path, to get the effective path see GetProjectPathEx()
 ---RECORD_PATH_SECONDARY : secondary recording directory
 ---RECORD_FORMAT : base64-encoded sink configuration (see project files, etc). Callers can also pass a simple 4-byte string (non-base64-encoded), e.g. "evaw" or "l3pm", to use default settings for that sink type.
 ---APPLYFX_FORMAT : base64-encoded sink configuration (see project files, etc). Used only if RECFMT_OPENCOPY is set to 1. Callers can also pass a simple 4-byte string (non-base64-encoded), e.g. "evaw" or "l3pm", to use default settings for that sink type.
+---RECTAG : project recording tag wildcard ($rectag). Can be used in Preferences/Audio/Recording to auto-name recorded files.
 ---RENDER_FILE : render directory
 ---RENDER_PATTERN : render file name (may contain wildcards)
 ---RENDER_METADATA : get or set the metadata saved with the project (not metadata embedded in project media). Example, ID3 album name metadata: valuestr="ID3:TALB" to get, valuestr="ID3:TALB|my album name" to set. Call with valuestr="" and is_set=false to get a semicolon-separated list of defined project metadata identifiers.
@@ -1886,6 +1953,16 @@ function reaper.GetSetProjectInfo_String(project, desc, valuestrNeedBig, is_set)
 ---@param notes string
 ---@return string notes
 function reaper.GetSetProjectNotes(proj, set, notes) end
+
+---"GUID" (read-only), "P_NAME". See GetNumRegionsOrMarkers, GetRegionOrMarker, GetRegionOrMarkerInfo_Value, SetRegionOrMarkerInfo_Value
+---@param proj ReaProject|nil|0
+---@param regionOrMarker ProjectMarker
+---@param parameterName string
+---@param stringNeedBig string
+---@param setNewValue boolean
+---@return boolean rv
+---@return string stringNeedBig
+function reaper.GetSetRegionOrMarkerInfo_String(proj, regionOrMarker, parameterName, stringNeedBig, setNewValue) end
 
 ----1 == query,0=clear,1=set,>1=toggle . returns new value
 ---@param val integer
@@ -2640,7 +2717,7 @@ function reaper.Main_openProject(name) end
 ---@param forceSaveAsIn boolean
 function reaper.Main_SaveProject(proj, forceSaveAsIn) end
 
----Save the project. options: &1=save selected tracks as track template, &2=include media with track template, &4=include envelopes with track template. See Main_openProject, Main_SaveProject.
+---Save the project. options: &1=save selected tracks as track template, &2=include media with track template, &4=include envelopes with track template, &8=if not saving template, set as the new project filename for this ReaProject. See Main_openProject, Main_SaveProject.
 ---@param proj ReaProject|nil|0
 ---@param filename string
 ---@param options integer
@@ -2688,6 +2765,19 @@ function reaper.Master_NormalizeTempo(bpm, isnormalized) end
 ---@param type integer
 ---@return integer rv
 function reaper.MB(msg, title, type) end
+
+---Get information about the most recently previewed Media Explorer file. filename: last played file name. filemode: &1:insert on new track, &2:insert into sampler, &8:tempo sync 1x, &16:tempo sync 0.5x, &32:tempo sync 2x, &64:do not preserve pitch when changing playrate, &128:loop selection exists, &256:time selection exists, &512:apply pitch/rate adjustment on insert, &1024:apply volume adjustment on insert, &2048:apply normalization on insert, &8192:reverse preview. startpct/endpct: time selection in [0.0, 1.0]. pitchshift/voladj/rateadj: current pitch/volume/playrate preview adjustments. srcbpm: source media tempo. extrainfo: currently unused.
+---@return boolean rv
+---@return string filename
+---@return integer filemode
+---@return number selstart
+---@return number selend
+---@return number pitchshift
+---@return number voladj
+---@return number rateadj
+---@return number sourcebpm
+---@return string extrainfo
+function reaper.MediaExplorerGetLastPlayedFileInfo() end
 
 ---Returns 1 if the track holds the item, 2 if the track is a folder containing the track that holds the item, etc.
 ---@param item MediaItem
@@ -3076,7 +3166,7 @@ function reaper.MIDIEditor_GetMode(midieditor) end
 ---Get settings from a MIDI editor. setting_desc can be:
 ---snap_enabled: returns 0 or 1
 ---active_note_row: returns 0-127
----last_clicked_cc_lane: returns 0-127=CC, 0x100|(0-31)=14-bit CC, 0x200=velocity, 0x201=pitch, 0x202=program, 0x203=channel pressure, 0x204=bank/program select, 0x205=text, 0x206=sysex, 0x207=off velocity, 0x208=notation events, 0x210=media item lane
+---last_clicked_cc_lane: returns 0-127=CC, 0x100|(0-31)=14-bit CC, 0x200=velocity, 0x201=pitch, 0x202=program, 0x203=channel pressure, 0x204=bank/program select, 0x205=text, 0x206=sysex, 0x207=off velocity, 0x208=notation events, 0x209=aftertouch, 0x210=media item lane
 ---default_note_vel: returns 0-127
 ---default_note_chan: returns 0-15
 ---default_note_len: returns default length in MIDI ticks
@@ -3401,6 +3491,14 @@ function reaper.resolve_fn(in, out) end
 ---@return string out
 function reaper.resolve_fn2(in, out, checkSubDir) end
 
+---Resolve a wildcard string. Any wildcards that are valid in the Big Clock can be resolved using this function. Pass in timePosition=-1 to use the current project playback position.
+---@param project ReaProject|nil|0
+---@param timePosition number
+---@param wildcards string
+---@param resolvedString string
+---@return string resolvedString
+function reaper.ResolveWildcards(project, timePosition, wildcards, resolvedString) end
+
 ---Get the named command for the given command ID. The returned string will not start with '_' (e.g. it will return "SWS_ABOUT"), it will be NULL if command_id is a native action.
 ---@param command_id integer
 ---@return string str
@@ -3610,6 +3708,35 @@ function reaper.SetMediaItemTake_Source(take, source) end
 ---I_RECPASSID : int * : record pass ID
 ---I_TAKEFX_NCH : int * : number of internal audio channels for per-take FX to use (OK to call with setNewValue, but the returned value is read-only)
 ---I_CUSTOMCOLOR : int * : custom color, OS dependent color|0x1000000 (i.e. ColorToNative(r,g,b)|0x1000000). If you do not |0x1000000, then it will not be used, but will store the color
+---IP_SPECEDIT:CNT : int : spectral edit count (read-only)
+---IP_SPECEDIT:DELETE:x : int : read or write this key to remove the spectral edit specified
+---IP_SPECEDIT:ADD : int : read or write this key to add a new spectral edit (returns index)
+---IP_SPECEDIT:SORT : int : read or write this key to re-sort spectral edits (be sure to do this following a position change or insert of new edit)
+---I_SPECEDIT:FFT_SIZE : int * : FFT size used by spectral edits for this take
+---D_SPECEDIT:x:POSITION : double * : position of spectral edit start (changing this requires a resort of spectral edits)
+---D_SPECEDIT:x:LENGTH : double * : length of spectral edit
+---F_SPECEDIT:x:GAIN : float * : gain of spectral edit
+---F_SPECEDIT:x:FADE_IN : float * : fade-in size 0..1
+---F_SPECEDIT:x:FADE_OUT : float * : fade-out size 0..1
+---F_SPECEDIT:x:FADE_LOW : float * : fade-lf size 0..1
+---F_SPECEDIT:x:FADE_HI : float * : fade-hf size 0..1
+---I_SPECEDIT:x:CHAN : int * : channel index, -1 for omni
+---I_SPECEDIT:x:FLAGS : int * : flags, &1=bypassed, &2=solo
+---F_SPECEDIT:x:GATE_THRESH : float * : gate threshold
+---F_SPECEDIT:x:GATE_FLOOR : float * : gate floor
+---F_SPECEDIT:x:COMP_THRESH : float * : comp threshold
+---F_SPECEDIT:x:COMP_RATIO : float * : comp ratio
+---B_SPECEDIT:x:SELECTED : bool * : selection state
+---I_SPECEDIT:x:TOPFREQ_CNT : int * : (read-only) number of top frequency-points
+---I_SPECEDIT:x:TOPFREQ_ADD:pos:val : int * : reading or writing will insert top frequency-point with position/value pair, returns index
+---I_SPECEDIT:x:TOPFREQ_DEL:y : int * : reading or writing will delete top frequency-point y. there will always be at least one point.
+---F_SPECEDIT:x:TOPFREQ_POS:y : float * : (read-only) get position of top frequency-point y
+---F_SPECEDIT:x:TOPFREQ_FREQ:y : float * : (read-only) get frequency of top frequency-point y
+---I_SPECEDIT:x:BOTFREQ_CNT : int * : number of bottom frequency-points
+---I_SPECEDIT:x:BOTFREQ_ADD:pos:val : int * : reading or writing will insert bottom frequency-point with position/value pair, returns index
+---I_SPECEDIT:x:BOTFREQ_DEL:y : int * : reading or writing will delete bottom frequency-point y. there will always be at least one point.
+---F_SPECEDIT:x:BOTFREQ_POS:y : float * : (read-only) get position of bottom frequency-point y
+---F_SPECEDIT:x:BOTFREQ_FREQ:y : float * : (read-only) get frequency of bottom frequency-point y
 ---IP_TAKENUMBER : int : take number (read-only, returns the take number directly)
 ---@param take MediaItem_Take
 ---@param parmname string
@@ -3725,7 +3852,7 @@ function reaper.SetOnlyTrackSelected(track) end
 ---@param division number
 function reaper.SetProjectGrid(project, division) end
 
----Note: this function can't clear a marker's name (an empty string will leave the name unchanged), see SetProjectMarker4.
+---discouraged. see GetNumRegionsOrMarkers, GetRegionOrMarker, SetRegionOrMarkerInfo_Value, GetSetRegionOrMarkerInfo_String. Note: this function can't clear a marker's name (an empty string will leave the name unchanged), see SetProjectMarker4.
 ---@param markrgnindexnumber integer
 ---@param isrgn boolean
 ---@param pos number
@@ -3734,7 +3861,7 @@ function reaper.SetProjectGrid(project, division) end
 ---@return boolean rv
 function reaper.SetProjectMarker(markrgnindexnumber, isrgn, pos, rgnend, name) end
 
----Note: this function can't clear a marker's name (an empty string will leave the name unchanged), see SetProjectMarker4.
+---discouraged. see GetNumRegionsOrMarkers, GetRegionOrMarker, SetRegionOrMarkerInfo_Value, GetSetRegionOrMarkerInfo_String. Note: this function can't clear a marker's name (an empty string will leave the name unchanged), see SetProjectMarker4.
 ---@param proj ReaProject|nil|0
 ---@param markrgnindexnumber integer
 ---@param isrgn boolean
@@ -3744,7 +3871,7 @@ function reaper.SetProjectMarker(markrgnindexnumber, isrgn, pos, rgnend, name) e
 ---@return boolean rv
 function reaper.SetProjectMarker2(proj, markrgnindexnumber, isrgn, pos, rgnend, name) end
 
----Note: this function can't clear a marker's name (an empty string will leave the name unchanged), see SetProjectMarker4.
+---discouraged. see GetNumRegionsOrMarkers, GetRegionOrMarker, SetRegionOrMarkerInfo_Value, GetSetRegionOrMarkerInfo_String. Note: this function can't clear a marker's name (an empty string will leave the name unchanged), see SetProjectMarker4.
 ---@param proj ReaProject|nil|0
 ---@param markrgnindexnumber integer
 ---@param isrgn boolean
@@ -3755,7 +3882,7 @@ function reaper.SetProjectMarker2(proj, markrgnindexnumber, isrgn, pos, rgnend, 
 ---@return boolean rv
 function reaper.SetProjectMarker3(proj, markrgnindexnumber, isrgn, pos, rgnend, name, color) end
 
----color should be 0 to not change, or ColorToNative(r,g,b)|0x1000000, flags&1 to clear name
+---discouraged. see GetNumRegionsOrMarkers, GetRegionOrMarker, SetRegionOrMarkerInfo_Value, GetSetRegionOrMarkerInfo_String. color should be 0 to not change, or ColorToNative(r,g,b)|0x1000000, flags&1 to clear name
 ---@param proj ReaProject|nil|0
 ---@param markrgnindexnumber integer
 ---@param isrgn boolean
@@ -3767,7 +3894,7 @@ function reaper.SetProjectMarker3(proj, markrgnindexnumber, isrgn, pos, rgnend, 
 ---@return boolean rv
 function reaper.SetProjectMarker4(proj, markrgnindexnumber, isrgn, pos, rgnend, name, color, flags) end
 
----See SetProjectMarkerByIndex2.
+---discouraged. See SetProjectMarkerByIndex2.
 ---@param proj ReaProject|nil|0
 ---@param markrgnidx integer
 ---@param isrgn boolean
@@ -3779,7 +3906,7 @@ function reaper.SetProjectMarker4(proj, markrgnindexnumber, isrgn, pos, rgnend, 
 ---@return boolean rv
 function reaper.SetProjectMarkerByIndex(proj, markrgnidx, isrgn, pos, rgnend, IDnumber, name, color) end
 
----Differs from SetProjectMarker4 in that markrgnidx is 0 for the first marker/region, 1 for the next, etc (see EnumProjectMarkers3), rather than representing the displayed marker/region ID number (see SetProjectMarker3). Function will fail if attempting to set a duplicate ID number for a region (duplicate ID numbers for markers are OK). , flags&1 to clear name. If flags&2, markers will not be re-sorted, and after making updates, you MUST call SetProjectMarkerByIndex2 with markrgnidx=-1 and flags&2 to force re-sort/UI updates.
+---discouraged. see GetNumRegionsOrMarkers, GetRegionOrMarker, SetRegionOrMarkerInfo_Value, GetSetRegionOrMarkerInfo_String. Differs from SetProjectMarker4 in that markrgnidx is 0 for the first marker/region, 1 for the next, etc (see EnumProjectMarkers3), rather than representing the displayed marker/region ID number (see SetProjectMarker3). IDnumber < 0 to ignore. Function will fail if attempting to set a duplicate ID number for a region (duplicate ID numbers for markers are OK). flags&1 to clear name. If flags&2, markers will not be re-sorted, and after making updates, you MUST call SetProjectMarkerByIndex2 with markrgnidx=-1 and flags&2 to force re-sort/UI updates.
 ---@param proj ReaProject|nil|0
 ---@param markrgnidx integer
 ---@param isrgn boolean
@@ -3799,6 +3926,14 @@ function reaper.SetProjectMarkerByIndex2(proj, markrgnidx, isrgn, pos, rgnend, I
 ---@param value string
 ---@return integer rv
 function reaper.SetProjExtState(proj, extname, key, value) end
+
+---"D_STARTPOS", "D_ENDPOS" (= D_STARTPOS for markers), "I_NUMBER" (displayed index number), "I_LANENUMBER", "I_CUSTOMCOLOR", "B_UISEL", "B_HIDDEN". See GetNumRegionsOrMarkers, GetRegionOrMarker, GetRegionOrMarkerInfo_Value, GetSetRegionOrMarkerInfo_String
+---@param proj ReaProject|nil|0
+---@param regionOrMarker ProjectMarker
+---@param parameterName string
+---@param setNewValue number
+---@return number num
+function reaper.SetRegionOrMarkerInfo_Value(proj, regionOrMarker, parameterName, setNewValue) end
 
 ---Add (flag > 0) or remove (flag < 0) a track from this region when using the region render matrix. If adding, flag==2 means force mono, flag==4 means force stereo, flag==N means force N/2 channels.
 ---@param proj ReaProject|nil|0
@@ -3886,6 +4021,11 @@ function reaper.SetTempoTimeSigMarker(proj, ptidx, timepos, measurepos, beatpos,
 ---col_mixerbg : Empty mixer list area
 ---col_arrangebg : Empty arrange view area
 ---arrange_vgrid : Empty arrange view area vertical grid shading
+---tcp_pinned_track_gap : Track panel color between pinned and unpinned tracks
+---tcp_pinned_track_gap_unreachable : Track panel color between pinned and unpinned tracks when some tracks are unreachable
+---tcp_pinned_track_gap_mode : Track panel fill mode between pinned and unpinned tracks
+---pinned_track_gap : Arrange view color between pinned and unpinned tracks
+---pinned_track_gap_mode : Arrange view fill mode between pinned and unpinned tracks
 ---col_fadearm : Fader background when automation recording
 ---col_fadearm2 : Fader background when automation playing
 ---col_fadearm3 : Fader background when in inactive touch/latch
@@ -4009,6 +4149,10 @@ function reaper.SetTempoTimeSigMarker(proj, ptidx, timepos, measurepos, beatpos,
 ---col_vudoint : Theme has interlaced VU meters
 ----- bool 00000000
 ---col_vuclip : VU meter clip indicator
+---col_vudbscale : VU meters dB scales (not record armed)
+----- bool 00000001
+---col_vudbscale2 : VU meters dB scales (record armed)
+----- bool 00000001
 ---col_vutop : VU meter top
 ---col_vumid : VU meter middle
 ---col_vubot : VU meter bottom
@@ -6244,147 +6388,6 @@ function reaper.BR_Win32_WindowFromPoint(x, y) end
 ---@return boolean rv
 function reaper.BR_Win32_WritePrivateProfileString(sectionName, keyName, value, filePath) end
 
----Get audio buffer timing information. This is the length (size) of audio buffer in samples, sample rate and 'latest audio buffer switch wall clock time' in seconds.
----@return integer len
----@return number srate
----@return number time
-function reaper.Blink_GetAudioBufferTimingInfo() end
-
----Get session beat value corresponding to given time for given quantum.
----@param time number
----@param quantum number
----@return number num
-function reaper.Blink_GetBeatAtTime(time, quantum) end
-
----Clock used by Blink.
----@return number num
-function reaper.Blink_GetClockNow() end
-
----Is Blink currently enabled?
----@return boolean rv
-function reaper.Blink_GetEnabled() end
-
----Is Blink Master?
----@return boolean rv
-function reaper.Blink_GetMaster() end
-
----How many peers are currently connected in Link session?
----@return integer rv
-function reaper.Blink_GetNumPeers() end
-
----Get session phase at given time for given quantum.
----@param time number
----@param quantum number
----@return number num
-function reaper.Blink_GetPhaseAtTime(time, quantum) end
-
----Is transport playing?
----@return boolean rv
-function reaper.Blink_GetPlaying() end
-
----Is Blink Puppet?
----@return boolean rv
-function reaper.Blink_GetPuppet() end
-
----Get quantum.
----@return number num
-function reaper.Blink_GetQuantum() end
-
----Is start/stop synchronization enabled?
----@return boolean rv
-function reaper.Blink_GetStartStopSyncEnabled() end
-
----Tempo of timeline, in quarter note Beats Per Minute.
----@return number num
-function reaper.Blink_GetTempo() end
-
----Get time at which given beat occurs for given quantum.
----@param beat number
----@param quantum number
----@return number num
-function reaper.Blink_GetTimeAtBeat(beat, quantum) end
-
----Get time at which transport start/stop occurs.
----@return number num
-function reaper.Blink_GetTimeForPlaying() end
-
----Get timeline offset. This is the offset between REAPER timeline and Link session timeline.
----@return number num
-function reaper.Blink_GetTimelineOffset() end
-
----Get Blink version.
----@return number num
-function reaper.Blink_GetVersion() end
-
----Convenience function to attempt to map given beat to time when transport is starting to play in context of given quantum. This function evaluates to a no-op if GetPlaying() equals false.
----@param beat number
----@param quantum number
-function reaper.Blink_SetBeatAtStartPlayingTimeRequest(beat, quantum) end
-
----Rudely re-map beat/time relationship for all peers in Link session.
----@param bpm number
----@param time number
----@param quantum number
-function reaper.Blink_SetBeatAtTimeForce(bpm, time, quantum) end
-
----Attempt to map given beat to given time in context of given quantum.
----@param bpm number
----@param time number
----@param quantum number
-function reaper.Blink_SetBeatAtTimeRequest(bpm, time, quantum) end
-
----Captures REAPER Transport commands and 'Tempo: Increase/Decrease current project tempo by' commands and broadcasts them into Link session. When used with Master or Puppet mode enabled, provides better integration between REAPER and Link session transport and tempos.
----@param enable boolean
-function reaper.Blink_SetCaptureTransportCommands(enable) end
-
----Enable/disable Blink. In Blink methods transport, tempo and timeline refer to Link session, not local REAPER instance.
----@param enable boolean
-function reaper.Blink_SetEnabled(enable) end
-
----Set launch offset. This is used to compensate for possible constant REAPER transport launch delay, if such exists.
----@param offset number
-function reaper.Blink_SetLaunchOffset(offset) end
-
----Set Blink as Master. Puppet needs to be enabled first. Same as Puppet, but possible beat offset is broadcast to Link session, effectively forcing local REAPER timeline on peers. Only one, if any, Blink should be Master in Link session.
----@param enable boolean
-function reaper.Blink_SetMaster(enable) end
-
----Set if transport should be playing or stopped, taking effect at given time.
----@param playing boolean
----@param time number
-function reaper.Blink_SetPlaying(playing, time) end
-
----Convenience function to start or stop transport at given time and attempt to map given beat to this time in context of given quantum.
----@param playing boolean
----@param time number
----@param beat number
----@param quantum number
-function reaper.Blink_SetPlayingAndBeatAtTimeRequest(playing, time, beat, quantum) end
-
----Set Blink as Puppet. When enabled, Blink attempts to synchronize local REAPER tempo to Link session tempo by adjusting current active tempo/time signature marker, or broadcasts local REAPER tempo changes into Link session, and attempts to correct possible offset by adjusting REAPER playrate. Based on cumulative single beat phase since Link session transport start, regardless of quantum.
----@param enable boolean
-function reaper.Blink_SetPuppet(enable) end
-
----Set quantum. Usually this is set to length of one measure/bar in quarter notes.
----@param quantum number
-function reaper.Blink_SetQuantum(quantum) end
-
----Enable start/stop synchronization.
----@param enable boolean
-function reaper.Blink_SetStartStopSyncEnabled(enable) end
-
----Set timeline tempo to given bpm value.
----@param bpm number
-function reaper.Blink_SetTempo(bpm) end
-
----Set tempo to given bpm value, taking effect (heard from speakers)at given wall clock time.
----@param bpm number
----@param time number
-function reaper.Blink_SetTempoAtTime(bpm, time) end
-
----Transport start/stop.
-function reaper.Blink_StartStop() end
-
 ---Create a new preview object. Does not take ownership of the source (don't forget to destroy it unless it came from a take!). See CF_Preview_Play and the others CF_Preview_* functions.
 ---The preview object is automatically destroyed at the end of a defer cycle if at least one of these conditions are met:
 ---- playback finished
@@ -6662,143 +6665,6 @@ function reaper.FNG_GetMidiNoteIntProperty(midiNote, property) end
 ---@param property string
 ---@param value integer
 function reaper.FNG_SetMidiNoteIntProperty(midiNote, property, value) end
-
----Clears ReaFab control map, optionally based on matching idString. Returns true on success.
----@param idStringIn string?
----@return boolean rv
-function reaper.Fab_Clear(idStringIn) end
-
----Runs ReaFab actions/commands. First parameter (command) is ReaFab command number, e.g. 3 for 3rd encoder rotation. Second parameter (val) is MIDI CC Relative value. Value 1 is increment of 1, 127 is decrement of 1. 2 is inc 2, 126 is dec 2 and so on. For button press (commands 9-32) a value of 127 is recommended.
----@param command integer
----@param val integer
----@return boolean rv
-function reaper.Fab_Do(command, val) end
-
----Dumps current control mapping into .lua file under ResourcePath/Scripts/reafab_dump-timestamp.lua
-function reaper.Fab_Dump() end
-
----Returns target FX and parameter index for given ReaFab command in context of selected track and ReaFab FX index. Valid command range 1 ... 24. Returns false if no such command mapping is found. Returns param index -1 for ReaFab internal band change command.
----@param command integer
----@return boolean rv
----@return integer fx
----@return integer param
-function reaper.Fab_Get(command) end
-
----Creates control mapping for ReaFab command.
----fxId e.g. "ReaComp".
----command 1-8 for encoders, 9-24 for buttons.
----paramId e.g. "Ratio".
----control 1 = direct, 2 = band selector, 3 = cycle, 4 = invert, 5 = force toggle, 6 = force range, 7 = 5 and 6, 8 = force continuous.
----bands define, if target fx has multiple identical target bands. In this case, paramId must include 00 placeholder, e.g. "Band 00 Gain".
----step overrides built-in default step of ~0.001 for continuous parameters.
----accel overrides built-in default control acceleration step of 1.0.
----minval & maxval override default detected target param value range.
----Prefixing paramId with "-" reverses direction; useful for creating separate next/previous mappings for bands or list type value navigation.
----@param fxId string
----@param command integer
----@param paramId string
----@param control integer
----@param bandsIn integer?
----@param stepIn number?
----@param accelIn number?
----@param minvalIn number?
----@param maxvalIn number?
----@return boolean rv
-function reaper.Fab_Map(fxId, command, paramId, control, bandsIn, stepIn, accelIn, minvalIn, maxvalIn) end
-
----Reads from a config file in the GUtilities folder in Reaper's resource folder
----@param fileName string
----@param category string
----@param key string
----@return boolean rv
----@return string value
-function reaper.GU_Config_Read(fileName, category, key) end
-
----Writes a config file to the GUtilities folder in Reaper's resource folder
----@param fileName string
----@param category string
----@param key string
----@param value string
----@return boolean rv
-function reaper.GU_Config_Write(fileName, category, key, value) end
-
----Returns count and filesize in megabytes for all valid media files within the path. Returns -1 if path is invalid. Flags can be passed as an argument to determine which media files are valid. A flag with a value of -1 will reset the cache, otherwise, the following flags can be used: ALL = 0, WAV = 1, AIFF = 2, FLAC = 4, MP3 = 8, OGG = 16, BWF = 32, W64 = 64, WAVPACK = 128, GIF = 256, MP4 = 512
----@param path string
----@param flags integer
----@return integer rv
----@return number fileSize
-function reaper.GU_Filesystem_CountMediaFiles(path, flags) end
-
----Returns the next valid file in a directory each time this function is called with the same path. Returns an empty string if path does not contain any more valid files. Flags can be passed as an argument to determine which media files are valid. A flag with a value of -1 will reset the cache, otherwise, the following flags can be used: ALL = 0, WAV = 1, AIFF = 2, FLAC = 4, MP3 = 8, OGG = 16, BWF = 32, W64 = 64, WAVPACK = 128, GIF = 256, MP4 = 512
----@param path string
----@param flags integer
----@return string path
-function reaper.GU_Filesystem_EnumerateMediaFiles(path, flags) end
-
----Returns the first found file's path from within a given path. Returns an empty string if not found
----@param path string
----@param fileName string
----@return string path
-function reaper.GU_Filesystem_FindFileInPath(path, fileName) end
-
----Checks if file or directory exists
----@param path string
----@return boolean rv
-function reaper.GU_Filesystem_PathExists(path) end
-
----Gets the current GUtilitiesAPI version
----@return string version
-function reaper.GU_GUtilitiesAPI_GetVersion() end
-
----Gets a PCM_source's sample value at a point in time (seconds)
----@param source PCM_source
----@param time number
----@return number num
-function reaper.GU_PCM_Source_GetSampleValue(source, time) end
-
----Checks if PCM_source has embedded Media Cue Markers
----@param source PCM_source
----@return boolean rv
-function reaper.GU_PCM_Source_HasRegion(source) end
-
----Checks if PCM_source is mono by comparing all channels
----@param source PCM_source
----@return boolean rv
-function reaper.GU_PCM_Source_IsMono(source) end
-
----Returns duration in seconds for PCM_source from start til peak threshold is breached. Returns -1 if invalid
----@param source PCM_source
----@param bufferSize integer
----@param threshold number
----@return number num
-function reaper.GU_PCM_Source_TimeToPeak(source, bufferSize, threshold) end
-
----Returns duration in seconds for PCM_source from end til peak threshold is breached in reverse. Returns -1 if invalid
----@param source PCM_source
----@param bufferSize integer
----@param threshold number
----@return number num
-function reaper.GU_PCM_Source_TimeToPeakR(source, bufferSize, threshold) end
-
----Returns duration in seconds for PCM_source from start til RMS threshold is breached. Returns -1 if invalid
----@param source PCM_source
----@param bufferSize integer
----@param threshold number
----@return number num
-function reaper.GU_PCM_Source_TimeToRMS(source, bufferSize, threshold) end
-
----Returns duration in seconds for PCM_source from end til RMS threshold is breached in reverse. Returns -1 if invalid
----@param source PCM_source
----@param bufferSize integer
----@param threshold number
----@return number num
-function reaper.GU_PCM_Source_TimeToRMSR(source, bufferSize, threshold) end
-
----Returns a string by parsing wildcards relative to the supplied MediaItem_Take
----@param take MediaItem_Take
----@param input string
----@return string value
-function reaper.GU_WildcardParseTake(take, input) end
 
 ---Returns the path to the directory containing imgui.lua, imgui.py and gfx2imgui.lua.
 ---@return string str
@@ -8481,264 +8347,6 @@ function reaper.JS_Zip_ListAllEntries(zipHandle) end
 ---@return integer rv
 function reaper.JS_Zip_Open(zipFile, mode, compressionLevel) end
 
----Do. Call this function to run one ReaLlm cycle. Use this function to run ReaLlm on arbitrary time intervals e.g. from a deferred script.
-function reaper.Llm_Do() end
-
----Get paths. Returns a string of the form "start:fx#1.fx#2...;track:fxs;...;end:fxs" where track is the track number and fx is the fx index. The string is truncated to pathStringOut_sz. 1-based indexing is used. If no MediaTrack* start is provided, all monitored input tracks are used. If no MediaTrack* end is provided, all hardware output tracks are used. If includeFx is true, the fx indices are included.
----@param includeFx boolean
----@param startIn  MediaTrack
----@param endIn MediaTrack
----@return string pathString
-function reaper.Llm_GetPaths(includeFx, startIn, endIn) end
-
----Get safed. Returns a string of the form "track:fx;track:fx;..." where track is the track number and fx is the fx index. The string is truncated to safeStringOut_sz. 1-based indexing is used. The string is followed by a | delimited list of fx names that have been set safed.
----@return string safeString
-function reaper.Llm_GetSafed() end
-
----Get version. Returns the version of the plugin as integers and the commit hash as a string. The string is truncated to commitOut_sz.
----@return integer major
----@return integer minor
----@return integer patch
----@return integer build
----@return string commit
-function reaper.Llm_GetVersion() end
-
----Set clear safe. Set clear_manually_safed_fx = true to clear manually safed fx
----@param clear_manually_safed_fx boolean
-function reaper.Llm_SetClearSafe(clear_manually_safed_fx) end
-
----Set keep pdc
----@param enable boolean
-function reaper.Llm_SetKeepPdc(enable) end
-
----Set to include MonitoringFX. In REAPER land this means the fx on the master track record fx chain. Indexed as fx# + 0x1000000, 0-based.
----@param enable boolean
-function reaper.Llm_SetMonitoringFX(enable) end
-
----Set parameter change. Set val1 = val2 to clear change. Set parameter_index = -666 to clear all changes. Use this function to set parameter changes between values val1 and val2 for fx_name and parameter_index instead of disabling the effect. Use custom fx names to identify individual fx.
----@param fx_name string
----@param parameter_index integer
----@param val1 number
----@param val2 number
-function reaper.Llm_SetParameterChange(fx_name, parameter_index, val1, val2) end
-
----Set pdc limit as factor of audio buffer size.
----@param pdc_factor number
-function reaper.Llm_SetPdcLimit(pdc_factor) end
-
----Set safed. Set isSet = true to safe fx name. Set isSet = false to unsafe fx name.
----@param fx_name string
----@param isSet boolean
----@return string fx_name
-function reaper.Llm_SetSafed(fx_name, isSet) end
-
----Get current button state.
----@param device integer
----@param button integer
----@return integer rv
-function reaper.MCULive_GetButtonValue(device, button) end
-
----Get MIDI input or output dev ID. type 0 is input dev, type 1 is output dev. device < 0 returns number of MCULive devices.
----@param device integer
----@param type integer
----@return integer rv
-function reaper.MCULive_GetDevice(device, type) end
-
----Returns zero-indexed encoder parameter value. 0 = lastpos, 1 = lasttouch
----@param device integer
----@param encIdx integer
----@param param integer
----@return number num
-function reaper.MCULive_GetEncoderValue(device, encIdx, param) end
-
----Returns zero-indexed fader parameter value. 0 = lastpos, 1 = lasttouch, 2 = lastmove (any fader)
----@param device integer
----@param faderIdx integer
----@param param integer
----@return number num
-function reaper.MCULive_GetFaderValue(device, faderIdx, param) end
-
----Gets MIDI message from input buffer/queue. Gets (pops/pulls) indexed message (status, data1, data2 and frame_offset) from queue and retval is total size/length left in queue. E.g. continuously read all indiviual messages with deferred script. Frame offset resolution is 1/1024000 seconds, not audio samples. Long messages are returned as optional strings of byte characters. msgIdx -1 returns size (length) of buffer. Read also non-MCU devices by creating MCULive device with their input.
----@param device integer
----@param msgIdx integer
----@return integer rv
----@return integer status
----@return integer data1
----@return integer data2
----@return integer frame_offset
----@return string? msg
-function reaper.MCULive_GetMIDIMessage(device, msgIdx) end
-
----Maps MCU Live device# button# to REAPER command ID. E.g. reaper.MCULive_Map(0,0x5b, 40340) maps MCU Rewind to "Track: Unsolo all tracks". Or remap button to another button if your MCU button layout doesnt play nicely with default MCULive mappings. By default range 0x00 .. 0x2d is in use. Button numbers are second column (prefixed with 0x) e.g. '90 5e' 0x5e for 'transport : play', roughly. 
----mcu documentation: 
----mcu=>pc: 
----  the mcu seems to send, when it boots (or is reset) f0 00 00 66 14 01 58 59 5a 57 18 61 05 57 18 61 05 f7 
----  ex vv vv    :   volume fader move, x=0..7, 8=master, vv vv is int14 
----  b0 1x vv    :   pan fader move, x=0..7, vv has 40 set if negative, low bits 0-31 are move amount 
----  b0 3c vv    :   jog wheel move, 01 or 41 
----  to the extent the buttons below have leds, you can set them by sending these messages, with 7f for on, 1 for blink, 0 for off. 
----  90 0x vv    :   rec arm push x=0..7 (vv:..) 
----  90 0x vv    :   solo push x=8..f (vv:..) 
----  90 1x vv    :   mute push x=0..7 (vv:..) 
----  90 1x vv    :   selected push x=8..f (vv:..) 
----  90 2x vv    :   pan knob push, x=0..7 (vv:..) 
----  90 28 vv    :   assignment track 
----  90 29 vv    :   assignment send 
----  90 2a vv    :   assignment pan/surround 
----  90 2b vv    :   assignment plug-in 
----  90 2c vv    :   assignment eq 
----  90 2d vv    :   assignment instrument 
----  90 2e vv    :   bank down button (vv: 00=release, 7f=push) 
----  90 2f vv    :   channel down button (vv: ..) 
----  90 30 vv    :   bank up button (vv:..) 
----  90 31 vv    :   channel up button (vv:..) 
----  90 32 vv    :   flip button 
----  90 33 vv    :   global view button 
----  90 34 vv    :   name/value display button 
----  90 35 vv    :   smpte/beats mode switch (vv:..) 
----  90 36 vv    :   f1 
----  90 37 vv    :   f2 
----  90 38 vv    :   f3 
----  90 39 vv    :   f4 
----  90 3a vv    :   f5 
----  90 3b vv    :   f6 
----  90 3c vv    :   f7 
----  90 3d vv    :   f8 
----  90 3e vv    :   global view : midi tracks 
----  90 3f vv    :   global view : inputs 
----  90 40 vv    :   global view : audio tracks 
----  90 41 vv    :   global view : audio instrument 
----  90 42 vv    :   global view : aux 
----  90 43 vv    :   global view : busses 
----  90 44 vv    :   global view : outputs 
----  90 45 vv    :   global view : user 
----  90 46 vv    :   shift modifier (vv:..) 
----  90 47 vv    :   option modifier 
----  90 48 vv    :   control modifier 
----  90 49 vv    :   alt modifier 
----  90 4a vv    :   automation read/off 
----  90 4b vv    :   automation write 
----  90 4c vv    :   automation trim 
----  90 4d vv    :   automation touch 
----  90 4e vv    :   automation latch 
----  90 4f vv    :   automation group 
----  90 50 vv    :   utilities save 
----  90 51 vv    :   utilities undo 
----  90 52 vv    :   utilities cancel 
----  90 53 vv    :   utilities enter 
----  90 54 vv    :   marker 
----  90 55 vv    :   nudge 
----  90 56 vv    :   cycle 
----  90 57 vv    :   drop 
----  90 58 vv    :   replace 
----  90 59 vv    :   click 
----  90 5a vv    :   solo 
----  90 5b vv    :   transport rewind (vv:..) 
----  90 5c vv    :   transport ffwd (vv:..) 
----  90 5d vv    :   transport pause (vv:..) 
----  90 5e vv    :   transport play (vv:..) 
----  90 5f vv    :   transport record (vv:..) 
----  90 60 vv    :   up arrow button  (vv:..) 
----  90 61 vv    :   down arrow button 1 (vv:..) 
----  90 62 vv    :   left arrow button 1 (vv:..) 
----  90 63 vv    :   right arrow button 1 (vv:..) 
----  90 64 vv    :   zoom button (vv:..) 
----  90 65 vv    :   scrub button (vv:..) 
----  90 6x vv    :   fader touch x=8..f 
----  90 70 vv    :   master fader touch 
----pc=>mcu: 
----  f0 00 00 66 14 12 xx <data> f7   : update lcd. xx=offset (0-112), string. display is 55 chars wide, second line begins at 56, though. 
----  f0 00 00 66 14 08 00 f7          : reset mcu 
----  f0 00 00 66 14 20 0x 03 f7       : put track in vu meter mode, x=track   
----  90 73 vv : rude solo light (vv: 7f=on, 00=off, 01=blink) 
----  b0 3x vv : pan display, x=0..7, vv=1..17 (hex) or so 
----  b0 4x vv : right to left of leds. if 0x40 set in vv, dot below char is set (x=0..11) 
----  d0 yx    : update vu meter, y=track, x=0..d=volume, e=clip on, f=clip off 
----  ex vv vv : set volume fader, x=track index, 8=master
----@param device integer
----@param button integer
----@param command_id integer
----@param isRemap boolean
----@return integer rv
-function reaper.MCULive_Map(device, button, command_id, isRemap) end
-
----Reset device. device < 0 resets all and returns number of devices.
----@param device integer
----@return integer rv
-function reaper.MCULive_Reset(device) end
-
----Sends MIDI message to device. If string is provided, individual bytes are not sent. Returns number of sent bytes.
----@param device integer
----@param status integer
----@param data1 integer
----@param data2 integer
----@param msgIn string?
----@return integer rv
-function reaper.MCULive_SendMIDIMessage(device, status, data1, data2, msgIn) end
-
----Set button as MIDI passthrough.
----@param device integer
----@param button integer
----@param isSet boolean
----@return integer rv
-function reaper.MCULive_SetButtonPassthrough(device, button, isSet) end
-
----Buttons function as press only by default. Set false for press and release function.
----@param device integer
----@param button integer
----@param isSet boolean
----@return integer rv
-function reaper.MCULive_SetButtonPressOnly(device, button, isSet) end
-
----Set button led/mode/state. Value 0 = off,1 = blink, 0x7f = on, usually.
----@param device integer
----@param button integer
----@param value integer
----@return integer rv
-function reaper.MCULive_SetButtonValue(device, button, value) end
-
----Enables/disables default out-of-the-box operation.
----@param device integer
----@param isSet boolean
-function reaper.MCULive_SetDefault(device, isSet) end
-
----Write to display. 112 characters, 56 per row.
----@param device integer
----@param pos integer
----@param message string
----@param pad integer
-function reaper.MCULive_SetDisplay(device, pos, message, pad) end
-
----Set encoder to value 0 ... 1.0. Type 0 = linear, 1 = track volume, 2 = pan. Returns scaled value.
----@param device integer
----@param encIdx integer
----@param val number
----@param type integer
----@return integer rv
-function reaper.MCULive_SetEncoderValue(device, encIdx, val, type) end
-
----Set fader to value 0 ... 1.0. Type 0 = linear, 1 = track volume, 2 = pan. Returns scaled value.
----@param device integer
----@param faderIdx integer
----@param val number
----@param type integer
----@return integer rv
-function reaper.MCULive_SetFaderValue(device, faderIdx, val, type) end
-
----Set meter value 0 ... 1.0. Type 0 = linear, 1 = track volume (with decay).
----@param device integer
----@param meterIdx integer
----@param val number
----@param type integer
----@return integer rv
-function reaper.MCULive_SetMeterValue(device, meterIdx, val, type) end
-
----1 : surface split point device index 
----2 : 'mode-is-global' bitmask/flags, first 6 bits
----@param option integer
----@param value integer
-function reaper.MCULive_SetOption(option, value) end
-
 ---This function combines all other NF_Peak/RMS functions in a single one and additionally returns peak RMS positions. Lua example code here. Note: It's recommended to use this function with ReaScript/Lua as it provides reaper.array objects. If using this function with other scripting languages, you must provide arrays in the reaper.array format.
 ---@param item MediaItem
 ---@param windowSize number
@@ -8939,87 +8547,6 @@ function reaper.NF_UpdateSWSMarkerRegionSubWindow() end
 ---@param nIndex integer
 ---@return integer rv
 function reaper.NF_Win32_GetSystemMetrics(nIndex) end
-
----[NVK] Counts the number of child items under the given NVK Folder Item.
----@param folderItem MediaItem
----@return integer rv
-function reaper.NVK_CountFolderItemChildren(folderItem) end
-
----[NVK] Counts the number of NVK Folder Items in a given project. 0 = active project.
----@param project ReaProject|nil|0
----@return integer rv
-function reaper.NVK_CountFolderItems(project) end
-
----[NVK] Counts the number of selected NVK Folder Items in a given project. 0 = active project.
----@param project ReaProject|nil|0
----@return integer rv
-function reaper.NVK_CountSelectedFolderItems(project) end
-
----[NVK] Counts the number of NVK Folder Items on a given track.
----@param track MediaTrack
----@return integer rv
-function reaper.NVK_CountTrackFolderItems(track) end
-
----[NVK] Gets the clipboard text.
----@return string str
-function reaper.NVK_GetClipboardText() end
-
----[NVK] Gets the NVK Folder Item at the given index in the given project. 0 = active project.
----@param project ReaProject|nil|0
----@param index integer
----@return MediaItem rv
-function reaper.NVK_GetFolderItem(project, index) end
-
----[NVK] Gets the child item of the given NVK Folder Item at the given index.
----@param folderItem MediaItem
----@param index integer
----@return MediaItem rv
-function reaper.NVK_GetFolderItemChild(folderItem, index) end
-
----[NVK] Gets the selected NVK Folder Item at the given index in the given project. 0 = active project.
----@param project ReaProject|nil|0
----@param index integer
----@return MediaItem rv
-function reaper.NVK_GetSelectedFolderItem(project, index) end
-
----[NVK] Gets the NVK Folder Item at the given index on the given track.
----@param track MediaTrack
----@param index integer
----@return MediaItem rv
-function reaper.NVK_GetTrackFolderItem(track, index) end
-
----[NVK] Returns the version of the NVK Reaper API.
----@return string str
-function reaper.NVK_GetVersion() end
-
----[NVK] Checks if the given item is an NVK Folder Item.
----@param item MediaItem
----@return boolean rv
-function reaper.NVK_IsFolderItem(item) end
-
----[NVK] Checks if the given NVK Folder Item is selected.
----@param item MediaItem
----@return boolean rv
-function reaper.NVK_IsFolderItemSelected(item) end
-
----[NVK] Saves the clipboard image to a specified file path and returns the file path if successful.
----@param filename string
----@return string str
-function reaper.NVK_SaveClipboardImageToFile(filename) end
-
----[NVK] Selects all NVK Folder Items in the given project. 0 = active project. selected = true to select, false to unselect, defaults to true.
----@param project ReaProject|nil|0
----@param selectedIn boolean?
-function reaper.NVK_SelectAllFolderItems(project, selectedIn) end
-
----[NVK] Sets the clipboard text to the given string.
----@param str string
-function reaper.NVK_SetClipboardText(str) end
-
----[NVK] Sets the given NVK Folder Item to be selected (true) or unselected (false).
----@param item MediaItem
----@param selected boolean
-function reaper.NVK_SetFolderItemSelected(item, selected) end
 
 ---Show the about dialog of the given package entry.
 ---The repository index is downloaded asynchronously if the cached copy doesn't exist or is older than one week.
@@ -9388,65 +8915,10 @@ function reaper.Xen_GetMediaSourceSamples(src, destbuf, destbufoffset, numframes
 function reaper.Xen_StartSourcePreview(source, gain, loop, outputchanindexIn) end
 
 ---Stop audio preview. id -1 stops all.
+---ReaScript/EEL2 Built-in Function List
 ---@param preview_id integer
 ---@return integer rv
 function reaper.Xen_StopSourcePreview(preview_id) end
-
----Plays source and provides int to allow for stopping it later
----@param source PCM_source
----@param gain number
----@param playrate number
----@param loop boolean
----@param track MediaTrack
----@return integer rv
-function reaper.nvk_StartSourcePreview(source, gain, playrate, loop, track) end
-
----Get the current http communication port from Soundminer.
----@return integer rv
-function reaper.sm_getPort() end
-
----Return's whether the cursor position in reaper should auto advance to the end of the clip after spotting or not.
----@return boolean rv
-function reaper.sm_getadvance() end
-
----Return's metadata for a record.
----@param filepath string
----@return string str
----@return string filepath
-function reaper.sm_metadata(filepath) end
-
----Query Soundminer from nvk_CREATE.
----@param query string
----@param offset integer
----@param maxlimit integer
----@return string str
----@return string query
-function reaper.sm_nvk_CREATE(query, offset, maxlimit) end
-
----Bring back the current sounds on display from Soundminer for nvk_CREATE.
----@param offset integer
----@param maxlimit integer
----@return string str
-function reaper.sm_nvk_CREATE_current(offset, maxlimit) end
-
----Return's a real filepath for a file, resolving it as necesary. Return's nil if offline.
----@param path string
----@return string str
----@return string path
-function reaper.sm_resolvepath(path) end
-
----Set's whether the cursor position in reaper should auto advance to the end of the clip after spotting or not.
----@param flag boolean
-function reaper.sm_setadvance(flag) end
-
----Set the format of data received from Soundminer.  Defaults to json.
----@param format integer
-function reaper.sm_setformat(format) end
-
----Return's Soundminer app version and extension version. App version will be blank on connection error. (Not launched or http interface not running).
----ReaScript/EEL2 Built-in Function List
----@return string str
-function reaper.sm_version() end
 
 ---is_new_value,filename,sectionID,cmdID,mode,resolution,val,contextstr = reaper.get_action_context()
 ---Returns contextual information about the script, typically MIDI/OSC input values.

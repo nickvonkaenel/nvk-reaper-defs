@@ -1,11 +1,11 @@
 --- ReaImGui LuaCATS definitions
 ---
---- Generated for version 0.9.3.2 - API version 0.9.3
+--- Generated for version 0.9.3.3 - API version 0.9.3
 ---
 --- @meta  imgui
 --- @class ImGui
 ---
---- **Button > Cardinal Directions > Dir_Down**
+--- **Button > Cardinal Directions > Dir\_Down**
 ---
 --- ---
 ---
@@ -27,7 +27,7 @@
 --- @since 0.1
 --- @field Dir_Down integer
 ---
---- **Button > Cardinal Directions > Dir_Left**
+--- **Button > Cardinal Directions > Dir\_Left**
 ---
 --- ---
 ---
@@ -49,7 +49,7 @@
 --- @since 0.1
 --- @field Dir_Left integer
 ---
---- **Button > Cardinal Directions > Dir_None**
+--- **Button > Cardinal Directions > Dir\_None**
 ---
 --- ---
 ---
@@ -71,7 +71,7 @@
 --- @since 0.1
 --- @field Dir_None integer
 ---
---- **Button > Cardinal Directions > Dir_Right**
+--- **Button > Cardinal Directions > Dir\_Right**
 ---
 --- ---
 ---
@@ -93,7 +93,7 @@
 --- @since 0.1
 --- @field Dir_Right integer
 ---
---- **Button > Cardinal Directions > Dir_Up**
+--- **Button > Cardinal Directions > Dir\_Up**
 ---
 --- ---
 ---
@@ -115,7 +115,7 @@
 --- @since 0.1
 --- @field Dir_Up integer
 ---
---- **Button > Flags > ButtonFlags_MouseButtonLeft**
+--- **Button > Flags > ButtonFlags\_MouseButtonLeft**
 ---
 --- React on left mouse button (default).
 ---
@@ -139,7 +139,7 @@
 --- @since 0.1
 --- @field ButtonFlags_MouseButtonLeft integer
 ---
---- **Button > Flags > ButtonFlags_MouseButtonMiddle**
+--- **Button > Flags > ButtonFlags\_MouseButtonMiddle**
 ---
 --- React on center mouse button.
 ---
@@ -163,7 +163,7 @@
 --- @since 0.1
 --- @field ButtonFlags_MouseButtonMiddle integer
 ---
---- **Button > Flags > ButtonFlags_MouseButtonRight**
+--- **Button > Flags > ButtonFlags\_MouseButtonRight**
 ---
 --- React on right mouse button.
 ---
@@ -187,7 +187,7 @@
 --- @since 0.1
 --- @field ButtonFlags_MouseButtonRight integer
 ---
---- **Button > Flags > ButtonFlags_None**
+--- **Button > Flags > ButtonFlags\_None**
 ---
 --- ---
 ---
@@ -209,7 +209,7 @@
 --- @since 0.1
 --- @field ButtonFlags_None integer
 ---
---- **Color Edit > Flags > ColorEditFlags_NoAlpha**
+--- **Color Edit > Flags > ColorEditFlags\_NoAlpha**
 ---
 --- ColorEdit, ColorPicker, ColorButton: ignore Alpha component
 ---   (will only read 3 components from the input pointer).
@@ -226,7 +226,7 @@
 --- @since 0.1
 --- @field ColorEditFlags_NoAlpha integer
 ---
---- **Color Edit > Flags > ColorEditFlags_NoBorder**
+--- **Color Edit > Flags > ColorEditFlags\_NoBorder**
 ---
 --- ColorButton: disable border (which is enforced by default).
 ---
@@ -242,7 +242,7 @@
 --- @since 0.1
 --- @field ColorEditFlags_NoBorder integer
 ---
---- **Color Edit > Flags > ColorEditFlags_NoDragDrop**
+--- **Color Edit > Flags > ColorEditFlags\_NoDragDrop**
 ---
 --- ColorEdit: disable drag and drop target. ColorButton: disable drag and drop source.
 ---
@@ -258,7 +258,7 @@
 --- @since 0.1
 --- @field ColorEditFlags_NoDragDrop integer
 ---
---- **Color Edit > Flags > ColorEditFlags_NoInputs**
+--- **Color Edit > Flags > ColorEditFlags\_NoInputs**
 ---
 --- ColorEdit, ColorPicker: disable inputs sliders/text widgets
 ---    (e.g. to show only the small preview color square).
@@ -275,7 +275,7 @@
 --- @since 0.1
 --- @field ColorEditFlags_NoInputs integer
 ---
---- **Color Edit > Flags > ColorEditFlags_NoLabel**
+--- **Color Edit > Flags > ColorEditFlags\_NoLabel**
 ---
 --- ColorEdit, ColorPicker: disable display of inline text label
 ---    (the label is still forwarded to the tooltip and picker).
@@ -292,7 +292,7 @@
 --- @since 0.1
 --- @field ColorEditFlags_NoLabel integer
 ---
---- **Color Edit > Flags > ColorEditFlags_NoOptions**
+--- **Color Edit > Flags > ColorEditFlags\_NoOptions**
 ---
 --- ColorEdit: disable toggling options menu when right-clicking on inputs/small preview.
 ---
@@ -308,7 +308,7 @@
 --- @since 0.1
 --- @field ColorEditFlags_NoOptions integer
 ---
---- **Color Edit > Flags > ColorEditFlags_NoPicker**
+--- **Color Edit > Flags > ColorEditFlags\_NoPicker**
 ---
 --- ColorEdit: disable picker when clicking on color square.
 ---
@@ -324,7 +324,7 @@
 --- @since 0.1
 --- @field ColorEditFlags_NoPicker integer
 ---
---- **Color Edit > Flags > ColorEditFlags_NoSidePreview**
+--- **Color Edit > Flags > ColorEditFlags\_NoSidePreview**
 ---
 --- ColorPicker: disable bigger color preview on right side of the picker,
 ---    use small color square preview instead.
@@ -341,7 +341,7 @@
 --- @since 0.1
 --- @field ColorEditFlags_NoSidePreview integer
 ---
---- **Color Edit > Flags > ColorEditFlags_NoSmallPreview**
+--- **Color Edit > Flags > ColorEditFlags\_NoSmallPreview**
 ---
 --- ColorEdit, ColorPicker: disable color square preview next to the inputs.
 ---    (e.g. to show only the inputs).
@@ -358,7 +358,7 @@
 --- @since 0.1
 --- @field ColorEditFlags_NoSmallPreview integer
 ---
---- **Color Edit > Flags > ColorEditFlags_NoTooltip**
+--- **Color Edit > Flags > ColorEditFlags\_NoTooltip**
 ---
 --- ColorEdit, ColorPicker, ColorButton: disable tooltip when hovering the preview.
 ---
@@ -374,7 +374,7 @@
 --- @since 0.1
 --- @field ColorEditFlags_NoTooltip integer
 ---
---- **Color Edit > Flags > ColorEditFlags_None**
+--- **Color Edit > Flags > ColorEditFlags\_None**
 ---
 --- ---
 ---
@@ -388,7 +388,7 @@
 --- @since 0.1
 --- @field ColorEditFlags_None integer
 ---
---- **Color Edit > Flags > User Options > ColorEditFlags_AlphaBar**
+--- **Color Edit > Flags > User Options > ColorEditFlags\_AlphaBar**
 ---
 --- ColorEdit, ColorPicker: show vertical alpha bar/gradient in picker.
 ---
@@ -410,7 +410,7 @@
 --- @since 0.1
 --- @field ColorEditFlags_AlphaBar integer
 ---
---- **Color Edit > Flags > User Options > ColorEditFlags_AlphaPreview**
+--- **Color Edit > Flags > User Options > ColorEditFlags\_AlphaPreview**
 ---
 --- ColorEdit, ColorPicker, ColorButton: display preview as a transparent color
 ---    over a checkerboard, instead of opaque.
@@ -433,7 +433,7 @@
 --- @since 0.1
 --- @field ColorEditFlags_AlphaPreview integer
 ---
---- **Color Edit > Flags > User Options > ColorEditFlags_AlphaPreviewHalf**
+--- **Color Edit > Flags > User Options > ColorEditFlags\_AlphaPreviewHalf**
 ---
 --- ColorEdit, ColorPicker, ColorButton: display half opaque / half checkerboard,
 ---    instead of opaque.
@@ -456,7 +456,7 @@
 --- @since 0.1
 --- @field ColorEditFlags_AlphaPreviewHalf integer
 ---
---- **Color Edit > Flags > User Options > ColorEditFlags_DisplayHSV**
+--- **Color Edit > Flags > User Options > ColorEditFlags\_DisplayHSV**
 ---
 --- ColorEdit: override _display_ type to HSV. ColorPicker:
 ---    select any combination using one or more of RGB/HSV/Hex.
@@ -479,7 +479,7 @@
 --- @since 0.1
 --- @field ColorEditFlags_DisplayHSV integer
 ---
---- **Color Edit > Flags > User Options > ColorEditFlags_DisplayHex**
+--- **Color Edit > Flags > User Options > ColorEditFlags\_DisplayHex**
 ---
 --- ColorEdit: override _display_ type to Hex. ColorPicker:
 ---    select any combination using one or more of RGB/HSV/Hex.
@@ -502,7 +502,7 @@
 --- @since 0.1
 --- @field ColorEditFlags_DisplayHex integer
 ---
---- **Color Edit > Flags > User Options > ColorEditFlags_DisplayRGB**
+--- **Color Edit > Flags > User Options > ColorEditFlags\_DisplayRGB**
 ---
 --- ColorEdit: override _display_ type to RGB. ColorPicker:
 ---    select any combination using one or more of RGB/HSV/Hex.
@@ -525,7 +525,7 @@
 --- @since 0.1
 --- @field ColorEditFlags_DisplayRGB integer
 ---
---- **Color Edit > Flags > User Options > ColorEditFlags_Float**
+--- **Color Edit > Flags > User Options > ColorEditFlags\_Float**
 ---
 --- ColorEdit, ColorPicker, ColorButton: _display_ values formatted as 0.0..1.0
 ---    floats instead of 0..255 integers. No round-trip of value via integers.
@@ -548,7 +548,7 @@
 --- @since 0.1
 --- @field ColorEditFlags_Float integer
 ---
---- **Color Edit > Flags > User Options > ColorEditFlags_InputHSV**
+--- **Color Edit > Flags > User Options > ColorEditFlags\_InputHSV**
 ---
 --- ColorEdit, ColorPicker: input and output data in HSV format.
 ---
@@ -570,7 +570,7 @@
 --- @since 0.1
 --- @field ColorEditFlags_InputHSV integer
 ---
---- **Color Edit > Flags > User Options > ColorEditFlags_InputRGB**
+--- **Color Edit > Flags > User Options > ColorEditFlags\_InputRGB**
 ---
 --- ColorEdit, ColorPicker: input and output data in RGB format.
 ---
@@ -592,7 +592,7 @@
 --- @since 0.1
 --- @field ColorEditFlags_InputRGB integer
 ---
---- **Color Edit > Flags > User Options > ColorEditFlags_PickerHueBar**
+--- **Color Edit > Flags > User Options > ColorEditFlags\_PickerHueBar**
 ---
 --- ColorPicker: bar for Hue, rectangle for Sat/Value.
 ---
@@ -614,7 +614,7 @@
 --- @since 0.1
 --- @field ColorEditFlags_PickerHueBar integer
 ---
---- **Color Edit > Flags > User Options > ColorEditFlags_PickerHueWheel**
+--- **Color Edit > Flags > User Options > ColorEditFlags\_PickerHueWheel**
 ---
 --- ColorPicker: wheel for Hue, triangle for Sat/Value.
 ---
@@ -636,7 +636,7 @@
 --- @since 0.1
 --- @field ColorEditFlags_PickerHueWheel integer
 ---
---- **Color Edit > Flags > User Options > ColorEditFlags_Uint8**
+--- **Color Edit > Flags > User Options > ColorEditFlags\_Uint8**
 ---
 --- ColorEdit, ColorPicker, ColorButton: _display_ values formatted as 0..255.
 ---
@@ -658,7 +658,7 @@
 --- @since 0.1
 --- @field ColorEditFlags_Uint8 integer
 ---
---- **Combo & List > Combo Box (Dropdown) > ComboFlags_HeightLarge**
+--- **Combo \& List > Combo Box \(Dropdown\) > ComboFlags\_HeightLarge**
 ---
 --- Max ~20 items visible.
 ---
@@ -667,7 +667,7 @@
 --- @since 0.1
 --- @field ComboFlags_HeightLarge integer
 ---
---- **Combo & List > Combo Box (Dropdown) > ComboFlags_HeightLargest**
+--- **Combo \& List > Combo Box \(Dropdown\) > ComboFlags\_HeightLargest**
 ---
 --- As many fitting items as possible.
 ---
@@ -676,7 +676,7 @@
 --- @since 0.1
 --- @field ComboFlags_HeightLargest integer
 ---
---- **Combo & List > Combo Box (Dropdown) > ComboFlags_HeightRegular**
+--- **Combo \& List > Combo Box \(Dropdown\) > ComboFlags\_HeightRegular**
 ---
 --- Max ~8 items visible (default).
 ---
@@ -685,7 +685,7 @@
 --- @since 0.1
 --- @field ComboFlags_HeightRegular integer
 ---
---- **Combo & List > Combo Box (Dropdown) > ComboFlags_HeightSmall**
+--- **Combo \& List > Combo Box \(Dropdown\) > ComboFlags\_HeightSmall**
 ---
 --- Max ~4 items visible. Tip: If you want your combo popup to be a specific size
 --- you can use SetNextWindowSizeConstraints prior to calling BeginCombo.
@@ -695,7 +695,7 @@
 --- @since 0.1
 --- @field ComboFlags_HeightSmall integer
 ---
---- **Combo & List > Combo Box (Dropdown) > ComboFlags_NoArrowButton**
+--- **Combo \& List > Combo Box \(Dropdown\) > ComboFlags\_NoArrowButton**
 ---
 --- Display on the preview box without the square arrow button.
 ---
@@ -704,7 +704,7 @@
 --- @since 0.1
 --- @field ComboFlags_NoArrowButton integer
 ---
---- **Combo & List > Combo Box (Dropdown) > ComboFlags_NoPreview**
+--- **Combo \& List > Combo Box \(Dropdown\) > ComboFlags\_NoPreview**
 ---
 --- Display only a square arrow button.
 ---
@@ -713,14 +713,14 @@
 --- @since 0.1
 --- @field ComboFlags_NoPreview integer
 ---
---- **Combo & List > Combo Box (Dropdown) > ComboFlags_None**
+--- **Combo \& List > Combo Box \(Dropdown\) > ComboFlags\_None**
 ---
 --- ---
 ---
 --- @since 0.1
 --- @field ComboFlags_None integer
 ---
---- **Combo & List > Combo Box (Dropdown) > ComboFlags_PopupAlignLeft**
+--- **Combo \& List > Combo Box \(Dropdown\) > ComboFlags\_PopupAlignLeft**
 ---
 --- Align the popup toward the left by default.
 ---
@@ -729,7 +729,7 @@
 --- @since 0.1
 --- @field ComboFlags_PopupAlignLeft integer
 ---
---- **Combo & List > Combo Box (Dropdown) > ComboFlags_WidthFitPreview**
+--- **Combo \& List > Combo Box \(Dropdown\) > ComboFlags\_WidthFitPreview**
 ---
 --- Width dynamically calculated from preview contents.
 ---
@@ -738,13 +738,13 @@
 --- @since 0.9
 --- @field ComboFlags_WidthFitPreview integer
 ---
---- **Combo & List > Selectables > SelectableFlags_AllowDoubleClick**
+--- **Combo \& List > Selectables > SelectableFlags\_AllowDoubleClick**
 ---
 --- Generate press events on double clicks too.
 ---
 --- ---
 ---
---- **Combo & List > Selectables**
+--- **Combo \& List > Selectables**
 ---
 --- A selectable highlights when hovered, and can display another color when
 --- selected. Neighbors selectable extend their highlight bounds in order to leave
@@ -756,13 +756,13 @@
 --- @since 0.1
 --- @field SelectableFlags_AllowDoubleClick integer
 ---
---- **Combo & List > Selectables > SelectableFlags_AllowOverlap**
+--- **Combo \& List > Selectables > SelectableFlags\_AllowOverlap**
 ---
 --- Hit testing to allow subsequent widgets to overlap this one.
 ---
 --- ---
 ---
---- **Combo & List > Selectables**
+--- **Combo \& List > Selectables**
 ---
 --- A selectable highlights when hovered, and can display another color when
 --- selected. Neighbors selectable extend their highlight bounds in order to leave
@@ -774,13 +774,13 @@
 --- @since 0.9
 --- @field SelectableFlags_AllowOverlap integer
 ---
---- **Combo & List > Selectables > SelectableFlags_Disabled**
+--- **Combo \& List > Selectables > SelectableFlags\_Disabled**
 ---
 --- Cannot be selected, display grayed out text.
 ---
 --- ---
 ---
---- **Combo & List > Selectables**
+--- **Combo \& List > Selectables**
 ---
 --- A selectable highlights when hovered, and can display another color when
 --- selected. Neighbors selectable extend their highlight bounds in order to leave
@@ -792,13 +792,13 @@
 --- @since 0.1
 --- @field SelectableFlags_Disabled integer
 ---
---- **Combo & List > Selectables > SelectableFlags_DontClosePopups**
+--- **Combo \& List > Selectables > SelectableFlags\_DontClosePopups**
 ---
 --- Clicking this doesn't close parent popup window.
 ---
 --- ---
 ---
---- **Combo & List > Selectables**
+--- **Combo \& List > Selectables**
 ---
 --- A selectable highlights when hovered, and can display another color when
 --- selected. Neighbors selectable extend their highlight bounds in order to leave
@@ -810,11 +810,11 @@
 --- @since 0.1
 --- @field SelectableFlags_DontClosePopups integer
 ---
---- **Combo & List > Selectables > SelectableFlags_None**
+--- **Combo \& List > Selectables > SelectableFlags\_None**
 ---
 --- ---
 ---
---- **Combo & List > Selectables**
+--- **Combo \& List > Selectables**
 ---
 --- A selectable highlights when hovered, and can display another color when
 --- selected. Neighbors selectable extend their highlight bounds in order to leave
@@ -826,13 +826,13 @@
 --- @since 0.1
 --- @field SelectableFlags_None integer
 ---
---- **Combo & List > Selectables > SelectableFlags_SpanAllColumns**
+--- **Combo \& List > Selectables > SelectableFlags\_SpanAllColumns**
 ---
 --- Frame will span all columns of its container table (text will still fit in current column).
 ---
 --- ---
 ---
---- **Combo & List > Selectables**
+--- **Combo \& List > Selectables**
 ---
 --- A selectable highlights when hovered, and can display another color when
 --- selected. Neighbors selectable extend their highlight bounds in order to leave
@@ -844,7 +844,7 @@
 --- @since 0.1
 --- @field SelectableFlags_SpanAllColumns integer
 ---
---- **Context > Flags > ConfigFlags_DockingEnable**
+--- **Context > Flags > ConfigFlags\_DockingEnable**
 ---
 --- Enable docking functionality.
 ---
@@ -859,7 +859,7 @@
 --- @since 0.5
 --- @field ConfigFlags_DockingEnable integer
 ---
---- **Context > Flags > ConfigFlags_NavEnableKeyboard**
+--- **Context > Flags > ConfigFlags\_NavEnableKeyboard**
 ---
 --- Master keyboard navigation enable flag.
 ---    Enable full Tabbing + directional arrows + space/enter to activate.
@@ -875,7 +875,7 @@
 --- @since 0.1
 --- @field ConfigFlags_NavEnableKeyboard integer
 ---
---- **Context > Flags > ConfigFlags_NavEnableSetMousePos**
+--- **Context > Flags > ConfigFlags\_NavEnableSetMousePos**
 ---
 --- Instruct navigation to move the mouse cursor.
 ---
@@ -890,7 +890,7 @@
 --- @since 0.1
 --- @field ConfigFlags_NavEnableSetMousePos integer
 ---
---- **Context > Flags > ConfigFlags_NavNoCaptureKeyboard**
+--- **Context > Flags > ConfigFlags\_NavNoCaptureKeyboard**
 ---
 --- Instruct navigation to not capture global keyboard input when
 ---    ConfigFlags_NavEnableKeyboard is set (see SetNextFrameWantCaptureKeyboard).
@@ -906,7 +906,7 @@
 --- @since 0.8
 --- @field ConfigFlags_NavNoCaptureKeyboard integer
 ---
---- **Context > Flags > ConfigFlags_NoKeyboard**
+--- **Context > Flags > ConfigFlags\_NoKeyboard**
 ---
 --- Instruct dear imgui to disable keyboard inputs and interactions.
 --- This is done by ignoring keyboard events and clearing existing states.
@@ -922,7 +922,7 @@
 --- @since 0.9.2
 --- @field ConfigFlags_NoKeyboard integer
 ---
---- **Context > Flags > ConfigFlags_NoMouse**
+--- **Context > Flags > ConfigFlags\_NoMouse**
 ---
 --- Instruct dear imgui to disable mouse inputs and interactions
 ---
@@ -937,7 +937,7 @@
 --- @since 0.1
 --- @field ConfigFlags_NoMouse integer
 ---
---- **Context > Flags > ConfigFlags_NoMouseCursorChange**
+--- **Context > Flags > ConfigFlags\_NoMouseCursorChange**
 ---
 --- Instruct backend to not alter mouse cursor shape and visibility.
 ---
@@ -952,7 +952,7 @@
 --- @since 0.1
 --- @field ConfigFlags_NoMouseCursorChange integer
 ---
---- **Context > Flags > ConfigFlags_NoSavedSettings**
+--- **Context > Flags > ConfigFlags\_NoSavedSettings**
 ---
 --- Disable state restoration and persistence for the whole context.
 ---
@@ -967,7 +967,7 @@
 --- @since 0.4
 --- @field ConfigFlags_NoSavedSettings integer
 ---
---- **Context > Flags > ConfigFlags_None**
+--- **Context > Flags > ConfigFlags\_None**
 ---
 --- ---
 ---
@@ -980,7 +980,7 @@
 --- @since 0.1
 --- @field ConfigFlags_None integer
 ---
---- **Context > Options > ConfigVar_DebugBeginReturnValueLoop**
+--- **Context > Options > ConfigVar\_DebugBeginReturnValueLoop**
 ---
 --- Some calls to Begin()/BeginChild() will return false.
 --- Will cycle through window depths then repeat. Suggested use: add
@@ -993,7 +993,7 @@
 --- @since 0.8.5
 --- @field ConfigVar_DebugBeginReturnValueLoop integer
 ---
---- **Context > Options > ConfigVar_DebugBeginReturnValueOnce**
+--- **Context > Options > ConfigVar\_DebugBeginReturnValueOnce**
 ---
 --- First-time calls to Begin()/BeginChild() will return false.
 --- **Needs to be set at context startup time** if you don't want to miss windows.
@@ -1003,7 +1003,7 @@
 --- @since 0.8.5
 --- @field ConfigVar_DebugBeginReturnValueOnce integer
 ---
---- **Context > Options > ConfigVar_DockingNoSplit**
+--- **Context > Options > ConfigVar\_DockingNoSplit**
 ---
 --- Simplified docking mode: disable window splitting, so docking is limited to
 ---    merging multiple windows together into tab-bars.
@@ -1013,7 +1013,7 @@
 --- @since 0.7
 --- @field ConfigVar_DockingNoSplit integer
 ---
---- **Context > Options > ConfigVar_DockingTransparentPayload**
+--- **Context > Options > ConfigVar\_DockingTransparentPayload**
 ---
 --- Make window or viewport transparent when docking and only display docking
 ---    boxes on the target viewport.
@@ -1023,7 +1023,7 @@
 --- @since 0.7
 --- @field ConfigVar_DockingTransparentPayload integer
 ---
---- **Context > Options > ConfigVar_DockingWithShift**
+--- **Context > Options > ConfigVar\_DockingWithShift**
 ---
 --- Enable docking with holding Shift key
 ---    (reduce visual noise, allows dropping in wider space
@@ -1033,7 +1033,7 @@
 --- @since 0.7
 --- @field ConfigVar_DockingWithShift integer
 ---
---- **Context > Options > ConfigVar_DragClickToInputText**
+--- **Context > Options > ConfigVar\_DragClickToInputText**
 ---
 --- Enable turning Drag* widgets into text input with a simple mouse
 ---    click-release (without moving). Not desirable on devices without a keyboard.
@@ -1043,7 +1043,7 @@
 --- @since 0.7
 --- @field ConfigVar_DragClickToInputText integer
 ---
---- **Context > Options > ConfigVar_Flags**
+--- **Context > Options > ConfigVar\_Flags**
 ---
 --- ConfigFlags_*
 ---
@@ -1052,7 +1052,7 @@
 --- @since 0.7
 --- @field ConfigVar_Flags integer
 ---
---- **Context > Options > ConfigVar_HoverDelayNormal**
+--- **Context > Options > ConfigVar\_HoverDelayNormal**
 ---
 --- Delay for IsItemHovered(HoveredFlags_DelayNormal).
 ---    Usually used along with ConfigVar_HoverStationaryDelay.
@@ -1062,7 +1062,7 @@
 --- @since 0.8
 --- @field ConfigVar_HoverDelayNormal integer
 ---
---- **Context > Options > ConfigVar_HoverDelayShort**
+--- **Context > Options > ConfigVar\_HoverDelayShort**
 ---
 --- Delay for IsItemHovered(HoveredFlags_DelayShort).
 ---    Usually used along with ConfigVar_HoverStationaryDelay.
@@ -1072,7 +1072,7 @@
 --- @since 0.8
 --- @field ConfigVar_HoverDelayShort integer
 ---
---- **Context > Options > ConfigVar_HoverFlagsForTooltipMouse**
+--- **Context > Options > ConfigVar\_HoverFlagsForTooltipMouse**
 ---
 --- Default flags when using IsItemHovered(HoveredFlags_ForTooltip) or
 ---    BeginItemTooltip()/SetItemTooltip() while using mouse.
@@ -1082,7 +1082,7 @@
 --- @since 0.9
 --- @field ConfigVar_HoverFlagsForTooltipMouse integer
 ---
---- **Context > Options > ConfigVar_HoverFlagsForTooltipNav**
+--- **Context > Options > ConfigVar\_HoverFlagsForTooltipNav**
 ---
 --- Default flags when using IsItemHovered(HoveredFlags_ForTooltip) or
 ---    BeginItemTooltip()/SetItemTooltip() while using keyboard/gamepad.
@@ -1092,7 +1092,7 @@
 --- @since 0.9
 --- @field ConfigVar_HoverFlagsForTooltipNav integer
 ---
---- **Context > Options > ConfigVar_HoverStationaryDelay**
+--- **Context > Options > ConfigVar\_HoverStationaryDelay**
 ---
 --- Delay for IsItemHovered(HoveredFlags_Stationary).
 ---    Time required to consider mouse stationary.
@@ -1102,7 +1102,7 @@
 --- @since 0.9
 --- @field ConfigVar_HoverStationaryDelay integer
 ---
---- **Context > Options > ConfigVar_InputTextCursorBlink**
+--- **Context > Options > ConfigVar\_InputTextCursorBlink**
 ---
 --- Enable blinking cursor (optional as some users consider it to be distracting).
 ---
@@ -1111,7 +1111,7 @@
 --- @since 0.7
 --- @field ConfigVar_InputTextCursorBlink integer
 ---
---- **Context > Options > ConfigVar_InputTextEnterKeepActive**
+--- **Context > Options > ConfigVar\_InputTextEnterKeepActive**
 ---
 --- Pressing Enter will keep item active and select contents (single-line only).
 ---
@@ -1120,7 +1120,7 @@
 --- @since 0.8
 --- @field ConfigVar_InputTextEnterKeepActive integer
 ---
---- **Context > Options > ConfigVar_InputTrickleEventQueue**
+--- **Context > Options > ConfigVar\_InputTrickleEventQueue**
 ---
 --- Enable input queue trickling: some types of events submitted during the same
 ---    frame (e.g. button down + up) will be spread over multiple frames, improving
@@ -1135,7 +1135,7 @@
 --- @since 0.7
 --- @field ConfigVar_InputTrickleEventQueue integer
 ---
---- **Context > Options > ConfigVar_KeyRepeatDelay**
+--- **Context > Options > ConfigVar\_KeyRepeatDelay**
 ---
 --- When holding a key/button, time before it starts repeating, in seconds
 ---    (for buttons in Repeat mode, etc.).
@@ -1145,7 +1145,7 @@
 --- @since 0.7
 --- @field ConfigVar_KeyRepeatDelay integer
 ---
---- **Context > Options > ConfigVar_KeyRepeatRate**
+--- **Context > Options > ConfigVar\_KeyRepeatRate**
 ---
 --- When holding a key/button, rate at which it repeats, in seconds.
 ---
@@ -1154,7 +1154,7 @@
 --- @since 0.7
 --- @field ConfigVar_KeyRepeatRate integer
 ---
---- **Context > Options > ConfigVar_MacOSXBehaviors**
+--- **Context > Options > ConfigVar\_MacOSXBehaviors**
 ---
 --- Enabled by default on macOS. Swap Cmd<>Ctrl keys, OS X style text editing
 ---    cursor movement using Alt instead of Ctrl, Shortcuts using Cmd/Super instead
@@ -1167,7 +1167,7 @@
 --- @since 0.7
 --- @field ConfigVar_MacOSXBehaviors integer
 ---
---- **Context > Options > ConfigVar_MouseDoubleClickMaxDist**
+--- **Context > Options > ConfigVar\_MouseDoubleClickMaxDist**
 ---
 --- Distance threshold to stay in to validate a double-click, in pixels.
 ---
@@ -1176,7 +1176,7 @@
 --- @since 0.7
 --- @field ConfigVar_MouseDoubleClickMaxDist integer
 ---
---- **Context > Options > ConfigVar_MouseDoubleClickTime**
+--- **Context > Options > ConfigVar\_MouseDoubleClickTime**
 ---
 --- Time for a double-click, in seconds.
 ---
@@ -1185,7 +1185,7 @@
 --- @since 0.7
 --- @field ConfigVar_MouseDoubleClickTime integer
 ---
---- **Context > Options > ConfigVar_MouseDragThreshold**
+--- **Context > Options > ConfigVar\_MouseDragThreshold**
 ---
 --- Distance threshold before considering we are dragging.
 ---
@@ -1194,7 +1194,7 @@
 --- @since 0.7
 --- @field ConfigVar_MouseDragThreshold integer
 ---
---- **Context > Options > ConfigVar_ViewportsNoDecoration**
+--- **Context > Options > ConfigVar\_ViewportsNoDecoration**
 ---
 --- Disable default OS window decoration. Enabling decoration can create
 ---    subsequent issues at OS levels (e.g. minimum window size).
@@ -1204,7 +1204,7 @@
 --- @since 0.7
 --- @field ConfigVar_ViewportsNoDecoration integer
 ---
---- **Context > Options > ConfigVar_WindowsMoveFromTitleBarOnly**
+--- **Context > Options > ConfigVar\_WindowsMoveFromTitleBarOnly**
 ---
 --- Enable allowing to move windows only when clicking on their title bar.
 ---    Does not apply to windows without a title bar.
@@ -1214,7 +1214,7 @@
 --- @since 0.7
 --- @field ConfigVar_WindowsMoveFromTitleBarOnly integer
 ---
---- **Context > Options > ConfigVar_WindowsResizeFromEdges**
+--- **Context > Options > ConfigVar\_WindowsResizeFromEdges**
 ---
 --- Enable resizing of windows from their edges and from the lower-left corner.
 ---
@@ -1223,11 +1223,11 @@
 --- @since 0.7
 --- @field ConfigVar_WindowsResizeFromEdges integer
 ---
---- **Drag & Drop > Flags > DragDropFlags_None**
+--- **Drag \& Drop > Flags > DragDropFlags\_None**
 ---
 --- ---
 ---
---- **Drag & Drop**
+--- **Drag \& Drop**
 ---
 --- On source items, call BeginDragDropSource(),
 --- if it returns true also call SetDragDropPayload() + EndDragDropSource().
@@ -1242,7 +1242,7 @@
 --- @since 0.1
 --- @field DragDropFlags_None integer
 ---
---- **Drag & Drop > Flags > Payload > DragDropFlags_AcceptBeforeDelivery**
+--- **Drag \& Drop > Flags > Payload > DragDropFlags\_AcceptBeforeDelivery**
 ---
 --- AcceptDragDropPayload will returns true even before the mouse button is
 ---    released. You can then check GetDragDropPayload/is_delivery to test if the
@@ -1250,13 +1250,13 @@
 ---
 --- ---
 ---
---- **Drag & Drop > Flags > Payload**
+--- **Drag \& Drop > Flags > Payload**
 ---
 --- For AcceptDragDropPayload
 ---
 --- ---
 ---
---- **Drag & Drop**
+--- **Drag \& Drop**
 ---
 --- On source items, call BeginDragDropSource(),
 --- if it returns true also call SetDragDropPayload() + EndDragDropSource().
@@ -1271,19 +1271,19 @@
 --- @since 0.1
 --- @field DragDropFlags_AcceptBeforeDelivery integer
 ---
---- **Drag & Drop > Flags > Payload > DragDropFlags_AcceptNoDrawDefaultRect**
+--- **Drag \& Drop > Flags > Payload > DragDropFlags\_AcceptNoDrawDefaultRect**
 ---
 --- Do not draw the default highlight rectangle when hovering over target.
 ---
 --- ---
 ---
---- **Drag & Drop > Flags > Payload**
+--- **Drag \& Drop > Flags > Payload**
 ---
 --- For AcceptDragDropPayload
 ---
 --- ---
 ---
---- **Drag & Drop**
+--- **Drag \& Drop**
 ---
 --- On source items, call BeginDragDropSource(),
 --- if it returns true also call SetDragDropPayload() + EndDragDropSource().
@@ -1298,19 +1298,19 @@
 --- @since 0.1
 --- @field DragDropFlags_AcceptNoDrawDefaultRect integer
 ---
---- **Drag & Drop > Flags > Payload > DragDropFlags_AcceptNoPreviewTooltip**
+--- **Drag \& Drop > Flags > Payload > DragDropFlags\_AcceptNoPreviewTooltip**
 ---
 --- Request hiding the BeginDragDropSource tooltip from the BeginDragDropTarget site.
 ---
 --- ---
 ---
---- **Drag & Drop > Flags > Payload**
+--- **Drag \& Drop > Flags > Payload**
 ---
 --- For AcceptDragDropPayload
 ---
 --- ---
 ---
---- **Drag & Drop**
+--- **Drag \& Drop**
 ---
 --- On source items, call BeginDragDropSource(),
 --- if it returns true also call SetDragDropPayload() + EndDragDropSource().
@@ -1325,7 +1325,7 @@
 --- @since 0.1
 --- @field DragDropFlags_AcceptNoPreviewTooltip integer
 ---
---- **Drag & Drop > Flags > Payload > DragDropFlags_AcceptPeekOnly**
+--- **Drag \& Drop > Flags > Payload > DragDropFlags\_AcceptPeekOnly**
 ---
 --- For peeking ahead and inspecting the payload before delivery.
 ---    Equivalent to DragDropFlags_AcceptBeforeDelivery |
@@ -1333,13 +1333,13 @@
 ---
 --- ---
 ---
---- **Drag & Drop > Flags > Payload**
+--- **Drag \& Drop > Flags > Payload**
 ---
 --- For AcceptDragDropPayload
 ---
 --- ---
 ---
---- **Drag & Drop**
+--- **Drag \& Drop**
 ---
 --- On source items, call BeginDragDropSource(),
 --- if it returns true also call SetDragDropPayload() + EndDragDropSource().
@@ -1354,20 +1354,20 @@
 --- @since 0.1
 --- @field DragDropFlags_AcceptPeekOnly integer
 ---
---- **Drag & Drop > Flags > Source > DragDropFlags_PayloadAutoExpire**
+--- **Drag \& Drop > Flags > Source > DragDropFlags\_PayloadAutoExpire**
 ---
 --- Automatically expire the payload if the source cease to be submitted
 ---    (otherwise payloads are persisting while being dragged).
 ---
 --- ---
 ---
---- **Drag & Drop > Flags > Source**
+--- **Drag \& Drop > Flags > Source**
 ---
 --- For BeginDragDropSource
 ---
 --- ---
 ---
---- **Drag & Drop**
+--- **Drag \& Drop**
 ---
 --- On source items, call BeginDragDropSource(),
 --- if it returns true also call SetDragDropPayload() + EndDragDropSource().
@@ -1382,7 +1382,7 @@
 --- @since 0.9.2
 --- @field DragDropFlags_PayloadAutoExpire integer
 ---
---- **Drag & Drop > Flags > Source > DragDropFlags_SourceAllowNullID**
+--- **Drag \& Drop > Flags > Source > DragDropFlags\_SourceAllowNullID**
 ---
 --- Allow items such as Text, Image that have no unique identifier to be used as
 ---    drag source, by manufacturing a temporary identifier based on their
@@ -1391,13 +1391,13 @@
 ---
 --- ---
 ---
---- **Drag & Drop > Flags > Source**
+--- **Drag \& Drop > Flags > Source**
 ---
 --- For BeginDragDropSource
 ---
 --- ---
 ---
---- **Drag & Drop**
+--- **Drag \& Drop**
 ---
 --- On source items, call BeginDragDropSource(),
 --- if it returns true also call SetDragDropPayload() + EndDragDropSource().
@@ -1412,7 +1412,7 @@
 --- @since 0.1
 --- @field DragDropFlags_SourceAllowNullID integer
 ---
---- **Drag & Drop > Flags > Source > DragDropFlags_SourceExtern**
+--- **Drag \& Drop > Flags > Source > DragDropFlags\_SourceExtern**
 ---
 --- External source (from outside of dear imgui), won't attempt to read current
 ---    item/window info. Will always return true.
@@ -1420,13 +1420,13 @@
 ---
 --- ---
 ---
---- **Drag & Drop > Flags > Source**
+--- **Drag \& Drop > Flags > Source**
 ---
 --- For BeginDragDropSource
 ---
 --- ---
 ---
---- **Drag & Drop**
+--- **Drag \& Drop**
 ---
 --- On source items, call BeginDragDropSource(),
 --- if it returns true also call SetDragDropPayload() + EndDragDropSource().
@@ -1441,7 +1441,7 @@
 --- @since 0.1
 --- @field DragDropFlags_SourceExtern integer
 ---
---- **Drag & Drop > Flags > Source > DragDropFlags_SourceNoDisableHover**
+--- **Drag \& Drop > Flags > Source > DragDropFlags\_SourceNoDisableHover**
 ---
 --- By default, when dragging we clear data so that IsItemHovered will return
 ---    false, to avoid subsequent user code submitting tooltips. This flag disables
@@ -1449,13 +1449,13 @@
 ---
 --- ---
 ---
---- **Drag & Drop > Flags > Source**
+--- **Drag \& Drop > Flags > Source**
 ---
 --- For BeginDragDropSource
 ---
 --- ---
 ---
---- **Drag & Drop**
+--- **Drag \& Drop**
 ---
 --- On source items, call BeginDragDropSource(),
 --- if it returns true also call SetDragDropPayload() + EndDragDropSource().
@@ -1470,20 +1470,20 @@
 --- @since 0.1
 --- @field DragDropFlags_SourceNoDisableHover integer
 ---
---- **Drag & Drop > Flags > Source > DragDropFlags_SourceNoHoldToOpenOthers**
+--- **Drag \& Drop > Flags > Source > DragDropFlags\_SourceNoHoldToOpenOthers**
 ---
 --- Disable the behavior that allows to open tree nodes and collapsing header by
 ---    holding over them while dragging a source item.
 ---
 --- ---
 ---
---- **Drag & Drop > Flags > Source**
+--- **Drag \& Drop > Flags > Source**
 ---
 --- For BeginDragDropSource
 ---
 --- ---
 ---
---- **Drag & Drop**
+--- **Drag \& Drop**
 ---
 --- On source items, call BeginDragDropSource(),
 --- if it returns true also call SetDragDropPayload() + EndDragDropSource().
@@ -1498,7 +1498,7 @@
 --- @since 0.1
 --- @field DragDropFlags_SourceNoHoldToOpenOthers integer
 ---
---- **Drag & Drop > Flags > Source > DragDropFlags_SourceNoPreviewTooltip**
+--- **Drag \& Drop > Flags > Source > DragDropFlags\_SourceNoPreviewTooltip**
 ---
 --- By default, a successful call to BeginDragDropSource opens a tooltip so you
 ---    can display a preview or description of the source contents.
@@ -1506,13 +1506,13 @@
 ---
 --- ---
 ---
---- **Drag & Drop > Flags > Source**
+--- **Drag \& Drop > Flags > Source**
 ---
 --- For BeginDragDropSource
 ---
 --- ---
 ---
---- **Drag & Drop**
+--- **Drag \& Drop**
 ---
 --- On source items, call BeginDragDropSource(),
 --- if it returns true also call SetDragDropPayload() + EndDragDropSource().
@@ -1527,21 +1527,21 @@
 --- @since 0.1
 --- @field DragDropFlags_SourceNoPreviewTooltip integer
 ---
---- **Drag & Slider > Flags > SliderFlags_AlwaysClamp**
+--- **Drag \& Slider > Flags > SliderFlags\_AlwaysClamp**
 ---
 --- Clamp value to min/max bounds when input manually with CTRL+Click.
 ---    By default CTRL+Click allows going out of bounds.
 ---
 --- ---
 ---
---- **Drag & Slider > Flags**
+--- **Drag \& Slider > Flags**
 ---
 --- For DragDouble, DragInt, SliderDouble, SliderInt etc. (Those are per-item
 --- flags. There are shared flags in SetConfigVar: ConfigVar_DragClickToInputText
 ---
 --- ---
 ---
---- **Drag & Slider**
+--- **Drag \& Slider**
 ---
 --- We use the same sets of flags for Drag*() and Slider*() functions as the
 --- features are the same and it makes it easier to swap them.
@@ -1561,7 +1561,7 @@
 --- @since 0.1
 --- @field SliderFlags_AlwaysClamp integer
 ---
---- **Drag & Slider > Flags > SliderFlags_Logarithmic**
+--- **Drag \& Slider > Flags > SliderFlags\_Logarithmic**
 ---
 --- Make the widget logarithmic (linear otherwise).
 ---    Consider using SliderFlags_NoRoundToFormat with this if using a format-string
@@ -1569,14 +1569,14 @@
 ---
 --- ---
 ---
---- **Drag & Slider > Flags**
+--- **Drag \& Slider > Flags**
 ---
 --- For DragDouble, DragInt, SliderDouble, SliderInt etc. (Those are per-item
 --- flags. There are shared flags in SetConfigVar: ConfigVar_DragClickToInputText
 ---
 --- ---
 ---
---- **Drag & Slider**
+--- **Drag \& Slider**
 ---
 --- We use the same sets of flags for Drag*() and Slider*() functions as the
 --- features are the same and it makes it easier to swap them.
@@ -1596,20 +1596,20 @@
 --- @since 0.1
 --- @field SliderFlags_Logarithmic integer
 ---
---- **Drag & Slider > Flags > SliderFlags_NoInput**
+--- **Drag \& Slider > Flags > SliderFlags\_NoInput**
 ---
 --- Disable CTRL+Click or Enter key allowing to input text directly into the widget.
 ---
 --- ---
 ---
---- **Drag & Slider > Flags**
+--- **Drag \& Slider > Flags**
 ---
 --- For DragDouble, DragInt, SliderDouble, SliderInt etc. (Those are per-item
 --- flags. There are shared flags in SetConfigVar: ConfigVar_DragClickToInputText
 ---
 --- ---
 ---
---- **Drag & Slider**
+--- **Drag \& Slider**
 ---
 --- We use the same sets of flags for Drag*() and Slider*() functions as the
 --- features are the same and it makes it easier to swap them.
@@ -1629,21 +1629,21 @@
 --- @since 0.1
 --- @field SliderFlags_NoInput integer
 ---
---- **Drag & Slider > Flags > SliderFlags_NoRoundToFormat**
+--- **Drag \& Slider > Flags > SliderFlags\_NoRoundToFormat**
 ---
 --- Disable rounding underlying value to match precision of the display format
 ---    string (e.g. %.3f values are rounded to those 3 digits).
 ---
 --- ---
 ---
---- **Drag & Slider > Flags**
+--- **Drag \& Slider > Flags**
 ---
 --- For DragDouble, DragInt, SliderDouble, SliderInt etc. (Those are per-item
 --- flags. There are shared flags in SetConfigVar: ConfigVar_DragClickToInputText
 ---
 --- ---
 ---
---- **Drag & Slider**
+--- **Drag \& Slider**
 ---
 --- We use the same sets of flags for Drag*() and Slider*() functions as the
 --- features are the same and it makes it easier to swap them.
@@ -1663,18 +1663,18 @@
 --- @since 0.1
 --- @field SliderFlags_NoRoundToFormat integer
 ---
---- **Drag & Slider > Flags > SliderFlags_None**
+--- **Drag \& Slider > Flags > SliderFlags\_None**
 ---
 --- ---
 ---
---- **Drag & Slider > Flags**
+--- **Drag \& Slider > Flags**
 ---
 --- For DragDouble, DragInt, SliderDouble, SliderInt etc. (Those are per-item
 --- flags. There are shared flags in SetConfigVar: ConfigVar_DragClickToInputText
 ---
 --- ---
 ---
---- **Drag & Slider**
+--- **Drag \& Slider**
 ---
 --- We use the same sets of flags for Drag*() and Slider*() functions as the
 --- features are the same and it makes it easier to swap them.
@@ -1694,21 +1694,21 @@
 --- @since 0.1
 --- @field SliderFlags_None integer
 ---
---- **Drag & Slider > Flags > SliderFlags_WrapAround**
+--- **Drag \& Slider > Flags > SliderFlags\_WrapAround**
 ---
 --- Enable wrapping around from max to min and from min to max
 ---    (only supported by DragXXX() functions for now).
 ---
 --- ---
 ---
---- **Drag & Slider > Flags**
+--- **Drag \& Slider > Flags**
 ---
 --- For DragDouble, DragInt, SliderDouble, SliderInt etc. (Those are per-item
 --- flags. There are shared flags in SetConfigVar: ConfigVar_DragClickToInputText
 ---
 --- ---
 ---
---- **Drag & Slider**
+--- **Drag \& Slider**
 ---
 --- We use the same sets of flags for Drag*() and Slider*() functions as the
 --- features are the same and it makes it easier to swap them.
@@ -1728,7 +1728,7 @@
 --- @since 0.9.2
 --- @field SliderFlags_WrapAround integer
 ---
---- **Draw List > DrawFlags_Closed**
+--- **Draw List > DrawFlags\_Closed**
 ---
 --- DrawList_PathStroke, DrawList_AddPolyline: specify that shape should be
 ---    closed (Important: this is always == 1 for legacy reason).
@@ -1752,7 +1752,7 @@
 --- @since 0.2
 --- @field DrawFlags_Closed integer
 ---
---- **Draw List > DrawFlags_None**
+--- **Draw List > DrawFlags\_None**
 ---
 --- ---
 ---
@@ -1773,7 +1773,7 @@
 --- @since 0.2
 --- @field DrawFlags_None integer
 ---
---- **Draw List > DrawFlags_RoundCornersAll**
+--- **Draw List > DrawFlags\_RoundCornersAll**
 ---
 --- ---
 ---
@@ -1794,7 +1794,7 @@
 --- @since 0.2
 --- @field DrawFlags_RoundCornersAll integer
 ---
---- **Draw List > DrawFlags_RoundCornersBottom**
+--- **Draw List > DrawFlags\_RoundCornersBottom**
 ---
 --- ---
 ---
@@ -1815,7 +1815,7 @@
 --- @since 0.2
 --- @field DrawFlags_RoundCornersBottom integer
 ---
---- **Draw List > DrawFlags_RoundCornersBottomLeft**
+--- **Draw List > DrawFlags\_RoundCornersBottomLeft**
 ---
 --- DrawList_AddRect, DrawList_AddRectFilled, DrawList_PathRect: enable rounding
 ---    bottom-left corner only (when rounding > 0.0, we default to all corners).
@@ -1839,7 +1839,7 @@
 --- @since 0.2
 --- @field DrawFlags_RoundCornersBottomLeft integer
 ---
---- **Draw List > DrawFlags_RoundCornersBottomRight**
+--- **Draw List > DrawFlags\_RoundCornersBottomRight**
 ---
 --- DrawList_AddRect, DrawList_AddRectFilled, DrawList_PathRect: enable rounding
 ---    bottom-right corner only (when rounding > 0.0, we default to all corners).
@@ -1863,7 +1863,7 @@
 --- @since 0.2
 --- @field DrawFlags_RoundCornersBottomRight integer
 ---
---- **Draw List > DrawFlags_RoundCornersLeft**
+--- **Draw List > DrawFlags\_RoundCornersLeft**
 ---
 --- ---
 ---
@@ -1884,7 +1884,7 @@
 --- @since 0.2
 --- @field DrawFlags_RoundCornersLeft integer
 ---
---- **Draw List > DrawFlags_RoundCornersNone**
+--- **Draw List > DrawFlags\_RoundCornersNone**
 ---
 --- DrawList_AddRect, DrawList_AddRectFilled, DrawList_PathRect: disable rounding
 ---    on all corners (when rounding > 0.0). This is NOT zero, NOT an implicit flag!.
@@ -1908,7 +1908,7 @@
 --- @since 0.2
 --- @field DrawFlags_RoundCornersNone integer
 ---
---- **Draw List > DrawFlags_RoundCornersRight**
+--- **Draw List > DrawFlags\_RoundCornersRight**
 ---
 --- ---
 ---
@@ -1929,7 +1929,7 @@
 --- @since 0.2
 --- @field DrawFlags_RoundCornersRight integer
 ---
---- **Draw List > DrawFlags_RoundCornersTop**
+--- **Draw List > DrawFlags\_RoundCornersTop**
 ---
 --- ---
 ---
@@ -1950,7 +1950,7 @@
 --- @since 0.2
 --- @field DrawFlags_RoundCornersTop integer
 ---
---- **Draw List > DrawFlags_RoundCornersTopLeft**
+--- **Draw List > DrawFlags\_RoundCornersTopLeft**
 ---
 --- DrawList_AddRect, DrawList_AddRectFilled, DrawList_PathRect: enable rounding
 ---    top-left corner only (when rounding > 0.0, we default to all corners).
@@ -1974,7 +1974,7 @@
 --- @since 0.2
 --- @field DrawFlags_RoundCornersTopLeft integer
 ---
---- **Draw List > DrawFlags_RoundCornersTopRight**
+--- **Draw List > DrawFlags\_RoundCornersTopRight**
 ---
 --- DrawList_AddRect, DrawList_AddRectFilled, DrawList_PathRect: enable rounding
 ---    top-right corner only (when rounding > 0.0, we default to all corners).
@@ -1998,7 +1998,7 @@
 --- @since 0.2
 --- @field DrawFlags_RoundCornersTopRight integer
 ---
---- **Font > FontFlags_Bold**
+--- **Font > FontFlags\_Bold**
 ---
 --- ---
 ---
@@ -2023,7 +2023,7 @@
 --- @since 0.4
 --- @field FontFlags_Bold integer
 ---
---- **Font > FontFlags_Italic**
+--- **Font > FontFlags\_Italic**
 ---
 --- ---
 ---
@@ -2048,7 +2048,7 @@
 --- @since 0.4
 --- @field FontFlags_Italic integer
 ---
---- **Font > FontFlags_None**
+--- **Font > FontFlags\_None**
 ---
 --- ---
 ---
@@ -2073,14 +2073,14 @@
 --- @since 0.4
 --- @field FontFlags_None integer
 ---
---- **Item & Status > Hovered Flags > HoveredFlags_AllowWhenBlockedByActiveItem**
+--- **Item \& Status > Hovered Flags > HoveredFlags\_AllowWhenBlockedByActiveItem**
 ---
 --- Return true even if an active item is blocking access to this item/window.
 ---    Useful for Drag and Drop patterns.
 ---
 --- ---
 ---
---- **Item & Status > Hovered Flags**
+--- **Item \& Status > Hovered Flags**
 ---
 --- For IsItemHovered and IsWindowHovered.
 ---
@@ -2089,13 +2089,13 @@
 --- @since 0.1
 --- @field HoveredFlags_AllowWhenBlockedByActiveItem integer
 ---
---- **Item & Status > Hovered Flags > HoveredFlags_AllowWhenBlockedByPopup**
+--- **Item \& Status > Hovered Flags > HoveredFlags\_AllowWhenBlockedByPopup**
 ---
 --- Return true even if a popup window is normally blocking access to this item/window.
 ---
 --- ---
 ---
---- **Item & Status > Hovered Flags**
+--- **Item \& Status > Hovered Flags**
 ---
 --- For IsItemHovered and IsWindowHovered.
 ---
@@ -2104,7 +2104,7 @@
 --- @since 0.1
 --- @field HoveredFlags_AllowWhenBlockedByPopup integer
 ---
---- **Item & Status > Hovered Flags > HoveredFlags_ForTooltip**
+--- **Item \& Status > Hovered Flags > HoveredFlags\_ForTooltip**
 ---
 --- Typically used with IsItemHovered() before SetTooltip().
 ---    This is a shortcut to pull flags from ConfigVar_HoverFlagsForTooltip* where
@@ -2117,7 +2117,7 @@
 ---
 --- ---
 ---
---- **Item & Status > Hovered Flags**
+--- **Item \& Status > Hovered Flags**
 ---
 --- For IsItemHovered and IsWindowHovered.
 ---
@@ -2126,13 +2126,13 @@
 --- @since 0.9
 --- @field HoveredFlags_ForTooltip integer
 ---
---- **Item & Status > Hovered Flags > HoveredFlags_NoNavOverride**
+--- **Item \& Status > Hovered Flags > HoveredFlags\_NoNavOverride**
 ---
 --- Disable using gamepad/keyboard navigation state when active, always query mouse.
 ---
 --- ---
 ---
---- **Item & Status > Hovered Flags**
+--- **Item \& Status > Hovered Flags**
 ---
 --- For IsItemHovered and IsWindowHovered.
 ---
@@ -2141,14 +2141,14 @@
 --- @since 0.7
 --- @field HoveredFlags_NoNavOverride integer
 ---
---- **Item & Status > Hovered Flags > HoveredFlags_None**
+--- **Item \& Status > Hovered Flags > HoveredFlags\_None**
 ---
 --- Return true if directly over the item/window, not obstructed by another
 ---    window, not obstructed by an active popup or modal blocking inputs under them.
 ---
 --- ---
 ---
---- **Item & Status > Hovered Flags**
+--- **Item \& Status > Hovered Flags**
 ---
 --- For IsItemHovered and IsWindowHovered.
 ---
@@ -2157,7 +2157,7 @@
 --- @since 0.1
 --- @field HoveredFlags_None integer
 ---
---- **Item & Status > Hovered Flags > HoveredFlags_Stationary**
+--- **Item \& Status > Hovered Flags > HoveredFlags\_Stationary**
 ---
 --- Require mouse to be stationary for ConfigVar_HoverStationaryDelay (~0.15 sec)
 ---    _at least one time_. After this, can move on same item/window.
@@ -2165,7 +2165,7 @@
 ---
 --- ---
 ---
---- **Item & Status > Hovered Flags**
+--- **Item \& Status > Hovered Flags**
 ---
 --- For IsItemHovered and IsWindowHovered.
 ---
@@ -2174,13 +2174,13 @@
 --- @since 0.9
 --- @field HoveredFlags_Stationary integer
 ---
---- **Item & Status > Hovered Flags > For IsItemHovered > HoveredFlags_AllowWhenDisabled**
+--- **Item \& Status > Hovered Flags > For IsItemHovered > HoveredFlags\_AllowWhenDisabled**
 ---
 --- Return true even if the item is disabled.
 ---
 --- ---
 ---
---- **Item & Status > Hovered Flags**
+--- **Item \& Status > Hovered Flags**
 ---
 --- For IsItemHovered and IsWindowHovered.
 ---
@@ -2189,13 +2189,13 @@
 --- @since 0.1
 --- @field HoveredFlags_AllowWhenDisabled integer
 ---
---- **Item & Status > Hovered Flags > For IsItemHovered > HoveredFlags_AllowWhenOverlapped**
+--- **Item \& Status > Hovered Flags > For IsItemHovered > HoveredFlags\_AllowWhenOverlapped**
 ---
 --- HoveredFlags_AllowWhenOverlappedByItem | HoveredFlags_AllowWhenOverlappedByWindow
 ---
 --- ---
 ---
---- **Item & Status > Hovered Flags**
+--- **Item \& Status > Hovered Flags**
 ---
 --- For IsItemHovered and IsWindowHovered.
 ---
@@ -2204,14 +2204,14 @@
 --- @since 0.1
 --- @field HoveredFlags_AllowWhenOverlapped integer
 ---
---- **Item & Status > Hovered Flags > For IsItemHovered > HoveredFlags_AllowWhenOverlappedByItem**
+--- **Item \& Status > Hovered Flags > For IsItemHovered > HoveredFlags\_AllowWhenOverlappedByItem**
 ---
 --- Return true even if the item uses AllowOverlap mode and is overlapped by
 ---    another hoverable item.
 ---
 --- ---
 ---
---- **Item & Status > Hovered Flags**
+--- **Item \& Status > Hovered Flags**
 ---
 --- For IsItemHovered and IsWindowHovered.
 ---
@@ -2220,13 +2220,13 @@
 --- @since 0.9
 --- @field HoveredFlags_AllowWhenOverlappedByItem integer
 ---
---- **Item & Status > Hovered Flags > For IsItemHovered > HoveredFlags_AllowWhenOverlappedByWindow**
+--- **Item \& Status > Hovered Flags > For IsItemHovered > HoveredFlags\_AllowWhenOverlappedByWindow**
 ---
 --- Return true even if the position is obstructed or overlapped by another window.
 ---
 --- ---
 ---
---- **Item & Status > Hovered Flags**
+--- **Item \& Status > Hovered Flags**
 ---
 --- For IsItemHovered and IsWindowHovered.
 ---
@@ -2235,14 +2235,14 @@
 --- @since 0.9
 --- @field HoveredFlags_AllowWhenOverlappedByWindow integer
 ---
---- **Item & Status > Hovered Flags > For IsItemHovered > HoveredFlags_RectOnly**
+--- **Item \& Status > Hovered Flags > For IsItemHovered > HoveredFlags\_RectOnly**
 ---
 --- HoveredFlags_AllowWhenBlockedByPopup |
 ---    HoveredFlags_AllowWhenBlockedByActiveItem | HoveredFlags_AllowWhenOverlapped
 ---
 --- ---
 ---
---- **Item & Status > Hovered Flags**
+--- **Item \& Status > Hovered Flags**
 ---
 --- For IsItemHovered and IsWindowHovered.
 ---
@@ -2251,20 +2251,20 @@
 --- @since 0.1
 --- @field HoveredFlags_RectOnly integer
 ---
---- **Item & Status > Hovered Flags > For IsItemHovered > Mouse Hovering Delays > HoveredFlags_DelayNone**
+--- **Item \& Status > Hovered Flags > For IsItemHovered > Mouse Hovering Delays > HoveredFlags\_DelayNone**
 ---
 --- Return true immediately (default). As this is the default you generally ignore this.
 ---
 --- ---
 ---
---- **Item & Status > Hovered Flags > For IsItemHovered > Mouse Hovering Delays**
+--- **Item \& Status > Hovered Flags > For IsItemHovered > Mouse Hovering Delays**
 ---
 --- Generally you can use HoveredFlags_ForTooltip to use application-standardized flags.
 ---   Use those if you need specific overrides. See also HoveredFlags_Stationary.
 ---
 --- ---
 ---
---- **Item & Status > Hovered Flags**
+--- **Item \& Status > Hovered Flags**
 ---
 --- For IsItemHovered and IsWindowHovered.
 ---
@@ -2273,7 +2273,7 @@
 --- @since 0.9
 --- @field HoveredFlags_DelayNone integer
 ---
---- **Item & Status > Hovered Flags > For IsItemHovered > Mouse Hovering Delays > HoveredFlags_DelayNormal**
+--- **Item \& Status > Hovered Flags > For IsItemHovered > Mouse Hovering Delays > HoveredFlags\_DelayNormal**
 ---
 --- Return true after ConfigVar_HoverDelayNormal elapsed (~0.40 sec)
 ---    (shared between items) + requires mouse to be stationary for
@@ -2281,14 +2281,14 @@
 ---
 --- ---
 ---
---- **Item & Status > Hovered Flags > For IsItemHovered > Mouse Hovering Delays**
+--- **Item \& Status > Hovered Flags > For IsItemHovered > Mouse Hovering Delays**
 ---
 --- Generally you can use HoveredFlags_ForTooltip to use application-standardized flags.
 ---   Use those if you need specific overrides. See also HoveredFlags_Stationary.
 ---
 --- ---
 ---
---- **Item & Status > Hovered Flags**
+--- **Item \& Status > Hovered Flags**
 ---
 --- For IsItemHovered and IsWindowHovered.
 ---
@@ -2297,7 +2297,7 @@
 --- @since 0.8
 --- @field HoveredFlags_DelayNormal integer
 ---
---- **Item & Status > Hovered Flags > For IsItemHovered > Mouse Hovering Delays > HoveredFlags_DelayShort**
+--- **Item \& Status > Hovered Flags > For IsItemHovered > Mouse Hovering Delays > HoveredFlags\_DelayShort**
 ---
 --- Return true after ConfigVar_HoverDelayShort elapsed (~0.15 sec)
 ---    (shared between items) + requires mouse to be stationary for
@@ -2305,14 +2305,14 @@
 ---
 --- ---
 ---
---- **Item & Status > Hovered Flags > For IsItemHovered > Mouse Hovering Delays**
+--- **Item \& Status > Hovered Flags > For IsItemHovered > Mouse Hovering Delays**
 ---
 --- Generally you can use HoveredFlags_ForTooltip to use application-standardized flags.
 ---   Use those if you need specific overrides. See also HoveredFlags_Stationary.
 ---
 --- ---
 ---
---- **Item & Status > Hovered Flags**
+--- **Item \& Status > Hovered Flags**
 ---
 --- For IsItemHovered and IsWindowHovered.
 ---
@@ -2321,21 +2321,21 @@
 --- @since 0.8
 --- @field HoveredFlags_DelayShort integer
 ---
---- **Item & Status > Hovered Flags > For IsItemHovered > Mouse Hovering Delays > HoveredFlags_NoSharedDelay**
+--- **Item \& Status > Hovered Flags > For IsItemHovered > Mouse Hovering Delays > HoveredFlags\_NoSharedDelay**
 ---
 --- Disable shared delay system where moving from one item to the next keeps
 ---    the previous timer for a short time (standard for tooltips with long delays
 ---
 --- ---
 ---
---- **Item & Status > Hovered Flags > For IsItemHovered > Mouse Hovering Delays**
+--- **Item \& Status > Hovered Flags > For IsItemHovered > Mouse Hovering Delays**
 ---
 --- Generally you can use HoveredFlags_ForTooltip to use application-standardized flags.
 ---   Use those if you need specific overrides. See also HoveredFlags_Stationary.
 ---
 --- ---
 ---
---- **Item & Status > Hovered Flags**
+--- **Item \& Status > Hovered Flags**
 ---
 --- For IsItemHovered and IsWindowHovered.
 ---
@@ -2344,13 +2344,13 @@
 --- @since 0.8
 --- @field HoveredFlags_NoSharedDelay integer
 ---
---- **Item & Status > Hovered Flags > For IsWindowHovered > HoveredFlags_AnyWindow**
+--- **Item \& Status > Hovered Flags > For IsWindowHovered > HoveredFlags\_AnyWindow**
 ---
 --- Return true if any window is hovered.
 ---
 --- ---
 ---
---- **Item & Status > Hovered Flags**
+--- **Item \& Status > Hovered Flags**
 ---
 --- For IsItemHovered and IsWindowHovered.
 ---
@@ -2359,13 +2359,13 @@
 --- @since 0.1
 --- @field HoveredFlags_AnyWindow integer
 ---
---- **Item & Status > Hovered Flags > For IsWindowHovered > HoveredFlags_ChildWindows**
+--- **Item \& Status > Hovered Flags > For IsWindowHovered > HoveredFlags\_ChildWindows**
 ---
 --- Return true if any children of the window is hovered.
 ---
 --- ---
 ---
---- **Item & Status > Hovered Flags**
+--- **Item \& Status > Hovered Flags**
 ---
 --- For IsItemHovered and IsWindowHovered.
 ---
@@ -2374,14 +2374,14 @@
 --- @since 0.1
 --- @field HoveredFlags_ChildWindows integer
 ---
---- **Item & Status > Hovered Flags > For IsWindowHovered > HoveredFlags_DockHierarchy**
+--- **Item \& Status > Hovered Flags > For IsWindowHovered > HoveredFlags\_DockHierarchy**
 ---
 --- Consider docking hierarchy (treat dockspace host as
 ---   parent of docked window) (when used with _ChildWindows or _RootWindow).
 ---
 --- ---
 ---
---- **Item & Status > Hovered Flags**
+--- **Item \& Status > Hovered Flags**
 ---
 --- For IsItemHovered and IsWindowHovered.
 ---
@@ -2390,14 +2390,14 @@
 --- @since 0.5.10
 --- @field HoveredFlags_DockHierarchy integer
 ---
---- **Item & Status > Hovered Flags > For IsWindowHovered > HoveredFlags_NoPopupHierarchy**
+--- **Item \& Status > Hovered Flags > For IsWindowHovered > HoveredFlags\_NoPopupHierarchy**
 ---
 --- Do not consider popup hierarchy (do not treat popup
 ---   emitter as parent of popup) (when used with _ChildWindows or _RootWindow).
 ---
 --- ---
 ---
---- **Item & Status > Hovered Flags**
+--- **Item \& Status > Hovered Flags**
 ---
 --- For IsItemHovered and IsWindowHovered.
 ---
@@ -2406,13 +2406,13 @@
 --- @since 0.5.10
 --- @field HoveredFlags_NoPopupHierarchy integer
 ---
---- **Item & Status > Hovered Flags > For IsWindowHovered > HoveredFlags_RootAndChildWindows**
+--- **Item \& Status > Hovered Flags > For IsWindowHovered > HoveredFlags\_RootAndChildWindows**
 ---
 --- HoveredFlags_RootWindow | HoveredFlags_ChildWindows
 ---
 --- ---
 ---
---- **Item & Status > Hovered Flags**
+--- **Item \& Status > Hovered Flags**
 ---
 --- For IsItemHovered and IsWindowHovered.
 ---
@@ -2421,13 +2421,13 @@
 --- @since 0.1
 --- @field HoveredFlags_RootAndChildWindows integer
 ---
---- **Item & Status > Hovered Flags > For IsWindowHovered > HoveredFlags_RootWindow**
+--- **Item \& Status > Hovered Flags > For IsWindowHovered > HoveredFlags\_RootWindow**
 ---
 --- Test from root window (top most parent of the current hierarchy).
 ---
 --- ---
 ---
---- **Item & Status > Hovered Flags**
+--- **Item \& Status > Hovered Flags**
 ---
 --- For IsItemHovered and IsWindowHovered.
 ---
@@ -2436,84 +2436,84 @@
 --- @since 0.1
 --- @field HoveredFlags_RootWindow integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_0**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_0**
 ---
 --- ---
 ---
 --- @since 0.6
 --- @field Key_0 integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_1**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_1**
 ---
 --- ---
 ---
 --- @since 0.6
 --- @field Key_1 integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_2**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_2**
 ---
 --- ---
 ---
 --- @since 0.6
 --- @field Key_2 integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_3**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_3**
 ---
 --- ---
 ---
 --- @since 0.6
 --- @field Key_3 integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_4**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_4**
 ---
 --- ---
 ---
 --- @since 0.6
 --- @field Key_4 integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_5**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_5**
 ---
 --- ---
 ---
 --- @since 0.6
 --- @field Key_5 integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_6**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_6**
 ---
 --- ---
 ---
 --- @since 0.6
 --- @field Key_6 integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_7**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_7**
 ---
 --- ---
 ---
 --- @since 0.6
 --- @field Key_7 integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_8**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_8**
 ---
 --- ---
 ---
 --- @since 0.6
 --- @field Key_8 integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_9**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_9**
 ---
 --- ---
 ---
 --- @since 0.6
 --- @field Key_9 integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_A**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_A**
 ---
 --- ---
 ---
 --- @since 0.6
 --- @field Key_A integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_Apostrophe**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_Apostrophe**
 ---
 --- '
 ---
@@ -2522,7 +2522,7 @@
 --- @since 0.6
 --- @field Key_Apostrophe integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_AppBack**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_AppBack**
 ---
 --- Available on some keyboard/mouses. Often referred as "Browser Back".
 ---
@@ -2531,51 +2531,51 @@
 --- @since 0.9
 --- @field Key_AppBack integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_AppForward**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_AppForward**
 ---
 --- ---
 ---
 --- @since 0.9
 --- @field Key_AppForward integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_B**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_B**
 ---
 --- ---
 ---
 --- @since 0.6
 --- @field Key_B integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_Backslash**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_Backslash**
 ---
---- 
+--- \
 ---
 --- ---
 ---
 --- @since 0.6
 --- @field Key_Backslash integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_Backspace**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_Backspace**
 ---
 --- ---
 ---
 --- @since 0.6
 --- @field Key_Backspace integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_C**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_C**
 ---
 --- ---
 ---
 --- @since 0.6
 --- @field Key_C integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_CapsLock**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_CapsLock**
 ---
 --- ---
 ---
 --- @since 0.6
 --- @field Key_CapsLock integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_Comma**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_Comma**
 ---
 --- ,
 ---
@@ -2584,49 +2584,49 @@
 --- @since 0.6
 --- @field Key_Comma integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_D**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_D**
 ---
 --- ---
 ---
 --- @since 0.6
 --- @field Key_D integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_Delete**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_Delete**
 ---
 --- ---
 ---
 --- @since 0.6
 --- @field Key_Delete integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_DownArrow**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_DownArrow**
 ---
 --- ---
 ---
 --- @since 0.6
 --- @field Key_DownArrow integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_E**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_E**
 ---
 --- ---
 ---
 --- @since 0.6
 --- @field Key_E integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_End**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_End**
 ---
 --- ---
 ---
 --- @since 0.6
 --- @field Key_End integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_Enter**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_Enter**
 ---
 --- ---
 ---
 --- @since 0.6
 --- @field Key_Enter integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_Equal**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_Equal**
 ---
 --- =
 ---
@@ -2635,196 +2635,196 @@
 --- @since 0.6
 --- @field Key_Equal integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_Escape**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_Escape**
 ---
 --- ---
 ---
 --- @since 0.6
 --- @field Key_Escape integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_F**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_F**
 ---
 --- ---
 ---
 --- @since 0.6
 --- @field Key_F integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_F1**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_F1**
 ---
 --- ---
 ---
 --- @since 0.6
 --- @field Key_F1 integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_F10**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_F10**
 ---
 --- ---
 ---
 --- @since 0.6
 --- @field Key_F10 integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_F11**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_F11**
 ---
 --- ---
 ---
 --- @since 0.6
 --- @field Key_F11 integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_F12**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_F12**
 ---
 --- ---
 ---
 --- @since 0.6
 --- @field Key_F12 integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_F13**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_F13**
 ---
 --- ---
 ---
 --- @since 0.9
 --- @field Key_F13 integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_F14**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_F14**
 ---
 --- ---
 ---
 --- @since 0.9
 --- @field Key_F14 integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_F15**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_F15**
 ---
 --- ---
 ---
 --- @since 0.9
 --- @field Key_F15 integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_F16**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_F16**
 ---
 --- ---
 ---
 --- @since 0.9
 --- @field Key_F16 integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_F17**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_F17**
 ---
 --- ---
 ---
 --- @since 0.9
 --- @field Key_F17 integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_F18**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_F18**
 ---
 --- ---
 ---
 --- @since 0.9
 --- @field Key_F18 integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_F19**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_F19**
 ---
 --- ---
 ---
 --- @since 0.9
 --- @field Key_F19 integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_F2**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_F2**
 ---
 --- ---
 ---
 --- @since 0.6
 --- @field Key_F2 integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_F20**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_F20**
 ---
 --- ---
 ---
 --- @since 0.9
 --- @field Key_F20 integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_F21**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_F21**
 ---
 --- ---
 ---
 --- @since 0.9
 --- @field Key_F21 integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_F22**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_F22**
 ---
 --- ---
 ---
 --- @since 0.9
 --- @field Key_F22 integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_F23**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_F23**
 ---
 --- ---
 ---
 --- @since 0.9
 --- @field Key_F23 integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_F24**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_F24**
 ---
 --- ---
 ---
 --- @since 0.9
 --- @field Key_F24 integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_F3**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_F3**
 ---
 --- ---
 ---
 --- @since 0.6
 --- @field Key_F3 integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_F4**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_F4**
 ---
 --- ---
 ---
 --- @since 0.6
 --- @field Key_F4 integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_F5**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_F5**
 ---
 --- ---
 ---
 --- @since 0.6
 --- @field Key_F5 integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_F6**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_F6**
 ---
 --- ---
 ---
 --- @since 0.6
 --- @field Key_F6 integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_F7**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_F7**
 ---
 --- ---
 ---
 --- @since 0.6
 --- @field Key_F7 integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_F8**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_F8**
 ---
 --- ---
 ---
 --- @since 0.6
 --- @field Key_F8 integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_F9**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_F9**
 ---
 --- ---
 ---
 --- @since 0.6
 --- @field Key_F9 integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_G**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_G**
 ---
 --- ---
 ---
 --- @since 0.6
 --- @field Key_G integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_GraveAccent**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_GraveAccent**
 ---
 --- `
 ---
@@ -2833,189 +2833,189 @@
 --- @since 0.6
 --- @field Key_GraveAccent integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_H**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_H**
 ---
 --- ---
 ---
 --- @since 0.6
 --- @field Key_H integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_Home**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_Home**
 ---
 --- ---
 ---
 --- @since 0.6
 --- @field Key_Home integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_I**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_I**
 ---
 --- ---
 ---
 --- @since 0.6
 --- @field Key_I integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_Insert**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_Insert**
 ---
 --- ---
 ---
 --- @since 0.6
 --- @field Key_Insert integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_J**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_J**
 ---
 --- ---
 ---
 --- @since 0.6
 --- @field Key_J integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_K**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_K**
 ---
 --- ---
 ---
 --- @since 0.6
 --- @field Key_K integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_Keypad0**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_Keypad0**
 ---
 --- ---
 ---
 --- @since 0.6
 --- @field Key_Keypad0 integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_Keypad1**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_Keypad1**
 ---
 --- ---
 ---
 --- @since 0.6
 --- @field Key_Keypad1 integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_Keypad2**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_Keypad2**
 ---
 --- ---
 ---
 --- @since 0.6
 --- @field Key_Keypad2 integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_Keypad3**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_Keypad3**
 ---
 --- ---
 ---
 --- @since 0.6
 --- @field Key_Keypad3 integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_Keypad4**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_Keypad4**
 ---
 --- ---
 ---
 --- @since 0.6
 --- @field Key_Keypad4 integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_Keypad5**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_Keypad5**
 ---
 --- ---
 ---
 --- @since 0.6
 --- @field Key_Keypad5 integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_Keypad6**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_Keypad6**
 ---
 --- ---
 ---
 --- @since 0.6
 --- @field Key_Keypad6 integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_Keypad7**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_Keypad7**
 ---
 --- ---
 ---
 --- @since 0.6
 --- @field Key_Keypad7 integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_Keypad8**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_Keypad8**
 ---
 --- ---
 ---
 --- @since 0.6
 --- @field Key_Keypad8 integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_Keypad9**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_Keypad9**
 ---
 --- ---
 ---
 --- @since 0.6
 --- @field Key_Keypad9 integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_KeypadAdd**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_KeypadAdd**
 ---
 --- ---
 ---
 --- @since 0.6
 --- @field Key_KeypadAdd integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_KeypadDecimal**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_KeypadDecimal**
 ---
 --- ---
 ---
 --- @since 0.6
 --- @field Key_KeypadDecimal integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_KeypadDivide**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_KeypadDivide**
 ---
 --- ---
 ---
 --- @since 0.6
 --- @field Key_KeypadDivide integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_KeypadEnter**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_KeypadEnter**
 ---
 --- ---
 ---
 --- @since 0.6
 --- @field Key_KeypadEnter integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_KeypadEqual**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_KeypadEqual**
 ---
 --- ---
 ---
 --- @since 0.6
 --- @field Key_KeypadEqual integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_KeypadMultiply**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_KeypadMultiply**
 ---
 --- ---
 ---
 --- @since 0.6
 --- @field Key_KeypadMultiply integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_KeypadSubtract**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_KeypadSubtract**
 ---
 --- ---
 ---
 --- @since 0.6
 --- @field Key_KeypadSubtract integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_L**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_L**
 ---
 --- ---
 ---
 --- @since 0.6
 --- @field Key_L integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_LeftAlt**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_LeftAlt**
 ---
 --- ---
 ---
 --- @since 0.6
 --- @field Key_LeftAlt integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_LeftArrow**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_LeftArrow**
 ---
 --- ---
 ---
 --- @since 0.6
 --- @field Key_LeftArrow integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_LeftBracket**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_LeftBracket**
 ---
 --- [
 ---
@@ -3024,42 +3024,42 @@
 --- @since 0.6
 --- @field Key_LeftBracket integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_LeftCtrl**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_LeftCtrl**
 ---
 --- ---
 ---
 --- @since 0.6
 --- @field Key_LeftCtrl integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_LeftShift**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_LeftShift**
 ---
 --- ---
 ---
 --- @since 0.6
 --- @field Key_LeftShift integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_LeftSuper**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_LeftSuper**
 ---
 --- ---
 ---
 --- @since 0.6
 --- @field Key_LeftSuper integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_M**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_M**
 ---
 --- ---
 ---
 --- @since 0.6
 --- @field Key_M integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_Menu**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_Menu**
 ---
 --- ---
 ---
 --- @since 0.6
 --- @field Key_Menu integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_Minus**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_Minus**
 ---
 --- -
 ---
@@ -3068,56 +3068,56 @@
 --- @since 0.6
 --- @field Key_Minus integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_N**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_N**
 ---
 --- ---
 ---
 --- @since 0.6
 --- @field Key_N integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_NumLock**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_NumLock**
 ---
 --- ---
 ---
 --- @since 0.6
 --- @field Key_NumLock integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_O**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_O**
 ---
 --- ---
 ---
 --- @since 0.6
 --- @field Key_O integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_P**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_P**
 ---
 --- ---
 ---
 --- @since 0.6
 --- @field Key_P integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_PageDown**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_PageDown**
 ---
 --- ---
 ---
 --- @since 0.6
 --- @field Key_PageDown integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_PageUp**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_PageUp**
 ---
 --- ---
 ---
 --- @since 0.6
 --- @field Key_PageUp integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_Pause**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_Pause**
 ---
 --- ---
 ---
 --- @since 0.6
 --- @field Key_Pause integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_Period**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_Period**
 ---
 --- .
 ---
@@ -3126,42 +3126,42 @@
 --- @since 0.6
 --- @field Key_Period integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_PrintScreen**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_PrintScreen**
 ---
 --- ---
 ---
 --- @since 0.6
 --- @field Key_PrintScreen integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_Q**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_Q**
 ---
 --- ---
 ---
 --- @since 0.6
 --- @field Key_Q integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_R**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_R**
 ---
 --- ---
 ---
 --- @since 0.6
 --- @field Key_R integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_RightAlt**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_RightAlt**
 ---
 --- ---
 ---
 --- @since 0.6
 --- @field Key_RightAlt integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_RightArrow**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_RightArrow**
 ---
 --- ---
 ---
 --- @since 0.6
 --- @field Key_RightArrow integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_RightBracket**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_RightBracket**
 ---
 --- ]
 ---
@@ -3170,42 +3170,42 @@
 --- @since 0.6
 --- @field Key_RightBracket integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_RightCtrl**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_RightCtrl**
 ---
 --- ---
 ---
 --- @since 0.6
 --- @field Key_RightCtrl integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_RightShift**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_RightShift**
 ---
 --- ---
 ---
 --- @since 0.6
 --- @field Key_RightShift integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_RightSuper**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_RightSuper**
 ---
 --- ---
 ---
 --- @since 0.6
 --- @field Key_RightSuper integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_S**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_S**
 ---
 --- ---
 ---
 --- @since 0.6
 --- @field Key_S integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_ScrollLock**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_ScrollLock**
 ---
 --- ---
 ---
 --- @since 0.6
 --- @field Key_ScrollLock integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_Semicolon**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_Semicolon**
 ---
 --- ;
 ---
@@ -3214,7 +3214,7 @@
 --- @since 0.6
 --- @field Key_Semicolon integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_Slash**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_Slash**
 ---
 --- /
 ---
@@ -3223,84 +3223,84 @@
 --- @since 0.6
 --- @field Key_Slash integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_Space**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_Space**
 ---
 --- ---
 ---
 --- @since 0.6
 --- @field Key_Space integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_T**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_T**
 ---
 --- ---
 ---
 --- @since 0.6
 --- @field Key_T integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_Tab**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_Tab**
 ---
 --- ---
 ---
 --- @since 0.6
 --- @field Key_Tab integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_U**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_U**
 ---
 --- ---
 ---
 --- @since 0.6
 --- @field Key_U integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_UpArrow**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_UpArrow**
 ---
 --- ---
 ---
 --- @since 0.6
 --- @field Key_UpArrow integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_V**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_V**
 ---
 --- ---
 ---
 --- @since 0.6
 --- @field Key_V integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_W**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_W**
 ---
 --- ---
 ---
 --- @since 0.6
 --- @field Key_W integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_X**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_X**
 ---
 --- ---
 ---
 --- @since 0.6
 --- @field Key_X integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_Y**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_Y**
 ---
 --- ---
 ---
 --- @since 0.6
 --- @field Key_Y integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Keyboard > Key_Z**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_Z**
 ---
 --- ---
 ---
 --- @since 0.6
 --- @field Key_Z integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Modifiers > Mod_Alt**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Modifiers > Mod\_Alt**
 ---
 --- ---
 ---
 --- @since 0.8
 --- @field Mod_Alt integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Modifiers > Mod_Ctrl**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Modifiers > Mod\_Ctrl**
 ---
 --- Cmd when ConfigVar_MacOSXBehaviors is enabled.
 ---
@@ -3309,21 +3309,21 @@
 --- @since 0.9.2
 --- @field Mod_Ctrl integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Modifiers > Mod_None**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Modifiers > Mod\_None**
 ---
 --- ---
 ---
 --- @since 0.8
 --- @field Mod_None integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Modifiers > Mod_Shift**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Modifiers > Mod\_Shift**
 ---
 --- ---
 ---
 --- @since 0.8
 --- @field Mod_Shift integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Modifiers > Mod_Super**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Modifiers > Mod\_Super**
 ---
 --- Ctrl when ConfigVar_MacOSXBehaviors is enabled.
 ---
@@ -3332,11 +3332,11 @@
 --- @since 0.9.2
 --- @field Mod_Super integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Mouse Buttons > Key_MouseLeft**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Mouse Buttons > Key\_MouseLeft**
 ---
 --- ---
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Mouse Buttons**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Mouse Buttons**
 ---
 --- This is mirroring the data also written accessible via IsMouseDown,
 --- GetMouseWheel etc, in a format allowing them to be accessed via standard key API.
@@ -3346,11 +3346,11 @@
 --- @since 0.8
 --- @field Key_MouseLeft integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Mouse Buttons > Key_MouseMiddle**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Mouse Buttons > Key\_MouseMiddle**
 ---
 --- ---
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Mouse Buttons**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Mouse Buttons**
 ---
 --- This is mirroring the data also written accessible via IsMouseDown,
 --- GetMouseWheel etc, in a format allowing them to be accessed via standard key API.
@@ -3360,11 +3360,11 @@
 --- @since 0.8
 --- @field Key_MouseMiddle integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Mouse Buttons > Key_MouseRight**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Mouse Buttons > Key\_MouseRight**
 ---
 --- ---
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Mouse Buttons**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Mouse Buttons**
 ---
 --- This is mirroring the data also written accessible via IsMouseDown,
 --- GetMouseWheel etc, in a format allowing them to be accessed via standard key API.
@@ -3374,11 +3374,11 @@
 --- @since 0.8
 --- @field Key_MouseRight integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Mouse Buttons > Key_MouseWheelX**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Mouse Buttons > Key\_MouseWheelX**
 ---
 --- ---
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Mouse Buttons**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Mouse Buttons**
 ---
 --- This is mirroring the data also written accessible via IsMouseDown,
 --- GetMouseWheel etc, in a format allowing them to be accessed via standard key API.
@@ -3388,11 +3388,11 @@
 --- @since 0.8
 --- @field Key_MouseWheelX integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Mouse Buttons > Key_MouseWheelY**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Mouse Buttons > Key\_MouseWheelY**
 ---
 --- ---
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Mouse Buttons**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Mouse Buttons**
 ---
 --- This is mirroring the data also written accessible via IsMouseDown,
 --- GetMouseWheel etc, in a format allowing them to be accessed via standard key API.
@@ -3402,11 +3402,11 @@
 --- @since 0.8
 --- @field Key_MouseWheelY integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Mouse Buttons > Key_MouseX1**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Mouse Buttons > Key\_MouseX1**
 ---
 --- ---
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Mouse Buttons**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Mouse Buttons**
 ---
 --- This is mirroring the data also written accessible via IsMouseDown,
 --- GetMouseWheel etc, in a format allowing them to be accessed via standard key API.
@@ -3416,11 +3416,11 @@
 --- @since 0.8
 --- @field Key_MouseX1 integer
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Mouse Buttons > Key_MouseX2**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Mouse Buttons > Key\_MouseX2**
 ---
 --- ---
 ---
---- **Keyboard & Mouse > Keyboard > Named Keys > Mouse Buttons**
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Mouse Buttons**
 ---
 --- This is mirroring the data also written accessible via IsMouseDown,
 --- GetMouseWheel etc, in a format allowing them to be accessed via standard key API.
@@ -3430,11 +3430,11 @@
 --- @since 0.8
 --- @field Key_MouseX2 integer
 ---
---- **Keyboard & Mouse > Mouse > MouseButton_Left**
+--- **Keyboard \& Mouse > Mouse > MouseButton\_Left**
 ---
 --- ---
 ---
---- **Keyboard & Mouse > Mouse**
+--- **Keyboard \& Mouse > Mouse**
 ---
 --- To refer to a mouse button, you may use named enums in your code e.g.
 --- MouseButton_Left, MouseButton_Right.
@@ -3451,11 +3451,11 @@
 --- @since 0.1
 --- @field MouseButton_Left integer
 ---
---- **Keyboard & Mouse > Mouse > MouseButton_Middle**
+--- **Keyboard \& Mouse > Mouse > MouseButton\_Middle**
 ---
 --- ---
 ---
---- **Keyboard & Mouse > Mouse**
+--- **Keyboard \& Mouse > Mouse**
 ---
 --- To refer to a mouse button, you may use named enums in your code e.g.
 --- MouseButton_Left, MouseButton_Right.
@@ -3472,11 +3472,11 @@
 --- @since 0.1
 --- @field MouseButton_Middle integer
 ---
---- **Keyboard & Mouse > Mouse > MouseButton_Right**
+--- **Keyboard \& Mouse > Mouse > MouseButton\_Right**
 ---
 --- ---
 ---
---- **Keyboard & Mouse > Mouse**
+--- **Keyboard \& Mouse > Mouse**
 ---
 --- To refer to a mouse button, you may use named enums in your code e.g.
 --- MouseButton_Left, MouseButton_Right.
@@ -3493,11 +3493,11 @@
 --- @since 0.1
 --- @field MouseButton_Right integer
 ---
---- **Keyboard & Mouse > Mouse > Mouse Cursor > MouseCursor_Arrow**
+--- **Keyboard \& Mouse > Mouse > Mouse Cursor > MouseCursor\_Arrow**
 ---
 --- ---
 ---
---- **Keyboard & Mouse > Mouse**
+--- **Keyboard \& Mouse > Mouse**
 ---
 --- To refer to a mouse button, you may use named enums in your code e.g.
 --- MouseButton_Left, MouseButton_Right.
@@ -3514,13 +3514,13 @@
 --- @since 0.1
 --- @field MouseCursor_Arrow integer
 ---
---- **Keyboard & Mouse > Mouse > Mouse Cursor > MouseCursor_Hand**
+--- **Keyboard \& Mouse > Mouse > Mouse Cursor > MouseCursor\_Hand**
 ---
 --- (Unused by Dear ImGui functions. Use for e.g. hyperlinks)
 ---
 --- ---
 ---
---- **Keyboard & Mouse > Mouse**
+--- **Keyboard \& Mouse > Mouse**
 ---
 --- To refer to a mouse button, you may use named enums in your code e.g.
 --- MouseButton_Left, MouseButton_Right.
@@ -3537,11 +3537,11 @@
 --- @since 0.1
 --- @field MouseCursor_Hand integer
 ---
---- **Keyboard & Mouse > Mouse > Mouse Cursor > MouseCursor_None**
+--- **Keyboard \& Mouse > Mouse > Mouse Cursor > MouseCursor\_None**
 ---
 --- ---
 ---
---- **Keyboard & Mouse > Mouse**
+--- **Keyboard \& Mouse > Mouse**
 ---
 --- To refer to a mouse button, you may use named enums in your code e.g.
 --- MouseButton_Left, MouseButton_Right.
@@ -3558,13 +3558,13 @@
 --- @since 0.8.4
 --- @field MouseCursor_None integer
 ---
---- **Keyboard & Mouse > Mouse > Mouse Cursor > MouseCursor_NotAllowed**
+--- **Keyboard \& Mouse > Mouse > Mouse Cursor > MouseCursor\_NotAllowed**
 ---
 --- When hovering something with disallowed interaction. Usually a crossed circle.
 ---
 --- ---
 ---
---- **Keyboard & Mouse > Mouse**
+--- **Keyboard \& Mouse > Mouse**
 ---
 --- To refer to a mouse button, you may use named enums in your code e.g.
 --- MouseButton_Left, MouseButton_Right.
@@ -3581,13 +3581,13 @@
 --- @since 0.1
 --- @field MouseCursor_NotAllowed integer
 ---
---- **Keyboard & Mouse > Mouse > Mouse Cursor > MouseCursor_ResizeAll**
+--- **Keyboard \& Mouse > Mouse > Mouse Cursor > MouseCursor\_ResizeAll**
 ---
 --- (Unused by Dear ImGui functions)
 ---
 --- ---
 ---
---- **Keyboard & Mouse > Mouse**
+--- **Keyboard \& Mouse > Mouse**
 ---
 --- To refer to a mouse button, you may use named enums in your code e.g.
 --- MouseButton_Left, MouseButton_Right.
@@ -3604,13 +3604,13 @@
 --- @since 0.1
 --- @field MouseCursor_ResizeAll integer
 ---
---- **Keyboard & Mouse > Mouse > Mouse Cursor > MouseCursor_ResizeEW**
+--- **Keyboard \& Mouse > Mouse > Mouse Cursor > MouseCursor\_ResizeEW**
 ---
 --- When hovering over a vertical border or a column.
 ---
 --- ---
 ---
---- **Keyboard & Mouse > Mouse**
+--- **Keyboard \& Mouse > Mouse**
 ---
 --- To refer to a mouse button, you may use named enums in your code e.g.
 --- MouseButton_Left, MouseButton_Right.
@@ -3627,13 +3627,13 @@
 --- @since 0.1
 --- @field MouseCursor_ResizeEW integer
 ---
---- **Keyboard & Mouse > Mouse > Mouse Cursor > MouseCursor_ResizeNESW**
+--- **Keyboard \& Mouse > Mouse > Mouse Cursor > MouseCursor\_ResizeNESW**
 ---
 --- When hovering over the bottom-left corner of a window.
 ---
 --- ---
 ---
---- **Keyboard & Mouse > Mouse**
+--- **Keyboard \& Mouse > Mouse**
 ---
 --- To refer to a mouse button, you may use named enums in your code e.g.
 --- MouseButton_Left, MouseButton_Right.
@@ -3650,13 +3650,13 @@
 --- @since 0.1
 --- @field MouseCursor_ResizeNESW integer
 ---
---- **Keyboard & Mouse > Mouse > Mouse Cursor > MouseCursor_ResizeNS**
+--- **Keyboard \& Mouse > Mouse > Mouse Cursor > MouseCursor\_ResizeNS**
 ---
 --- When hovering over a horizontal border.
 ---
 --- ---
 ---
---- **Keyboard & Mouse > Mouse**
+--- **Keyboard \& Mouse > Mouse**
 ---
 --- To refer to a mouse button, you may use named enums in your code e.g.
 --- MouseButton_Left, MouseButton_Right.
@@ -3673,13 +3673,13 @@
 --- @since 0.1
 --- @field MouseCursor_ResizeNS integer
 ---
---- **Keyboard & Mouse > Mouse > Mouse Cursor > MouseCursor_ResizeNWSE**
+--- **Keyboard \& Mouse > Mouse > Mouse Cursor > MouseCursor\_ResizeNWSE**
 ---
 --- When hovering over the bottom-right corner of a window.
 ---
 --- ---
 ---
---- **Keyboard & Mouse > Mouse**
+--- **Keyboard \& Mouse > Mouse**
 ---
 --- To refer to a mouse button, you may use named enums in your code e.g.
 --- MouseButton_Left, MouseButton_Right.
@@ -3696,13 +3696,13 @@
 --- @since 0.1
 --- @field MouseCursor_ResizeNWSE integer
 ---
---- **Keyboard & Mouse > Mouse > Mouse Cursor > MouseCursor_TextInput**
+--- **Keyboard \& Mouse > Mouse > Mouse Cursor > MouseCursor\_TextInput**
 ---
 --- When hovering over InputText, etc.
 ---
 --- ---
 ---
---- **Keyboard & Mouse > Mouse**
+--- **Keyboard \& Mouse > Mouse**
 ---
 --- To refer to a mouse button, you may use named enums in your code e.g.
 --- MouseButton_Left, MouseButton_Right.
@@ -3719,11 +3719,11 @@
 --- @since 0.1
 --- @field MouseCursor_TextInput integer
 ---
---- **Keyboard & Mouse > Shortcuts > Flags > InputFlags_None**
+--- **Keyboard \& Mouse > Shortcuts > Flags > InputFlags\_None**
 ---
 --- ---
 ---
---- **Keyboard & Mouse > Shortcuts**
+--- **Keyboard \& Mouse > Shortcuts**
 ---
 ---
 --- Key chords can combine a Key_* and a Mod_* value. For example: `Mod_Ctrl | Key_C`.
@@ -3751,13 +3751,13 @@
 --- @since 0.9.2
 --- @field InputFlags_None integer
 ---
---- **Keyboard & Mouse > Shortcuts > Flags > InputFlags_Repeat**
+--- **Keyboard \& Mouse > Shortcuts > Flags > InputFlags\_Repeat**
 ---
 --- Enable repeat. Return true on successive repeats.
 ---
 --- ---
 ---
---- **Keyboard & Mouse > Shortcuts**
+--- **Keyboard \& Mouse > Shortcuts**
 ---
 ---
 --- Key chords can combine a Key_* and a Mod_* value. For example: `Mod_Ctrl | Key_C`.
@@ -3785,13 +3785,13 @@
 --- @since 0.9.2
 --- @field InputFlags_Repeat integer
 ---
---- **Keyboard & Mouse > Shortcuts > Flags > InputFlags_RouteFromRootWindow**
+--- **Keyboard \& Mouse > Shortcuts > Flags > InputFlags\_RouteFromRootWindow**
 ---
 --- Option: route evaluated from the point of view of root window rather than current window.
 ---
 --- ---
 ---
---- **Keyboard & Mouse > Shortcuts**
+--- **Keyboard \& Mouse > Shortcuts**
 ---
 ---
 --- Key chords can combine a Key_* and a Mod_* value. For example: `Mod_Ctrl | Key_C`.
@@ -3819,7 +3819,7 @@
 --- @since 0.9.2
 --- @field InputFlags_RouteFromRootWindow integer
 ---
---- **Keyboard & Mouse > Shortcuts > Flags > InputFlags_RouteOverActive**
+--- **Keyboard \& Mouse > Shortcuts > Flags > InputFlags\_RouteOverActive**
 ---
 --- Global route: higher priority than active item. Unlikely you need to
 ---    use that: will interfere with every active items, e.g. Ctrl+A registered by
@@ -3828,7 +3828,7 @@
 ---
 --- ---
 ---
---- **Keyboard & Mouse > Shortcuts**
+--- **Keyboard \& Mouse > Shortcuts**
 ---
 ---
 --- Key chords can combine a Key_* and a Mod_* value. For example: `Mod_Ctrl | Key_C`.
@@ -3856,14 +3856,14 @@
 --- @since 0.9.2
 --- @field InputFlags_RouteOverActive integer
 ---
---- **Keyboard & Mouse > Shortcuts > Flags > InputFlags_RouteOverFocused**
+--- **Keyboard \& Mouse > Shortcuts > Flags > InputFlags\_RouteOverFocused**
 ---
 --- Global route: higher priority than focused route
 ---    (unless active item in focused route).
 ---
 --- ---
 ---
---- **Keyboard & Mouse > Shortcuts**
+--- **Keyboard \& Mouse > Shortcuts**
 ---
 ---
 --- Key chords can combine a Key_* and a Mod_* value. For example: `Mod_Ctrl | Key_C`.
@@ -3891,14 +3891,14 @@
 --- @since 0.9.2
 --- @field InputFlags_RouteOverFocused integer
 ---
---- **Keyboard & Mouse > Shortcuts > Flags > InputFlags_RouteUnlessBgFocused**
+--- **Keyboard \& Mouse > Shortcuts > Flags > InputFlags\_RouteUnlessBgFocused**
 ---
 --- Option: global route: will not be applied if underlying background/void is
 ---    focused (== no Dear ImGui windows are focused). Useful for overlay applications.
 ---
 --- ---
 ---
---- **Keyboard & Mouse > Shortcuts**
+--- **Keyboard \& Mouse > Shortcuts**
 ---
 ---
 --- Key chords can combine a Key_* and a Mod_* value. For example: `Mod_Ctrl | Key_C`.
@@ -3926,13 +3926,13 @@
 --- @since 0.9.2
 --- @field InputFlags_RouteUnlessBgFocused integer
 ---
---- **Keyboard & Mouse > Shortcuts > Flags > InputFlags_Tooltip**
+--- **Keyboard \& Mouse > Shortcuts > Flags > InputFlags\_Tooltip**
 ---
 --- Automatically display a tooltip when hovering item
 ---
 --- ---
 ---
---- **Keyboard & Mouse > Shortcuts**
+--- **Keyboard \& Mouse > Shortcuts**
 ---
 ---
 --- Key chords can combine a Key_* and a Mod_* value. For example: `Mod_Ctrl | Key_C`.
@@ -3960,22 +3960,22 @@
 --- @since 0.9.2
 --- @field InputFlags_Tooltip integer
 ---
---- **Keyboard & Mouse > Shortcuts > Flags > Routing policies > InputFlags_RouteActive**
+--- **Keyboard \& Mouse > Shortcuts > Flags > Routing policies > InputFlags\_RouteActive**
 ---
 --- Route to active item only.
 ---
 --- ---
 ---
---- **Keyboard & Mouse > Shortcuts > Flags > Routing policies**
+--- **Keyboard \& Mouse > Shortcuts > Flags > Routing policies**
 ---
 --- RouteGlobal+OverActive >> RouteActive or RouteFocused (if owner is active item)
----    >> RouteGlobal+OverFocused >> RouteFocused (if in focused window stack) >> RouteGlobal.
+---    \>> RouteGlobal+OverFocused >> RouteFocused (if in focused window stack) >> RouteGlobal.
 ---
 ---    Default policy is RouteFocused. Can select only one policy among all available.
 ---
 --- ---
 ---
---- **Keyboard & Mouse > Shortcuts**
+--- **Keyboard \& Mouse > Shortcuts**
 ---
 ---
 --- Key chords can combine a Key_* and a Mod_* value. For example: `Mod_Ctrl | Key_C`.
@@ -4003,22 +4003,22 @@
 --- @since 0.9.2
 --- @field InputFlags_RouteActive integer
 ---
---- **Keyboard & Mouse > Shortcuts > Flags > Routing policies > InputFlags_RouteAlways**
+--- **Keyboard \& Mouse > Shortcuts > Flags > Routing policies > InputFlags\_RouteAlways**
 ---
 --- Do not register route, poll keys directly.
 ---
 --- ---
 ---
---- **Keyboard & Mouse > Shortcuts > Flags > Routing policies**
+--- **Keyboard \& Mouse > Shortcuts > Flags > Routing policies**
 ---
 --- RouteGlobal+OverActive >> RouteActive or RouteFocused (if owner is active item)
----    >> RouteGlobal+OverFocused >> RouteFocused (if in focused window stack) >> RouteGlobal.
+---    \>> RouteGlobal+OverFocused >> RouteFocused (if in focused window stack) >> RouteGlobal.
 ---
 ---    Default policy is RouteFocused. Can select only one policy among all available.
 ---
 --- ---
 ---
---- **Keyboard & Mouse > Shortcuts**
+--- **Keyboard \& Mouse > Shortcuts**
 ---
 ---
 --- Key chords can combine a Key_* and a Mod_* value. For example: `Mod_Ctrl | Key_C`.
@@ -4046,23 +4046,23 @@
 --- @since 0.9.2
 --- @field InputFlags_RouteAlways integer
 ---
---- **Keyboard & Mouse > Shortcuts > Flags > Routing policies > InputFlags_RouteFocused**
+--- **Keyboard \& Mouse > Shortcuts > Flags > Routing policies > InputFlags\_RouteFocused**
 ---
 --- Route to windows in the focus stack. Deep-most focused window takes inputs.
 ---    Active item takes inputs over deep-most focused window.
 ---
 --- ---
 ---
---- **Keyboard & Mouse > Shortcuts > Flags > Routing policies**
+--- **Keyboard \& Mouse > Shortcuts > Flags > Routing policies**
 ---
 --- RouteGlobal+OverActive >> RouteActive or RouteFocused (if owner is active item)
----    >> RouteGlobal+OverFocused >> RouteFocused (if in focused window stack) >> RouteGlobal.
+---    \>> RouteGlobal+OverFocused >> RouteFocused (if in focused window stack) >> RouteGlobal.
 ---
 ---    Default policy is RouteFocused. Can select only one policy among all available.
 ---
 --- ---
 ---
---- **Keyboard & Mouse > Shortcuts**
+--- **Keyboard \& Mouse > Shortcuts**
 ---
 ---
 --- Key chords can combine a Key_* and a Mod_* value. For example: `Mod_Ctrl | Key_C`.
@@ -4090,22 +4090,22 @@
 --- @since 0.9.2
 --- @field InputFlags_RouteFocused integer
 ---
---- **Keyboard & Mouse > Shortcuts > Flags > Routing policies > InputFlags_RouteGlobal**
+--- **Keyboard \& Mouse > Shortcuts > Flags > Routing policies > InputFlags\_RouteGlobal**
 ---
 --- Global route (unless a focused window or active item registered the route).
 ---
 --- ---
 ---
---- **Keyboard & Mouse > Shortcuts > Flags > Routing policies**
+--- **Keyboard \& Mouse > Shortcuts > Flags > Routing policies**
 ---
 --- RouteGlobal+OverActive >> RouteActive or RouteFocused (if owner is active item)
----    >> RouteGlobal+OverFocused >> RouteFocused (if in focused window stack) >> RouteGlobal.
+---    \>> RouteGlobal+OverFocused >> RouteFocused (if in focused window stack) >> RouteGlobal.
 ---
 ---    Default policy is RouteFocused. Can select only one policy among all available.
 ---
 --- ---
 ---
---- **Keyboard & Mouse > Shortcuts**
+--- **Keyboard \& Mouse > Shortcuts**
 ---
 ---
 --- Key chords can combine a Key_* and a Mod_* value. For example: `Mod_Ctrl | Key_C`.
@@ -4133,11 +4133,11 @@
 --- @since 0.9.2
 --- @field InputFlags_RouteGlobal integer
 ---
---- **Popup & Modal > Flags > PopupFlags_None**
+--- **Popup \& Modal > Flags > PopupFlags\_None**
 ---
 --- ---
 ---
---- **Popup & Modal**
+--- **Popup \& Modal**
 ---
 --- - They block normal mouse hovering detection (and therefore most mouse
 ---   interactions) behind them.
@@ -4160,14 +4160,14 @@
 --- @since 0.1
 --- @field PopupFlags_None integer
 ---
---- **Popup & Modal > Flags > For BeginPopupContext* > PopupFlags_MouseButtonLeft**
+--- **Popup \& Modal > Flags > For BeginPopupContext\* > PopupFlags\_MouseButtonLeft**
 ---
 --- Open on Left Mouse release.
 ---    Guaranteed to always be == 0 (same as MouseButton_Left).
 ---
 --- ---
 ---
---- **Popup & Modal**
+--- **Popup \& Modal**
 ---
 --- - They block normal mouse hovering detection (and therefore most mouse
 ---   interactions) behind them.
@@ -4190,14 +4190,14 @@
 --- @since 0.1
 --- @field PopupFlags_MouseButtonLeft integer
 ---
---- **Popup & Modal > Flags > For BeginPopupContext* > PopupFlags_MouseButtonMiddle**
+--- **Popup \& Modal > Flags > For BeginPopupContext\* > PopupFlags\_MouseButtonMiddle**
 ---
 --- Open on Middle Mouse release.
 ---    Guaranteed to always be == 2 (same as MouseButton_Middle).
 ---
 --- ---
 ---
---- **Popup & Modal**
+--- **Popup \& Modal**
 ---
 --- - They block normal mouse hovering detection (and therefore most mouse
 ---   interactions) behind them.
@@ -4220,14 +4220,14 @@
 --- @since 0.1
 --- @field PopupFlags_MouseButtonMiddle integer
 ---
---- **Popup & Modal > Flags > For BeginPopupContext* > PopupFlags_MouseButtonRight**
+--- **Popup \& Modal > Flags > For BeginPopupContext\* > PopupFlags\_MouseButtonRight**
 ---
 --- Open on Right Mouse release.
 ---    Guaranteed to always be == 1 (same as MouseButton_Right).
 ---
 --- ---
 ---
---- **Popup & Modal**
+--- **Popup \& Modal**
 ---
 --- - They block normal mouse hovering detection (and therefore most mouse
 ---   interactions) behind them.
@@ -4250,14 +4250,14 @@
 --- @since 0.1
 --- @field PopupFlags_MouseButtonRight integer
 ---
---- **Popup & Modal > Flags > For BeginPopupContext* > PopupFlags_NoOpenOverItems**
+--- **Popup \& Modal > Flags > For BeginPopupContext\* > PopupFlags\_NoOpenOverItems**
 ---
 --- For BeginPopupContextWindow: don't return true when hovering items,
 ---    only when hovering empty space.
 ---
 --- ---
 ---
---- **Popup & Modal**
+--- **Popup \& Modal**
 ---
 --- - They block normal mouse hovering detection (and therefore most mouse
 ---   interactions) behind them.
@@ -4280,13 +4280,13 @@
 --- @since 0.1
 --- @field PopupFlags_NoOpenOverItems integer
 ---
---- **Popup & Modal > Flags > For IsPopupOpen > PopupFlags_AnyPopup**
+--- **Popup \& Modal > Flags > For IsPopupOpen > PopupFlags\_AnyPopup**
 ---
 --- PopupFlags_AnyPopupId | PopupFlags_AnyPopupLevel
 ---
 --- ---
 ---
---- **Popup & Modal**
+--- **Popup \& Modal**
 ---
 --- - They block normal mouse hovering detection (and therefore most mouse
 ---   interactions) behind them.
@@ -4309,13 +4309,13 @@
 --- @since 0.1
 --- @field PopupFlags_AnyPopup integer
 ---
---- **Popup & Modal > Flags > For IsPopupOpen > PopupFlags_AnyPopupId**
+--- **Popup \& Modal > Flags > For IsPopupOpen > PopupFlags\_AnyPopupId**
 ---
 --- Ignore the str_id parameter and test for any popup.
 ---
 --- ---
 ---
---- **Popup & Modal**
+--- **Popup \& Modal**
 ---
 --- - They block normal mouse hovering detection (and therefore most mouse
 ---   interactions) behind them.
@@ -4338,13 +4338,13 @@
 --- @since 0.1
 --- @field PopupFlags_AnyPopupId integer
 ---
---- **Popup & Modal > Flags > For IsPopupOpen > PopupFlags_AnyPopupLevel**
+--- **Popup \& Modal > Flags > For IsPopupOpen > PopupFlags\_AnyPopupLevel**
 ---
 --- Search/test at any level of the popup stack (default test in the current level).
 ---
 --- ---
 ---
---- **Popup & Modal**
+--- **Popup \& Modal**
 ---
 --- - They block normal mouse hovering detection (and therefore most mouse
 ---   interactions) behind them.
@@ -4367,13 +4367,13 @@
 --- @since 0.1
 --- @field PopupFlags_AnyPopupLevel integer
 ---
---- **Popup & Modal > Flags > For OpenPopup* and BeginPopupContext* > PopupFlags_NoOpenOverExistingPopup**
+--- **Popup \& Modal > Flags > For OpenPopup\* and BeginPopupContext\* > PopupFlags\_NoOpenOverExistingPopup**
 ---
 --- Don't open if there's already a popup at the same level of the popup stack.
 ---
 --- ---
 ---
---- **Popup & Modal**
+--- **Popup \& Modal**
 ---
 --- - They block normal mouse hovering detection (and therefore most mouse
 ---   interactions) behind them.
@@ -4396,14 +4396,14 @@
 --- @since 0.1
 --- @field PopupFlags_NoOpenOverExistingPopup integer
 ---
---- **Popup & Modal > Flags > For OpenPopup* and BeginPopupContext* > PopupFlags_NoReopen**
+--- **Popup \& Modal > Flags > For OpenPopup\* and BeginPopupContext\* > PopupFlags\_NoReopen**
 ---
 --- Don't reopen same popup if already open
 ---    (won't reposition, won't reinitialize navigation).
 ---
 --- ---
 ---
---- **Popup & Modal**
+--- **Popup \& Modal**
 ---
 --- - They block normal mouse hovering detection (and therefore most mouse
 ---   interactions) behind them.
@@ -4426,42 +4426,42 @@
 --- @since 0.9
 --- @field PopupFlags_NoReopen integer
 ---
---- **Style > Colors > Col_Border**
+--- **Style > Colors > Col\_Border**
 ---
 --- ---
 ---
 --- @since 0.1
 --- @field Col_Border integer
 ---
---- **Style > Colors > Col_BorderShadow**
+--- **Style > Colors > Col\_BorderShadow**
 ---
 --- ---
 ---
 --- @since 0.1
 --- @field Col_BorderShadow integer
 ---
---- **Style > Colors > Col_Button**
+--- **Style > Colors > Col\_Button**
 ---
 --- ---
 ---
 --- @since 0.1
 --- @field Col_Button integer
 ---
---- **Style > Colors > Col_ButtonActive**
+--- **Style > Colors > Col\_ButtonActive**
 ---
 --- ---
 ---
 --- @since 0.1
 --- @field Col_ButtonActive integer
 ---
---- **Style > Colors > Col_ButtonHovered**
+--- **Style > Colors > Col\_ButtonHovered**
 ---
 --- ---
 ---
 --- @since 0.1
 --- @field Col_ButtonHovered integer
 ---
---- **Style > Colors > Col_CheckMark**
+--- **Style > Colors > Col\_CheckMark**
 ---
 --- Checkbox tick and RadioButton circle
 ---
@@ -4470,7 +4470,7 @@
 --- @since 0.1
 --- @field Col_CheckMark integer
 ---
---- **Style > Colors > Col_ChildBg**
+--- **Style > Colors > Col\_ChildBg**
 ---
 --- Background of child windows.
 ---
@@ -4479,7 +4479,7 @@
 --- @since 0.1
 --- @field Col_ChildBg integer
 ---
---- **Style > Colors > Col_DockingEmptyBg**
+--- **Style > Colors > Col\_DockingEmptyBg**
 ---
 --- Background color for empty node (e.g. CentralNode with no window docked into it).
 ---
@@ -4488,7 +4488,7 @@
 --- @since 0.5
 --- @field Col_DockingEmptyBg integer
 ---
---- **Style > Colors > Col_DockingPreview**
+--- **Style > Colors > Col\_DockingPreview**
 ---
 --- Preview overlay color when about to docking something.
 ---
@@ -4497,7 +4497,7 @@
 --- @since 0.5
 --- @field Col_DockingPreview integer
 ---
---- **Style > Colors > Col_DragDropTarget**
+--- **Style > Colors > Col\_DragDropTarget**
 ---
 --- Rectangle highlighting a drop target
 ---
@@ -4506,7 +4506,7 @@
 --- @since 0.1
 --- @field Col_DragDropTarget integer
 ---
---- **Style > Colors > Col_FrameBg**
+--- **Style > Colors > Col\_FrameBg**
 ---
 --- Background of checkbox, radio button, plot, slider, text input.
 ---
@@ -4515,21 +4515,21 @@
 --- @since 0.1
 --- @field Col_FrameBg integer
 ---
---- **Style > Colors > Col_FrameBgActive**
+--- **Style > Colors > Col\_FrameBgActive**
 ---
 --- ---
 ---
 --- @since 0.1
 --- @field Col_FrameBgActive integer
 ---
---- **Style > Colors > Col_FrameBgHovered**
+--- **Style > Colors > Col\_FrameBgHovered**
 ---
 --- ---
 ---
 --- @since 0.1
 --- @field Col_FrameBgHovered integer
 ---
---- **Style > Colors > Col_Header**
+--- **Style > Colors > Col\_Header**
 ---
 --- Header* colors are used for CollapsingHeader, TreeNode, Selectable, MenuItem.
 ---
@@ -4538,28 +4538,28 @@
 --- @since 0.1
 --- @field Col_Header integer
 ---
---- **Style > Colors > Col_HeaderActive**
+--- **Style > Colors > Col\_HeaderActive**
 ---
 --- ---
 ---
 --- @since 0.1
 --- @field Col_HeaderActive integer
 ---
---- **Style > Colors > Col_HeaderHovered**
+--- **Style > Colors > Col\_HeaderHovered**
 ---
 --- ---
 ---
 --- @since 0.1
 --- @field Col_HeaderHovered integer
 ---
---- **Style > Colors > Col_MenuBarBg**
+--- **Style > Colors > Col\_MenuBarBg**
 ---
 --- ---
 ---
 --- @since 0.1
 --- @field Col_MenuBarBg integer
 ---
---- **Style > Colors > Col_ModalWindowDimBg**
+--- **Style > Colors > Col\_ModalWindowDimBg**
 ---
 --- Darken/colorize entire screen behind a modal window, when one is active.
 ---
@@ -4568,7 +4568,7 @@
 --- @since 0.1
 --- @field Col_ModalWindowDimBg integer
 ---
---- **Style > Colors > Col_NavHighlight**
+--- **Style > Colors > Col\_NavHighlight**
 ---
 --- Gamepad/keyboard: current highlighted item.
 ---
@@ -4577,7 +4577,7 @@
 --- @since 0.1
 --- @field Col_NavHighlight integer
 ---
---- **Style > Colors > Col_NavWindowingDimBg**
+--- **Style > Colors > Col\_NavWindowingDimBg**
 ---
 --- Darken/colorize entire screen behind the CTRL+TAB window list, when active.
 ---
@@ -4586,7 +4586,7 @@
 --- @since 0.1
 --- @field Col_NavWindowingDimBg integer
 ---
---- **Style > Colors > Col_NavWindowingHighlight**
+--- **Style > Colors > Col\_NavWindowingHighlight**
 ---
 --- Highlight window when using CTRL+TAB.
 ---
@@ -4595,35 +4595,35 @@
 --- @since 0.1
 --- @field Col_NavWindowingHighlight integer
 ---
---- **Style > Colors > Col_PlotHistogram**
+--- **Style > Colors > Col\_PlotHistogram**
 ---
 --- ---
 ---
 --- @since 0.1
 --- @field Col_PlotHistogram integer
 ---
---- **Style > Colors > Col_PlotHistogramHovered**
+--- **Style > Colors > Col\_PlotHistogramHovered**
 ---
 --- ---
 ---
 --- @since 0.1
 --- @field Col_PlotHistogramHovered integer
 ---
---- **Style > Colors > Col_PlotLines**
+--- **Style > Colors > Col\_PlotLines**
 ---
 --- ---
 ---
 --- @since 0.1
 --- @field Col_PlotLines integer
 ---
---- **Style > Colors > Col_PlotLinesHovered**
+--- **Style > Colors > Col\_PlotLinesHovered**
 ---
 --- ---
 ---
 --- @since 0.1
 --- @field Col_PlotLinesHovered integer
 ---
---- **Style > Colors > Col_PopupBg**
+--- **Style > Colors > Col\_PopupBg**
 ---
 --- Background of popups, menus, tooltips windows.
 ---
@@ -4632,7 +4632,7 @@
 --- @since 0.1
 --- @field Col_PopupBg integer
 ---
---- **Style > Colors > Col_ResizeGrip**
+--- **Style > Colors > Col\_ResizeGrip**
 ---
 --- Resize grip in lower-right and lower-left corners of windows.
 ---
@@ -4641,84 +4641,84 @@
 --- @since 0.1
 --- @field Col_ResizeGrip integer
 ---
---- **Style > Colors > Col_ResizeGripActive**
+--- **Style > Colors > Col\_ResizeGripActive**
 ---
 --- ---
 ---
 --- @since 0.1
 --- @field Col_ResizeGripActive integer
 ---
---- **Style > Colors > Col_ResizeGripHovered**
+--- **Style > Colors > Col\_ResizeGripHovered**
 ---
 --- ---
 ---
 --- @since 0.1
 --- @field Col_ResizeGripHovered integer
 ---
---- **Style > Colors > Col_ScrollbarBg**
+--- **Style > Colors > Col\_ScrollbarBg**
 ---
 --- ---
 ---
 --- @since 0.1
 --- @field Col_ScrollbarBg integer
 ---
---- **Style > Colors > Col_ScrollbarGrab**
+--- **Style > Colors > Col\_ScrollbarGrab**
 ---
 --- ---
 ---
 --- @since 0.1
 --- @field Col_ScrollbarGrab integer
 ---
---- **Style > Colors > Col_ScrollbarGrabActive**
+--- **Style > Colors > Col\_ScrollbarGrabActive**
 ---
 --- ---
 ---
 --- @since 0.1
 --- @field Col_ScrollbarGrabActive integer
 ---
---- **Style > Colors > Col_ScrollbarGrabHovered**
+--- **Style > Colors > Col\_ScrollbarGrabHovered**
 ---
 --- ---
 ---
 --- @since 0.1
 --- @field Col_ScrollbarGrabHovered integer
 ---
---- **Style > Colors > Col_Separator**
+--- **Style > Colors > Col\_Separator**
 ---
 --- ---
 ---
 --- @since 0.1
 --- @field Col_Separator integer
 ---
---- **Style > Colors > Col_SeparatorActive**
+--- **Style > Colors > Col\_SeparatorActive**
 ---
 --- ---
 ---
 --- @since 0.1
 --- @field Col_SeparatorActive integer
 ---
---- **Style > Colors > Col_SeparatorHovered**
+--- **Style > Colors > Col\_SeparatorHovered**
 ---
 --- ---
 ---
 --- @since 0.1
 --- @field Col_SeparatorHovered integer
 ---
---- **Style > Colors > Col_SliderGrab**
+--- **Style > Colors > Col\_SliderGrab**
 ---
 --- ---
 ---
 --- @since 0.1
 --- @field Col_SliderGrab integer
 ---
---- **Style > Colors > Col_SliderGrabActive**
+--- **Style > Colors > Col\_SliderGrabActive**
 ---
 --- ---
 ---
 --- @since 0.1
 --- @field Col_SliderGrabActive integer
 ---
---- **Style > Colors > Col_Tab**
+--- **Style > Colors > Col\_Tab**
 ---
 --- Tab background, when tab-bar is focused & tab is unselected
 ---
@@ -4727,7 +4727,7 @@
 --- @since 0.1
 --- @field Col_Tab integer
 ---
---- **Style > Colors > Col_TabDimmed**
+--- **Style > Colors > Col\_TabDimmed**
 ---
 --- Tab background, when tab-bar is unfocused & tab is unselected
 ---
@@ -4736,7 +4736,7 @@
 --- @since 0.9.2
 --- @field Col_TabDimmed integer
 ---
---- **Style > Colors > Col_TabDimmedSelected**
+--- **Style > Colors > Col\_TabDimmedSelected**
 ---
 --- Tab background, when tab-bar is unfocused & tab is selected
 ---
@@ -4745,7 +4745,7 @@
 --- @since 0.9.2
 --- @field Col_TabDimmedSelected integer
 ---
---- **Style > Colors > Col_TabDimmedSelectedOverline**
+--- **Style > Colors > Col\_TabDimmedSelectedOverline**
 ---
 --- Horizontal overline, when tab-bar is unfocused & tab is selected
 ---
@@ -4754,7 +4754,7 @@
 --- @since 0.9.2
 --- @field Col_TabDimmedSelectedOverline integer
 ---
---- **Style > Colors > Col_TabHovered**
+--- **Style > Colors > Col\_TabHovered**
 ---
 --- Tab background, when hovered
 ---
@@ -4763,7 +4763,7 @@
 --- @since 0.1
 --- @field Col_TabHovered integer
 ---
---- **Style > Colors > Col_TabSelected**
+--- **Style > Colors > Col\_TabSelected**
 ---
 --- Tab background, when tab-bar is focused & tab is selected
 ---
@@ -4772,7 +4772,7 @@
 --- @since 0.9.2
 --- @field Col_TabSelected integer
 ---
---- **Style > Colors > Col_TabSelectedOverline**
+--- **Style > Colors > Col\_TabSelectedOverline**
 ---
 --- Tab horizontal overline, when tab-bar is focused & tab is selected
 ---
@@ -4781,7 +4781,7 @@
 --- @since 0.9.2
 --- @field Col_TabSelectedOverline integer
 ---
---- **Style > Colors > Col_TableBorderLight**
+--- **Style > Colors > Col\_TableBorderLight**
 ---
 --- Table inner borders (prefer using Alpha=1.0 here).
 ---
@@ -4790,7 +4790,7 @@
 --- @since 0.1
 --- @field Col_TableBorderLight integer
 ---
---- **Style > Colors > Col_TableBorderStrong**
+--- **Style > Colors > Col\_TableBorderStrong**
 ---
 --- Table outer and header borders (prefer using Alpha=1.0 here).
 ---
@@ -4799,7 +4799,7 @@
 --- @since 0.1
 --- @field Col_TableBorderStrong integer
 ---
---- **Style > Colors > Col_TableHeaderBg**
+--- **Style > Colors > Col\_TableHeaderBg**
 ---
 --- Table header background.
 ---
@@ -4808,7 +4808,7 @@
 --- @since 0.1
 --- @field Col_TableHeaderBg integer
 ---
---- **Style > Colors > Col_TableRowBg**
+--- **Style > Colors > Col\_TableRowBg**
 ---
 --- Table row background (even rows).
 ---
@@ -4817,7 +4817,7 @@
 --- @since 0.1
 --- @field Col_TableRowBg integer
 ---
---- **Style > Colors > Col_TableRowBgAlt**
+--- **Style > Colors > Col\_TableRowBgAlt**
 ---
 --- Table row background (odd rows).
 ---
@@ -4826,28 +4826,28 @@
 --- @since 0.1
 --- @field Col_TableRowBgAlt integer
 ---
---- **Style > Colors > Col_Text**
+--- **Style > Colors > Col\_Text**
 ---
 --- ---
 ---
 --- @since 0.1
 --- @field Col_Text integer
 ---
---- **Style > Colors > Col_TextDisabled**
+--- **Style > Colors > Col\_TextDisabled**
 ---
 --- ---
 ---
 --- @since 0.1
 --- @field Col_TextDisabled integer
 ---
---- **Style > Colors > Col_TextSelectedBg**
+--- **Style > Colors > Col\_TextSelectedBg**
 ---
 --- ---
 ---
 --- @since 0.1
 --- @field Col_TextSelectedBg integer
 ---
---- **Style > Colors > Col_TitleBg**
+--- **Style > Colors > Col\_TitleBg**
 ---
 --- Title bar
 ---
@@ -4856,7 +4856,7 @@
 --- @since 0.1
 --- @field Col_TitleBg integer
 ---
---- **Style > Colors > Col_TitleBgActive**
+--- **Style > Colors > Col\_TitleBgActive**
 ---
 --- Title bar when focused
 ---
@@ -4865,7 +4865,7 @@
 --- @since 0.1
 --- @field Col_TitleBgActive integer
 ---
---- **Style > Colors > Col_TitleBgCollapsed**
+--- **Style > Colors > Col\_TitleBgCollapsed**
 ---
 --- Title bar when collapsed
 ---
@@ -4874,7 +4874,7 @@
 --- @since 0.1
 --- @field Col_TitleBgCollapsed integer
 ---
---- **Style > Colors > Col_WindowBg**
+--- **Style > Colors > Col\_WindowBg**
 ---
 --- Background of normal windows. See also WindowFlags_NoBackground.
 ---
@@ -4883,7 +4883,7 @@
 --- @since 0.1
 --- @field Col_WindowBg integer
 ---
---- **Style > Variables > StyleVar_Alpha**
+--- **Style > Variables > StyleVar\_Alpha**
 ---
 --- Global alpha applies to everything in Dear ImGui.
 ---
@@ -4892,7 +4892,7 @@
 --- @since 0.1
 --- @field StyleVar_Alpha integer
 ---
---- **Style > Variables > StyleVar_ButtonTextAlign**
+--- **Style > Variables > StyleVar\_ButtonTextAlign**
 ---
 --- Alignment of button text when button is larger than text.
 ---    Defaults to (0.5, 0.5) (centered).
@@ -4902,7 +4902,7 @@
 --- @since 0.1
 --- @field StyleVar_ButtonTextAlign integer
 ---
---- **Style > Variables > StyleVar_CellPadding**
+--- **Style > Variables > StyleVar\_CellPadding**
 ---
 --- Padding within a table cell.
 ---    CellPadding.x is locked for entire table.
@@ -4913,7 +4913,7 @@
 --- @since 0.1
 --- @field StyleVar_CellPadding integer
 ---
---- **Style > Variables > StyleVar_ChildBorderSize**
+--- **Style > Variables > StyleVar\_ChildBorderSize**
 ---
 --- Thickness of border around child windows. Generally set to 0.0 or 1.0.
 ---    (Other values are not well tested and more CPU/GPU costly).
@@ -4923,7 +4923,7 @@
 --- @since 0.1
 --- @field StyleVar_ChildBorderSize integer
 ---
---- **Style > Variables > StyleVar_ChildRounding**
+--- **Style > Variables > StyleVar\_ChildRounding**
 ---
 --- Radius of child window corners rounding. Set to 0.0 to have rectangular windows.
 ---
@@ -4932,7 +4932,7 @@
 --- @since 0.1
 --- @field StyleVar_ChildRounding integer
 ---
---- **Style > Variables > StyleVar_DisabledAlpha**
+--- **Style > Variables > StyleVar\_DisabledAlpha**
 ---
 --- Additional alpha multiplier applied by BeginDisabled.
 ---   Multiply over current value of Alpha.
@@ -4942,7 +4942,7 @@
 --- @since 0.5.5
 --- @field StyleVar_DisabledAlpha integer
 ---
---- **Style > Variables > StyleVar_FrameBorderSize**
+--- **Style > Variables > StyleVar\_FrameBorderSize**
 ---
 --- Thickness of border around frames. Generally set to 0.0 or 1.0.
 ---    (Other values are not well tested and more CPU/GPU costly).
@@ -4952,7 +4952,7 @@
 --- @since 0.1
 --- @field StyleVar_FrameBorderSize integer
 ---
---- **Style > Variables > StyleVar_FramePadding**
+--- **Style > Variables > StyleVar\_FramePadding**
 ---
 --- Padding within a framed rectangle (used by most widgets).
 ---
@@ -4961,7 +4961,7 @@
 --- @since 0.1
 --- @field StyleVar_FramePadding integer
 ---
---- **Style > Variables > StyleVar_FrameRounding**
+--- **Style > Variables > StyleVar\_FrameRounding**
 ---
 --- Radius of frame corners rounding.
 ---    Set to 0.0 to have rectangular frame (used by most widgets).
@@ -4971,7 +4971,7 @@
 --- @since 0.1
 --- @field StyleVar_FrameRounding integer
 ---
---- **Style > Variables > StyleVar_GrabMinSize**
+--- **Style > Variables > StyleVar\_GrabMinSize**
 ---
 --- Minimum width/height of a grab box for slider/scrollbar.
 ---
@@ -4980,7 +4980,7 @@
 --- @since 0.1
 --- @field StyleVar_GrabMinSize integer
 ---
---- **Style > Variables > StyleVar_GrabRounding**
+--- **Style > Variables > StyleVar\_GrabRounding**
 ---
 --- Radius of grabs corners rounding. Set to 0.0 to have rectangular slider grabs.
 ---
@@ -4989,7 +4989,7 @@
 --- @since 0.1
 --- @field StyleVar_GrabRounding integer
 ---
---- **Style > Variables > StyleVar_IndentSpacing**
+--- **Style > Variables > StyleVar\_IndentSpacing**
 ---
 --- Horizontal indentation when e.g. entering a tree node.
 ---    Generally == (GetFontSize + StyleVar_FramePadding.x*2).
@@ -4999,7 +4999,7 @@
 --- @since 0.1
 --- @field StyleVar_IndentSpacing integer
 ---
---- **Style > Variables > StyleVar_ItemInnerSpacing**
+--- **Style > Variables > StyleVar\_ItemInnerSpacing**
 ---
 --- Horizontal and vertical spacing between within elements of a composed widget
 ---    (e.g. a slider and its label).
@@ -5009,7 +5009,7 @@
 --- @since 0.1
 --- @field StyleVar_ItemInnerSpacing integer
 ---
---- **Style > Variables > StyleVar_ItemSpacing**
+--- **Style > Variables > StyleVar\_ItemSpacing**
 ---
 --- Horizontal and vertical spacing between widgets/lines.
 ---
@@ -5018,7 +5018,7 @@
 --- @since 0.1
 --- @field StyleVar_ItemSpacing integer
 ---
---- **Style > Variables > StyleVar_PopupBorderSize**
+--- **Style > Variables > StyleVar\_PopupBorderSize**
 ---
 --- Thickness of border around popup/tooltip windows. Generally set to 0.0 or 1.0.
 ---    (Other values are not well tested and more CPU/GPU costly).
@@ -5028,7 +5028,7 @@
 --- @since 0.1
 --- @field StyleVar_PopupBorderSize integer
 ---
---- **Style > Variables > StyleVar_PopupRounding**
+--- **Style > Variables > StyleVar\_PopupRounding**
 ---
 --- Radius of popup window corners rounding.
 ---    (Note that tooltip windows use StyleVar_WindowRounding.)
@@ -5038,7 +5038,7 @@
 --- @since 0.1
 --- @field StyleVar_PopupRounding integer
 ---
---- **Style > Variables > StyleVar_ScrollbarRounding**
+--- **Style > Variables > StyleVar\_ScrollbarRounding**
 ---
 --- Radius of grab corners for scrollbar.
 ---
@@ -5047,7 +5047,7 @@
 --- @since 0.1
 --- @field StyleVar_ScrollbarRounding integer
 ---
---- **Style > Variables > StyleVar_ScrollbarSize**
+--- **Style > Variables > StyleVar\_ScrollbarSize**
 ---
 --- Width of the vertical scrollbar, Height of the horizontal scrollbar.
 ---
@@ -5056,7 +5056,7 @@
 --- @since 0.1
 --- @field StyleVar_ScrollbarSize integer
 ---
---- **Style > Variables > StyleVar_SelectableTextAlign**
+--- **Style > Variables > StyleVar\_SelectableTextAlign**
 ---
 --- Alignment of selectable text. Defaults to (0.0, 0.0) (top-left aligned).
 ---    It's generally important to keep this left-aligned if you want to lay
@@ -5067,7 +5067,7 @@
 --- @since 0.1
 --- @field StyleVar_SelectableTextAlign integer
 ---
---- **Style > Variables > StyleVar_SeparatorTextAlign**
+--- **Style > Variables > StyleVar\_SeparatorTextAlign**
 ---
 --- Alignment of text within the separator.
 --- Defaults to (0.0, 0.5) (left aligned, center).
@@ -5077,7 +5077,7 @@
 --- @since 0.8.4
 --- @field StyleVar_SeparatorTextAlign integer
 ---
---- **Style > Variables > StyleVar_SeparatorTextBorderSize**
+--- **Style > Variables > StyleVar\_SeparatorTextBorderSize**
 ---
 --- Thickness of border in SeparatorText()
 ---
@@ -5086,7 +5086,7 @@
 --- @since 0.8.4
 --- @field StyleVar_SeparatorTextBorderSize integer
 ---
---- **Style > Variables > StyleVar_SeparatorTextPadding**
+--- **Style > Variables > StyleVar\_SeparatorTextPadding**
 ---
 --- Horizontal offset of text from each edge of the separator + spacing on other
 --- axis. Generally small values. .y is recommended to be == StyleVar_FramePadding.y.
@@ -5096,7 +5096,7 @@
 --- @since 0.8.4
 --- @field StyleVar_SeparatorTextPadding integer
 ---
---- **Style > Variables > StyleVar_TabBarBorderSize**
+--- **Style > Variables > StyleVar\_TabBarBorderSize**
 ---
 --- Thickness of tab-bar separator, which takes on the tab active color to denote focus.
 ---
@@ -5105,7 +5105,7 @@
 --- @since 0.9
 --- @field StyleVar_TabBarBorderSize integer
 ---
---- **Style > Variables > StyleVar_TabBorderSize**
+--- **Style > Variables > StyleVar\_TabBorderSize**
 ---
 --- Thickness of border around tabs.
 ---
@@ -5114,7 +5114,7 @@
 --- @since 0.9
 --- @field StyleVar_TabBorderSize integer
 ---
---- **Style > Variables > StyleVar_TabRounding**
+--- **Style > Variables > StyleVar\_TabRounding**
 ---
 --- Radius of upper corners of a tab. Set to 0.0 to have rectangular tabs.
 ---
@@ -5123,7 +5123,7 @@
 --- @since 0.1
 --- @field StyleVar_TabRounding integer
 ---
---- **Style > Variables > StyleVar_TableAngledHeadersAngle**
+--- **Style > Variables > StyleVar\_TableAngledHeadersAngle**
 ---
 --- Angle of angled headers (supported values range from -50.0 degrees to +50.0 degrees).
 ---
@@ -5132,7 +5132,7 @@
 --- @since 0.9
 --- @field StyleVar_TableAngledHeadersAngle integer
 ---
---- **Style > Variables > StyleVar_TableAngledHeadersTextAlign**
+--- **Style > Variables > StyleVar\_TableAngledHeadersTextAlign**
 ---
 --- Alignment of angled headers within the cell
 ---
@@ -5141,7 +5141,7 @@
 --- @since 0.9.1
 --- @field StyleVar_TableAngledHeadersTextAlign integer
 ---
---- **Style > Variables > StyleVar_WindowBorderSize**
+--- **Style > Variables > StyleVar\_WindowBorderSize**
 ---
 --- Thickness of border around windows. Generally set to 0.0 or 1.0.
 ---   (Other values are not well tested and more CPU/GPU costly).
@@ -5151,7 +5151,7 @@
 --- @since 0.1
 --- @field StyleVar_WindowBorderSize integer
 ---
---- **Style > Variables > StyleVar_WindowMinSize**
+--- **Style > Variables > StyleVar\_WindowMinSize**
 ---
 --- Minimum window size. This is a global setting.
 ---   If you want to constrain individual windows, use SetNextWindowSizeConstraints.
@@ -5161,7 +5161,7 @@
 --- @since 0.1
 --- @field StyleVar_WindowMinSize integer
 ---
---- **Style > Variables > StyleVar_WindowPadding**
+--- **Style > Variables > StyleVar\_WindowPadding**
 ---
 --- Padding within a window.
 ---
@@ -5170,7 +5170,7 @@
 --- @since 0.1
 --- @field StyleVar_WindowPadding integer
 ---
---- **Style > Variables > StyleVar_WindowRounding**
+--- **Style > Variables > StyleVar\_WindowRounding**
 ---
 --- Radius of window corners rounding. Set to 0.0 to have rectangular windows.
 ---   Large values tend to lead to variety of artifacts and are not recommended.
@@ -5180,7 +5180,7 @@
 --- @since 0.1
 --- @field StyleVar_WindowRounding integer
 ---
---- **Style > Variables > StyleVar_WindowTitleAlign**
+--- **Style > Variables > StyleVar\_WindowTitleAlign**
 ---
 --- Alignment for title bar text.
 ---    Defaults to (0.0,0.5) for left-aligned,vertically centered.
@@ -5190,7 +5190,7 @@
 --- @since 0.1
 --- @field StyleVar_WindowTitleAlign integer
 ---
---- **Tab Bar > TabBarFlags_AutoSelectNewTabs**
+--- **Tab Bar > TabBarFlags\_AutoSelectNewTabs**
 ---
 --- Automatically select new tabs when they appear.
 ---
@@ -5199,7 +5199,7 @@
 --- @since 0.1
 --- @field TabBarFlags_AutoSelectNewTabs integer
 ---
---- **Tab Bar > TabBarFlags_DrawSelectedOverline**
+--- **Tab Bar > TabBarFlags\_DrawSelectedOverline**
 ---
 --- Draw selected overline markers over selected tab
 ---
@@ -5208,7 +5208,7 @@
 --- @since 0.9.2
 --- @field TabBarFlags_DrawSelectedOverline integer
 ---
---- **Tab Bar > TabBarFlags_FittingPolicyResizeDown**
+--- **Tab Bar > TabBarFlags\_FittingPolicyResizeDown**
 ---
 --- Resize tabs when they don't fit.
 ---
@@ -5217,7 +5217,7 @@
 --- @since 0.1
 --- @field TabBarFlags_FittingPolicyResizeDown integer
 ---
---- **Tab Bar > TabBarFlags_FittingPolicyScroll**
+--- **Tab Bar > TabBarFlags\_FittingPolicyScroll**
 ---
 --- Add scroll buttons when tabs don't fit.
 ---
@@ -5226,7 +5226,7 @@
 --- @since 0.1
 --- @field TabBarFlags_FittingPolicyScroll integer
 ---
---- **Tab Bar > TabBarFlags_NoCloseWithMiddleMouseButton**
+--- **Tab Bar > TabBarFlags\_NoCloseWithMiddleMouseButton**
 ---
 --- Disable behavior of closing tabs (that are submitted with p_open != nil)
 ---    with middle mouse button. You may handle this behavior manually on user's
@@ -5237,7 +5237,7 @@
 --- @since 0.1
 --- @field TabBarFlags_NoCloseWithMiddleMouseButton integer
 ---
---- **Tab Bar > TabBarFlags_NoTabListScrollingButtons**
+--- **Tab Bar > TabBarFlags\_NoTabListScrollingButtons**
 ---
 --- Disable scrolling buttons (apply when fitting policy is
 ---    TabBarFlags_FittingPolicyScroll).
@@ -5247,7 +5247,7 @@
 --- @since 0.1
 --- @field TabBarFlags_NoTabListScrollingButtons integer
 ---
---- **Tab Bar > TabBarFlags_NoTooltip**
+--- **Tab Bar > TabBarFlags\_NoTooltip**
 ---
 --- Disable tooltips when hovering a tab.
 ---
@@ -5256,14 +5256,14 @@
 --- @since 0.1
 --- @field TabBarFlags_NoTooltip integer
 ---
---- **Tab Bar > TabBarFlags_None**
+--- **Tab Bar > TabBarFlags\_None**
 ---
 --- ---
 ---
 --- @since 0.1
 --- @field TabBarFlags_None integer
 ---
---- **Tab Bar > TabBarFlags_Reorderable**
+--- **Tab Bar > TabBarFlags\_Reorderable**
 ---
 --- Allow manually dragging tabs to re-order them + New tabs are appended at
 ---    the end of list.
@@ -5273,7 +5273,7 @@
 --- @since 0.1
 --- @field TabBarFlags_Reorderable integer
 ---
---- **Tab Bar > TabBarFlags_TabListPopupButton**
+--- **Tab Bar > TabBarFlags\_TabListPopupButton**
 ---
 --- Disable buttons to open the tab list popup.
 ---
@@ -5282,7 +5282,7 @@
 --- @since 0.1
 --- @field TabBarFlags_TabListPopupButton integer
 ---
---- **Tab Bar > Tab Item > TabItemFlags_Leading**
+--- **Tab Bar > Tab Item > TabItemFlags\_Leading**
 ---
 --- Enforce the tab position to the left of the tab bar (after the tab list popup button).
 ---
@@ -5291,7 +5291,7 @@
 --- @since 0.1
 --- @field TabItemFlags_Leading integer
 ---
---- **Tab Bar > Tab Item > TabItemFlags_NoAssumedClosure**
+--- **Tab Bar > Tab Item > TabItemFlags\_NoAssumedClosure**
 ---
 --- Tab is selected when trying to close + closure is not immediately assumed
 ---    (will wait for user to stop submitting the tab).
@@ -5303,7 +5303,7 @@
 --- @since 0.9
 --- @field TabItemFlags_NoAssumedClosure integer
 ---
---- **Tab Bar > Tab Item > TabItemFlags_NoCloseWithMiddleMouseButton**
+--- **Tab Bar > Tab Item > TabItemFlags\_NoCloseWithMiddleMouseButton**
 ---
 --- Disable behavior of closing tabs (that are submitted with p_open != nil) with
 ---    middle mouse button. You can still repro this behavior on user's side with
@@ -5314,7 +5314,7 @@
 --- @since 0.1
 --- @field TabItemFlags_NoCloseWithMiddleMouseButton integer
 ---
---- **Tab Bar > Tab Item > TabItemFlags_NoPushId**
+--- **Tab Bar > Tab Item > TabItemFlags\_NoPushId**
 ---
 --- Don't call PushID()/PopID() on BeginTabItem/EndTabItem.
 ---
@@ -5323,7 +5323,7 @@
 --- @since 0.1
 --- @field TabItemFlags_NoPushId integer
 ---
---- **Tab Bar > Tab Item > TabItemFlags_NoReorder**
+--- **Tab Bar > Tab Item > TabItemFlags\_NoReorder**
 ---
 --- Disable reordering this tab or having another tab cross over this tab.
 ---
@@ -5332,7 +5332,7 @@
 --- @since 0.1
 --- @field TabItemFlags_NoReorder integer
 ---
---- **Tab Bar > Tab Item > TabItemFlags_NoTooltip**
+--- **Tab Bar > Tab Item > TabItemFlags\_NoTooltip**
 ---
 --- Disable tooltip for the given tab.
 ---
@@ -5341,14 +5341,14 @@
 --- @since 0.1
 --- @field TabItemFlags_NoTooltip integer
 ---
---- **Tab Bar > Tab Item > TabItemFlags_None**
+--- **Tab Bar > Tab Item > TabItemFlags\_None**
 ---
 --- ---
 ---
 --- @since 0.1
 --- @field TabItemFlags_None integer
 ---
---- **Tab Bar > Tab Item > TabItemFlags_SetSelected**
+--- **Tab Bar > Tab Item > TabItemFlags\_SetSelected**
 ---
 --- Trigger flag to programmatically make the tab selected when calling BeginTabItem.
 ---
@@ -5357,7 +5357,7 @@
 --- @since 0.1
 --- @field TabItemFlags_SetSelected integer
 ---
---- **Tab Bar > Tab Item > TabItemFlags_Trailing**
+--- **Tab Bar > Tab Item > TabItemFlags\_Trailing**
 ---
 --- Enforce the tab position to the right of the tab bar (before the scrolling buttons).
 ---
@@ -5366,7 +5366,7 @@
 --- @since 0.1
 --- @field TabItemFlags_Trailing integer
 ---
---- **Tab Bar > Tab Item > TabItemFlags_UnsavedDocument**
+--- **Tab Bar > Tab Item > TabItemFlags\_UnsavedDocument**
 ---
 --- Display a dot next to the title + set TabItemFlags_NoAssumedClosure.
 ---
@@ -5375,7 +5375,7 @@
 --- @since 0.1
 --- @field TabItemFlags_UnsavedDocument integer
 ---
---- **Table > TableRowFlags_Headers**
+--- **Table > TableRowFlags\_Headers**
 ---
 --- Identify header row (set default background color + width of its contents
 ---    accounted different for auto column width).
@@ -5417,7 +5417,7 @@
 --- @since 0.1
 --- @field TableRowFlags_Headers integer
 ---
---- **Table > TableRowFlags_None**
+--- **Table > TableRowFlags\_None**
 ---
 --- For TableNextRow.
 ---
@@ -5458,7 +5458,7 @@
 --- @since 0.1
 --- @field TableRowFlags_None integer
 ---
---- **Table > Background > TableBgTarget_CellBg**
+--- **Table > Background > TableBgTarget\_CellBg**
 ---
 --- Set cell background color (top-most color).
 ---
@@ -5518,7 +5518,7 @@
 --- @since 0.1
 --- @field TableBgTarget_CellBg integer
 ---
---- **Table > Background > TableBgTarget_None**
+--- **Table > Background > TableBgTarget\_None**
 ---
 --- ---
 ---
@@ -5576,7 +5576,7 @@
 --- @since 0.1
 --- @field TableBgTarget_None integer
 ---
---- **Table > Background > TableBgTarget_RowBg0**
+--- **Table > Background > TableBgTarget\_RowBg0**
 ---
 --- Set row background color 0 (generally used for background,
 ---    automatically set when TableFlags_RowBg is used).
@@ -5637,7 +5637,7 @@
 --- @since 0.1
 --- @field TableBgTarget_RowBg0 integer
 ---
---- **Table > Background > TableBgTarget_RowBg1**
+--- **Table > Background > TableBgTarget\_RowBg1**
 ---
 --- Set row background color 1 (generally used for selection marking).
 ---
@@ -5697,17 +5697,17 @@
 --- @since 0.1
 --- @field TableBgTarget_RowBg1 integer
 ---
---- **Table > Header & Columns > Column Flags > TableColumnFlags_None**
+--- **Table > Header \& Columns > Column Flags > TableColumnFlags\_None**
 ---
 --- ---
 ---
---- **Table > Header & Columns > Column Flags**
+--- **Table > Header \& Columns > Column Flags**
 ---
 --- For TableSetupColumn.
 ---
 --- ---
 ---
---- **Table > Header & Columns**
+--- **Table > Header \& Columns**
 ---
 --- Use TableSetupColumn() to specify label, resizing policy, default
 --- width/weight, id, various other flags etc.
@@ -5761,20 +5761,20 @@
 --- @since 0.1
 --- @field TableColumnFlags_None integer
 ---
---- **Table > Header & Columns > Column Flags > Input Configuration > TableColumnFlags_AngledHeader**
+--- **Table > Header \& Columns > Column Flags > Input Configuration > TableColumnFlags\_AngledHeader**
 ---
 --- TableHeadersRow will submit an angled header row for this column.
 ---    Note this will add an extra row.
 ---
 --- ---
 ---
---- **Table > Header & Columns > Column Flags**
+--- **Table > Header \& Columns > Column Flags**
 ---
 --- For TableSetupColumn.
 ---
 --- ---
 ---
---- **Table > Header & Columns**
+--- **Table > Header \& Columns**
 ---
 --- Use TableSetupColumn() to specify label, resizing policy, default
 --- width/weight, id, various other flags etc.
@@ -5828,19 +5828,19 @@
 --- @since 0.9
 --- @field TableColumnFlags_AngledHeader integer
 ---
---- **Table > Header & Columns > Column Flags > Input Configuration > TableColumnFlags_DefaultHide**
+--- **Table > Header \& Columns > Column Flags > Input Configuration > TableColumnFlags\_DefaultHide**
 ---
 --- Default as a hidden/disabled column.
 ---
 --- ---
 ---
---- **Table > Header & Columns > Column Flags**
+--- **Table > Header \& Columns > Column Flags**
 ---
 --- For TableSetupColumn.
 ---
 --- ---
 ---
---- **Table > Header & Columns**
+--- **Table > Header \& Columns**
 ---
 --- Use TableSetupColumn() to specify label, resizing policy, default
 --- width/weight, id, various other flags etc.
@@ -5894,19 +5894,19 @@
 --- @since 0.1
 --- @field TableColumnFlags_DefaultHide integer
 ---
---- **Table > Header & Columns > Column Flags > Input Configuration > TableColumnFlags_DefaultSort**
+--- **Table > Header \& Columns > Column Flags > Input Configuration > TableColumnFlags\_DefaultSort**
 ---
 --- Default as a sorting column.
 ---
 --- ---
 ---
---- **Table > Header & Columns > Column Flags**
+--- **Table > Header \& Columns > Column Flags**
 ---
 --- For TableSetupColumn.
 ---
 --- ---
 ---
---- **Table > Header & Columns**
+--- **Table > Header \& Columns**
 ---
 --- Use TableSetupColumn() to specify label, resizing policy, default
 --- width/weight, id, various other flags etc.
@@ -5960,20 +5960,20 @@
 --- @since 0.1
 --- @field TableColumnFlags_DefaultSort integer
 ---
---- **Table > Header & Columns > Column Flags > Input Configuration > TableColumnFlags_Disabled**
+--- **Table > Header \& Columns > Column Flags > Input Configuration > TableColumnFlags\_Disabled**
 ---
 --- Overriding/master disable flag: hide column, won't show in context menu
 ---    (unlike calling TableSetColumnEnabled which manipulates the user accessible state).
 ---
 --- ---
 ---
---- **Table > Header & Columns > Column Flags**
+--- **Table > Header \& Columns > Column Flags**
 ---
 --- For TableSetupColumn.
 ---
 --- ---
 ---
---- **Table > Header & Columns**
+--- **Table > Header \& Columns**
 ---
 --- Use TableSetupColumn() to specify label, resizing policy, default
 --- width/weight, id, various other flags etc.
@@ -6027,20 +6027,20 @@
 --- @since 0.5.5
 --- @field TableColumnFlags_Disabled integer
 ---
---- **Table > Header & Columns > Column Flags > Input Configuration > TableColumnFlags_IndentDisable**
+--- **Table > Header \& Columns > Column Flags > Input Configuration > TableColumnFlags\_IndentDisable**
 ---
 --- Ignore current Indent value when entering cell (default for columns > 0).
 ---    Indentation changes _within_ the cell will still be honored.
 ---
 --- ---
 ---
---- **Table > Header & Columns > Column Flags**
+--- **Table > Header \& Columns > Column Flags**
 ---
 --- For TableSetupColumn.
 ---
 --- ---
 ---
---- **Table > Header & Columns**
+--- **Table > Header \& Columns**
 ---
 --- Use TableSetupColumn() to specify label, resizing policy, default
 --- width/weight, id, various other flags etc.
@@ -6094,19 +6094,19 @@
 --- @since 0.1
 --- @field TableColumnFlags_IndentDisable integer
 ---
---- **Table > Header & Columns > Column Flags > Input Configuration > TableColumnFlags_IndentEnable**
+--- **Table > Header \& Columns > Column Flags > Input Configuration > TableColumnFlags\_IndentEnable**
 ---
 --- Use current Indent value when entering cell (default for column 0).
 ---
 --- ---
 ---
---- **Table > Header & Columns > Column Flags**
+--- **Table > Header \& Columns > Column Flags**
 ---
 --- For TableSetupColumn.
 ---
 --- ---
 ---
---- **Table > Header & Columns**
+--- **Table > Header \& Columns**
 ---
 --- Use TableSetupColumn() to specify label, resizing policy, default
 --- width/weight, id, various other flags etc.
@@ -6160,20 +6160,20 @@
 --- @since 0.1
 --- @field TableColumnFlags_IndentEnable integer
 ---
---- **Table > Header & Columns > Column Flags > Input Configuration > TableColumnFlags_NoClip**
+--- **Table > Header \& Columns > Column Flags > Input Configuration > TableColumnFlags\_NoClip**
 ---
 --- Disable clipping for this column
 ---    (all NoClip columns will render in a same draw command).
 ---
 --- ---
 ---
---- **Table > Header & Columns > Column Flags**
+--- **Table > Header \& Columns > Column Flags**
 ---
 --- For TableSetupColumn.
 ---
 --- ---
 ---
---- **Table > Header & Columns**
+--- **Table > Header \& Columns**
 ---
 --- Use TableSetupColumn() to specify label, resizing policy, default
 --- width/weight, id, various other flags etc.
@@ -6227,7 +6227,7 @@
 --- @since 0.1
 --- @field TableColumnFlags_NoClip integer
 ---
---- **Table > Header & Columns > Column Flags > Input Configuration > TableColumnFlags_NoHeaderLabel**
+--- **Table > Header \& Columns > Column Flags > Input Configuration > TableColumnFlags\_NoHeaderLabel**
 ---
 --- TableHeadersRow will not submit horizontal label for this column.
 ---    Convenient for some small columns. Name will still appear in context menu
@@ -6235,13 +6235,13 @@
 ---
 --- ---
 ---
---- **Table > Header & Columns > Column Flags**
+--- **Table > Header \& Columns > Column Flags**
 ---
 --- For TableSetupColumn.
 ---
 --- ---
 ---
---- **Table > Header & Columns**
+--- **Table > Header \& Columns**
 ---
 --- Use TableSetupColumn() to specify label, resizing policy, default
 --- width/weight, id, various other flags etc.
@@ -6295,19 +6295,19 @@
 --- @since 0.5.5
 --- @field TableColumnFlags_NoHeaderLabel integer
 ---
---- **Table > Header & Columns > Column Flags > Input Configuration > TableColumnFlags_NoHeaderWidth**
+--- **Table > Header \& Columns > Column Flags > Input Configuration > TableColumnFlags\_NoHeaderWidth**
 ---
 --- Disable header text width contribution to automatic column width.
 ---
 --- ---
 ---
---- **Table > Header & Columns > Column Flags**
+--- **Table > Header \& Columns > Column Flags**
 ---
 --- For TableSetupColumn.
 ---
 --- ---
 ---
---- **Table > Header & Columns**
+--- **Table > Header \& Columns**
 ---
 --- Use TableSetupColumn() to specify label, resizing policy, default
 --- width/weight, id, various other flags etc.
@@ -6361,19 +6361,19 @@
 --- @since 0.1
 --- @field TableColumnFlags_NoHeaderWidth integer
 ---
---- **Table > Header & Columns > Column Flags > Input Configuration > TableColumnFlags_NoHide**
+--- **Table > Header \& Columns > Column Flags > Input Configuration > TableColumnFlags\_NoHide**
 ---
 --- Disable ability to hide/disable this column.
 ---
 --- ---
 ---
---- **Table > Header & Columns > Column Flags**
+--- **Table > Header \& Columns > Column Flags**
 ---
 --- For TableSetupColumn.
 ---
 --- ---
 ---
---- **Table > Header & Columns**
+--- **Table > Header \& Columns**
 ---
 --- Use TableSetupColumn() to specify label, resizing policy, default
 --- width/weight, id, various other flags etc.
@@ -6427,20 +6427,20 @@
 --- @since 0.1
 --- @field TableColumnFlags_NoHide integer
 ---
---- **Table > Header & Columns > Column Flags > Input Configuration > TableColumnFlags_NoReorder**
+--- **Table > Header \& Columns > Column Flags > Input Configuration > TableColumnFlags\_NoReorder**
 ---
 --- Disable manual reordering this column, this will also prevent other columns
 ---    from crossing over this column.
 ---
 --- ---
 ---
---- **Table > Header & Columns > Column Flags**
+--- **Table > Header \& Columns > Column Flags**
 ---
 --- For TableSetupColumn.
 ---
 --- ---
 ---
---- **Table > Header & Columns**
+--- **Table > Header \& Columns**
 ---
 --- Use TableSetupColumn() to specify label, resizing policy, default
 --- width/weight, id, various other flags etc.
@@ -6494,19 +6494,19 @@
 --- @since 0.1
 --- @field TableColumnFlags_NoReorder integer
 ---
---- **Table > Header & Columns > Column Flags > Input Configuration > TableColumnFlags_NoResize**
+--- **Table > Header \& Columns > Column Flags > Input Configuration > TableColumnFlags\_NoResize**
 ---
 --- Disable manual resizing.
 ---
 --- ---
 ---
---- **Table > Header & Columns > Column Flags**
+--- **Table > Header \& Columns > Column Flags**
 ---
 --- For TableSetupColumn.
 ---
 --- ---
 ---
---- **Table > Header & Columns**
+--- **Table > Header \& Columns**
 ---
 --- Use TableSetupColumn() to specify label, resizing policy, default
 --- width/weight, id, various other flags etc.
@@ -6560,20 +6560,20 @@
 --- @since 0.1
 --- @field TableColumnFlags_NoResize integer
 ---
---- **Table > Header & Columns > Column Flags > Input Configuration > TableColumnFlags_NoSort**
+--- **Table > Header \& Columns > Column Flags > Input Configuration > TableColumnFlags\_NoSort**
 ---
 --- Disable ability to sort on this field
 ---    (even if TableFlags_Sortable is set on the table).
 ---
 --- ---
 ---
---- **Table > Header & Columns > Column Flags**
+--- **Table > Header \& Columns > Column Flags**
 ---
 --- For TableSetupColumn.
 ---
 --- ---
 ---
---- **Table > Header & Columns**
+--- **Table > Header \& Columns**
 ---
 --- Use TableSetupColumn() to specify label, resizing policy, default
 --- width/weight, id, various other flags etc.
@@ -6627,19 +6627,19 @@
 --- @since 0.1
 --- @field TableColumnFlags_NoSort integer
 ---
---- **Table > Header & Columns > Column Flags > Input Configuration > TableColumnFlags_NoSortAscending**
+--- **Table > Header \& Columns > Column Flags > Input Configuration > TableColumnFlags\_NoSortAscending**
 ---
 --- Disable ability to sort in the ascending direction.
 ---
 --- ---
 ---
---- **Table > Header & Columns > Column Flags**
+--- **Table > Header \& Columns > Column Flags**
 ---
 --- For TableSetupColumn.
 ---
 --- ---
 ---
---- **Table > Header & Columns**
+--- **Table > Header \& Columns**
 ---
 --- Use TableSetupColumn() to specify label, resizing policy, default
 --- width/weight, id, various other flags etc.
@@ -6693,19 +6693,19 @@
 --- @since 0.1
 --- @field TableColumnFlags_NoSortAscending integer
 ---
---- **Table > Header & Columns > Column Flags > Input Configuration > TableColumnFlags_NoSortDescending**
+--- **Table > Header \& Columns > Column Flags > Input Configuration > TableColumnFlags\_NoSortDescending**
 ---
 --- Disable ability to sort in the descending direction.
 ---
 --- ---
 ---
---- **Table > Header & Columns > Column Flags**
+--- **Table > Header \& Columns > Column Flags**
 ---
 --- For TableSetupColumn.
 ---
 --- ---
 ---
---- **Table > Header & Columns**
+--- **Table > Header \& Columns**
 ---
 --- Use TableSetupColumn() to specify label, resizing policy, default
 --- width/weight, id, various other flags etc.
@@ -6759,19 +6759,19 @@
 --- @since 0.1
 --- @field TableColumnFlags_NoSortDescending integer
 ---
---- **Table > Header & Columns > Column Flags > Input Configuration > TableColumnFlags_PreferSortAscending**
+--- **Table > Header \& Columns > Column Flags > Input Configuration > TableColumnFlags\_PreferSortAscending**
 ---
 --- Make the initial sort direction Ascending when first sorting on this column (default).
 ---
 --- ---
 ---
---- **Table > Header & Columns > Column Flags**
+--- **Table > Header \& Columns > Column Flags**
 ---
 --- For TableSetupColumn.
 ---
 --- ---
 ---
---- **Table > Header & Columns**
+--- **Table > Header \& Columns**
 ---
 --- Use TableSetupColumn() to specify label, resizing policy, default
 --- width/weight, id, various other flags etc.
@@ -6825,19 +6825,19 @@
 --- @since 0.1
 --- @field TableColumnFlags_PreferSortAscending integer
 ---
---- **Table > Header & Columns > Column Flags > Input Configuration > TableColumnFlags_PreferSortDescending**
+--- **Table > Header \& Columns > Column Flags > Input Configuration > TableColumnFlags\_PreferSortDescending**
 ---
 --- Make the initial sort direction Descending when first sorting on this column.
 ---
 --- ---
 ---
---- **Table > Header & Columns > Column Flags**
+--- **Table > Header \& Columns > Column Flags**
 ---
 --- For TableSetupColumn.
 ---
 --- ---
 ---
---- **Table > Header & Columns**
+--- **Table > Header \& Columns**
 ---
 --- Use TableSetupColumn() to specify label, resizing policy, default
 --- width/weight, id, various other flags etc.
@@ -6891,20 +6891,20 @@
 --- @since 0.1
 --- @field TableColumnFlags_PreferSortDescending integer
 ---
---- **Table > Header & Columns > Column Flags > Input Configuration > TableColumnFlags_WidthFixed**
+--- **Table > Header \& Columns > Column Flags > Input Configuration > TableColumnFlags\_WidthFixed**
 ---
 --- Column will not stretch. Preferable with horizontal scrolling enabled
 ---    (default if table sizing policy is _SizingFixedFit and table is resizable).
 ---
 --- ---
 ---
---- **Table > Header & Columns > Column Flags**
+--- **Table > Header \& Columns > Column Flags**
 ---
 --- For TableSetupColumn.
 ---
 --- ---
 ---
---- **Table > Header & Columns**
+--- **Table > Header \& Columns**
 ---
 --- Use TableSetupColumn() to specify label, resizing policy, default
 --- width/weight, id, various other flags etc.
@@ -6958,20 +6958,20 @@
 --- @since 0.1
 --- @field TableColumnFlags_WidthFixed integer
 ---
---- **Table > Header & Columns > Column Flags > Input Configuration > TableColumnFlags_WidthStretch**
+--- **Table > Header \& Columns > Column Flags > Input Configuration > TableColumnFlags\_WidthStretch**
 ---
 --- Column will stretch. Preferable with horizontal scrolling disabled
 ---    (default if table sizing policy is _SizingStretchSame or _SizingStretchProp).
 ---
 --- ---
 ---
---- **Table > Header & Columns > Column Flags**
+--- **Table > Header \& Columns > Column Flags**
 ---
 --- For TableSetupColumn.
 ---
 --- ---
 ---
---- **Table > Header & Columns**
+--- **Table > Header \& Columns**
 ---
 --- Use TableSetupColumn() to specify label, resizing policy, default
 --- width/weight, id, various other flags etc.
@@ -7025,26 +7025,26 @@
 --- @since 0.1
 --- @field TableColumnFlags_WidthStretch integer
 ---
---- **Table > Header & Columns > Column Flags > Output Status > TableColumnFlags_IsEnabled**
+--- **Table > Header \& Columns > Column Flags > Output Status > TableColumnFlags\_IsEnabled**
 ---
 --- Status: is enabled == not hidden by user/api (referred to as "Hide" in
 ---    _DefaultHide and _NoHide) flags.
 ---
 --- ---
 ---
---- **Table > Header & Columns > Column Flags > Output Status**
+--- **Table > Header \& Columns > Column Flags > Output Status**
 ---
 --- Read-only via TableGetColumnFlags
 ---
 --- ---
 ---
---- **Table > Header & Columns > Column Flags**
+--- **Table > Header \& Columns > Column Flags**
 ---
 --- For TableSetupColumn.
 ---
 --- ---
 ---
---- **Table > Header & Columns**
+--- **Table > Header \& Columns**
 ---
 --- Use TableSetupColumn() to specify label, resizing policy, default
 --- width/weight, id, various other flags etc.
@@ -7098,25 +7098,25 @@
 --- @since 0.1
 --- @field TableColumnFlags_IsEnabled integer
 ---
---- **Table > Header & Columns > Column Flags > Output Status > TableColumnFlags_IsHovered**
+--- **Table > Header \& Columns > Column Flags > Output Status > TableColumnFlags\_IsHovered**
 ---
 --- Status: is hovered by mouse.
 ---
 --- ---
 ---
---- **Table > Header & Columns > Column Flags > Output Status**
+--- **Table > Header \& Columns > Column Flags > Output Status**
 ---
 --- Read-only via TableGetColumnFlags
 ---
 --- ---
 ---
---- **Table > Header & Columns > Column Flags**
+--- **Table > Header \& Columns > Column Flags**
 ---
 --- For TableSetupColumn.
 ---
 --- ---
 ---
---- **Table > Header & Columns**
+--- **Table > Header \& Columns**
 ---
 --- Use TableSetupColumn() to specify label, resizing policy, default
 --- width/weight, id, various other flags etc.
@@ -7170,25 +7170,25 @@
 --- @since 0.1
 --- @field TableColumnFlags_IsHovered integer
 ---
---- **Table > Header & Columns > Column Flags > Output Status > TableColumnFlags_IsSorted**
+--- **Table > Header \& Columns > Column Flags > Output Status > TableColumnFlags\_IsSorted**
 ---
 --- Status: is currently part of the sort specs.
 ---
 --- ---
 ---
---- **Table > Header & Columns > Column Flags > Output Status**
+--- **Table > Header \& Columns > Column Flags > Output Status**
 ---
 --- Read-only via TableGetColumnFlags
 ---
 --- ---
 ---
---- **Table > Header & Columns > Column Flags**
+--- **Table > Header \& Columns > Column Flags**
 ---
 --- For TableSetupColumn.
 ---
 --- ---
 ---
---- **Table > Header & Columns**
+--- **Table > Header \& Columns**
 ---
 --- Use TableSetupColumn() to specify label, resizing policy, default
 --- width/weight, id, various other flags etc.
@@ -7242,25 +7242,25 @@
 --- @since 0.1
 --- @field TableColumnFlags_IsSorted integer
 ---
---- **Table > Header & Columns > Column Flags > Output Status > TableColumnFlags_IsVisible**
+--- **Table > Header \& Columns > Column Flags > Output Status > TableColumnFlags\_IsVisible**
 ---
 --- Status: is visible == is enabled AND not clipped by scrolling.
 ---
 --- ---
 ---
---- **Table > Header & Columns > Column Flags > Output Status**
+--- **Table > Header \& Columns > Column Flags > Output Status**
 ---
 --- Read-only via TableGetColumnFlags
 ---
 --- ---
 ---
---- **Table > Header & Columns > Column Flags**
+--- **Table > Header \& Columns > Column Flags**
 ---
 --- For TableSetupColumn.
 ---
 --- ---
 ---
---- **Table > Header & Columns**
+--- **Table > Header \& Columns**
 ---
 --- Use TableSetupColumn() to specify label, resizing policy, default
 --- width/weight, id, various other flags etc.
@@ -7314,7 +7314,7 @@
 --- @since 0.1
 --- @field TableColumnFlags_IsVisible integer
 ---
---- **Table > Sorting > SortDirection_Ascending**
+--- **Table > Sorting > SortDirection\_Ascending**
 ---
 --- Ascending = 0->9, A->Z etc.
 ---
@@ -7355,7 +7355,7 @@
 --- @since 0.1
 --- @field SortDirection_Ascending integer
 ---
---- **Table > Sorting > SortDirection_Descending**
+--- **Table > Sorting > SortDirection\_Descending**
 ---
 --- Descending = 9->0, Z->A etc.
 ---
@@ -7396,7 +7396,7 @@
 --- @since 0.1
 --- @field SortDirection_Descending integer
 ---
---- **Table > Sorting > SortDirection_None**
+--- **Table > Sorting > SortDirection\_None**
 ---
 --- ---
 ---
@@ -7435,7 +7435,7 @@
 --- @since 0.1
 --- @field SortDirection_None integer
 ---
---- **Table > Table Flags > TableFlags_None**
+--- **Table > Table Flags > TableFlags\_None**
 ---
 --- ---
 ---
@@ -7516,7 +7516,7 @@
 --- @since 0.1
 --- @field TableFlags_None integer
 ---
---- **Table > Table Flags > Clipping > TableFlags_NoClip**
+--- **Table > Table Flags > Clipping > TableFlags\_NoClip**
 ---
 --- Disable clipping rectangle for every individual columns
 ---    (reduce draw command count, items will be able to overflow into other columns).
@@ -7601,7 +7601,7 @@
 --- @since 0.1
 --- @field TableFlags_NoClip integer
 ---
---- **Table > Table Flags > Decorations > TableFlags_Borders**
+--- **Table > Table Flags > Decorations > TableFlags\_Borders**
 ---
 --- Draw all borders.
 ---
@@ -7684,7 +7684,7 @@
 --- @since 0.1
 --- @field TableFlags_Borders integer
 ---
---- **Table > Table Flags > Decorations > TableFlags_BordersH**
+--- **Table > Table Flags > Decorations > TableFlags\_BordersH**
 ---
 --- Draw horizontal borders.
 ---
@@ -7767,7 +7767,7 @@
 --- @since 0.1
 --- @field TableFlags_BordersH integer
 ---
---- **Table > Table Flags > Decorations > TableFlags_BordersInner**
+--- **Table > Table Flags > Decorations > TableFlags\_BordersInner**
 ---
 --- Draw inner borders.
 ---
@@ -7850,7 +7850,7 @@
 --- @since 0.1
 --- @field TableFlags_BordersInner integer
 ---
---- **Table > Table Flags > Decorations > TableFlags_BordersInnerH**
+--- **Table > Table Flags > Decorations > TableFlags\_BordersInnerH**
 ---
 --- Draw horizontal borders between rows.
 ---
@@ -7933,7 +7933,7 @@
 --- @since 0.1
 --- @field TableFlags_BordersInnerH integer
 ---
---- **Table > Table Flags > Decorations > TableFlags_BordersInnerV**
+--- **Table > Table Flags > Decorations > TableFlags\_BordersInnerV**
 ---
 --- Draw vertical borders between columns.
 ---
@@ -8016,7 +8016,7 @@
 --- @since 0.1
 --- @field TableFlags_BordersInnerV integer
 ---
---- **Table > Table Flags > Decorations > TableFlags_BordersOuter**
+--- **Table > Table Flags > Decorations > TableFlags\_BordersOuter**
 ---
 --- Draw outer borders.
 ---
@@ -8099,7 +8099,7 @@
 --- @since 0.1
 --- @field TableFlags_BordersOuter integer
 ---
---- **Table > Table Flags > Decorations > TableFlags_BordersOuterH**
+--- **Table > Table Flags > Decorations > TableFlags\_BordersOuterH**
 ---
 --- Draw horizontal borders at the top and bottom.
 ---
@@ -8182,7 +8182,7 @@
 --- @since 0.1
 --- @field TableFlags_BordersOuterH integer
 ---
---- **Table > Table Flags > Decorations > TableFlags_BordersOuterV**
+--- **Table > Table Flags > Decorations > TableFlags\_BordersOuterV**
 ---
 --- Draw vertical borders on the left and right sides.
 ---
@@ -8265,7 +8265,7 @@
 --- @since 0.1
 --- @field TableFlags_BordersOuterV integer
 ---
---- **Table > Table Flags > Decorations > TableFlags_BordersV**
+--- **Table > Table Flags > Decorations > TableFlags\_BordersV**
 ---
 --- Draw vertical borders.
 ---
@@ -8348,7 +8348,7 @@
 --- @since 0.1
 --- @field TableFlags_BordersV integer
 ---
---- **Table > Table Flags > Decorations > TableFlags_RowBg**
+--- **Table > Table Flags > Decorations > TableFlags\_RowBg**
 ---
 --- Set each RowBg color with Col_TableRowBg or Col_TableRowBgAlt (equivalent of
 ---    calling TableSetBgColor with TableBgTarget_RowBg0 on each row manually).
@@ -8432,7 +8432,7 @@
 --- @since 0.1
 --- @field TableFlags_RowBg integer
 ---
---- **Table > Table Flags > Features > TableFlags_ContextMenuInBody**
+--- **Table > Table Flags > Features > TableFlags\_ContextMenuInBody**
 ---
 --- Right-click on columns body/contents will display table context menu.
 ---    By default it is available in TableHeadersRow.
@@ -8516,7 +8516,7 @@
 --- @since 0.1
 --- @field TableFlags_ContextMenuInBody integer
 ---
---- **Table > Table Flags > Features > TableFlags_Hideable**
+--- **Table > Table Flags > Features > TableFlags\_Hideable**
 ---
 --- Enable hiding/disabling columns in context menu.
 ---
@@ -8599,7 +8599,7 @@
 --- @since 0.1
 --- @field TableFlags_Hideable integer
 ---
---- **Table > Table Flags > Features > TableFlags_NoSavedSettings**
+--- **Table > Table Flags > Features > TableFlags\_NoSavedSettings**
 ---
 --- Disable persisting columns order, width and sort settings in the .ini file.
 ---
@@ -8682,7 +8682,7 @@
 --- @since 0.4
 --- @field TableFlags_NoSavedSettings integer
 ---
---- **Table > Table Flags > Features > TableFlags_Reorderable**
+--- **Table > Table Flags > Features > TableFlags\_Reorderable**
 ---
 --- Enable reordering columns in header row
 ---    (need calling TableSetupColumn + TableHeadersRow to display headers).
@@ -8766,7 +8766,7 @@
 --- @since 0.1
 --- @field TableFlags_Reorderable integer
 ---
---- **Table > Table Flags > Features > TableFlags_Resizable**
+--- **Table > Table Flags > Features > TableFlags\_Resizable**
 ---
 --- Enable resizing columns.
 ---
@@ -8849,7 +8849,7 @@
 --- @since 0.1
 --- @field TableFlags_Resizable integer
 ---
---- **Table > Table Flags > Features > TableFlags_Sortable**
+--- **Table > Table Flags > Features > TableFlags\_Sortable**
 ---
 --- Enable sorting. Call TableNeedSort/TableGetColumnSortSpecs to obtain sort specs.
 ---    Also see TableFlags_SortMulti and TableFlags_SortTristate.
@@ -8933,7 +8933,7 @@
 --- @since 0.1
 --- @field TableFlags_Sortable integer
 ---
---- **Table > Table Flags > Miscellaneous > TableFlags_HighlightHoveredColumn**
+--- **Table > Table Flags > Miscellaneous > TableFlags\_HighlightHoveredColumn**
 ---
 --- Highlight column headers when hovered (may evolve into a fuller highlight.)
 ---
@@ -9016,7 +9016,7 @@
 --- @since 0.9
 --- @field TableFlags_HighlightHoveredColumn integer
 ---
---- **Table > Table Flags > Padding > TableFlags_NoPadInnerX**
+--- **Table > Table Flags > Padding > TableFlags\_NoPadInnerX**
 ---
 --- Disable inner padding between columns (double inner padding if
 ---    TableFlags_BordersOuterV is on, single inner padding if BordersOuterV is off).
@@ -9100,7 +9100,7 @@
 --- @since 0.1
 --- @field TableFlags_NoPadInnerX integer
 ---
---- **Table > Table Flags > Padding > TableFlags_NoPadOuterX**
+--- **Table > Table Flags > Padding > TableFlags\_NoPadOuterX**
 ---
 --- Default if TableFlags_BordersOuterV is off. Disable outermost padding.
 ---
@@ -9183,7 +9183,7 @@
 --- @since 0.1
 --- @field TableFlags_NoPadOuterX integer
 ---
---- **Table > Table Flags > Padding > TableFlags_PadOuterX**
+--- **Table > Table Flags > Padding > TableFlags\_PadOuterX**
 ---
 --- Default if TableFlags_BordersOuterV is on. Enable outermost padding.
 ---    Generally desirable if you have headers.
@@ -9267,7 +9267,7 @@
 --- @since 0.1
 --- @field TableFlags_PadOuterX integer
 ---
---- **Table > Table Flags > Scrolling > TableFlags_ScrollX**
+--- **Table > Table Flags > Scrolling > TableFlags\_ScrollX**
 ---
 --- Enable horizontal scrolling. Require 'outer_size' parameter of BeginTable to
 ---    specify the container size. Changes default sizing policy.
@@ -9353,7 +9353,7 @@
 --- @since 0.1
 --- @field TableFlags_ScrollX integer
 ---
---- **Table > Table Flags > Scrolling > TableFlags_ScrollY**
+--- **Table > Table Flags > Scrolling > TableFlags\_ScrollY**
 ---
 --- Enable vertical scrolling.
 ---    Require 'outer_size' parameter of BeginTable to specify the container size.
@@ -9437,7 +9437,7 @@
 --- @since 0.1
 --- @field TableFlags_ScrollY integer
 ---
---- **Table > Table Flags > Sizing Extra Options > TableFlags_NoHostExtendX**
+--- **Table > Table Flags > Sizing Extra Options > TableFlags\_NoHostExtendX**
 ---
 --- Make outer width auto-fit to columns, overriding outer_size.x value. Only
 ---    available when ScrollX/ScrollY are disabled and Stretch columns are not used.
@@ -9521,7 +9521,7 @@
 --- @since 0.1
 --- @field TableFlags_NoHostExtendX integer
 ---
---- **Table > Table Flags > Sizing Extra Options > TableFlags_NoHostExtendY**
+--- **Table > Table Flags > Sizing Extra Options > TableFlags\_NoHostExtendY**
 ---
 --- Make outer height stop exactly at outer_size.y (prevent auto-extending table
 ---    past the limit). Only available when ScrollX/ScrollY are disabled.
@@ -9606,7 +9606,7 @@
 --- @since 0.1
 --- @field TableFlags_NoHostExtendY integer
 ---
---- **Table > Table Flags > Sizing Extra Options > TableFlags_NoKeepColumnsVisible**
+--- **Table > Table Flags > Sizing Extra Options > TableFlags\_NoKeepColumnsVisible**
 ---
 --- Disable keeping column always minimally visible when ScrollX is off and table
 ---    gets too small. Not recommended if columns are resizable.
@@ -9690,7 +9690,7 @@
 --- @since 0.1
 --- @field TableFlags_NoKeepColumnsVisible integer
 ---
---- **Table > Table Flags > Sizing Extra Options > TableFlags_PreciseWidths**
+--- **Table > Table Flags > Sizing Extra Options > TableFlags\_PreciseWidths**
 ---
 --- Disable distributing remainder width to stretched columns (width allocation
 ---    on a 100-wide table with 3 columns: Without this flag: 33,33,34. With this
@@ -9776,7 +9776,7 @@
 --- @since 0.1
 --- @field TableFlags_PreciseWidths integer
 ---
---- **Table > Table Flags > Sizing Policy > TableFlags_SizingFixedFit**
+--- **Table > Table Flags > Sizing Policy > TableFlags\_SizingFixedFit**
 ---
 --- Columns default to _WidthFixed or _WidthAuto (if resizable or not resizable),
 ---    matching contents width.
@@ -9866,7 +9866,7 @@
 --- @since 0.1
 --- @field TableFlags_SizingFixedFit integer
 ---
---- **Table > Table Flags > Sizing Policy > TableFlags_SizingFixedSame**
+--- **Table > Table Flags > Sizing Policy > TableFlags\_SizingFixedSame**
 ---
 --- Columns default to _WidthFixed or _WidthAuto (if resizable or not resizable),
 ---    matching the maximum contents width of all columns.
@@ -9957,7 +9957,7 @@
 --- @since 0.1
 --- @field TableFlags_SizingFixedSame integer
 ---
---- **Table > Table Flags > Sizing Policy > TableFlags_SizingStretchProp**
+--- **Table > Table Flags > Sizing Policy > TableFlags\_SizingStretchProp**
 ---
 --- Columns default to _WidthStretch with default weights proportional to each
 ---    columns contents widths.
@@ -10047,7 +10047,7 @@
 --- @since 0.1
 --- @field TableFlags_SizingStretchProp integer
 ---
---- **Table > Table Flags > Sizing Policy > TableFlags_SizingStretchSame**
+--- **Table > Table Flags > Sizing Policy > TableFlags\_SizingStretchSame**
 ---
 --- Columns default to _WidthStretch with default weights all equal,
 ---    unless overriden by TableSetupColumn.
@@ -10137,7 +10137,7 @@
 --- @since 0.1
 --- @field TableFlags_SizingStretchSame integer
 ---
---- **Table > Table Flags > Sorting > TableFlags_SortMulti**
+--- **Table > Table Flags > Sorting > TableFlags\_SortMulti**
 ---
 --- Hold shift when clicking headers to sort on multiple column.
 ---    TableGetColumnSortSpecs may return specs where (SpecsCount > 1).
@@ -10221,7 +10221,7 @@
 --- @since 0.1
 --- @field TableFlags_SortMulti integer
 ---
---- **Table > Table Flags > Sorting > TableFlags_SortTristate**
+--- **Table > Table Flags > Sorting > TableFlags\_SortTristate**
 ---
 --- Allow no sorting, disable default sorting.
 ---    TableGetColumnSortSpecs may return specs where (SpecsCount == 0).
@@ -10305,11 +10305,11 @@
 --- @since 0.1
 --- @field TableFlags_SortTristate integer
 ---
---- **Text & Scalar Input > Flags > InputTextFlags_None**
+--- **Text \& Scalar Input > Flags > InputTextFlags\_None**
 ---
 --- ---
 ---
---- **Text & Scalar Input > Flags**
+--- **Text \& Scalar Input > Flags**
 ---
 --- Most of these are only useful for InputText*() and not for InputDoubleX,
 --- InputIntX etc.
@@ -10322,19 +10322,19 @@
 --- @since 0.1
 --- @field InputTextFlags_None integer
 ---
---- **Text & Scalar Input > Flags > Basic filters > InputTextFlags_CharsDecimal**
+--- **Text \& Scalar Input > Flags > Basic filters > InputTextFlags\_CharsDecimal**
 ---
 --- Allow 0123456789.+-*/.
 ---
 --- ---
 ---
---- **Text & Scalar Input > Flags > Basic filters**
+--- **Text \& Scalar Input > Flags > Basic filters**
 ---
 --- See also InputTextFlags_CallbackCharFilter.
 ---
 --- ---
 ---
---- **Text & Scalar Input > Flags**
+--- **Text \& Scalar Input > Flags**
 ---
 --- Most of these are only useful for InputText*() and not for InputDoubleX,
 --- InputIntX etc.
@@ -10347,19 +10347,19 @@
 --- @since 0.1
 --- @field InputTextFlags_CharsDecimal integer
 ---
---- **Text & Scalar Input > Flags > Basic filters > InputTextFlags_CharsHexadecimal**
+--- **Text \& Scalar Input > Flags > Basic filters > InputTextFlags\_CharsHexadecimal**
 ---
 --- Allow 0123456789ABCDEFabcdef.
 ---
 --- ---
 ---
---- **Text & Scalar Input > Flags > Basic filters**
+--- **Text \& Scalar Input > Flags > Basic filters**
 ---
 --- See also InputTextFlags_CallbackCharFilter.
 ---
 --- ---
 ---
---- **Text & Scalar Input > Flags**
+--- **Text \& Scalar Input > Flags**
 ---
 --- Most of these are only useful for InputText*() and not for InputDoubleX,
 --- InputIntX etc.
@@ -10372,19 +10372,19 @@
 --- @since 0.1
 --- @field InputTextFlags_CharsHexadecimal integer
 ---
---- **Text & Scalar Input > Flags > Basic filters > InputTextFlags_CharsNoBlank**
+--- **Text \& Scalar Input > Flags > Basic filters > InputTextFlags\_CharsNoBlank**
 ---
 --- Filter out spaces, tabs.
 ---
 --- ---
 ---
---- **Text & Scalar Input > Flags > Basic filters**
+--- **Text \& Scalar Input > Flags > Basic filters**
 ---
 --- See also InputTextFlags_CallbackCharFilter.
 ---
 --- ---
 ---
---- **Text & Scalar Input > Flags**
+--- **Text \& Scalar Input > Flags**
 ---
 --- Most of these are only useful for InputText*() and not for InputDoubleX,
 --- InputIntX etc.
@@ -10397,19 +10397,19 @@
 --- @since 0.1
 --- @field InputTextFlags_CharsNoBlank integer
 ---
---- **Text & Scalar Input > Flags > Basic filters > InputTextFlags_CharsScientific**
+--- **Text \& Scalar Input > Flags > Basic filters > InputTextFlags\_CharsScientific**
 ---
 --- Allow 0123456789.+-*/eE (Scientific notation input).
 ---
 --- ---
 ---
---- **Text & Scalar Input > Flags > Basic filters**
+--- **Text \& Scalar Input > Flags > Basic filters**
 ---
 --- See also InputTextFlags_CallbackCharFilter.
 ---
 --- ---
 ---
---- **Text & Scalar Input > Flags**
+--- **Text \& Scalar Input > Flags**
 ---
 --- Most of these are only useful for InputText*() and not for InputDoubleX,
 --- InputIntX etc.
@@ -10422,19 +10422,19 @@
 --- @since 0.1
 --- @field InputTextFlags_CharsScientific integer
 ---
---- **Text & Scalar Input > Flags > Basic filters > InputTextFlags_CharsUppercase**
+--- **Text \& Scalar Input > Flags > Basic filters > InputTextFlags\_CharsUppercase**
 ---
 --- Turn a..z into A..Z.
 ---
 --- ---
 ---
---- **Text & Scalar Input > Flags > Basic filters**
+--- **Text \& Scalar Input > Flags > Basic filters**
 ---
 --- See also InputTextFlags_CallbackCharFilter.
 ---
 --- ---
 ---
---- **Text & Scalar Input > Flags**
+--- **Text \& Scalar Input > Flags**
 ---
 --- Most of these are only useful for InputText*() and not for InputDoubleX,
 --- InputIntX etc.
@@ -10447,18 +10447,13 @@
 --- @since 0.1
 --- @field InputTextFlags_CharsUppercase integer
 ---
---- **Text & Scalar Input > Flags > Callback features > InputTextFlags_CallbackAlways**
+--- **Text \& Scalar Input > Flags > Callback features > InputTextFlags\_CallbackAlways**
 ---
 --- Callback on each iteration. User code may query cursor position, modify text buffer.
 ---
 --- ---
 ---
---- **Text & Scalar Input > Flags > Callback features**
----
----
---- ---
----
---- **Text & Scalar Input > Flags**
+--- **Text \& Scalar Input > Flags**
 ---
 --- Most of these are only useful for InputText*() and not for InputDoubleX,
 --- InputIntX etc.
@@ -10471,19 +10466,14 @@
 --- @since 0.8.5
 --- @field InputTextFlags_CallbackAlways integer
 ---
---- **Text & Scalar Input > Flags > Callback features > InputTextFlags_CallbackCharFilter**
+--- **Text \& Scalar Input > Flags > Callback features > InputTextFlags\_CallbackCharFilter**
 ---
 --- Callback on character inputs to replace or discard them.
 ---    Modify 'EventChar' to replace or 'EventChar = 0' to discard.
 ---
 --- ---
 ---
---- **Text & Scalar Input > Flags > Callback features**
----
----
---- ---
----
---- **Text & Scalar Input > Flags**
+--- **Text \& Scalar Input > Flags**
 ---
 --- Most of these are only useful for InputText*() and not for InputDoubleX,
 --- InputIntX etc.
@@ -10496,18 +10486,13 @@
 --- @since 0.8.5
 --- @field InputTextFlags_CallbackCharFilter integer
 ---
---- **Text & Scalar Input > Flags > Callback features > InputTextFlags_CallbackCompletion**
+--- **Text \& Scalar Input > Flags > Callback features > InputTextFlags\_CallbackCompletion**
 ---
 --- Callback on pressing TAB (for completion handling).
 ---
 --- ---
 ---
---- **Text & Scalar Input > Flags > Callback features**
----
----
---- ---
----
---- **Text & Scalar Input > Flags**
+--- **Text \& Scalar Input > Flags**
 ---
 --- Most of these are only useful for InputText*() and not for InputDoubleX,
 --- InputIntX etc.
@@ -10520,7 +10505,7 @@
 --- @since 0.8.5
 --- @field InputTextFlags_CallbackCompletion integer
 ---
---- **Text & Scalar Input > Flags > Callback features > InputTextFlags_CallbackEdit**
+--- **Text \& Scalar Input > Flags > Callback features > InputTextFlags\_CallbackEdit**
 ---
 --- Callback on any edit (note that InputText() already returns true on edit,
 ---    the callback is useful mainly to manipulate the underlying buffer while
@@ -10528,12 +10513,7 @@
 ---
 --- ---
 ---
---- **Text & Scalar Input > Flags > Callback features**
----
----
---- ---
----
---- **Text & Scalar Input > Flags**
+--- **Text \& Scalar Input > Flags**
 ---
 --- Most of these are only useful for InputText*() and not for InputDoubleX,
 --- InputIntX etc.
@@ -10546,18 +10526,13 @@
 --- @since 0.8.5
 --- @field InputTextFlags_CallbackEdit integer
 ---
---- **Text & Scalar Input > Flags > Callback features > InputTextFlags_CallbackHistory**
+--- **Text \& Scalar Input > Flags > Callback features > InputTextFlags\_CallbackHistory**
 ---
 --- Callback on pressing Up/Down arrows (for history handling).
 ---
 --- ---
 ---
---- **Text & Scalar Input > Flags > Callback features**
----
----
---- ---
----
---- **Text & Scalar Input > Flags**
+--- **Text \& Scalar Input > Flags**
 ---
 --- Most of these are only useful for InputText*() and not for InputDoubleX,
 --- InputIntX etc.
@@ -10570,18 +10545,13 @@
 --- @since 0.8.5
 --- @field InputTextFlags_CallbackHistory integer
 ---
---- **Text & Scalar Input > Flags > Inputs > InputTextFlags_AllowTabInput**
+--- **Text \& Scalar Input > Flags > Inputs > InputTextFlags\_AllowTabInput**
 ---
---- Pressing TAB input a 't' character into the text field.
----
---- ---
----
---- **Text & Scalar Input > Flags > Inputs**
----
+--- Pressing TAB input a '\t' character into the text field.
 ---
 --- ---
 ---
---- **Text & Scalar Input > Flags**
+--- **Text \& Scalar Input > Flags**
 ---
 --- Most of these are only useful for InputText*() and not for InputDoubleX,
 --- InputIntX etc.
@@ -10594,19 +10564,14 @@
 --- @since 0.1
 --- @field InputTextFlags_AllowTabInput integer
 ---
---- **Text & Scalar Input > Flags > Inputs > InputTextFlags_CtrlEnterForNewLine**
+--- **Text \& Scalar Input > Flags > Inputs > InputTextFlags\_CtrlEnterForNewLine**
 ---
 --- In multi-line mode, unfocus with Enter, add new line with Ctrl+Enter
 ---    (default is opposite: unfocus with Ctrl+Enter, add line with Enter).
 ---
 --- ---
 ---
---- **Text & Scalar Input > Flags > Inputs**
----
----
---- ---
----
---- **Text & Scalar Input > Flags**
+--- **Text \& Scalar Input > Flags**
 ---
 --- Most of these are only useful for InputText*() and not for InputDoubleX,
 --- InputIntX etc.
@@ -10619,19 +10584,14 @@
 --- @since 0.1
 --- @field InputTextFlags_CtrlEnterForNewLine integer
 ---
---- **Text & Scalar Input > Flags > Inputs > InputTextFlags_EnterReturnsTrue**
+--- **Text \& Scalar Input > Flags > Inputs > InputTextFlags\_EnterReturnsTrue**
 ---
 --- Return 'true' when Enter is pressed (as opposed to every time the value was
 ---    modified). Consider looking at the IsItemDeactivatedAfterEdit function.
 ---
 --- ---
 ---
---- **Text & Scalar Input > Flags > Inputs**
----
----
---- ---
----
---- **Text & Scalar Input > Flags**
+--- **Text \& Scalar Input > Flags**
 ---
 --- Most of these are only useful for InputText*() and not for InputDoubleX,
 --- InputIntX etc.
@@ -10644,19 +10604,14 @@
 --- @since 0.1
 --- @field InputTextFlags_EnterReturnsTrue integer
 ---
---- **Text & Scalar Input > Flags > Inputs > InputTextFlags_EscapeClearsAll**
+--- **Text \& Scalar Input > Flags > Inputs > InputTextFlags\_EscapeClearsAll**
 ---
 --- Escape key clears content if not empty, and deactivate otherwise
 ---    (constrast to default behavior of Escape to revert).
 ---
 --- ---
 ---
---- **Text & Scalar Input > Flags > Inputs**
----
----
---- ---
----
---- **Text & Scalar Input > Flags**
+--- **Text \& Scalar Input > Flags**
 ---
 --- Most of these are only useful for InputText*() and not for InputDoubleX,
 --- InputIntX etc.
@@ -10669,18 +10624,13 @@
 --- @since 0.8
 --- @field InputTextFlags_EscapeClearsAll integer
 ---
---- **Text & Scalar Input > Flags > Other options > InputTextFlags_AlwaysOverwrite**
+--- **Text \& Scalar Input > Flags > Other options > InputTextFlags\_AlwaysOverwrite**
 ---
 --- Overwrite mode.
 ---
 --- ---
 ---
---- **Text & Scalar Input > Flags > Other options**
----
----
---- ---
----
---- **Text & Scalar Input > Flags**
+--- **Text \& Scalar Input > Flags**
 ---
 --- Most of these are only useful for InputText*() and not for InputDoubleX,
 --- InputIntX etc.
@@ -10693,18 +10643,13 @@
 --- @since 0.2
 --- @field InputTextFlags_AlwaysOverwrite integer
 ---
---- **Text & Scalar Input > Flags > Other options > InputTextFlags_AutoSelectAll**
+--- **Text \& Scalar Input > Flags > Other options > InputTextFlags\_AutoSelectAll**
 ---
 --- Select entire text when first taking mouse focus.
 ---
 --- ---
 ---
---- **Text & Scalar Input > Flags > Other options**
----
----
---- ---
----
---- **Text & Scalar Input > Flags**
+--- **Text \& Scalar Input > Flags**
 ---
 --- Most of these are only useful for InputText*() and not for InputDoubleX,
 --- InputIntX etc.
@@ -10717,19 +10662,14 @@
 --- @since 0.1
 --- @field InputTextFlags_AutoSelectAll integer
 ---
---- **Text & Scalar Input > Flags > Other options > InputTextFlags_DisplayEmptyRefVal**
+--- **Text \& Scalar Input > Flags > Other options > InputTextFlags\_DisplayEmptyRefVal**
 ---
 --- InputDouble(), InputInt() etc. only: when value is zero, do not display it.
 ---    Generally used with InputTextFlags_ParseEmptyRefVal.
 ---
 --- ---
 ---
---- **Text & Scalar Input > Flags > Other options**
----
----
---- ---
----
---- **Text & Scalar Input > Flags**
+--- **Text \& Scalar Input > Flags**
 ---
 --- Most of these are only useful for InputText*() and not for InputDoubleX,
 --- InputIntX etc.
@@ -10742,18 +10682,13 @@
 --- @since 0.9.2
 --- @field InputTextFlags_DisplayEmptyRefVal integer
 ---
---- **Text & Scalar Input > Flags > Other options > InputTextFlags_NoHorizontalScroll**
+--- **Text \& Scalar Input > Flags > Other options > InputTextFlags\_NoHorizontalScroll**
 ---
 --- Disable following the cursor horizontally.
 ---
 --- ---
 ---
---- **Text & Scalar Input > Flags > Other options**
----
----
---- ---
----
---- **Text & Scalar Input > Flags**
+--- **Text \& Scalar Input > Flags**
 ---
 --- Most of these are only useful for InputText*() and not for InputDoubleX,
 --- InputIntX etc.
@@ -10766,18 +10701,13 @@
 --- @since 0.1
 --- @field InputTextFlags_NoHorizontalScroll integer
 ---
---- **Text & Scalar Input > Flags > Other options > InputTextFlags_NoUndoRedo**
+--- **Text \& Scalar Input > Flags > Other options > InputTextFlags\_NoUndoRedo**
 ---
 --- Disable undo/redo. Note that input text owns the text data while active.
 ---
 --- ---
 ---
---- **Text & Scalar Input > Flags > Other options**
----
----
---- ---
----
---- **Text & Scalar Input > Flags**
+--- **Text \& Scalar Input > Flags**
 ---
 --- Most of these are only useful for InputText*() and not for InputDoubleX,
 --- InputIntX etc.
@@ -10790,18 +10720,13 @@
 --- @since 0.1
 --- @field InputTextFlags_NoUndoRedo integer
 ---
---- **Text & Scalar Input > Flags > Other options > InputTextFlags_ParseEmptyRefVal**
+--- **Text \& Scalar Input > Flags > Other options > InputTextFlags\_ParseEmptyRefVal**
 ---
 --- InputDouble(), InputInt() etc. only: parse empty string as zero value.
 ---
 --- ---
 ---
---- **Text & Scalar Input > Flags > Other options**
----
----
---- ---
----
---- **Text & Scalar Input > Flags**
+--- **Text \& Scalar Input > Flags**
 ---
 --- Most of these are only useful for InputText*() and not for InputDoubleX,
 --- InputIntX etc.
@@ -10814,18 +10739,13 @@
 --- @since 0.9.2
 --- @field InputTextFlags_ParseEmptyRefVal integer
 ---
---- **Text & Scalar Input > Flags > Other options > InputTextFlags_Password**
+--- **Text \& Scalar Input > Flags > Other options > InputTextFlags\_Password**
 ---
 --- Password mode, display all characters as '*'.
 ---
 --- ---
 ---
---- **Text & Scalar Input > Flags > Other options**
----
----
---- ---
----
---- **Text & Scalar Input > Flags**
+--- **Text \& Scalar Input > Flags**
 ---
 --- Most of these are only useful for InputText*() and not for InputDoubleX,
 --- InputIntX etc.
@@ -10838,18 +10758,13 @@
 --- @since 0.1
 --- @field InputTextFlags_Password integer
 ---
---- **Text & Scalar Input > Flags > Other options > InputTextFlags_ReadOnly**
+--- **Text \& Scalar Input > Flags > Other options > InputTextFlags\_ReadOnly**
 ---
 --- Read-only mode.
 ---
 --- ---
 ---
---- **Text & Scalar Input > Flags > Other options**
----
----
---- ---
----
---- **Text & Scalar Input > Flags**
+--- **Text \& Scalar Input > Flags**
 ---
 --- Most of these are only useful for InputText*() and not for InputDoubleX,
 --- InputIntX etc.
@@ -10862,7 +10777,7 @@
 --- @since 0.1
 --- @field InputTextFlags_ReadOnly integer
 ---
---- **Tree Node > Flags > TreeNodeFlags_AllowOverlap**
+--- **Tree Node > Flags > TreeNodeFlags\_AllowOverlap**
 ---
 --- Hit testing to allow subsequent widgets to overlap this one.
 ---
@@ -10877,7 +10792,7 @@
 --- @since 0.9
 --- @field TreeNodeFlags_AllowOverlap integer
 ---
---- **Tree Node > Flags > TreeNodeFlags_Bullet**
+--- **Tree Node > Flags > TreeNodeFlags\_Bullet**
 ---
 --- Display a bullet instead of arrow. IMPORTANT: node can still be marked
 ---    open/close if you don't set the _Leaf flag!
@@ -10893,7 +10808,7 @@
 --- @since 0.1
 --- @field TreeNodeFlags_Bullet integer
 ---
---- **Tree Node > Flags > TreeNodeFlags_CollapsingHeader**
+--- **Tree Node > Flags > TreeNodeFlags\_CollapsingHeader**
 ---
 --- TreeNodeFlags_Framed | TreeNodeFlags_NoTreePushOnOpen | TreeNodeFlags_NoAutoOpenOnLog
 ---
@@ -10908,7 +10823,7 @@
 --- @since 0.1
 --- @field TreeNodeFlags_CollapsingHeader integer
 ---
---- **Tree Node > Flags > TreeNodeFlags_DefaultOpen**
+--- **Tree Node > Flags > TreeNodeFlags\_DefaultOpen**
 ---
 --- Default node to be open.
 ---
@@ -10923,7 +10838,7 @@
 --- @since 0.1
 --- @field TreeNodeFlags_DefaultOpen integer
 ---
---- **Tree Node > Flags > TreeNodeFlags_FramePadding**
+--- **Tree Node > Flags > TreeNodeFlags\_FramePadding**
 ---
 --- Use FramePadding (even for an unframed text node) to vertically align text
 ---    baseline to regular widget height.
@@ -10940,7 +10855,7 @@
 --- @since 0.1
 --- @field TreeNodeFlags_FramePadding integer
 ---
---- **Tree Node > Flags > TreeNodeFlags_Framed**
+--- **Tree Node > Flags > TreeNodeFlags\_Framed**
 ---
 --- Draw frame with background (e.g. for CollapsingHeader).
 ---
@@ -10955,7 +10870,7 @@
 --- @since 0.1
 --- @field TreeNodeFlags_Framed integer
 ---
---- **Tree Node > Flags > TreeNodeFlags_Leaf**
+--- **Tree Node > Flags > TreeNodeFlags\_Leaf**
 ---
 --- No collapsing, no arrow (use as a convenience for leaf nodes).
 ---
@@ -10970,7 +10885,7 @@
 --- @since 0.1
 --- @field TreeNodeFlags_Leaf integer
 ---
---- **Tree Node > Flags > TreeNodeFlags_NoAutoOpenOnLog**
+--- **Tree Node > Flags > TreeNodeFlags\_NoAutoOpenOnLog**
 ---
 --- Don't automatically and temporarily open node when Logging is active
 ---    (by default logging will automatically open tree nodes).
@@ -10986,7 +10901,7 @@
 --- @since 0.1
 --- @field TreeNodeFlags_NoAutoOpenOnLog integer
 ---
---- **Tree Node > Flags > TreeNodeFlags_NoTreePushOnOpen**
+--- **Tree Node > Flags > TreeNodeFlags\_NoTreePushOnOpen**
 ---
 --- Don't do a TreePush when open (e.g. for CollapsingHeader)
 ---    = no extra indent nor pushing on ID stack.
@@ -11002,7 +10917,7 @@
 --- @since 0.1
 --- @field TreeNodeFlags_NoTreePushOnOpen integer
 ---
---- **Tree Node > Flags > TreeNodeFlags_None**
+--- **Tree Node > Flags > TreeNodeFlags\_None**
 ---
 --- ---
 ---
@@ -11015,7 +10930,7 @@
 --- @since 0.1
 --- @field TreeNodeFlags_None integer
 ---
---- **Tree Node > Flags > TreeNodeFlags_OpenOnArrow**
+--- **Tree Node > Flags > TreeNodeFlags\_OpenOnArrow**
 ---
 --- Only open when clicking on the arrow part.
 ---    If TreeNodeFlags_OpenOnDoubleClick is also set, single-click arrow or
@@ -11032,7 +10947,7 @@
 --- @since 0.1
 --- @field TreeNodeFlags_OpenOnArrow integer
 ---
---- **Tree Node > Flags > TreeNodeFlags_OpenOnDoubleClick**
+--- **Tree Node > Flags > TreeNodeFlags\_OpenOnDoubleClick**
 ---
 --- Need double-click to open node.
 ---
@@ -11047,7 +10962,7 @@
 --- @since 0.1
 --- @field TreeNodeFlags_OpenOnDoubleClick integer
 ---
---- **Tree Node > Flags > TreeNodeFlags_Selected**
+--- **Tree Node > Flags > TreeNodeFlags\_Selected**
 ---
 --- Draw as selected.
 ---
@@ -11062,7 +10977,7 @@
 --- @since 0.1
 --- @field TreeNodeFlags_Selected integer
 ---
---- **Tree Node > Flags > TreeNodeFlags_SpanAllColumns**
+--- **Tree Node > Flags > TreeNodeFlags\_SpanAllColumns**
 ---
 --- Frame will span all columns of its container table (text will still fit in current column).
 ---
@@ -11077,7 +10992,7 @@
 --- @since 0.9
 --- @field TreeNodeFlags_SpanAllColumns integer
 ---
---- **Tree Node > Flags > TreeNodeFlags_SpanAvailWidth**
+--- **Tree Node > Flags > TreeNodeFlags\_SpanAvailWidth**
 ---
 --- Extend hit box to the right-most edge, even if not framed.
 ---    This is not the default in order to allow adding other items on the same line.
@@ -11095,7 +11010,7 @@
 --- @since 0.1
 --- @field TreeNodeFlags_SpanAvailWidth integer
 ---
---- **Tree Node > Flags > TreeNodeFlags_SpanFullWidth**
+--- **Tree Node > Flags > TreeNodeFlags\_SpanFullWidth**
 ---
 --- Extend hit box to the left-most and right-most edges (bypass the indented area).
 ---
@@ -11110,7 +11025,7 @@
 --- @since 0.1
 --- @field TreeNodeFlags_SpanFullWidth integer
 ---
---- **Tree Node > Flags > TreeNodeFlags_SpanTextWidth**
+--- **Tree Node > Flags > TreeNodeFlags\_SpanTextWidth**
 ---
 --- Narrow hit box + narrow hovering highlight, will only cover the label text.
 ---
@@ -11125,7 +11040,7 @@
 --- @since 0.9.1
 --- @field TreeNodeFlags_SpanTextWidth integer
 ---
---- **Utility > Conditions > Cond_Always**
+--- **Utility > Conditions > Cond\_Always**
 ---
 --- No condition (always set the variable).
 ---
@@ -11140,7 +11055,7 @@
 --- @since 0.1
 --- @field Cond_Always integer
 ---
---- **Utility > Conditions > Cond_Appearing**
+--- **Utility > Conditions > Cond\_Appearing**
 ---
 --- Set the variable if the object/window is appearing after being
 ---    hidden/inactive (or the first time).
@@ -11156,7 +11071,7 @@
 --- @since 0.1
 --- @field Cond_Appearing integer
 ---
---- **Utility > Conditions > Cond_FirstUseEver**
+--- **Utility > Conditions > Cond\_FirstUseEver**
 ---
 --- Set the variable if the object/window has no persistently saved data
 ---    (no entry in .ini file).
@@ -11172,7 +11087,7 @@
 --- @since 0.1
 --- @field Cond_FirstUseEver integer
 ---
---- **Utility > Conditions > Cond_Once**
+--- **Utility > Conditions > Cond\_Once**
 ---
 --- Set the variable once per runtime session (only the first call will succeed).
 ---
@@ -11187,7 +11102,7 @@
 --- @since 0.1
 --- @field Cond_Once integer
 ---
---- **Window > Child Windows > Child Flags > ChildFlags_AlwaysAutoResize**
+--- **Window > Child Windows > Child Flags > ChildFlags\_AlwaysAutoResize**
 ---
 --- Combined with AutoResizeX/AutoResizeY. Always measure size even when child
 --- is hidden, always return true, always disable clipping optimization! NOT RECOMMENDED.
@@ -11231,7 +11146,7 @@
 --- @since 0.9
 --- @field ChildFlags_AlwaysAutoResize integer
 ---
---- **Window > Child Windows > Child Flags > ChildFlags_AlwaysUseWindowPadding**
+--- **Window > Child Windows > Child Flags > ChildFlags\_AlwaysUseWindowPadding**
 ---
 --- Pad with StyleVar_WindowPadding even if no border are drawn (no padding by
 --- default for non-bordered child windows because it makes more sense).
@@ -11275,7 +11190,7 @@
 --- @since 0.9
 --- @field ChildFlags_AlwaysUseWindowPadding integer
 ---
---- **Window > Child Windows > Child Flags > ChildFlags_AutoResizeX**
+--- **Window > Child Windows > Child Flags > ChildFlags\_AutoResizeX**
 ---
 --- Enable auto-resizing width. Read notes above.
 ---
@@ -11318,7 +11233,7 @@
 --- @since 0.9
 --- @field ChildFlags_AutoResizeX integer
 ---
---- **Window > Child Windows > Child Flags > ChildFlags_AutoResizeY**
+--- **Window > Child Windows > Child Flags > ChildFlags\_AutoResizeY**
 ---
 --- Enable auto-resizing height. Read notes above.
 ---
@@ -11361,7 +11276,7 @@
 --- @since 0.9
 --- @field ChildFlags_AutoResizeY integer
 ---
---- **Window > Child Windows > Child Flags > ChildFlags_Border**
+--- **Window > Child Windows > Child Flags > ChildFlags\_Border**
 ---
 --- Show an outer border and enable WindowPadding.
 ---
@@ -11404,7 +11319,7 @@
 --- @since 0.9
 --- @field ChildFlags_Border integer
 ---
---- **Window > Child Windows > Child Flags > ChildFlags_FrameStyle**
+--- **Window > Child Windows > Child Flags > ChildFlags\_FrameStyle**
 ---
 --- Style the child window like a framed item: use Col_FrameBg,
 ---    StyleVar_FrameRounding, StyleVar_FrameBorderSize, StyleVar_FramePadding
@@ -11450,7 +11365,7 @@
 --- @since 0.9
 --- @field ChildFlags_FrameStyle integer
 ---
---- **Window > Child Windows > Child Flags > ChildFlags_NavFlattened**
+--- **Window > Child Windows > Child Flags > ChildFlags\_NavFlattened**
 ---
 --- Share focus scope, allow gamepad/keyboard navigation to cross over parent
 ---    border to this child or between sibling child windows.
@@ -11494,7 +11409,7 @@
 --- @since 0.9.2
 --- @field ChildFlags_NavFlattened integer
 ---
---- **Window > Child Windows > Child Flags > ChildFlags_None**
+--- **Window > Child Windows > Child Flags > ChildFlags\_None**
 ---
 --- ---
 ---
@@ -11535,7 +11450,7 @@
 --- @since 0.9
 --- @field ChildFlags_None integer
 ---
---- **Window > Child Windows > Child Flags > ChildFlags_ResizeX**
+--- **Window > Child Windows > Child Flags > ChildFlags\_ResizeX**
 ---
 --- Allow resize from right border (layout direction).
 --- Enables .ini saving (unless WindowFlags_NoSavedSettings passed to window flags).
@@ -11579,7 +11494,7 @@
 --- @since 0.9
 --- @field ChildFlags_ResizeX integer
 ---
---- **Window > Child Windows > Child Flags > ChildFlags_ResizeY**
+--- **Window > Child Windows > Child Flags > ChildFlags\_ResizeY**
 ---
 --- Allow resize from bottom border (layout direction).
 --- Enables .ini saving (unless WindowFlags_NoSavedSettings passed to window flags).
@@ -11623,7 +11538,7 @@
 --- @since 0.9
 --- @field ChildFlags_ResizeY integer
 ---
---- **Window > Flags > WindowFlags_AlwaysAutoResize**
+--- **Window > Flags > WindowFlags\_AlwaysAutoResize**
 ---
 --- Resize every window to its content every frame.
 ---
@@ -11648,7 +11563,7 @@
 --- @since 0.1
 --- @field WindowFlags_AlwaysAutoResize integer
 ---
---- **Window > Flags > WindowFlags_AlwaysHorizontalScrollbar**
+--- **Window > Flags > WindowFlags\_AlwaysHorizontalScrollbar**
 ---
 --- Always show horizontal scrollbar (even if ContentSize.x < Size.x).
 ---
@@ -11673,7 +11588,7 @@
 --- @since 0.1
 --- @field WindowFlags_AlwaysHorizontalScrollbar integer
 ---
---- **Window > Flags > WindowFlags_AlwaysVerticalScrollbar**
+--- **Window > Flags > WindowFlags\_AlwaysVerticalScrollbar**
 ---
 --- Always show vertical scrollbar (even if ContentSize.y < Size.y).
 ---
@@ -11698,7 +11613,7 @@
 --- @since 0.1
 --- @field WindowFlags_AlwaysVerticalScrollbar integer
 ---
---- **Window > Flags > WindowFlags_HorizontalScrollbar**
+--- **Window > Flags > WindowFlags\_HorizontalScrollbar**
 ---
 --- Allow horizontal scrollbar to appear (off by default).
 ---    You may use SetNextWindowContentSize(width, 0.0) prior to calling Begin() to
@@ -11725,7 +11640,7 @@
 --- @since 0.1
 --- @field WindowFlags_HorizontalScrollbar integer
 ---
---- **Window > Flags > WindowFlags_MenuBar**
+--- **Window > Flags > WindowFlags\_MenuBar**
 ---
 --- Has a menu-bar.
 ---
@@ -11750,7 +11665,7 @@
 --- @since 0.1
 --- @field WindowFlags_MenuBar integer
 ---
---- **Window > Flags > WindowFlags_NoBackground**
+--- **Window > Flags > WindowFlags\_NoBackground**
 ---
 --- Disable drawing background color (WindowBg, etc.) and outside border.
 ---    Similar as using SetNextWindowBgAlpha(0.0).
@@ -11776,7 +11691,7 @@
 --- @since 0.1
 --- @field WindowFlags_NoBackground integer
 ---
---- **Window > Flags > WindowFlags_NoCollapse**
+--- **Window > Flags > WindowFlags\_NoCollapse**
 ---
 --- Disable user collapsing window by double-clicking on it.
 ---    Also referred to as Window Menu Button (e.g. within a docking node).
@@ -11802,7 +11717,7 @@
 --- @since 0.1
 --- @field WindowFlags_NoCollapse integer
 ---
---- **Window > Flags > WindowFlags_NoDecoration**
+--- **Window > Flags > WindowFlags\_NoDecoration**
 ---
 --- WindowFlags_NoTitleBar | WindowFlags_NoResize | WindowFlags_NoScrollbar |
 ---    WindowFlags_NoCollapse
@@ -11828,7 +11743,7 @@
 --- @since 0.1
 --- @field WindowFlags_NoDecoration integer
 ---
---- **Window > Flags > WindowFlags_NoDocking**
+--- **Window > Flags > WindowFlags\_NoDocking**
 ---
 --- Disable docking of this window.
 ---
@@ -11853,7 +11768,7 @@
 --- @since 0.5
 --- @field WindowFlags_NoDocking integer
 ---
---- **Window > Flags > WindowFlags_NoFocusOnAppearing**
+--- **Window > Flags > WindowFlags\_NoFocusOnAppearing**
 ---
 --- Disable taking focus when transitioning from hidden to visible state.
 ---
@@ -11878,7 +11793,7 @@
 --- @since 0.1
 --- @field WindowFlags_NoFocusOnAppearing integer
 ---
---- **Window > Flags > WindowFlags_NoInputs**
+--- **Window > Flags > WindowFlags\_NoInputs**
 ---
 --- WindowFlags_NoMouseInputs | WindowFlags_NoNavInputs | WindowFlags_NoNavFocus
 ---
@@ -11903,7 +11818,7 @@
 --- @since 0.1
 --- @field WindowFlags_NoInputs integer
 ---
---- **Window > Flags > WindowFlags_NoMouseInputs**
+--- **Window > Flags > WindowFlags\_NoMouseInputs**
 ---
 --- Disable catching mouse, hovering test with pass through.
 ---
@@ -11928,7 +11843,7 @@
 --- @since 0.1
 --- @field WindowFlags_NoMouseInputs integer
 ---
---- **Window > Flags > WindowFlags_NoMove**
+--- **Window > Flags > WindowFlags\_NoMove**
 ---
 --- Disable user moving the window.
 ---
@@ -11953,7 +11868,7 @@
 --- @since 0.1
 --- @field WindowFlags_NoMove integer
 ---
---- **Window > Flags > WindowFlags_NoNav**
+--- **Window > Flags > WindowFlags\_NoNav**
 ---
 --- WindowFlags_NoNavInputs | WindowFlags_NoNavFocus
 ---
@@ -11978,7 +11893,7 @@
 --- @since 0.1
 --- @field WindowFlags_NoNav integer
 ---
---- **Window > Flags > WindowFlags_NoNavFocus**
+--- **Window > Flags > WindowFlags\_NoNavFocus**
 ---
 --- No focusing toward this window with gamepad/keyboard navigation
 ---    (e.g. skipped by CTRL+TAB).
@@ -12004,7 +11919,7 @@
 --- @since 0.1
 --- @field WindowFlags_NoNavFocus integer
 ---
---- **Window > Flags > WindowFlags_NoNavInputs**
+--- **Window > Flags > WindowFlags\_NoNavInputs**
 ---
 --- No gamepad/keyboard navigation within the window.
 ---
@@ -12029,7 +11944,7 @@
 --- @since 0.1
 --- @field WindowFlags_NoNavInputs integer
 ---
---- **Window > Flags > WindowFlags_NoResize**
+--- **Window > Flags > WindowFlags\_NoResize**
 ---
 --- Disable user resizing with the lower-right grip.
 ---
@@ -12054,7 +11969,7 @@
 --- @since 0.1
 --- @field WindowFlags_NoResize integer
 ---
---- **Window > Flags > WindowFlags_NoSavedSettings**
+--- **Window > Flags > WindowFlags\_NoSavedSettings**
 ---
 --- Never load/save settings in .ini file.
 ---
@@ -12079,7 +11994,7 @@
 --- @since 0.4
 --- @field WindowFlags_NoSavedSettings integer
 ---
---- **Window > Flags > WindowFlags_NoScrollWithMouse**
+--- **Window > Flags > WindowFlags\_NoScrollWithMouse**
 ---
 --- Disable user vertically scrolling with mouse wheel.
 ---    On child window, mouse wheel will be forwarded to the parent unless
@@ -12106,7 +12021,7 @@
 --- @since 0.1
 --- @field WindowFlags_NoScrollWithMouse integer
 ---
---- **Window > Flags > WindowFlags_NoScrollbar**
+--- **Window > Flags > WindowFlags\_NoScrollbar**
 ---
 --- Disable scrollbars (window can still scroll with mouse or programmatically).
 ---
@@ -12131,7 +12046,7 @@
 --- @since 0.1
 --- @field WindowFlags_NoScrollbar integer
 ---
---- **Window > Flags > WindowFlags_NoTitleBar**
+--- **Window > Flags > WindowFlags\_NoTitleBar**
 ---
 --- Disable title-bar.
 ---
@@ -12156,7 +12071,7 @@
 --- @since 0.1
 --- @field WindowFlags_NoTitleBar integer
 ---
---- **Window > Flags > WindowFlags_None**
+--- **Window > Flags > WindowFlags\_None**
 ---
 --- Default flag.
 ---
@@ -12181,7 +12096,7 @@
 --- @since 0.1
 --- @field WindowFlags_None integer
 ---
---- **Window > Flags > WindowFlags_TopMost**
+--- **Window > Flags > WindowFlags\_TopMost**
 ---
 --- Show the window above all non-topmost windows.
 ---
@@ -12206,7 +12121,7 @@
 --- @since 0.5.5
 --- @field WindowFlags_TopMost integer
 ---
---- **Window > Flags > WindowFlags_UnsavedDocument**
+--- **Window > Flags > WindowFlags\_UnsavedDocument**
 ---
 --- Display a dot next to the title. When used in a tab/docking context,
 ---    tab is selected when clicking the X + closure is not assumed
@@ -12235,7 +12150,7 @@
 --- @since 0.1
 --- @field WindowFlags_UnsavedDocument integer
 ---
---- **Window > Properties > Focused Flags > FocusedFlags_AnyWindow**
+--- **Window > Properties > Focused Flags > FocusedFlags\_AnyWindow**
 ---
 --- Return true if any window is focused.
 ---
@@ -12267,7 +12182,7 @@
 --- @since 0.1
 --- @field FocusedFlags_AnyWindow integer
 ---
---- **Window > Properties > Focused Flags > FocusedFlags_ChildWindows**
+--- **Window > Properties > Focused Flags > FocusedFlags\_ChildWindows**
 ---
 --- Return true if any children of the window is focused.
 ---
@@ -12299,7 +12214,7 @@
 --- @since 0.1
 --- @field FocusedFlags_ChildWindows integer
 ---
---- **Window > Properties > Focused Flags > FocusedFlags_DockHierarchy**
+--- **Window > Properties > Focused Flags > FocusedFlags\_DockHierarchy**
 ---
 --- Consider docking hierarchy (treat dockspace host as parent of docked window)
 ---    (when used with _ChildWindows or _RootWindow).
@@ -12332,7 +12247,7 @@
 --- @since 0.5.10
 --- @field FocusedFlags_DockHierarchy integer
 ---
---- **Window > Properties > Focused Flags > FocusedFlags_NoPopupHierarchy**
+--- **Window > Properties > Focused Flags > FocusedFlags\_NoPopupHierarchy**
 ---
 --- Do not consider popup hierarchy (do not treat popup emitter as parent of
 ---    popup) (when used with _ChildWindows or _RootWindow).
@@ -12365,7 +12280,7 @@
 --- @since 0.5.10
 --- @field FocusedFlags_NoPopupHierarchy integer
 ---
---- **Window > Properties > Focused Flags > FocusedFlags_None**
+--- **Window > Properties > Focused Flags > FocusedFlags\_None**
 ---
 --- ---
 ---
@@ -12395,7 +12310,7 @@
 --- @since 0.1
 --- @field FocusedFlags_None integer
 ---
---- **Window > Properties > Focused Flags > FocusedFlags_RootAndChildWindows**
+--- **Window > Properties > Focused Flags > FocusedFlags\_RootAndChildWindows**
 ---
 --- FocusedFlags_RootWindow | FocusedFlags_ChildWindows
 ---
@@ -12427,7 +12342,7 @@
 --- @since 0.1
 --- @field FocusedFlags_RootAndChildWindows integer
 ---
---- **Window > Properties > Focused Flags > FocusedFlags_RootWindow**
+--- **Window > Properties > Focused Flags > FocusedFlags\_RootWindow**
 ---
 --- Test from root window (top most parent of the current hierarchy).
 ---
@@ -12459,6 +12374,7 @@
 --- @since 0.1
 --- @field FocusedFlags_RootWindow integer
 local ImGui = {}
+
 --- @alias nil​ nil
 --- @class (exact) ImGui_Resource         : userdata
 --- @class (exact) ImGui_DrawList         : userdata
@@ -12473,6 +12389,7 @@ local ImGui = {}
 --- @class (exact) ImGui_TextFilter       : ImGui_Resource
 --- @class (exact) LICE_IBitmap           : userdata
 --- @diagnostic disable: keyword
+
 --- **Button > ArrowButton**
 ---
 --- Square button with an arrow shape. 'dir' is one of the Dir_* values
@@ -12494,6 +12411,7 @@ local ImGui = {}
 --- @param dir integer
 --- @return boolean retval
 function ImGui.ArrowButton(ctx, str_id, dir) end
+
 --- **Button > Button**
 ---
 --- ---
@@ -12514,6 +12432,7 @@ function ImGui.ArrowButton(ctx, str_id, dir) end
 --- @param size_h? number default value = `0.0`
 --- @return boolean retval
 function ImGui.Button(ctx, label, size_w, size_h) end
+
 --- **Button > Checkbox**
 ---
 --- ---
@@ -12534,6 +12453,7 @@ function ImGui.Button(ctx, label, size_w, size_h) end
 --- @return boolean retval
 --- @return boolean v
 function ImGui.Checkbox(ctx, label, v) end
+
 --- **Button > CheckboxFlags**
 ---
 --- ---
@@ -12555,6 +12475,7 @@ function ImGui.Checkbox(ctx, label, v) end
 --- @return boolean retval
 --- @return integer flags
 function ImGui.CheckboxFlags(ctx, label, flags, flags_value) end
+
 --- **Button > InvisibleButton**
 ---
 --- Flexible button behavior without the visuals, frequently useful to build
@@ -12579,6 +12500,7 @@ function ImGui.CheckboxFlags(ctx, label, flags, flags_value) end
 --- @param flags? integer default value = `ButtonFlags_None`
 --- @return boolean retval
 function ImGui.InvisibleButton(ctx, str_id, size_w, size_h, flags) end
+
 --- **Button > PopButtonRepeat**
 ---
 --- See PushButtonRepeat
@@ -12597,6 +12519,7 @@ function ImGui.InvisibleButton(ctx, str_id, size_w, size_h, flags) end
 --- @since 0.1
 --- @param ctx ImGui_Context
 function ImGui.PopButtonRepeat(ctx) end
+
 --- **Button > PushButtonRepeat**
 ---
 --- In 'repeat' mode, Button*() functions return repeated true in a typematic
@@ -12620,6 +12543,7 @@ function ImGui.PopButtonRepeat(ctx) end
 --- @param ctx ImGui_Context
 --- @param repeat boolean
 function ImGui.PushButtonRepeat(ctx, repeat) end
+
 --- **Button > RadioButton**
 ---
 --- Use with e.g. if (RadioButton("one", my_value==1)) { my_value = 1; }
@@ -12641,6 +12565,7 @@ function ImGui.PushButtonRepeat(ctx, repeat) end
 --- @param active boolean
 --- @return boolean retval
 function ImGui.RadioButton(ctx, label, active) end
+
 --- **Button > RadioButtonEx**
 ---
 --- Shortcut to handle RadioButton's example pattern when value is an integer
@@ -12664,6 +12589,7 @@ function ImGui.RadioButton(ctx, label, active) end
 --- @return boolean retval
 --- @return integer v
 function ImGui.RadioButtonEx(ctx, label, v, v_button) end
+
 --- **Button > SmallButton**
 ---
 --- Button with StyleVar_FramePadding.y == 0 to easily embed within text.
@@ -12684,6 +12610,7 @@ function ImGui.RadioButtonEx(ctx, label, v, v_button) end
 --- @param label string
 --- @return boolean retval
 function ImGui.SmallButton(ctx, label) end
+
 --- **Color Edit > ColorButton**
 ---
 --- Display a color square/button, hover for details, return true when pressed.
@@ -12707,6 +12634,7 @@ function ImGui.SmallButton(ctx, label) end
 --- @param size_h? number default value = `0.0`
 --- @return boolean retval
 function ImGui.ColorButton(ctx, desc_id, col_rgba, flags, size_w, size_h) end
+
 --- **Color Edit > ColorEdit3**
 ---
 --- Color is in 0xXXRRGGBB. XX is ignored and will not be modified.
@@ -12728,6 +12656,7 @@ function ImGui.ColorButton(ctx, desc_id, col_rgba, flags, size_w, size_h) end
 --- @return boolean retval
 --- @return integer col_rgb
 function ImGui.ColorEdit3(ctx, label, col_rgb, flags) end
+
 --- **Color Edit > ColorEdit4**
 ---
 --- Color is in 0xRRGGBBAA or, if ColorEditFlags_NoAlpha is set, 0xXXRRGGBB
@@ -12750,6 +12679,7 @@ function ImGui.ColorEdit3(ctx, label, col_rgb, flags) end
 --- @return boolean retval
 --- @return integer col_rgba
 function ImGui.ColorEdit4(ctx, label, col_rgba, flags) end
+
 --- **Color Edit > ColorPicker3**
 ---
 --- Color is in 0xXXRRGGBB. XX is ignored and will not be modified.
@@ -12771,6 +12701,7 @@ function ImGui.ColorEdit4(ctx, label, col_rgba, flags) end
 --- @return boolean retval
 --- @return integer col_rgb
 function ImGui.ColorPicker3(ctx, label, col_rgb, flags) end
+
 --- **Color Edit > ColorPicker4**
 ---
 --- ---
@@ -12791,6 +12722,7 @@ function ImGui.ColorPicker3(ctx, label, col_rgb, flags) end
 --- @return boolean retval
 --- @return integer col_rgba
 function ImGui.ColorPicker4(ctx, label, col_rgba, flags, ref_col) end
+
 --- **Color Edit > SetColorEditOptions**
 ---
 --- Picker type, etc. User will be able to change many settings, unless you pass
@@ -12809,7 +12741,8 @@ function ImGui.ColorPicker4(ctx, label, col_rgba, flags, ref_col) end
 --- @param ctx ImGui_Context
 --- @param flags integer
 function ImGui.SetColorEditOptions(ctx, flags) end
---- **Combo & List > Combo Box (Dropdown) > BeginCombo**
+
+--- **Combo \& List > Combo Box \(Dropdown\) > BeginCombo**
 ---
 --- The BeginCombo/EndCombo API allows you to manage your contents and selection
 --- state however you want it, by creating e.g. Selectable items.
@@ -12824,7 +12757,8 @@ function ImGui.SetColorEditOptions(ctx, flags) end
 --- @nodiscard
 --- @return boolean retval
 function ImGui.BeginCombo(ctx, label, preview_value, flags) end
---- **Combo & List > Combo Box (Dropdown) > Combo**
+
+--- **Combo \& List > Combo Box \(Dropdown\) > Combo**
 ---
 --- Helper over BeginCombo/EndCombo for convenience purpose. Each item must be
 --- null-terminated (requires REAPER v6.44 or newer for EEL and Lua).
@@ -12840,7 +12774,8 @@ function ImGui.BeginCombo(ctx, label, preview_value, flags) end
 --- @return boolean retval
 --- @return integer current_item
 function ImGui.Combo(ctx, label, current_item, items, popup_max_height_in_items) end
---- **Combo & List > Combo Box (Dropdown) > EndCombo**
+
+--- **Combo \& List > Combo Box \(Dropdown\) > EndCombo**
 ---
 --- Only call EndCombo() if BeginCombo returns true!
 ---
@@ -12849,7 +12784,8 @@ function ImGui.Combo(ctx, label, current_item, items, popup_max_height_in_items)
 --- @since 0.1
 --- @param ctx ImGui_Context
 function ImGui.EndCombo(ctx) end
---- **Combo & List > List Boxes > BeginListBox**
+
+--- **Combo \& List > List Boxes > BeginListBox**
 ---
 --- Open a framed scrolling region.
 ---
@@ -12869,7 +12805,7 @@ function ImGui.EndCombo(ctx) end
 ---
 --- ---
 ---
---- **Combo & List > List Boxes**
+--- **Combo \& List > List Boxes**
 ---
 --- This is essentially a thin wrapper to using BeginChild/EndChild with the
 --- ChildFlags_FrameStyle flag for stylistic changes + displaying a label.
@@ -12884,13 +12820,14 @@ function ImGui.EndCombo(ctx) end
 --- @nodiscard
 --- @return boolean retval
 function ImGui.BeginListBox(ctx, label, size_w, size_h) end
---- **Combo & List > List Boxes > EndListBox**
+
+--- **Combo \& List > List Boxes > EndListBox**
 ---
 --- Only call EndListBox() if BeginListBox returned true!
 ---
 --- ---
 ---
---- **Combo & List > List Boxes**
+--- **Combo \& List > List Boxes**
 ---
 --- This is essentially a thin wrapper to using BeginChild/EndChild with the
 --- ChildFlags_FrameStyle flag for stylistic changes + displaying a label.
@@ -12900,7 +12837,8 @@ function ImGui.BeginListBox(ctx, label, size_w, size_h) end
 --- @since 0.1
 --- @param ctx ImGui_Context
 function ImGui.EndListBox(ctx) end
---- **Combo & List > List Boxes > ListBox**
+
+--- **Combo \& List > List Boxes > ListBox**
 ---
 --- This is an helper over BeginListBox/EndListBox for convenience purpose.
 ---
@@ -12908,7 +12846,7 @@ function ImGui.EndListBox(ctx) end
 ---
 --- ---
 ---
---- **Combo & List > List Boxes**
+--- **Combo \& List > List Boxes**
 ---
 --- This is essentially a thin wrapper to using BeginChild/EndChild with the
 --- ChildFlags_FrameStyle flag for stylistic changes + displaying a label.
@@ -12924,11 +12862,12 @@ function ImGui.EndListBox(ctx) end
 --- @return boolean retval
 --- @return integer current_item
 function ImGui.ListBox(ctx, label, current_item, items, height_in_items) end
---- **Combo & List > Selectables > Selectable**
+
+--- **Combo \& List > Selectables > Selectable**
 ---
 --- ---
 ---
---- **Combo & List > Selectables**
+--- **Combo \& List > Selectables**
 ---
 --- A selectable highlights when hovered, and can display another color when
 --- selected. Neighbors selectable extend their highlight bounds in order to leave
@@ -12947,6 +12886,7 @@ function ImGui.ListBox(ctx, label, current_item, items, height_in_items) end
 --- @return boolean retval
 --- @return boolean p_selected
 function ImGui.Selectable(ctx, label, p_selected, flags, size_w, size_h) end
+
 --- **Context > Attach**
 ---
 --- Link the object's lifetime to the given context.
@@ -12966,6 +12906,7 @@ function ImGui.Selectable(ctx, label, p_selected, flags, size_w, size_h) end
 --- @param ctx ImGui_Context
 --- @param obj ImGui_Resource
 function ImGui.Attach(ctx, obj) end
+
 --- **Context > CreateContext**
 ---
 --- Create a new ReaImGui context.
@@ -12982,6 +12923,7 @@ function ImGui.Attach(ctx, obj) end
 --- @nodiscard
 --- @return ImGui_Context retval
 function ImGui.CreateContext(label, config_flags) end
+
 --- **Context > Detach**
 ---
 --- Unlink the object's lifetime. Unattached objects are automatically destroyed
@@ -12994,6 +12936,7 @@ function ImGui.CreateContext(label, config_flags) end
 --- @param ctx ImGui_Context
 --- @param obj ImGui_Resource
 function ImGui.Detach(ctx, obj) end
+
 --- **Context > GetDeltaTime**
 ---
 --- Time elapsed since last frame, in seconds.
@@ -13004,6 +12947,7 @@ function ImGui.Detach(ctx, obj) end
 --- @param ctx ImGui_Context
 --- @return number retval
 function ImGui.GetDeltaTime(ctx) end
+
 --- **Context > GetFrameCount**
 ---
 --- Get global imgui frame count. incremented by 1 every frame.
@@ -13014,6 +12958,7 @@ function ImGui.GetDeltaTime(ctx) end
 --- @param ctx ImGui_Context
 --- @return integer retval
 function ImGui.GetFrameCount(ctx) end
+
 --- **Context > GetFramerate**
 ---
 --- Estimate of application framerate (rolling average over 60 frames, based on
@@ -13025,6 +12970,7 @@ function ImGui.GetFrameCount(ctx) end
 --- @param ctx ImGui_Context
 --- @return number retval
 function ImGui.GetFramerate(ctx) end
+
 --- **Context > GetTime**
 ---
 --- Get global imgui time. Incremented every frame.
@@ -13035,6 +12981,7 @@ function ImGui.GetFramerate(ctx) end
 --- @param ctx ImGui_Context
 --- @return number retval
 function ImGui.GetTime(ctx) end
+
 --- **Context > Options > GetConfigVar**
 ---
 --- ---
@@ -13044,6 +12991,7 @@ function ImGui.GetTime(ctx) end
 --- @param var_idx integer
 --- @return number retval
 function ImGui.GetConfigVar(ctx, var_idx) end
+
 --- **Context > Options > SetConfigVar**
 ---
 --- ---
@@ -13053,14 +13001,15 @@ function ImGui.GetConfigVar(ctx, var_idx) end
 --- @param var_idx integer
 --- @param value number
 function ImGui.SetConfigVar(ctx, var_idx, value) end
---- **Drag & Drop > AcceptDragDropPayload**
+
+--- **Drag \& Drop > AcceptDragDropPayload**
 ---
 --- Accept contents of a given type. If DragDropFlags_AcceptBeforeDelivery is set
 --- you can peek into the payload before the mouse button is released.
 ---
 --- ---
 ---
---- **Drag & Drop**
+--- **Drag \& Drop**
 ---
 --- On source items, call BeginDragDropSource(),
 --- if it returns true also call SetDragDropPayload() + EndDragDropSource().
@@ -13080,13 +13029,14 @@ function ImGui.SetConfigVar(ctx, var_idx, value) end
 --- @return boolean retval
 --- @return string payload
 function ImGui.AcceptDragDropPayload(ctx, type, _1, flags) end
---- **Drag & Drop > AcceptDragDropPayloadFiles**
+
+--- **Drag \& Drop > AcceptDragDropPayloadFiles**
 ---
 --- Accept a list of dropped files. See AcceptDragDropPayload and GetDragDropPayloadFile.
 ---
 --- ---
 ---
---- **Drag & Drop**
+--- **Drag \& Drop**
 ---
 --- On source items, call BeginDragDropSource(),
 --- if it returns true also call SetDragDropPayload() + EndDragDropSource().
@@ -13105,13 +13055,14 @@ function ImGui.AcceptDragDropPayload(ctx, type, _1, flags) end
 --- @return boolean retval
 --- @return integer count
 function ImGui.AcceptDragDropPayloadFiles(ctx, _1, flags) end
---- **Drag & Drop > AcceptDragDropPayloadRGB**
+
+--- **Drag \& Drop > AcceptDragDropPayloadRGB**
 ---
 --- Accept a RGB color. See AcceptDragDropPayload.
 ---
 --- ---
 ---
---- **Drag & Drop**
+--- **Drag \& Drop**
 ---
 --- On source items, call BeginDragDropSource(),
 --- if it returns true also call SetDragDropPayload() + EndDragDropSource().
@@ -13130,13 +13081,14 @@ function ImGui.AcceptDragDropPayloadFiles(ctx, _1, flags) end
 --- @return boolean retval
 --- @return integer rgb
 function ImGui.AcceptDragDropPayloadRGB(ctx, _1, flags) end
---- **Drag & Drop > AcceptDragDropPayloadRGBA**
+
+--- **Drag \& Drop > AcceptDragDropPayloadRGBA**
 ---
 --- Accept a RGBA color. See AcceptDragDropPayload.
 ---
 --- ---
 ---
---- **Drag & Drop**
+--- **Drag \& Drop**
 ---
 --- On source items, call BeginDragDropSource(),
 --- if it returns true also call SetDragDropPayload() + EndDragDropSource().
@@ -13155,7 +13107,8 @@ function ImGui.AcceptDragDropPayloadRGB(ctx, _1, flags) end
 --- @return boolean retval
 --- @return integer rgba
 function ImGui.AcceptDragDropPayloadRGBA(ctx, _1, flags) end
---- **Drag & Drop > BeginDragDropSource**
+
+--- **Drag \& Drop > BeginDragDropSource**
 ---
 --- Call after submitting an item which may be dragged. when this return true,
 --- you can call SetDragDropPayload() + EndDragDropSource()
@@ -13166,7 +13119,7 @@ function ImGui.AcceptDragDropPayloadRGBA(ctx, _1, flags) end
 ---
 --- ---
 ---
---- **Drag & Drop**
+--- **Drag \& Drop**
 ---
 --- On source items, call BeginDragDropSource(),
 --- if it returns true also call SetDragDropPayload() + EndDragDropSource().
@@ -13184,14 +13137,15 @@ function ImGui.AcceptDragDropPayloadRGBA(ctx, _1, flags) end
 --- @nodiscard
 --- @return boolean retval
 function ImGui.BeginDragDropSource(ctx, flags) end
---- **Drag & Drop > BeginDragDropTarget**
+
+--- **Drag \& Drop > BeginDragDropTarget**
 ---
 --- Call after submitting an item that may receive a payload.
 --- If this returns true, you can call AcceptDragDropPayload + EndDragDropTarget.
 ---
 --- ---
 ---
---- **Drag & Drop**
+--- **Drag \& Drop**
 ---
 --- On source items, call BeginDragDropSource(),
 --- if it returns true also call SetDragDropPayload() + EndDragDropSource().
@@ -13208,13 +13162,14 @@ function ImGui.BeginDragDropSource(ctx, flags) end
 --- @nodiscard
 --- @return boolean retval
 function ImGui.BeginDragDropTarget(ctx) end
---- **Drag & Drop > EndDragDropSource**
+
+--- **Drag \& Drop > EndDragDropSource**
 ---
 --- Only call EndDragDropSource() if BeginDragDropSource returns true!
 ---
 --- ---
 ---
---- **Drag & Drop**
+--- **Drag \& Drop**
 ---
 --- On source items, call BeginDragDropSource(),
 --- if it returns true also call SetDragDropPayload() + EndDragDropSource().
@@ -13229,13 +13184,14 @@ function ImGui.BeginDragDropTarget(ctx) end
 --- @since 0.1
 --- @param ctx ImGui_Context
 function ImGui.EndDragDropSource(ctx) end
---- **Drag & Drop > EndDragDropTarget**
+
+--- **Drag \& Drop > EndDragDropTarget**
 ---
 --- Only call EndDragDropTarget() if BeginDragDropTarget returns true!
 ---
 --- ---
 ---
---- **Drag & Drop**
+--- **Drag \& Drop**
 ---
 --- On source items, call BeginDragDropSource(),
 --- if it returns true also call SetDragDropPayload() + EndDragDropSource().
@@ -13250,14 +13206,15 @@ function ImGui.EndDragDropSource(ctx) end
 --- @since 0.1
 --- @param ctx ImGui_Context
 function ImGui.EndDragDropTarget(ctx) end
---- **Drag & Drop > GetDragDropPayload**
+
+--- **Drag \& Drop > GetDragDropPayload**
 ---
 --- Peek directly into the current payload from anywhere.
 --- Returns false when drag and drop is finished or inactive.
 ---
 --- ---
 ---
---- **Drag & Drop**
+--- **Drag \& Drop**
 ---
 --- On source items, call BeginDragDropSource(),
 --- if it returns true also call SetDragDropPayload() + EndDragDropSource().
@@ -13277,14 +13234,15 @@ function ImGui.EndDragDropTarget(ctx) end
 --- @return boolean is_preview
 --- @return boolean is_delivery
 function ImGui.GetDragDropPayload(ctx) end
---- **Drag & Drop > GetDragDropPayloadFile**
+
+--- **Drag \& Drop > GetDragDropPayloadFile**
 ---
 --- Get a filename from the list of dropped files.
 --- Returns false if index is out of bounds.
 ---
 --- ---
 ---
---- **Drag & Drop**
+--- **Drag \& Drop**
 ---
 --- On source items, call BeginDragDropSource(),
 --- if it returns true also call SetDragDropPayload() + EndDragDropSource().
@@ -13302,7 +13260,8 @@ function ImGui.GetDragDropPayload(ctx) end
 --- @return boolean retval
 --- @return string filename
 function ImGui.GetDragDropPayloadFile(ctx, index) end
---- **Drag & Drop > SetDragDropPayload**
+
+--- **Drag \& Drop > SetDragDropPayload**
 ---
 --- The type is a user defined string of maximum 32 characters.
 --- Strings starting with '_' are reserved for dear imgui internal types.
@@ -13310,7 +13269,7 @@ function ImGui.GetDragDropPayloadFile(ctx, index) end
 ---
 --- ---
 ---
---- **Drag & Drop**
+--- **Drag \& Drop**
 ---
 --- On source items, call BeginDragDropSource(),
 --- if it returns true also call SetDragDropPayload() + EndDragDropSource().
@@ -13329,11 +13288,12 @@ function ImGui.GetDragDropPayloadFile(ctx, index) end
 --- @param cond? integer default value = `Cond_Always`
 --- @return boolean retval
 function ImGui.SetDragDropPayload(ctx, type, data, cond) end
---- **Drag & Slider > Drag Sliders > DragDouble**
+
+--- **Drag \& Slider > Drag Sliders > DragDouble**
 ---
 --- ---
 ---
---- **Drag & Slider > Drag Sliders**
+--- **Drag \& Slider > Drag Sliders**
 ---
 --- Speed are per-pixel of mouse movement (v_speed=0.2: mouse needs to move by 5
 --- pixels to increase value by 1). For gamepad/keyboard navigation, minimum speed
@@ -13346,7 +13306,7 @@ function ImGui.SetDragDropPayload(ctx, type, data, cond) end
 ---
 --- ---
 ---
---- **Drag & Slider**
+--- **Drag \& Slider**
 ---
 --- We use the same sets of flags for Drag*() and Slider*() functions as the
 --- features are the same and it makes it easier to swap them.
@@ -13375,11 +13335,12 @@ function ImGui.SetDragDropPayload(ctx, type, data, cond) end
 --- @return boolean retval
 --- @return number v
 function ImGui.DragDouble(ctx, label, v, v_speed, v_min, v_max, format, flags) end
---- **Drag & Slider > Drag Sliders > DragDouble2**
+
+--- **Drag \& Slider > Drag Sliders > DragDouble2**
 ---
 --- ---
 ---
---- **Drag & Slider > Drag Sliders**
+--- **Drag \& Slider > Drag Sliders**
 ---
 --- Speed are per-pixel of mouse movement (v_speed=0.2: mouse needs to move by 5
 --- pixels to increase value by 1). For gamepad/keyboard navigation, minimum speed
@@ -13392,7 +13353,7 @@ function ImGui.DragDouble(ctx, label, v, v_speed, v_min, v_max, format, flags) e
 ---
 --- ---
 ---
---- **Drag & Slider**
+--- **Drag \& Slider**
 ---
 --- We use the same sets of flags for Drag*() and Slider*() functions as the
 --- features are the same and it makes it easier to swap them.
@@ -13423,11 +13384,12 @@ function ImGui.DragDouble(ctx, label, v, v_speed, v_min, v_max, format, flags) e
 --- @return number v1
 --- @return number v2
 function ImGui.DragDouble2(ctx, label, v1, v2, v_speed, v_min, v_max, format, flags) end
---- **Drag & Slider > Drag Sliders > DragDouble3**
+
+--- **Drag \& Slider > Drag Sliders > DragDouble3**
 ---
 --- ---
 ---
---- **Drag & Slider > Drag Sliders**
+--- **Drag \& Slider > Drag Sliders**
 ---
 --- Speed are per-pixel of mouse movement (v_speed=0.2: mouse needs to move by 5
 --- pixels to increase value by 1). For gamepad/keyboard navigation, minimum speed
@@ -13440,7 +13402,7 @@ function ImGui.DragDouble2(ctx, label, v1, v2, v_speed, v_min, v_max, format, fl
 ---
 --- ---
 ---
---- **Drag & Slider**
+--- **Drag \& Slider**
 ---
 --- We use the same sets of flags for Drag*() and Slider*() functions as the
 --- features are the same and it makes it easier to swap them.
@@ -13473,11 +13435,12 @@ function ImGui.DragDouble2(ctx, label, v1, v2, v_speed, v_min, v_max, format, fl
 --- @return number v2
 --- @return number v3
 function ImGui.DragDouble3(ctx, label, v1, v2, v3, v_speed, v_min, v_max, format, flags) end
---- **Drag & Slider > Drag Sliders > DragDouble4**
+
+--- **Drag \& Slider > Drag Sliders > DragDouble4**
 ---
 --- ---
 ---
---- **Drag & Slider > Drag Sliders**
+--- **Drag \& Slider > Drag Sliders**
 ---
 --- Speed are per-pixel of mouse movement (v_speed=0.2: mouse needs to move by 5
 --- pixels to increase value by 1). For gamepad/keyboard navigation, minimum speed
@@ -13490,7 +13453,7 @@ function ImGui.DragDouble3(ctx, label, v1, v2, v3, v_speed, v_min, v_max, format
 ---
 --- ---
 ---
---- **Drag & Slider**
+--- **Drag \& Slider**
 ---
 --- We use the same sets of flags for Drag*() and Slider*() functions as the
 --- features are the same and it makes it easier to swap them.
@@ -13525,11 +13488,12 @@ function ImGui.DragDouble3(ctx, label, v1, v2, v3, v_speed, v_min, v_max, format
 --- @return number v3
 --- @return number v4
 function ImGui.DragDouble4(ctx, label, v1, v2, v3, v4, v_speed, v_min, v_max, format, flags) end
---- **Drag & Slider > Drag Sliders > DragDoubleN**
+
+--- **Drag \& Slider > Drag Sliders > DragDoubleN**
 ---
 --- ---
 ---
---- **Drag & Slider > Drag Sliders**
+--- **Drag \& Slider > Drag Sliders**
 ---
 --- Speed are per-pixel of mouse movement (v_speed=0.2: mouse needs to move by 5
 --- pixels to increase value by 1). For gamepad/keyboard navigation, minimum speed
@@ -13542,7 +13506,7 @@ function ImGui.DragDouble4(ctx, label, v1, v2, v3, v4, v_speed, v_min, v_max, fo
 ---
 --- ---
 ---
---- **Drag & Slider**
+--- **Drag \& Slider**
 ---
 --- We use the same sets of flags for Drag*() and Slider*() functions as the
 --- features are the same and it makes it easier to swap them.
@@ -13570,11 +13534,12 @@ function ImGui.DragDouble4(ctx, label, v1, v2, v3, v4, v_speed, v_min, v_max, fo
 --- @param flags? integer default value = `SliderFlags_None`
 --- @return boolean retval
 function ImGui.DragDoubleN(ctx, label, values, speed, min, max, format, flags) end
---- **Drag & Slider > Drag Sliders > DragFloatRange2**
+
+--- **Drag \& Slider > Drag Sliders > DragFloatRange2**
 ---
 --- ---
 ---
---- **Drag & Slider > Drag Sliders**
+--- **Drag \& Slider > Drag Sliders**
 ---
 --- Speed are per-pixel of mouse movement (v_speed=0.2: mouse needs to move by 5
 --- pixels to increase value by 1). For gamepad/keyboard navigation, minimum speed
@@ -13587,7 +13552,7 @@ function ImGui.DragDoubleN(ctx, label, values, speed, min, max, format, flags) e
 ---
 --- ---
 ---
---- **Drag & Slider**
+--- **Drag \& Slider**
 ---
 --- We use the same sets of flags for Drag*() and Slider*() functions as the
 --- features are the same and it makes it easier to swap them.
@@ -13619,11 +13584,12 @@ function ImGui.DragDoubleN(ctx, label, values, speed, min, max, format, flags) e
 --- @return number v_current_min
 --- @return number v_current_max
 function ImGui.DragFloatRange2(ctx, label, v_current_min, v_current_max, v_speed, v_min, v_max, format, format_max, flags) end
---- **Drag & Slider > Drag Sliders > DragInt**
+
+--- **Drag \& Slider > Drag Sliders > DragInt**
 ---
 --- ---
 ---
---- **Drag & Slider > Drag Sliders**
+--- **Drag \& Slider > Drag Sliders**
 ---
 --- Speed are per-pixel of mouse movement (v_speed=0.2: mouse needs to move by 5
 --- pixels to increase value by 1). For gamepad/keyboard navigation, minimum speed
@@ -13636,7 +13602,7 @@ function ImGui.DragFloatRange2(ctx, label, v_current_min, v_current_max, v_speed
 ---
 --- ---
 ---
---- **Drag & Slider**
+--- **Drag \& Slider**
 ---
 --- We use the same sets of flags for Drag*() and Slider*() functions as the
 --- features are the same and it makes it easier to swap them.
@@ -13665,11 +13631,12 @@ function ImGui.DragFloatRange2(ctx, label, v_current_min, v_current_max, v_speed
 --- @return boolean retval
 --- @return integer v
 function ImGui.DragInt(ctx, label, v, v_speed, v_min, v_max, format, flags) end
---- **Drag & Slider > Drag Sliders > DragInt2**
+
+--- **Drag \& Slider > Drag Sliders > DragInt2**
 ---
 --- ---
 ---
---- **Drag & Slider > Drag Sliders**
+--- **Drag \& Slider > Drag Sliders**
 ---
 --- Speed are per-pixel of mouse movement (v_speed=0.2: mouse needs to move by 5
 --- pixels to increase value by 1). For gamepad/keyboard navigation, minimum speed
@@ -13682,7 +13649,7 @@ function ImGui.DragInt(ctx, label, v, v_speed, v_min, v_max, format, flags) end
 ---
 --- ---
 ---
---- **Drag & Slider**
+--- **Drag \& Slider**
 ---
 --- We use the same sets of flags for Drag*() and Slider*() functions as the
 --- features are the same and it makes it easier to swap them.
@@ -13713,11 +13680,12 @@ function ImGui.DragInt(ctx, label, v, v_speed, v_min, v_max, format, flags) end
 --- @return integer v1
 --- @return integer v2
 function ImGui.DragInt2(ctx, label, v1, v2, v_speed, v_min, v_max, format, flags) end
---- **Drag & Slider > Drag Sliders > DragInt3**
+
+--- **Drag \& Slider > Drag Sliders > DragInt3**
 ---
 --- ---
 ---
---- **Drag & Slider > Drag Sliders**
+--- **Drag \& Slider > Drag Sliders**
 ---
 --- Speed are per-pixel of mouse movement (v_speed=0.2: mouse needs to move by 5
 --- pixels to increase value by 1). For gamepad/keyboard navigation, minimum speed
@@ -13730,7 +13698,7 @@ function ImGui.DragInt2(ctx, label, v1, v2, v_speed, v_min, v_max, format, flags
 ---
 --- ---
 ---
---- **Drag & Slider**
+--- **Drag \& Slider**
 ---
 --- We use the same sets of flags for Drag*() and Slider*() functions as the
 --- features are the same and it makes it easier to swap them.
@@ -13763,11 +13731,12 @@ function ImGui.DragInt2(ctx, label, v1, v2, v_speed, v_min, v_max, format, flags
 --- @return integer v2
 --- @return integer v3
 function ImGui.DragInt3(ctx, label, v1, v2, v3, v_speed, v_min, v_max, format, flags) end
---- **Drag & Slider > Drag Sliders > DragInt4**
+
+--- **Drag \& Slider > Drag Sliders > DragInt4**
 ---
 --- ---
 ---
---- **Drag & Slider > Drag Sliders**
+--- **Drag \& Slider > Drag Sliders**
 ---
 --- Speed are per-pixel of mouse movement (v_speed=0.2: mouse needs to move by 5
 --- pixels to increase value by 1). For gamepad/keyboard navigation, minimum speed
@@ -13780,7 +13749,7 @@ function ImGui.DragInt3(ctx, label, v1, v2, v3, v_speed, v_min, v_max, format, f
 ---
 --- ---
 ---
---- **Drag & Slider**
+--- **Drag \& Slider**
 ---
 --- We use the same sets of flags for Drag*() and Slider*() functions as the
 --- features are the same and it makes it easier to swap them.
@@ -13815,11 +13784,12 @@ function ImGui.DragInt3(ctx, label, v1, v2, v3, v_speed, v_min, v_max, format, f
 --- @return integer v3
 --- @return integer v4
 function ImGui.DragInt4(ctx, label, v1, v2, v3, v4, v_speed, v_min, v_max, format, flags) end
---- **Drag & Slider > Drag Sliders > DragIntRange2**
+
+--- **Drag \& Slider > Drag Sliders > DragIntRange2**
 ---
 --- ---
 ---
---- **Drag & Slider > Drag Sliders**
+--- **Drag \& Slider > Drag Sliders**
 ---
 --- Speed are per-pixel of mouse movement (v_speed=0.2: mouse needs to move by 5
 --- pixels to increase value by 1). For gamepad/keyboard navigation, minimum speed
@@ -13832,7 +13802,7 @@ function ImGui.DragInt4(ctx, label, v1, v2, v3, v4, v_speed, v_min, v_max, forma
 ---
 --- ---
 ---
---- **Drag & Slider**
+--- **Drag \& Slider**
 ---
 --- We use the same sets of flags for Drag*() and Slider*() functions as the
 --- features are the same and it makes it easier to swap them.
@@ -13864,11 +13834,12 @@ function ImGui.DragInt4(ctx, label, v1, v2, v3, v4, v_speed, v_min, v_max, forma
 --- @return integer v_current_min
 --- @return integer v_current_max
 function ImGui.DragIntRange2(ctx, label, v_current_min, v_current_max, v_speed, v_min, v_max, format, format_max, flags) end
---- **Drag & Slider > Regular Sliders > SliderAngle**
+
+--- **Drag \& Slider > Regular Sliders > SliderAngle**
 ---
 --- ---
 ---
---- **Drag & Slider**
+--- **Drag \& Slider**
 ---
 --- We use the same sets of flags for Drag*() and Slider*() functions as the
 --- features are the same and it makes it easier to swap them.
@@ -13896,11 +13867,12 @@ function ImGui.DragIntRange2(ctx, label, v_current_min, v_current_max, v_speed, 
 --- @return boolean retval
 --- @return number v_rad
 function ImGui.SliderAngle(ctx, label, v_rad, v_degrees_min, v_degrees_max, format, flags) end
---- **Drag & Slider > Regular Sliders > SliderDouble**
+
+--- **Drag \& Slider > Regular Sliders > SliderDouble**
 ---
 --- ---
 ---
---- **Drag & Slider**
+--- **Drag \& Slider**
 ---
 --- We use the same sets of flags for Drag*() and Slider*() functions as the
 --- features are the same and it makes it easier to swap them.
@@ -13928,11 +13900,12 @@ function ImGui.SliderAngle(ctx, label, v_rad, v_degrees_min, v_degrees_max, form
 --- @return boolean retval
 --- @return number v
 function ImGui.SliderDouble(ctx, label, v, v_min, v_max, format, flags) end
---- **Drag & Slider > Regular Sliders > SliderDouble2**
+
+--- **Drag \& Slider > Regular Sliders > SliderDouble2**
 ---
 --- ---
 ---
---- **Drag & Slider**
+--- **Drag \& Slider**
 ---
 --- We use the same sets of flags for Drag*() and Slider*() functions as the
 --- features are the same and it makes it easier to swap them.
@@ -13962,11 +13935,12 @@ function ImGui.SliderDouble(ctx, label, v, v_min, v_max, format, flags) end
 --- @return number v1
 --- @return number v2
 function ImGui.SliderDouble2(ctx, label, v1, v2, v_min, v_max, format, flags) end
---- **Drag & Slider > Regular Sliders > SliderDouble3**
+
+--- **Drag \& Slider > Regular Sliders > SliderDouble3**
 ---
 --- ---
 ---
---- **Drag & Slider**
+--- **Drag \& Slider**
 ---
 --- We use the same sets of flags for Drag*() and Slider*() functions as the
 --- features are the same and it makes it easier to swap them.
@@ -13998,11 +13972,12 @@ function ImGui.SliderDouble2(ctx, label, v1, v2, v_min, v_max, format, flags) en
 --- @return number v2
 --- @return number v3
 function ImGui.SliderDouble3(ctx, label, v1, v2, v3, v_min, v_max, format, flags) end
---- **Drag & Slider > Regular Sliders > SliderDouble4**
+
+--- **Drag \& Slider > Regular Sliders > SliderDouble4**
 ---
 --- ---
 ---
---- **Drag & Slider**
+--- **Drag \& Slider**
 ---
 --- We use the same sets of flags for Drag*() and Slider*() functions as the
 --- features are the same and it makes it easier to swap them.
@@ -14036,11 +14011,12 @@ function ImGui.SliderDouble3(ctx, label, v1, v2, v3, v_min, v_max, format, flags
 --- @return number v3
 --- @return number v4
 function ImGui.SliderDouble4(ctx, label, v1, v2, v3, v4, v_min, v_max, format, flags) end
---- **Drag & Slider > Regular Sliders > SliderDoubleN**
+
+--- **Drag \& Slider > Regular Sliders > SliderDoubleN**
 ---
 --- ---
 ---
---- **Drag & Slider**
+--- **Drag \& Slider**
 ---
 --- We use the same sets of flags for Drag*() and Slider*() functions as the
 --- features are the same and it makes it easier to swap them.
@@ -14067,11 +14043,12 @@ function ImGui.SliderDouble4(ctx, label, v1, v2, v3, v4, v_min, v_max, format, f
 --- @param flags? integer default value = `SliderFlags_None`
 --- @return boolean retval
 function ImGui.SliderDoubleN(ctx, label, values, v_min, v_max, format, flags) end
---- **Drag & Slider > Regular Sliders > SliderInt**
+
+--- **Drag \& Slider > Regular Sliders > SliderInt**
 ---
 --- ---
 ---
---- **Drag & Slider**
+--- **Drag \& Slider**
 ---
 --- We use the same sets of flags for Drag*() and Slider*() functions as the
 --- features are the same and it makes it easier to swap them.
@@ -14099,11 +14076,12 @@ function ImGui.SliderDoubleN(ctx, label, values, v_min, v_max, format, flags) en
 --- @return boolean retval
 --- @return integer v
 function ImGui.SliderInt(ctx, label, v, v_min, v_max, format, flags) end
---- **Drag & Slider > Regular Sliders > SliderInt2**
+
+--- **Drag \& Slider > Regular Sliders > SliderInt2**
 ---
 --- ---
 ---
---- **Drag & Slider**
+--- **Drag \& Slider**
 ---
 --- We use the same sets of flags for Drag*() and Slider*() functions as the
 --- features are the same and it makes it easier to swap them.
@@ -14133,11 +14111,12 @@ function ImGui.SliderInt(ctx, label, v, v_min, v_max, format, flags) end
 --- @return integer v1
 --- @return integer v2
 function ImGui.SliderInt2(ctx, label, v1, v2, v_min, v_max, format, flags) end
---- **Drag & Slider > Regular Sliders > SliderInt3**
+
+--- **Drag \& Slider > Regular Sliders > SliderInt3**
 ---
 --- ---
 ---
---- **Drag & Slider**
+--- **Drag \& Slider**
 ---
 --- We use the same sets of flags for Drag*() and Slider*() functions as the
 --- features are the same and it makes it easier to swap them.
@@ -14169,11 +14148,12 @@ function ImGui.SliderInt2(ctx, label, v1, v2, v_min, v_max, format, flags) end
 --- @return integer v2
 --- @return integer v3
 function ImGui.SliderInt3(ctx, label, v1, v2, v3, v_min, v_max, format, flags) end
---- **Drag & Slider > Regular Sliders > SliderInt4**
+
+--- **Drag \& Slider > Regular Sliders > SliderInt4**
 ---
 --- ---
 ---
---- **Drag & Slider**
+--- **Drag \& Slider**
 ---
 --- We use the same sets of flags for Drag*() and Slider*() functions as the
 --- features are the same and it makes it easier to swap them.
@@ -14207,11 +14187,12 @@ function ImGui.SliderInt3(ctx, label, v1, v2, v3, v_min, v_max, format, flags) e
 --- @return integer v3
 --- @return integer v4
 function ImGui.SliderInt4(ctx, label, v1, v2, v3, v4, v_min, v_max, format, flags) end
---- **Drag & Slider > Regular Sliders > VSliderDouble**
+
+--- **Drag \& Slider > Regular Sliders > VSliderDouble**
 ---
 --- ---
 ---
---- **Drag & Slider**
+--- **Drag \& Slider**
 ---
 --- We use the same sets of flags for Drag*() and Slider*() functions as the
 --- features are the same and it makes it easier to swap them.
@@ -14241,11 +14222,12 @@ function ImGui.SliderInt4(ctx, label, v1, v2, v3, v4, v_min, v_max, format, flag
 --- @return boolean retval
 --- @return number v
 function ImGui.VSliderDouble(ctx, label, size_w, size_h, v, v_min, v_max, format, flags) end
---- **Drag & Slider > Regular Sliders > VSliderInt**
+
+--- **Drag \& Slider > Regular Sliders > VSliderInt**
 ---
 --- ---
 ---
---- **Drag & Slider**
+--- **Drag \& Slider**
 ---
 --- We use the same sets of flags for Drag*() and Slider*() functions as the
 --- features are the same and it makes it easier to swap them.
@@ -14275,7 +14257,8 @@ function ImGui.VSliderDouble(ctx, label, size_w, size_h, v, v_min, v_max, format
 --- @return boolean retval
 --- @return integer v
 function ImGui.VSliderInt(ctx, label, size_w, size_h, v, v_min, v_max, format, flags) end
---- **Draw List > DrawList_PopClipRect**
+
+--- **Draw List > DrawList\_PopClipRect**
 ---
 --- See DrawList_PushClipRect
 ---
@@ -14298,7 +14281,8 @@ function ImGui.VSliderInt(ctx, label, size_w, size_h, v, v_min, v_max, format, f
 --- @since 0.1
 --- @param draw_list ImGui_DrawList
 function ImGui.DrawList_PopClipRect(draw_list) end
---- **Draw List > DrawList_PushClipRect**
+
+--- **Draw List > DrawList\_PushClipRect**
 ---
 --- Render-level scissoring. Prefer using higher-level PushClipRect to affect
 --- logic (hit-testing and widget culling).
@@ -14327,7 +14311,8 @@ function ImGui.DrawList_PopClipRect(draw_list) end
 --- @param clip_rect_max_y number
 --- @param intersect_with_current_clip_rect? boolean default value = `false`
 function ImGui.DrawList_PushClipRect(draw_list, clip_rect_min_x, clip_rect_min_y, clip_rect_max_x, clip_rect_max_y, intersect_with_current_clip_rect) end
---- **Draw List > DrawList_PushClipRectFullScreen**
+
+--- **Draw List > DrawList\_PushClipRectFullScreen**
 ---
 --- ---
 ---
@@ -14348,6 +14333,7 @@ function ImGui.DrawList_PushClipRect(draw_list, clip_rect_min_x, clip_rect_min_y
 --- @since 0.1
 --- @param draw_list ImGui_DrawList
 function ImGui.DrawList_PushClipRectFullScreen(draw_list) end
+
 --- **Draw List > GetBackgroundDrawList**
 ---
 --- This draw list will be the first rendering one. Useful to quickly draw
@@ -14373,6 +14359,7 @@ function ImGui.DrawList_PushClipRectFullScreen(draw_list) end
 --- @param ctx ImGui_Context
 --- @return ImGui_DrawList retval
 function ImGui.GetBackgroundDrawList(ctx) end
+
 --- **Draw List > GetForegroundDrawList**
 ---
 --- This draw list will be the last rendered one. Useful to quickly draw
@@ -14398,6 +14385,7 @@ function ImGui.GetBackgroundDrawList(ctx) end
 --- @param ctx ImGui_Context
 --- @return ImGui_DrawList retval
 function ImGui.GetForegroundDrawList(ctx) end
+
 --- **Draw List > GetWindowDrawList**
 ---
 --- The draw list associated to the current window, to append your own drawing primitives
@@ -14422,7 +14410,8 @@ function ImGui.GetForegroundDrawList(ctx) end
 --- @param ctx ImGui_Context
 --- @return ImGui_DrawList retval
 function ImGui.GetWindowDrawList(ctx) end
---- **Draw List > Primitives > DrawList_AddBezierCubic**
+
+--- **Draw List > Primitives > DrawList\_AddBezierCubic**
 ---
 --- Cubic Bezier (4 control points)
 ---
@@ -14472,7 +14461,8 @@ function ImGui.GetWindowDrawList(ctx) end
 --- @param thickness number
 --- @param num_segments? integer default value = `0`
 function ImGui.DrawList_AddBezierCubic(draw_list, p1_x, p1_y, p2_x, p2_y, p3_x, p3_y, p4_x, p4_y, col_rgba, thickness, num_segments) end
---- **Draw List > Primitives > DrawList_AddBezierQuadratic**
+
+--- **Draw List > Primitives > DrawList\_AddBezierQuadratic**
 ---
 --- Quadratic Bezier (3 control points)
 ---
@@ -14520,7 +14510,8 @@ function ImGui.DrawList_AddBezierCubic(draw_list, p1_x, p1_y, p2_x, p2_y, p3_x, 
 --- @param thickness number
 --- @param num_segments? integer default value = `0`
 function ImGui.DrawList_AddBezierQuadratic(draw_list, p1_x, p1_y, p2_x, p2_y, p3_x, p3_y, col_rgba, thickness, num_segments) end
---- **Draw List > Primitives > DrawList_AddCircle**
+
+--- **Draw List > Primitives > DrawList\_AddCircle**
 ---
 --- Use "num_segments == 0" to automatically calculate tessellation (preferred).
 ---
@@ -14565,7 +14556,8 @@ function ImGui.DrawList_AddBezierQuadratic(draw_list, p1_x, p1_y, p2_x, p2_y, p3
 --- @param num_segments? integer default value = `0`
 --- @param thickness? number default value = `1.0`
 function ImGui.DrawList_AddCircle(draw_list, center_x, center_y, radius, col_rgba, num_segments, thickness) end
---- **Draw List > Primitives > DrawList_AddCircleFilled**
+
+--- **Draw List > Primitives > DrawList\_AddCircleFilled**
 ---
 --- Use "num_segments == 0" to automatically calculate tessellation (preferred).
 ---
@@ -14609,7 +14601,8 @@ function ImGui.DrawList_AddCircle(draw_list, center_x, center_y, radius, col_rgb
 --- @param col_rgba integer
 --- @param num_segments? integer default value = `0`
 function ImGui.DrawList_AddCircleFilled(draw_list, center_x, center_y, radius, col_rgba, num_segments) end
---- **Draw List > Primitives > DrawList_AddConcavePolyFilled**
+
+--- **Draw List > Primitives > DrawList\_AddConcavePolyFilled**
 ---
 --- Concave polygon fill is more expensive than convex one: it has O(N^2) complexity.
 ---
@@ -14650,7 +14643,8 @@ function ImGui.DrawList_AddCircleFilled(draw_list, center_x, center_y, radius, c
 --- @param points reaper.array
 --- @param col_rgba integer
 function ImGui.DrawList_AddConcavePolyFilled(draw_list, points, col_rgba) end
---- **Draw List > Primitives > DrawList_AddConvexPolyFilled**
+
+--- **Draw List > Primitives > DrawList\_AddConvexPolyFilled**
 ---
 --- Note: Anti-aliased filling requires points to be in clockwise order.
 ---
@@ -14691,7 +14685,8 @@ function ImGui.DrawList_AddConcavePolyFilled(draw_list, points, col_rgba) end
 --- @param points reaper.array
 --- @param col_rgba integer
 function ImGui.DrawList_AddConvexPolyFilled(draw_list, points, col_rgba) end
---- **Draw List > Primitives > DrawList_AddEllipse**
+
+--- **Draw List > Primitives > DrawList\_AddEllipse**
 ---
 --- ---
 ---
@@ -14736,7 +14731,8 @@ function ImGui.DrawList_AddConvexPolyFilled(draw_list, points, col_rgba) end
 --- @param num_segments? integer default value = `0`
 --- @param thickness? number default value = `1.0`
 function ImGui.DrawList_AddEllipse(draw_list, center_x, center_y, radius_x, radius_y, col_rgba, rot, num_segments, thickness) end
---- **Draw List > Primitives > DrawList_AddEllipseFilled**
+
+--- **Draw List > Primitives > DrawList\_AddEllipseFilled**
 ---
 --- ---
 ---
@@ -14780,7 +14776,8 @@ function ImGui.DrawList_AddEllipse(draw_list, center_x, center_y, radius_x, radi
 --- @param rot? number default value = `0.0`
 --- @param num_segments? integer default value = `0`
 function ImGui.DrawList_AddEllipseFilled(draw_list, center_x, center_y, radius_x, radius_y, col_rgba, rot, num_segments) end
---- **Draw List > Primitives > DrawList_AddImage**
+
+--- **Draw List > Primitives > DrawList\_AddImage**
 ---
 --- ---
 ---
@@ -14827,7 +14824,8 @@ function ImGui.DrawList_AddEllipseFilled(draw_list, center_x, center_y, radius_x
 --- @param uv_max_y? number default value = `1.0`
 --- @param col_rgba? integer default value = `0xFFFFFFFF`
 function ImGui.DrawList_AddImage(draw_list, image, p_min_x, p_min_y, p_max_x, p_max_y, uv_min_x, uv_min_y, uv_max_x, uv_max_y, col_rgba) end
---- **Draw List > Primitives > DrawList_AddImageQuad**
+
+--- **Draw List > Primitives > DrawList\_AddImageQuad**
 ---
 --- ---
 ---
@@ -14882,7 +14880,8 @@ function ImGui.DrawList_AddImage(draw_list, image, p_min_x, p_min_y, p_max_x, p_
 --- @param uv4_y? number default value = `1.0`
 --- @param col_rgba? integer default value = `0xFFFFFFFF`
 function ImGui.DrawList_AddImageQuad(draw_list, image, p1_x, p1_y, p2_x, p2_y, p3_x, p3_y, p4_x, p4_y, uv1_x, uv1_y, uv2_x, uv2_y, uv3_x, uv3_y, uv4_x, uv4_y, col_rgba) end
---- **Draw List > Primitives > DrawList_AddImageRounded**
+
+--- **Draw List > Primitives > DrawList\_AddImageRounded**
 ---
 --- ---
 ---
@@ -14931,7 +14930,8 @@ function ImGui.DrawList_AddImageQuad(draw_list, image, p1_x, p1_y, p2_x, p2_y, p
 --- @param rounding number
 --- @param flags? integer default value = `DrawFlags_None`
 function ImGui.DrawList_AddImageRounded(draw_list, image, p_min_x, p_min_y, p_max_x, p_max_y, uv_min_x, uv_min_y, uv_max_x, uv_max_y, col_rgba, rounding, flags) end
---- **Draw List > Primitives > DrawList_AddLine**
+
+--- **Draw List > Primitives > DrawList\_AddLine**
 ---
 --- ---
 ---
@@ -14974,7 +14974,8 @@ function ImGui.DrawList_AddImageRounded(draw_list, image, p_min_x, p_min_y, p_ma
 --- @param col_rgba integer
 --- @param thickness? number default value = `1.0`
 function ImGui.DrawList_AddLine(draw_list, p1_x, p1_y, p2_x, p2_y, col_rgba, thickness) end
---- **Draw List > Primitives > DrawList_AddNgon**
+
+--- **Draw List > Primitives > DrawList\_AddNgon**
 ---
 --- ---
 ---
@@ -15017,7 +15018,8 @@ function ImGui.DrawList_AddLine(draw_list, p1_x, p1_y, p2_x, p2_y, col_rgba, thi
 --- @param num_segments integer
 --- @param thickness? number default value = `1.0`
 function ImGui.DrawList_AddNgon(draw_list, center_x, center_y, radius, col_rgba, num_segments, thickness) end
---- **Draw List > Primitives > DrawList_AddNgonFilled**
+
+--- **Draw List > Primitives > DrawList\_AddNgonFilled**
 ---
 --- ---
 ---
@@ -15059,7 +15061,8 @@ function ImGui.DrawList_AddNgon(draw_list, center_x, center_y, radius, col_rgba,
 --- @param col_rgba integer
 --- @param num_segments integer
 function ImGui.DrawList_AddNgonFilled(draw_list, center_x, center_y, radius, col_rgba, num_segments) end
---- **Draw List > Primitives > DrawList_AddPolyline**
+
+--- **Draw List > Primitives > DrawList\_AddPolyline**
 ---
 --- Points is a list of x,y coordinates.
 ---
@@ -15102,7 +15105,8 @@ function ImGui.DrawList_AddNgonFilled(draw_list, center_x, center_y, radius, col
 --- @param flags integer
 --- @param thickness number
 function ImGui.DrawList_AddPolyline(draw_list, points, col_rgba, flags, thickness) end
---- **Draw List > Primitives > DrawList_AddQuad**
+
+--- **Draw List > Primitives > DrawList\_AddQuad**
 ---
 --- ---
 ---
@@ -15149,7 +15153,8 @@ function ImGui.DrawList_AddPolyline(draw_list, points, col_rgba, flags, thicknes
 --- @param col_rgba integer
 --- @param thickness? number default value = `1.0`
 function ImGui.DrawList_AddQuad(draw_list, p1_x, p1_y, p2_x, p2_y, p3_x, p3_y, p4_x, p4_y, col_rgba, thickness) end
---- **Draw List > Primitives > DrawList_AddQuadFilled**
+
+--- **Draw List > Primitives > DrawList\_AddQuadFilled**
 ---
 --- ---
 ---
@@ -15195,7 +15200,8 @@ function ImGui.DrawList_AddQuad(draw_list, p1_x, p1_y, p2_x, p2_y, p3_x, p3_y, p
 --- @param p4_y number
 --- @param col_rgba integer
 function ImGui.DrawList_AddQuadFilled(draw_list, p1_x, p1_y, p2_x, p2_y, p3_x, p3_y, p4_x, p4_y, col_rgba) end
---- **Draw List > Primitives > DrawList_AddRect**
+
+--- **Draw List > Primitives > DrawList\_AddRect**
 ---
 --- ---
 ---
@@ -15240,7 +15246,8 @@ function ImGui.DrawList_AddQuadFilled(draw_list, p1_x, p1_y, p2_x, p2_y, p3_x, p
 --- @param flags? integer default value = `DrawFlags_None`
 --- @param thickness? number default value = `1.0`
 function ImGui.DrawList_AddRect(draw_list, p_min_x, p_min_y, p_max_x, p_max_y, col_rgba, rounding, flags, thickness) end
---- **Draw List > Primitives > DrawList_AddRectFilled**
+
+--- **Draw List > Primitives > DrawList\_AddRectFilled**
 ---
 --- ---
 ---
@@ -15284,7 +15291,8 @@ function ImGui.DrawList_AddRect(draw_list, p_min_x, p_min_y, p_max_x, p_max_y, c
 --- @param rounding? number default value = `0.0`
 --- @param flags? integer default value = `DrawFlags_None`
 function ImGui.DrawList_AddRectFilled(draw_list, p_min_x, p_min_y, p_max_x, p_max_y, col_rgba, rounding, flags) end
---- **Draw List > Primitives > DrawList_AddRectFilledMultiColor**
+
+--- **Draw List > Primitives > DrawList\_AddRectFilledMultiColor**
 ---
 --- ---
 ---
@@ -15329,7 +15337,8 @@ function ImGui.DrawList_AddRectFilled(draw_list, p_min_x, p_min_y, p_max_x, p_ma
 --- @param col_bot_right integer
 --- @param col_bot_left integer
 function ImGui.DrawList_AddRectFilledMultiColor(draw_list, p_min_x, p_min_y, p_max_x, p_max_y, col_upr_left, col_upr_right, col_bot_right, col_bot_left) end
---- **Draw List > Primitives > DrawList_AddText**
+
+--- **Draw List > Primitives > DrawList\_AddText**
 ---
 --- ---
 ---
@@ -15370,7 +15379,8 @@ function ImGui.DrawList_AddRectFilledMultiColor(draw_list, p_min_x, p_min_y, p_m
 --- @param col_rgba integer
 --- @param text string
 function ImGui.DrawList_AddText(draw_list, x, y, col_rgba, text) end
---- **Draw List > Primitives > DrawList_AddTextEx**
+
+--- **Draw List > Primitives > DrawList\_AddTextEx**
 ---
 --- The last pushed font is used if font is nil.
 --- The size of the last pushed font is used if font_size is 0.
@@ -15422,7 +15432,8 @@ function ImGui.DrawList_AddText(draw_list, x, y, col_rgba, text) end
 --- @param cpu_fine_clip_rect_max_x? number default value = `nil`
 --- @param cpu_fine_clip_rect_max_y? number default value = `nil`
 function ImGui.DrawList_AddTextEx(draw_list, font, font_size, pos_x, pos_y, col_rgba, text, wrap_width, cpu_fine_clip_rect_min_x, cpu_fine_clip_rect_min_y, cpu_fine_clip_rect_max_x, cpu_fine_clip_rect_max_y) end
---- **Draw List > Primitives > DrawList_AddTriangle**
+
+--- **Draw List > Primitives > DrawList\_AddTriangle**
 ---
 --- ---
 ---
@@ -15467,7 +15478,8 @@ function ImGui.DrawList_AddTextEx(draw_list, font, font_size, pos_x, pos_y, col_
 --- @param col_rgba integer
 --- @param thickness? number default value = `1.0`
 function ImGui.DrawList_AddTriangle(draw_list, p1_x, p1_y, p2_x, p2_y, p3_x, p3_y, col_rgba, thickness) end
---- **Draw List > Primitives > DrawList_AddTriangleFilled**
+
+--- **Draw List > Primitives > DrawList\_AddTriangleFilled**
 ---
 --- ---
 ---
@@ -15511,6 +15523,7 @@ function ImGui.DrawList_AddTriangle(draw_list, p1_x, p1_y, p2_x, p2_y, p3_x, p3_
 --- @param p3_y number
 --- @param col_rgba integer
 function ImGui.DrawList_AddTriangleFilled(draw_list, p1_x, p1_y, p2_x, p2_y, p3_x, p3_y, col_rgba) end
+
 --- **Draw List > Splitter > CreateDrawListSplitter**
 ---
 --- ---
@@ -15558,7 +15571,8 @@ function ImGui.DrawList_AddTriangleFilled(draw_list, p1_x, p1_y, p2_x, p2_y, p3_
 --- @nodiscard
 --- @return ImGui_DrawListSplitter retval
 function ImGui.CreateDrawListSplitter(draw_list) end
---- **Draw List > Splitter > DrawListSplitter_Clear**
+
+--- **Draw List > Splitter > DrawListSplitter\_Clear**
 ---
 --- ---
 ---
@@ -15603,7 +15617,8 @@ function ImGui.CreateDrawListSplitter(draw_list) end
 --- @since 0.7.1
 --- @param splitter ImGui_DrawListSplitter
 function ImGui.DrawListSplitter_Clear(splitter) end
---- **Draw List > Splitter > DrawListSplitter_Merge**
+
+--- **Draw List > Splitter > DrawListSplitter\_Merge**
 ---
 --- ---
 ---
@@ -15648,7 +15663,8 @@ function ImGui.DrawListSplitter_Clear(splitter) end
 --- @since 0.7.1
 --- @param splitter ImGui_DrawListSplitter
 function ImGui.DrawListSplitter_Merge(splitter) end
---- **Draw List > Splitter > DrawListSplitter_SetCurrentChannel**
+
+--- **Draw List > Splitter > DrawListSplitter\_SetCurrentChannel**
 ---
 --- ---
 ---
@@ -15694,7 +15710,8 @@ function ImGui.DrawListSplitter_Merge(splitter) end
 --- @param splitter ImGui_DrawListSplitter
 --- @param channel_idx integer
 function ImGui.DrawListSplitter_SetCurrentChannel(splitter, channel_idx) end
---- **Draw List > Splitter > DrawListSplitter_Split**
+
+--- **Draw List > Splitter > DrawListSplitter\_Split**
 ---
 --- ---
 ---
@@ -15740,7 +15757,8 @@ function ImGui.DrawListSplitter_SetCurrentChannel(splitter, channel_idx) end
 --- @param splitter ImGui_DrawListSplitter
 --- @param count integer
 function ImGui.DrawListSplitter_Split(splitter, count) end
---- **Draw List > Stateful Path > DrawList_PathArcTo**
+
+--- **Draw List > Stateful Path > DrawList\_PathArcTo**
 ---
 --- ---
 ---
@@ -15773,7 +15791,8 @@ function ImGui.DrawListSplitter_Split(splitter, count) end
 --- @param a_max number
 --- @param num_segments? integer default value = `0`
 function ImGui.DrawList_PathArcTo(draw_list, center_x, center_y, radius, a_min, a_max, num_segments) end
---- **Draw List > Stateful Path > DrawList_PathArcToFast**
+
+--- **Draw List > Stateful Path > DrawList\_PathArcToFast**
 ---
 --- Use precomputed angles for a 12 steps circle.
 ---
@@ -15807,7 +15826,8 @@ function ImGui.DrawList_PathArcTo(draw_list, center_x, center_y, radius, a_min, 
 --- @param a_min_of_12 integer
 --- @param a_max_of_12 integer
 function ImGui.DrawList_PathArcToFast(draw_list, center_x, center_y, radius, a_min_of_12, a_max_of_12) end
---- **Draw List > Stateful Path > DrawList_PathBezierCubicCurveTo**
+
+--- **Draw List > Stateful Path > DrawList\_PathBezierCubicCurveTo**
 ---
 --- Cubic Bezier (4 control points)
 ---
@@ -15843,7 +15863,8 @@ function ImGui.DrawList_PathArcToFast(draw_list, center_x, center_y, radius, a_m
 --- @param p4_y number
 --- @param num_segments? integer default value = `0`
 function ImGui.DrawList_PathBezierCubicCurveTo(draw_list, p2_x, p2_y, p3_x, p3_y, p4_x, p4_y, num_segments) end
---- **Draw List > Stateful Path > DrawList_PathBezierQuadraticCurveTo**
+
+--- **Draw List > Stateful Path > DrawList\_PathBezierQuadraticCurveTo**
 ---
 --- Quadratic Bezier (3 control points)
 ---
@@ -15877,7 +15898,8 @@ function ImGui.DrawList_PathBezierCubicCurveTo(draw_list, p2_x, p2_y, p3_x, p3_y
 --- @param p3_y number
 --- @param num_segments? integer default value = `0`
 function ImGui.DrawList_PathBezierQuadraticCurveTo(draw_list, p2_x, p2_y, p3_x, p3_y, num_segments) end
---- **Draw List > Stateful Path > DrawList_PathClear**
+
+--- **Draw List > Stateful Path > DrawList\_PathClear**
 ---
 --- ---
 ---
@@ -15904,7 +15926,8 @@ function ImGui.DrawList_PathBezierQuadraticCurveTo(draw_list, p2_x, p2_y, p3_x, 
 --- @since 0.1
 --- @param draw_list ImGui_DrawList
 function ImGui.DrawList_PathClear(draw_list) end
---- **Draw List > Stateful Path > DrawList_PathEllipticalArcTo**
+
+--- **Draw List > Stateful Path > DrawList\_PathEllipticalArcTo**
 ---
 --- Ellipse
 ---
@@ -15941,7 +15964,8 @@ function ImGui.DrawList_PathClear(draw_list) end
 --- @param a_max number
 --- @param num_segments? integer default value = `0`
 function ImGui.DrawList_PathEllipticalArcTo(draw_list, center_x, center_y, radius_x, radius_y, rot, a_min, a_max, num_segments) end
---- **Draw List > Stateful Path > DrawList_PathFillConcave**
+
+--- **Draw List > Stateful Path > DrawList\_PathFillConcave**
 ---
 --- ---
 ---
@@ -15969,7 +15993,8 @@ function ImGui.DrawList_PathEllipticalArcTo(draw_list, center_x, center_y, radiu
 --- @param draw_list ImGui_DrawList
 --- @param col_rgba integer
 function ImGui.DrawList_PathFillConcave(draw_list, col_rgba) end
---- **Draw List > Stateful Path > DrawList_PathFillConvex**
+
+--- **Draw List > Stateful Path > DrawList\_PathFillConvex**
 ---
 --- ---
 ---
@@ -15997,7 +16022,8 @@ function ImGui.DrawList_PathFillConcave(draw_list, col_rgba) end
 --- @param draw_list ImGui_DrawList
 --- @param col_rgba integer
 function ImGui.DrawList_PathFillConvex(draw_list, col_rgba) end
---- **Draw List > Stateful Path > DrawList_PathLineTo**
+
+--- **Draw List > Stateful Path > DrawList\_PathLineTo**
 ---
 --- ---
 ---
@@ -16026,7 +16052,8 @@ function ImGui.DrawList_PathFillConvex(draw_list, col_rgba) end
 --- @param pos_x number
 --- @param pos_y number
 function ImGui.DrawList_PathLineTo(draw_list, pos_x, pos_y) end
---- **Draw List > Stateful Path > DrawList_PathRect**
+
+--- **Draw List > Stateful Path > DrawList\_PathRect**
 ---
 --- ---
 ---
@@ -16059,7 +16086,8 @@ function ImGui.DrawList_PathLineTo(draw_list, pos_x, pos_y) end
 --- @param rounding? number default value = `0.0`
 --- @param flags? integer default value = `DrawFlags_None`
 function ImGui.DrawList_PathRect(draw_list, rect_min_x, rect_min_y, rect_max_x, rect_max_y, rounding, flags) end
---- **Draw List > Stateful Path > DrawList_PathStroke**
+
+--- **Draw List > Stateful Path > DrawList\_PathStroke**
 ---
 --- ---
 ---
@@ -16089,6 +16117,7 @@ function ImGui.DrawList_PathRect(draw_list, rect_min_x, rect_min_y, rect_max_x, 
 --- @param flags? integer default value = `DrawFlags_None`
 --- @param thickness? number default value = `1.0`
 function ImGui.DrawList_PathStroke(draw_list, col_rgba, flags, thickness) end
+
 --- **Font > CreateFont**
 ---
 --- Load a font matching a font family name or from a font file.
@@ -16097,7 +16126,7 @@ function ImGui.DrawList_PathStroke(draw_list, col_rgba, flags, thickness) end
 --- The family name can be an installed font or one of the generic fonts:
 --- sans-serif, serif, monospace, cursive, fantasy.
 ---
---- If 'family_or_file' specifies a path to a font file (contains a / or ):
+--- If 'family_or_file' specifies a path to a font file (contains a / or \\):
 --- - The first byte of 'flags' is used as the font index within the file
 --- - The font styles in 'flags' are simulated by the font renderer
 ---
@@ -16128,6 +16157,7 @@ function ImGui.DrawList_PathStroke(draw_list, col_rgba, flags, thickness) end
 --- @nodiscard
 --- @return ImGui_Font retval
 function ImGui.CreateFont(family_or_file, size, flags) end
+
 --- **Font > CreateFontFromMem**
 ---
 --- Requires REAPER v6.44 or newer for EEL and Lua. Use CreateFont or
@@ -16163,6 +16193,7 @@ function ImGui.CreateFont(family_or_file, size, flags) end
 --- @nodiscard
 --- @return ImGui_Font retval
 function ImGui.CreateFontFromMem(data, size, flags) end
+
 --- **Font > GetFont**
 ---
 --- Get the current font
@@ -16191,6 +16222,7 @@ function ImGui.CreateFontFromMem(data, size, flags) end
 --- @param ctx ImGui_Context
 --- @return ImGui_Font retval
 function ImGui.GetFont(ctx) end
+
 --- **Font > GetFontSize**
 ---
 --- Get current font size (= height in pixels) of current font with current scale
@@ -16220,6 +16252,7 @@ function ImGui.GetFont(ctx) end
 --- @param ctx ImGui_Context
 --- @return number retval
 function ImGui.GetFontSize(ctx) end
+
 --- **Font > PopFont**
 ---
 --- See PushFont.
@@ -16247,6 +16280,7 @@ function ImGui.GetFontSize(ctx) end
 --- @since 0.4
 --- @param ctx ImGui_Context
 function ImGui.PopFont(ctx) end
+
 --- **Font > PushFont**
 ---
 --- Change the current font. Use nil to push the default font.
@@ -16276,6 +16310,7 @@ function ImGui.PopFont(ctx) end
 --- @param ctx ImGui_Context
 --- @param font ImGui_Font|nil
 function ImGui.PushFont(ctx, font) end
+
 --- **Function > CreateFunctionFromEEL**
 ---
 --- Compile an EEL program.
@@ -16302,7 +16337,8 @@ function ImGui.PushFont(ctx, font) end
 --- @nodiscard
 --- @return ImGui_Function retval
 function ImGui.CreateFunctionFromEEL(code) end
---- **Function > Function_Execute**
+
+--- **Function > Function\_Execute**
 ---
 --- ---
 ---
@@ -16319,7 +16355,8 @@ function ImGui.CreateFunctionFromEEL(code) end
 --- @since 0.8.5
 --- @param func ImGui_Function
 function ImGui.Function_Execute(func) end
---- **Function > Function_GetValue**
+
+--- **Function > Function\_GetValue**
 ---
 --- ---
 ---
@@ -16338,7 +16375,8 @@ function ImGui.Function_Execute(func) end
 --- @param name string
 --- @return number retval
 function ImGui.Function_GetValue(func, name) end
---- **Function > Function_GetValue_Array**
+
+--- **Function > Function\_GetValue\_Array**
 ---
 --- Copy the values in the function's memory starting at the address stored
 --- in the given variable into the array.
@@ -16360,7 +16398,8 @@ function ImGui.Function_GetValue(func, name) end
 --- @param name string
 --- @param values reaper.array
 function ImGui.Function_GetValue_Array(func, name, values) end
---- **Function > Function_GetValue_String**
+
+--- **Function > Function\_GetValue\_String**
 ---
 --- Read from a string slot or a named string (when name starts with a `#`).
 ---
@@ -16381,7 +16420,8 @@ function ImGui.Function_GetValue_Array(func, name, values) end
 --- @param name string
 --- @return string value
 function ImGui.Function_GetValue_String(func, name) end
---- **Function > Function_SetValue**
+
+--- **Function > Function\_SetValue**
 ---
 --- ---
 ---
@@ -16400,7 +16440,8 @@ function ImGui.Function_GetValue_String(func, name) end
 --- @param name string
 --- @param value number
 function ImGui.Function_SetValue(func, name, value) end
---- **Function > Function_SetValue_Array**
+
+--- **Function > Function\_SetValue\_Array**
 ---
 --- Copy the values in the array to the function's memory at the address stored
 --- in the given variable.
@@ -16422,7 +16463,8 @@ function ImGui.Function_SetValue(func, name, value) end
 --- @param name string
 --- @param values reaper.array
 function ImGui.Function_SetValue_Array(func, name, values) end
---- **Function > Function_SetValue_String**
+
+--- **Function > Function\_SetValue\_String**
 ---
 --- Write to a string slot or a named string (when name starts with a `#`).
 ---
@@ -16443,6 +16485,7 @@ function ImGui.Function_SetValue_Array(func, name, values) end
 --- @param name string
 --- @param value string
 function ImGui.Function_SetValue_String(func, name, value) end
+
 --- **Image > CreateImage**
 ---
 --- The returned object is valid as long as it is used in each defer cycle
@@ -16465,6 +16508,27 @@ function ImGui.Function_SetValue_String(func, name, value) end
 --- There are also image functions in the DrawList API such as
 --- DrawList_AddImageQuad and DrawList_AddImageRounded.
 ---
+--- Caching of image objects may be implemented like this:
+---
+---     local images = {}
+---     local function imageFromCache(fn)
+---       local img = images[fn]
+---       if not img then
+---         img = {}
+---         images[fn] = img
+---       end
+---
+---       if not ImGui.ValidatePtr(img.inst, 'ImGui_Image*') then
+---         if img.inst then images[img.inst] = nil end
+---         img.inst = ImGui.CreateImage(fn)
+---         local prev = images[img.inst]
+---         if prev and prev ~= img then prev.inst = nil end
+---         images[img.inst] = img
+---       end
+---
+---       return img.inst
+---     end
+---
 --- ---
 ---
 --- @since 0.9
@@ -16473,6 +16537,7 @@ function ImGui.Function_SetValue_String(func, name, value) end
 --- @nodiscard
 --- @return ImGui_Image retval
 function ImGui.CreateImage(file, flags) end
+
 --- **Image > CreateImageFromLICE**
 ---
 --- Copies pixel data from a LICE bitmap created using JS_LICE_CreateBitmap.
@@ -16492,6 +16557,27 @@ function ImGui.CreateImage(file, flags) end
 --- There are also image functions in the DrawList API such as
 --- DrawList_AddImageQuad and DrawList_AddImageRounded.
 ---
+--- Caching of image objects may be implemented like this:
+---
+---     local images = {}
+---     local function imageFromCache(fn)
+---       local img = images[fn]
+---       if not img then
+---         img = {}
+---         images[fn] = img
+---       end
+---
+---       if not ImGui.ValidatePtr(img.inst, 'ImGui_Image*') then
+---         if img.inst then images[img.inst] = nil end
+---         img.inst = ImGui.CreateImage(fn)
+---         local prev = images[img.inst]
+---         if prev and prev ~= img then prev.inst = nil end
+---         images[img.inst] = img
+---       end
+---
+---       return img.inst
+---     end
+---
 --- ---
 ---
 --- @since 0.9.2
@@ -16500,6 +16586,7 @@ function ImGui.CreateImage(file, flags) end
 --- @nodiscard
 --- @return ImGui_Image retval
 function ImGui.CreateImageFromLICE(bitmap, flags) end
+
 --- **Image > CreateImageFromMem**
 ---
 --- Requires REAPER v6.44 or newer for EEL and Lua. Load from a file using
@@ -16520,6 +16607,27 @@ function ImGui.CreateImageFromLICE(bitmap, flags) end
 --- There are also image functions in the DrawList API such as
 --- DrawList_AddImageQuad and DrawList_AddImageRounded.
 ---
+--- Caching of image objects may be implemented like this:
+---
+---     local images = {}
+---     local function imageFromCache(fn)
+---       local img = images[fn]
+---       if not img then
+---         img = {}
+---         images[fn] = img
+---       end
+---
+---       if not ImGui.ValidatePtr(img.inst, 'ImGui_Image*') then
+---         if img.inst then images[img.inst] = nil end
+---         img.inst = ImGui.CreateImage(fn)
+---         local prev = images[img.inst]
+---         if prev and prev ~= img then prev.inst = nil end
+---         images[img.inst] = img
+---       end
+---
+---       return img.inst
+---     end
+---
 --- ---
 ---
 --- @since 0.9
@@ -16528,6 +16636,7 @@ function ImGui.CreateImageFromLICE(bitmap, flags) end
 --- @nodiscard
 --- @return ImGui_Image retval
 function ImGui.CreateImageFromMem(data, flags) end
+
 --- **Image > Image**
 ---
 --- Adds 2.0 to the provided size if a border is visible.
@@ -16547,6 +16656,27 @@ function ImGui.CreateImageFromMem(data, flags) end
 --- There are also image functions in the DrawList API such as
 --- DrawList_AddImageQuad and DrawList_AddImageRounded.
 ---
+--- Caching of image objects may be implemented like this:
+---
+---     local images = {}
+---     local function imageFromCache(fn)
+---       local img = images[fn]
+---       if not img then
+---         img = {}
+---         images[fn] = img
+---       end
+---
+---       if not ImGui.ValidatePtr(img.inst, 'ImGui_Image*') then
+---         if img.inst then images[img.inst] = nil end
+---         img.inst = ImGui.CreateImage(fn)
+---         local prev = images[img.inst]
+---         if prev and prev ~= img then prev.inst = nil end
+---         images[img.inst] = img
+---       end
+---
+---       return img.inst
+---     end
+---
 --- ---
 ---
 --- @since 0.8
@@ -16561,6 +16691,7 @@ function ImGui.CreateImageFromMem(data, flags) end
 --- @param tint_col_rgba? integer default value = `0xFFFFFFFF`
 --- @param border_col_rgba? integer default value = `0x00000000`
 function ImGui.Image(ctx, image, image_size_w, image_size_h, uv0_x, uv0_y, uv1_x, uv1_y, tint_col_rgba, border_col_rgba) end
+
 --- **Image > ImageButton**
 ---
 --- Adds StyleVar_FramePadding*2.0 to provided size.
@@ -16580,6 +16711,27 @@ function ImGui.Image(ctx, image, image_size_w, image_size_h, uv0_x, uv0_y, uv1_x
 --- There are also image functions in the DrawList API such as
 --- DrawList_AddImageQuad and DrawList_AddImageRounded.
 ---
+--- Caching of image objects may be implemented like this:
+---
+---     local images = {}
+---     local function imageFromCache(fn)
+---       local img = images[fn]
+---       if not img then
+---         img = {}
+---         images[fn] = img
+---       end
+---
+---       if not ImGui.ValidatePtr(img.inst, 'ImGui_Image*') then
+---         if img.inst then images[img.inst] = nil end
+---         img.inst = ImGui.CreateImage(fn)
+---         local prev = images[img.inst]
+---         if prev and prev ~= img then prev.inst = nil end
+---         images[img.inst] = img
+---       end
+---
+---       return img.inst
+---     end
+---
 --- ---
 ---
 --- @since 0.8
@@ -16596,7 +16748,8 @@ function ImGui.Image(ctx, image, image_size_w, image_size_h, uv0_x, uv0_y, uv1_x
 --- @param tint_col_rgba? integer default value = `0xFFFFFFFF`
 --- @return boolean retval
 function ImGui.ImageButton(ctx, str_id, image, image_size_w, image_size_h, uv0_x, uv0_y, uv1_x, uv1_y, bg_col_rgba, tint_col_rgba) end
---- **Image > Image_GetSize**
+
+--- **Image > Image\_GetSize**
 ---
 --- ---
 ---
@@ -16613,6 +16766,27 @@ function ImGui.ImageButton(ctx, str_id, image, image_size_w, image_size_h, uv0_x
 --- There are also image functions in the DrawList API such as
 --- DrawList_AddImageQuad and DrawList_AddImageRounded.
 ---
+--- Caching of image objects may be implemented like this:
+---
+---     local images = {}
+---     local function imageFromCache(fn)
+---       local img = images[fn]
+---       if not img then
+---         img = {}
+---         images[fn] = img
+---       end
+---
+---       if not ImGui.ValidatePtr(img.inst, 'ImGui_Image*') then
+---         if img.inst then images[img.inst] = nil end
+---         img.inst = ImGui.CreateImage(fn)
+---         local prev = images[img.inst]
+---         if prev and prev ~= img then prev.inst = nil end
+---         images[img.inst] = img
+---       end
+---
+---       return img.inst
+---     end
+---
 --- ---
 ---
 --- @since 0.8
@@ -16620,6 +16794,7 @@ function ImGui.ImageButton(ctx, str_id, image, image_size_w, image_size_h, uv0_x
 --- @return number w
 --- @return number h
 function ImGui.Image_GetSize(image) end
+
 --- **Image > Image Set > CreateImageSet**
 ---
 --- ---
@@ -16657,13 +16832,35 @@ function ImGui.Image_GetSize(image) end
 --- There are also image functions in the DrawList API such as
 --- DrawList_AddImageQuad and DrawList_AddImageRounded.
 ---
+--- Caching of image objects may be implemented like this:
+---
+---     local images = {}
+---     local function imageFromCache(fn)
+---       local img = images[fn]
+---       if not img then
+---         img = {}
+---         images[fn] = img
+---       end
+---
+---       if not ImGui.ValidatePtr(img.inst, 'ImGui_Image*') then
+---         if img.inst then images[img.inst] = nil end
+---         img.inst = ImGui.CreateImage(fn)
+---         local prev = images[img.inst]
+---         if prev and prev ~= img then prev.inst = nil end
+---         images[img.inst] = img
+---       end
+---
+---       return img.inst
+---     end
+---
 --- ---
 ---
 --- @since 0.9
 --- @nodiscard
 --- @return ImGui_ImageSet retval
 function ImGui.CreateImageSet() end
---- **Image > Image Set > ImageSet_Add**
+
+--- **Image > Image Set > ImageSet\_Add**
 ---
 --- 'img' cannot be another ImageSet.
 ---
@@ -16702,6 +16899,27 @@ function ImGui.CreateImageSet() end
 --- There are also image functions in the DrawList API such as
 --- DrawList_AddImageQuad and DrawList_AddImageRounded.
 ---
+--- Caching of image objects may be implemented like this:
+---
+---     local images = {}
+---     local function imageFromCache(fn)
+---       local img = images[fn]
+---       if not img then
+---         img = {}
+---         images[fn] = img
+---       end
+---
+---       if not ImGui.ValidatePtr(img.inst, 'ImGui_Image*') then
+---         if img.inst then images[img.inst] = nil end
+---         img.inst = ImGui.CreateImage(fn)
+---         local prev = images[img.inst]
+---         if prev and prev ~= img then prev.inst = nil end
+---         images[img.inst] = img
+---       end
+---
+---       return img.inst
+---     end
+---
 --- ---
 ---
 --- @since 0.8
@@ -16709,7 +16927,8 @@ function ImGui.CreateImageSet() end
 --- @param scale number
 --- @param image ImGui_Image
 function ImGui.ImageSet_Add(set, scale, image) end
---- **Item & Status > BeginDisabled**
+
+--- **Item \& Status > BeginDisabled**
 ---
 --- Disable all user interactions and dim items visuals
 --- (applying StyleVar_DisabledAlpha over current colors).
@@ -16729,14 +16948,16 @@ function ImGui.ImageSet_Add(set, scale, image) end
 --- @param ctx ImGui_Context
 --- @param disabled? boolean default value = `true`
 function ImGui.BeginDisabled(ctx, disabled) end
---- **Item & Status > DebugStartItemPicker**
+
+--- **Item \& Status > DebugStartItemPicker**
 ---
 --- ---
 ---
 --- @since 0.9
 --- @param ctx ImGui_Context
 function ImGui.DebugStartItemPicker(ctx) end
---- **Item & Status > EndDisabled**
+
+--- **Item \& Status > EndDisabled**
 ---
 --- See BeginDisabled.
 ---
@@ -16745,7 +16966,8 @@ function ImGui.DebugStartItemPicker(ctx) end
 --- @since 0.5.5
 --- @param ctx ImGui_Context
 function ImGui.EndDisabled(ctx) end
---- **Item & Status > SetNextItemAllowOverlap**
+
+--- **Item \& Status > SetNextItemAllowOverlap**
 ---
 --- Allow next item to be overlapped by a subsequent item.
 --- Useful with invisible buttons, selectable, treenode covering an area where
@@ -16757,7 +16979,8 @@ function ImGui.EndDisabled(ctx) end
 --- @since 0.9
 --- @param ctx ImGui_Context
 function ImGui.SetNextItemAllowOverlap(ctx) end
---- **Item & Status > Dimensions > CalcItemWidth**
+
+--- **Item \& Status > Dimensions > CalcItemWidth**
 ---
 --- Width of item given pushed settings and current cursor position.
 --- NOT necessarily the width of last item unlike most 'Item' functions.
@@ -16768,7 +16991,8 @@ function ImGui.SetNextItemAllowOverlap(ctx) end
 --- @param ctx ImGui_Context
 --- @return number retval
 function ImGui.CalcItemWidth(ctx) end
---- **Item & Status > Dimensions > GetItemRectMax**
+
+--- **Item \& Status > Dimensions > GetItemRectMax**
 ---
 --- Get lower-right bounding rectangle of the last item (screen space)
 ---
@@ -16779,7 +17003,8 @@ function ImGui.CalcItemWidth(ctx) end
 --- @return number x
 --- @return number y
 function ImGui.GetItemRectMax(ctx) end
---- **Item & Status > Dimensions > GetItemRectMin**
+
+--- **Item \& Status > Dimensions > GetItemRectMin**
 ---
 --- Get upper-left bounding rectangle of the last item (screen space)
 ---
@@ -16790,7 +17015,8 @@ function ImGui.GetItemRectMax(ctx) end
 --- @return number x
 --- @return number y
 function ImGui.GetItemRectMin(ctx) end
---- **Item & Status > Dimensions > GetItemRectSize**
+
+--- **Item \& Status > Dimensions > GetItemRectSize**
 ---
 --- Get size of last item
 ---
@@ -16801,7 +17027,8 @@ function ImGui.GetItemRectMin(ctx) end
 --- @return number w
 --- @return number h
 function ImGui.GetItemRectSize(ctx) end
---- **Item & Status > Dimensions > PopItemWidth**
+
+--- **Item \& Status > Dimensions > PopItemWidth**
 ---
 --- See PushItemWidth
 ---
@@ -16810,11 +17037,12 @@ function ImGui.GetItemRectSize(ctx) end
 --- @since 0.1
 --- @param ctx ImGui_Context
 function ImGui.PopItemWidth(ctx) end
---- **Item & Status > Dimensions > PushItemWidth**
+
+--- **Item \& Status > Dimensions > PushItemWidth**
 ---
 --- Push width of items for common large "item+label" widgets.
 ---
---- - >0.0: width in pixels
+--- - \>0.0: width in pixels
 --- - <0.0 align xx pixels to the right of window
 ---   (so -FLT_MIN always align width to the right side)
 --- - 0.0 = default to ~2/3 of windows width.
@@ -16825,11 +17053,12 @@ function ImGui.PopItemWidth(ctx) end
 --- @param ctx ImGui_Context
 --- @param item_width number
 function ImGui.PushItemWidth(ctx, item_width) end
---- **Item & Status > Dimensions > SetNextItemWidth**
+
+--- **Item \& Status > Dimensions > SetNextItemWidth**
 ---
 --- Set width of the _next_ common large "item+label" widget.
 ---
---- - >0.0: width in pixels
+--- - \>0.0: width in pixels
 --- - <0.0 align xx pixels to the right of window
 ---   (so -FLT_MIN always align width to the right side)
 ---
@@ -16839,13 +17068,14 @@ function ImGui.PushItemWidth(ctx, item_width) end
 --- @param ctx ImGui_Context
 --- @param item_width number
 function ImGui.SetNextItemWidth(ctx, item_width) end
---- **Item & Status > Focus & Activation > PopTabStop**
+
+--- **Item \& Status > Focus \& Activation > PopTabStop**
 ---
 --- See PushTabStop
 ---
 --- ---
 ---
---- **Item & Status > Focus & Activation**
+--- **Item \& Status > Focus \& Activation**
 ---
 --- Prefer using "SetItemDefaultFocus()" over
 --- "if(IsWindowAppearing()) SetScrollHereY()" when applicable to signify
@@ -16856,14 +17086,15 @@ function ImGui.SetNextItemWidth(ctx, item_width) end
 --- @since 0.8.5
 --- @param ctx ImGui_Context
 function ImGui.PopTabStop(ctx) end
---- **Item & Status > Focus & Activation > PushTabStop**
+
+--- **Item \& Status > Focus \& Activation > PushTabStop**
 ---
 --- Allow focusing using TAB/Shift-TAB, enabled by default but you can disable it
 --- for certain widgets
 ---
 --- ---
 ---
---- **Item & Status > Focus & Activation**
+--- **Item \& Status > Focus \& Activation**
 ---
 --- Prefer using "SetItemDefaultFocus()" over
 --- "if(IsWindowAppearing()) SetScrollHereY()" when applicable to signify
@@ -16875,13 +17106,14 @@ function ImGui.PopTabStop(ctx) end
 --- @param ctx ImGui_Context
 --- @param tab_stop boolean
 function ImGui.PushTabStop(ctx, tab_stop) end
---- **Item & Status > Focus & Activation > SetItemDefaultFocus**
+
+--- **Item \& Status > Focus \& Activation > SetItemDefaultFocus**
 ---
 --- Make last item the default focused item of a window.
 ---
 --- ---
 ---
---- **Item & Status > Focus & Activation**
+--- **Item \& Status > Focus \& Activation**
 ---
 --- Prefer using "SetItemDefaultFocus()" over
 --- "if(IsWindowAppearing()) SetScrollHereY()" when applicable to signify
@@ -16892,14 +17124,15 @@ function ImGui.PushTabStop(ctx, tab_stop) end
 --- @since 0.1
 --- @param ctx ImGui_Context
 function ImGui.SetItemDefaultFocus(ctx) end
---- **Item & Status > Focus & Activation > SetKeyboardFocusHere**
+
+--- **Item \& Status > Focus \& Activation > SetKeyboardFocusHere**
 ---
 --- Focus keyboard on the next widget. Use positive 'offset' to access sub
 --- components of a multiple component widget. Use -1 to access previous widget.
 ---
 --- ---
 ---
---- **Item & Status > Focus & Activation**
+--- **Item \& Status > Focus \& Activation**
 ---
 --- Prefer using "SetItemDefaultFocus()" over
 --- "if(IsWindowAppearing()) SetScrollHereY()" when applicable to signify
@@ -16911,11 +17144,12 @@ function ImGui.SetItemDefaultFocus(ctx) end
 --- @param ctx ImGui_Context
 --- @param offset? integer default value = `0`
 function ImGui.SetKeyboardFocusHere(ctx, offset) end
---- **Item & Status > Item/Widgets Utilities and Query Functions > IsAnyItemActive**
+
+--- **Item \& Status > Item\/Widgets Utilities and Query Functions > IsAnyItemActive**
 ---
 --- ---
 ---
---- **Item & Status > Item/Widgets Utilities and Query Functions**
+--- **Item \& Status > Item\/Widgets Utilities and Query Functions**
 ---
 --- Most of the functions are referring to the previous Item that has been submitted.
 ---
@@ -16928,11 +17162,12 @@ function ImGui.SetKeyboardFocusHere(ctx, offset) end
 --- @param ctx ImGui_Context
 --- @return boolean retval
 function ImGui.IsAnyItemActive(ctx) end
---- **Item & Status > Item/Widgets Utilities and Query Functions > IsAnyItemFocused**
+
+--- **Item \& Status > Item\/Widgets Utilities and Query Functions > IsAnyItemFocused**
 ---
 --- ---
 ---
---- **Item & Status > Item/Widgets Utilities and Query Functions**
+--- **Item \& Status > Item\/Widgets Utilities and Query Functions**
 ---
 --- Most of the functions are referring to the previous Item that has been submitted.
 ---
@@ -16945,11 +17180,12 @@ function ImGui.IsAnyItemActive(ctx) end
 --- @param ctx ImGui_Context
 --- @return boolean retval
 function ImGui.IsAnyItemFocused(ctx) end
---- **Item & Status > Item/Widgets Utilities and Query Functions > IsAnyItemHovered**
+
+--- **Item \& Status > Item\/Widgets Utilities and Query Functions > IsAnyItemHovered**
 ---
 --- ---
 ---
---- **Item & Status > Item/Widgets Utilities and Query Functions**
+--- **Item \& Status > Item\/Widgets Utilities and Query Functions**
 ---
 --- Most of the functions are referring to the previous Item that has been submitted.
 ---
@@ -16962,13 +17198,14 @@ function ImGui.IsAnyItemFocused(ctx) end
 --- @param ctx ImGui_Context
 --- @return boolean retval
 function ImGui.IsAnyItemHovered(ctx) end
---- **Item & Status > Item/Widgets Utilities and Query Functions > IsItemActivated**
+
+--- **Item \& Status > Item\/Widgets Utilities and Query Functions > IsItemActivated**
 ---
 --- Was the last item just made active (item was previously inactive).
 ---
 --- ---
 ---
---- **Item & Status > Item/Widgets Utilities and Query Functions**
+--- **Item \& Status > Item\/Widgets Utilities and Query Functions**
 ---
 --- Most of the functions are referring to the previous Item that has been submitted.
 ---
@@ -16981,7 +17218,8 @@ function ImGui.IsAnyItemHovered(ctx) end
 --- @param ctx ImGui_Context
 --- @return boolean retval
 function ImGui.IsItemActivated(ctx) end
---- **Item & Status > Item/Widgets Utilities and Query Functions > IsItemActive**
+
+--- **Item \& Status > Item\/Widgets Utilities and Query Functions > IsItemActive**
 ---
 --- Is the last item active? (e.g. button being held, text field being edited.
 --- This will continuously return true while holding mouse button on an item.
@@ -16989,7 +17227,7 @@ function ImGui.IsItemActivated(ctx) end
 ---
 --- ---
 ---
---- **Item & Status > Item/Widgets Utilities and Query Functions**
+--- **Item \& Status > Item\/Widgets Utilities and Query Functions**
 ---
 --- Most of the functions are referring to the previous Item that has been submitted.
 ---
@@ -17002,7 +17240,8 @@ function ImGui.IsItemActivated(ctx) end
 --- @param ctx ImGui_Context
 --- @return boolean retval
 function ImGui.IsItemActive(ctx) end
---- **Item & Status > Item/Widgets Utilities and Query Functions > IsItemClicked**
+
+--- **Item \& Status > Item\/Widgets Utilities and Query Functions > IsItemClicked**
 ---
 --- Is the last item clicked? (e.g. button/node just clicked on)
 --- == IsMouseClicked(mouse_button) && IsItemHovered().
@@ -17012,7 +17251,7 @@ function ImGui.IsItemActive(ctx) end
 ---
 --- ---
 ---
---- **Item & Status > Item/Widgets Utilities and Query Functions**
+--- **Item \& Status > Item\/Widgets Utilities and Query Functions**
 ---
 --- Most of the functions are referring to the previous Item that has been submitted.
 ---
@@ -17026,14 +17265,15 @@ function ImGui.IsItemActive(ctx) end
 --- @param mouse_button? integer default value = `MouseButton_Left`
 --- @return boolean retval
 function ImGui.IsItemClicked(ctx, mouse_button) end
---- **Item & Status > Item/Widgets Utilities and Query Functions > IsItemDeactivated**
+
+--- **Item \& Status > Item\/Widgets Utilities and Query Functions > IsItemDeactivated**
 ---
 --- Was the last item just made inactive (item was previously active).
 --- Useful for Undo/Redo patterns with widgets that require continuous editing.
 ---
 --- ---
 ---
---- **Item & Status > Item/Widgets Utilities and Query Functions**
+--- **Item \& Status > Item\/Widgets Utilities and Query Functions**
 ---
 --- Most of the functions are referring to the previous Item that has been submitted.
 ---
@@ -17046,7 +17286,8 @@ function ImGui.IsItemClicked(ctx, mouse_button) end
 --- @param ctx ImGui_Context
 --- @return boolean retval
 function ImGui.IsItemDeactivated(ctx) end
---- **Item & Status > Item/Widgets Utilities and Query Functions > IsItemDeactivatedAfterEdit**
+
+--- **Item \& Status > Item\/Widgets Utilities and Query Functions > IsItemDeactivatedAfterEdit**
 ---
 --- Was the last item just made inactive and made a value change when it was
 --- active? (e.g. Slider/Drag moved).
@@ -17057,7 +17298,7 @@ function ImGui.IsItemDeactivated(ctx) end
 ---
 --- ---
 ---
---- **Item & Status > Item/Widgets Utilities and Query Functions**
+--- **Item \& Status > Item\/Widgets Utilities and Query Functions**
 ---
 --- Most of the functions are referring to the previous Item that has been submitted.
 ---
@@ -17070,14 +17311,15 @@ function ImGui.IsItemDeactivated(ctx) end
 --- @param ctx ImGui_Context
 --- @return boolean retval
 function ImGui.IsItemDeactivatedAfterEdit(ctx) end
---- **Item & Status > Item/Widgets Utilities and Query Functions > IsItemEdited**
+
+--- **Item \& Status > Item\/Widgets Utilities and Query Functions > IsItemEdited**
 ---
 --- Did the last item modify its underlying value this frame? or was pressed?
 --- This is generally the same as the "bool" return value of many widgets.
 ---
 --- ---
 ---
---- **Item & Status > Item/Widgets Utilities and Query Functions**
+--- **Item \& Status > Item\/Widgets Utilities and Query Functions**
 ---
 --- Most of the functions are referring to the previous Item that has been submitted.
 ---
@@ -17090,13 +17332,14 @@ function ImGui.IsItemDeactivatedAfterEdit(ctx) end
 --- @param ctx ImGui_Context
 --- @return boolean retval
 function ImGui.IsItemEdited(ctx) end
---- **Item & Status > Item/Widgets Utilities and Query Functions > IsItemFocused**
+
+--- **Item \& Status > Item\/Widgets Utilities and Query Functions > IsItemFocused**
 ---
 --- Is the last item focused for keyboard/gamepad navigation?
 ---
 --- ---
 ---
---- **Item & Status > Item/Widgets Utilities and Query Functions**
+--- **Item \& Status > Item\/Widgets Utilities and Query Functions**
 ---
 --- Most of the functions are referring to the previous Item that has been submitted.
 ---
@@ -17109,14 +17352,15 @@ function ImGui.IsItemEdited(ctx) end
 --- @param ctx ImGui_Context
 --- @return boolean retval
 function ImGui.IsItemFocused(ctx) end
---- **Item & Status > Item/Widgets Utilities and Query Functions > IsItemHovered**
+
+--- **Item \& Status > Item\/Widgets Utilities and Query Functions > IsItemHovered**
 ---
 --- Is the last item hovered? (and usable, aka not blocked by a popup, etc.).
 --- See HoveredFlags_* for more options.
 ---
 --- ---
 ---
---- **Item & Status > Item/Widgets Utilities and Query Functions**
+--- **Item \& Status > Item\/Widgets Utilities and Query Functions**
 ---
 --- Most of the functions are referring to the previous Item that has been submitted.
 ---
@@ -17130,13 +17374,14 @@ function ImGui.IsItemFocused(ctx) end
 --- @param flags? integer default value = `HoveredFlags_None`
 --- @return boolean retval
 function ImGui.IsItemHovered(ctx, flags) end
---- **Item & Status > Item/Widgets Utilities and Query Functions > IsItemVisible**
+
+--- **Item \& Status > Item\/Widgets Utilities and Query Functions > IsItemVisible**
 ---
 --- Is the last item visible? (items may be out of sight because of clipping/scrolling)
 ---
 --- ---
 ---
---- **Item & Status > Item/Widgets Utilities and Query Functions**
+--- **Item \& Status > Item\/Widgets Utilities and Query Functions**
 ---
 --- Most of the functions are referring to the previous Item that has been submitted.
 ---
@@ -17149,7 +17394,8 @@ function ImGui.IsItemHovered(ctx, flags) end
 --- @param ctx ImGui_Context
 --- @return boolean retval
 function ImGui.IsItemVisible(ctx) end
---- **Keyboard & Mouse > Keyboard > GetInputQueueCharacter**
+
+--- **Keyboard \& Mouse > Keyboard > GetInputQueueCharacter**
 ---
 --- Read from ImGui's character input queue.
 --- Call with increasing idx until false is returned.
@@ -17162,7 +17408,8 @@ function ImGui.IsItemVisible(ctx) end
 --- @return boolean retval
 --- @return integer unicode_char
 function ImGui.GetInputQueueCharacter(ctx, idx) end
---- **Keyboard & Mouse > Keyboard > GetKeyDownDuration**
+
+--- **Keyboard \& Mouse > Keyboard > GetKeyDownDuration**
 ---
 --- Duration the keyboard key has been down (0.0 == just pressed)
 ---
@@ -17173,7 +17420,8 @@ function ImGui.GetInputQueueCharacter(ctx, idx) end
 --- @param key integer
 --- @return number retval
 function ImGui.GetKeyDownDuration(ctx, key) end
---- **Keyboard & Mouse > Keyboard > GetKeyMods**
+
+--- **Keyboard \& Mouse > Keyboard > GetKeyMods**
 ---
 --- Flags for the Ctrl/Shift/Alt/Super keys. Uses Mod_* values.
 ---
@@ -17183,7 +17431,8 @@ function ImGui.GetKeyDownDuration(ctx, key) end
 --- @param ctx ImGui_Context
 --- @return integer retval
 function ImGui.GetKeyMods(ctx) end
---- **Keyboard & Mouse > Keyboard > GetKeyPressedAmount**
+
+--- **Keyboard \& Mouse > Keyboard > GetKeyPressedAmount**
 ---
 --- Uses provided repeat rate/delay. Return a count, most often 0 or 1 but might
 --- be >1 if ConfigVar_RepeatRate is small enough that GetDeltaTime > RepeatRate.
@@ -17197,7 +17446,8 @@ function ImGui.GetKeyMods(ctx) end
 --- @param rate number
 --- @return integer retval
 function ImGui.GetKeyPressedAmount(ctx, key, repeat_delay, rate) end
---- **Keyboard & Mouse > Keyboard > IsKeyDown**
+
+--- **Keyboard \& Mouse > Keyboard > IsKeyDown**
 ---
 --- Is key being held.
 ---
@@ -17208,7 +17458,8 @@ function ImGui.GetKeyPressedAmount(ctx, key, repeat_delay, rate) end
 --- @param key integer
 --- @return boolean retval
 function ImGui.IsKeyDown(ctx, key) end
---- **Keyboard & Mouse > Keyboard > IsKeyPressed**
+
+--- **Keyboard \& Mouse > Keyboard > IsKeyPressed**
 ---
 --- Was key pressed (went from !Down to Down)?
 --- If repeat=true, uses ConfigVar_KeyRepeatDelay / ConfigVar_KeyRepeatRate.
@@ -17221,7 +17472,8 @@ function ImGui.IsKeyDown(ctx, key) end
 --- @param repeat? boolean default value = `true`
 --- @return boolean retval
 function ImGui.IsKeyPressed(ctx, key, repeat) end
---- **Keyboard & Mouse > Keyboard > IsKeyReleased**
+
+--- **Keyboard \& Mouse > Keyboard > IsKeyReleased**
 ---
 --- Was key released (went from Down to !Down)?
 ---
@@ -17232,7 +17484,8 @@ function ImGui.IsKeyPressed(ctx, key, repeat) end
 --- @param key integer
 --- @return boolean retval
 function ImGui.IsKeyReleased(ctx, key) end
---- **Keyboard & Mouse > Keyboard > SetNextFrameWantCaptureKeyboard**
+
+--- **Keyboard \& Mouse > Keyboard > SetNextFrameWantCaptureKeyboard**
 ---
 --- Request capture of keyboard shortcuts in REAPER's global scope for the next frame.
 ---
@@ -17242,13 +17495,14 @@ function ImGui.IsKeyReleased(ctx, key) end
 --- @param ctx ImGui_Context
 --- @param want_capture_keyboard boolean
 function ImGui.SetNextFrameWantCaptureKeyboard(ctx, want_capture_keyboard) end
---- **Keyboard & Mouse > Mouse > GetMouseClickedCount**
+
+--- **Keyboard \& Mouse > Mouse > GetMouseClickedCount**
 ---
 --- Return the number of successive mouse-clicks at the time where a click happen (otherwise 0).
 ---
 --- ---
 ---
---- **Keyboard & Mouse > Mouse**
+--- **Keyboard \& Mouse > Mouse**
 ---
 --- To refer to a mouse button, you may use named enums in your code e.g.
 --- MouseButton_Left, MouseButton_Right.
@@ -17267,11 +17521,12 @@ function ImGui.SetNextFrameWantCaptureKeyboard(ctx, want_capture_keyboard) end
 --- @param button integer
 --- @return integer retval
 function ImGui.GetMouseClickedCount(ctx, button) end
---- **Keyboard & Mouse > Mouse > GetMouseClickedPos**
+
+--- **Keyboard \& Mouse > Mouse > GetMouseClickedPos**
 ---
 --- ---
 ---
---- **Keyboard & Mouse > Mouse**
+--- **Keyboard \& Mouse > Mouse**
 ---
 --- To refer to a mouse button, you may use named enums in your code e.g.
 --- MouseButton_Left, MouseButton_Right.
@@ -17291,7 +17546,8 @@ function ImGui.GetMouseClickedCount(ctx, button) end
 --- @return number x
 --- @return number y
 function ImGui.GetMouseClickedPos(ctx, button) end
---- **Keyboard & Mouse > Mouse > GetMouseDelta**
+
+--- **Keyboard \& Mouse > Mouse > GetMouseDelta**
 ---
 --- Mouse delta. Note that this is zero if either current or previous position
 --- are invalid (-FLT_MAX,-FLT_MAX), so a disappearing/reappearing mouse won't have
@@ -17299,7 +17555,7 @@ function ImGui.GetMouseClickedPos(ctx, button) end
 ---
 --- ---
 ---
---- **Keyboard & Mouse > Mouse**
+--- **Keyboard \& Mouse > Mouse**
 ---
 --- To refer to a mouse button, you may use named enums in your code e.g.
 --- MouseButton_Left, MouseButton_Right.
@@ -17318,13 +17574,14 @@ function ImGui.GetMouseClickedPos(ctx, button) end
 --- @return number x
 --- @return number y
 function ImGui.GetMouseDelta(ctx) end
---- **Keyboard & Mouse > Mouse > GetMouseDownDuration**
+
+--- **Keyboard \& Mouse > Mouse > GetMouseDownDuration**
 ---
 --- Duration the mouse button has been down (0.0 == just clicked)
 ---
 --- ---
 ---
---- **Keyboard & Mouse > Mouse**
+--- **Keyboard \& Mouse > Mouse**
 ---
 --- To refer to a mouse button, you may use named enums in your code e.g.
 --- MouseButton_Left, MouseButton_Right.
@@ -17343,7 +17600,8 @@ function ImGui.GetMouseDelta(ctx) end
 --- @param button integer
 --- @return number retval
 function ImGui.GetMouseDownDuration(ctx, button) end
---- **Keyboard & Mouse > Mouse > GetMouseDragDelta**
+
+--- **Keyboard \& Mouse > Mouse > GetMouseDragDelta**
 ---
 --- Return the delta from the initial clicking position while the mouse button is
 --- pressed or was just released. This is locked and return 0.0 until the mouse
@@ -17352,7 +17610,7 @@ function ImGui.GetMouseDownDuration(ctx, button) end
 ---
 --- ---
 ---
---- **Keyboard & Mouse > Mouse**
+--- **Keyboard \& Mouse > Mouse**
 ---
 --- To refer to a mouse button, you may use named enums in your code e.g.
 --- MouseButton_Left, MouseButton_Right.
@@ -17375,11 +17633,12 @@ function ImGui.GetMouseDownDuration(ctx, button) end
 --- @return number x
 --- @return number y
 function ImGui.GetMouseDragDelta(ctx, _1, _2, button, lock_threshold) end
---- **Keyboard & Mouse > Mouse > GetMousePos**
+
+--- **Keyboard \& Mouse > Mouse > GetMousePos**
 ---
 --- ---
 ---
---- **Keyboard & Mouse > Mouse**
+--- **Keyboard \& Mouse > Mouse**
 ---
 --- To refer to a mouse button, you may use named enums in your code e.g.
 --- MouseButton_Left, MouseButton_Right.
@@ -17398,14 +17657,15 @@ function ImGui.GetMouseDragDelta(ctx, _1, _2, button, lock_threshold) end
 --- @return number x
 --- @return number y
 function ImGui.GetMousePos(ctx) end
---- **Keyboard & Mouse > Mouse > GetMousePosOnOpeningCurrentPopup**
+
+--- **Keyboard \& Mouse > Mouse > GetMousePosOnOpeningCurrentPopup**
 ---
 --- Retrieve mouse position at the time of opening popup we have BeginPopup()
 --- into (helper to avoid user backing that value themselves).
 ---
 --- ---
 ---
---- **Keyboard & Mouse > Mouse**
+--- **Keyboard \& Mouse > Mouse**
 ---
 --- To refer to a mouse button, you may use named enums in your code e.g.
 --- MouseButton_Left, MouseButton_Right.
@@ -17424,7 +17684,8 @@ function ImGui.GetMousePos(ctx) end
 --- @return number x
 --- @return number y
 function ImGui.GetMousePosOnOpeningCurrentPopup(ctx) end
---- **Keyboard & Mouse > Mouse > GetMouseWheel**
+
+--- **Keyboard \& Mouse > Mouse > GetMouseWheel**
 ---
 --- Vertical: 1 unit scrolls about 5 lines text. >0 scrolls Up, <0 scrolls Down.
 --- Hold SHIFT to turn vertical scroll into horizontal scroll
@@ -17434,7 +17695,7 @@ function ImGui.GetMousePosOnOpeningCurrentPopup(ctx) end
 ---
 --- ---
 ---
---- **Keyboard & Mouse > Mouse**
+--- **Keyboard \& Mouse > Mouse**
 ---
 --- To refer to a mouse button, you may use named enums in your code e.g.
 --- MouseButton_Left, MouseButton_Right.
@@ -17453,13 +17714,14 @@ function ImGui.GetMousePosOnOpeningCurrentPopup(ctx) end
 --- @return number vertical
 --- @return number horizontal
 function ImGui.GetMouseWheel(ctx) end
---- **Keyboard & Mouse > Mouse > IsAnyMouseDown**
+
+--- **Keyboard \& Mouse > Mouse > IsAnyMouseDown**
 ---
 --- Is any mouse button held?
 ---
 --- ---
 ---
---- **Keyboard & Mouse > Mouse**
+--- **Keyboard \& Mouse > Mouse**
 ---
 --- To refer to a mouse button, you may use named enums in your code e.g.
 --- MouseButton_Left, MouseButton_Right.
@@ -17477,14 +17739,15 @@ function ImGui.GetMouseWheel(ctx) end
 --- @param ctx ImGui_Context
 --- @return boolean retval
 function ImGui.IsAnyMouseDown(ctx) end
---- **Keyboard & Mouse > Mouse > IsMouseClicked**
+
+--- **Keyboard \& Mouse > Mouse > IsMouseClicked**
 ---
 --- Did mouse button clicked? (went from !Down to Down).
 --- Same as GetMouseClickedCount() == 1.
 ---
 --- ---
 ---
---- **Keyboard & Mouse > Mouse**
+--- **Keyboard \& Mouse > Mouse**
 ---
 --- To refer to a mouse button, you may use named enums in your code e.g.
 --- MouseButton_Left, MouseButton_Right.
@@ -17504,14 +17767,15 @@ function ImGui.IsAnyMouseDown(ctx) end
 --- @param repeat? boolean default value = `false`
 --- @return boolean retval
 function ImGui.IsMouseClicked(ctx, button, repeat) end
---- **Keyboard & Mouse > Mouse > IsMouseDoubleClicked**
+
+--- **Keyboard \& Mouse > Mouse > IsMouseDoubleClicked**
 ---
 --- Did mouse button double-clicked? Same as GetMouseClickedCount() == 2.
 --- (Note that a double-click will also report IsMouseClicked() == true)
 ---
 --- ---
 ---
---- **Keyboard & Mouse > Mouse**
+--- **Keyboard \& Mouse > Mouse**
 ---
 --- To refer to a mouse button, you may use named enums in your code e.g.
 --- MouseButton_Left, MouseButton_Right.
@@ -17530,13 +17794,14 @@ function ImGui.IsMouseClicked(ctx, button, repeat) end
 --- @param button integer
 --- @return boolean retval
 function ImGui.IsMouseDoubleClicked(ctx, button) end
---- **Keyboard & Mouse > Mouse > IsMouseDown**
+
+--- **Keyboard \& Mouse > Mouse > IsMouseDown**
 ---
 --- Is mouse button held?
 ---
 --- ---
 ---
---- **Keyboard & Mouse > Mouse**
+--- **Keyboard \& Mouse > Mouse**
 ---
 --- To refer to a mouse button, you may use named enums in your code e.g.
 --- MouseButton_Left, MouseButton_Right.
@@ -17555,13 +17820,14 @@ function ImGui.IsMouseDoubleClicked(ctx, button) end
 --- @param button integer
 --- @return boolean retval
 function ImGui.IsMouseDown(ctx, button) end
---- **Keyboard & Mouse > Mouse > IsMouseDragging**
+
+--- **Keyboard \& Mouse > Mouse > IsMouseDragging**
 ---
 --- Is mouse dragging? (uses ConfigVar_MouseDragThreshold if lock_threshold < 0.0)
 ---
 --- ---
 ---
---- **Keyboard & Mouse > Mouse**
+--- **Keyboard \& Mouse > Mouse**
 ---
 --- To refer to a mouse button, you may use named enums in your code e.g.
 --- MouseButton_Left, MouseButton_Right.
@@ -17581,7 +17847,8 @@ function ImGui.IsMouseDown(ctx, button) end
 --- @param lock_threshold? number default value = `-1.0`
 --- @return boolean retval
 function ImGui.IsMouseDragging(ctx, button, lock_threshold) end
---- **Keyboard & Mouse > Mouse > IsMouseHoveringRect**
+
+--- **Keyboard \& Mouse > Mouse > IsMouseHoveringRect**
 ---
 --- Is mouse hovering given bounding rect (in screen space).
 --- Clipped by current clipping settings, but disregarding of other consideration
@@ -17589,7 +17856,7 @@ function ImGui.IsMouseDragging(ctx, button, lock_threshold) end
 ---
 --- ---
 ---
---- **Keyboard & Mouse > Mouse**
+--- **Keyboard \& Mouse > Mouse**
 ---
 --- To refer to a mouse button, you may use named enums in your code e.g.
 --- MouseButton_Left, MouseButton_Right.
@@ -17612,11 +17879,12 @@ function ImGui.IsMouseDragging(ctx, button, lock_threshold) end
 --- @param clip? boolean default value = `true`
 --- @return boolean retval
 function ImGui.IsMouseHoveringRect(ctx, r_min_x, r_min_y, r_max_x, r_max_y, clip) end
---- **Keyboard & Mouse > Mouse > IsMousePosValid**
+
+--- **Keyboard \& Mouse > Mouse > IsMousePosValid**
 ---
 --- ---
 ---
---- **Keyboard & Mouse > Mouse**
+--- **Keyboard \& Mouse > Mouse**
 ---
 --- To refer to a mouse button, you may use named enums in your code e.g.
 --- MouseButton_Left, MouseButton_Right.
@@ -17636,13 +17904,14 @@ function ImGui.IsMouseHoveringRect(ctx, r_min_x, r_min_y, r_max_x, r_max_y, clip
 --- @param mouse_pos_y? number default value = `nil`
 --- @return boolean retval
 function ImGui.IsMousePosValid(ctx, mouse_pos_x, mouse_pos_y) end
---- **Keyboard & Mouse > Mouse > IsMouseReleased**
+
+--- **Keyboard \& Mouse > Mouse > IsMouseReleased**
 ---
 --- Did mouse button released? (went from Down to !Down)
 ---
 --- ---
 ---
---- **Keyboard & Mouse > Mouse**
+--- **Keyboard \& Mouse > Mouse**
 ---
 --- To refer to a mouse button, you may use named enums in your code e.g.
 --- MouseButton_Left, MouseButton_Right.
@@ -17661,11 +17930,12 @@ function ImGui.IsMousePosValid(ctx, mouse_pos_x, mouse_pos_y) end
 --- @param button integer
 --- @return boolean retval
 function ImGui.IsMouseReleased(ctx, button) end
---- **Keyboard & Mouse > Mouse > ResetMouseDragDelta**
+
+--- **Keyboard \& Mouse > Mouse > ResetMouseDragDelta**
 ---
 --- ---
 ---
---- **Keyboard & Mouse > Mouse**
+--- **Keyboard \& Mouse > Mouse**
 ---
 --- To refer to a mouse button, you may use named enums in your code e.g.
 --- MouseButton_Left, MouseButton_Right.
@@ -17683,13 +17953,14 @@ function ImGui.IsMouseReleased(ctx, button) end
 --- @param ctx ImGui_Context
 --- @param button? integer default value = `MouseButton_Left`
 function ImGui.ResetMouseDragDelta(ctx, button) end
---- **Keyboard & Mouse > Mouse > Mouse Cursor > GetMouseCursor**
+
+--- **Keyboard \& Mouse > Mouse > Mouse Cursor > GetMouseCursor**
 ---
 --- Get desired mouse cursor shape, reset every frame. This is updated during the frame.
 ---
 --- ---
 ---
---- **Keyboard & Mouse > Mouse**
+--- **Keyboard \& Mouse > Mouse**
 ---
 --- To refer to a mouse button, you may use named enums in your code e.g.
 --- MouseButton_Left, MouseButton_Right.
@@ -17707,13 +17978,14 @@ function ImGui.ResetMouseDragDelta(ctx, button) end
 --- @param ctx ImGui_Context
 --- @return integer retval
 function ImGui.GetMouseCursor(ctx) end
---- **Keyboard & Mouse > Mouse > Mouse Cursor > SetMouseCursor**
+
+--- **Keyboard \& Mouse > Mouse > Mouse Cursor > SetMouseCursor**
 ---
 --- Set desired mouse cursor shape. See MouseCursor_* for possible values.
 ---
 --- ---
 ---
---- **Keyboard & Mouse > Mouse**
+--- **Keyboard \& Mouse > Mouse**
 ---
 --- To refer to a mouse button, you may use named enums in your code e.g.
 --- MouseButton_Left, MouseButton_Right.
@@ -17731,7 +18003,8 @@ function ImGui.GetMouseCursor(ctx) end
 --- @param ctx ImGui_Context
 --- @param cursor_type integer
 function ImGui.SetMouseCursor(ctx, cursor_type) end
---- **Keyboard & Mouse > Shortcuts > IsKeyChordPressed**
+
+--- **Keyboard \& Mouse > Shortcuts > IsKeyChordPressed**
 ---
 --- Was key chord (mods + key) pressed? You can pass e.g. `Mod_Ctrl | Key_S`
 --- as a key chord. This doesn't do any routing or focus check, consider using the
@@ -17739,7 +18012,7 @@ function ImGui.SetMouseCursor(ctx, cursor_type) end
 ---
 --- ---
 ---
---- **Keyboard & Mouse > Shortcuts**
+--- **Keyboard \& Mouse > Shortcuts**
 ---
 ---
 --- Key chords can combine a Key_* and a Mod_* value. For example: `Mod_Ctrl | Key_C`.
@@ -17769,11 +18042,12 @@ function ImGui.SetMouseCursor(ctx, cursor_type) end
 --- @param key_chord integer
 --- @return boolean retval
 function ImGui.IsKeyChordPressed(ctx, key_chord) end
---- **Keyboard & Mouse > Shortcuts > SetNextItemShortcut**
+
+--- **Keyboard \& Mouse > Shortcuts > SetNextItemShortcut**
 ---
 --- ---
 ---
---- **Keyboard & Mouse > Shortcuts**
+--- **Keyboard \& Mouse > Shortcuts**
 ---
 ---
 --- Key chords can combine a Key_* and a Mod_* value. For example: `Mod_Ctrl | Key_C`.
@@ -17803,11 +18077,12 @@ function ImGui.IsKeyChordPressed(ctx, key_chord) end
 --- @param key_chord integer
 --- @param flags? integer default value = `InputFlags_None`
 function ImGui.SetNextItemShortcut(ctx, key_chord, flags) end
---- **Keyboard & Mouse > Shortcuts > Shortcut**
+
+--- **Keyboard \& Mouse > Shortcuts > Shortcut**
 ---
 --- ---
 ---
---- **Keyboard & Mouse > Shortcuts**
+--- **Keyboard \& Mouse > Shortcuts**
 ---
 ---
 --- Key chords can combine a Key_* and a Mod_* value. For example: `Mod_Ctrl | Key_C`.
@@ -17838,6 +18113,7 @@ function ImGui.SetNextItemShortcut(ctx, key_chord, flags) end
 --- @param flags? integer default value = `InputFlags_None`
 --- @return boolean retval
 function ImGui.Shortcut(ctx, key_chord, flags) end
+
 --- **Layout > BeginGroup**
 ---
 --- Lock horizontal starting position. See EndGroup.
@@ -17847,6 +18123,7 @@ function ImGui.Shortcut(ctx, key_chord, flags) end
 --- @since 0.1
 --- @param ctx ImGui_Context
 function ImGui.BeginGroup(ctx) end
+
 --- **Layout > Dummy**
 ---
 --- Add a dummy item of given size. unlike InvisibleButton, Dummy() won't take the
@@ -17859,6 +18136,7 @@ function ImGui.BeginGroup(ctx) end
 --- @param size_w number
 --- @param size_h number
 function ImGui.Dummy(ctx, size_w, size_h) end
+
 --- **Layout > EndGroup**
 ---
 --- Unlock horizontal starting position + capture the whole group bounding box
@@ -17872,6 +18150,7 @@ function ImGui.Dummy(ctx, size_w, size_h) end
 --- @since 0.8
 --- @param ctx ImGui_Context
 function ImGui.EndGroup(ctx) end
+
 --- **Layout > Indent**
 ---
 --- Move content position toward the right, by 'indent_w', or
@@ -17883,6 +18162,7 @@ function ImGui.EndGroup(ctx) end
 --- @param ctx ImGui_Context
 --- @param indent_w? number default value = `0.0`
 function ImGui.Indent(ctx, indent_w) end
+
 --- **Layout > NewLine**
 ---
 --- Undo a SameLine() or force a new line when in a horizontal-layout context.
@@ -17892,6 +18172,7 @@ function ImGui.Indent(ctx, indent_w) end
 --- @since 0.1
 --- @param ctx ImGui_Context
 function ImGui.NewLine(ctx) end
+
 --- **Layout > SameLine**
 ---
 --- Call between widgets or groups to layout them horizontally.
@@ -17904,6 +18185,7 @@ function ImGui.NewLine(ctx) end
 --- @param offset_from_start_x? number default value = `0.0`
 --- @param spacing? number default value = `-1.0`
 function ImGui.SameLine(ctx, offset_from_start_x, spacing) end
+
 --- **Layout > Separator**
 ---
 --- Separator, generally horizontal. inside a menu bar or in horizontal layout
@@ -17914,6 +18196,7 @@ function ImGui.SameLine(ctx, offset_from_start_x, spacing) end
 --- @since 0.1
 --- @param ctx ImGui_Context
 function ImGui.Separator(ctx) end
+
 --- **Layout > SeparatorText**
 ---
 --- Text formatted with an horizontal line
@@ -17924,6 +18207,7 @@ function ImGui.Separator(ctx) end
 --- @param ctx ImGui_Context
 --- @param label string
 function ImGui.SeparatorText(ctx, label) end
+
 --- **Layout > Spacing**
 ---
 --- Add vertical spacing.
@@ -17933,6 +18217,7 @@ function ImGui.SeparatorText(ctx, label) end
 --- @since 0.1
 --- @param ctx ImGui_Context
 function ImGui.Spacing(ctx) end
+
 --- **Layout > Unindent**
 ---
 --- Move content position back to the left, by 'indent_w', or
@@ -17944,6 +18229,7 @@ function ImGui.Spacing(ctx) end
 --- @param ctx ImGui_Context
 --- @param indent_w? number default value = `0.0`
 function ImGui.Unindent(ctx, indent_w) end
+
 --- **Layout > Clipping > IsRectVisible**
 ---
 --- Test if rectangle (of given size, starting from cursor position) is
@@ -17964,6 +18250,7 @@ function ImGui.Unindent(ctx, indent_w) end
 --- @param size_h number
 --- @return boolean retval
 function ImGui.IsRectVisible(ctx, size_w, size_h) end
+
 --- **Layout > Clipping > IsRectVisibleEx**
 ---
 --- Test if rectangle (in screen space) is visible / not clipped. to perform
@@ -17986,6 +18273,7 @@ function ImGui.IsRectVisible(ctx, size_w, size_h) end
 --- @param rect_max_y number
 --- @return boolean retval
 function ImGui.IsRectVisibleEx(ctx, rect_min_x, rect_min_y, rect_max_x, rect_max_y) end
+
 --- **Layout > Clipping > PopClipRect**
 ---
 --- See PushClipRect
@@ -18002,6 +18290,7 @@ function ImGui.IsRectVisibleEx(ctx, rect_min_x, rect_min_y, rect_max_x, rect_max
 --- @since 0.1
 --- @param ctx ImGui_Context
 function ImGui.PopClipRect(ctx) end
+
 --- **Layout > Clipping > PushClipRect**
 ---
 --- ---
@@ -18021,6 +18310,7 @@ function ImGui.PopClipRect(ctx) end
 --- @param clip_rect_max_y number
 --- @param intersect_with_current_clip_rect boolean
 function ImGui.PushClipRect(ctx, clip_rect_min_x, clip_rect_min_y, clip_rect_max_x, clip_rect_max_y, intersect_with_current_clip_rect) end
+
 --- **Layout > Layout Cursor Positioning > GetCursorPos**
 ---
 --- Cursor position in window
@@ -18043,6 +18333,7 @@ function ImGui.PushClipRect(ctx, clip_rect_min_x, clip_rect_min_y, clip_rect_max
 --- @return number x
 --- @return number y
 function ImGui.GetCursorPos(ctx) end
+
 --- **Layout > Layout Cursor Positioning > GetCursorPosX**
 ---
 --- Cursor X position in window
@@ -18064,6 +18355,7 @@ function ImGui.GetCursorPos(ctx) end
 --- @param ctx ImGui_Context
 --- @return number retval
 function ImGui.GetCursorPosX(ctx) end
+
 --- **Layout > Layout Cursor Positioning > GetCursorPosY**
 ---
 --- Cursor Y position in window
@@ -18085,6 +18377,7 @@ function ImGui.GetCursorPosX(ctx) end
 --- @param ctx ImGui_Context
 --- @return number retval
 function ImGui.GetCursorPosY(ctx) end
+
 --- **Layout > Layout Cursor Positioning > GetCursorScreenPos**
 ---
 --- Cursor position in absolute screen coordinates (useful to work with the DrawList API).
@@ -18107,6 +18400,7 @@ function ImGui.GetCursorPosY(ctx) end
 --- @return number x
 --- @return number y
 function ImGui.GetCursorScreenPos(ctx) end
+
 --- **Layout > Layout Cursor Positioning > GetCursorStartPos**
 ---
 --- Initial cursor position in window coordinates.
@@ -18129,6 +18423,7 @@ function ImGui.GetCursorScreenPos(ctx) end
 --- @return number x
 --- @return number y
 function ImGui.GetCursorStartPos(ctx) end
+
 --- **Layout > Layout Cursor Positioning > SetCursorPos**
 ---
 --- Cursor position in window
@@ -18151,6 +18446,7 @@ function ImGui.GetCursorStartPos(ctx) end
 --- @param local_pos_x number
 --- @param local_pos_y number
 function ImGui.SetCursorPos(ctx, local_pos_x, local_pos_y) end
+
 --- **Layout > Layout Cursor Positioning > SetCursorPosX**
 ---
 --- Cursor X position in window
@@ -18172,6 +18468,7 @@ function ImGui.SetCursorPos(ctx, local_pos_x, local_pos_y) end
 --- @param ctx ImGui_Context
 --- @param local_x number
 function ImGui.SetCursorPosX(ctx, local_x) end
+
 --- **Layout > Layout Cursor Positioning > SetCursorPosY**
 ---
 --- Cursor Y position in window
@@ -18193,6 +18490,7 @@ function ImGui.SetCursorPosX(ctx, local_x) end
 --- @param ctx ImGui_Context
 --- @param local_y number
 function ImGui.SetCursorPosY(ctx, local_y) end
+
 --- **Layout > Layout Cursor Positioning > SetCursorScreenPos**
 ---
 --- Cursor position in absolute screen coordinates.
@@ -18215,6 +18513,7 @@ function ImGui.SetCursorPosY(ctx, local_y) end
 --- @param pos_x number
 --- @param pos_y number
 function ImGui.SetCursorScreenPos(ctx, pos_x, pos_y) end
+
 --- **List Clipper > CreateListClipper**
 ---
 --- The returned clipper object is only valid for the given context and is valid
@@ -18268,7 +18567,8 @@ function ImGui.SetCursorScreenPos(ctx, pos_x, pos_y) end
 --- @nodiscard
 --- @return ImGui_ListClipper retval
 function ImGui.CreateListClipper(ctx) end
---- **List Clipper > ListClipper_Begin**
+
+--- **List Clipper > ListClipper\_Begin**
 ---
 --- - items_count: Use INT_MAX if you don't know how many items you have
 --- (in which case the cursor won't be advanced in the final step)
@@ -18324,7 +18624,8 @@ function ImGui.CreateListClipper(ctx) end
 --- @param items_count integer
 --- @param items_height? number default value = `-1.0`
 function ImGui.ListClipper_Begin(clipper, items_count, items_height) end
---- **List Clipper > ListClipper_End**
+
+--- **List Clipper > ListClipper\_End**
 ---
 --- Automatically called on the last call of ListClipper_Step that returns false.
 ---
@@ -18374,7 +18675,8 @@ function ImGui.ListClipper_Begin(clipper, items_count, items_height) end
 --- @since 0.1
 --- @param clipper ImGui_ListClipper
 function ImGui.ListClipper_End(clipper) end
---- **List Clipper > ListClipper_GetDisplayRange**
+
+--- **List Clipper > ListClipper\_GetDisplayRange**
 ---
 --- ---
 ---
@@ -18424,7 +18726,8 @@ function ImGui.ListClipper_End(clipper) end
 --- @return integer display_start
 --- @return integer display_end
 function ImGui.ListClipper_GetDisplayRange(clipper) end
---- **List Clipper > ListClipper_IncludeItemByIndex**
+
+--- **List Clipper > ListClipper\_IncludeItemByIndex**
 ---
 --- Call ListClipper_IncludeItemByIndex or ListClipper_IncludeItemsByIndex before
 --- the first call to ListClipper_Step if you need a range of items to be displayed
@@ -18480,7 +18783,8 @@ function ImGui.ListClipper_GetDisplayRange(clipper) end
 --- @param clipper ImGui_ListClipper
 --- @param item_index integer
 function ImGui.ListClipper_IncludeItemByIndex(clipper, item_index) end
---- **List Clipper > ListClipper_IncludeItemsByIndex**
+
+--- **List Clipper > ListClipper\_IncludeItemsByIndex**
 ---
 --- See ListClipper_IncludeItemByIndex.
 ---
@@ -18534,7 +18838,8 @@ function ImGui.ListClipper_IncludeItemByIndex(clipper, item_index) end
 --- @param item_begin integer
 --- @param item_end integer
 function ImGui.ListClipper_IncludeItemsByIndex(clipper, item_begin, item_end) end
---- **List Clipper > ListClipper_Step**
+
+--- **List Clipper > ListClipper\_Step**
 ---
 --- Call until it returns false. The display_start/display_end fields from
 --- ListClipper_GetDisplayRange will be set and you can process/draw those items.
@@ -18586,6 +18891,7 @@ function ImGui.ListClipper_IncludeItemsByIndex(clipper, item_begin, item_end) en
 --- @param clipper ImGui_ListClipper
 --- @return boolean retval
 function ImGui.ListClipper_Step(clipper) end
+
 --- **Menu > BeginMenu**
 ---
 --- Create a sub-menu entry. only call EndMenu if this returns true!
@@ -18599,6 +18905,7 @@ function ImGui.ListClipper_Step(clipper) end
 --- @nodiscard
 --- @return boolean retval
 function ImGui.BeginMenu(ctx, label, enabled) end
+
 --- **Menu > BeginMenuBar**
 ---
 --- Append to menu-bar of current window (requires WindowFlags_MenuBar flag set
@@ -18611,6 +18918,7 @@ function ImGui.BeginMenu(ctx, label, enabled) end
 --- @nodiscard
 --- @return boolean retval
 function ImGui.BeginMenuBar(ctx) end
+
 --- **Menu > EndMenu**
 ---
 --- Only call EndMenu() if BeginMenu returns true!
@@ -18620,6 +18928,7 @@ function ImGui.BeginMenuBar(ctx) end
 --- @since 0.1
 --- @param ctx ImGui_Context
 function ImGui.EndMenu(ctx) end
+
 --- **Menu > EndMenuBar**
 ---
 --- Only call EndMenuBar if BeginMenuBar returns true!
@@ -18629,6 +18938,7 @@ function ImGui.EndMenu(ctx) end
 --- @since 0.1
 --- @param ctx ImGui_Context
 function ImGui.EndMenuBar(ctx) end
+
 --- **Menu > MenuItem**
 ---
 --- Return true when activated. Shortcuts are displayed for convenience but not
@@ -18646,6 +18956,7 @@ function ImGui.EndMenuBar(ctx) end
 --- @return boolean retval
 --- @return boolean p_selected
 function ImGui.MenuItem(ctx, label, shortcut, p_selected, enabled) end
+
 --- **Plot > PlotHistogram**
 ---
 --- ---
@@ -18667,6 +18978,7 @@ function ImGui.MenuItem(ctx, label, shortcut, p_selected, enabled) end
 --- @param graph_size_w? number default value = `0.0`
 --- @param graph_size_h? number default value = `0.0`
 function ImGui.PlotHistogram(ctx, label, values, values_offset, overlay_text, scale_min, scale_max, graph_size_w, graph_size_h) end
+
 --- **Plot > PlotLines**
 ---
 --- ---
@@ -18688,7 +19000,8 @@ function ImGui.PlotHistogram(ctx, label, values, values_offset, overlay_text, sc
 --- @param graph_size_w? number default value = `0.0`
 --- @param graph_size_h? number default value = `0.0`
 function ImGui.PlotLines(ctx, label, values, values_offset, overlay_text, scale_min, scale_max, graph_size_w, graph_size_h) end
---- **Popup & Modal > BeginPopup**
+
+--- **Popup \& Modal > BeginPopup**
 ---
 --- Query popup state, if open start appending into the window. Call EndPopup
 --- afterwards if returned true. WindowFlags* are forwarded to the window.
@@ -18697,7 +19010,7 @@ function ImGui.PlotLines(ctx, label, values, values_offset, overlay_text, scale_
 ---
 --- ---
 ---
---- **Popup & Modal**
+--- **Popup \& Modal**
 ---
 --- - They block normal mouse hovering detection (and therefore most mouse
 ---   interactions) behind them.
@@ -18724,7 +19037,8 @@ function ImGui.PlotLines(ctx, label, values, values_offset, overlay_text, scale_
 --- @nodiscard
 --- @return boolean retval
 function ImGui.BeginPopup(ctx, str_id, flags) end
---- **Popup & Modal > BeginPopupModal**
+
+--- **Popup \& Modal > BeginPopupModal**
 ---
 --- Block every interaction behind the window, cannot be closed by user, add a
 --- dimming background, has a title bar. Return true if the modal is open, and you
@@ -18732,7 +19046,7 @@ function ImGui.BeginPopup(ctx, str_id, flags) end
 ---
 --- ---
 ---
---- **Popup & Modal**
+--- **Popup \& Modal**
 ---
 --- - They block normal mouse hovering detection (and therefore most mouse
 ---   interactions) behind them.
@@ -18761,7 +19075,8 @@ function ImGui.BeginPopup(ctx, str_id, flags) end
 --- @return boolean retval
 --- @return boolean p_open
 function ImGui.BeginPopupModal(ctx, name, p_open, flags) end
---- **Popup & Modal > CloseCurrentPopup**
+
+--- **Popup \& Modal > CloseCurrentPopup**
 ---
 --- Manually close the popup we have begin-ed into.
 --- Use inside the BeginPopup/EndPopup scope to close manually.
@@ -18770,7 +19085,7 @@ function ImGui.BeginPopupModal(ctx, name, p_open, flags) end
 ---
 --- ---
 ---
---- **Popup & Modal**
+--- **Popup \& Modal**
 ---
 --- - They block normal mouse hovering detection (and therefore most mouse
 ---   interactions) behind them.
@@ -18793,13 +19108,14 @@ function ImGui.BeginPopupModal(ctx, name, p_open, flags) end
 --- @since 0.1
 --- @param ctx ImGui_Context
 function ImGui.CloseCurrentPopup(ctx) end
---- **Popup & Modal > EndPopup**
+
+--- **Popup \& Modal > EndPopup**
 ---
 --- Only call EndPopup() if BeginPopup*() returns true!
 ---
 --- ---
 ---
---- **Popup & Modal**
+--- **Popup \& Modal**
 ---
 --- - They block normal mouse hovering detection (and therefore most mouse
 ---   interactions) behind them.
@@ -18822,7 +19138,8 @@ function ImGui.CloseCurrentPopup(ctx) end
 --- @since 0.8
 --- @param ctx ImGui_Context
 function ImGui.EndPopup(ctx) end
---- **Popup & Modal > IsPopupOpen**
+
+--- **Popup \& Modal > IsPopupOpen**
 ---
 --- Return true if the popup is open at the current BeginPopup level of the
 --- popup stack.
@@ -18834,7 +19151,7 @@ function ImGui.EndPopup(ctx) end
 ---
 --- ---
 ---
---- **Popup & Modal**
+--- **Popup \& Modal**
 ---
 --- - They block normal mouse hovering detection (and therefore most mouse
 ---   interactions) behind them.
@@ -18860,7 +19177,8 @@ function ImGui.EndPopup(ctx) end
 --- @param flags? integer default value = `PopupFlags_None`
 --- @return boolean retval
 function ImGui.IsPopupOpen(ctx, str_id, flags) end
---- **Popup & Modal > OpenPopup**
+
+--- **Popup \& Modal > OpenPopup**
 ---
 --- Set popup state to open (don't call every frame!).
 --- ImGuiPopupFlags are available for opening options.
@@ -18873,7 +19191,7 @@ function ImGui.IsPopupOpen(ctx, str_id, flags) end
 ---
 --- ---
 ---
---- **Popup & Modal**
+--- **Popup \& Modal**
 ---
 --- - They block normal mouse hovering detection (and therefore most mouse
 ---   interactions) behind them.
@@ -18898,7 +19216,8 @@ function ImGui.IsPopupOpen(ctx, str_id, flags) end
 --- @param str_id string
 --- @param popup_flags? integer default value = `PopupFlags_None`
 function ImGui.OpenPopup(ctx, str_id, popup_flags) end
---- **Popup & Modal > OpenPopupOnItemClick**
+
+--- **Popup \& Modal > OpenPopupOnItemClick**
 ---
 --- Helper to open popup when clicked on last item. return true when just opened.
 --- (Note: actually triggers on the mouse _released_ event to be consistent with
@@ -18906,7 +19225,7 @@ function ImGui.OpenPopup(ctx, str_id, popup_flags) end
 ---
 --- ---
 ---
---- **Popup & Modal**
+--- **Popup \& Modal**
 ---
 --- - They block normal mouse hovering detection (and therefore most mouse
 ---   interactions) behind them.
@@ -18931,7 +19250,8 @@ function ImGui.OpenPopup(ctx, str_id, popup_flags) end
 --- @param str_id? string default value = `nil`
 --- @param popup_flags? integer default value = `PopupFlags_MouseButtonRight`
 function ImGui.OpenPopupOnItemClick(ctx, str_id, popup_flags) end
---- **Popup & Modal > Open+Begin Combined Helpers > BeginPopupContextItem**
+
+--- **Popup \& Modal > Open\+Begin Combined Helpers > BeginPopupContextItem**
 ---
 --- This is a helper to handle the simplest case of associating one named popup
 --- to one given widget. You can pass a nil str_id to use the identifier of the last
@@ -18944,7 +19264,7 @@ function ImGui.OpenPopupOnItemClick(ctx, str_id, popup_flags) end
 ---
 --- ---
 ---
---- **Popup & Modal > Open+Begin Combined Helpers**
+--- **Popup \& Modal > Open\+Begin Combined Helpers**
 ---
 ---
 --- Helpers to do OpenPopup+BeginPopup where the Open action is triggered by e.g.
@@ -18960,7 +19280,7 @@ function ImGui.OpenPopupOnItemClick(ctx, str_id, popup_flags) end
 ---
 --- ---
 ---
---- **Popup & Modal**
+--- **Popup \& Modal**
 ---
 --- - They block normal mouse hovering detection (and therefore most mouse
 ---   interactions) behind them.
@@ -18987,13 +19307,14 @@ function ImGui.OpenPopupOnItemClick(ctx, str_id, popup_flags) end
 --- @nodiscard
 --- @return boolean retval
 function ImGui.BeginPopupContextItem(ctx, str_id, popup_flags) end
---- **Popup & Modal > Open+Begin Combined Helpers > BeginPopupContextWindow**
+
+--- **Popup \& Modal > Open\+Begin Combined Helpers > BeginPopupContextWindow**
 ---
 --- Open+begin popup when clicked on current window.
 ---
 --- ---
 ---
---- **Popup & Modal > Open+Begin Combined Helpers**
+--- **Popup \& Modal > Open\+Begin Combined Helpers**
 ---
 ---
 --- Helpers to do OpenPopup+BeginPopup where the Open action is triggered by e.g.
@@ -19009,7 +19330,7 @@ function ImGui.BeginPopupContextItem(ctx, str_id, popup_flags) end
 ---
 --- ---
 ---
---- **Popup & Modal**
+--- **Popup \& Modal**
 ---
 --- - They block normal mouse hovering detection (and therefore most mouse
 ---   interactions) behind them.
@@ -19036,21 +19357,22 @@ function ImGui.BeginPopupContextItem(ctx, str_id, popup_flags) end
 --- @nodiscard
 --- @return boolean retval
 function ImGui.BeginPopupContextWindow(ctx, str_id, popup_flags) end
---- **Popup & Modal > Tooltips > BeginItemTooltip**
+
+--- **Popup \& Modal > Tooltips > BeginItemTooltip**
 ---
 --- Begin/append a tooltip window if preceding item was hovered. Shortcut for
 --- `IsItemHovered(HoveredFlags_ForTooltip) && BeginTooltip()`.
 ---
 --- ---
 ---
---- **Popup & Modal > Tooltips**
+--- **Popup \& Modal > Tooltips**
 ---
 --- Tooltips are windows following the mouse. They do not take focus away.
 --- A tooltip window can contain items of any type.
 ---
 --- ---
 ---
---- **Popup & Modal**
+--- **Popup \& Modal**
 ---
 --- - They block normal mouse hovering detection (and therefore most mouse
 ---   interactions) behind them.
@@ -19075,20 +19397,21 @@ function ImGui.BeginPopupContextWindow(ctx, str_id, popup_flags) end
 --- @nodiscard
 --- @return boolean retval
 function ImGui.BeginItemTooltip(ctx) end
---- **Popup & Modal > Tooltips > BeginTooltip**
+
+--- **Popup \& Modal > Tooltips > BeginTooltip**
 ---
 --- Begin/append a tooltip window.
 ---
 --- ---
 ---
---- **Popup & Modal > Tooltips**
+--- **Popup \& Modal > Tooltips**
 ---
 --- Tooltips are windows following the mouse. They do not take focus away.
 --- A tooltip window can contain items of any type.
 ---
 --- ---
 ---
---- **Popup & Modal**
+--- **Popup \& Modal**
 ---
 --- - They block normal mouse hovering detection (and therefore most mouse
 ---   interactions) behind them.
@@ -19113,20 +19436,21 @@ function ImGui.BeginItemTooltip(ctx) end
 --- @nodiscard
 --- @return boolean retval
 function ImGui.BeginTooltip(ctx) end
---- **Popup & Modal > Tooltips > EndTooltip**
+
+--- **Popup \& Modal > Tooltips > EndTooltip**
 ---
 --- Only call EndTooltip() if BeginTooltip()/BeginItemTooltip() returns true.
 ---
 --- ---
 ---
---- **Popup & Modal > Tooltips**
+--- **Popup \& Modal > Tooltips**
 ---
 --- Tooltips are windows following the mouse. They do not take focus away.
 --- A tooltip window can contain items of any type.
 ---
 --- ---
 ---
---- **Popup & Modal**
+--- **Popup \& Modal**
 ---
 --- - They block normal mouse hovering detection (and therefore most mouse
 ---   interactions) behind them.
@@ -19149,7 +19473,8 @@ function ImGui.BeginTooltip(ctx) end
 --- @since 0.8
 --- @param ctx ImGui_Context
 function ImGui.EndTooltip(ctx) end
---- **Popup & Modal > Tooltips > SetItemTooltip**
+
+--- **Popup \& Modal > Tooltips > SetItemTooltip**
 ---
 --- Set a text-only tooltip if preceding item was hovered.
 --- Override any previous call to SetTooltip(). Shortcut for
@@ -19157,14 +19482,14 @@ function ImGui.EndTooltip(ctx) end
 ---
 --- ---
 ---
---- **Popup & Modal > Tooltips**
+--- **Popup \& Modal > Tooltips**
 ---
 --- Tooltips are windows following the mouse. They do not take focus away.
 --- A tooltip window can contain items of any type.
 ---
 --- ---
 ---
---- **Popup & Modal**
+--- **Popup \& Modal**
 ---
 --- - They block normal mouse hovering detection (and therefore most mouse
 ---   interactions) behind them.
@@ -19188,7 +19513,8 @@ function ImGui.EndTooltip(ctx) end
 --- @param ctx ImGui_Context
 --- @param text string
 function ImGui.SetItemTooltip(ctx, text) end
---- **Popup & Modal > Tooltips > SetTooltip**
+
+--- **Popup \& Modal > Tooltips > SetTooltip**
 ---
 --- Set a text-only tooltip. Often used after a IsItemHovered() check.
 --- Override any previous call to SetTooltip.
@@ -19197,14 +19523,14 @@ function ImGui.SetItemTooltip(ctx, text) end
 ---
 --- ---
 ---
---- **Popup & Modal > Tooltips**
+--- **Popup \& Modal > Tooltips**
 ---
 --- Tooltips are windows following the mouse. They do not take focus away.
 --- A tooltip window can contain items of any type.
 ---
 --- ---
 ---
---- **Popup & Modal**
+--- **Popup \& Modal**
 ---
 --- - They block normal mouse hovering detection (and therefore most mouse
 ---   interactions) behind them.
@@ -19228,6 +19554,7 @@ function ImGui.SetItemTooltip(ctx, text) end
 --- @param ctx ImGui_Context
 --- @param text string
 function ImGui.SetTooltip(ctx, text) end
+
 --- **Style > Colors > DebugFlashStyleColor**
 ---
 --- ---
@@ -19236,6 +19563,7 @@ function ImGui.SetTooltip(ctx, text) end
 --- @param ctx ImGui_Context
 --- @param idx integer
 function ImGui.DebugFlashStyleColor(ctx, idx) end
+
 --- **Style > Colors > GetColor**
 ---
 --- Retrieve given style color with style alpha applied and optional extra alpha
@@ -19249,6 +19577,7 @@ function ImGui.DebugFlashStyleColor(ctx, idx) end
 --- @param alpha_mul? number default value = `1.0`
 --- @return integer retval
 function ImGui.GetColor(ctx, idx, alpha_mul) end
+
 --- **Style > Colors > GetColorEx**
 ---
 --- Retrieve given color with style alpha applied, packed as a 32-bit value (RGBA).
@@ -19261,6 +19590,7 @@ function ImGui.GetColor(ctx, idx, alpha_mul) end
 --- @param alpha_mul? number default value = `1.0`
 --- @return integer retval
 function ImGui.GetColorEx(ctx, col_rgba, alpha_mul) end
+
 --- **Style > Colors > GetStyleColor**
 ---
 --- Retrieve style color as stored in ImGuiStyle structure.
@@ -19274,6 +19604,7 @@ function ImGui.GetColorEx(ctx, col_rgba, alpha_mul) end
 --- @param idx integer
 --- @return integer retval
 function ImGui.GetStyleColor(ctx, idx) end
+
 --- **Style > Colors > PopStyleColor**
 ---
 --- ---
@@ -19282,6 +19613,7 @@ function ImGui.GetStyleColor(ctx, idx) end
 --- @param ctx ImGui_Context
 --- @param count? integer default value = `1`
 function ImGui.PopStyleColor(ctx, count) end
+
 --- **Style > Colors > PushStyleColor**
 ---
 --- Temporarily modify a style color.
@@ -19295,6 +19627,7 @@ function ImGui.PopStyleColor(ctx, count) end
 --- @param idx integer
 --- @param col_rgba integer
 function ImGui.PushStyleColor(ctx, idx, col_rgba) end
+
 --- **Style > Variables > GetStyleVar**
 ---
 --- ---
@@ -19305,6 +19638,7 @@ function ImGui.PushStyleColor(ctx, idx, col_rgba) end
 --- @return number val1
 --- @return number val2
 function ImGui.GetStyleVar(ctx, var_idx) end
+
 --- **Style > Variables > PopStyleVar**
 ---
 --- Reset a style variable.
@@ -19315,6 +19649,7 @@ function ImGui.GetStyleVar(ctx, var_idx) end
 --- @param ctx ImGui_Context
 --- @param count? integer default value = `1`
 function ImGui.PopStyleVar(ctx, count) end
+
 --- **Style > Variables > PushStyleVar**
 ---
 --- Temporarily modify a style variable.
@@ -19329,6 +19664,7 @@ function ImGui.PopStyleVar(ctx, count) end
 --- @param val1 number
 --- @param val2? number default value = `nil`
 function ImGui.PushStyleVar(ctx, var_idx, val1, val2) end
+
 --- **Tab Bar > BeginTabBar**
 ---
 --- Create and append into a TabBar.
@@ -19342,6 +19678,7 @@ function ImGui.PushStyleVar(ctx, var_idx, val1, val2) end
 --- @nodiscard
 --- @return boolean retval
 function ImGui.BeginTabBar(ctx, str_id, flags) end
+
 --- **Tab Bar > EndTabBar**
 ---
 --- Only call EndTabBar() if BeginTabBar() returns true!
@@ -19351,6 +19688,7 @@ function ImGui.BeginTabBar(ctx, str_id, flags) end
 --- @since 0.1
 --- @param ctx ImGui_Context
 function ImGui.EndTabBar(ctx) end
+
 --- **Tab Bar > Tab Item > BeginTabItem**
 ---
 --- Create a Tab. Returns true if the Tab is selected.
@@ -19367,6 +19705,7 @@ function ImGui.EndTabBar(ctx) end
 --- @return boolean retval
 --- @return boolean p_open
 function ImGui.BeginTabItem(ctx, label, p_open, flags) end
+
 --- **Tab Bar > Tab Item > EndTabItem**
 ---
 --- Only call EndTabItem() if BeginTabItem() returns true!
@@ -19376,6 +19715,7 @@ function ImGui.BeginTabItem(ctx, label, p_open, flags) end
 --- @since 0.1
 --- @param ctx ImGui_Context
 function ImGui.EndTabItem(ctx) end
+
 --- **Tab Bar > Tab Item > SetTabItemClosed**
 ---
 --- Notify TabBar or Docking system of a closed tab/window ahead
@@ -19389,6 +19729,7 @@ function ImGui.EndTabItem(ctx) end
 --- @param ctx ImGui_Context
 --- @param tab_or_docked_window_label string
 function ImGui.SetTabItemClosed(ctx, tab_or_docked_window_label) end
+
 --- **Tab Bar > Tab Item > TabItemButton**
 ---
 --- Create a Tab behaving like a button. Return true when clicked.
@@ -19402,6 +19743,7 @@ function ImGui.SetTabItemClosed(ctx, tab_or_docked_window_label) end
 --- @param flags? integer default value = `TabItemFlags_None`
 --- @return boolean retval
 function ImGui.TabItemButton(ctx, label, flags) end
+
 --- **Table > BeginTable**
 ---
 --- ---
@@ -19449,6 +19791,7 @@ function ImGui.TabItemButton(ctx, label, flags) end
 --- @nodiscard
 --- @return boolean retval
 function ImGui.BeginTable(ctx, str_id, columns, flags, outer_size_w, outer_size_h, inner_width) end
+
 --- **Table > EndTable**
 ---
 --- Only call EndTable() if BeginTable() returns true!
@@ -19490,6 +19833,7 @@ function ImGui.BeginTable(ctx, str_id, columns, flags, outer_size_w, outer_size_
 --- @since 0.8
 --- @param ctx ImGui_Context
 function ImGui.EndTable(ctx) end
+
 --- **Table > TableGetColumnCount**
 ---
 --- Return number of columns (value passed to BeginTable).
@@ -19532,6 +19876,7 @@ function ImGui.EndTable(ctx) end
 --- @param ctx ImGui_Context
 --- @return integer retval
 function ImGui.TableGetColumnCount(ctx) end
+
 --- **Table > TableGetColumnIndex**
 ---
 --- Return current column index.
@@ -19574,6 +19919,7 @@ function ImGui.TableGetColumnCount(ctx) end
 --- @param ctx ImGui_Context
 --- @return integer retval
 function ImGui.TableGetColumnIndex(ctx) end
+
 --- **Table > TableGetRowIndex**
 ---
 --- Return current row index.
@@ -19616,6 +19962,7 @@ function ImGui.TableGetColumnIndex(ctx) end
 --- @param ctx ImGui_Context
 --- @return integer retval
 function ImGui.TableGetRowIndex(ctx) end
+
 --- **Table > TableNextColumn**
 ---
 --- Append into the next column (or first column of next row if currently in
@@ -19659,6 +20006,7 @@ function ImGui.TableGetRowIndex(ctx) end
 --- @param ctx ImGui_Context
 --- @return boolean retval
 function ImGui.TableNextColumn(ctx) end
+
 --- **Table > TableNextRow**
 ---
 --- Append into the first cell of a new row.
@@ -19702,6 +20050,7 @@ function ImGui.TableNextColumn(ctx) end
 --- @param row_flags? integer default value = `TableRowFlags_None`
 --- @param min_row_height? number default value = `0.0`
 function ImGui.TableNextRow(ctx, row_flags, min_row_height) end
+
 --- **Table > TableSetColumnIndex**
 ---
 --- Append into the specified column. Return true when column is visible.
@@ -19745,6 +20094,7 @@ function ImGui.TableNextRow(ctx, row_flags, min_row_height) end
 --- @param column_n integer
 --- @return boolean retval
 function ImGui.TableSetColumnIndex(ctx, column_n) end
+
 --- **Table > Background > TableSetBgColor**
 ---
 --- Change the color of a cell, row, or column.
@@ -19809,14 +20159,15 @@ function ImGui.TableSetColumnIndex(ctx, column_n) end
 --- @param color_rgba integer
 --- @param column_n? integer default value = `-1`
 function ImGui.TableSetBgColor(ctx, target, color_rgba, column_n) end
---- **Table > Header & Columns > TableAngledHeadersRow**
+
+--- **Table > Header \& Columns > TableAngledHeadersRow**
 ---
 --- Submit a row with angled headers for every column with the
 --- TableColumnFlags_AngledHeader flag. Must be the first row.
 ---
 --- ---
 ---
---- **Table > Header & Columns**
+--- **Table > Header \& Columns**
 ---
 --- Use TableSetupColumn() to specify label, resizing policy, default
 --- width/weight, id, various other flags etc.
@@ -19870,14 +20221,15 @@ function ImGui.TableSetBgColor(ctx, target, color_rgba, column_n) end
 --- @since 0.1
 --- @param ctx ImGui_Context
 function ImGui.TableAngledHeadersRow(ctx) end
---- **Table > Header & Columns > TableGetColumnFlags**
+
+--- **Table > Header \& Columns > TableGetColumnFlags**
 ---
 --- Return column flags so you can query their Enabled/Visible/Sorted/Hovered
 --- status flags. Pass -1 to use current column.
 ---
 --- ---
 ---
---- **Table > Header & Columns**
+--- **Table > Header \& Columns**
 ---
 --- Use TableSetupColumn() to specify label, resizing policy, default
 --- width/weight, id, various other flags etc.
@@ -19933,14 +20285,15 @@ function ImGui.TableAngledHeadersRow(ctx) end
 --- @param column_n? integer default value = `-1`
 --- @return integer retval
 function ImGui.TableGetColumnFlags(ctx, column_n) end
---- **Table > Header & Columns > TableGetColumnName**
+
+--- **Table > Header \& Columns > TableGetColumnName**
 ---
 --- Return "" if column didn't have a name declared by TableSetupColumn.
 --- Pass -1 to use current column.
 ---
 --- ---
 ---
---- **Table > Header & Columns**
+--- **Table > Header \& Columns**
 ---
 --- Use TableSetupColumn() to specify label, resizing policy, default
 --- width/weight, id, various other flags etc.
@@ -19996,7 +20349,8 @@ function ImGui.TableGetColumnFlags(ctx, column_n) end
 --- @param column_n? integer default value = `-1`
 --- @return string retval
 function ImGui.TableGetColumnName(ctx, column_n) end
---- **Table > Header & Columns > TableGetHoveredColumn**
+
+--- **Table > Header \& Columns > TableGetHoveredColumn**
 ---
 --- Returns hovered column or -1 when table is not hovered. Returns columns_count
 --- if the unused space at the right of visible columns is hovered.
@@ -20005,7 +20359,7 @@ function ImGui.TableGetColumnName(ctx, column_n) end
 ---
 --- ---
 ---
---- **Table > Header & Columns**
+--- **Table > Header \& Columns**
 ---
 --- Use TableSetupColumn() to specify label, resizing policy, default
 --- width/weight, id, various other flags etc.
@@ -20060,13 +20414,14 @@ function ImGui.TableGetColumnName(ctx, column_n) end
 --- @param ctx ImGui_Context
 --- @return integer retval
 function ImGui.TableGetHoveredColumn(ctx) end
---- **Table > Header & Columns > TableHeader**
+
+--- **Table > Header \& Columns > TableHeader**
 ---
 --- Submit one header cell manually (rarely used). See TableSetupColumn.
 ---
 --- ---
 ---
---- **Table > Header & Columns**
+--- **Table > Header \& Columns**
 ---
 --- Use TableSetupColumn() to specify label, resizing policy, default
 --- width/weight, id, various other flags etc.
@@ -20121,14 +20476,15 @@ function ImGui.TableGetHoveredColumn(ctx) end
 --- @param ctx ImGui_Context
 --- @param label string
 function ImGui.TableHeader(ctx, label) end
---- **Table > Header & Columns > TableHeadersRow**
+
+--- **Table > Header \& Columns > TableHeadersRow**
 ---
 --- Submit a row with headers cells based on data provided to TableSetupColumn
 --- + submit context menu.
 ---
 --- ---
 ---
---- **Table > Header & Columns**
+--- **Table > Header \& Columns**
 ---
 --- Use TableSetupColumn() to specify label, resizing policy, default
 --- width/weight, id, various other flags etc.
@@ -20182,7 +20538,8 @@ function ImGui.TableHeader(ctx, label) end
 --- @since 0.1
 --- @param ctx ImGui_Context
 function ImGui.TableHeadersRow(ctx) end
---- **Table > Header & Columns > TableSetColumnEnabled**
+
+--- **Table > Header \& Columns > TableSetColumnEnabled**
 ---
 --- Change user-accessible enabled/disabled state of a column, set to false to
 --- hide the column. Note that end-user can use the context menu to change this
@@ -20198,7 +20555,7 @@ function ImGui.TableHeadersRow(ctx) end
 ---
 --- ---
 ---
---- **Table > Header & Columns**
+--- **Table > Header \& Columns**
 ---
 --- Use TableSetupColumn() to specify label, resizing policy, default
 --- width/weight, id, various other flags etc.
@@ -20254,14 +20611,15 @@ function ImGui.TableHeadersRow(ctx) end
 --- @param column_n integer
 --- @param v boolean
 function ImGui.TableSetColumnEnabled(ctx, column_n, v) end
---- **Table > Header & Columns > TableSetupColumn**
+
+--- **Table > Header \& Columns > TableSetupColumn**
 ---
 --- Use to specify label, resizing policy, default width/weight, id,
 --- various other flags etc.
 ---
 --- ---
 ---
---- **Table > Header & Columns**
+--- **Table > Header \& Columns**
 ---
 --- Use TableSetupColumn() to specify label, resizing policy, default
 --- width/weight, id, various other flags etc.
@@ -20319,13 +20677,14 @@ function ImGui.TableSetColumnEnabled(ctx, column_n, v) end
 --- @param init_width_or_weight? number default value = `0.0`
 --- @param user_id? integer default value = `0`
 function ImGui.TableSetupColumn(ctx, label, flags, init_width_or_weight, user_id) end
---- **Table > Header & Columns > TableSetupScrollFreeze**
+
+--- **Table > Header \& Columns > TableSetupScrollFreeze**
 ---
 --- Lock columns/rows so they stay visible when scrolled.
 ---
 --- ---
 ---
---- **Table > Header & Columns**
+--- **Table > Header \& Columns**
 ---
 --- Use TableSetupColumn() to specify label, resizing policy, default
 --- width/weight, id, various other flags etc.
@@ -20381,6 +20740,7 @@ function ImGui.TableSetupColumn(ctx, label, flags, init_width_or_weight, user_id
 --- @param cols integer
 --- @param rows integer
 function ImGui.TableSetupScrollFreeze(ctx, cols, rows) end
+
 --- **Table > Sorting > TableGetColumnSortSpecs**
 ---
 --- Sorting specification for one column of a table.
@@ -20436,6 +20796,7 @@ function ImGui.TableSetupScrollFreeze(ctx, cols, rows) end
 --- @return integer column_user_id
 --- @return integer sort_direction
 function ImGui.TableGetColumnSortSpecs(ctx, id) end
+
 --- **Table > Sorting > TableNeedSort**
 ---
 --- Return true once when sorting specs have changed since last call,
@@ -20482,6 +20843,7 @@ function ImGui.TableGetColumnSortSpecs(ctx, id) end
 --- @return boolean retval
 --- @return boolean has_specs
 function ImGui.TableNeedSort(ctx) end
+
 --- **Text > AlignTextToFramePadding**
 ---
 --- Vertically align upcoming text baseline to StyleVar_FramePadding.y so that it
@@ -20493,6 +20855,7 @@ function ImGui.TableNeedSort(ctx) end
 --- @since 0.1
 --- @param ctx ImGui_Context
 function ImGui.AlignTextToFramePadding(ctx) end
+
 --- **Text > Bullet**
 ---
 --- Draw a small circle + keep the cursor on the same line.
@@ -20504,6 +20867,7 @@ function ImGui.AlignTextToFramePadding(ctx) end
 --- @since 0.1
 --- @param ctx ImGui_Context
 function ImGui.Bullet(ctx) end
+
 --- **Text > BulletText**
 ---
 --- Shortcut for Bullet + Text.
@@ -20514,6 +20878,7 @@ function ImGui.Bullet(ctx) end
 --- @param ctx ImGui_Context
 --- @param text string
 function ImGui.BulletText(ctx, text) end
+
 --- **Text > CalcTextSize**
 ---
 --- ---
@@ -20528,6 +20893,7 @@ function ImGui.BulletText(ctx, text) end
 --- @return number w
 --- @return number h
 function ImGui.CalcTextSize(ctx, text, _1, _2, hide_text_after_double_hash, wrap_width) end
+
 --- **Text > DebugTextEncoding**
 ---
 --- Helper tool to diagnose between text encoding issues and font loading issues.
@@ -20539,6 +20905,7 @@ function ImGui.CalcTextSize(ctx, text, _1, _2, hide_text_after_double_hash, wrap
 --- @param ctx ImGui_Context
 --- @param text string
 function ImGui.DebugTextEncoding(ctx, text) end
+
 --- **Text > GetFrameHeight**
 ---
 --- GetFontSize + StyleVar_FramePadding.y * 2
@@ -20549,6 +20916,7 @@ function ImGui.DebugTextEncoding(ctx, text) end
 --- @param ctx ImGui_Context
 --- @return number retval
 function ImGui.GetFrameHeight(ctx) end
+
 --- **Text > GetFrameHeightWithSpacing**
 ---
 --- GetFontSize + StyleVar_FramePadding.y * 2 + StyleVar_ItemSpacing.y
@@ -20560,6 +20928,7 @@ function ImGui.GetFrameHeight(ctx) end
 --- @param ctx ImGui_Context
 --- @return number retval
 function ImGui.GetFrameHeightWithSpacing(ctx) end
+
 --- **Text > GetTextLineHeight**
 ---
 --- Same as GetFontSize
@@ -20570,6 +20939,7 @@ function ImGui.GetFrameHeightWithSpacing(ctx) end
 --- @param ctx ImGui_Context
 --- @return number retval
 function ImGui.GetTextLineHeight(ctx) end
+
 --- **Text > GetTextLineHeightWithSpacing**
 ---
 --- GetFontSize + StyleVar_ItemSpacing.y
@@ -20581,6 +20951,7 @@ function ImGui.GetTextLineHeight(ctx) end
 --- @param ctx ImGui_Context
 --- @return number retval
 function ImGui.GetTextLineHeightWithSpacing(ctx) end
+
 --- **Text > LabelText**
 ---
 --- Display text+label aligned the same way as value+label widgets
@@ -20592,6 +20963,7 @@ function ImGui.GetTextLineHeightWithSpacing(ctx) end
 --- @param label string
 --- @param text string
 function ImGui.LabelText(ctx, label, text) end
+
 --- **Text > PopTextWrapPos**
 ---
 --- ---
@@ -20599,13 +20971,14 @@ function ImGui.LabelText(ctx, label, text) end
 --- @since 0.1
 --- @param ctx ImGui_Context
 function ImGui.PopTextWrapPos(ctx) end
+
 --- **Text > PushTextWrapPos**
 ---
 --- Push word-wrapping position for Text*() commands.
 ---
 --- -  < 0.0: no wrapping
 --- -  = 0.0: wrap to end of window (or column)
---- - > 0.0: wrap at 'wrap_pos_x' position in window local space.
+--- - \> 0.0: wrap at 'wrap_pos_x' position in window local space.
 ---
 --- ---
 ---
@@ -20613,6 +20986,7 @@ function ImGui.PopTextWrapPos(ctx) end
 --- @param ctx ImGui_Context
 --- @param wrap_local_pos_x? number default value = `0.0`
 function ImGui.PushTextWrapPos(ctx, wrap_local_pos_x) end
+
 --- **Text > Text**
 ---
 --- ---
@@ -20621,6 +20995,7 @@ function ImGui.PushTextWrapPos(ctx, wrap_local_pos_x) end
 --- @param ctx ImGui_Context
 --- @param text string
 function ImGui.Text(ctx, text) end
+
 --- **Text > TextColored**
 ---
 --- Shortcut for PushStyleColor(Col_Text, color); Text(text); PopStyleColor();
@@ -20632,6 +21007,7 @@ function ImGui.Text(ctx, text) end
 --- @param col_rgba integer
 --- @param text string
 function ImGui.TextColored(ctx, col_rgba, text) end
+
 --- **Text > TextDisabled**
 ---
 --- ---
@@ -20640,6 +21016,7 @@ function ImGui.TextColored(ctx, col_rgba, text) end
 --- @param ctx ImGui_Context
 --- @param text string
 function ImGui.TextDisabled(ctx, text) end
+
 --- **Text > TextWrapped**
 ---
 --- Shortcut for PushTextWrapPos(0.0); Text(text); PopTextWrapPos();.
@@ -20653,7 +21030,8 @@ function ImGui.TextDisabled(ctx, text) end
 --- @param ctx ImGui_Context
 --- @param text string
 function ImGui.TextWrapped(ctx, text) end
---- **Text & Scalar Input > InputDouble**
+
+--- **Text \& Scalar Input > InputDouble**
 ---
 --- ---
 ---
@@ -20668,7 +21046,8 @@ function ImGui.TextWrapped(ctx, text) end
 --- @return boolean retval
 --- @return number v
 function ImGui.InputDouble(ctx, label, v, step, step_fast, format, flags) end
---- **Text & Scalar Input > InputDouble2**
+
+--- **Text \& Scalar Input > InputDouble2**
 ---
 --- ---
 ---
@@ -20683,7 +21062,8 @@ function ImGui.InputDouble(ctx, label, v, step, step_fast, format, flags) end
 --- @return number v1
 --- @return number v2
 function ImGui.InputDouble2(ctx, label, v1, v2, format, flags) end
---- **Text & Scalar Input > InputDouble3**
+
+--- **Text \& Scalar Input > InputDouble3**
 ---
 --- ---
 ---
@@ -20700,7 +21080,8 @@ function ImGui.InputDouble2(ctx, label, v1, v2, format, flags) end
 --- @return number v2
 --- @return number v3
 function ImGui.InputDouble3(ctx, label, v1, v2, v3, format, flags) end
---- **Text & Scalar Input > InputDouble4**
+
+--- **Text \& Scalar Input > InputDouble4**
 ---
 --- ---
 ---
@@ -20719,7 +21100,8 @@ function ImGui.InputDouble3(ctx, label, v1, v2, v3, format, flags) end
 --- @return number v3
 --- @return number v4
 function ImGui.InputDouble4(ctx, label, v1, v2, v3, v4, format, flags) end
---- **Text & Scalar Input > InputDoubleN**
+
+--- **Text \& Scalar Input > InputDoubleN**
 ---
 --- ---
 ---
@@ -20733,7 +21115,8 @@ function ImGui.InputDouble4(ctx, label, v1, v2, v3, v4, format, flags) end
 --- @param flags? integer default value = `InputTextFlags_None`
 --- @return boolean retval
 function ImGui.InputDoubleN(ctx, label, values, step, step_fast, format, flags) end
---- **Text & Scalar Input > InputInt**
+
+--- **Text \& Scalar Input > InputInt**
 ---
 --- ---
 ---
@@ -20747,7 +21130,8 @@ function ImGui.InputDoubleN(ctx, label, values, step, step_fast, format, flags) 
 --- @return boolean retval
 --- @return integer v
 function ImGui.InputInt(ctx, label, v, step, step_fast, flags) end
---- **Text & Scalar Input > InputInt2**
+
+--- **Text \& Scalar Input > InputInt2**
 ---
 --- ---
 ---
@@ -20761,7 +21145,8 @@ function ImGui.InputInt(ctx, label, v, step, step_fast, flags) end
 --- @return integer v1
 --- @return integer v2
 function ImGui.InputInt2(ctx, label, v1, v2, flags) end
---- **Text & Scalar Input > InputInt3**
+
+--- **Text \& Scalar Input > InputInt3**
 ---
 --- ---
 ---
@@ -20777,7 +21162,8 @@ function ImGui.InputInt2(ctx, label, v1, v2, flags) end
 --- @return integer v2
 --- @return integer v3
 function ImGui.InputInt3(ctx, label, v1, v2, v3, flags) end
---- **Text & Scalar Input > InputInt4**
+
+--- **Text \& Scalar Input > InputInt4**
 ---
 --- ---
 ---
@@ -20795,7 +21181,8 @@ function ImGui.InputInt3(ctx, label, v1, v2, v3, flags) end
 --- @return integer v3
 --- @return integer v4
 function ImGui.InputInt4(ctx, label, v1, v2, v3, v4, flags) end
---- **Text & Scalar Input > InputText**
+
+--- **Text \& Scalar Input > InputText**
 ---
 --- ---
 ---
@@ -20808,7 +21195,8 @@ function ImGui.InputInt4(ctx, label, v1, v2, v3, v4, flags) end
 --- @return boolean retval
 --- @return string buf
 function ImGui.InputText(ctx, label, buf, flags, callback) end
---- **Text & Scalar Input > InputTextMultiline**
+
+--- **Text \& Scalar Input > InputTextMultiline**
 ---
 --- ---
 ---
@@ -20823,7 +21211,8 @@ function ImGui.InputText(ctx, label, buf, flags, callback) end
 --- @return boolean retval
 --- @return string buf
 function ImGui.InputTextMultiline(ctx, label, buf, size_w, size_h, flags, callback) end
---- **Text & Scalar Input > InputTextWithHint**
+
+--- **Text \& Scalar Input > InputTextWithHint**
 ---
 --- ---
 ---
@@ -20837,6 +21226,7 @@ function ImGui.InputTextMultiline(ctx, label, buf, size_w, size_h, flags, callba
 --- @return boolean retval
 --- @return string buf
 function ImGui.InputTextWithHint(ctx, label, hint, buf, flags, callback) end
+
 --- **Text Filter > CreateTextFilter**
 ---
 --- Valid while used every frame unless attached to a context (see Attach).
@@ -20861,7 +21251,8 @@ function ImGui.InputTextWithHint(ctx, label, hint, buf, flags, callback) end
 --- @nodiscard
 --- @return ImGui_TextFilter retval
 function ImGui.CreateTextFilter(default_filter) end
---- **Text Filter > TextFilter_Clear**
+
+--- **Text Filter > TextFilter\_Clear**
 ---
 --- ---
 ---
@@ -20881,7 +21272,8 @@ function ImGui.CreateTextFilter(default_filter) end
 --- @since 0.5.6
 --- @param filter ImGui_TextFilter
 function ImGui.TextFilter_Clear(filter) end
---- **Text Filter > TextFilter_Draw**
+
+--- **Text Filter > TextFilter\_Draw**
 ---
 --- Helper calling InputText+TextFilter_Set
 ---
@@ -20907,7 +21299,8 @@ function ImGui.TextFilter_Clear(filter) end
 --- @param width? number default value = `0.0`
 --- @return boolean retval
 function ImGui.TextFilter_Draw(filter, ctx, label, width) end
---- **Text Filter > TextFilter_Get**
+
+--- **Text Filter > TextFilter\_Get**
 ---
 --- ---
 ---
@@ -20928,7 +21321,8 @@ function ImGui.TextFilter_Draw(filter, ctx, label, width) end
 --- @param filter ImGui_TextFilter
 --- @return string retval
 function ImGui.TextFilter_Get(filter) end
---- **Text Filter > TextFilter_IsActive**
+
+--- **Text Filter > TextFilter\_IsActive**
 ---
 --- ---
 ---
@@ -20949,7 +21343,8 @@ function ImGui.TextFilter_Get(filter) end
 --- @param filter ImGui_TextFilter
 --- @return boolean retval
 function ImGui.TextFilter_IsActive(filter) end
---- **Text Filter > TextFilter_PassFilter**
+
+--- **Text Filter > TextFilter\_PassFilter**
 ---
 --- ---
 ---
@@ -20971,7 +21366,8 @@ function ImGui.TextFilter_IsActive(filter) end
 --- @param text string
 --- @return boolean retval
 function ImGui.TextFilter_PassFilter(filter, text) end
---- **Text Filter > TextFilter_Set**
+
+--- **Text Filter > TextFilter\_Set**
 ---
 --- ---
 ---
@@ -20992,6 +21388,7 @@ function ImGui.TextFilter_PassFilter(filter, text) end
 --- @param filter ImGui_TextFilter
 --- @param filter_text string
 function ImGui.TextFilter_Set(filter, filter_text) end
+
 --- **Tree Node > CollapsingHeader**
 ---
 --- Returns true when opened but do not indent nor push into the ID stack
@@ -21015,6 +21412,7 @@ function ImGui.TextFilter_Set(filter, filter_text) end
 --- @return boolean retval
 --- @return boolean p_visible
 function ImGui.CollapsingHeader(ctx, label, p_visible, flags) end
+
 --- **Tree Node > GetTreeNodeToLabelSpacing**
 ---
 --- Horizontal distance preceding label when using TreeNode*() or Bullet()
@@ -21026,6 +21424,7 @@ function ImGui.CollapsingHeader(ctx, label, p_visible, flags) end
 --- @param ctx ImGui_Context
 --- @return number retval
 function ImGui.GetTreeNodeToLabelSpacing(ctx) end
+
 --- **Tree Node > IsItemToggledOpen**
 ---
 --- Was the last item open state toggled? Set by TreeNode.
@@ -21036,6 +21435,7 @@ function ImGui.GetTreeNodeToLabelSpacing(ctx) end
 --- @param ctx ImGui_Context
 --- @return boolean retval
 function ImGui.IsItemToggledOpen(ctx) end
+
 --- **Tree Node > SetNextItemOpen**
 ---
 --- Set next TreeNode/CollapsingHeader open state.
@@ -21048,6 +21448,7 @@ function ImGui.IsItemToggledOpen(ctx) end
 --- @param is_open boolean
 --- @param cond? integer default value = `Cond_Always`
 function ImGui.SetNextItemOpen(ctx, is_open, cond) end
+
 --- **Tree Node > TreeNode**
 ---
 --- TreeNode functions return true when the node is open, in which case you need
@@ -21061,6 +21462,7 @@ function ImGui.SetNextItemOpen(ctx, is_open, cond) end
 --- @param flags? integer default value = `TreeNodeFlags_None`
 --- @return boolean retval
 function ImGui.TreeNode(ctx, label, flags) end
+
 --- **Tree Node > TreeNodeEx**
 ---
 --- Helper variation to easily decorelate the id from the displayed string.
@@ -21076,6 +21478,7 @@ function ImGui.TreeNode(ctx, label, flags) end
 --- @param flags? integer default value = `TreeNodeFlags_None`
 --- @return boolean retval
 function ImGui.TreeNodeEx(ctx, str_id, label, flags) end
+
 --- **Tree Node > TreePop**
 ---
 --- Unindent()+PopID()
@@ -21085,6 +21488,7 @@ function ImGui.TreeNodeEx(ctx, str_id, label, flags) end
 --- @since 0.1
 --- @param ctx ImGui_Context
 function ImGui.TreePop(ctx) end
+
 --- **Tree Node > TreePush**
 ---
 --- Indent()+PushID(). Already called by TreeNode when returning true,
@@ -21096,6 +21500,7 @@ function ImGui.TreePop(ctx) end
 --- @param ctx ImGui_Context
 --- @param str_id string
 function ImGui.TreePush(ctx, str_id) end
+
 --- **Utility > GetBuiltinPath**
 ---
 --- Returns the path to the directory containing imgui.lua, imgui.py and gfx2imgui.lua.
@@ -21105,6 +21510,7 @@ function ImGui.TreePush(ctx, str_id) end
 --- @since 0.9
 --- @return string retval
 function ImGui.GetBuiltinPath() end
+
 --- **Utility > GetVersion**
 ---
 --- ---
@@ -21114,7 +21520,8 @@ function ImGui.GetBuiltinPath() end
 --- @return integer imgui_version_num
 --- @return string reaimgui_version
 function ImGui.GetVersion() end
---- **Utility > NumericLimits_Double**
+
+--- **Utility > NumericLimits\_Double**
 ---
 --- Returns DBL_MIN and DBL_MAX for this system.
 ---
@@ -21124,7 +21531,8 @@ function ImGui.GetVersion() end
 --- @return number min
 --- @return number max
 function ImGui.NumericLimits_Double() end
---- **Utility > NumericLimits_Float**
+
+--- **Utility > NumericLimits\_Float**
 ---
 --- Returns FLT_MIN and FLT_MAX for this system.
 ---
@@ -21134,7 +21542,8 @@ function ImGui.NumericLimits_Double() end
 --- @return number min
 --- @return number max
 function ImGui.NumericLimits_Float() end
---- **Utility > NumericLimits_Int**
+
+--- **Utility > NumericLimits\_Int**
 ---
 --- Returns INT_MIN and INT_MAX for this system.
 ---
@@ -21144,6 +21553,7 @@ function ImGui.NumericLimits_Float() end
 --- @return integer min
 --- @return integer max
 function ImGui.NumericLimits_Int() end
+
 --- **Utility > PointConvertNative**
 ---
 --- Convert a position from the current platform's native coordinate position
@@ -21162,6 +21572,7 @@ function ImGui.NumericLimits_Int() end
 --- @return number x
 --- @return number y
 function ImGui.PointConvertNative(ctx, x, y, to_native) end
+
 --- **Utility > ProgressBar**
 ---
 --- Fraction < 0.0 displays an indeterminate progress bar animation since v0.9.1.
@@ -21176,6 +21587,7 @@ function ImGui.PointConvertNative(ctx, x, y, to_native) end
 --- @param size_arg_h? number default value = `0.0`
 --- @param overlay? string default value = `nil`
 function ImGui.ProgressBar(ctx, fraction, size_arg_w, size_arg_h, overlay) end
+
 --- **Utility > ValidatePtr**
 ---
 --- Return whether the given pointer is a valid instance of one of the following
@@ -21199,6 +21611,7 @@ function ImGui.ProgressBar(ctx, fraction, size_arg_w, size_arg_h, overlay) end
 --- @param type string
 --- @return boolean retval
 function ImGui.ValidatePtr(pointer, type) end
+
 --- **Utility > Clipboard > GetClipboardText**
 ---
 --- ---
@@ -21207,6 +21620,7 @@ function ImGui.ValidatePtr(pointer, type) end
 --- @param ctx ImGui_Context
 --- @return string retval
 function ImGui.GetClipboardText(ctx) end
+
 --- **Utility > Clipboard > SetClipboardText**
 ---
 --- See also the LogToClipboard function to capture GUI into clipboard,
@@ -21218,6 +21632,7 @@ function ImGui.GetClipboardText(ctx) end
 --- @param ctx ImGui_Context
 --- @param text string
 function ImGui.SetClipboardText(ctx, text) end
+
 --- **Utility > Color Conversion > ColorConvertDouble4ToU32**
 ---
 --- Pack 0..1 RGBA values into a 32-bit integer (0xRRGGBBAA).
@@ -21231,6 +21646,7 @@ function ImGui.SetClipboardText(ctx, text) end
 --- @param a number
 --- @return integer retval
 function ImGui.ColorConvertDouble4ToU32(r, g, b, a) end
+
 --- **Utility > Color Conversion > ColorConvertHSVtoRGB**
 ---
 --- Convert HSV values (0..1) into RGB (0..1).
@@ -21245,6 +21661,7 @@ function ImGui.ColorConvertDouble4ToU32(r, g, b, a) end
 --- @return number g
 --- @return number b
 function ImGui.ColorConvertHSVtoRGB(h, s, v) end
+
 --- **Utility > Color Conversion > ColorConvertNative**
 ---
 --- Convert a native color coming from REAPER or 0xRRGGBB to native.
@@ -21256,6 +21673,7 @@ function ImGui.ColorConvertHSVtoRGB(h, s, v) end
 --- @param rgb integer
 --- @return integer retval
 function ImGui.ColorConvertNative(rgb) end
+
 --- **Utility > Color Conversion > ColorConvertRGBtoHSV**
 ---
 --- Convert RGB values (0..1) into HSV (0..1).
@@ -21270,6 +21688,7 @@ function ImGui.ColorConvertNative(rgb) end
 --- @return number s
 --- @return number v
 function ImGui.ColorConvertRGBtoHSV(r, g, b) end
+
 --- **Utility > Color Conversion > ColorConvertU32ToDouble4**
 ---
 --- Unpack a 32-bit integer (0xRRGGBBAA) into separate RGBA values (0..1).
@@ -21283,13 +21702,14 @@ function ImGui.ColorConvertRGBtoHSV(r, g, b) end
 --- @return number b
 --- @return number a
 function ImGui.ColorConvertU32ToDouble4(rgba) end
---- **Utility > ID Stack/Scope > PopID**
+
+--- **Utility > ID Stack\/Scope > PopID**
 ---
 --- Pop from the ID stack.
 ---
 --- ---
 ---
---- **Utility > ID Stack/Scope**
+--- **Utility > ID Stack\/Scope**
 ---
 --- Read the [FAQ](https://dearimgui.com/faq) for more details about how IDs are
 --- handled in dear imgui.
@@ -21312,13 +21732,14 @@ function ImGui.ColorConvertU32ToDouble4(rgba) end
 --- @since 0.1
 --- @param ctx ImGui_Context
 function ImGui.PopID(ctx) end
---- **Utility > ID Stack/Scope > PushID**
+
+--- **Utility > ID Stack\/Scope > PushID**
 ---
 --- Push string into the ID stack.
 ---
 --- ---
 ---
---- **Utility > ID Stack/Scope**
+--- **Utility > ID Stack\/Scope**
 ---
 --- Read the [FAQ](https://dearimgui.com/faq) for more details about how IDs are
 --- handled in dear imgui.
@@ -21342,13 +21763,14 @@ function ImGui.PopID(ctx) end
 --- @param ctx ImGui_Context
 --- @param str_id string
 function ImGui.PushID(ctx, str_id) end
---- **Utility > Logging/Capture > LogFinish**
+
+--- **Utility > Logging\/Capture > LogFinish**
 ---
 --- Stop logging (close file, etc.)
 ---
 --- ---
 ---
---- **Utility > Logging/Capture**
+--- **Utility > Logging\/Capture**
 ---
 --- All text output from the interface can be captured into tty/file/clipboard.
 --- By default, tree nodes are automatically opened during logging.
@@ -21358,13 +21780,14 @@ function ImGui.PushID(ctx, str_id) end
 --- @since 0.1
 --- @param ctx ImGui_Context
 function ImGui.LogFinish(ctx) end
---- **Utility > Logging/Capture > LogText**
+
+--- **Utility > Logging\/Capture > LogText**
 ---
 --- Pass text data straight to log (without being displayed)
 ---
 --- ---
 ---
---- **Utility > Logging/Capture**
+--- **Utility > Logging\/Capture**
 ---
 --- All text output from the interface can be captured into tty/file/clipboard.
 --- By default, tree nodes are automatically opened during logging.
@@ -21375,14 +21798,15 @@ function ImGui.LogFinish(ctx) end
 --- @param ctx ImGui_Context
 --- @param text string
 function ImGui.LogText(ctx, text) end
---- **Utility > Logging/Capture > LogToClipboard**
+
+--- **Utility > Logging\/Capture > LogToClipboard**
 ---
 --- Start logging all text output from the interface to the OS clipboard.
 --- See also SetClipboardText.
 ---
 --- ---
 ---
---- **Utility > Logging/Capture**
+--- **Utility > Logging\/Capture**
 ---
 --- All text output from the interface can be captured into tty/file/clipboard.
 --- By default, tree nodes are automatically opened during logging.
@@ -21393,14 +21817,15 @@ function ImGui.LogText(ctx, text) end
 --- @param ctx ImGui_Context
 --- @param auto_open_depth? integer default value = `-1`
 function ImGui.LogToClipboard(ctx, auto_open_depth) end
---- **Utility > Logging/Capture > LogToFile**
+
+--- **Utility > Logging\/Capture > LogToFile**
 ---
 --- Start logging all text output from the interface to a file.
 --- The data is saved to $resource_path/imgui_log.txt if filename is nil.
 ---
 --- ---
 ---
---- **Utility > Logging/Capture**
+--- **Utility > Logging\/Capture**
 ---
 --- All text output from the interface can be captured into tty/file/clipboard.
 --- By default, tree nodes are automatically opened during logging.
@@ -21412,13 +21837,14 @@ function ImGui.LogToClipboard(ctx, auto_open_depth) end
 --- @param auto_open_depth? integer default value = `-1`
 --- @param filename? string default value = `nil`
 function ImGui.LogToFile(ctx, auto_open_depth, filename) end
---- **Utility > Logging/Capture > LogToTTY**
+
+--- **Utility > Logging\/Capture > LogToTTY**
 ---
 --- Start logging all text output from the interface to the TTY (stdout).
 ---
 --- ---
 ---
---- **Utility > Logging/Capture**
+--- **Utility > Logging\/Capture**
 ---
 --- All text output from the interface can be captured into tty/file/clipboard.
 --- By default, tree nodes are automatically opened during logging.
@@ -21429,6 +21855,7 @@ function ImGui.LogToFile(ctx, auto_open_depth, filename) end
 --- @param ctx ImGui_Context
 --- @param auto_open_depth? integer default value = `-1`
 function ImGui.LogToTTY(ctx, auto_open_depth) end
+
 --- **Viewport > GetMainViewport**
 ---
 --- Currently represents REAPER's main window (arrange view).
@@ -21440,6 +21867,7 @@ function ImGui.LogToTTY(ctx, auto_open_depth) end
 --- @param ctx ImGui_Context
 --- @return ImGui_Viewport retval
 function ImGui.GetMainViewport(ctx) end
+
 --- **Viewport > GetWindowViewport**
 ---
 --- Get viewport currently associated to the current window.
@@ -21450,7 +21878,8 @@ function ImGui.GetMainViewport(ctx) end
 --- @param ctx ImGui_Context
 --- @return ImGui_Viewport retval
 function ImGui.GetWindowViewport(ctx) end
---- **Viewport > Viewport_GetCenter**
+
+--- **Viewport > Viewport\_GetCenter**
 ---
 --- Center of the viewport.
 ---
@@ -21461,7 +21890,8 @@ function ImGui.GetWindowViewport(ctx) end
 --- @return number x
 --- @return number y
 function ImGui.Viewport_GetCenter(viewport) end
---- **Viewport > Viewport_GetPos**
+
+--- **Viewport > Viewport\_GetPos**
 ---
 --- Main Area: Position of the viewport
 ---
@@ -21472,7 +21902,8 @@ function ImGui.Viewport_GetCenter(viewport) end
 --- @return number x
 --- @return number y
 function ImGui.Viewport_GetPos(viewport) end
---- **Viewport > Viewport_GetSize**
+
+--- **Viewport > Viewport\_GetSize**
 ---
 --- Main Area: Size of the viewport.
 ---
@@ -21483,7 +21914,8 @@ function ImGui.Viewport_GetPos(viewport) end
 --- @return number w
 --- @return number h
 function ImGui.Viewport_GetSize(viewport) end
---- **Viewport > Work Area > Viewport_GetWorkCenter**
+
+--- **Viewport > Work Area > Viewport\_GetWorkCenter**
 ---
 --- Center of the viewport's work area.
 ---
@@ -21500,7 +21932,8 @@ function ImGui.Viewport_GetSize(viewport) end
 --- @return number x
 --- @return number y
 function ImGui.Viewport_GetWorkCenter(viewport) end
---- **Viewport > Work Area > Viewport_GetWorkPos**
+
+--- **Viewport > Work Area > Viewport\_GetWorkPos**
 ---
 --- >= Viewport_GetPos
 ---
@@ -21517,7 +21950,8 @@ function ImGui.Viewport_GetWorkCenter(viewport) end
 --- @return number x
 --- @return number y
 function ImGui.Viewport_GetWorkPos(viewport) end
---- **Viewport > Work Area > Viewport_GetWorkSize**
+
+--- **Viewport > Work Area > Viewport\_GetWorkSize**
 ---
 --- <= Viewport_GetSize
 ---
@@ -21534,6 +21968,7 @@ function ImGui.Viewport_GetWorkPos(viewport) end
 --- @return number w
 --- @return number h
 function ImGui.Viewport_GetWorkSize(viewport) end
+
 --- **Window > Begin**
 ---
 --- Push window to the stack and start appending to it.
@@ -21564,6 +21999,7 @@ function ImGui.Viewport_GetWorkSize(viewport) end
 --- @return boolean retval
 --- @return boolean p_open
 function ImGui.Begin(ctx, name, p_open, flags) end
+
 --- **Window > End**
 ---
 --- Pop window from the stack. See Begin.
@@ -21580,11 +22016,12 @@ function ImGui.Begin(ctx, name, p_open, flags) end
 --- @since 0.8
 --- @param ctx ImGui_Context
 function ImGui.End(ctx) end
+
 --- **Window > Child Windows > BeginChild**
 ---
 --- Manual sizing (each axis can use a different setting e.g. size_w=0 and size_h=400):
 --- - = 0.0: use remaining parent window size for this axis
---- - > 0.0: use specified size for this axis
+--- - \> 0.0: use specified size for this axis
 --- - < 0.0: right/bottom-align to specified distance from available content boundaries
 ---
 --- Specifying ChildFlags_AutoResizeX or ChildFlags_AutoResizeY makes the sizing
@@ -21622,6 +22059,7 @@ function ImGui.End(ctx) end
 --- @nodiscard
 --- @return boolean retval
 function ImGui.BeginChild(ctx, str_id, size_w, size_h, child_flags, window_flags) end
+
 --- **Window > Child Windows > EndChild**
 ---
 --- See BeginChild.
@@ -21646,6 +22084,7 @@ function ImGui.BeginChild(ctx, str_id, size_w, size_h, child_flags, window_flags
 --- @since 0.8
 --- @param ctx ImGui_Context
 function ImGui.EndChild(ctx) end
+
 --- **Window > Content Region > GetContentRegionAvail**
 ---
 --- == GetContentRegionMax() - GetCursorPos()
@@ -21671,6 +22110,7 @@ function ImGui.EndChild(ctx) end
 --- @return number x
 --- @return number y
 function ImGui.GetContentRegionAvail(ctx) end
+
 --- **Window > Content Region > GetContentRegionMax**
 ---
 --- Current content boundaries (typically window boundaries including scrolling,
@@ -21697,6 +22137,7 @@ function ImGui.GetContentRegionAvail(ctx) end
 --- @return number x
 --- @return number y
 function ImGui.GetContentRegionMax(ctx) end
+
 --- **Window > Content Region > GetWindowContentRegionMax**
 ---
 --- Content boundaries max (roughly (0,0)+Size-Scroll) where Size can be
@@ -21723,6 +22164,7 @@ function ImGui.GetContentRegionMax(ctx) end
 --- @return number x
 --- @return number y
 function ImGui.GetWindowContentRegionMax(ctx) end
+
 --- **Window > Content Region > GetWindowContentRegionMin**
 ---
 --- Content boundaries min (roughly (0,0)-Scroll), in window coordinates.
@@ -21748,6 +22190,7 @@ function ImGui.GetWindowContentRegionMax(ctx) end
 --- @return number x
 --- @return number y
 function ImGui.GetWindowContentRegionMin(ctx) end
+
 --- **Window > Debug Windows > ShowAboutWindow**
 ---
 --- Create About window.
@@ -21767,6 +22210,7 @@ function ImGui.GetWindowContentRegionMin(ctx) end
 --- @param p_open? boolean default value = `nil`
 --- @return boolean p_open
 function ImGui.ShowAboutWindow(ctx, p_open) end
+
 --- **Window > Debug Windows > ShowDebugLogWindow**
 ---
 --- Create Debug Log window. display a simplified log of important dear imgui events.
@@ -21785,6 +22229,7 @@ function ImGui.ShowAboutWindow(ctx, p_open) end
 --- @param p_open? boolean default value = `nil`
 --- @return boolean p_open
 function ImGui.ShowDebugLogWindow(ctx, p_open) end
+
 --- **Window > Debug Windows > ShowIDStackToolWindow**
 ---
 --- Create Stack Tool window. Hover items with mouse to query information about
@@ -21804,6 +22249,7 @@ function ImGui.ShowDebugLogWindow(ctx, p_open) end
 --- @param p_open? boolean default value = `nil`
 --- @return boolean p_open
 function ImGui.ShowIDStackToolWindow(ctx, p_open) end
+
 --- **Window > Debug Windows > ShowMetricsWindow**
 ---
 --- Create Metrics/Debugger window.
@@ -21823,6 +22269,7 @@ function ImGui.ShowIDStackToolWindow(ctx, p_open) end
 --- @param p_open? boolean default value = `nil`
 --- @return boolean p_open
 function ImGui.ShowMetricsWindow(ctx, p_open) end
+
 --- **Window > Docking > GetWindowDockID**
 ---
 --- ---
@@ -21834,7 +22281,7 @@ function ImGui.ShowMetricsWindow(ctx, p_open) end
 --- Dock IDs are:
 --- - 0 = undocked
 --- - -1 to -16 = REAPER docker index
---- - > 0 = Dear ImGui dockspace ID (when the user docked the window into another one).
+--- - \> 0 = Dear ImGui dockspace ID (when the user docked the window into another one).
 ---
 --- Drag from window title bar or their tab to dock/undock. Hold SHIFT to disable docking.
 --- Drag from window menu button (upper-left button) to undock an entire node (all windows).
@@ -21853,6 +22300,7 @@ function ImGui.ShowMetricsWindow(ctx, p_open) end
 --- @param ctx ImGui_Context
 --- @return integer retval
 function ImGui.GetWindowDockID(ctx) end
+
 --- **Window > Docking > IsWindowDocked**
 ---
 --- Is current window docked into another window or a REAPER docker?
@@ -21866,7 +22314,7 @@ function ImGui.GetWindowDockID(ctx) end
 --- Dock IDs are:
 --- - 0 = undocked
 --- - -1 to -16 = REAPER docker index
---- - > 0 = Dear ImGui dockspace ID (when the user docked the window into another one).
+--- - \> 0 = Dear ImGui dockspace ID (when the user docked the window into another one).
 ---
 --- Drag from window title bar or their tab to dock/undock. Hold SHIFT to disable docking.
 --- Drag from window menu button (upper-left button) to undock an entire node (all windows).
@@ -21885,6 +22333,7 @@ function ImGui.GetWindowDockID(ctx) end
 --- @param ctx ImGui_Context
 --- @return boolean retval
 function ImGui.IsWindowDocked(ctx) end
+
 --- **Window > Docking > SetNextWindowDockID**
 ---
 --- ---
@@ -21896,7 +22345,7 @@ function ImGui.IsWindowDocked(ctx) end
 --- Dock IDs are:
 --- - 0 = undocked
 --- - -1 to -16 = REAPER docker index
---- - > 0 = Dear ImGui dockspace ID (when the user docked the window into another one).
+--- - \> 0 = Dear ImGui dockspace ID (when the user docked the window into another one).
 ---
 --- Drag from window title bar or their tab to dock/undock. Hold SHIFT to disable docking.
 --- Drag from window menu button (upper-left button) to undock an entire node (all windows).
@@ -21916,6 +22365,7 @@ function ImGui.IsWindowDocked(ctx) end
 --- @param dock_id integer
 --- @param cond? integer default value = `Cond_Always`
 function ImGui.SetNextWindowDockID(ctx, dock_id, cond) end
+
 --- **Window > Properties > GetWindowDpiScale**
 ---
 --- Get DPI scale currently associated to the current window's viewport
@@ -21944,6 +22394,7 @@ function ImGui.SetNextWindowDockID(ctx, dock_id, cond) end
 --- @param ctx ImGui_Context
 --- @return number retval
 function ImGui.GetWindowDpiScale(ctx) end
+
 --- **Window > Properties > GetWindowHeight**
 ---
 --- Get current window height (shortcut for (GetWindowSize().h).
@@ -21971,6 +22422,7 @@ function ImGui.GetWindowDpiScale(ctx) end
 --- @param ctx ImGui_Context
 --- @return number retval
 function ImGui.GetWindowHeight(ctx) end
+
 --- **Window > Properties > GetWindowPos**
 ---
 --- Get current window position in screen space (note: it is unlikely you need to
@@ -22000,6 +22452,7 @@ function ImGui.GetWindowHeight(ctx) end
 --- @return number x
 --- @return number y
 function ImGui.GetWindowPos(ctx) end
+
 --- **Window > Properties > GetWindowSize**
 ---
 --- Get current window size (note: it is unlikely you need to use this.
@@ -22029,6 +22482,7 @@ function ImGui.GetWindowPos(ctx) end
 --- @return number w
 --- @return number h
 function ImGui.GetWindowSize(ctx) end
+
 --- **Window > Properties > GetWindowWidth**
 ---
 --- Get current window width (shortcut for (GetWindowSize().w).
@@ -22056,6 +22510,7 @@ function ImGui.GetWindowSize(ctx) end
 --- @param ctx ImGui_Context
 --- @return number retval
 function ImGui.GetWindowWidth(ctx) end
+
 --- **Window > Properties > IsWindowAppearing**
 ---
 --- Use after Begin/BeginPopup/BeginPopupModal to tell if a window just opened.
@@ -22083,6 +22538,7 @@ function ImGui.GetWindowWidth(ctx) end
 --- @param ctx ImGui_Context
 --- @return boolean retval
 function ImGui.IsWindowAppearing(ctx) end
+
 --- **Window > Properties > IsWindowFocused**
 ---
 --- Is current window focused? or its root/child, depending on flags.
@@ -22112,6 +22568,7 @@ function ImGui.IsWindowAppearing(ctx) end
 --- @param flags? integer default value = `FocusedFlags_None`
 --- @return boolean retval
 function ImGui.IsWindowFocused(ctx, flags) end
+
 --- **Window > Properties > IsWindowHovered**
 ---
 --- Is current window hovered and hoverable (e.g. not blocked by a popup/modal)?
@@ -22141,6 +22598,7 @@ function ImGui.IsWindowFocused(ctx, flags) end
 --- @param flags? integer default value = `HoveredFlags_None`
 --- @return boolean retval
 function ImGui.IsWindowHovered(ctx, flags) end
+
 --- **Window > Properties > SetNextWindowBgAlpha**
 ---
 --- Set next window background color alpha. Helper to easily override the Alpha
@@ -22170,6 +22628,7 @@ function ImGui.IsWindowHovered(ctx, flags) end
 --- @param ctx ImGui_Context
 --- @param alpha number
 function ImGui.SetNextWindowBgAlpha(ctx, alpha) end
+
 --- **Window > Properties > SetNextWindowCollapsed**
 ---
 --- Set next window collapsed state.
@@ -22198,6 +22657,7 @@ function ImGui.SetNextWindowBgAlpha(ctx, alpha) end
 --- @param collapsed boolean
 --- @param cond? integer default value = `Cond_Always`
 function ImGui.SetNextWindowCollapsed(ctx, collapsed, cond) end
+
 --- **Window > Properties > SetNextWindowContentSize**
 ---
 --- Set next window content size (~ scrollable client area, which enforce the
@@ -22228,6 +22688,7 @@ function ImGui.SetNextWindowCollapsed(ctx, collapsed, cond) end
 --- @param size_w number
 --- @param size_h number
 function ImGui.SetNextWindowContentSize(ctx, size_w, size_h) end
+
 --- **Window > Properties > SetNextWindowFocus**
 ---
 --- Set next window to be focused / top-most.
@@ -22254,6 +22715,7 @@ function ImGui.SetNextWindowContentSize(ctx, size_w, size_h) end
 --- @since 0.1
 --- @param ctx ImGui_Context
 function ImGui.SetNextWindowFocus(ctx) end
+
 --- **Window > Properties > SetNextWindowPos**
 ---
 --- Set next window position. Use pivot=(0.5,0.5) to center on given point, etc.
@@ -22285,6 +22747,7 @@ function ImGui.SetNextWindowFocus(ctx) end
 --- @param pivot_x? number default value = `0.0`
 --- @param pivot_y? number default value = `0.0`
 function ImGui.SetNextWindowPos(ctx, pos_x, pos_y, cond, pivot_x, pivot_y) end
+
 --- **Window > Properties > SetNextWindowScroll**
 ---
 --- Set next window scrolling value (use < 0.0 to not affect a given axis).
@@ -22313,6 +22776,7 @@ function ImGui.SetNextWindowPos(ctx, pos_x, pos_y, cond, pivot_x, pivot_y) end
 --- @param scroll_x number
 --- @param scroll_y number
 function ImGui.SetNextWindowScroll(ctx, scroll_x, scroll_y) end
+
 --- **Window > Properties > SetNextWindowSize**
 ---
 --- Set next window size. set axis to 0.0 to force an auto-fit on this axis.
@@ -22342,6 +22806,7 @@ function ImGui.SetNextWindowScroll(ctx, scroll_x, scroll_y) end
 --- @param size_h number
 --- @param cond? integer default value = `Cond_Always`
 function ImGui.SetNextWindowSize(ctx, size_w, size_h, cond) end
+
 --- **Window > Properties > SetNextWindowSizeConstraints**
 ---
 --- Set next window size limits. Use 0.0 or FLT_MAX (second return value of
@@ -22379,6 +22844,7 @@ function ImGui.SetNextWindowSize(ctx, size_w, size_h, cond) end
 --- @param size_max_h number
 --- @param custom_callback? ImGui_Function default value = `nil`
 function ImGui.SetNextWindowSizeConstraints(ctx, size_min_w, size_min_h, size_max_w, size_max_h, custom_callback) end
+
 --- **Window > Properties > SetWindowCollapsed**
 ---
 --- (Not recommended) Set current window collapsed state.
@@ -22408,6 +22874,7 @@ function ImGui.SetNextWindowSizeConstraints(ctx, size_min_w, size_min_h, size_ma
 --- @param collapsed boolean
 --- @param cond? integer default value = `Cond_Always`
 function ImGui.SetWindowCollapsed(ctx, collapsed, cond) end
+
 --- **Window > Properties > SetWindowCollapsedEx**
 ---
 --- Set named window collapsed state.
@@ -22437,6 +22904,7 @@ function ImGui.SetWindowCollapsed(ctx, collapsed, cond) end
 --- @param collapsed boolean
 --- @param cond? integer default value = `Cond_Always`
 function ImGui.SetWindowCollapsedEx(ctx, name, collapsed, cond) end
+
 --- **Window > Properties > SetWindowFocus**
 ---
 --- (Not recommended) Set current window to be focused / top-most.
@@ -22464,6 +22932,7 @@ function ImGui.SetWindowCollapsedEx(ctx, name, collapsed, cond) end
 --- @since 0.5
 --- @param ctx ImGui_Context
 function ImGui.SetWindowFocus(ctx) end
+
 --- **Window > Properties > SetWindowFocusEx**
 ---
 --- Set named window to be focused / top-most. Use an empty name to remove focus.
@@ -22491,6 +22960,7 @@ function ImGui.SetWindowFocus(ctx) end
 --- @param ctx ImGui_Context
 --- @param name string
 function ImGui.SetWindowFocusEx(ctx, name) end
+
 --- **Window > Properties > SetWindowPos**
 ---
 --- (Not recommended) Set current window position - call within Begin/End.
@@ -22521,6 +22991,7 @@ function ImGui.SetWindowFocusEx(ctx, name) end
 --- @param pos_y number
 --- @param cond? integer default value = `Cond_Always`
 function ImGui.SetWindowPos(ctx, pos_x, pos_y, cond) end
+
 --- **Window > Properties > SetWindowPosEx**
 ---
 --- Set named window position.
@@ -22551,6 +23022,7 @@ function ImGui.SetWindowPos(ctx, pos_x, pos_y, cond) end
 --- @param pos_y number
 --- @param cond? integer default value = `Cond_Always`
 function ImGui.SetWindowPosEx(ctx, name, pos_x, pos_y, cond) end
+
 --- **Window > Properties > SetWindowSize**
 ---
 --- (Not recommended) Set current window size - call within Begin/End.
@@ -22582,6 +23054,7 @@ function ImGui.SetWindowPosEx(ctx, name, pos_x, pos_y, cond) end
 --- @param size_h number
 --- @param cond? integer default value = `Cond_Always`
 function ImGui.SetWindowSize(ctx, size_w, size_h, cond) end
+
 --- **Window > Properties > SetWindowSizeEx**
 ---
 --- Set named window size. Set axis to 0.0 to force an auto-fit on this axis.
@@ -22612,6 +23085,7 @@ function ImGui.SetWindowSize(ctx, size_w, size_h, cond) end
 --- @param size_h number
 --- @param cond? integer default value = `Cond_Always`
 function ImGui.SetWindowSizeEx(ctx, name, size_w, size_h, cond) end
+
 --- **Window > Scrolling > GetScrollMaxX**
 ---
 --- Get maximum scrolling amount ~~ ContentSize.x - WindowSize.x - DecorationsSize.x
@@ -22639,6 +23113,7 @@ function ImGui.SetWindowSizeEx(ctx, name, size_w, size_h, cond) end
 --- @param ctx ImGui_Context
 --- @return number retval
 function ImGui.GetScrollMaxX(ctx) end
+
 --- **Window > Scrolling > GetScrollMaxY**
 ---
 --- Get maximum scrolling amount ~~ ContentSize.y - WindowSize.y - DecorationsSize.y
@@ -22666,6 +23141,7 @@ function ImGui.GetScrollMaxX(ctx) end
 --- @param ctx ImGui_Context
 --- @return number retval
 function ImGui.GetScrollMaxY(ctx) end
+
 --- **Window > Scrolling > GetScrollX**
 ---
 --- Get scrolling amount [0 .. GetScrollMaxX()]
@@ -22693,6 +23169,7 @@ function ImGui.GetScrollMaxY(ctx) end
 --- @param ctx ImGui_Context
 --- @return number retval
 function ImGui.GetScrollX(ctx) end
+
 --- **Window > Scrolling > GetScrollY**
 ---
 --- Get scrolling amount [0 .. GetScrollMaxY()]
@@ -22720,6 +23197,7 @@ function ImGui.GetScrollX(ctx) end
 --- @param ctx ImGui_Context
 --- @return number retval
 function ImGui.GetScrollY(ctx) end
+
 --- **Window > Scrolling > SetScrollFromPosX**
 ---
 --- Adjust scrolling amount to make given position visible.
@@ -22749,6 +23227,7 @@ function ImGui.GetScrollY(ctx) end
 --- @param local_x number
 --- @param center_x_ratio? number default value = `0.5`
 function ImGui.SetScrollFromPosX(ctx, local_x, center_x_ratio) end
+
 --- **Window > Scrolling > SetScrollFromPosY**
 ---
 --- Adjust scrolling amount to make given position visible.
@@ -22778,6 +23257,7 @@ function ImGui.SetScrollFromPosX(ctx, local_x, center_x_ratio) end
 --- @param local_y number
 --- @param center_y_ratio? number default value = `0.5`
 function ImGui.SetScrollFromPosY(ctx, local_y, center_y_ratio) end
+
 --- **Window > Scrolling > SetScrollHereX**
 ---
 --- Adjust scrolling amount to make current cursor position visible.
@@ -22808,6 +23288,7 @@ function ImGui.SetScrollFromPosY(ctx, local_y, center_y_ratio) end
 --- @param ctx ImGui_Context
 --- @param center_x_ratio? number default value = `0.5`
 function ImGui.SetScrollHereX(ctx, center_x_ratio) end
+
 --- **Window > Scrolling > SetScrollHereY**
 ---
 --- Adjust scrolling amount to make current cursor position visible.
@@ -22838,6 +23319,7 @@ function ImGui.SetScrollHereX(ctx, center_x_ratio) end
 --- @param ctx ImGui_Context
 --- @param center_y_ratio? number default value = `0.5`
 function ImGui.SetScrollHereY(ctx, center_y_ratio) end
+
 --- **Window > Scrolling > SetScrollX**
 ---
 --- Set scrolling amount [0 .. GetScrollMaxX()]
@@ -22865,6 +23347,7 @@ function ImGui.SetScrollHereY(ctx, center_y_ratio) end
 --- @param ctx ImGui_Context
 --- @param scroll_x number
 function ImGui.SetScrollX(ctx, scroll_x) end
+
 --- **Window > Scrolling > SetScrollY**
 ---
 --- Set scrolling amount [0 .. GetScrollMaxY()]
@@ -22892,6 +23375,7 @@ function ImGui.SetScrollX(ctx, scroll_x) end
 --- @param ctx ImGui_Context
 --- @param scroll_y number
 function ImGui.SetScrollY(ctx, scroll_y) end
+
 --- @param api_version string
 --- @return ImGui
 return function(api_version) end

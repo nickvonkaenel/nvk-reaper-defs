@@ -1163,192 +1163,6 @@
 		"body": "r.BR_Win32_WritePrivateProfileString(${1:sectionName}, ${2:keyName}, ${3:value}, ${4:filePath})$0",
 		"description": "[BR] Equivalent to win32 API WritePrivateProfileString(). For example, you can use this to write to REAPER.ini. You can pass an empty string as value to delete a key."
 	},
-	"Blink_GetAudioBufferTimingInfo lua": {
-		"prefix": "r.Blink_GetAudioBufferTimingInfo",
-		"scope": "lua",
-		"body": "len, srate, time = r.Blink_GetAudioBufferTimingInfo()$0",
-		"description": "Get audio buffer timing information. This is the length (size) of audio buffer in samples, sample rate and 'latest audio buffer switch wall clock time' in seconds."
-	},
-	"Blink_GetBeatAtTime lua": {
-		"prefix": "r.Blink_GetBeatAtTime",
-		"scope": "lua",
-		"body": "r.Blink_GetBeatAtTime(${1:time}, ${2:quantum})$0",
-		"description": "Get session beat value corresponding to given time for given quantum."
-	},
-	"Blink_GetClockNow lua": {
-		"prefix": "r.Blink_GetClockNow",
-		"scope": "lua",
-		"body": "r.Blink_GetClockNow()$0",
-		"description": "Clock used by Blink."
-	},
-	"Blink_GetEnabled lua": {
-		"prefix": "r.Blink_GetEnabled",
-		"scope": "lua",
-		"body": "r.Blink_GetEnabled()$0",
-		"description": "Is Blink currently enabled?"
-	},
-	"Blink_GetMaster lua": {
-		"prefix": "r.Blink_GetMaster",
-		"scope": "lua",
-		"body": "r.Blink_GetMaster()$0",
-		"description": "Is Blink Master?"
-	},
-	"Blink_GetNumPeers lua": {
-		"prefix": "r.Blink_GetNumPeers",
-		"scope": "lua",
-		"body": "r.Blink_GetNumPeers()$0",
-		"description": "How many peers are currently connected in Link session?"
-	},
-	"Blink_GetPhaseAtTime lua": {
-		"prefix": "r.Blink_GetPhaseAtTime",
-		"scope": "lua",
-		"body": "r.Blink_GetPhaseAtTime(${1:time}, ${2:quantum})$0",
-		"description": "Get session phase at given time for given quantum."
-	},
-	"Blink_GetPlaying lua": {
-		"prefix": "r.Blink_GetPlaying",
-		"scope": "lua",
-		"body": "r.Blink_GetPlaying()$0",
-		"description": "Is transport playing?"
-	},
-	"Blink_GetPuppet lua": {
-		"prefix": "r.Blink_GetPuppet",
-		"scope": "lua",
-		"body": "r.Blink_GetPuppet()$0",
-		"description": "Is Blink Puppet?"
-	},
-	"Blink_GetQuantum lua": {
-		"prefix": "r.Blink_GetQuantum",
-		"scope": "lua",
-		"body": "r.Blink_GetQuantum()$0",
-		"description": "Get quantum."
-	},
-	"Blink_GetStartStopSyncEnabled lua": {
-		"prefix": "r.Blink_GetStartStopSyncEnabled",
-		"scope": "lua",
-		"body": "r.Blink_GetStartStopSyncEnabled()$0",
-		"description": "Is start/stop synchronization enabled?"
-	},
-	"Blink_GetTempo lua": {
-		"prefix": "r.Blink_GetTempo",
-		"scope": "lua",
-		"body": "r.Blink_GetTempo()$0",
-		"description": "Tempo of timeline, in quarter note Beats Per Minute."
-	},
-	"Blink_GetTimeAtBeat lua": {
-		"prefix": "r.Blink_GetTimeAtBeat",
-		"scope": "lua",
-		"body": "r.Blink_GetTimeAtBeat(${1:beat}, ${2:quantum})$0",
-		"description": "Get time at which given beat occurs for given quantum."
-	},
-	"Blink_GetTimeForPlaying lua": {
-		"prefix": "r.Blink_GetTimeForPlaying",
-		"scope": "lua",
-		"body": "r.Blink_GetTimeForPlaying()$0",
-		"description": "Get time at which transport start/stop occurs."
-	},
-	"Blink_GetTimelineOffset lua": {
-		"prefix": "r.Blink_GetTimelineOffset",
-		"scope": "lua",
-		"body": "r.Blink_GetTimelineOffset()$0",
-		"description": "Get timeline offset. This is the offset between REAPER timeline and Link session timeline."
-	},
-	"Blink_GetVersion lua": {
-		"prefix": "r.Blink_GetVersion",
-		"scope": "lua",
-		"body": "r.Blink_GetVersion()$0",
-		"description": "Get Blink version."
-	},
-	"Blink_SetBeatAtStartPlayingTimeRequest lua": {
-		"prefix": "r.Blink_SetBeatAtStartPlayingTimeRequest",
-		"scope": "lua",
-		"body": "r.Blink_SetBeatAtStartPlayingTimeRequest(${1:beat}, ${2:quantum})$0",
-		"description": "Convenience function to attempt to map given beat to time when transport is starting to play in context of given quantum. This function evaluates to a no-op if GetPlaying() equals false."
-	},
-	"Blink_SetBeatAtTimeForce lua": {
-		"prefix": "r.Blink_SetBeatAtTimeForce",
-		"scope": "lua",
-		"body": "r.Blink_SetBeatAtTimeForce(${1:bpm}, ${2:time}, ${3:quantum})$0",
-		"description": "Rudely re-map beat/time relationship for all peers in Link session."
-	},
-	"Blink_SetBeatAtTimeRequest lua": {
-		"prefix": "r.Blink_SetBeatAtTimeRequest",
-		"scope": "lua",
-		"body": "r.Blink_SetBeatAtTimeRequest(${1:bpm}, ${2:time}, ${3:quantum})$0",
-		"description": "Attempt to map given beat to given time in context of given quantum."
-	},
-	"Blink_SetCaptureTransportCommands lua": {
-		"prefix": "r.Blink_SetCaptureTransportCommands",
-		"scope": "lua",
-		"body": "r.Blink_SetCaptureTransportCommands(${1:enable})$0",
-		"description": "Captures REAPER Transport commands and 'Tempo: Increase/Decrease current project tempo by' commands and broadcasts them into Link session. When used with Master or Puppet mode enabled, provides better integration between REAPER and Link session transport and tempos."
-	},
-	"Blink_SetEnabled lua": {
-		"prefix": "r.Blink_SetEnabled",
-		"scope": "lua",
-		"body": "r.Blink_SetEnabled(${1:enable})$0",
-		"description": "Enable/disable Blink. In Blink methods transport, tempo and timeline refer to Link session, not local REAPER instance."
-	},
-	"Blink_SetLaunchOffset lua": {
-		"prefix": "r.Blink_SetLaunchOffset",
-		"scope": "lua",
-		"body": "r.Blink_SetLaunchOffset(${1:offset})$0",
-		"description": "Set launch offset. This is used to compensate for possible constant REAPER transport launch delay, if such exists."
-	},
-	"Blink_SetMaster lua": {
-		"prefix": "r.Blink_SetMaster",
-		"scope": "lua",
-		"body": "r.Blink_SetMaster(${1:enable})$0",
-		"description": "Set Blink as Master. Puppet needs to be enabled first. Same as Puppet, but possible beat offset is broadcast to Link session, effectively forcing local REAPER timeline on peers. Only one, if any, Blink should be Master in Link session."
-	},
-	"Blink_SetPlaying lua": {
-		"prefix": "r.Blink_SetPlaying",
-		"scope": "lua",
-		"body": "r.Blink_SetPlaying(${1:playing}, ${2:time})$0",
-		"description": "Set if transport should be playing or stopped, taking effect at given time."
-	},
-	"Blink_SetPlayingAndBeatAtTimeRequest lua": {
-		"prefix": "r.Blink_SetPlayingAndBeatAtTimeRequest",
-		"scope": "lua",
-		"body": "r.Blink_SetPlayingAndBeatAtTimeRequest(${1:playing}, ${2:time}, ${3:beat}, ${4:quantum})$0",
-		"description": "Convenience function to start or stop transport at given time and attempt to map given beat to this time in context of given quantum."
-	},
-	"Blink_SetPuppet lua": {
-		"prefix": "r.Blink_SetPuppet",
-		"scope": "lua",
-		"body": "r.Blink_SetPuppet(${1:enable})$0",
-		"description": "Set Blink as Puppet. When enabled, Blink attempts to synchronize local REAPER tempo to Link session tempo by adjusting current active tempo/time signature marker, or broadcasts local REAPER tempo changes into Link session, and attempts to correct possible offset by adjusting REAPER playrate. Based on cumulative single beat phase since Link session transport start, regardless of quantum."
-	},
-	"Blink_SetQuantum lua": {
-		"prefix": "r.Blink_SetQuantum",
-		"scope": "lua",
-		"body": "r.Blink_SetQuantum(${1:quantum})$0",
-		"description": "Set quantum. Usually this is set to length of one measure/bar in quarter notes."
-	},
-	"Blink_SetStartStopSyncEnabled lua": {
-		"prefix": "r.Blink_SetStartStopSyncEnabled",
-		"scope": "lua",
-		"body": "r.Blink_SetStartStopSyncEnabled(${1:enable})$0",
-		"description": "Enable start/stop synchronization."
-	},
-	"Blink_SetTempo lua": {
-		"prefix": "r.Blink_SetTempo",
-		"scope": "lua",
-		"body": "r.Blink_SetTempo(${1:bpm})$0",
-		"description": "Set timeline tempo to given bpm value."
-	},
-	"Blink_SetTempoAtTime lua": {
-		"prefix": "r.Blink_SetTempoAtTime",
-		"scope": "lua",
-		"body": "r.Blink_SetTempoAtTime(${1:bpm}, ${2:time})$0",
-		"description": "Set tempo to given bpm value, taking effect (heard from speakers)at given wall clock time."
-	},
-	"Blink_StartStop lua": {
-		"prefix": "r.Blink_StartStop",
-		"scope": "lua",
-		"body": "r.Blink_StartStop()$0",
-		"description": "Transport start/stop."
-	},
 	"ButtonFlags_MouseButtonLeft lua": {
 		"prefix": "ImGui.ButtonFlags_MouseButtonLeft",
 		"scope": "lua",
@@ -2805,7 +2619,7 @@
 		"prefix": "r.CountProjectMarkers",
 		"scope": "lua",
 		"body": "r.CountProjectMarkers(0)$0",
-		"description": "num_markersOut and num_regionsOut may be NULL."
+		"description": "discouraged. see GetNumRegionsOrMarkers, GetRegionOrMarker. num_markersOut and num_regionsOut may be NULL."
 	},
 	"CountSelectedMediaItems lua": {
 		"prefix": "r.CountSelectedMediaItems",
@@ -2890,6 +2704,18 @@
 		"scope": "lua",
 		"body": "r.CreateTrackSend(${1:tr}, ${2:desttrIn})$0",
 		"description": "Create a send/receive (desttrInOptional!=NULL), or a hardware output (desttrInOptional==NULL) with default properties, return >=0 on success (== new send/receive index). See RemoveTrackSend, GetSetTrackSendInfo, GetTrackSendInfo_Value, SetTrackSendInfo_Value."
+	},
+	"CrossfadeEditor_OnCommand lua": {
+		"prefix": "r.CrossfadeEditor_OnCommand",
+		"scope": "lua",
+		"body": "r.CrossfadeEditor_OnCommand(${1:command})$0",
+		"description": "Run a command from the Crossfade Editor section of the actions list."
+	},
+	"CrossfadeEditor_Show lua": {
+		"prefix": "r.CrossfadeEditor_Show",
+		"scope": "lua",
+		"body": "r.CrossfadeEditor_Show(${1:show})$0",
+		"description": "Show or hide the Crossfade Editor window"
 	},
 	"DB2SLIDER lua": {
 		"prefix": "r.DB2SLIDER",
@@ -2979,7 +2805,7 @@
 		"prefix": "ImGui.Dir_Down",
 		"scope": "lua",
 		"body": "ImGui.Dir_Down$0",
-		"description": "@type integer\n---\nReaImGui LuaCATS definitions\nGenerated for version 0.9.3.2 - API version 0.9.3\n@meta  imgui\n@class ImGui\n**Button > Cardinal Directions > Dir_Down**\n**Button > Cardinal Directions**\nFor ArrowButton.\n**Button**\nMost widgets return true when the value has been changed or when pressed/selected.\nYou may also use one of the many IsItem* functions (e.g. IsItemActive,\nIsItemHovered, etc.) to query widget state.\n@since 0.1\n "
+		"description": "@type integer\n---\nReaImGui LuaCATS definitions\nGenerated for version 0.9.3.3 - API version 0.9.3\n@meta  imgui\n@class ImGui\n**Button > Cardinal Directions > Dir_Down**\n**Button > Cardinal Directions**\nFor ArrowButton.\n**Button**\nMost widgets return true when the value has been changed or when pressed/selected.\nYou may also use one of the many IsItem* functions (e.g. IsItemActive,\nIsItemHovered, etc.) to query widget state.\n@since 0.1\n "
 	},
 	"Dir_Left lua": {
 		"prefix": "ImGui.Dir_Left",
@@ -3243,19 +3069,19 @@
 		"prefix": "r.EnumProjectMarkers",
 		"scope": "lua",
 		"body": "r.EnumProjectMarkers(${1:idx})$0",
-		"description": ""
+		"description": "discouraged. see GetNumRegionsOrMarkers, GetRegionOrMarker"
 	},
 	"EnumProjectMarkers2 lua": {
 		"prefix": "r.EnumProjectMarkers2",
 		"scope": "lua",
 		"body": "r.EnumProjectMarkers2(0, ${2:idx})$0",
-		"description": ""
+		"description": "discouraged. see GetNumRegionsOrMarkers, GetRegionOrMarker"
 	},
 	"EnumProjectMarkers3 lua": {
 		"prefix": "r.EnumProjectMarkers3",
 		"scope": "lua",
 		"body": "r.EnumProjectMarkers3(0, ${2:idx})$0",
-		"description": ""
+		"description": "discouraged. see GetNumRegionsOrMarkers, GetRegionOrMarker"
 	},
 	"EnumProjects lua": {
 		"prefix": "r.EnumProjects",
@@ -3377,36 +3203,6 @@
 		"body": "r.FNG_SetMidiNoteIntProperty(${1:midiNote}, ${2:property}, ${3:value})$0",
 		"description": "[FNG] Set MIDI note property"
 	},
-	"Fab_Clear lua": {
-		"prefix": "r.Fab_Clear",
-		"scope": "lua",
-		"body": "r.Fab_Clear(${1:idStringIn})$0",
-		"description": "Clears ReaFab control map, optionally based on matching idString. Returns true on success."
-	},
-	"Fab_Do lua": {
-		"prefix": "r.Fab_Do",
-		"scope": "lua",
-		"body": "r.Fab_Do(${1:command}, ${2:val})$0",
-		"description": "Runs ReaFab actions/commands. First parameter (command) is ReaFab command number, e.g. 3 for 3rd encoder rotation. Second parameter (val) is MIDI CC Relative value. Value 1 is increment of 1, 127 is decrement of 1. 2 is inc 2, 126 is dec 2 and so on. For button press (commands 9-32) a value of 127 is recommended."
-	},
-	"Fab_Dump lua": {
-		"prefix": "r.Fab_Dump",
-		"scope": "lua",
-		"body": "r.Fab_Dump()$0",
-		"description": "Dumps current control mapping into .lua file under ResourcePath/Scripts/reafab_dump-timestamp.lua"
-	},
-	"Fab_Get lua": {
-		"prefix": "r.Fab_Get",
-		"scope": "lua",
-		"body": "rv, fx, param = r.Fab_Get(${1:command})$0",
-		"description": "Returns target FX and parameter index for given ReaFab command in context of selected track and ReaFab FX index. Valid command range 1 ... 24. Returns false if no such command mapping is found. Returns param index -1 for ReaFab internal band change command."
-	},
-	"Fab_Map lua": {
-		"prefix": "r.Fab_Map",
-		"scope": "lua",
-		"body": "r.Fab_Map(${1:fxId}, ${2:command}, ${3:paramId}, ${4:control}, ${5:bandsIn}, ${6:stepIn}, ${7:accelIn}, ${8:minvalIn}, ${9:maxvalIn})$0",
-		"description": "Creates control mapping for ReaFab command.\nfxId e.g. 'ReaComp'.\ncommand 1-8 for encoders, 9-24 for buttons.\nparamId e.g. 'Ratio'.\ncontrol 1 = direct, 2 = band selector, 3 = cycle, 4 = invert, 5 = force toggle, 6 = force range, 7 = 5 and 6, 8 = force continuous.\nbands define, if target fx has multiple identical target bands. In this case, paramId must include 00 placeholder, e.g. 'Band 00 Gain'.\nstep overrides built-in default step of ~0.001 for continuous parameters.\naccel overrides built-in default control acceleration step of 1.0.\nminval & maxval override default detected target param value range.\nPrefixing paramId with '-' reverses direction; useful for creating separate next/previous mappings for bands or list type value navigation."
-	},
 	"FindTempoTimeSigMarker lua": {
 		"prefix": "r.FindTempoTimeSigMarker",
 		"scope": "lua",
@@ -3478,96 +3274,6 @@
 		"scope": "lua",
 		"body": "r.GSC_mainwnd(${1:t})$0",
 		"description": "this is just like win32 GetSysColor() but can have overrides."
-	},
-	"GU_Config_Read lua": {
-		"prefix": "r.GU_Config_Read",
-		"scope": "lua",
-		"body": "r.GU_Config_Read(${1:fileName}, ${2:category}, ${3:key})$0",
-		"description": "Reads from a config file in the GUtilities folder in Reaper's resource folder"
-	},
-	"GU_Config_Write lua": {
-		"prefix": "r.GU_Config_Write",
-		"scope": "lua",
-		"body": "r.GU_Config_Write(${1:fileName}, ${2:category}, ${3:key}, ${4:value})$0",
-		"description": "Writes a config file to the GUtilities folder in Reaper's resource folder"
-	},
-	"GU_Filesystem_CountMediaFiles lua": {
-		"prefix": "r.GU_Filesystem_CountMediaFiles",
-		"scope": "lua",
-		"body": "r.GU_Filesystem_CountMediaFiles(${1:path}, ${2:flags})$0",
-		"description": "Returns count and filesize in megabytes for all valid media files within the path. Returns -1 if path is invalid. Flags can be passed as an argument to determine which media files are valid. A flag with a value of -1 will reset the cache, otherwise, the following flags can be used: ALL = 0, WAV = 1, AIFF = 2, FLAC = 4, MP3 = 8, OGG = 16, BWF = 32, W64 = 64, WAVPACK = 128, GIF = 256, MP4 = 512"
-	},
-	"GU_Filesystem_EnumerateMediaFiles lua": {
-		"prefix": "r.GU_Filesystem_EnumerateMediaFiles",
-		"scope": "lua",
-		"body": "r.GU_Filesystem_EnumerateMediaFiles(${1:path}, ${2:flags})$0",
-		"description": "Returns the next valid file in a directory each time this function is called with the same path. Returns an empty string if path does not contain any more valid files. Flags can be passed as an argument to determine which media files are valid. A flag with a value of -1 will reset the cache, otherwise, the following flags can be used: ALL = 0, WAV = 1, AIFF = 2, FLAC = 4, MP3 = 8, OGG = 16, BWF = 32, W64 = 64, WAVPACK = 128, GIF = 256, MP4 = 512"
-	},
-	"GU_Filesystem_FindFileInPath lua": {
-		"prefix": "r.GU_Filesystem_FindFileInPath",
-		"scope": "lua",
-		"body": "r.GU_Filesystem_FindFileInPath(${1:path}, ${2:fileName})$0",
-		"description": "Returns the first found file's path from within a given path. Returns an empty string if not found"
-	},
-	"GU_Filesystem_PathExists lua": {
-		"prefix": "r.GU_Filesystem_PathExists",
-		"scope": "lua",
-		"body": "r.GU_Filesystem_PathExists(${1:path})$0",
-		"description": "Checks if file or directory exists"
-	},
-	"GU_GUtilitiesAPI_GetVersion lua": {
-		"prefix": "r.GU_GUtilitiesAPI_GetVersion",
-		"scope": "lua",
-		"body": "r.GU_GUtilitiesAPI_GetVersion()$0",
-		"description": "Gets the current GUtilitiesAPI version"
-	},
-	"GU_PCM_Source_GetSampleValue lua": {
-		"prefix": "r.GU_PCM_Source_GetSampleValue",
-		"scope": "lua",
-		"body": "r.GU_PCM_Source_GetSampleValue(${1:source}, ${2:time})$0",
-		"description": "Gets a PCM_source's sample value at a point in time (seconds)"
-	},
-	"GU_PCM_Source_HasRegion lua": {
-		"prefix": "r.GU_PCM_Source_HasRegion",
-		"scope": "lua",
-		"body": "r.GU_PCM_Source_HasRegion(${1:source})$0",
-		"description": "Checks if PCM_source has embedded Media Cue Markers"
-	},
-	"GU_PCM_Source_IsMono lua": {
-		"prefix": "r.GU_PCM_Source_IsMono",
-		"scope": "lua",
-		"body": "r.GU_PCM_Source_IsMono(${1:source})$0",
-		"description": "Checks if PCM_source is mono by comparing all channels"
-	},
-	"GU_PCM_Source_TimeToPeak lua": {
-		"prefix": "r.GU_PCM_Source_TimeToPeak",
-		"scope": "lua",
-		"body": "r.GU_PCM_Source_TimeToPeak(${1:source}, ${2:bufferSize}, ${3:threshold})$0",
-		"description": "Returns duration in seconds for PCM_source from start til peak threshold is breached. Returns -1 if invalid"
-	},
-	"GU_PCM_Source_TimeToPeakR lua": {
-		"prefix": "r.GU_PCM_Source_TimeToPeakR",
-		"scope": "lua",
-		"body": "r.GU_PCM_Source_TimeToPeakR(${1:source}, ${2:bufferSize}, ${3:threshold})$0",
-		"description": "Returns duration in seconds for PCM_source from end til peak threshold is breached in reverse. Returns -1 if invalid"
-	},
-	"GU_PCM_Source_TimeToRMS lua": {
-		"prefix": "r.GU_PCM_Source_TimeToRMS",
-		"scope": "lua",
-		"body": "r.GU_PCM_Source_TimeToRMS(${1:source}, ${2:bufferSize}, ${3:threshold})$0",
-		"description": "Returns duration in seconds for PCM_source from start til RMS threshold is breached. Returns -1 if invalid"
-	},
-	"GU_PCM_Source_TimeToRMSR lua": {
-		"prefix": "r.GU_PCM_Source_TimeToRMSR",
-		"scope": "lua",
-		"body": "r.GU_PCM_Source_TimeToRMSR(${1:source}, ${2:bufferSize}, ${3:threshold})$0",
-		"description": "Returns duration in seconds for PCM_source from end til RMS threshold is breached in reverse. Returns -1 if invalid"
-	},
-	"GU_WildcardParseTake lua": {
-		"prefix": "r.GU_WildcardParseTake",
-		"scope": "lua",
-		"body": "r.GU_WildcardParseTake(${1:take}, ${2:input})$0",
-		"description": "Returns a string by parsing wildcards relative to the supplied MediaItem_Take"
 	},
 	"GetActionShortcutDesc lua": {
 		"prefix": "r.GetActionShortcutDesc",
@@ -3933,7 +3639,7 @@
 		"prefix": "r.GetMediaItemTakeInfo_Value",
 		"scope": "lua",
 		"body": "r.GetMediaItemTakeInfo_Value(${1:take}, ${2:parmname})$0",
-		"description": "Get media item take numerical-value attributes.\nD_STARTOFFS : double * : start offset in source media, in seconds\nD_VOL : double * : take volume, 0=-inf, 0.5=-6dB, 1=+0dB, 2=+6dB, etc, negative if take polarity is flipped\nD_PAN : double * : take pan, -1..1\nD_PANLAW : double * : take pan law, -1=default, 0.5=-6dB, 1.0=+0dB, etc\nD_PLAYRATE : double * : take playback rate, 0.5=half speed, 1=normal, 2=double speed, etc\nD_PITCH : double * : take pitch adjustment in semitones, -12=one octave down, 0=normal, +12=one octave up, etc\nB_PPITCH : bool * : preserve pitch when changing playback rate\nI_LASTY : int * : Y-position (relative to top of track) in pixels (read-only)\nI_LASTH : int * : height in pixels (read-only)\nI_CHANMODE : int * : channel mode, 0=normal, 1=reverse stereo, 2=downmix, 3=left, 4=right\nI_PITCHMODE : int * : pitch shifter mode, -1=project default, otherwise high 2 bytes=shifter, low 2 bytes=parameter\nI_STRETCHFLAGS : int * : stretch marker flags (&7 mask for mode override: 0=default, 1=balanced, 2/3/6=tonal, 4=transient, 5=no pre-echo)\nF_STRETCHFADESIZE : float * : stretch marker fade size in seconds (0.0025 default)\nI_RECPASSID : int * : record pass ID\nI_TAKEFX_NCH : int * : number of internal audio channels for per-take FX to use (OK to call with setNewValue, but the returned value is read-only)\nI_CUSTOMCOLOR : int * : custom color, OS dependent color|0x1000000 (i.e. ColorToNative(r,g,b)|0x1000000). If you do not |0x1000000, then it will not be used, but will store the color\nIP_TAKENUMBER : int : take number (read-only, returns the take number directly)\nP_TRACK : pointer to MediaTrack (read-only)\nP_ITEM : pointer to MediaItem (read-only)\nP_SOURCE : PCM_source *. Note that if setting this, you should first retrieve the old source, set the new, THEN delete the old."
+		"description": "Get media item take numerical-value attributes.\nD_STARTOFFS : double * : start offset in source media, in seconds\nD_VOL : double * : take volume, 0=-inf, 0.5=-6dB, 1=+0dB, 2=+6dB, etc, negative if take polarity is flipped\nD_PAN : double * : take pan, -1..1\nD_PANLAW : double * : take pan law, -1=default, 0.5=-6dB, 1.0=+0dB, etc\nD_PLAYRATE : double * : take playback rate, 0.5=half speed, 1=normal, 2=double speed, etc\nD_PITCH : double * : take pitch adjustment in semitones, -12=one octave down, 0=normal, +12=one octave up, etc\nB_PPITCH : bool * : preserve pitch when changing playback rate\nI_LASTY : int * : Y-position (relative to top of track) in pixels (read-only)\nI_LASTH : int * : height in pixels (read-only)\nI_CHANMODE : int * : channel mode, 0=normal, 1=reverse stereo, 2=downmix, 3=left, 4=right\nI_PITCHMODE : int * : pitch shifter mode, -1=project default, otherwise high 2 bytes=shifter, low 2 bytes=parameter\nI_STRETCHFLAGS : int * : stretch marker flags (&7 mask for mode override: 0=default, 1=balanced, 2/3/6=tonal, 4=transient, 5=no pre-echo)\nF_STRETCHFADESIZE : float * : stretch marker fade size in seconds (0.0025 default)\nI_RECPASSID : int * : record pass ID\nI_TAKEFX_NCH : int * : number of internal audio channels for per-take FX to use (OK to call with setNewValue, but the returned value is read-only)\nI_CUSTOMCOLOR : int * : custom color, OS dependent color|0x1000000 (i.e. ColorToNative(r,g,b)|0x1000000). If you do not |0x1000000, then it will not be used, but will store the color\nIP_SPECEDIT:CNT : int : spectral edit count (read-only)\nIP_SPECEDIT:DELETE:x : int : read or write this key to remove the spectral edit specified\nIP_SPECEDIT:ADD : int : read or write this key to add a new spectral edit (returns index)\nIP_SPECEDIT:SORT : int : read or write this key to re-sort spectral edits (be sure to do this following a position change or insert of new edit)\nI_SPECEDIT:FFT_SIZE : int * : FFT size used by spectral edits for this take\nD_SPECEDIT:x:POSITION : double * : position of spectral edit start (changing this requires a resort of spectral edits)\nD_SPECEDIT:x:LENGTH : double * : length of spectral edit\nF_SPECEDIT:x:GAIN : float * : gain of spectral edit\nF_SPECEDIT:x:FADE_IN : float * : fade-in size 0..1\nF_SPECEDIT:x:FADE_OUT : float * : fade-out size 0..1\nF_SPECEDIT:x:FADE_LOW : float * : fade-lf size 0..1\nF_SPECEDIT:x:FADE_HI : float * : fade-hf size 0..1\nI_SPECEDIT:x:CHAN : int * : channel index, -1 for omni\nI_SPECEDIT:x:FLAGS : int * : flags, &1=bypassed, &2=solo\nF_SPECEDIT:x:GATE_THRESH : float * : gate threshold\nF_SPECEDIT:x:GATE_FLOOR : float * : gate floor\nF_SPECEDIT:x:COMP_THRESH : float * : comp threshold\nF_SPECEDIT:x:COMP_RATIO : float * : comp ratio\nB_SPECEDIT:x:SELECTED : bool * : selection state\nI_SPECEDIT:x:TOPFREQ_CNT : int * : (read-only) number of top frequency-points\nI_SPECEDIT:x:TOPFREQ_ADD:pos:val : int * : reading or writing will insert top frequency-point with position/value pair, returns index\nI_SPECEDIT:x:TOPFREQ_DEL:y : int * : reading or writing will delete top frequency-point y. there will always be at least one point.\nF_SPECEDIT:x:TOPFREQ_POS:y : float * : (read-only) get position of top frequency-point y\nF_SPECEDIT:x:TOPFREQ_FREQ:y : float * : (read-only) get frequency of top frequency-point y\nI_SPECEDIT:x:BOTFREQ_CNT : int * : number of bottom frequency-points\nI_SPECEDIT:x:BOTFREQ_ADD:pos:val : int * : reading or writing will insert bottom frequency-point with position/value pair, returns index\nI_SPECEDIT:x:BOTFREQ_DEL:y : int * : reading or writing will delete bottom frequency-point y. there will always be at least one point.\nF_SPECEDIT:x:BOTFREQ_POS:y : float * : (read-only) get position of bottom frequency-point y\nF_SPECEDIT:x:BOTFREQ_FREQ:y : float * : (read-only) get frequency of bottom frequency-point y\nIP_TAKENUMBER : int : take number (read-only, returns the take number directly)\nP_TRACK : pointer to MediaTrack (read-only)\nP_ITEM : pointer to MediaItem (read-only)\nP_SOURCE : PCM_source *. Note that if setting this, you should first retrieve the old source, set the new, THEN delete the old."
 	},
 	"GetMediaItemTake_Item lua": {
 		"prefix": "r.GetMediaItemTake_Item",
@@ -4054,6 +3760,12 @@
 		"scope": "lua",
 		"body": "r.GetNumMIDIOutputs()$0",
 		"description": "returns max number of real midi hardware outputs"
+	},
+	"GetNumRegionsOrMarkers lua": {
+		"prefix": "r.GetNumRegionsOrMarkers",
+		"scope": "lua",
+		"body": "r.GetNumRegionsOrMarkers(0)$0",
+		"description": "the total number of regions and markers in the project. See GetRegionOrMarker, GetRegionOrMarkerInfo_Value, SetRegionOrMarkerInfo_Value, GetSetRegionOrMarkerInfo_String"
 	},
 	"GetNumTakeMarkers lua": {
 		"prefix": "r.GetNumTakeMarkers",
@@ -4199,6 +3911,18 @@
 		"body": "bpm, bpi = r.GetProjectTimeSignature2(0)$0",
 		"description": "Gets basic time signature (beats per minute, numerator of time signature in bpi)\nthis does not reflect tempo envelopes but is purely what is set in the project settings."
 	},
+	"GetRegionOrMarker lua": {
+		"prefix": "r.GetRegionOrMarker",
+		"scope": "lua",
+		"body": "r.GetRegionOrMarker(0, ${2:index}, ${3:guidStr})$0",
+		"description": "get a single region or marker by internal index, or if index < 0, by GUID. See GetNumRegionsOrMarkers, GetRegionOrMarkerInfo_Value, SetRegionOrMarkerInfo_Value, GetSetRegionOrMarkerInfo_String"
+	},
+	"GetRegionOrMarkerInfo_Value lua": {
+		"prefix": "r.GetRegionOrMarkerInfo_Value",
+		"scope": "lua",
+		"body": "r.GetRegionOrMarkerInfo_Value(0, ${2:regionOrMarker}, ${3:parameterName})$0",
+		"description": "'D_STARTPOS', 'D_ENDPOS' (= D_STARTPOS for markers), 'I_INDEX' (internal index), 'I_NUMBER' (displayed index number), 'I_LANENUMBER', 'I_CUSTOMCOLOR', 'I_DISPLAYEDCOLOR', 'B_ISREGION', 'B_UISEL', 'B_HIDDEN'. See GetNumRegionsOrMarkers, GetRegionOrMarker, SetRegionOrMarkerInfo_Value, GetSetRegionOrMarkerInfo_String"
+	},
 	"GetResourcePath lua": {
 		"prefix": "r.GetResourcePath",
 		"scope": "lua",
@@ -4311,19 +4035,25 @@
 		"prefix": "r.GetSetProjectInfo",
 		"scope": "lua",
 		"body": "r.GetSetProjectInfo(0, ${2:desc}, ${3:value}, ${4:is_set})$0",
-		"description": "Get or set project information.\nRENDER_SETTINGS : &(1|2)=0:master mix, &1=stems+master mix, &2=stems only, &4=multichannel tracks to multichannel files, &8=use render matrix, &16=tracks with only mono media to mono files, &32=selected media items, &64=selected media items via master, &128=selected tracks via master, &256=embed transients if format supports, &512=embed metadata if format supports, &1024=embed take markers if format supports, &2048=2nd pass render\nRENDER_BOUNDSFLAG : 0=custom time bounds, 1=entire project, 2=time selection, 3=all project regions, 4=selected media items, 5=selected project regions, 6=all project markers, 7=selected project markers\nRENDER_CHANNELS : number of channels in rendered file\nRENDER_SRATE : sample rate of rendered file (or 0 for project sample rate)\nRENDER_STARTPOS : render start time when RENDER_BOUNDSFLAG=0\nRENDER_ENDPOS : render end time when RENDER_BOUNDSFLAG=0\nRENDER_TAILFLAG : apply render tail setting when rendering: &1=custom time bounds, &2=entire project, &4=time selection, &8=all project markers/regions, &16=selected media items, &32=selected project markers/regions\nRENDER_TAILMS : tail length in ms to render (only used if RENDER_BOUNDSFLAG and RENDER_TAILFLAG are set)\nRENDER_ADDTOPROJ : &1=add rendered files to project, &2=do not render files that are likely silent\nRENDER_DITHER : &1=dither, &2=noise shaping, &4=dither stems, &8=noise shaping on stems\nRENDER_NORMALIZE: &1=enable, (&14==0)=LUFS-I, (&14==2)=RMS, (&14==4)=peak, (&14==6)=true peak, (&14==8)=LUFS-M max, (&14==10)=LUFS-S max, (&4128==32)=normalize stems to common gain based on master, &64=enable brickwall limit, &128=brickwall limit true peak, (&2304==256)=only normalize files that are too loud, (&2304==2048)=only normalize files that are too quiet, &512=apply fade-in, &1024=apply fade-out, (&4128==4096)=normalize to loudest file, (&4128==4128)=normalize as if one long file, &8192=adjust mono media additional -3dB\nRENDER_NORMALIZE_TARGET: render normalization target as amplitude, so 0.5 means -6.02dB, 0.25 means -12.04dB, etc\nRENDER_BRICKWALL: render brickwall limit as amplitude, so 0.5 means -6.02dB, 0.25 means -12.04dB, etc\nRENDER_FADEIN: render fade-in (0.001 means 1 ms, requires RENDER_NORMALIZE&512)\nRENDER_FADEOUT: render fade-out (0.001 means 1 ms, requires RENDER_NORMALIZE&1024)\nRENDER_FADEINSHAPE: render fade-in shape\nRENDER_FADEOUTSHAPE: render fade-out shape\nPROJECT_SRATE : sample rate (ignored unless PROJECT_SRATE_USE set)\nPROJECT_SRATE_USE : set to 1 if project sample rate is used"
+		"description": "Get or set project information.\nRENDER_SETTINGS : &(1|2)=0:master mix, &1=stems+master mix, &2=stems only, &4=multichannel tracks to multichannel files, &8=use render matrix, &16=tracks with only mono media to mono files, &32=selected media items, &64=selected media items via master, &128=selected tracks via master, &256=embed transients if format supports, &512=embed metadata if format supports, &1024=embed take markers if format supports, &2048=2nd pass render\nRENDER_BOUNDSFLAG : 0=custom time bounds, 1=entire project, 2=time selection, 3=all project regions, 4=selected media items, 5=selected project regions, 6=all project markers, 7=selected project markers\nRENDER_CHANNELS : number of channels in rendered file\nRENDER_SRATE : sample rate of rendered file (or 0 for project sample rate)\nRENDER_STARTPOS : render start time when RENDER_BOUNDSFLAG=0\nRENDER_ENDPOS : render end time when RENDER_BOUNDSFLAG=0\nRENDER_TAILFLAG : apply render tail setting when rendering: &1=custom time bounds, &2=entire project, &4=time selection, &8=all project markers/regions, &16=selected media items, &32=selected project markers/regions\nRENDER_TAILMS : tail length in ms to render (only used if RENDER_BOUNDSFLAG and RENDER_TAILFLAG are set)\nRENDER_ADDTOPROJ : &1=add rendered files to project, &2=do not render files that are likely silent\nRENDER_DITHER : &1=dither, &2=noise shaping, &4=dither stems, &8=noise shaping on stems\nRENDER_NORMALIZE: &1=enable, (&14==0)=LUFS-I, (&14==2)=RMS, (&14==4)=peak, (&14==6)=true peak, (&14==8)=LUFS-M max, (&14==10)=LUFS-S max, &64=enable brickwall limit, &128=brickwall limit true peak, (&(256|2048)==256)=only normalize files that are too loud, (&(256|2048)==2048)=only normalize files that are too quiet, &512=apply fade-in, &1024=apply fade-out, (&(32|4096)==32)=normalize stems as if files play together (common gain), (&(32|4096)==4096)=normalize to loudest file, (&(32|4096)==4128)=normalize as if files play together, &8192=adjust mono media additional -3dB, &(1<<16)=pad start with silence, &(2<<16)=pad end with silence, &(4<<16)=disable all render postprocessing, &(32<<16)=limit as if files play together\nRENDER_NORMALIZE_TARGET: render normalization target (0.5 means -6.02dB, requires RENDER_NORMALIZE&1)\nRENDER_BRICKWALL: render brickwall limit (0.5 means -6.02dB, requires RENDER_NORMALIZE&64)\nRENDER_FADEIN: render fade-in (0.001 means 1 ms, requires RENDER_NORMALIZE&512)\nRENDER_FADEOUT: render fade-out (0.001 means 1 ms, requires RENDER_NORMALIZE&1024)\nRENDER_FADEINSHAPE: render fade-in shape\nRENDER_FADEOUTSHAPE: render fade-out shape\nRENDER_PADSTART: pad render start with silence (0.001 means 1ms, requires RENDER_NORMALIZE&(1<<16))RENDER_PADEND: pad render end with silence (0.001 means 1ms, requires RENDER_NORMALIZE&(2<<16))PROJECT_SRATE : sample rate (ignored unless PROJECT_SRATE_USE set)\nPROJECT_SRATE_USE : set to 1 if project sample rate is used\nRULER_DEFAULT_REGION_LANE_VISIBLE : 1 if default region lane is visible (preference to hide all regions not enabled and ruler tall enough to display), 0 otherwise (read-only)\nRULER_DEFAULT_MARKER_LANE_VISIBLE : 1 if default marker lane is visible (preference to hide all markers not enabled and ruler tall enough to display), 0 otherwise (read-only)\nRULER_LANE_COLOR:X : ruler lane default color, color&0x1000000 if used, X should be 0..8\nRULER_LANE_HIDDEN:X : 1 if ruler lane is hidden, 0 otherwise\nRULER_LANE_VISIBLE:X : 1 if ruler lane is visible (not hidden and ruler tall enough to display), 0 otherwise (read-only)\nRULER_LANE_TIMEBASE:X : ruler lane default timebase, -1=project default, 0=time, 1=beats (position, length, rate), 2=beats (position only), X should be 0..8"
 	},
 	"GetSetProjectInfo_String lua": {
 		"prefix": "r.GetSetProjectInfo_String",
 		"scope": "lua",
 		"body": "rv, valuestrNeedBig = r.GetSetProjectInfo_String(0, ${2:desc}, ${3:valuestrNeedBig}, ${4:is_set})$0",
-		"description": "Get or set project information.\nPROJECT_NAME : project file name (read-only, is_set will be ignored)\nPROJECT_TITLE : title field from Project Settings/Notes dialog\nPROJECT_AUTHOR : author field from Project Settings/Notes dialog\nTRACK_GROUP_NAME:X : track group name, X should be 1..64\nMARKER_GUID:X : get the GUID (unique ID) of the marker or region with index X, where X is the index passed to EnumProjectMarkers, not necessarily the displayed number (read-only)\nMARKER_INDEX_FROM_GUID:{GUID} : get the GUID index of the marker or region with GUID {GUID} (read-only)\nOPENCOPY_CFGIDX : integer for the configuration of format to use when creating copies/applying FX. 0=wave (auto-depth), 1=APPLYFX_FORMAT, 2=RECORD_FORMAT\nRECORD_PATH : recording directory -- may be blank or a relative path, to get the effective path see GetProjectPathEx()\nRECORD_PATH_SECONDARY : secondary recording directory\nRECORD_FORMAT : base64-encoded sink configuration (see project files, etc). Callers can also pass a simple 4-byte string (non-base64-encoded), e.g. 'evaw' or 'l3pm', to use default settings for that sink type.\nAPPLYFX_FORMAT : base64-encoded sink configuration (see project files, etc). Used only if RECFMT_OPENCOPY is set to 1. Callers can also pass a simple 4-byte string (non-base64-encoded), e.g. 'evaw' or 'l3pm', to use default settings for that sink type.\nRENDER_FILE : render directory\nRENDER_PATTERN : render file name (may contain wildcards)\nRENDER_METADATA : get or set the metadata saved with the project (not metadata embedded in project media). Example, ID3 album name metadata: valuestr='ID3:TALB' to get, valuestr='ID3:TALB|my album name' to set. Call with valuestr='' and is_set=false to get a semicolon-separated list of defined project metadata identifiers.\nRENDER_TARGETS : semicolon separated list of files that would be written if the project is rendered using the most recent render settings\nRENDER_STATS : (read-only) semicolon separated list of statistics for the most recently rendered files. call with valuestr='XXX' to run an action (for example, '42437'=dry run render selected items) before returning statistics.\nRENDER_FORMAT : base64-encoded sink configuration (see project files, etc). Callers can also pass a simple 4-byte string (non-base64-encoded), e.g. 'evaw' or 'l3pm', to use default settings for that sink type.\nRENDER_FORMAT2 : base64-encoded secondary sink configuration. Callers can also pass a simple 4-byte string (non-base64-encoded), e.g. 'evaw' or 'l3pm', to use default settings for that sink type, or '' to disable secondary render.\n&nbsp;&nbsp;&nbsp;&nbsp;Formats available on this machine:\n&nbsp;&nbsp;&nbsp;&nbsp;'wave' 'aiff' 'caff' 'raw ' 'mp3l' 'wvpk' 'OggS' 'flac' 'ddp ' 'iso ' 'oggv' 'FFMP' 'XAVF' 'GIF ' 'LCF '"
+		"description": "Get or set project information.\nPROJECT_NAME : project file name (read-only, is_set will be ignored)\nPROJECT_TITLE : title field from Project Settings/Notes dialog\nPROJECT_AUTHOR : author field from Project Settings/Notes dialog\nTRACK_GROUP_NAME:X : track group name, X should be 1..64\nRULER_LANE_NAME:X : ruler lane name, X should be 0..8\nMARKER_GUID:X : discouraged. see GetRegionOrMarker, GetSetRegionOrMarkerInfo_String\nMARKER_INDEX_FROM_GUID:{GUID} : discouraged. see GetRegionOrMarker, GetSetRegionOrMarkerInfo_String\nOPENCOPY_CFGIDX : integer for the configuration of format to use when creating copies/applying FX. 0=wave (auto-depth), 1=APPLYFX_FORMAT, 2=RECORD_FORMAT\nRECORD_PATH : recording directory -- may be blank or a relative path, to get the effective path see GetProjectPathEx()\nRECORD_PATH_SECONDARY : secondary recording directory\nRECORD_FORMAT : base64-encoded sink configuration (see project files, etc). Callers can also pass a simple 4-byte string (non-base64-encoded), e.g. 'evaw' or 'l3pm', to use default settings for that sink type.\nAPPLYFX_FORMAT : base64-encoded sink configuration (see project files, etc). Used only if RECFMT_OPENCOPY is set to 1. Callers can also pass a simple 4-byte string (non-base64-encoded), e.g. 'evaw' or 'l3pm', to use default settings for that sink type.\nRECTAG : project recording tag wildcard ($rectag). Can be used in Preferences/Audio/Recording to auto-name recorded files.\nRENDER_FILE : render directory\nRENDER_PATTERN : render file name (may contain wildcards)\nRENDER_METADATA : get or set the metadata saved with the project (not metadata embedded in project media). Example, ID3 album name metadata: valuestr='ID3:TALB' to get, valuestr='ID3:TALB|my album name' to set. Call with valuestr='' and is_set=false to get a semicolon-separated list of defined project metadata identifiers.\nRENDER_TARGETS : semicolon separated list of files that would be written if the project is rendered using the most recent render settings\nRENDER_STATS : (read-only) semicolon separated list of statistics for the most recently rendered files. call with valuestr='XXX' to run an action (for example, '42437'=dry run render selected items) before returning statistics.\nRENDER_FORMAT : base64-encoded sink configuration (see project files, etc). Callers can also pass a simple 4-byte string (non-base64-encoded), e.g. 'evaw' or 'l3pm', to use default settings for that sink type.\nRENDER_FORMAT2 : base64-encoded secondary sink configuration. Callers can also pass a simple 4-byte string (non-base64-encoded), e.g. 'evaw' or 'l3pm', to use default settings for that sink type, or '' to disable secondary render.\n&nbsp;&nbsp;&nbsp;&nbsp;Formats available on this machine:\n&nbsp;&nbsp;&nbsp;&nbsp;'wave' 'aiff' 'caff' 'raw ' 'mp3l' 'wvpk' 'OggS' 'flac' 'ddp ' 'iso ' 'oggv' 'FFMP' 'XAVF' 'GIF ' 'LCF '"
 	},
 	"GetSetProjectNotes lua": {
 		"prefix": "r.GetSetProjectNotes",
 		"scope": "lua",
 		"body": "r.GetSetProjectNotes(0, ${2:set}, ${3:notes})$0",
 		"description": "gets or sets project notes, notesNeedBig_sz is ignored when setting"
+	},
+	"GetSetRegionOrMarkerInfo_String lua": {
+		"prefix": "r.GetSetRegionOrMarkerInfo_String",
+		"scope": "lua",
+		"body": "rv, stringNeedBig = r.GetSetRegionOrMarkerInfo_String(0, ${2:regionOrMarker}, ${3:parameterName}, ${4:stringNeedBig}, ${5:setNewValue})$0",
+		"description": "'GUID' (read-only), 'P_NAME'. See GetNumRegionsOrMarkers, GetRegionOrMarker, GetRegionOrMarkerInfo_Value, SetRegionOrMarkerInfo_Value"
 	},
 	"GetSetRepeat lua": {
 		"prefix": "r.GetSetRepeat",
@@ -5169,25 +4899,25 @@
 		"prefix": "ImGui.CreateImage",
 		"scope": "lua",
 		"body": "ImGui.CreateImage(${1:file}, ${2:flags})$0",
-		"description": "**Image > CreateImage**\nThe returned object is valid as long as it is used in each defer cycle\nunless attached to a context (see Attach).\n('flags' currently unused and reserved for future expansion)\n**Image**\nReaImGui currently supports loading PNG and JPEG bitmap images.\nFlat vector images may be loaded as fonts, see CreateFont.\nUV parameters are texture coordinates in a scale of 0.0 (top/left) to 1.0\n(bottom/right). Use values below 0.0 or above 1.0 to tile the image.\nWidth/height are limited to 8192 pixels.\nThere are also image functions in the DrawList API such as\nDrawList_AddImageQuad and DrawList_AddImageRounded."
+		"description": "**Image > CreateImage**\nThe returned object is valid as long as it is used in each defer cycle\nunless attached to a context (see Attach).\n('flags' currently unused and reserved for future expansion)\n**Image**\nReaImGui currently supports loading PNG and JPEG bitmap images.\nFlat vector images may be loaded as fonts, see CreateFont.\nUV parameters are texture coordinates in a scale of 0.0 (top/left) to 1.0\n(bottom/right). Use values below 0.0 or above 1.0 to tile the image.\nWidth/height are limited to 8192 pixels.\nThere are also image functions in the DrawList API such as\nDrawList_AddImageQuad and DrawList_AddImageRounded.\nCaching of image objects may be implemented like this:\nlocal images = {}\nlocal function imageFromCache(fn)\nlocal img = images[fn]\nif not img then\nimg = {}\nimages[fn] = img\nend\nif not ImGui.ValidatePtr(img.inst, 'ImGui_Image*') then\nif img.inst then images[img.inst] = nil end\nimg.inst = ImGui.CreateImage(fn)\nlocal prev = images[img.inst]\nif prev and prev ~= img then prev.inst = nil end\nimages[img.inst] = img\nend\nreturn img.inst\nend"
 	},
 	"ImGui_CreateImageFromLICE lua": {
 		"prefix": "ImGui.CreateImageFromLICE",
 		"scope": "lua",
 		"body": "ImGui.CreateImageFromLICE(${1:bitmap}, ${2:flags})$0",
-		"description": "**Image > CreateImageFromLICE**\nCopies pixel data from a LICE bitmap created using JS_LICE_CreateBitmap.\n**Image**\nReaImGui currently supports loading PNG and JPEG bitmap images.\nFlat vector images may be loaded as fonts, see CreateFont.\nUV parameters are texture coordinates in a scale of 0.0 (top/left) to 1.0\n(bottom/right). Use values below 0.0 or above 1.0 to tile the image.\nWidth/height are limited to 8192 pixels.\nThere are also image functions in the DrawList API such as\nDrawList_AddImageQuad and DrawList_AddImageRounded."
+		"description": "**Image > CreateImageFromLICE**\nCopies pixel data from a LICE bitmap created using JS_LICE_CreateBitmap.\n**Image**\nReaImGui currently supports loading PNG and JPEG bitmap images.\nFlat vector images may be loaded as fonts, see CreateFont.\nUV parameters are texture coordinates in a scale of 0.0 (top/left) to 1.0\n(bottom/right). Use values below 0.0 or above 1.0 to tile the image.\nWidth/height are limited to 8192 pixels.\nThere are also image functions in the DrawList API such as\nDrawList_AddImageQuad and DrawList_AddImageRounded.\nCaching of image objects may be implemented like this:\nlocal images = {}\nlocal function imageFromCache(fn)\nlocal img = images[fn]\nif not img then\nimg = {}\nimages[fn] = img\nend\nif not ImGui.ValidatePtr(img.inst, 'ImGui_Image*') then\nif img.inst then images[img.inst] = nil end\nimg.inst = ImGui.CreateImage(fn)\nlocal prev = images[img.inst]\nif prev and prev ~= img then prev.inst = nil end\nimages[img.inst] = img\nend\nreturn img.inst\nend"
 	},
 	"ImGui_CreateImageFromMem lua": {
 		"prefix": "ImGui.CreateImageFromMem",
 		"scope": "lua",
 		"body": "ImGui.CreateImageFromMem(${1:data}, ${2:flags})$0",
-		"description": "**Image > CreateImageFromMem**\nRequires REAPER v6.44 or newer for EEL and Lua. Load from a file using\nCreateImage or explicitely specify data_sz to support older versions.\n**Image**\nReaImGui currently supports loading PNG and JPEG bitmap images.\nFlat vector images may be loaded as fonts, see CreateFont.\nUV parameters are texture coordinates in a scale of 0.0 (top/left) to 1.0\n(bottom/right). Use values below 0.0 or above 1.0 to tile the image.\nWidth/height are limited to 8192 pixels.\nThere are also image functions in the DrawList API such as\nDrawList_AddImageQuad and DrawList_AddImageRounded."
+		"description": "**Image > CreateImageFromMem**\nRequires REAPER v6.44 or newer for EEL and Lua. Load from a file using\nCreateImage or explicitely specify data_sz to support older versions.\n**Image**\nReaImGui currently supports loading PNG and JPEG bitmap images.\nFlat vector images may be loaded as fonts, see CreateFont.\nUV parameters are texture coordinates in a scale of 0.0 (top/left) to 1.0\n(bottom/right). Use values below 0.0 or above 1.0 to tile the image.\nWidth/height are limited to 8192 pixels.\nThere are also image functions in the DrawList API such as\nDrawList_AddImageQuad and DrawList_AddImageRounded.\nCaching of image objects may be implemented like this:\nlocal images = {}\nlocal function imageFromCache(fn)\nlocal img = images[fn]\nif not img then\nimg = {}\nimages[fn] = img\nend\nif not ImGui.ValidatePtr(img.inst, 'ImGui_Image*') then\nif img.inst then images[img.inst] = nil end\nimg.inst = ImGui.CreateImage(fn)\nlocal prev = images[img.inst]\nif prev and prev ~= img then prev.inst = nil end\nimages[img.inst] = img\nend\nreturn img.inst\nend"
 	},
 	"ImGui_CreateImageSet lua": {
 		"prefix": "ImGui.CreateImageSet",
 		"scope": "lua",
 		"body": "ImGui.CreateImageSet()$0",
-		"description": "**Image > Image Set > CreateImageSet**\n**Image > Image Set**\nHelper to automatically select and scale an image to the DPI scale of\nthe current window upon usage.\nImageSet objects may be used in any function that expect an image as parameter.\nUsage:\nlocal set = ImGui.CreateImageSet()\nImGui.ImageSet_Add(set, 1.0, ImGui.CreateImage('32x32.png'))\nImGui.ImageSet_Add(set, 2.0, ImGui.CreateImage('64x64.png'))\nlocal function frame()\nImGui.Image(ctx, set, ImGui.Image_GetSize(set))\n-- ...\nend\n**Image**\nReaImGui currently supports loading PNG and JPEG bitmap images.\nFlat vector images may be loaded as fonts, see CreateFont.\nUV parameters are texture coordinates in a scale of 0.0 (top/left) to 1.0\n(bottom/right). Use values below 0.0 or above 1.0 to tile the image.\nWidth/height are limited to 8192 pixels.\nThere are also image functions in the DrawList API such as\nDrawList_AddImageQuad and DrawList_AddImageRounded."
+		"description": "**Image > Image Set > CreateImageSet**\n**Image > Image Set**\nHelper to automatically select and scale an image to the DPI scale of\nthe current window upon usage.\nImageSet objects may be used in any function that expect an image as parameter.\nUsage:\nlocal set = ImGui.CreateImageSet()\nImGui.ImageSet_Add(set, 1.0, ImGui.CreateImage('32x32.png'))\nImGui.ImageSet_Add(set, 2.0, ImGui.CreateImage('64x64.png'))\nlocal function frame()\nImGui.Image(ctx, set, ImGui.Image_GetSize(set))\n-- ...\nend\n**Image**\nReaImGui currently supports loading PNG and JPEG bitmap images.\nFlat vector images may be loaded as fonts, see CreateFont.\nUV parameters are texture coordinates in a scale of 0.0 (top/left) to 1.0\n(bottom/right). Use values below 0.0 or above 1.0 to tile the image.\nWidth/height are limited to 8192 pixels.\nThere are also image functions in the DrawList API such as\nDrawList_AddImageQuad and DrawList_AddImageRounded.\nCaching of image objects may be implemented like this:\nlocal images = {}\nlocal function imageFromCache(fn)\nlocal img = images[fn]\nif not img then\nimg = {}\nimages[fn] = img\nend\nif not ImGui.ValidatePtr(img.inst, 'ImGui_Image*') then\nif img.inst then images[img.inst] = nil end\nimg.inst = ImGui.CreateImage(fn)\nlocal prev = images[img.inst]\nif prev and prev ~= img then prev.inst = nil end\nimages[img.inst] = img\nend\nreturn img.inst\nend"
 	},
 	"ImGui_CreateListClipper lua": {
 		"prefix": "ImGui.CreateListClipper",
@@ -6051,25 +5781,25 @@
 		"prefix": "ImGui.Image",
 		"scope": "lua",
 		"body": "ImGui.Image(ctx, ${2:image}, ${3:image_size_w}, ${4:image_size_h}, ${5:uv0_x}, ${6:uv0_y}, ${7:uv1_x}, ${8:uv1_y}, ${9:tint_col_rgba}, ${10:border_col_rgba})$0",
-		"description": "**Image > Image**\nAdds 2.0 to the provided size if a border is visible.\n**Image**\nReaImGui currently supports loading PNG and JPEG bitmap images.\nFlat vector images may be loaded as fonts, see CreateFont.\nUV parameters are texture coordinates in a scale of 0.0 (top/left) to 1.0\n(bottom/right). Use values below 0.0 or above 1.0 to tile the image.\nWidth/height are limited to 8192 pixels.\nThere are also image functions in the DrawList API such as\nDrawList_AddImageQuad and DrawList_AddImageRounded."
+		"description": "**Image > Image**\nAdds 2.0 to the provided size if a border is visible.\n**Image**\nReaImGui currently supports loading PNG and JPEG bitmap images.\nFlat vector images may be loaded as fonts, see CreateFont.\nUV parameters are texture coordinates in a scale of 0.0 (top/left) to 1.0\n(bottom/right). Use values below 0.0 or above 1.0 to tile the image.\nWidth/height are limited to 8192 pixels.\nThere are also image functions in the DrawList API such as\nDrawList_AddImageQuad and DrawList_AddImageRounded.\nCaching of image objects may be implemented like this:\nlocal images = {}\nlocal function imageFromCache(fn)\nlocal img = images[fn]\nif not img then\nimg = {}\nimages[fn] = img\nend\nif not ImGui.ValidatePtr(img.inst, 'ImGui_Image*') then\nif img.inst then images[img.inst] = nil end\nimg.inst = ImGui.CreateImage(fn)\nlocal prev = images[img.inst]\nif prev and prev ~= img then prev.inst = nil end\nimages[img.inst] = img\nend\nreturn img.inst\nend"
 	},
 	"ImGui_ImageButton lua": {
 		"prefix": "ImGui.ImageButton",
 		"scope": "lua",
 		"body": "ImGui.ImageButton(ctx, ${2:str_id}, ${3:image}, ${4:image_size_w}, ${5:image_size_h}, ${6:uv0_x}, ${7:uv0_y}, ${8:uv1_x}, ${9:uv1_y}, ${10:bg_col_rgba}, ${11:tint_col_rgba})$0",
-		"description": "**Image > ImageButton**\nAdds StyleVar_FramePadding*2.0 to provided size.\n**Image**\nReaImGui currently supports loading PNG and JPEG bitmap images.\nFlat vector images may be loaded as fonts, see CreateFont.\nUV parameters are texture coordinates in a scale of 0.0 (top/left) to 1.0\n(bottom/right). Use values below 0.0 or above 1.0 to tile the image.\nWidth/height are limited to 8192 pixels.\nThere are also image functions in the DrawList API such as\nDrawList_AddImageQuad and DrawList_AddImageRounded."
+		"description": "**Image > ImageButton**\nAdds StyleVar_FramePadding*2.0 to provided size.\n**Image**\nReaImGui currently supports loading PNG and JPEG bitmap images.\nFlat vector images may be loaded as fonts, see CreateFont.\nUV parameters are texture coordinates in a scale of 0.0 (top/left) to 1.0\n(bottom/right). Use values below 0.0 or above 1.0 to tile the image.\nWidth/height are limited to 8192 pixels.\nThere are also image functions in the DrawList API such as\nDrawList_AddImageQuad and DrawList_AddImageRounded.\nCaching of image objects may be implemented like this:\nlocal images = {}\nlocal function imageFromCache(fn)\nlocal img = images[fn]\nif not img then\nimg = {}\nimages[fn] = img\nend\nif not ImGui.ValidatePtr(img.inst, 'ImGui_Image*') then\nif img.inst then images[img.inst] = nil end\nimg.inst = ImGui.CreateImage(fn)\nlocal prev = images[img.inst]\nif prev and prev ~= img then prev.inst = nil end\nimages[img.inst] = img\nend\nreturn img.inst\nend"
 	},
 	"ImGui_ImageSet_Add lua": {
 		"prefix": "ImGui.ImageSet_Add",
 		"scope": "lua",
 		"body": "ImGui.ImageSet_Add(${1:set}, ${2:scale}, ${3:image})$0",
-		"description": "**Image > Image Set > ImageSet_Add**\n'img' cannot be another ImageSet.\n**Image > Image Set**\nHelper to automatically select and scale an image to the DPI scale of\nthe current window upon usage.\nImageSet objects may be used in any function that expect an image as parameter.\nUsage:\nlocal set = ImGui.CreateImageSet()\nImGui.ImageSet_Add(set, 1.0, ImGui.CreateImage('32x32.png'))\nImGui.ImageSet_Add(set, 2.0, ImGui.CreateImage('64x64.png'))\nlocal function frame()\nImGui.Image(ctx, set, ImGui.Image_GetSize(set))\n-- ...\nend\n**Image**\nReaImGui currently supports loading PNG and JPEG bitmap images.\nFlat vector images may be loaded as fonts, see CreateFont.\nUV parameters are texture coordinates in a scale of 0.0 (top/left) to 1.0\n(bottom/right). Use values below 0.0 or above 1.0 to tile the image.\nWidth/height are limited to 8192 pixels.\nThere are also image functions in the DrawList API such as\nDrawList_AddImageQuad and DrawList_AddImageRounded."
+		"description": "**Image > Image Set > ImageSet_Add**\n'img' cannot be another ImageSet.\n**Image > Image Set**\nHelper to automatically select and scale an image to the DPI scale of\nthe current window upon usage.\nImageSet objects may be used in any function that expect an image as parameter.\nUsage:\nlocal set = ImGui.CreateImageSet()\nImGui.ImageSet_Add(set, 1.0, ImGui.CreateImage('32x32.png'))\nImGui.ImageSet_Add(set, 2.0, ImGui.CreateImage('64x64.png'))\nlocal function frame()\nImGui.Image(ctx, set, ImGui.Image_GetSize(set))\n-- ...\nend\n**Image**\nReaImGui currently supports loading PNG and JPEG bitmap images.\nFlat vector images may be loaded as fonts, see CreateFont.\nUV parameters are texture coordinates in a scale of 0.0 (top/left) to 1.0\n(bottom/right). Use values below 0.0 or above 1.0 to tile the image.\nWidth/height are limited to 8192 pixels.\nThere are also image functions in the DrawList API such as\nDrawList_AddImageQuad and DrawList_AddImageRounded.\nCaching of image objects may be implemented like this:\nlocal images = {}\nlocal function imageFromCache(fn)\nlocal img = images[fn]\nif not img then\nimg = {}\nimages[fn] = img\nend\nif not ImGui.ValidatePtr(img.inst, 'ImGui_Image*') then\nif img.inst then images[img.inst] = nil end\nimg.inst = ImGui.CreateImage(fn)\nlocal prev = images[img.inst]\nif prev and prev ~= img then prev.inst = nil end\nimages[img.inst] = img\nend\nreturn img.inst\nend"
 	},
 	"ImGui_Image_GetSize lua": {
 		"prefix": "ImGui.Image_GetSize",
 		"scope": "lua",
 		"body": "ImGui.Image_GetSize(${1:image})$0",
-		"description": "**Image > Image_GetSize**\n**Image**\nReaImGui currently supports loading PNG and JPEG bitmap images.\nFlat vector images may be loaded as fonts, see CreateFont.\nUV parameters are texture coordinates in a scale of 0.0 (top/left) to 1.0\n(bottom/right). Use values below 0.0 or above 1.0 to tile the image.\nWidth/height are limited to 8192 pixels.\nThere are also image functions in the DrawList API such as\nDrawList_AddImageQuad and DrawList_AddImageRounded."
+		"description": "**Image > Image_GetSize**\n**Image**\nReaImGui currently supports loading PNG and JPEG bitmap images.\nFlat vector images may be loaded as fonts, see CreateFont.\nUV parameters are texture coordinates in a scale of 0.0 (top/left) to 1.0\n(bottom/right). Use values below 0.0 or above 1.0 to tile the image.\nWidth/height are limited to 8192 pixels.\nThere are also image functions in the DrawList API such as\nDrawList_AddImageQuad and DrawList_AddImageRounded.\nCaching of image objects may be implemented like this:\nlocal images = {}\nlocal function imageFromCache(fn)\nlocal img = images[fn]\nif not img then\nimg = {}\nimages[fn] = img\nend\nif not ImGui.ValidatePtr(img.inst, 'ImGui_Image*') then\nif img.inst then images[img.inst] = nil end\nimg.inst = ImGui.CreateImage(fn)\nlocal prev = images[img.inst]\nif prev and prev ~= img then prev.inst = nil end\nimages[img.inst] = img\nend\nreturn img.inst\nend"
 	},
 	"ImGui_Indent lua": {
 		"prefix": "ImGui.Indent",
@@ -7323,49 +7053,49 @@
 		"prefix": "ImGui.InputTextFlags_AllowTabInput",
 		"scope": "lua",
 		"body": "ImGui.InputTextFlags_AllowTabInput$0",
-		"description": "@type integer\n---\n**Text & Scalar Input > Flags > Inputs > InputTextFlags_AllowTabInput**\nPressing TAB input a 't' character into the text field.\n**Text & Scalar Input > Flags > Inputs**\n**Text & Scalar Input > Flags**\nMost of these are only useful for InputText*() and not for InputDoubleX,\nInputIntX etc.\n(Those are per-item flags. There are shared flags in SetConfigVar:\nConfigVar_InputTextCursorBlink and ConfigVar_InputTextEnterKeepActive.)\n@since 0.1\n "
+		"description": "@type integer\n---\n**Text & Scalar Input > Flags > Inputs > InputTextFlags_AllowTabInput**\nPressing TAB input a 't' character into the text field.\n**Text & Scalar Input > Flags**\nMost of these are only useful for InputText*() and not for InputDoubleX,\nInputIntX etc.\n(Those are per-item flags. There are shared flags in SetConfigVar:\nConfigVar_InputTextCursorBlink and ConfigVar_InputTextEnterKeepActive.)\n@since 0.1\n "
 	},
 	"InputTextFlags_AlwaysOverwrite lua": {
 		"prefix": "ImGui.InputTextFlags_AlwaysOverwrite",
 		"scope": "lua",
 		"body": "ImGui.InputTextFlags_AlwaysOverwrite$0",
-		"description": "@type integer\n---\n**Text & Scalar Input > Flags > Other options > InputTextFlags_AlwaysOverwrite**\nOverwrite mode.\n**Text & Scalar Input > Flags > Other options**\n**Text & Scalar Input > Flags**\nMost of these are only useful for InputText*() and not for InputDoubleX,\nInputIntX etc.\n(Those are per-item flags. There are shared flags in SetConfigVar:\nConfigVar_InputTextCursorBlink and ConfigVar_InputTextEnterKeepActive.)\n@since 0.2\n "
+		"description": "@type integer\n---\n**Text & Scalar Input > Flags > Other options > InputTextFlags_AlwaysOverwrite**\nOverwrite mode.\n**Text & Scalar Input > Flags**\nMost of these are only useful for InputText*() and not for InputDoubleX,\nInputIntX etc.\n(Those are per-item flags. There are shared flags in SetConfigVar:\nConfigVar_InputTextCursorBlink and ConfigVar_InputTextEnterKeepActive.)\n@since 0.2\n "
 	},
 	"InputTextFlags_AutoSelectAll lua": {
 		"prefix": "ImGui.InputTextFlags_AutoSelectAll",
 		"scope": "lua",
 		"body": "ImGui.InputTextFlags_AutoSelectAll$0",
-		"description": "@type integer\n---\n**Text & Scalar Input > Flags > Other options > InputTextFlags_AutoSelectAll**\nSelect entire text when first taking mouse focus.\n**Text & Scalar Input > Flags > Other options**\n**Text & Scalar Input > Flags**\nMost of these are only useful for InputText*() and not for InputDoubleX,\nInputIntX etc.\n(Those are per-item flags. There are shared flags in SetConfigVar:\nConfigVar_InputTextCursorBlink and ConfigVar_InputTextEnterKeepActive.)\n@since 0.1\n "
+		"description": "@type integer\n---\n**Text & Scalar Input > Flags > Other options > InputTextFlags_AutoSelectAll**\nSelect entire text when first taking mouse focus.\n**Text & Scalar Input > Flags**\nMost of these are only useful for InputText*() and not for InputDoubleX,\nInputIntX etc.\n(Those are per-item flags. There are shared flags in SetConfigVar:\nConfigVar_InputTextCursorBlink and ConfigVar_InputTextEnterKeepActive.)\n@since 0.1\n "
 	},
 	"InputTextFlags_CallbackAlways lua": {
 		"prefix": "ImGui.InputTextFlags_CallbackAlways",
 		"scope": "lua",
 		"body": "ImGui.InputTextFlags_CallbackAlways$0",
-		"description": "@type integer\n---\n**Text & Scalar Input > Flags > Callback features > InputTextFlags_CallbackAlways**\nCallback on each iteration. User code may query cursor position, modify text buffer.\n**Text & Scalar Input > Flags > Callback features**\n**Text & Scalar Input > Flags**\nMost of these are only useful for InputText*() and not for InputDoubleX,\nInputIntX etc.\n(Those are per-item flags. There are shared flags in SetConfigVar:\nConfigVar_InputTextCursorBlink and ConfigVar_InputTextEnterKeepActive.)\n@since 0.8.5\n "
+		"description": "@type integer\n---\n**Text & Scalar Input > Flags > Callback features > InputTextFlags_CallbackAlways**\nCallback on each iteration. User code may query cursor position, modify text buffer.\n**Text & Scalar Input > Flags**\nMost of these are only useful for InputText*() and not for InputDoubleX,\nInputIntX etc.\n(Those are per-item flags. There are shared flags in SetConfigVar:\nConfigVar_InputTextCursorBlink and ConfigVar_InputTextEnterKeepActive.)\n@since 0.8.5\n "
 	},
 	"InputTextFlags_CallbackCharFilter lua": {
 		"prefix": "ImGui.InputTextFlags_CallbackCharFilter",
 		"scope": "lua",
 		"body": "ImGui.InputTextFlags_CallbackCharFilter$0",
-		"description": "@type integer\n---\n**Text & Scalar Input > Flags > Callback features > InputTextFlags_CallbackCharFilter**\nCallback on character inputs to replace or discard them.\nModify 'EventChar' to replace or 'EventChar = 0' to discard.\n**Text & Scalar Input > Flags > Callback features**\n**Text & Scalar Input > Flags**\nMost of these are only useful for InputText*() and not for InputDoubleX,\nInputIntX etc.\n(Those are per-item flags. There are shared flags in SetConfigVar:\nConfigVar_InputTextCursorBlink and ConfigVar_InputTextEnterKeepActive.)\n@since 0.8.5\n "
+		"description": "@type integer\n---\n**Text & Scalar Input > Flags > Callback features > InputTextFlags_CallbackCharFilter**\nCallback on character inputs to replace or discard them.\nModify 'EventChar' to replace or 'EventChar = 0' to discard.\n**Text & Scalar Input > Flags**\nMost of these are only useful for InputText*() and not for InputDoubleX,\nInputIntX etc.\n(Those are per-item flags. There are shared flags in SetConfigVar:\nConfigVar_InputTextCursorBlink and ConfigVar_InputTextEnterKeepActive.)\n@since 0.8.5\n "
 	},
 	"InputTextFlags_CallbackCompletion lua": {
 		"prefix": "ImGui.InputTextFlags_CallbackCompletion",
 		"scope": "lua",
 		"body": "ImGui.InputTextFlags_CallbackCompletion$0",
-		"description": "@type integer\n---\n**Text & Scalar Input > Flags > Callback features > InputTextFlags_CallbackCompletion**\nCallback on pressing TAB (for completion handling).\n**Text & Scalar Input > Flags > Callback features**\n**Text & Scalar Input > Flags**\nMost of these are only useful for InputText*() and not for InputDoubleX,\nInputIntX etc.\n(Those are per-item flags. There are shared flags in SetConfigVar:\nConfigVar_InputTextCursorBlink and ConfigVar_InputTextEnterKeepActive.)\n@since 0.8.5\n "
+		"description": "@type integer\n---\n**Text & Scalar Input > Flags > Callback features > InputTextFlags_CallbackCompletion**\nCallback on pressing TAB (for completion handling).\n**Text & Scalar Input > Flags**\nMost of these are only useful for InputText*() and not for InputDoubleX,\nInputIntX etc.\n(Those are per-item flags. There are shared flags in SetConfigVar:\nConfigVar_InputTextCursorBlink and ConfigVar_InputTextEnterKeepActive.)\n@since 0.8.5\n "
 	},
 	"InputTextFlags_CallbackEdit lua": {
 		"prefix": "ImGui.InputTextFlags_CallbackEdit",
 		"scope": "lua",
 		"body": "ImGui.InputTextFlags_CallbackEdit$0",
-		"description": "@type integer\n---\n**Text & Scalar Input > Flags > Callback features > InputTextFlags_CallbackEdit**\nCallback on any edit (note that InputText() already returns true on edit,\nthe callback is useful mainly to manipulate the underlying buffer while\nfocus is active).\n**Text & Scalar Input > Flags > Callback features**\n**Text & Scalar Input > Flags**\nMost of these are only useful for InputText*() and not for InputDoubleX,\nInputIntX etc.\n(Those are per-item flags. There are shared flags in SetConfigVar:\nConfigVar_InputTextCursorBlink and ConfigVar_InputTextEnterKeepActive.)\n@since 0.8.5\n "
+		"description": "@type integer\n---\n**Text & Scalar Input > Flags > Callback features > InputTextFlags_CallbackEdit**\nCallback on any edit (note that InputText() already returns true on edit,\nthe callback is useful mainly to manipulate the underlying buffer while\nfocus is active).\n**Text & Scalar Input > Flags**\nMost of these are only useful for InputText*() and not for InputDoubleX,\nInputIntX etc.\n(Those are per-item flags. There are shared flags in SetConfigVar:\nConfigVar_InputTextCursorBlink and ConfigVar_InputTextEnterKeepActive.)\n@since 0.8.5\n "
 	},
 	"InputTextFlags_CallbackHistory lua": {
 		"prefix": "ImGui.InputTextFlags_CallbackHistory",
 		"scope": "lua",
 		"body": "ImGui.InputTextFlags_CallbackHistory$0",
-		"description": "@type integer\n---\n**Text & Scalar Input > Flags > Callback features > InputTextFlags_CallbackHistory**\nCallback on pressing Up/Down arrows (for history handling).\n**Text & Scalar Input > Flags > Callback features**\n**Text & Scalar Input > Flags**\nMost of these are only useful for InputText*() and not for InputDoubleX,\nInputIntX etc.\n(Those are per-item flags. There are shared flags in SetConfigVar:\nConfigVar_InputTextCursorBlink and ConfigVar_InputTextEnterKeepActive.)\n@since 0.8.5\n "
+		"description": "@type integer\n---\n**Text & Scalar Input > Flags > Callback features > InputTextFlags_CallbackHistory**\nCallback on pressing Up/Down arrows (for history handling).\n**Text & Scalar Input > Flags**\nMost of these are only useful for InputText*() and not for InputDoubleX,\nInputIntX etc.\n(Those are per-item flags. There are shared flags in SetConfigVar:\nConfigVar_InputTextCursorBlink and ConfigVar_InputTextEnterKeepActive.)\n@since 0.8.5\n "
 	},
 	"InputTextFlags_CharsDecimal lua": {
 		"prefix": "ImGui.InputTextFlags_CharsDecimal",
@@ -7401,37 +7131,37 @@
 		"prefix": "ImGui.InputTextFlags_CtrlEnterForNewLine",
 		"scope": "lua",
 		"body": "ImGui.InputTextFlags_CtrlEnterForNewLine$0",
-		"description": "@type integer\n---\n**Text & Scalar Input > Flags > Inputs > InputTextFlags_CtrlEnterForNewLine**\nIn multi-line mode, unfocus with Enter, add new line with Ctrl+Enter\n(default is opposite: unfocus with Ctrl+Enter, add line with Enter).\n**Text & Scalar Input > Flags > Inputs**\n**Text & Scalar Input > Flags**\nMost of these are only useful for InputText*() and not for InputDoubleX,\nInputIntX etc.\n(Those are per-item flags. There are shared flags in SetConfigVar:\nConfigVar_InputTextCursorBlink and ConfigVar_InputTextEnterKeepActive.)\n@since 0.1\n "
+		"description": "@type integer\n---\n**Text & Scalar Input > Flags > Inputs > InputTextFlags_CtrlEnterForNewLine**\nIn multi-line mode, unfocus with Enter, add new line with Ctrl+Enter\n(default is opposite: unfocus with Ctrl+Enter, add line with Enter).\n**Text & Scalar Input > Flags**\nMost of these are only useful for InputText*() and not for InputDoubleX,\nInputIntX etc.\n(Those are per-item flags. There are shared flags in SetConfigVar:\nConfigVar_InputTextCursorBlink and ConfigVar_InputTextEnterKeepActive.)\n@since 0.1\n "
 	},
 	"InputTextFlags_DisplayEmptyRefVal lua": {
 		"prefix": "ImGui.InputTextFlags_DisplayEmptyRefVal",
 		"scope": "lua",
 		"body": "ImGui.InputTextFlags_DisplayEmptyRefVal$0",
-		"description": "@type integer\n---\n**Text & Scalar Input > Flags > Other options > InputTextFlags_DisplayEmptyRefVal**\nInputDouble(), InputInt() etc. only: when value is zero, do not display it.\nGenerally used with InputTextFlags_ParseEmptyRefVal.\n**Text & Scalar Input > Flags > Other options**\n**Text & Scalar Input > Flags**\nMost of these are only useful for InputText*() and not for InputDoubleX,\nInputIntX etc.\n(Those are per-item flags. There are shared flags in SetConfigVar:\nConfigVar_InputTextCursorBlink and ConfigVar_InputTextEnterKeepActive.)\n@since 0.9.2\n "
+		"description": "@type integer\n---\n**Text & Scalar Input > Flags > Other options > InputTextFlags_DisplayEmptyRefVal**\nInputDouble(), InputInt() etc. only: when value is zero, do not display it.\nGenerally used with InputTextFlags_ParseEmptyRefVal.\n**Text & Scalar Input > Flags**\nMost of these are only useful for InputText*() and not for InputDoubleX,\nInputIntX etc.\n(Those are per-item flags. There are shared flags in SetConfigVar:\nConfigVar_InputTextCursorBlink and ConfigVar_InputTextEnterKeepActive.)\n@since 0.9.2\n "
 	},
 	"InputTextFlags_EnterReturnsTrue lua": {
 		"prefix": "ImGui.InputTextFlags_EnterReturnsTrue",
 		"scope": "lua",
 		"body": "ImGui.InputTextFlags_EnterReturnsTrue$0",
-		"description": "@type integer\n---\n**Text & Scalar Input > Flags > Inputs > InputTextFlags_EnterReturnsTrue**\nReturn 'true' when Enter is pressed (as opposed to every time the value was\nmodified). Consider looking at the IsItemDeactivatedAfterEdit function.\n**Text & Scalar Input > Flags > Inputs**\n**Text & Scalar Input > Flags**\nMost of these are only useful for InputText*() and not for InputDoubleX,\nInputIntX etc.\n(Those are per-item flags. There are shared flags in SetConfigVar:\nConfigVar_InputTextCursorBlink and ConfigVar_InputTextEnterKeepActive.)\n@since 0.1\n "
+		"description": "@type integer\n---\n**Text & Scalar Input > Flags > Inputs > InputTextFlags_EnterReturnsTrue**\nReturn 'true' when Enter is pressed (as opposed to every time the value was\nmodified). Consider looking at the IsItemDeactivatedAfterEdit function.\n**Text & Scalar Input > Flags**\nMost of these are only useful for InputText*() and not for InputDoubleX,\nInputIntX etc.\n(Those are per-item flags. There are shared flags in SetConfigVar:\nConfigVar_InputTextCursorBlink and ConfigVar_InputTextEnterKeepActive.)\n@since 0.1\n "
 	},
 	"InputTextFlags_EscapeClearsAll lua": {
 		"prefix": "ImGui.InputTextFlags_EscapeClearsAll",
 		"scope": "lua",
 		"body": "ImGui.InputTextFlags_EscapeClearsAll$0",
-		"description": "@type integer\n---\n**Text & Scalar Input > Flags > Inputs > InputTextFlags_EscapeClearsAll**\nEscape key clears content if not empty, and deactivate otherwise\n(constrast to default behavior of Escape to revert).\n**Text & Scalar Input > Flags > Inputs**\n**Text & Scalar Input > Flags**\nMost of these are only useful for InputText*() and not for InputDoubleX,\nInputIntX etc.\n(Those are per-item flags. There are shared flags in SetConfigVar:\nConfigVar_InputTextCursorBlink and ConfigVar_InputTextEnterKeepActive.)\n@since 0.8\n "
+		"description": "@type integer\n---\n**Text & Scalar Input > Flags > Inputs > InputTextFlags_EscapeClearsAll**\nEscape key clears content if not empty, and deactivate otherwise\n(constrast to default behavior of Escape to revert).\n**Text & Scalar Input > Flags**\nMost of these are only useful for InputText*() and not for InputDoubleX,\nInputIntX etc.\n(Those are per-item flags. There are shared flags in SetConfigVar:\nConfigVar_InputTextCursorBlink and ConfigVar_InputTextEnterKeepActive.)\n@since 0.8\n "
 	},
 	"InputTextFlags_NoHorizontalScroll lua": {
 		"prefix": "ImGui.InputTextFlags_NoHorizontalScroll",
 		"scope": "lua",
 		"body": "ImGui.InputTextFlags_NoHorizontalScroll$0",
-		"description": "@type integer\n---\n**Text & Scalar Input > Flags > Other options > InputTextFlags_NoHorizontalScroll**\nDisable following the cursor horizontally.\n**Text & Scalar Input > Flags > Other options**\n**Text & Scalar Input > Flags**\nMost of these are only useful for InputText*() and not for InputDoubleX,\nInputIntX etc.\n(Those are per-item flags. There are shared flags in SetConfigVar:\nConfigVar_InputTextCursorBlink and ConfigVar_InputTextEnterKeepActive.)\n@since 0.1\n "
+		"description": "@type integer\n---\n**Text & Scalar Input > Flags > Other options > InputTextFlags_NoHorizontalScroll**\nDisable following the cursor horizontally.\n**Text & Scalar Input > Flags**\nMost of these are only useful for InputText*() and not for InputDoubleX,\nInputIntX etc.\n(Those are per-item flags. There are shared flags in SetConfigVar:\nConfigVar_InputTextCursorBlink and ConfigVar_InputTextEnterKeepActive.)\n@since 0.1\n "
 	},
 	"InputTextFlags_NoUndoRedo lua": {
 		"prefix": "ImGui.InputTextFlags_NoUndoRedo",
 		"scope": "lua",
 		"body": "ImGui.InputTextFlags_NoUndoRedo$0",
-		"description": "@type integer\n---\n**Text & Scalar Input > Flags > Other options > InputTextFlags_NoUndoRedo**\nDisable undo/redo. Note that input text owns the text data while active.\n**Text & Scalar Input > Flags > Other options**\n**Text & Scalar Input > Flags**\nMost of these are only useful for InputText*() and not for InputDoubleX,\nInputIntX etc.\n(Those are per-item flags. There are shared flags in SetConfigVar:\nConfigVar_InputTextCursorBlink and ConfigVar_InputTextEnterKeepActive.)\n@since 0.1\n "
+		"description": "@type integer\n---\n**Text & Scalar Input > Flags > Other options > InputTextFlags_NoUndoRedo**\nDisable undo/redo. Note that input text owns the text data while active.\n**Text & Scalar Input > Flags**\nMost of these are only useful for InputText*() and not for InputDoubleX,\nInputIntX etc.\n(Those are per-item flags. There are shared flags in SetConfigVar:\nConfigVar_InputTextCursorBlink and ConfigVar_InputTextEnterKeepActive.)\n@since 0.1\n "
 	},
 	"InputTextFlags_None lua": {
 		"prefix": "ImGui.InputTextFlags_None",
@@ -7443,19 +7173,19 @@
 		"prefix": "ImGui.InputTextFlags_ParseEmptyRefVal",
 		"scope": "lua",
 		"body": "ImGui.InputTextFlags_ParseEmptyRefVal$0",
-		"description": "@type integer\n---\n**Text & Scalar Input > Flags > Other options > InputTextFlags_ParseEmptyRefVal**\nInputDouble(), InputInt() etc. only: parse empty string as zero value.\n**Text & Scalar Input > Flags > Other options**\n**Text & Scalar Input > Flags**\nMost of these are only useful for InputText*() and not for InputDoubleX,\nInputIntX etc.\n(Those are per-item flags. There are shared flags in SetConfigVar:\nConfigVar_InputTextCursorBlink and ConfigVar_InputTextEnterKeepActive.)\n@since 0.9.2\n "
+		"description": "@type integer\n---\n**Text & Scalar Input > Flags > Other options > InputTextFlags_ParseEmptyRefVal**\nInputDouble(), InputInt() etc. only: parse empty string as zero value.\n**Text & Scalar Input > Flags**\nMost of these are only useful for InputText*() and not for InputDoubleX,\nInputIntX etc.\n(Those are per-item flags. There are shared flags in SetConfigVar:\nConfigVar_InputTextCursorBlink and ConfigVar_InputTextEnterKeepActive.)\n@since 0.9.2\n "
 	},
 	"InputTextFlags_Password lua": {
 		"prefix": "ImGui.InputTextFlags_Password",
 		"scope": "lua",
 		"body": "ImGui.InputTextFlags_Password$0",
-		"description": "@type integer\n---\n**Text & Scalar Input > Flags > Other options > InputTextFlags_Password**\nPassword mode, display all characters as '*'.\n**Text & Scalar Input > Flags > Other options**\n**Text & Scalar Input > Flags**\nMost of these are only useful for InputText*() and not for InputDoubleX,\nInputIntX etc.\n(Those are per-item flags. There are shared flags in SetConfigVar:\nConfigVar_InputTextCursorBlink and ConfigVar_InputTextEnterKeepActive.)\n@since 0.1\n "
+		"description": "@type integer\n---\n**Text & Scalar Input > Flags > Other options > InputTextFlags_Password**\nPassword mode, display all characters as '*'.\n**Text & Scalar Input > Flags**\nMost of these are only useful for InputText*() and not for InputDoubleX,\nInputIntX etc.\n(Those are per-item flags. There are shared flags in SetConfigVar:\nConfigVar_InputTextCursorBlink and ConfigVar_InputTextEnterKeepActive.)\n@since 0.1\n "
 	},
 	"InputTextFlags_ReadOnly lua": {
 		"prefix": "ImGui.InputTextFlags_ReadOnly",
 		"scope": "lua",
 		"body": "ImGui.InputTextFlags_ReadOnly$0",
-		"description": "@type integer\n---\n**Text & Scalar Input > Flags > Other options > InputTextFlags_ReadOnly**\nRead-only mode.\n**Text & Scalar Input > Flags > Other options**\n**Text & Scalar Input > Flags**\nMost of these are only useful for InputText*() and not for InputDoubleX,\nInputIntX etc.\n(Those are per-item flags. There are shared flags in SetConfigVar:\nConfigVar_InputTextCursorBlink and ConfigVar_InputTextEnterKeepActive.)\n@since 0.1\n "
+		"description": "@type integer\n---\n**Text & Scalar Input > Flags > Other options > InputTextFlags_ReadOnly**\nRead-only mode.\n**Text & Scalar Input > Flags**\nMost of these are only useful for InputText*() and not for InputDoubleX,\nInputIntX etc.\n(Those are per-item flags. There are shared flags in SetConfigVar:\nConfigVar_InputTextCursorBlink and ConfigVar_InputTextEnterKeepActive.)\n@since 0.1\n "
 	},
 	"InsertAutomationItem lua": {
 		"prefix": "r.InsertAutomationItem",
@@ -9485,66 +9215,6 @@
 		"body": "r.LICE_ClipLine(${1:pX1}, ${2:pY1}, ${3:pX2}, ${4:pY2}, ${5:xLo}, ${6:yLo}, ${7:xHi}, ${8:yHi})$0",
 		"description": "Returns false if the line is entirely offscreen."
 	},
-	"Llm_Do lua": {
-		"prefix": "r.Llm_Do",
-		"scope": "lua",
-		"body": "r.Llm_Do()$0",
-		"description": "Do. Call this function to run one ReaLlm cycle. Use this function to run ReaLlm on arbitrary time intervals e.g. from a deferred script."
-	},
-	"Llm_GetPaths lua": {
-		"prefix": "r.Llm_GetPaths",
-		"scope": "lua",
-		"body": "r.Llm_GetPaths(${1:includeFx}, ${2:startIn}, ${3:endIn})$0",
-		"description": "Get paths. Returns a string of the form 'start:fx#1.fx#2...;track:fxs;...;end:fxs' where track is the track number and fx is the fx index. The string is truncated to pathStringOut_sz. 1-based indexing is used. If no MediaTrack* start is provided, all monitored input tracks are used. If no MediaTrack* end is provided, all hardware output tracks are used. If includeFx is true, the fx indices are included."
-	},
-	"Llm_GetSafed lua": {
-		"prefix": "r.Llm_GetSafed",
-		"scope": "lua",
-		"body": "r.Llm_GetSafed()$0",
-		"description": "Get safed. Returns a string of the form 'track:fx;track:fx;...' where track is the track number and fx is the fx index. The string is truncated to safeStringOut_sz. 1-based indexing is used. The string is followed by a | delimited list of fx names that have been set safed."
-	},
-	"Llm_GetVersion lua": {
-		"prefix": "r.Llm_GetVersion",
-		"scope": "lua",
-		"body": "major, minor, patch, build, commit = r.Llm_GetVersion()$0",
-		"description": "Get version. Returns the version of the plugin as integers and the commit hash as a string. The string is truncated to commitOut_sz."
-	},
-	"Llm_SetClearSafe lua": {
-		"prefix": "r.Llm_SetClearSafe",
-		"scope": "lua",
-		"body": "r.Llm_SetClearSafe(${1:clear_manually_safed_fx})$0",
-		"description": "Set clear safe. Set clear_manually_safed_fx = true to clear manually safed fx"
-	},
-	"Llm_SetKeepPdc lua": {
-		"prefix": "r.Llm_SetKeepPdc",
-		"scope": "lua",
-		"body": "r.Llm_SetKeepPdc(${1:enable})$0",
-		"description": "Set keep pdc"
-	},
-	"Llm_SetMonitoringFX lua": {
-		"prefix": "r.Llm_SetMonitoringFX",
-		"scope": "lua",
-		"body": "r.Llm_SetMonitoringFX(${1:enable})$0",
-		"description": "Set to include MonitoringFX. In REAPER land this means the fx on the master track record fx chain. Indexed as fx# + 0x1000000, 0-based."
-	},
-	"Llm_SetParameterChange lua": {
-		"prefix": "r.Llm_SetParameterChange",
-		"scope": "lua",
-		"body": "r.Llm_SetParameterChange(${1:fx_name}, ${2:parameter_index}, ${3:val1}, ${4:val2})$0",
-		"description": "Set parameter change. Set val1 = val2 to clear change. Set parameter_index = -666 to clear all changes. Use this function to set parameter changes between values val1 and val2 for fx_name and parameter_index instead of disabling the effect. Use custom fx names to identify individual fx."
-	},
-	"Llm_SetPdcLimit lua": {
-		"prefix": "r.Llm_SetPdcLimit",
-		"scope": "lua",
-		"body": "r.Llm_SetPdcLimit(${1:pdc_factor})$0",
-		"description": "Set pdc limit as factor of audio buffer size."
-	},
-	"Llm_SetSafed lua": {
-		"prefix": "r.Llm_SetSafed",
-		"scope": "lua",
-		"body": "r.Llm_SetSafed(${1:fx_name}, ${2:isSet})$0",
-		"description": "Set safed. Set isSet = true to safe fx name. Set isSet = false to unsafe fx name."
-	},
 	"LocalizeString lua": {
 		"prefix": "r.LocalizeString",
 		"scope": "lua",
@@ -9562,108 +9232,6 @@
 		"scope": "lua",
 		"body": "r.MB(${1:msg}, ${2:title}, ${3:type})$0",
 		"description": "type 0=OK,1=OKCANCEL,2=ABORTRETRYIGNORE,3=YESNOCANCEL,4=YESNO,5=RETRYCANCEL : ret 1=OK,2=CANCEL,3=ABORT,4=RETRY,5=IGNORE,6=YES,7=NO"
-	},
-	"MCULive_GetButtonValue lua": {
-		"prefix": "r.MCULive_GetButtonValue",
-		"scope": "lua",
-		"body": "r.MCULive_GetButtonValue(${1:device}, ${2:button})$0",
-		"description": "Get current button state."
-	},
-	"MCULive_GetDevice lua": {
-		"prefix": "r.MCULive_GetDevice",
-		"scope": "lua",
-		"body": "r.MCULive_GetDevice(${1:device}, ${2:type})$0",
-		"description": "Get MIDI input or output dev ID. type 0 is input dev, type 1 is output dev. device < 0 returns number of MCULive devices."
-	},
-	"MCULive_GetEncoderValue lua": {
-		"prefix": "r.MCULive_GetEncoderValue",
-		"scope": "lua",
-		"body": "r.MCULive_GetEncoderValue(${1:device}, ${2:encIdx}, ${3:param})$0",
-		"description": "Returns zero-indexed encoder parameter value. 0 = lastpos, 1 = lasttouch"
-	},
-	"MCULive_GetFaderValue lua": {
-		"prefix": "r.MCULive_GetFaderValue",
-		"scope": "lua",
-		"body": "r.MCULive_GetFaderValue(${1:device}, ${2:faderIdx}, ${3:param})$0",
-		"description": "Returns zero-indexed fader parameter value. 0 = lastpos, 1 = lasttouch, 2 = lastmove (any fader)"
-	},
-	"MCULive_GetMIDIMessage lua": {
-		"prefix": "r.MCULive_GetMIDIMessage",
-		"scope": "lua",
-		"body": "rv, status, data1, data2, frame_offset, msg = r.MCULive_GetMIDIMessage(${1:device}, ${2:msgIdx})$0",
-		"description": "Gets MIDI message from input buffer/queue. Gets (pops/pulls) indexed message (status, data1, data2 and frame_offset) from queue and retval is total size/length left in queue. E.g. continuously read all indiviual messages with deferred script. Frame offset resolution is 1/1024000 seconds, not audio samples. Long messages are returned as optional strings of byte characters. msgIdx -1 returns size (length) of buffer. Read also non-MCU devices by creating MCULive device with their input."
-	},
-	"MCULive_Map lua": {
-		"prefix": "r.MCULive_Map",
-		"scope": "lua",
-		"body": "r.MCULive_Map(${1:device}, ${2:button}, ${3:command_id}, ${4:isRemap})$0",
-		"description": "Maps MCU Live device# button# to REAPER command ID. E.g. reaper.MCULive_Map(0,0x5b, 40340) maps MCU Rewind to 'Track: Unsolo all tracks'. Or remap button to another button if your MCU button layout doesnt play nicely with default MCULive mappings. By default range 0x00 .. 0x2d is in use. Button numbers are second column (prefixed with 0x) e.g. '90 5e' 0x5e for 'transport : play', roughly. \nmcu documentation: \nmcu=>pc: \n  the mcu seems to send, when it boots (or is reset) f0 00 00 66 14 01 58 59 5a 57 18 61 05 57 18 61 05 f7 \n  ex vv vv    :   volume fader move, x=0..7, 8=master, vv vv is int14 \n  b0 1x vv    :   pan fader move, x=0..7, vv has 40 set if negative, low bits 0-31 are move amount \n  b0 3c vv    :   jog wheel move, 01 or 41 \n  to the extent the buttons below have leds, you can set them by sending these messages, with 7f for on, 1 for blink, 0 for off. \n  90 0x vv    :   rec arm push x=0..7 (vv:..) \n  90 0x vv    :   solo push x=8..f (vv:..) \n  90 1x vv    :   mute push x=0..7 (vv:..) \n  90 1x vv    :   selected push x=8..f (vv:..) \n  90 2x vv    :   pan knob push, x=0..7 (vv:..) \n  90 28 vv    :   assignment track \n  90 29 vv    :   assignment send \n  90 2a vv    :   assignment pan/surround \n  90 2b vv    :   assignment plug-in \n  90 2c vv    :   assignment eq \n  90 2d vv    :   assignment instrument \n  90 2e vv    :   bank down button (vv: 00=release, 7f=push) \n  90 2f vv    :   channel down button (vv: ..) \n  90 30 vv    :   bank up button (vv:..) \n  90 31 vv    :   channel up button (vv:..) \n  90 32 vv    :   flip button \n  90 33 vv    :   global view button \n  90 34 vv    :   name/value display button \n  90 35 vv    :   smpte/beats mode switch (vv:..) \n  90 36 vv    :   f1 \n  90 37 vv    :   f2 \n  90 38 vv    :   f3 \n  90 39 vv    :   f4 \n  90 3a vv    :   f5 \n  90 3b vv    :   f6 \n  90 3c vv    :   f7 \n  90 3d vv    :   f8 \n  90 3e vv    :   global view : midi tracks \n  90 3f vv    :   global view : inputs \n  90 40 vv    :   global view : audio tracks \n  90 41 vv    :   global view : audio instrument \n  90 42 vv    :   global view : aux \n  90 43 vv    :   global view : busses \n  90 44 vv    :   global view : outputs \n  90 45 vv    :   global view : user \n  90 46 vv    :   shift modifier (vv:..) \n  90 47 vv    :   option modifier \n  90 48 vv    :   control modifier \n  90 49 vv    :   alt modifier \n  90 4a vv    :   automation read/off \n  90 4b vv    :   automation write \n  90 4c vv    :   automation trim \n  90 4d vv    :   automation touch \n  90 4e vv    :   automation latch \n  90 4f vv    :   automation group \n  90 50 vv    :   utilities save \n  90 51 vv    :   utilities undo \n  90 52 vv    :   utilities cancel \n  90 53 vv    :   utilities enter \n  90 54 vv    :   marker \n  90 55 vv    :   nudge \n  90 56 vv    :   cycle \n  90 57 vv    :   drop \n  90 58 vv    :   replace \n  90 59 vv    :   click \n  90 5a vv    :   solo \n  90 5b vv    :   transport rewind (vv:..) \n  90 5c vv    :   transport ffwd (vv:..) \n  90 5d vv    :   transport pause (vv:..) \n  90 5e vv    :   transport play (vv:..) \n  90 5f vv    :   transport record (vv:..) \n  90 60 vv    :   up arrow button  (vv:..) \n  90 61 vv    :   down arrow button 1 (vv:..) \n  90 62 vv    :   left arrow button 1 (vv:..) \n  90 63 vv    :   right arrow button 1 (vv:..) \n  90 64 vv    :   zoom button (vv:..) \n  90 65 vv    :   scrub button (vv:..) \n  90 6x vv    :   fader touch x=8..f \n  90 70 vv    :   master fader touch \npc=>mcu: \n  f0 00 00 66 14 12 xx <data> f7   : update lcd. xx=offset (0-112), string. display is 55 chars wide, second line begins at 56, though. \n  f0 00 00 66 14 08 00 f7          : reset mcu \n  f0 00 00 66 14 20 0x 03 f7       : put track in vu meter mode, x=track   \n  90 73 vv : rude solo light (vv: 7f=on, 00=off, 01=blink) \n  b0 3x vv : pan display, x=0..7, vv=1..17 (hex) or so \n  b0 4x vv : right to left of leds. if 0x40 set in vv, dot below char is set (x=0..11) \n  d0 yx    : update vu meter, y=track, x=0..d=volume, e=clip on, f=clip off \n  ex vv vv : set volume fader, x=track index, 8=master"
-	},
-	"MCULive_Reset lua": {
-		"prefix": "r.MCULive_Reset",
-		"scope": "lua",
-		"body": "r.MCULive_Reset(${1:device})$0",
-		"description": "Reset device. device < 0 resets all and returns number of devices."
-	},
-	"MCULive_SendMIDIMessage lua": {
-		"prefix": "r.MCULive_SendMIDIMessage",
-		"scope": "lua",
-		"body": "r.MCULive_SendMIDIMessage(${1:device}, ${2:status}, ${3:data1}, ${4:data2}, ${5:msgIn})$0",
-		"description": "Sends MIDI message to device. If string is provided, individual bytes are not sent. Returns number of sent bytes."
-	},
-	"MCULive_SetButtonPassthrough lua": {
-		"prefix": "r.MCULive_SetButtonPassthrough",
-		"scope": "lua",
-		"body": "r.MCULive_SetButtonPassthrough(${1:device}, ${2:button}, ${3:isSet})$0",
-		"description": "Set button as MIDI passthrough."
-	},
-	"MCULive_SetButtonPressOnly lua": {
-		"prefix": "r.MCULive_SetButtonPressOnly",
-		"scope": "lua",
-		"body": "r.MCULive_SetButtonPressOnly(${1:device}, ${2:button}, ${3:isSet})$0",
-		"description": "Buttons function as press only by default. Set false for press and release function."
-	},
-	"MCULive_SetButtonValue lua": {
-		"prefix": "r.MCULive_SetButtonValue",
-		"scope": "lua",
-		"body": "r.MCULive_SetButtonValue(${1:device}, ${2:button}, ${3:value})$0",
-		"description": "Set button led/mode/state. Value 0 = off,1 = blink, 0x7f = on, usually."
-	},
-	"MCULive_SetDefault lua": {
-		"prefix": "r.MCULive_SetDefault",
-		"scope": "lua",
-		"body": "r.MCULive_SetDefault(${1:device}, ${2:isSet})$0",
-		"description": "Enables/disables default out-of-the-box operation."
-	},
-	"MCULive_SetDisplay lua": {
-		"prefix": "r.MCULive_SetDisplay",
-		"scope": "lua",
-		"body": "r.MCULive_SetDisplay(${1:device}, ${2:pos}, ${3:message}, ${4:pad})$0",
-		"description": "Write to display. 112 characters, 56 per row."
-	},
-	"MCULive_SetEncoderValue lua": {
-		"prefix": "r.MCULive_SetEncoderValue",
-		"scope": "lua",
-		"body": "r.MCULive_SetEncoderValue(${1:device}, ${2:encIdx}, ${3:val}, ${4:type})$0",
-		"description": "Set encoder to value 0 ... 1.0. Type 0 = linear, 1 = track volume, 2 = pan. Returns scaled value."
-	},
-	"MCULive_SetFaderValue lua": {
-		"prefix": "r.MCULive_SetFaderValue",
-		"scope": "lua",
-		"body": "r.MCULive_SetFaderValue(${1:device}, ${2:faderIdx}, ${3:val}, ${4:type})$0",
-		"description": "Set fader to value 0 ... 1.0. Type 0 = linear, 1 = track volume, 2 = pan. Returns scaled value."
-	},
-	"MCULive_SetMeterValue lua": {
-		"prefix": "r.MCULive_SetMeterValue",
-		"scope": "lua",
-		"body": "r.MCULive_SetMeterValue(${1:device}, ${2:meterIdx}, ${3:val}, ${4:type})$0",
-		"description": "Set meter value 0 ... 1.0. Type 0 = linear, 1 = track volume (with decay)."
-	},
-	"MCULive_SetOption lua": {
-		"prefix": "r.MCULive_SetOption",
-		"scope": "lua",
-		"body": "r.MCULive_SetOption(${1:option}, ${2:value})$0",
-		"description": "1 : surface split point device index \n2 : 'mode-is-global' bitmask/flags, first 6 bits"
 	},
 	"MIDIEditorFlagsForTrack lua": {
 		"prefix": "r.MIDIEditorFlagsForTrack",
@@ -9693,7 +9261,7 @@
 		"prefix": "r.MIDIEditor_GetSetting_int",
 		"scope": "lua",
 		"body": "r.MIDIEditor_GetSetting_int(${1:midieditor}, ${2:setting_desc})$0",
-		"description": "Get settings from a MIDI editor. setting_desc can be:\nsnap_enabled: returns 0 or 1\nactive_note_row: returns 0-127\nlast_clicked_cc_lane: returns 0-127=CC, 0x100|(0-31)=14-bit CC, 0x200=velocity, 0x201=pitch, 0x202=program, 0x203=channel pressure, 0x204=bank/program select, 0x205=text, 0x206=sysex, 0x207=off velocity, 0x208=notation events, 0x210=media item lane\ndefault_note_vel: returns 0-127\ndefault_note_chan: returns 0-15\ndefault_note_len: returns default length in MIDI ticks\nscale_enabled: returns 0-1\nscale_root: returns 0-12 (0=C)\nlist_cnt: if viewing list view, returns event count\nif setting_desc is unsupported, the function returns -1.\nSee MIDIEditor_SetSetting_int, MIDIEditor_GetActive, MIDIEditor_GetSetting_str"
+		"description": "Get settings from a MIDI editor. setting_desc can be:\nsnap_enabled: returns 0 or 1\nactive_note_row: returns 0-127\nlast_clicked_cc_lane: returns 0-127=CC, 0x100|(0-31)=14-bit CC, 0x200=velocity, 0x201=pitch, 0x202=program, 0x203=channel pressure, 0x204=bank/program select, 0x205=text, 0x206=sysex, 0x207=off velocity, 0x208=notation events, 0x209=aftertouch, 0x210=media item lane\ndefault_note_vel: returns 0-127\ndefault_note_chan: returns 0-15\ndefault_note_len: returns default length in MIDI ticks\nscale_enabled: returns 0-1\nscale_root: returns 0-12 (0=C)\nlist_cnt: if viewing list view, returns event count\nif setting_desc is unsupported, the function returns -1.\nSee MIDIEditor_SetSetting_int, MIDIEditor_GetActive, MIDIEditor_GetSetting_str"
 	},
 	"MIDIEditor_GetSetting_str lua": {
 		"prefix": "r.MIDIEditor_GetSetting_str",
@@ -9993,7 +9561,7 @@
 		"prefix": "r.Main_SaveProjectEx",
 		"scope": "lua",
 		"body": "r.Main_SaveProjectEx(0, ${2:filename}, ${3:options})$0",
-		"description": "Save the project. options: &1=save selected tracks as track template, &2=include media with track template, &4=include envelopes with track template. See Main_openProject, Main_SaveProject."
+		"description": "Save the project. options: &1=save selected tracks as track template, &2=include media with track template, &4=include envelopes with track template, &8=if not saving template, set as the new project filename for this ReaProject. See Main_openProject, Main_SaveProject."
 	},
 	"Main_UpdateLoopInfo lua": {
 		"prefix": "r.Main_UpdateLoopInfo",
@@ -10048,6 +9616,12 @@
 		"scope": "lua",
 		"body": "r.Master_NormalizeTempo(${1:bpm}, ${2:isnormalized})$0",
 		"description": "Convert the tempo to/from a value between 0 and 1, representing bpm in the range of 40-296 bpm."
+	},
+	"MediaExplorerGetLastPlayedFileInfo lua": {
+		"prefix": "r.MediaExplorerGetLastPlayedFileInfo",
+		"scope": "lua",
+		"body": "rv, filename, filemode, selstart, selend, pitchshift, voladj, rateadj, sourcebpm, extrainfo = r.MediaExplorerGetLastPlayedFileInfo()$0",
+		"description": "Get information about the most recently previewed Media Explorer file. filename: last played file name. filemode: &1:insert on new track, &2:insert into sampler, &8:tempo sync 1x, &16:tempo sync 0.5x, &32:tempo sync 2x, &64:do not preserve pitch when changing playrate, &128:loop selection exists, &256:time selection exists, &512:apply pitch/rate adjustment on insert, &1024:apply volume adjustment on insert, &2048:apply normalization on insert, &8192:reverse preview. startpct/endpct: time selection in [0.0, 1.0]. pitchshift/voladj/rateadj: current pitch/volume/playrate preview adjustments. srcbpm: source media tempo. extrainfo: currently unused."
 	},
 	"MediaItemDescendsFromTrack lua": {
 		"prefix": "r.MediaItemDescendsFromTrack",
@@ -10385,102 +9959,6 @@
 		"body": "r.NF_Win32_GetSystemMetrics(${1:nIndex})$0",
 		"description": "Equivalent to win32 API GetSystemMetrics(). Note: Only SM_C[XY]SCREEN, SM_C[XY][HV]SCROLL and SM_CYMENU are currently supported on macOS and Linux as of REAPER 6.68. Check the SWELL source code for up-to-date support information (swell-wnd.mm, swell-wnd-generic.cpp)."
 	},
-	"NVK_CountFolderItemChildren lua": {
-		"prefix": "r.NVK_CountFolderItemChildren",
-		"scope": "lua",
-		"body": "r.NVK_CountFolderItemChildren(${1:folderItem})$0",
-		"description": "[NVK] Counts the number of child items under the given NVK Folder Item."
-	},
-	"NVK_CountFolderItems lua": {
-		"prefix": "r.NVK_CountFolderItems",
-		"scope": "lua",
-		"body": "r.NVK_CountFolderItems(0)$0",
-		"description": "[NVK] Counts the number of NVK Folder Items in a given project. 0 = active project."
-	},
-	"NVK_CountSelectedFolderItems lua": {
-		"prefix": "r.NVK_CountSelectedFolderItems",
-		"scope": "lua",
-		"body": "r.NVK_CountSelectedFolderItems(0)$0",
-		"description": "[NVK] Counts the number of selected NVK Folder Items in a given project. 0 = active project."
-	},
-	"NVK_CountTrackFolderItems lua": {
-		"prefix": "r.NVK_CountTrackFolderItems",
-		"scope": "lua",
-		"body": "r.NVK_CountTrackFolderItems(${1:track})$0",
-		"description": "[NVK] Counts the number of NVK Folder Items on a given track."
-	},
-	"NVK_GetClipboardText lua": {
-		"prefix": "r.NVK_GetClipboardText",
-		"scope": "lua",
-		"body": "r.NVK_GetClipboardText()$0",
-		"description": "[NVK] Gets the clipboard text."
-	},
-	"NVK_GetFolderItem lua": {
-		"prefix": "r.NVK_GetFolderItem",
-		"scope": "lua",
-		"body": "r.NVK_GetFolderItem(0, ${2:index})$0",
-		"description": "[NVK] Gets the NVK Folder Item at the given index in the given project. 0 = active project."
-	},
-	"NVK_GetFolderItemChild lua": {
-		"prefix": "r.NVK_GetFolderItemChild",
-		"scope": "lua",
-		"body": "r.NVK_GetFolderItemChild(${1:folderItem}, ${2:index})$0",
-		"description": "[NVK] Gets the child item of the given NVK Folder Item at the given index."
-	},
-	"NVK_GetSelectedFolderItem lua": {
-		"prefix": "r.NVK_GetSelectedFolderItem",
-		"scope": "lua",
-		"body": "r.NVK_GetSelectedFolderItem(0, ${2:index})$0",
-		"description": "[NVK] Gets the selected NVK Folder Item at the given index in the given project. 0 = active project."
-	},
-	"NVK_GetTrackFolderItem lua": {
-		"prefix": "r.NVK_GetTrackFolderItem",
-		"scope": "lua",
-		"body": "r.NVK_GetTrackFolderItem(${1:track}, ${2:index})$0",
-		"description": "[NVK] Gets the NVK Folder Item at the given index on the given track."
-	},
-	"NVK_GetVersion lua": {
-		"prefix": "r.NVK_GetVersion",
-		"scope": "lua",
-		"body": "r.NVK_GetVersion()$0",
-		"description": "[NVK] Returns the version of the NVK Reaper API."
-	},
-	"NVK_IsFolderItem lua": {
-		"prefix": "r.NVK_IsFolderItem",
-		"scope": "lua",
-		"body": "r.NVK_IsFolderItem(${1:item})$0",
-		"description": "[NVK] Checks if the given item is an NVK Folder Item."
-	},
-	"NVK_IsFolderItemSelected lua": {
-		"prefix": "r.NVK_IsFolderItemSelected",
-		"scope": "lua",
-		"body": "r.NVK_IsFolderItemSelected(${1:item})$0",
-		"description": "[NVK] Checks if the given NVK Folder Item is selected."
-	},
-	"NVK_SaveClipboardImageToFile lua": {
-		"prefix": "r.NVK_SaveClipboardImageToFile",
-		"scope": "lua",
-		"body": "r.NVK_SaveClipboardImageToFile(${1:filename})$0",
-		"description": "[NVK] Saves the clipboard image to a specified file path and returns the file path if successful."
-	},
-	"NVK_SelectAllFolderItems lua": {
-		"prefix": "r.NVK_SelectAllFolderItems",
-		"scope": "lua",
-		"body": "r.NVK_SelectAllFolderItems(0, ${2:selectedIn})$0",
-		"description": "[NVK] Selects all NVK Folder Items in the given project. 0 = active project. selected = true to select, false to unselect, defaults to true."
-	},
-	"NVK_SetClipboardText lua": {
-		"prefix": "r.NVK_SetClipboardText",
-		"scope": "lua",
-		"body": "r.NVK_SetClipboardText(${1:str})$0",
-		"description": "[NVK] Sets the clipboard text to the given string."
-	},
-	"NVK_SetFolderItemSelected lua": {
-		"prefix": "r.NVK_SetFolderItemSelected",
-		"scope": "lua",
-		"body": "r.NVK_SetFolderItemSelected(${1:item}, ${2:selected})$0",
-		"description": "[NVK] Sets the given NVK Folder Item to be selected (true) or unselected (false)."
-	},
 	"NamedCommandLookup lua": {
 		"prefix": "r.NamedCommandLookup",
 		"scope": "lua",
@@ -10792,6 +10270,12 @@
 		"scope": "lua",
 		"body": "r.Resample_EnumModes(${1:mode})$0",
 		"description": ""
+	},
+	"ResolveWildcards lua": {
+		"prefix": "r.ResolveWildcards",
+		"scope": "lua",
+		"body": "r.ResolveWildcards(0, ${2:timePosition}, ${3:wildcards}, ${4:resolvedString})$0",
+		"description": "Resolve a wildcard string. Any wildcards that are valid in the Big Clock can be resolved using this function. Pass in timePosition=-1 to use the current project playback position."
 	},
 	"ReverseNamedCommandLookup lua": {
 		"prefix": "r.ReverseNamedCommandLookup",
@@ -11199,7 +10683,7 @@
 		"prefix": "r.SetMediaItemTakeInfo_Value",
 		"scope": "lua",
 		"body": "r.SetMediaItemTakeInfo_Value(${1:take}, ${2:parmname}, ${3:newvalue})$0",
-		"description": "Set media item take numerical-value attributes.\nD_STARTOFFS : double * : start offset in source media, in seconds\nD_VOL : double * : take volume, 0=-inf, 0.5=-6dB, 1=+0dB, 2=+6dB, etc, negative if take polarity is flipped\nD_PAN : double * : take pan, -1..1\nD_PANLAW : double * : take pan law, -1=default, 0.5=-6dB, 1.0=+0dB, etc\nD_PLAYRATE : double * : take playback rate, 0.5=half speed, 1=normal, 2=double speed, etc\nD_PITCH : double * : take pitch adjustment in semitones, -12=one octave down, 0=normal, +12=one octave up, etc\nB_PPITCH : bool * : preserve pitch when changing playback rate\nI_LASTY : int * : Y-position (relative to top of track) in pixels (read-only)\nI_LASTH : int * : height in pixels (read-only)\nI_CHANMODE : int * : channel mode, 0=normal, 1=reverse stereo, 2=downmix, 3=left, 4=right\nI_PITCHMODE : int * : pitch shifter mode, -1=project default, otherwise high 2 bytes=shifter, low 2 bytes=parameter\nI_STRETCHFLAGS : int * : stretch marker flags (&7 mask for mode override: 0=default, 1=balanced, 2/3/6=tonal, 4=transient, 5=no pre-echo)\nF_STRETCHFADESIZE : float * : stretch marker fade size in seconds (0.0025 default)\nI_RECPASSID : int * : record pass ID\nI_TAKEFX_NCH : int * : number of internal audio channels for per-take FX to use (OK to call with setNewValue, but the returned value is read-only)\nI_CUSTOMCOLOR : int * : custom color, OS dependent color|0x1000000 (i.e. ColorToNative(r,g,b)|0x1000000). If you do not |0x1000000, then it will not be used, but will store the color\nIP_TAKENUMBER : int : take number (read-only, returns the take number directly)"
+		"description": "Set media item take numerical-value attributes.\nD_STARTOFFS : double * : start offset in source media, in seconds\nD_VOL : double * : take volume, 0=-inf, 0.5=-6dB, 1=+0dB, 2=+6dB, etc, negative if take polarity is flipped\nD_PAN : double * : take pan, -1..1\nD_PANLAW : double * : take pan law, -1=default, 0.5=-6dB, 1.0=+0dB, etc\nD_PLAYRATE : double * : take playback rate, 0.5=half speed, 1=normal, 2=double speed, etc\nD_PITCH : double * : take pitch adjustment in semitones, -12=one octave down, 0=normal, +12=one octave up, etc\nB_PPITCH : bool * : preserve pitch when changing playback rate\nI_LASTY : int * : Y-position (relative to top of track) in pixels (read-only)\nI_LASTH : int * : height in pixels (read-only)\nI_CHANMODE : int * : channel mode, 0=normal, 1=reverse stereo, 2=downmix, 3=left, 4=right\nI_PITCHMODE : int * : pitch shifter mode, -1=project default, otherwise high 2 bytes=shifter, low 2 bytes=parameter\nI_STRETCHFLAGS : int * : stretch marker flags (&7 mask for mode override: 0=default, 1=balanced, 2/3/6=tonal, 4=transient, 5=no pre-echo)\nF_STRETCHFADESIZE : float * : stretch marker fade size in seconds (0.0025 default)\nI_RECPASSID : int * : record pass ID\nI_TAKEFX_NCH : int * : number of internal audio channels for per-take FX to use (OK to call with setNewValue, but the returned value is read-only)\nI_CUSTOMCOLOR : int * : custom color, OS dependent color|0x1000000 (i.e. ColorToNative(r,g,b)|0x1000000). If you do not |0x1000000, then it will not be used, but will store the color\nIP_SPECEDIT:CNT : int : spectral edit count (read-only)\nIP_SPECEDIT:DELETE:x : int : read or write this key to remove the spectral edit specified\nIP_SPECEDIT:ADD : int : read or write this key to add a new spectral edit (returns index)\nIP_SPECEDIT:SORT : int : read or write this key to re-sort spectral edits (be sure to do this following a position change or insert of new edit)\nI_SPECEDIT:FFT_SIZE : int * : FFT size used by spectral edits for this take\nD_SPECEDIT:x:POSITION : double * : position of spectral edit start (changing this requires a resort of spectral edits)\nD_SPECEDIT:x:LENGTH : double * : length of spectral edit\nF_SPECEDIT:x:GAIN : float * : gain of spectral edit\nF_SPECEDIT:x:FADE_IN : float * : fade-in size 0..1\nF_SPECEDIT:x:FADE_OUT : float * : fade-out size 0..1\nF_SPECEDIT:x:FADE_LOW : float * : fade-lf size 0..1\nF_SPECEDIT:x:FADE_HI : float * : fade-hf size 0..1\nI_SPECEDIT:x:CHAN : int * : channel index, -1 for omni\nI_SPECEDIT:x:FLAGS : int * : flags, &1=bypassed, &2=solo\nF_SPECEDIT:x:GATE_THRESH : float * : gate threshold\nF_SPECEDIT:x:GATE_FLOOR : float * : gate floor\nF_SPECEDIT:x:COMP_THRESH : float * : comp threshold\nF_SPECEDIT:x:COMP_RATIO : float * : comp ratio\nB_SPECEDIT:x:SELECTED : bool * : selection state\nI_SPECEDIT:x:TOPFREQ_CNT : int * : (read-only) number of top frequency-points\nI_SPECEDIT:x:TOPFREQ_ADD:pos:val : int * : reading or writing will insert top frequency-point with position/value pair, returns index\nI_SPECEDIT:x:TOPFREQ_DEL:y : int * : reading or writing will delete top frequency-point y. there will always be at least one point.\nF_SPECEDIT:x:TOPFREQ_POS:y : float * : (read-only) get position of top frequency-point y\nF_SPECEDIT:x:TOPFREQ_FREQ:y : float * : (read-only) get frequency of top frequency-point y\nI_SPECEDIT:x:BOTFREQ_CNT : int * : number of bottom frequency-points\nI_SPECEDIT:x:BOTFREQ_ADD:pos:val : int * : reading or writing will insert bottom frequency-point with position/value pair, returns index\nI_SPECEDIT:x:BOTFREQ_DEL:y : int * : reading or writing will delete bottom frequency-point y. there will always be at least one point.\nF_SPECEDIT:x:BOTFREQ_POS:y : float * : (read-only) get position of bottom frequency-point y\nF_SPECEDIT:x:BOTFREQ_FREQ:y : float * : (read-only) get frequency of bottom frequency-point y\nIP_TAKENUMBER : int : take number (read-only, returns the take number directly)"
 	},
 	"SetMediaItemTake_Source lua": {
 		"prefix": "r.SetMediaItemTake_Source",
@@ -11247,37 +10731,43 @@
 		"prefix": "r.SetProjectMarker",
 		"scope": "lua",
 		"body": "r.SetProjectMarker(${1:markrgnindexnumber}, ${2:isrgn}, ${3:pos}, ${4:rgnend}, ${5:name})$0",
-		"description": "Note: this function can't clear a marker's name (an empty string will leave the name unchanged), see SetProjectMarker4."
+		"description": "discouraged. see GetNumRegionsOrMarkers, GetRegionOrMarker, SetRegionOrMarkerInfo_Value, GetSetRegionOrMarkerInfo_String. Note: this function can't clear a marker's name (an empty string will leave the name unchanged), see SetProjectMarker4."
 	},
 	"SetProjectMarker2 lua": {
 		"prefix": "r.SetProjectMarker2",
 		"scope": "lua",
 		"body": "r.SetProjectMarker2(0, ${2:markrgnindexnumber}, ${3:isrgn}, ${4:pos}, ${5:rgnend}, ${6:name})$0",
-		"description": "Note: this function can't clear a marker's name (an empty string will leave the name unchanged), see SetProjectMarker4."
+		"description": "discouraged. see GetNumRegionsOrMarkers, GetRegionOrMarker, SetRegionOrMarkerInfo_Value, GetSetRegionOrMarkerInfo_String. Note: this function can't clear a marker's name (an empty string will leave the name unchanged), see SetProjectMarker4."
 	},
 	"SetProjectMarker3 lua": {
 		"prefix": "r.SetProjectMarker3",
 		"scope": "lua",
 		"body": "r.SetProjectMarker3(0, ${2:markrgnindexnumber}, ${3:isrgn}, ${4:pos}, ${5:rgnend}, ${6:name}, ${7:color})$0",
-		"description": "Note: this function can't clear a marker's name (an empty string will leave the name unchanged), see SetProjectMarker4."
+		"description": "discouraged. see GetNumRegionsOrMarkers, GetRegionOrMarker, SetRegionOrMarkerInfo_Value, GetSetRegionOrMarkerInfo_String. Note: this function can't clear a marker's name (an empty string will leave the name unchanged), see SetProjectMarker4."
 	},
 	"SetProjectMarker4 lua": {
 		"prefix": "r.SetProjectMarker4",
 		"scope": "lua",
 		"body": "r.SetProjectMarker4(0, ${2:markrgnindexnumber}, ${3:isrgn}, ${4:pos}, ${5:rgnend}, ${6:name}, ${7:color}, ${8:flags})$0",
-		"description": "color should be 0 to not change, or ColorToNative(r,g,b)|0x1000000, flags&1 to clear name"
+		"description": "discouraged. see GetNumRegionsOrMarkers, GetRegionOrMarker, SetRegionOrMarkerInfo_Value, GetSetRegionOrMarkerInfo_String. color should be 0 to not change, or ColorToNative(r,g,b)|0x1000000, flags&1 to clear name"
 	},
 	"SetProjectMarkerByIndex lua": {
 		"prefix": "r.SetProjectMarkerByIndex",
 		"scope": "lua",
 		"body": "r.SetProjectMarkerByIndex(0, ${2:markrgnidx}, ${3:isrgn}, ${4:pos}, ${5:rgnend}, ${6:IDnumber}, ${7:name}, ${8:color})$0",
-		"description": "See SetProjectMarkerByIndex2."
+		"description": "discouraged. See SetProjectMarkerByIndex2."
 	},
 	"SetProjectMarkerByIndex2 lua": {
 		"prefix": "r.SetProjectMarkerByIndex2",
 		"scope": "lua",
 		"body": "r.SetProjectMarkerByIndex2(0, ${2:markrgnidx}, ${3:isrgn}, ${4:pos}, ${5:rgnend}, ${6:IDnumber}, ${7:name}, ${8:color}, ${9:flags})$0",
-		"description": "Differs from SetProjectMarker4 in that markrgnidx is 0 for the first marker/region, 1 for the next, etc (see EnumProjectMarkers3), rather than representing the displayed marker/region ID number (see SetProjectMarker3). Function will fail if attempting to set a duplicate ID number for a region (duplicate ID numbers for markers are OK). , flags&1 to clear name. If flags&2, markers will not be re-sorted, and after making updates, you MUST call SetProjectMarkerByIndex2 with markrgnidx=-1 and flags&2 to force re-sort/UI updates."
+		"description": "discouraged. see GetNumRegionsOrMarkers, GetRegionOrMarker, SetRegionOrMarkerInfo_Value, GetSetRegionOrMarkerInfo_String. Differs from SetProjectMarker4 in that markrgnidx is 0 for the first marker/region, 1 for the next, etc (see EnumProjectMarkers3), rather than representing the displayed marker/region ID number (see SetProjectMarker3). IDnumber < 0 to ignore. Function will fail if attempting to set a duplicate ID number for a region (duplicate ID numbers for markers are OK). flags&1 to clear name. If flags&2, markers will not be re-sorted, and after making updates, you MUST call SetProjectMarkerByIndex2 with markrgnidx=-1 and flags&2 to force re-sort/UI updates."
+	},
+	"SetRegionOrMarkerInfo_Value lua": {
+		"prefix": "r.SetRegionOrMarkerInfo_Value",
+		"scope": "lua",
+		"body": "r.SetRegionOrMarkerInfo_Value(0, ${2:regionOrMarker}, ${3:parameterName}, ${4:setNewValue})$0",
+		"description": "'D_STARTPOS', 'D_ENDPOS' (= D_STARTPOS for markers), 'I_NUMBER' (displayed index number), 'I_LANENUMBER', 'I_CUSTOMCOLOR', 'B_UISEL', 'B_HIDDEN'. See GetNumRegionsOrMarkers, GetRegionOrMarker, GetRegionOrMarkerInfo_Value, GetSetRegionOrMarkerInfo_String"
 	},
 	"SetRegionRenderMatrix lua": {
 		"prefix": "r.SetRegionRenderMatrix",
@@ -11313,7 +10803,7 @@
 		"prefix": "r.SetThemeColor",
 		"scope": "lua",
 		"body": "r.SetThemeColor(${1:ini_key}, ${2:color}, ${3:flags})$0",
-		"description": "Temporarily updates the theme color to the color specified (or the theme default color if -1 is specified). Returns -1 on failure, otherwise returns the color (or transformed-color). Note that the UI is not updated by this, the caller should call UpdateArrange() etc as necessary. If the low bit of flags is set, any color transformations are bypassed. To read a value see GetThemeColor.\nCurrently valid ini_keys:\ncol_main_bg2 : Main window/transport background\ncol_main_text2 : Main window/transport text\ncol_main_textshadow : Main window text shadow (ignored if too close to text color)\ncol_main_3dhl : Main window 3D highlight\ncol_main_3dsh : Main window 3D shadow\ncol_main_resize2 : Main window pane resize mouseover\ncol_main_text : Themed window text\ncol_main_bg : Themed window background\ncol_main_editbk : Themed window edit background\ncol_nodarkmodemiscwnd : Do not use window theming on macOS dark mode\n-- bool 00000000\ncol_transport_editbk : Transport edit background\ncol_toolbar_text : Toolbar button text\ncol_toolbar_text_on : Toolbar button enabled text\ncol_toolbar_frame : Toolbar frame when floating or docked\ntoolbararmed_color : Toolbar button armed color\ntoolbararmed_drawmode : Toolbar button armed fill mode\nio_text : I/O window text\nio_3dhl : I/O window 3D highlight\nio_3dsh : I/O window 3D shadow\ngenlist_bg : Window list background\ngenlist_fg : Window list text\ngenlist_grid : Window list grid lines\ngenlist_selbg : Window list selected row\ngenlist_selfg : Window list selected text\ngenlist_seliabg : Window list selected row (inactive)\ngenlist_seliafg : Window list selected text (inactive)\ngenlist_hilite : Window list highlighted text\ngenlist_hilite_sel : Window list highlighted selected text\ncol_buttonbg : Button background\ncol_tcp_text : Track panel text\ncol_tcp_textsel : Track panel (selected) text\ncol_seltrack : Selected track control panel background\ncol_seltrack2 : Unselected track control panel background (enabled with a checkbox above)\ntcplocked_color : Locked track control panel overlay color\ntcplocked_drawmode : Locked track control panel fill mode\ncol_tracklistbg : Empty track list area\ncol_mixerbg : Empty mixer list area\ncol_arrangebg : Empty arrange view area\narrange_vgrid : Empty arrange view area vertical grid shading\ncol_fadearm : Fader background when automation recording\ncol_fadearm2 : Fader background when automation playing\ncol_fadearm3 : Fader background when in inactive touch/latch\ncol_tl_fg : Timeline foreground\ncol_tl_fg2 : Timeline foreground (secondary markings)\ncol_tl_bg : Timeline background\ncol_tl_bgsel : Time selection color\ntimesel_drawmode : Time selection fill mode\ncol_tl_bgsel2 : Timeline background (in loop points)\ncol_trans_bg : Transport status background\ncol_trans_fg : Transport status text\nplayrate_edited : Project play rate control when not 1.0\nselitem_dot : Media item selection indicator\ncol_mi_label : Media item label\ncol_mi_label_sel : Media item label (selected)\ncol_mi_label_float : Floating media item label\ncol_mi_label_float_sel : Floating media item label (selected)\ncol_mi_bg2 : Media item background (odd tracks)\ncol_mi_bg : Media item background (even tracks)\ncol_tr1_itembgsel : Media item background selected (odd tracks)\ncol_tr2_itembgsel : Media item background selected (even tracks)\nitembg_drawmode : Media item background fill mode\ncol_tr1_peaks : Media item peaks (odd tracks)\ncol_tr2_peaks : Media item peaks (even tracks)\ncol_tr1_ps2 : Media item peaks when selected (odd tracks)\ncol_tr2_ps2 : Media item peaks when selected (even tracks)\ncol_peaksedge : Media item peaks edge highlight (odd tracks)\ncol_peaksedge2 : Media item peaks edge highlight (even tracks)\ncol_peaksedgesel : Media item peaks edge highlight when selected (odd tracks)\ncol_peaksedgesel2 : Media item peaks edge highlight when selected (even tracks)\ncc_chase_drawmode : Media item MIDI CC peaks fill mode\ncol_peaksfade : Media item peaks when active in crossfade editor (fade-out)\ncol_peaksfade2 : Media item peaks when active in crossfade editor (fade-in)\ncol_mi_fades : Media item fade/volume controls\nfadezone_color : Media item fade quiet zone fill color\nfadezone_drawmode : Media item fade quiet zone fill mode\nfadearea_color : Media item fade full area fill color\nfadearea_drawmode : Media item fade full area fill mode\ncol_mi_fade2 : Media item edges of controls\ncol_mi_fade2_drawmode : Media item edges of controls blend mode\nitem_grouphl : Media item edge when selected via grouping\ncol_offlinetext : Media item 'offline' text\ncol_stretchmarker : Media item stretch marker line\ncol_stretchmarker_h0 : Media item stretch marker handle (1x)\ncol_stretchmarker_h1 : Media item stretch marker handle (>1x)\ncol_stretchmarker_h2 : Media item stretch marker handle (-- current RGB: 189,19,19\ncol_stretchmarker_b : Media item stretch marker handle edge\ncol_stretchmarkerm : Media item stretch marker blend mode\ncol_stretchmarker_text : Media item stretch marker text\ncol_stretchmarker_tm : Media item transient guide handle\ntake_marker : Media item take marker\ntake_marker_sel : Media item take marker when item selected\nselitem_tag : Selected media item bar color\nactivetake_tag : Active media item take bar color\ncol_tr1_bg : Track background (odd tracks)\ncol_tr2_bg : Track background (even tracks)\nselcol_tr1_bg : Selected track background (odd tracks)\nselcol_tr2_bg : Selected track background (even tracks)\ntrack_lane_tabcol : Track fixed lane button\ntrack_lanesolo_tabcol : Track fixed lane button when only this lane plays\ntrack_lanesolo_text : Track fixed lane button text\ntrack_lane_gutter : Track fixed lane add area\ntrack_lane_gutter_drawmode : Track fixed lane add fill mode\ncol_tr1_divline : Track divider line (odd tracks)\ncol_tr2_divline : Track divider line (even tracks)\ncol_envlane1_divline : Envelope lane divider line (odd tracks)\ncol_envlane2_divline : Envelope lane divider line (even tracks)\nmute_overlay_col : Muted/unsoloed track/item overlay color\nmute_overlay_mode : Muted/unsoloed track/item overlay mode\ninactive_take_overlay_col : Inactive take/lane overlay color\ninactive_take_overlay_mode : Inactive take/lane overlay mode\nlocked_overlay_col : Locked track/item overlay color\nlocked_overlay_mode : Locked track/item overlay mode\nmarquee_fill : Marquee fill\nmarquee_drawmode : Marquee fill mode\nmarquee_outline : Marquee outline\nmarqueezoom_fill : Marquee zoom fill\nmarqueezoom_drawmode : Marquee zoom fill mode\nmarqueezoom_outline : Marquee zoom outline\nareasel_fill : Razor edit area fill\nareasel_drawmode : Razor edit area fill mode\nareasel_outline : Razor edit area outline\nareasel_outlinemode : Razor edit area outline mode\nlinkedlane_fill : Fixed lane comp area fill\nlinkedlane_fillmode : Fixed lane comp area fill mode\nlinkedlane_outline : Fixed lane comp area outline\nlinkedlane_outlinemode : Fixed lane comp area outline mode\nlinkedlane_unsynced : Fixed lane comp lane unsynced media item\nlinkedlane_unsynced_mode : Fixed lane comp lane unsynced media item mode\ncol_cursor : Edit cursor\ncol_cursor2 : Edit cursor (alternate)\nplaycursor_color : Play cursor\nplaycursor_drawmode : Play cursor mode\ncol_gridlines2 : Grid lines (start of measure)\ncol_gridlines2dm : Grid lines (start of measure) - draw mode\ncol_gridlines3 : Grid lines (start of beats)\ncol_gridlines3dm : Grid lines (start of beats) - draw mode\ncol_gridlines : Grid lines (in between beats)\ncol_gridlines1dm : Grid lines (in between beats) - draw mode\nguideline_color : Editing guide line\nguideline_drawmode : Editing guide mode\nmouseitem_color : Mouse position indicator\nmouseitem_mode : Mouse position indicator mode\nregion : Regions\nregion_lane_bg : Region lane background\nregion_lane_text : Region text\nregion_edge : Region edge\nregion_edge_sel : Region text and edge (selected)\nmarker : Markers\nmarker_lane_bg : Marker lane background\nmarker_lane_text : Marker text\nmarker_edge : Marker edge\nmarker_edge_sel : Marker text and edge (selected)\ncol_tsigmark : Time signature change marker\nts_lane_bg : Time signature lane background\nts_lane_text : Time signature lane text\ntimesig_sel_bg : Time signature marker selected background\ncol_routinghl1 : Routing matrix row highlight\ncol_routinghl2 : Routing matrix column highlight\ncol_routingact : Routing matrix input activity highlight\ncol_vudoint : Theme has interlaced VU meters\n-- bool 00000000\ncol_vuclip : VU meter clip indicator\ncol_vutop : VU meter top\ncol_vumid : VU meter middle\ncol_vubot : VU meter bottom\ncol_vuintcol : VU meter interlace/edge color\nvu_gr_bgcol : VU meter gain reduction background\nvu_gr_fgcol : VU meter gain reduction indicator\ncol_vumidi : VU meter midi activity\ncol_vuind1 : VU (indicator) - no signal\ncol_vuind2 : VU (indicator) - low signal\ncol_vuind3 : VU (indicator) - med signal\ncol_vuind4 : VU (indicator) - hot signal\nmcp_sends_normal : Sends text: normal\nmcp_sends_muted : Sends text: muted\nmcp_send_midihw : Sends text: MIDI hardware\nmcp_sends_levels : Sends level\nmcp_fx_normal : FX insert text: normal\nmcp_fx_bypassed : FX insert text: bypassed\nmcp_fx_offlined : FX insert text: offline\nmcp_fxparm_normal : FX parameter text: normal\nmcp_fxparm_bypassed : FX parameter text: bypassed\nmcp_fxparm_offlined : FX parameter text: offline\ntcp_list_scrollbar : List scrollbar (track panel)\ntcp_list_scrollbar_mode : List scrollbar (track panel) - draw mode\ntcp_list_scrollbar_mouseover : List scrollbar mouseover (track panel)\ntcp_list_scrollbar_mouseover_mode : List scrollbar mouseover (track panel) - draw mode\nmcp_list_scrollbar : List scrollbar (mixer panel)\nmcp_list_scrollbar_mode : List scrollbar (mixer panel) - draw mode\nmcp_list_scrollbar_mouseover : List scrollbar mouseover (mixer panel)\nmcp_list_scrollbar_mouseover_mode : List scrollbar mouseover (mixer panel) - draw mode\nmidi_rulerbg : MIDI editor ruler background\nmidi_rulerfg : MIDI editor ruler text\nmidi_grid2 : MIDI editor grid line (start of measure)\nmidi_griddm2 : MIDI editor grid line (start of measure) - draw mode\nmidi_grid3 : MIDI editor grid line (start of beats)\nmidi_griddm3 : MIDI editor grid line (start of beats) - draw mode\nmidi_grid1 : MIDI editor grid line (between beats)\nmidi_griddm1 : MIDI editor grid line (between beats) - draw mode\nmidi_trackbg1 : MIDI editor background color (naturals)\nmidi_trackbg2 : MIDI editor background color (sharps/flats)\nmidi_trackbg_outer1 : MIDI editor background color, out of bounds (naturals)\nmidi_trackbg_outer2 : MIDI editor background color, out of bounds (sharps/flats)\nmidi_selpitch1 : MIDI editor background color, selected pitch (naturals)\nmidi_selpitch2 : MIDI editor background color, selected pitch (sharps/flats)\nmidi_selbg : MIDI editor time selection color\nmidi_selbg_drawmode : MIDI editor time selection fill mode\nmidi_gridhc : MIDI editor CC horizontal center line\nmidi_gridhcdm : MIDI editor CC horizontal center line - draw mode\nmidi_gridh : MIDI editor CC horizontal line\nmidi_gridhdm : MIDI editor CC horizontal line - draw mode\nmidi_ccbut : MIDI editor CC lane add/remove buttons\nmidi_ccbut_text : MIDI editor CC lane button text\nmidi_ccbut_arrow : MIDI editor CC lane button arrow\nmidioct : MIDI editor octave line color\nmidi_inline_trackbg1 : MIDI inline background color (naturals)\nmidi_inline_trackbg2 : MIDI inline background color (sharps/flats)\nmidioct_inline : MIDI inline octave line color\nmidi_endpt : MIDI editor end marker\nmidi_notebg : MIDI editor note, unselected (midi_note_colormap overrides)\nmidi_notefg : MIDI editor note, selected (midi_note_colormap overrides)\nmidi_notemute : MIDI editor note, muted, unselected (midi_note_colormap overrides)\nmidi_notemute_sel : MIDI editor note, muted, selected (midi_note_colormap overrides)\nmidi_itemctl : MIDI editor note controls\nmidi_ofsn : MIDI editor note (offscreen)\nmidi_ofsnsel : MIDI editor note (offscreen, selected)\nmidi_editcurs : MIDI editor cursor\nmidi_pkey1 : MIDI piano key color (naturals background, sharps/flats text)\nmidi_pkey2 : MIDI piano key color (sharps/flats background, naturals text)\nmidi_pkey3 : MIDI piano key color (selected)\nmidi_noteon_flash : MIDI piano key note-on flash\nmidi_leftbg : MIDI piano pane background\nmidifont_col_light_unsel : MIDI editor note text and control color, unselected (light)\nmidifont_col_dark_unsel : MIDI editor note text and control color, unselected (dark)\nmidifont_mode_unsel : MIDI editor note text and control mode, unselected\nmidifont_col_light : MIDI editor note text and control color (light)\nmidifont_col_dark : MIDI editor note text and control color (dark)\nmidifont_mode : MIDI editor note text and control mode\nscore_bg : MIDI notation editor background\nscore_fg : MIDI notation editor staff/notation/text\nscore_sel : MIDI notation editor selected staff/notation/text\nscore_timesel : MIDI notation editor time selection\nscore_loop : MIDI notation editor loop points, selected pitch\nmidieditorlist_bg : MIDI list editor background\nmidieditorlist_fg : MIDI list editor text\nmidieditorlist_grid : MIDI list editor grid lines\nmidieditorlist_selbg : MIDI list editor selected row\nmidieditorlist_selfg : MIDI list editor selected text\nmidieditorlist_seliabg : MIDI list editor selected row (inactive)\nmidieditorlist_seliafg : MIDI list editor selected text (inactive)\nmidieditorlist_bg2 : MIDI list editor background (secondary)\nmidieditorlist_fg2 : MIDI list editor text (secondary)\nmidieditorlist_selbg2 : MIDI list editor selected row (secondary)\nmidieditorlist_selfg2 : MIDI list editor selected text (secondary)\ncol_explorer_sel : Media explorer selection\ncol_explorer_seldm : Media explorer selection mode\ncol_explorer_seledge : Media explorer selection edge\nexplorer_grid : Media explorer grid, markers\nexplorer_pitchtext : Media explorer pitch detection text\ndocker_shadow : Tab control shadow\ndocker_selface : Tab control selected tab\ndocker_unselface : Tab control unselected tab\ndocker_text : Tab control text\ndocker_text_sel : Tab control text selected tab\ndocker_bg : Tab control background\nwindowtab_bg : Tab control background in windows\nauto_item_unsel : Envelope: Unselected automation item\ncol_env1 : Envelope: Volume (pre-FX)\ncol_env2 : Envelope: Volume\nenv_trim_vol : Envelope: Trim Volume\ncol_env3 : Envelope: Pan (pre-FX)\ncol_env4 : Envelope: Pan\nenv_track_mute : Envelope: Mute\ncol_env5 : Envelope: Master playrate\ncol_env6 : Envelope: Master tempo\ncol_env7 : Envelope: Width / Send volume\ncol_env8 : Envelope: Send pan\ncol_env9 : Envelope: Send volume 2\ncol_env10 : Envelope: Send pan 2\nenv_sends_mute : Envelope: Send mute\ncol_env11 : Envelope: Audio hardware output volume\ncol_env12 : Envelope: Audio hardware output pan\ncol_env13 : Envelope: FX parameter 1\ncol_env14 : Envelope: FX parameter 2\ncol_env15 : Envelope: FX parameter 3\ncol_env16 : Envelope: FX parameter 4\nenv_item_vol : Envelope: Item take volume\nenv_item_pan : Envelope: Item take pan\nenv_item_mute : Envelope: Item take mute\nenv_item_pitch : Envelope: Item take pitch\nwiring_grid2 : Wiring: Background\nwiring_grid : Wiring: Background grid lines\nwiring_border : Wiring: Box border\nwiring_tbg : Wiring: Box background\nwiring_ticon : Wiring: Box foreground\nwiring_recbg : Wiring: Record section background\nwiring_recitem : Wiring: Record section foreground\nwiring_media : Wiring: Media\nwiring_recv : Wiring: Receives\nwiring_send : Wiring: Sends\nwiring_fader : Wiring: Fader\nwiring_parent : Wiring: Master/Parent\nwiring_parentwire_border : Wiring: Master/Parent wire border\nwiring_parentwire_master : Wiring: Master/Parent to master wire\nwiring_parentwire_folder : Wiring: Master/Parent to parent folder wire\nwiring_pin_normal : Wiring: Pins normal\nwiring_pin_connected : Wiring: Pins connected\nwiring_pin_disconnected : Wiring: Pins disconnected\nwiring_horz_col : Wiring: Horizontal pin connections\nwiring_sendwire : Wiring: Send hanging wire\nwiring_hwoutwire : Wiring: Hardware output wire\nwiring_recinputwire : Wiring: Record input wire\nwiring_hwout : Wiring: System hardware outputs\nwiring_recinput : Wiring: System record inputs\nwiring_activity : Wiring: Activity lights\nautogroup : Automatic track group\ngroup_0 : Group #1\ngroup_1 : Group #2\ngroup_2 : Group #3\ngroup_3 : Group #4\ngroup_4 : Group #5\ngroup_5 : Group #6\ngroup_6 : Group #7\ngroup_7 : Group #8\ngroup_8 : Group #9\ngroup_9 : Group #10\ngroup_10 : Group #11\ngroup_11 : Group #12\ngroup_12 : Group #13\ngroup_13 : Group #14\ngroup_14 : Group #15\ngroup_15 : Group #16\ngroup_16 : Group #17\ngroup_17 : Group #18\ngroup_18 : Group #19\ngroup_19 : Group #20\ngroup_20 : Group #21\ngroup_21 : Group #22\ngroup_22 : Group #23\ngroup_23 : Group #24\ngroup_24 : Group #25\ngroup_25 : Group #26\ngroup_26 : Group #27\ngroup_27 : Group #28\ngroup_28 : Group #29\ngroup_29 : Group #30\ngroup_30 : Group #31\ngroup_31 : Group #32\ngroup_32 : Group #33\ngroup_33 : Group #34\ngroup_34 : Group #35\ngroup_35 : Group #36\ngroup_36 : Group #37\ngroup_37 : Group #38\ngroup_38 : Group #39\ngroup_39 : Group #40\ngroup_40 : Group #41\ngroup_41 : Group #42\ngroup_42 : Group #43\ngroup_43 : Group #44\ngroup_44 : Group #45\ngroup_45 : Group #46\ngroup_46 : Group #47\ngroup_47 : Group #48\ngroup_48 : Group #49\ngroup_49 : Group #50\ngroup_50 : Group #51\ngroup_51 : Group #52\ngroup_52 : Group #53\ngroup_53 : Group #54\ngroup_54 : Group #55\ngroup_55 : Group #56\ngroup_56 : Group #57\ngroup_57 : Group #58\ngroup_58 : Group #59\ngroup_59 : Group #60\ngroup_60 : Group #61\ngroup_61 : Group #62\ngroup_62 : Group #63\ngroup_63 : Group #64"
+		"description": "Temporarily updates the theme color to the color specified (or the theme default color if -1 is specified). Returns -1 on failure, otherwise returns the color (or transformed-color). Note that the UI is not updated by this, the caller should call UpdateArrange() etc as necessary. If the low bit of flags is set, any color transformations are bypassed. To read a value see GetThemeColor.\nCurrently valid ini_keys:\ncol_main_bg2 : Main window/transport background\ncol_main_text2 : Main window/transport text\ncol_main_textshadow : Main window text shadow (ignored if too close to text color)\ncol_main_3dhl : Main window 3D highlight\ncol_main_3dsh : Main window 3D shadow\ncol_main_resize2 : Main window pane resize mouseover\ncol_main_text : Themed window text\ncol_main_bg : Themed window background\ncol_main_editbk : Themed window edit background\ncol_nodarkmodemiscwnd : Do not use window theming on macOS dark mode\n-- bool 00000000\ncol_transport_editbk : Transport edit background\ncol_toolbar_text : Toolbar button text\ncol_toolbar_text_on : Toolbar button enabled text\ncol_toolbar_frame : Toolbar frame when floating or docked\ntoolbararmed_color : Toolbar button armed color\ntoolbararmed_drawmode : Toolbar button armed fill mode\nio_text : I/O window text\nio_3dhl : I/O window 3D highlight\nio_3dsh : I/O window 3D shadow\ngenlist_bg : Window list background\ngenlist_fg : Window list text\ngenlist_grid : Window list grid lines\ngenlist_selbg : Window list selected row\ngenlist_selfg : Window list selected text\ngenlist_seliabg : Window list selected row (inactive)\ngenlist_seliafg : Window list selected text (inactive)\ngenlist_hilite : Window list highlighted text\ngenlist_hilite_sel : Window list highlighted selected text\ncol_buttonbg : Button background\ncol_tcp_text : Track panel text\ncol_tcp_textsel : Track panel (selected) text\ncol_seltrack : Selected track control panel background\ncol_seltrack2 : Unselected track control panel background (enabled with a checkbox above)\ntcplocked_color : Locked track control panel overlay color\ntcplocked_drawmode : Locked track control panel fill mode\ncol_tracklistbg : Empty track list area\ncol_mixerbg : Empty mixer list area\ncol_arrangebg : Empty arrange view area\narrange_vgrid : Empty arrange view area vertical grid shading\ntcp_pinned_track_gap : Track panel color between pinned and unpinned tracks\ntcp_pinned_track_gap_unreachable : Track panel color between pinned and unpinned tracks when some tracks are unreachable\ntcp_pinned_track_gap_mode : Track panel fill mode between pinned and unpinned tracks\npinned_track_gap : Arrange view color between pinned and unpinned tracks\npinned_track_gap_mode : Arrange view fill mode between pinned and unpinned tracks\ncol_fadearm : Fader background when automation recording\ncol_fadearm2 : Fader background when automation playing\ncol_fadearm3 : Fader background when in inactive touch/latch\ncol_tl_fg : Timeline foreground\ncol_tl_fg2 : Timeline foreground (secondary markings)\ncol_tl_bg : Timeline background\ncol_tl_bgsel : Time selection color\ntimesel_drawmode : Time selection fill mode\ncol_tl_bgsel2 : Timeline background (in loop points)\ncol_trans_bg : Transport status background\ncol_trans_fg : Transport status text\nplayrate_edited : Project play rate control when not 1.0\nselitem_dot : Media item selection indicator\ncol_mi_label : Media item label\ncol_mi_label_sel : Media item label (selected)\ncol_mi_label_float : Floating media item label\ncol_mi_label_float_sel : Floating media item label (selected)\ncol_mi_bg2 : Media item background (odd tracks)\ncol_mi_bg : Media item background (even tracks)\ncol_tr1_itembgsel : Media item background selected (odd tracks)\ncol_tr2_itembgsel : Media item background selected (even tracks)\nitembg_drawmode : Media item background fill mode\ncol_tr1_peaks : Media item peaks (odd tracks)\ncol_tr2_peaks : Media item peaks (even tracks)\ncol_tr1_ps2 : Media item peaks when selected (odd tracks)\ncol_tr2_ps2 : Media item peaks when selected (even tracks)\ncol_peaksedge : Media item peaks edge highlight (odd tracks)\ncol_peaksedge2 : Media item peaks edge highlight (even tracks)\ncol_peaksedgesel : Media item peaks edge highlight when selected (odd tracks)\ncol_peaksedgesel2 : Media item peaks edge highlight when selected (even tracks)\ncc_chase_drawmode : Media item MIDI CC peaks fill mode\ncol_peaksfade : Media item peaks when active in crossfade editor (fade-out)\ncol_peaksfade2 : Media item peaks when active in crossfade editor (fade-in)\ncol_mi_fades : Media item fade/volume controls\nfadezone_color : Media item fade quiet zone fill color\nfadezone_drawmode : Media item fade quiet zone fill mode\nfadearea_color : Media item fade full area fill color\nfadearea_drawmode : Media item fade full area fill mode\ncol_mi_fade2 : Media item edges of controls\ncol_mi_fade2_drawmode : Media item edges of controls blend mode\nitem_grouphl : Media item edge when selected via grouping\ncol_offlinetext : Media item 'offline' text\ncol_stretchmarker : Media item stretch marker line\ncol_stretchmarker_h0 : Media item stretch marker handle (1x)\ncol_stretchmarker_h1 : Media item stretch marker handle (>1x)\ncol_stretchmarker_h2 : Media item stretch marker handle (-- current RGB: 189,19,19\ncol_stretchmarker_b : Media item stretch marker handle edge\ncol_stretchmarkerm : Media item stretch marker blend mode\ncol_stretchmarker_text : Media item stretch marker text\ncol_stretchmarker_tm : Media item transient guide handle\ntake_marker : Media item take marker\ntake_marker_sel : Media item take marker when item selected\nselitem_tag : Selected media item bar color\nactivetake_tag : Active media item take bar color\ncol_tr1_bg : Track background (odd tracks)\ncol_tr2_bg : Track background (even tracks)\nselcol_tr1_bg : Selected track background (odd tracks)\nselcol_tr2_bg : Selected track background (even tracks)\ntrack_lane_tabcol : Track fixed lane button\ntrack_lanesolo_tabcol : Track fixed lane button when only this lane plays\ntrack_lanesolo_text : Track fixed lane button text\ntrack_lane_gutter : Track fixed lane add area\ntrack_lane_gutter_drawmode : Track fixed lane add fill mode\ncol_tr1_divline : Track divider line (odd tracks)\ncol_tr2_divline : Track divider line (even tracks)\ncol_envlane1_divline : Envelope lane divider line (odd tracks)\ncol_envlane2_divline : Envelope lane divider line (even tracks)\nmute_overlay_col : Muted/unsoloed track/item overlay color\nmute_overlay_mode : Muted/unsoloed track/item overlay mode\ninactive_take_overlay_col : Inactive take/lane overlay color\ninactive_take_overlay_mode : Inactive take/lane overlay mode\nlocked_overlay_col : Locked track/item overlay color\nlocked_overlay_mode : Locked track/item overlay mode\nmarquee_fill : Marquee fill\nmarquee_drawmode : Marquee fill mode\nmarquee_outline : Marquee outline\nmarqueezoom_fill : Marquee zoom fill\nmarqueezoom_drawmode : Marquee zoom fill mode\nmarqueezoom_outline : Marquee zoom outline\nareasel_fill : Razor edit area fill\nareasel_drawmode : Razor edit area fill mode\nareasel_outline : Razor edit area outline\nareasel_outlinemode : Razor edit area outline mode\nlinkedlane_fill : Fixed lane comp area fill\nlinkedlane_fillmode : Fixed lane comp area fill mode\nlinkedlane_outline : Fixed lane comp area outline\nlinkedlane_outlinemode : Fixed lane comp area outline mode\nlinkedlane_unsynced : Fixed lane comp lane unsynced media item\nlinkedlane_unsynced_mode : Fixed lane comp lane unsynced media item mode\ncol_cursor : Edit cursor\ncol_cursor2 : Edit cursor (alternate)\nplaycursor_color : Play cursor\nplaycursor_drawmode : Play cursor mode\ncol_gridlines2 : Grid lines (start of measure)\ncol_gridlines2dm : Grid lines (start of measure) - draw mode\ncol_gridlines3 : Grid lines (start of beats)\ncol_gridlines3dm : Grid lines (start of beats) - draw mode\ncol_gridlines : Grid lines (in between beats)\ncol_gridlines1dm : Grid lines (in between beats) - draw mode\nguideline_color : Editing guide line\nguideline_drawmode : Editing guide mode\nmouseitem_color : Mouse position indicator\nmouseitem_mode : Mouse position indicator mode\nregion : Regions\nregion_lane_bg : Region lane background\nregion_lane_text : Region text\nregion_edge : Region edge\nregion_edge_sel : Region text and edge (selected)\nmarker : Markers\nmarker_lane_bg : Marker lane background\nmarker_lane_text : Marker text\nmarker_edge : Marker edge\nmarker_edge_sel : Marker text and edge (selected)\ncol_tsigmark : Time signature change marker\nts_lane_bg : Time signature lane background\nts_lane_text : Time signature lane text\ntimesig_sel_bg : Time signature marker selected background\ncol_routinghl1 : Routing matrix row highlight\ncol_routinghl2 : Routing matrix column highlight\ncol_routingact : Routing matrix input activity highlight\ncol_vudoint : Theme has interlaced VU meters\n-- bool 00000000\ncol_vuclip : VU meter clip indicator\ncol_vudbscale : VU meters dB scales (not record armed)\n-- bool 00000001\ncol_vudbscale2 : VU meters dB scales (record armed)\n-- bool 00000001\ncol_vutop : VU meter top\ncol_vumid : VU meter middle\ncol_vubot : VU meter bottom\ncol_vuintcol : VU meter interlace/edge color\nvu_gr_bgcol : VU meter gain reduction background\nvu_gr_fgcol : VU meter gain reduction indicator\ncol_vumidi : VU meter midi activity\ncol_vuind1 : VU (indicator) - no signal\ncol_vuind2 : VU (indicator) - low signal\ncol_vuind3 : VU (indicator) - med signal\ncol_vuind4 : VU (indicator) - hot signal\nmcp_sends_normal : Sends text: normal\nmcp_sends_muted : Sends text: muted\nmcp_send_midihw : Sends text: MIDI hardware\nmcp_sends_levels : Sends level\nmcp_fx_normal : FX insert text: normal\nmcp_fx_bypassed : FX insert text: bypassed\nmcp_fx_offlined : FX insert text: offline\nmcp_fxparm_normal : FX parameter text: normal\nmcp_fxparm_bypassed : FX parameter text: bypassed\nmcp_fxparm_offlined : FX parameter text: offline\ntcp_list_scrollbar : List scrollbar (track panel)\ntcp_list_scrollbar_mode : List scrollbar (track panel) - draw mode\ntcp_list_scrollbar_mouseover : List scrollbar mouseover (track panel)\ntcp_list_scrollbar_mouseover_mode : List scrollbar mouseover (track panel) - draw mode\nmcp_list_scrollbar : List scrollbar (mixer panel)\nmcp_list_scrollbar_mode : List scrollbar (mixer panel) - draw mode\nmcp_list_scrollbar_mouseover : List scrollbar mouseover (mixer panel)\nmcp_list_scrollbar_mouseover_mode : List scrollbar mouseover (mixer panel) - draw mode\nmidi_rulerbg : MIDI editor ruler background\nmidi_rulerfg : MIDI editor ruler text\nmidi_grid2 : MIDI editor grid line (start of measure)\nmidi_griddm2 : MIDI editor grid line (start of measure) - draw mode\nmidi_grid3 : MIDI editor grid line (start of beats)\nmidi_griddm3 : MIDI editor grid line (start of beats) - draw mode\nmidi_grid1 : MIDI editor grid line (between beats)\nmidi_griddm1 : MIDI editor grid line (between beats) - draw mode\nmidi_trackbg1 : MIDI editor background color (naturals)\nmidi_trackbg2 : MIDI editor background color (sharps/flats)\nmidi_trackbg_outer1 : MIDI editor background color, out of bounds (naturals)\nmidi_trackbg_outer2 : MIDI editor background color, out of bounds (sharps/flats)\nmidi_selpitch1 : MIDI editor background color, selected pitch (naturals)\nmidi_selpitch2 : MIDI editor background color, selected pitch (sharps/flats)\nmidi_selbg : MIDI editor time selection color\nmidi_selbg_drawmode : MIDI editor time selection fill mode\nmidi_gridhc : MIDI editor CC horizontal center line\nmidi_gridhcdm : MIDI editor CC horizontal center line - draw mode\nmidi_gridh : MIDI editor CC horizontal line\nmidi_gridhdm : MIDI editor CC horizontal line - draw mode\nmidi_ccbut : MIDI editor CC lane add/remove buttons\nmidi_ccbut_text : MIDI editor CC lane button text\nmidi_ccbut_arrow : MIDI editor CC lane button arrow\nmidioct : MIDI editor octave line color\nmidi_inline_trackbg1 : MIDI inline background color (naturals)\nmidi_inline_trackbg2 : MIDI inline background color (sharps/flats)\nmidioct_inline : MIDI inline octave line color\nmidi_endpt : MIDI editor end marker\nmidi_notebg : MIDI editor note, unselected (midi_note_colormap overrides)\nmidi_notefg : MIDI editor note, selected (midi_note_colormap overrides)\nmidi_notemute : MIDI editor note, muted, unselected (midi_note_colormap overrides)\nmidi_notemute_sel : MIDI editor note, muted, selected (midi_note_colormap overrides)\nmidi_itemctl : MIDI editor note controls\nmidi_ofsn : MIDI editor note (offscreen)\nmidi_ofsnsel : MIDI editor note (offscreen, selected)\nmidi_editcurs : MIDI editor cursor\nmidi_pkey1 : MIDI piano key color (naturals background, sharps/flats text)\nmidi_pkey2 : MIDI piano key color (sharps/flats background, naturals text)\nmidi_pkey3 : MIDI piano key color (selected)\nmidi_noteon_flash : MIDI piano key note-on flash\nmidi_leftbg : MIDI piano pane background\nmidifont_col_light_unsel : MIDI editor note text and control color, unselected (light)\nmidifont_col_dark_unsel : MIDI editor note text and control color, unselected (dark)\nmidifont_mode_unsel : MIDI editor note text and control mode, unselected\nmidifont_col_light : MIDI editor note text and control color (light)\nmidifont_col_dark : MIDI editor note text and control color (dark)\nmidifont_mode : MIDI editor note text and control mode\nscore_bg : MIDI notation editor background\nscore_fg : MIDI notation editor staff/notation/text\nscore_sel : MIDI notation editor selected staff/notation/text\nscore_timesel : MIDI notation editor time selection\nscore_loop : MIDI notation editor loop points, selected pitch\nmidieditorlist_bg : MIDI list editor background\nmidieditorlist_fg : MIDI list editor text\nmidieditorlist_grid : MIDI list editor grid lines\nmidieditorlist_selbg : MIDI list editor selected row\nmidieditorlist_selfg : MIDI list editor selected text\nmidieditorlist_seliabg : MIDI list editor selected row (inactive)\nmidieditorlist_seliafg : MIDI list editor selected text (inactive)\nmidieditorlist_bg2 : MIDI list editor background (secondary)\nmidieditorlist_fg2 : MIDI list editor text (secondary)\nmidieditorlist_selbg2 : MIDI list editor selected row (secondary)\nmidieditorlist_selfg2 : MIDI list editor selected text (secondary)\ncol_explorer_sel : Media explorer selection\ncol_explorer_seldm : Media explorer selection mode\ncol_explorer_seledge : Media explorer selection edge\nexplorer_grid : Media explorer grid, markers\nexplorer_pitchtext : Media explorer pitch detection text\ndocker_shadow : Tab control shadow\ndocker_selface : Tab control selected tab\ndocker_unselface : Tab control unselected tab\ndocker_text : Tab control text\ndocker_text_sel : Tab control text selected tab\ndocker_bg : Tab control background\nwindowtab_bg : Tab control background in windows\nauto_item_unsel : Envelope: Unselected automation item\ncol_env1 : Envelope: Volume (pre-FX)\ncol_env2 : Envelope: Volume\nenv_trim_vol : Envelope: Trim Volume\ncol_env3 : Envelope: Pan (pre-FX)\ncol_env4 : Envelope: Pan\nenv_track_mute : Envelope: Mute\ncol_env5 : Envelope: Master playrate\ncol_env6 : Envelope: Master tempo\ncol_env7 : Envelope: Width / Send volume\ncol_env8 : Envelope: Send pan\ncol_env9 : Envelope: Send volume 2\ncol_env10 : Envelope: Send pan 2\nenv_sends_mute : Envelope: Send mute\ncol_env11 : Envelope: Audio hardware output volume\ncol_env12 : Envelope: Audio hardware output pan\ncol_env13 : Envelope: FX parameter 1\ncol_env14 : Envelope: FX parameter 2\ncol_env15 : Envelope: FX parameter 3\ncol_env16 : Envelope: FX parameter 4\nenv_item_vol : Envelope: Item take volume\nenv_item_pan : Envelope: Item take pan\nenv_item_mute : Envelope: Item take mute\nenv_item_pitch : Envelope: Item take pitch\nwiring_grid2 : Wiring: Background\nwiring_grid : Wiring: Background grid lines\nwiring_border : Wiring: Box border\nwiring_tbg : Wiring: Box background\nwiring_ticon : Wiring: Box foreground\nwiring_recbg : Wiring: Record section background\nwiring_recitem : Wiring: Record section foreground\nwiring_media : Wiring: Media\nwiring_recv : Wiring: Receives\nwiring_send : Wiring: Sends\nwiring_fader : Wiring: Fader\nwiring_parent : Wiring: Master/Parent\nwiring_parentwire_border : Wiring: Master/Parent wire border\nwiring_parentwire_master : Wiring: Master/Parent to master wire\nwiring_parentwire_folder : Wiring: Master/Parent to parent folder wire\nwiring_pin_normal : Wiring: Pins normal\nwiring_pin_connected : Wiring: Pins connected\nwiring_pin_disconnected : Wiring: Pins disconnected\nwiring_horz_col : Wiring: Horizontal pin connections\nwiring_sendwire : Wiring: Send hanging wire\nwiring_hwoutwire : Wiring: Hardware output wire\nwiring_recinputwire : Wiring: Record input wire\nwiring_hwout : Wiring: System hardware outputs\nwiring_recinput : Wiring: System record inputs\nwiring_activity : Wiring: Activity lights\nautogroup : Automatic track group\ngroup_0 : Group #1\ngroup_1 : Group #2\ngroup_2 : Group #3\ngroup_3 : Group #4\ngroup_4 : Group #5\ngroup_5 : Group #6\ngroup_6 : Group #7\ngroup_7 : Group #8\ngroup_8 : Group #9\ngroup_9 : Group #10\ngroup_10 : Group #11\ngroup_11 : Group #12\ngroup_12 : Group #13\ngroup_13 : Group #14\ngroup_14 : Group #15\ngroup_15 : Group #16\ngroup_16 : Group #17\ngroup_17 : Group #18\ngroup_18 : Group #19\ngroup_19 : Group #20\ngroup_20 : Group #21\ngroup_21 : Group #22\ngroup_22 : Group #23\ngroup_23 : Group #24\ngroup_24 : Group #25\ngroup_25 : Group #26\ngroup_26 : Group #27\ngroup_27 : Group #28\ngroup_28 : Group #29\ngroup_29 : Group #30\ngroup_30 : Group #31\ngroup_31 : Group #32\ngroup_32 : Group #33\ngroup_33 : Group #34\ngroup_34 : Group #35\ngroup_35 : Group #36\ngroup_36 : Group #37\ngroup_37 : Group #38\ngroup_38 : Group #39\ngroup_39 : Group #40\ngroup_40 : Group #41\ngroup_41 : Group #42\ngroup_42 : Group #43\ngroup_43 : Group #44\ngroup_44 : Group #45\ngroup_45 : Group #46\ngroup_46 : Group #47\ngroup_47 : Group #48\ngroup_48 : Group #49\ngroup_49 : Group #50\ngroup_50 : Group #51\ngroup_51 : Group #52\ngroup_52 : Group #53\ngroup_53 : Group #54\ngroup_54 : Group #55\ngroup_55 : Group #56\ngroup_56 : Group #57\ngroup_57 : Group #58\ngroup_58 : Group #59\ngroup_59 : Group #60\ngroup_60 : Group #61\ngroup_61 : Group #62\ngroup_62 : Group #63\ngroup_63 : Group #64"
 	},
 	"SetToggleCommandState lua": {
 		"prefix": "r.SetToggleCommandState",
@@ -13365,7 +12855,7 @@
 		"prefix": "r.Xen_StopSourcePreview",
 		"scope": "lua",
 		"body": "r.Xen_StopSourcePreview(${1:preview_id})$0",
-		"description": "Stop audio preview. id -1 stops all."
+		"description": "Stop audio preview. id -1 stops all.\nReaScript/EEL2 Built-in Function List"
 	},
 	"adjustZoom lua": {
 		"prefix": "r.adjustZoom",
@@ -13523,12 +13013,6 @@
 		"body": "reaper.my_getViewport(${1:r_left}, ${2:r_top}, ${3:r_right}, ${4:r_bot}, ${5:sr_left}, ${6:sr_top}, ${7:sr_right}, ${8:sr_bot}, ${9:wantWorkArea})$0",
 		"description": "Get the current viewport and the work area"
 	},
-	"nvk_StartSourcePreview lua": {
-		"prefix": "r.nvk_StartSourcePreview",
-		"scope": "lua",
-		"body": "r.nvk_StartSourcePreview(${1:source}, ${2:gain}, ${3:playrate}, ${4:loop}, ${5:track})$0",
-		"description": "Plays source and provides int to allow for stopping it later"
-	},
 	"parse_timestr lua": {
 		"prefix": "r.parse_timestr",
 		"scope": "lua",
@@ -13576,60 +13060,6 @@
 		"scope": "lua",
 		"body": "r.resolve_fn2(${1:in}, ${2:out}, ${3:checkSubDir})$0",
 		"description": "Resolves a filename 'in' by using project settings etc. If no file found, out will be a copy of in."
-	},
-	"sm_getPort lua": {
-		"prefix": "r.sm_getPort",
-		"scope": "lua",
-		"body": "r.sm_getPort()$0",
-		"description": "Get the current http communication port from Soundminer."
-	},
-	"sm_getadvance lua": {
-		"prefix": "r.sm_getadvance",
-		"scope": "lua",
-		"body": "r.sm_getadvance()$0",
-		"description": "Return's whether the cursor position in reaper should auto advance to the end of the clip after spotting or not."
-	},
-	"sm_metadata lua": {
-		"prefix": "r.sm_metadata",
-		"scope": "lua",
-		"body": "r.sm_metadata(${1:filepath})$0",
-		"description": "Return's metadata for a record."
-	},
-	"sm_nvk_CREATE lua": {
-		"prefix": "r.sm_nvk_CREATE",
-		"scope": "lua",
-		"body": "r.sm_nvk_CREATE(${1:query}, ${2:offset}, ${3:maxlimit})$0",
-		"description": "Query Soundminer from nvk_CREATE."
-	},
-	"sm_nvk_CREATE_current lua": {
-		"prefix": "r.sm_nvk_CREATE_current",
-		"scope": "lua",
-		"body": "r.sm_nvk_CREATE_current(${1:offset}, ${2:maxlimit})$0",
-		"description": "Bring back the current sounds on display from Soundminer for nvk_CREATE."
-	},
-	"sm_resolvepath lua": {
-		"prefix": "r.sm_resolvepath",
-		"scope": "lua",
-		"body": "r.sm_resolvepath(${1:path})$0",
-		"description": "Return's a real filepath for a file, resolving it as necesary. Return's nil if offline."
-	},
-	"sm_setadvance lua": {
-		"prefix": "r.sm_setadvance",
-		"scope": "lua",
-		"body": "r.sm_setadvance(${1:flag})$0",
-		"description": "Set's whether the cursor position in reaper should auto advance to the end of the clip after spotting or not."
-	},
-	"sm_setformat lua": {
-		"prefix": "r.sm_setformat",
-		"scope": "lua",
-		"body": "r.sm_setformat(${1:format})$0",
-		"description": "Set the format of data received from Soundminer.  Defaults to json."
-	},
-	"sm_version lua": {
-		"prefix": "r.sm_version",
-		"scope": "lua",
-		"body": "r.sm_version()$0",
-		"description": "Return's Soundminer app version and extension version. App version will be blank on connection error. (Not launched or http interface not running).\nReaScript/EEL2 Built-in Function List"
 	},
 	"stringToGuid lua": {
 		"prefix": "r.stringToGuid",
