@@ -25,6 +25,7 @@ reaper = {}
 ---@class (exact) ReaProject : userdata
 ---@class (exact) MediaItem : userdata
 ---@class (exact) MediaTrack : userdata
+---@class (exact) ProjectMarker : userdata
 ---@class (exact) unsupported: boolean?
 
 ]]
