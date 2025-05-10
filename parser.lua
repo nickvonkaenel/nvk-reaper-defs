@@ -1,3 +1,4 @@
+local r = reaper
 local header = [[---@diagnostic disable: keyword
 ---@meta
 
@@ -1421,6 +1422,20 @@ local snippets_overrides = {
 	},
 }
 ]]
+
+local alias_strings = {
+	"Info_Value",
+	"ItemInfo",
+	"Info_String",
+	"ProjectInfo",
+}
+
+local alias_field_names = {
+	parmname = true,
+	desc = true,
+}
+
+local additional_p_ext_vals
 --------------------------------------------------------------------------------
 -- Generate the annotated Lua stub for a given parsed function.
 local function generate_stub(func)
@@ -1438,7 +1453,32 @@ local function generate_stub(func)
 	}
 	local lines = {}
 	local description = {}
+	local alias
 	if func.description and #func.description > 0 then
+		local create_alias = false
+		for _, alias_string in ipairs(alias_strings) do
+			if short_name:find(alias_string) then
+				create_alias = true
+				break
+			end
+		end
+		if create_alias then
+			alias = short_name .. "_Field"
+			table.insert(lines, "---@alias " .. alias)
+			for line in func.description:gmatch("[^\n]+") do
+				local parmname, desc = line:match("^(%S+) : (.*)$")
+				if parmname and desc then
+					table.insert(lines, string.format("---| \"'%s'\" %s", parmname, desc))
+				end
+			end
+			-- add user defined p_ext values
+			if additional_p_ext_vals and additional_p_ext_vals[short_name] then
+				for _, val in ipairs(additional_p_ext_vals[short_name]) do
+					table.insert(lines, string.format("---| \"'P_EXT:%s'\"", val))
+				end
+			end
+			table.insert(lines, "")
+		end
 		for line in func.description:gmatch("[^\n]+") do
 			-- remove SetThemeColor additional info
 			if not line:find("^-- current RGB") and not line:find("^-- blendmode") then
@@ -1447,10 +1487,14 @@ local function generate_stub(func)
 			end
 		end
 	end
+
 	snippet.description = table.concat(description, "\n")
 	snippet.body = snippet_name .. "("
 	local body_params = {}
 	for i, p in ipairs(func.params) do
+		if alias_field_names[p.name] and alias then
+			p.type = alias
+		end
 		local optional = optional_params[short_name] and optional_params[short_name][p.name] or p.optional
 		local p_type = p.type
 		for _, sub in ipairs(param_type_substitutions) do
@@ -1589,8 +1633,6 @@ local function defs_to_snippets(defs)
 	end
 end
 
-local r = reaper
-
 local file_path = r.GetExtState("ReaScript_API_Generator", "html_file_path")
 
 if file_path == "" or not r.file_exists(file_path) then
@@ -1616,6 +1658,34 @@ end
 
 local html_defs = read_file(file_path)
 --------------------------------------------------------------------------------
+
+local script_path = debug.getinfo(1, "S").source:match("@(.*)[\\/].*$")
+local output_path = script_path .. "/reaper_defs.lua"
+local snippets_path = script_path .. "/snippets.json"
+local imgui_path = script_path .. "/imgui_defs.lua"
+local function get_nvim_config_path()
+	local home = os.getenv("HOME")
+	local appdata = os.getenv("LOCALAPPDATA")
+	local path_separator = package.config:sub(1, 1) -- Gets the OS path separator (\ for Windows, / for Unix)
+
+	if home and path_separator == "/" then
+		-- Unix-like systems (macOS, Linux)
+		return home .. "/.config/nvim/", path_separator
+	elseif appdata then
+		-- Windows
+		return appdata .. "\\nvim\\", path_separator
+	end
+end
+
+local nvim_path, sep = get_nvim_config_path()
+
+local nvim_snippets_path = nvim_path .. "snippets" .. sep .. "lua" .. sep .. "reascript-api.json"
+local p_ext_path = nvim_path .. "reaper" .. sep .. "p_ext_vals.lua"
+
+if r.file_exists(p_ext_path) then
+	additional_p_ext_vals = loadfile(p_ext_path)()
+end
+
 -- Main: Parse the input HTML and generate stubs.
 local funcs = parse_all(html_defs)
 local output = { header }
@@ -1624,28 +1694,8 @@ for _, func in ipairs(funcs) do
 	table.insert(output, "") -- add a blank line between functions
 end
 table.insert(output, footer)
-
-local script_path = debug.getinfo(1, "S").source:match("@(.*)[\\/].*$")
-local output_path = script_path .. "/reaper_defs.lua"
-local snippets_path = script_path .. "/snippets.json"
-local imgui_path = script_path .. "/imgui_defs.lua"
-local function get_nvim_snippets_path()
-	local home = os.getenv("HOME")
-	local appdata = os.getenv("APPDATA")
-	local path_separator = package.config:sub(1, 1) -- Gets the OS path separator (\ for Windows, / for Unix)
-
-	if home and path_separator == "/" then
-		-- Unix-like systems (macOS, Linux)
-		return home .. "/.config/nvim/snippets/lua/reascript-api.json"
-	elseif appdata then
-		-- Windows
-		return appdata .. "\\nvim\\snippets\\lua\\reascript-api.json"
-	end
-end
-
-local nvim_path = get_nvim_snippets_path()
-
 defs_to_snippets(read_file(imgui_path))
+
 local snippets_str = snippets_to_json()
 
 local function write_file(path, content)
@@ -1653,15 +1703,15 @@ local function write_file(path, content)
 	if file then
 		file:write(content)
 		file:close()
-		reaper.ShowConsoleMsg("\nFile written to: " .. path)
+		r.ShowConsoleMsg("\nFile written to: " .. path)
 	else
-		reaper.ShowMessageBox("\nCould not write to file: " .. path, "Error", 0)
+		r.ShowMessageBox("\nCould not write to file: " .. path, "Error", 0)
 	end
 	return file
 end
 
 write_file(output_path, table.concat(output, "\n"))
 write_file(snippets_path, snippets_str)
-if r.file_exists(nvim_path) then
-	write_file(nvim_path, snippets_str)
+if r.file_exists(nvim_snippets_path) then
+	write_file(nvim_snippets_path, snippets_str)
 end

@@ -25,6 +25,7 @@ reaper = {}
 ---@class (exact) ReaProject : userdata
 ---@class (exact) MediaItem : userdata
 ---@class (exact) MediaTrack : userdata
+---@class (exact) ProjectMarker : userdata
 ---@class (exact) unsupported: boolean?
 
 
@@ -218,7 +219,7 @@ function reaper.CountEnvelopePointsEx(envelope, autoitem_idx) end
 ---@return integer rv
 function reaper.CountMediaItems(proj) end
 
----discouraged. see GetNumRegionsOrMarkers, GetRegionOrMarker. num_markersOut and num_regionsOut may be NULL.
+---num_markersOut and num_regionsOut may be NULL.
 ---@param proj ReaProject|nil|0
 ---@return integer rv
 ---@return integer num_markers
@@ -300,14 +301,6 @@ function reaper.CreateTrackAudioAccessor(track) end
 ---@param desttrIn MediaTrack?
 ---@return integer rv
 function reaper.CreateTrackSend(tr, desttrIn) end
-
----Run a command from the Crossfade Editor section of the actions list.
----@param command integer
-function reaper.CrossfadeEditor_OnCommand(command) end
-
----Show or hide the Crossfade Editor window
----@param show boolean
-function reaper.CrossfadeEditor_Show(show) end
 
 ---call this to force flushing of the undo states after using CSurf_On*Change()
 ---@param force boolean
@@ -733,7 +726,6 @@ function reaper.EnumPitchShiftModes(mode) end
 ---@return string str
 function reaper.EnumPitchShiftSubModes(mode, submode) end
 
----discouraged. see GetNumRegionsOrMarkers, GetRegionOrMarker
 ---@param idx integer
 ---@return integer rv
 ---@return boolean isrgn
@@ -743,7 +735,6 @@ function reaper.EnumPitchShiftSubModes(mode, submode) end
 ---@return integer markrgnindexnumber
 function reaper.EnumProjectMarkers(idx) end
 
----discouraged. see GetNumRegionsOrMarkers, GetRegionOrMarker
 ---@param proj ReaProject|nil|0
 ---@param idx integer
 ---@return integer rv
@@ -754,7 +745,6 @@ function reaper.EnumProjectMarkers(idx) end
 ---@return integer markrgnindexnumber
 function reaper.EnumProjectMarkers2(proj, idx) end
 
----discouraged. see GetNumRegionsOrMarkers, GetRegionOrMarker
 ---@param proj ReaProject|nil|0
 ---@param idx integer
 ---@return integer rv
@@ -1019,6 +1009,19 @@ function reaper.GetDisplayedMediaItemColor(item) end
 ---@return integer rv
 function reaper.GetDisplayedMediaItemColor2(item, take) end
 
+---@alias GetEnvelopeInfo_Value_Field
+---| "'I_TCPY'" int : Y offset of envelope relative to parent track (may be separate lane or overlap with track contents)
+---| "'I_TCPH'" int : visible height of envelope
+---| "'I_TCPY_USED'" int : Y offset of envelope relative to parent track, exclusive of padding
+---| "'I_TCPH_USED'" int : visible height of envelope, exclusive of padding
+---| "'P_TRACK'" MediaTrack * : parent track pointer (if any)
+---| "'P_DESTTRACK'" MediaTrack * : destination track pointer, if on a send
+---| "'P_ITEM'" MediaItem * : parent item pointer (if any)
+---| "'P_TAKE'" MediaItem_Take * : parent take pointer (if any)
+---| "'I_SEND_IDX'" int : 1-based index of send in P_TRACK, or 0 if not a send
+---| "'I_HWOUT_IDX'" int : 1-based index of hardware output in P_TRACK or 0 if not a hardware output
+---| "'I_RECV_IDX'" int : 1-based index of receive in P_DESTTRACK or 0 if not a send/receive
+
 ---Gets an envelope numerical-value attribute:
 ---I_TCPY : int : Y offset of envelope relative to parent track (may be separate lane or overlap with track contents)
 ---I_TCPH : int : visible height of envelope
@@ -1032,7 +1035,7 @@ function reaper.GetDisplayedMediaItemColor2(item, take) end
 ---I_HWOUT_IDX : int : 1-based index of hardware output in P_TRACK or 0 if not a hardware output
 ---I_RECV_IDX : int : 1-based index of receive in P_DESTTRACK or 0 if not a send/receive
 ---@param env TrackEnvelope
----@param parmname string
+---@param parmname GetEnvelopeInfo_Value_Field
 ---@return number num
 function reaper.GetEnvelopeInfo_Value(env, parmname) end
 
@@ -1251,6 +1254,41 @@ function reaper.GetMediaItem(proj, itemidx) end
 ---@return MediaTrack rv
 function reaper.GetMediaItem_Track(item) end
 
+---@alias GetMediaItemInfo_Value_Field
+---| "'B_MUTE'" bool * : muted (item solo overrides). setting this value will clear C_MUTE_SOLO.
+---| "'B_MUTE_ACTUAL'" bool * : muted (ignores solo). setting this value will not affect C_MUTE_SOLO.
+---| "'C_LANEPLAYS'" char * : on fixed lane tracks, 0=this item lane does not play, 1=this item lane plays exclusively, 2=this item lane plays and other lanes also play, -1=this item is on a non-visible, non-playing lane on a formerly fixed-lane track (read-only)
+---| "'C_MUTE_SOLO'" char * : solo override (-1=soloed, 0=no override, 1=unsoloed). note that this API does not automatically unsolo other items when soloing (nor clear the unsolos when clearing the last soloed item), it must be done by the caller via action or via this API.
+---| "'B_LOOPSRC'" bool * : loop source
+---| "'B_ALLTAKESPLAY'" bool * : all takes play
+---| "'B_UISEL'" bool * : selected in arrange view
+---| "'C_BEATATTACHMODE'" char * : item timebase, -1=track or project default, 1=beats (position, length, rate), 2=beats (position only). for auto-stretch timebase: C_BEATATTACHMODE=1, C_AUTOSTRETCH=1
+---| "'C_AUTOSTRETCH:'" char * : auto-stretch at project tempo changes, 1=enabled, requires C_BEATATTACHMODE=1
+---| "'C_LOCK'" char * : locked, &1=locked
+---| "'D_VOL'" double * : item volume,  0=-inf, 0.5=-6dB, 1=+0dB, 2=+6dB, etc
+---| "'D_POSITION'" double * : item position in seconds
+---| "'D_LENGTH'" double * : item length in seconds
+---| "'D_SNAPOFFSET'" double * : item snap offset in seconds
+---| "'D_FADEINLEN'" double * : item manual fadein length in seconds
+---| "'D_FADEOUTLEN'" double * : item manual fadeout length in seconds
+---| "'D_FADEINDIR'" double * : item fadein curvature, -1..1
+---| "'D_FADEOUTDIR'" double * : item fadeout curvature, -1..1
+---| "'D_FADEINLEN_AUTO'" double * : item auto-fadein length in seconds, -1=no auto-fadein
+---| "'D_FADEOUTLEN_AUTO'" double * : item auto-fadeout length in seconds, -1=no auto-fadeout
+---| "'C_FADEINSHAPE'" int * : fadein shape, 0..6, 0=linear
+---| "'C_FADEOUTSHAPE'" int * : fadeout shape, 0..6, 0=linear
+---| "'I_GROUPID'" int * : group ID, 0=no group
+---| "'I_LASTY'" int * : Y-position (relative to top of track) in pixels (read-only)
+---| "'I_LASTH'" int * : height in pixels (read-only)
+---| "'I_CUSTOMCOLOR'" int * : custom color, OS dependent color|0x1000000 (i.e. ColorToNative(r,g,b)|0x1000000). If you do not |0x1000000, then it will not be used, but will store the color
+---| "'I_CURTAKE'" int * : active take number
+---| "'IP_ITEMNUMBER'" int : item number on this track (read-only, returns the item number directly)
+---| "'F_FREEMODE_Y'" float * : free item positioning or fixed lane Y-position. 0=top of track, 1.0=bottom of track
+---| "'F_FREEMODE_H'" float * : free item positioning or fixed lane height. 0.5=half the track height, 1.0=full track height
+---| "'I_FIXEDLANE'" int * : fixed lane of item (fine to call with setNewValue, but returned value is read-only)
+---| "'B_FIXEDLANE_HIDDEN'" bool * : true if displaying only one fixed lane and this item is in a different lane (read-only)
+---| "'P_TRACK'" MediaTrack * : (read-only)
+
 ---Get media item numerical-value attributes.
 ---B_MUTE : bool * : muted (item solo overrides). setting this value will clear C_MUTE_SOLO.
 ---B_MUTE_ACTUAL : bool * : muted (ignores solo). setting this value will not affect C_MUTE_SOLO.
@@ -1286,7 +1324,7 @@ function reaper.GetMediaItem_Track(item) end
 ---B_FIXEDLANE_HIDDEN : bool * : true if displaying only one fixed lane and this item is in a different lane (read-only)
 ---P_TRACK : MediaTrack * : (read-only)
 ---@param item MediaItem
----@param parmname string
+---@param parmname GetMediaItemInfo_Value_Field
 ---@return number num
 function reaper.GetMediaItemInfo_Value(item, parmname) end
 
@@ -1329,6 +1367,57 @@ function reaper.GetMediaItemTake_Track(take) end
 ---@param guidGUID string
 ---@return MediaItem_Take rv
 function reaper.GetMediaItemTakeByGUID(project, guidGUID) end
+
+---@alias GetMediaItemTakeInfo_Value_Field
+---| "'D_STARTOFFS'" double * : start offset in source media, in seconds
+---| "'D_VOL'" double * : take volume, 0=-inf, 0.5=-6dB, 1=+0dB, 2=+6dB, etc, negative if take polarity is flipped
+---| "'D_PAN'" double * : take pan, -1..1
+---| "'D_PANLAW'" double * : take pan law, -1=default, 0.5=-6dB, 1.0=+0dB, etc
+---| "'D_PLAYRATE'" double * : take playback rate, 0.5=half speed, 1=normal, 2=double speed, etc
+---| "'D_PITCH'" double * : take pitch adjustment in semitones, -12=one octave down, 0=normal, +12=one octave up, etc
+---| "'B_PPITCH'" bool * : preserve pitch when changing playback rate
+---| "'I_LASTY'" int * : Y-position (relative to top of track) in pixels (read-only)
+---| "'I_LASTH'" int * : height in pixels (read-only)
+---| "'I_CHANMODE'" int * : channel mode, 0=normal, 1=reverse stereo, 2=downmix, 3=left, 4=right
+---| "'I_PITCHMODE'" int * : pitch shifter mode, -1=project default, otherwise high 2 bytes=shifter, low 2 bytes=parameter
+---| "'I_STRETCHFLAGS'" int * : stretch marker flags (&7 mask for mode override: 0=default, 1=balanced, 2/3/6=tonal, 4=transient, 5=no pre-echo)
+---| "'F_STRETCHFADESIZE'" float * : stretch marker fade size in seconds (0.0025 default)
+---| "'I_RECPASSID'" int * : record pass ID
+---| "'I_TAKEFX_NCH'" int * : number of internal audio channels for per-take FX to use (OK to call with setNewValue, but the returned value is read-only)
+---| "'I_CUSTOMCOLOR'" int * : custom color, OS dependent color|0x1000000 (i.e. ColorToNative(r,g,b)|0x1000000). If you do not |0x1000000, then it will not be used, but will store the color
+---| "'IP_SPECEDIT:CNT'" int : spectral edit count (read-only)
+---| "'IP_SPECEDIT:DELETE:x'" int : read or write this key to remove the spectral edit specified
+---| "'IP_SPECEDIT:ADD'" int : read or write this key to add a new spectral edit (returns index)
+---| "'IP_SPECEDIT:SORT'" int : read or write this key to re-sort spectral edits (be sure to do this following a position change or insert of new edit)
+---| "'I_SPECEDIT:FFT_SIZE'" int * : FFT size used by spectral edits for this take
+---| "'D_SPECEDIT:x:POSITION'" double * : position of spectral edit start (changing this requires a resort of spectral edits)
+---| "'D_SPECEDIT:x:LENGTH'" double * : length of spectral edit
+---| "'F_SPECEDIT:x:GAIN'" float * : gain of spectral edit
+---| "'F_SPECEDIT:x:FADE_IN'" float * : fade-in size 0..1
+---| "'F_SPECEDIT:x:FADE_OUT'" float * : fade-out size 0..1
+---| "'F_SPECEDIT:x:FADE_LOW'" float * : fade-lf size 0..1
+---| "'F_SPECEDIT:x:FADE_HI'" float * : fade-hf size 0..1
+---| "'I_SPECEDIT:x:CHAN'" int * : channel index, -1 for omni
+---| "'I_SPECEDIT:x:FLAGS'" int * : flags, &1=bypassed, &2=solo
+---| "'F_SPECEDIT:x:GATE_THRESH'" float * : gate threshold
+---| "'F_SPECEDIT:x:GATE_FLOOR'" float * : gate floor
+---| "'F_SPECEDIT:x:COMP_THRESH'" float * : comp threshold
+---| "'F_SPECEDIT:x:COMP_RATIO'" float * : comp ratio
+---| "'B_SPECEDIT:x:SELECTED'" bool * : selection state
+---| "'I_SPECEDIT:x:TOPFREQ_CNT'" int * : (read-only) number of top frequency-points
+---| "'I_SPECEDIT:x:TOPFREQ_ADD:pos:val'" int * : reading or writing will insert top frequency-point with position/value pair, returns index
+---| "'I_SPECEDIT:x:TOPFREQ_DEL:y'" int * : reading or writing will delete top frequency-point y. there will always be at least one point.
+---| "'F_SPECEDIT:x:TOPFREQ_POS:y'" float * : (read-only) get position of top frequency-point y
+---| "'F_SPECEDIT:x:TOPFREQ_FREQ:y'" float * : (read-only) get frequency of top frequency-point y
+---| "'I_SPECEDIT:x:BOTFREQ_CNT'" int * : number of bottom frequency-points
+---| "'I_SPECEDIT:x:BOTFREQ_ADD:pos:val'" int * : reading or writing will insert bottom frequency-point with position/value pair, returns index
+---| "'I_SPECEDIT:x:BOTFREQ_DEL:y'" int * : reading or writing will delete bottom frequency-point y. there will always be at least one point.
+---| "'F_SPECEDIT:x:BOTFREQ_POS:y'" float * : (read-only) get position of bottom frequency-point y
+---| "'F_SPECEDIT:x:BOTFREQ_FREQ:y'" float * : (read-only) get frequency of bottom frequency-point y
+---| "'IP_TAKENUMBER'" int : take number (read-only, returns the take number directly)
+---| "'P_TRACK'" pointer to MediaTrack (read-only)
+---| "'P_ITEM'" pointer to MediaItem (read-only)
+---| "'P_SOURCE'" PCM_source *. Note that if setting this, you should first retrieve the old source, set the new, THEN delete the old.
 
 ---Get media item take numerical-value attributes.
 ---D_STARTOFFS : double * : start offset in source media, in seconds
@@ -1381,7 +1470,7 @@ function reaper.GetMediaItemTakeByGUID(project, guidGUID) end
 ---P_ITEM : pointer to MediaItem (read-only)
 ---P_SOURCE : PCM_source *. Note that if setting this, you should first retrieve the old source, set the new, THEN delete the old.
 ---@param take MediaItem_Take
----@param parmname string
+---@param parmname GetMediaItemTakeInfo_Value_Field
 ---@return number num
 function reaper.GetMediaItemTakeInfo_Value(take, parmname) end
 
@@ -1419,6 +1508,71 @@ function reaper.GetMediaSourceSampleRate(source) end
 ---@param source PCM_source
 ---@return string typebuf
 function reaper.GetMediaSourceType(source) end
+
+---@alias GetMediaTrackInfo_Value_Field
+---| "'B_MUTE'" bool * : muted
+---| "'B_PHASE'" bool * : track phase inverted
+---| "'B_RECMON_IN_EFFECT'" bool * : record monitoring in effect (current audio-thread playback state, read-only)
+---| "'IP_TRACKNUMBER'" int : track number 1-based, 0=not found, -1=master track (read-only, returns the int directly)
+---| "'I_SOLO'" int * : soloed, 0=not soloed, 1=soloed, 2=soloed in place, 5=safe soloed, 6=safe soloed in place
+---| "'B_SOLO_DEFEAT'" bool * : when set, if anything else is soloed and this track is not muted, this track acts soloed
+---| "'I_FXEN'" int * : fx enabled, 0=bypassed, !0=fx active
+---| "'I_RECARM'" int * : record armed, 0=not record armed, 1=record armed
+---| "'I_RECINPUT'" int * : record input, <0=no input. if 4096 set, input is MIDI and low 5 bits represent channel (0=all, 1-16=only chan), next 6 bits represent physical input (63=all, 62=VKB). If 4096 is not set, low 10 bits (0..1023) are input start channel (ReaRoute/Loopback start at 512). If 2048 is set, input is multichannel input (using track channel count), or if 1024 is set, input is stereo input, otherwise input is mono.
+---| "'I_RECMODE'" int * : record mode, 0=input, 1=stereo out, 2=none, 3=stereo out w/latency compensation, 4=midi output, 5=mono out, 6=mono out w/ latency compensation, 7=midi overdub, 8=midi replace
+---| "'I_RECMODE_FLAGS'" int * : record mode flags, &3=output recording mode (0=post fader, 1=pre-fx, 2=post-fx/pre-fader)
+---| "'I_RECMON'" int * : record monitoring, 0=off, 1=normal, 2=not when playing (tape style)
+---| "'I_RECMONITEMS'" int * : monitor items while recording, 0=off, 1=on
+---| "'B_AUTO_RECARM'" bool * : automatically set record arm when selected (does not immediately affect recarm state, script should set directly if desired)
+---| "'I_VUMODE'" int * : track vu mode, &1:disabled, &30==0:stereo peaks, &30==2:multichannel peaks, &30==4:stereo RMS, &30==8:combined RMS, &30==12:LUFS-M, &30==16:LUFS-S (readout=max), &30==20:LUFS-S (readout=current), &32:LUFS calculation on channels 1+2 only
+---| "'I_AUTOMODE'" int * : track automation mode, 0=trim/off, 1=read, 2=touch, 3=write, 4=latch
+---| "'I_NCHAN'" int * : number of track channels, 2-128, even numbers only
+---| "'I_SELECTED'" int * : track selected, 0=unselected, 1=selected
+---| "'I_WNDH'" int * : current TCP window height in pixels including envelopes (read-only)
+---| "'I_TCPH'" int * : current TCP window height in pixels not including envelopes (read-only)
+---| "'I_TCPY'" int * : current TCP window Y-position in pixels relative to top of arrange view (read-only)
+---| "'I_MCPX'" int * : current MCP X-position in pixels relative to mixer container (read-only)
+---| "'I_MCPY'" int * : current MCP Y-position in pixels relative to mixer container (read-only)
+---| "'I_MCPW'" int * : current MCP width in pixels (read-only)
+---| "'I_MCPH'" int * : current MCP height in pixels (read-only)
+---| "'I_FOLDERDEPTH'" int * : folder depth change, 0=normal, 1=track is a folder parent, -1=track is the last in the innermost folder, -2=track is the last in the innermost and next-innermost folders, etc
+---| "'I_FOLDERCOMPACT'" int * : folder collapsed state (only valid on folders), 0=normal, 1=collapsed, 2=fully collapsed
+---| "'I_MIDIHWOUT'" int * : track midi hardware output index, <0=disabled, low 5 bits are which channels (0=all, 1-16), next 5 bits are output device index (0-31)
+---| "'I_MIDI_INPUT_CHANMAP'" int * : -1 maps to source channel, otherwise 1-16 to map to MIDI channel
+---| "'I_MIDI_CTL_CHAN'" int * : -1 no link, 0-15 link to MIDI volume/pan on channel, 16 link to MIDI volume/pan on all channels
+---| "'I_MIDI_TRACKSEL_FLAG'" int * : MIDI editor track list options: &1=expand media items, &2=exclude from list, &4=auto-pruned
+---| "'I_PERFFLAGS'" int * : track performance flags, &1=no media buffering, &2=no anticipative FX
+---| "'I_CUSTOMCOLOR'" int * : custom color, OS dependent color|0x1000000 (i.e. ColorToNative(r,g,b)|0x1000000). If you do not |0x1000000, then it will not be used, but will store the color
+---| "'I_HEIGHTOVERRIDE'" int * : custom height override for TCP window, 0 for none, otherwise size in pixels
+---| "'I_SPACER'" int * : 1=TCP track spacer above this trackB_HEIGHTLOCK : bool * : track height lock (must set I_HEIGHTOVERRIDE before locking)
+---| "'D_VOL'" double * : trim volume of track, 0=-inf, 0.5=-6dB, 1=+0dB, 2=+6dB, etc
+---| "'D_PAN'" double * : trim pan of track, -1..1
+---| "'D_WIDTH'" double * : width of track, -1..1
+---| "'D_DUALPANL'" double * : dualpan position 1, -1..1, only if I_PANMODE==6
+---| "'D_DUALPANR'" double * : dualpan position 2, -1..1, only if I_PANMODE==6
+---| "'I_PANMODE'" int * : pan mode, 0=classic 3.x, 3=new balance, 5=stereo pan, 6=dual pan
+---| "'D_PANLAW'" double * : pan law of track, <0=project default, 0.5=-6dB, 0.707..=-3dB, 1=+0dB, 1.414..=-3dB with gain compensation, 2=-6dB with gain compensation, etc
+---| "'I_PANLAW_FLAGS'" int * : pan law flags, 0=sine taper, 1=hybrid taper with deprecated behavior when gain compensation enabled, 2=linear taper, 3=hybrid taper
+---| "'B_SHOWINMIXER'" bool * : track control panel visible in mixer (do not use on master track)
+---| "'B_SHOWINTCP'" bool * : track control panel visible in arrange view (do not use on master track)
+---| "'B_MAINSEND'" bool * : track sends audio to parent
+---| "'C_MAINSEND_OFFS'" char * : channel offset of track send to parent
+---| "'C_MAINSEND_NCH'" char * : channel count of track send to parent (0=use all child track channels, 1=use one channel only)
+---| "'I_FREEMODE'" int * : 1=track free item positioning enabled, 2=track fixed lanes enabled (call UpdateTimeline() after changing)
+---| "'I_NUMFIXEDLANES'" int * : number of track fixed lanes (fine to call with setNewValue, but returned value is read-only)
+---| "'C_LANESCOLLAPSED'" char * : fixed lane collapse state (1=lanes collapsed, 2=track displays as non-fixed-lanes but hidden lanes exist)
+---| "'C_LANESETTINGS'" char * : fixed lane settings (&1=auto-remove empty lanes at bottom, &2=do not auto-comp new recording, &4=newly recorded lanes play exclusively (else add lanes in layers), &8=big lanes (else small lanes), &16=add new recording at bottom (else record into first available lane), &32=hide lane buttons
+---| "'C_LANEPLAYS:N'" char * :  on fixed lane tracks, 0=lane N does not play, 1=lane N plays exclusively, 2=lane N plays and other lanes also play (fine to call with setNewValue, but returned value is read-only)
+---| "'C_ALLLANESPLAY'" char * : on fixed lane tracks, 0=no lanes play, 1=all lanes play, 2=some lanes play (fine to call with setNewValue 0 or 1, but returned value is read-only)
+---| "'C_BEATATTACHMODE'" char * : track timebase, -1=project default, 0=time, 1=beats (position, length, rate), 2=beats (position only)
+---| "'F_MCP_FXSEND_SCALE'" float * : scale of fx+send area in MCP (0=minimum allowed, 1=maximum allowed)
+---| "'F_MCP_FXPARM_SCALE'" float * : scale of fx parameter area in MCP (0=minimum allowed, 1=maximum allowed)
+---| "'F_MCP_SENDRGN_SCALE'" float * : scale of send area as proportion of the fx+send total area (0=minimum allowed, 1=maximum allowed)
+---| "'F_TCP_FXPARM_SCALE'" float * : scale of TCP parameter area when TCP FX are embedded (0=min allowed, default, 1=max allowed)
+---| "'I_PLAY_OFFSET_FLAG'" int * : track media playback offset state, &1=bypassed, &2=offset value is measured in samples (otherwise measured in seconds)
+---| "'D_PLAY_OFFSET'" double * : track media playback offset, units depend on I_PLAY_OFFSET_FLAG
+---| "'P_PARTRACK'" MediaTrack * : parent track (read-only)
+---| "'P_PROJECT'" ReaProject * : parent project (read-only)
 
 ---Get track numerical-value attributes.
 ---B_MUTE : bool * : muted
@@ -1486,7 +1640,7 @@ function reaper.GetMediaSourceType(source) end
 ---P_PARTRACK : MediaTrack * : parent track (read-only)
 ---P_PROJECT : ReaProject * : parent project (read-only)
 ---@param tr MediaTrack
----@param parmname string
+---@param parmname GetMediaTrackInfo_Value_Field
 ---@return number num
 function reaper.GetMediaTrackInfo_Value(tr, parmname) end
 
@@ -1538,11 +1692,6 @@ function reaper.GetNumMIDIInputs() end
 ---returns max number of real midi hardware outputs
 ---@return integer rv
 function reaper.GetNumMIDIOutputs() end
-
----the total number of regions and markers in the project. See GetRegionOrMarker, GetRegionOrMarkerInfo_Value, SetRegionOrMarkerInfo_Value, GetSetRegionOrMarkerInfo_String
----@param proj ReaProject|nil|0
----@return integer rv
-function reaper.GetNumRegionsOrMarkers(proj) end
 
 ---Returns number of take markers. See GetTakeMarker, SetTakeMarker, DeleteTakeMarker
 ---@param take MediaItem_Take
@@ -1665,20 +1814,6 @@ function reaper.GetProjectTimeSignature2(proj) end
 ---@return string val
 function reaper.GetProjExtState(proj, extname, key) end
 
----get a single region or marker by internal index, or if index < 0, by GUID. See GetNumRegionsOrMarkers, GetRegionOrMarkerInfo_Value, SetRegionOrMarkerInfo_Value, GetSetRegionOrMarkerInfo_String
----@param proj ReaProject|nil|0
----@param index integer
----@param guidStr string
----@return ProjectMarker rv
-function reaper.GetRegionOrMarker(proj, index, guidStr) end
-
----"D_STARTPOS", "D_ENDPOS" (= D_STARTPOS for markers), "I_INDEX" (internal index), "I_NUMBER" (displayed index number), "I_LANENUMBER", "I_CUSTOMCOLOR", "I_DISPLAYEDCOLOR", "B_ISREGION", "B_UISEL", "B_HIDDEN". See GetNumRegionsOrMarkers, GetRegionOrMarker, SetRegionOrMarkerInfo_Value, GetSetRegionOrMarkerInfo_String
----@param proj ReaProject|nil|0
----@param regionOrMarker ProjectMarker
----@param parameterName string
----@return number num
-function reaper.GetRegionOrMarkerInfo_Value(proj, regionOrMarker, parameterName) end
-
 ---returns path where ini files are stored, other things are in subdirectories.
 ---@return string str
 function reaper.GetResourcePath() end
@@ -1742,6 +1877,18 @@ function reaper.GetSet_LoopTimeRange(isSet, isLoop, start, end, allowautoseek) e
 ---@return number end
 function reaper.GetSet_LoopTimeRange2(proj, isSet, isLoop, start, end, allowautoseek) end
 
+---@alias GetSetAutomationItemInfo_Field
+---| "'D_POOL_ID'" double * : automation item pool ID (as an integer); edits are propagated to all other automation items that share a pool ID
+---| "'D_POSITION'" double * : automation item timeline position in seconds
+---| "'D_LENGTH'" double * : automation item length in seconds
+---| "'D_STARTOFFS'" double * : automation item start offset in seconds
+---| "'D_PLAYRATE'" double * : automation item playback rate
+---| "'D_BASELINE'" double * : automation item baseline value in the range [0,1]
+---| "'D_AMPLITUDE'" double * : automation item amplitude in the range [-1,1]
+---| "'D_LOOPSRC'" double * : nonzero if the automation item contents are looped
+---| "'D_UISEL'" double * : nonzero if the automation item is selected in the arrange view
+---| "'D_POOL_QNLEN'" double * : automation item pooled source length in quarter notes (setting will affect all pooled instances)
+
 ---Get or set automation item information. autoitem_idx=0 for the first automation item on an envelope, 1 for the second item, etc. desc can be any of the following:
 ---D_POOL_ID : double * : automation item pool ID (as an integer); edits are propagated to all other automation items that share a pool ID
 ---D_POSITION : double * : automation item timeline position in seconds
@@ -1755,23 +1902,35 @@ function reaper.GetSet_LoopTimeRange2(proj, isSet, isLoop, start, end, allowauto
 ---D_POOL_QNLEN : double * : automation item pooled source length in quarter notes (setting will affect all pooled instances)
 ---@param env TrackEnvelope
 ---@param autoitem_idx integer
----@param desc string
+---@param desc GetSetAutomationItemInfo_Field
 ---@param value number
 ---@param is_set boolean
 ---@return number num
 function reaper.GetSetAutomationItemInfo(env, autoitem_idx, desc, value, is_set) end
+
+---@alias GetSetAutomationItemInfo_String_Field
+---| "'P_POOL_NAME'" char * : name of the underlying automation item pool
+---| "'P_POOL_EXT:xyz'" char * : extension-specific persistent data
 
 ---Get or set automation item information. autoitem_idx=0 for the first automation item on an envelope, 1 for the second item, etc. returns true on success. desc can be any of the following:
 ---P_POOL_NAME : char * : name of the underlying automation item pool
 ---P_POOL_EXT:xyz : char * : extension-specific persistent data
 ---@param env TrackEnvelope
 ---@param autoitem_idx integer
----@param desc string
+---@param desc GetSetAutomationItemInfo_String_Field
 ---@param valuestrNeedBig string
 ---@param is_set boolean
 ---@return boolean rv
 ---@return string valuestrNeedBig
 function reaper.GetSetAutomationItemInfo_String(env, autoitem_idx, desc, valuestrNeedBig, is_set) end
+
+---@alias GetSetEnvelopeInfo_String_Field
+---| "'ACTIVE'" active state (bool as a string "0" or "1")
+---| "'ARM'" armed state (bool...)
+---| "'VISIBLE'" visible state (bool...)
+---| "'SHOWLANE'" show envelope in separate lane (bool...)
+---| "'GUID'" (read-only) GUID as a string {xyz-....}
+---| "'P_EXT:xyz'" extension-specific persistent data
 
 ---Gets/sets an attribute string:
 ---ACTIVE : active state (bool as a string "0" or "1")
@@ -1782,7 +1941,7 @@ function reaper.GetSetAutomationItemInfo_String(env, autoitem_idx, desc, valuest
 ---P_EXT:xyz : extension-specific persistent data
 ---Note that when writing some of these attributes you will need to manually update the arrange and/or track panels, see TrackList_AdjustWindows
 ---@param env TrackEnvelope
----@param parmname string
+---@param parmname GetSetEnvelopeInfo_String_Field
 ---@param stringNeedBig string
 ---@param setNewValue boolean
 ---@return boolean rv
@@ -1819,29 +1978,71 @@ function reaper.GetSetItemState(item, str) end
 ---@return string str
 function reaper.GetSetItemState2(item, str, isundo) end
 
+---@alias GetSetMediaItemInfo_String_Field
+---| "'P_NOTES'" char * : item note text (do not write to returned pointer, use setNewValue to update)
+---| "'P_EXT:xyz'" char * : extension-specific persistent data
+---| "'GUID'" GUID * : 16-byte GUID, can query or update. If using a _String() function, GUID is a string {xyz-...}.
+---| "'P_EXT:alt'"
+---| "'P_EXT:character'"
+---| "'P_EXT:description'"
+---| "'P_EXT:line'"
+---| "'P_EXT:log'"
+---| "'P_EXT:nvk_AUTODOPPLER'"
+---| "'P_EXT:nvk_automute'"
+---| "'P_EXT:nvk_CREATE_STRING'"
+---| "'P_EXT:nvk_fade'"
+---| "'P_EXT:nvk_item_s'"
+---| "'P_EXT:nvk_item_type'"
+---| "'P_EXT:nvk_render_preset'"
+---| "'P_EXT:parenthetical'"
+
 ---Gets/sets an item attribute string:
 ---P_NOTES : char * : item note text (do not write to returned pointer, use setNewValue to update)
 ---P_EXT:xyz : char * : extension-specific persistent data
 ---GUID : GUID * : 16-byte GUID, can query or update. If using a _String() function, GUID is a string {xyz-...}.
 ---@param item MediaItem
----@param parmname string
+---@param parmname GetSetMediaItemInfo_String_Field
 ---@param stringNeedBig string
 ---@param setNewValue boolean
 ---@return boolean rv
 ---@return string stringNeedBig
 function reaper.GetSetMediaItemInfo_String(item, parmname, stringNeedBig, setNewValue) end
 
+---@alias GetSetMediaItemTakeInfo_String_Field
+---| "'P_NAME'" char * : take name
+---| "'P_EXT:xyz'" char * : extension-specific persistent data
+---| "'GUID'" GUID * : 16-byte GUID, can query or update. If using a _String() function, GUID is a string {xyz-...}.
+---| "'P_EXT:nvk_CREATE_TakeProcessor'"
+---| "'P_EXT:nvk_fade_overshoot'"
+---| "'P_EXT:nvk_take_source_type_v2'"
+
 ---Gets/sets a take attribute string:
 ---P_NAME : char * : take name
 ---P_EXT:xyz : char * : extension-specific persistent data
 ---GUID : GUID * : 16-byte GUID, can query or update. If using a _String() function, GUID is a string {xyz-...}.
 ---@param tk MediaItem_Take
----@param parmname string
+---@param parmname GetSetMediaItemTakeInfo_String_Field
 ---@param stringNeedBig string
 ---@param setNewValue boolean
 ---@return boolean rv
 ---@return string stringNeedBig
 function reaper.GetSetMediaItemTakeInfo_String(tk, parmname, stringNeedBig, setNewValue) end
+
+---@alias GetSetMediaTrackInfo_String_Field
+---| "'P_NAME'" char * : track name (on master returns NULL)
+---| "'P_ICON'" const char * : track icon (full filename, or relative to resource_path/data/track_icons)
+---| "'P_LANENAME:n'" char * : lane name (returns NULL for non-fixed-lane-tracks)
+---| "'P_MCP_LAYOUT'" const char * : layout name
+---| "'P_RAZOREDITS'" const char * : list of razor edit areas, as space-separated triples of start time, end time, and envelope GUID string.
+---| "'P_RAZOREDITS_EXT'" const char * : list of razor edit areas, as comma-separated sets of space-separated tuples of start time, end time, optional: envelope GUID string, fixed/fipm top y-position, fixed/fipm bottom y-position.
+---| "'P_TCP_LAYOUT'" const char * : layout name
+---| "'P_EXT:xyz'" char * : extension-specific persistent data
+---| "'P_UI_RECT:tcp.mute'" char * : read-only, allows querying screen position + size of track WALTER elements (tcp.size queries screen position and size of entire TCP, etc).
+---| "'GUID'" GUID * : 16-byte GUID, can query or update. If using a _String() function, GUID is a string {xyz-...}.
+---| "'P_EXT:CHARACTERS'"
+---| "'P_EXT:nvk_AUTODOPPLER'"
+---| "'P_EXT:nvk_TRACK_AUTOMUTE'"
+---| "'P_EXT:SCENES'"
 
 ---Get or set track string attributes.
 ---P_NAME : char * : track name (on master returns NULL)
@@ -1857,7 +2058,7 @@ function reaper.GetSetMediaItemTakeInfo_String(tk, parmname, stringNeedBig, setN
 ---P_UI_RECT:tcp.mute : char * : read-only, allows querying screen position + size of track WALTER elements (tcp.size queries screen position and size of entire TCP, etc).
 ---GUID : GUID * : 16-byte GUID, can query or update. If using a _String() function, GUID is a string {xyz-...}.
 ---@param tr MediaTrack
----@param parmname string
+---@param parmname GetSetMediaTrackInfo_String_Field
 ---@param stringNeedBig string
 ---@param setNewValue boolean
 ---@return boolean rv
@@ -1883,6 +2084,19 @@ function reaper.GetSetProjectAuthor(proj, set, author) end
 ---@return number? swingamt
 function reaper.GetSetProjectGrid(project, set, division, swingmode, swingamt) end
 
+---@alias GetSetProjectInfo_Field
+---| "'RENDER_SETTINGS'" &(1|2)=0:master mix, &1=stems+master mix, &2=stems only, &4=multichannel tracks to multichannel files, &8=use render matrix, &16=tracks with only mono media to mono files, &32=selected media items, &64=selected media items via master, &128=selected tracks via master, &256=embed transients if format supports, &512=embed metadata if format supports, &1024=embed take markers if format supports, &2048=2nd pass render
+---| "'RENDER_BOUNDSFLAG'" 0=custom time bounds, 1=entire project, 2=time selection, 3=all project regions, 4=selected media items, 5=selected project regions, 6=all project markers, 7=selected project markers
+---| "'RENDER_CHANNELS'" number of channels in rendered file
+---| "'RENDER_SRATE'" sample rate of rendered file (or 0 for project sample rate)
+---| "'RENDER_STARTPOS'" render start time when RENDER_BOUNDSFLAG=0
+---| "'RENDER_ENDPOS'" render end time when RENDER_BOUNDSFLAG=0
+---| "'RENDER_TAILFLAG'" apply render tail setting when rendering: &1=custom time bounds, &2=entire project, &4=time selection, &8=all project markers/regions, &16=selected media items, &32=selected project markers/regions
+---| "'RENDER_TAILMS'" tail length in ms to render (only used if RENDER_BOUNDSFLAG and RENDER_TAILFLAG are set)
+---| "'RENDER_ADDTOPROJ'" &1=add rendered files to project, &2=do not render files that are likely silent
+---| "'RENDER_DITHER'" &1=dither, &2=noise shaping, &4=dither stems, &8=noise shaping on stems
+---| "'PROJECT_SRATE_USE'" set to 1 if project sample rate is used
+
 ---Get or set project information.
 ---RENDER_SETTINGS : &(1|2)=0:master mix, &1=stems+master mix, &2=stems only, &4=multichannel tracks to multichannel files, &8=use render matrix, &16=tracks with only mono media to mono files, &32=selected media items, &64=selected media items via master, &128=selected tracks via master, &256=embed transients if format supports, &512=embed metadata if format supports, &1024=embed take markers if format supports, &2048=2nd pass render
 ---RENDER_BOUNDSFLAG : 0=custom time bounds, 1=entire project, 2=time selection, 3=all project regions, 4=selected media items, 5=selected project regions, 6=all project markers, 7=selected project markers
@@ -1903,27 +2117,41 @@ function reaper.GetSetProjectGrid(project, set, division, swingmode, swingamt) e
 ---RENDER_FADEOUTSHAPE: render fade-out shape
 ---RENDER_PADSTART: pad render start with silence (0.001 means 1ms, requires RENDER_NORMALIZE&(1<<16))RENDER_PADEND: pad render end with silence (0.001 means 1ms, requires RENDER_NORMALIZE&(2<<16))PROJECT_SRATE : sample rate (ignored unless PROJECT_SRATE_USE set)
 ---PROJECT_SRATE_USE : set to 1 if project sample rate is used
----RULER_DEFAULT_REGION_LANE_VISIBLE : 1 if default region lane is visible (preference to hide all regions not enabled and ruler tall enough to display), 0 otherwise (read-only)
----RULER_DEFAULT_MARKER_LANE_VISIBLE : 1 if default marker lane is visible (preference to hide all markers not enabled and ruler tall enough to display), 0 otherwise (read-only)
----RULER_LANE_COLOR:X : ruler lane default color, color&0x1000000 if used, X should be 0..8
----RULER_LANE_HIDDEN:X : 1 if ruler lane is hidden, 0 otherwise
----RULER_LANE_VISIBLE:X : 1 if ruler lane is visible (not hidden and ruler tall enough to display), 0 otherwise (read-only)
----RULER_LANE_TIMEBASE:X : ruler lane default timebase, -1=project default, 0=time, 1=beats (position, length, rate), 2=beats (position only), X should be 0..8
 ---@param project ReaProject|nil|0
----@param desc string
+---@param desc GetSetProjectInfo_Field
 ---@param value number
 ---@param is_set boolean
 ---@return number num
 function reaper.GetSetProjectInfo(project, desc, value, is_set) end
+
+---@alias GetSetProjectInfo_String_Field
+---| "'PROJECT_NAME'" project file name (read-only, is_set will be ignored)
+---| "'PROJECT_TITLE'" title field from Project Settings/Notes dialog
+---| "'PROJECT_AUTHOR'" author field from Project Settings/Notes dialog
+---| "'TRACK_GROUP_NAME:X'" track group name, X should be 1..64
+---| "'MARKER_GUID:X'" get the GUID (unique ID) of the marker or region with index X, where X is the index passed to EnumProjectMarkers, not necessarily the displayed number (read-only)
+---| "'MARKER_INDEX_FROM_GUID:{GUID}'" get the GUID index of the marker or region with GUID {GUID} (read-only)
+---| "'OPENCOPY_CFGIDX'" integer for the configuration of format to use when creating copies/applying FX. 0=wave (auto-depth), 1=APPLYFX_FORMAT, 2=RECORD_FORMAT
+---| "'RECORD_PATH'" recording directory -- may be blank or a relative path, to get the effective path see GetProjectPathEx()
+---| "'RECORD_PATH_SECONDARY'" secondary recording directory
+---| "'RECORD_FORMAT'" base64-encoded sink configuration (see project files, etc). Callers can also pass a simple 4-byte string (non-base64-encoded), e.g. "evaw" or "l3pm", to use default settings for that sink type.
+---| "'APPLYFX_FORMAT'" base64-encoded sink configuration (see project files, etc). Used only if RECFMT_OPENCOPY is set to 1. Callers can also pass a simple 4-byte string (non-base64-encoded), e.g. "evaw" or "l3pm", to use default settings for that sink type.
+---| "'RECTAG'" project recording tag wildcard ($rectag). Can be used in Preferences/Audio/Recording to auto-name recorded files.
+---| "'RENDER_FILE'" render directory
+---| "'RENDER_PATTERN'" render file name (may contain wildcards)
+---| "'RENDER_METADATA'" get or set the metadata saved with the project (not metadata embedded in project media). Example, ID3 album name metadata: valuestr="ID3:TALB" to get, valuestr="ID3:TALB|my album name" to set. Call with valuestr="" and is_set=false to get a semicolon-separated list of defined project metadata identifiers.
+---| "'RENDER_TARGETS'" semicolon separated list of files that would be written if the project is rendered using the most recent render settings
+---| "'RENDER_STATS'" (read-only) semicolon separated list of statistics for the most recently rendered files. call with valuestr="XXX" to run an action (for example, "42437"=dry run render selected items) before returning statistics.
+---| "'RENDER_FORMAT'" base64-encoded sink configuration (see project files, etc). Callers can also pass a simple 4-byte string (non-base64-encoded), e.g. "evaw" or "l3pm", to use default settings for that sink type.
+---| "'RENDER_FORMAT2'" base64-encoded secondary sink configuration. Callers can also pass a simple 4-byte string (non-base64-encoded), e.g. "evaw" or "l3pm", to use default settings for that sink type, or "" to disable secondary render.
 
 ---Get or set project information.
 ---PROJECT_NAME : project file name (read-only, is_set will be ignored)
 ---PROJECT_TITLE : title field from Project Settings/Notes dialog
 ---PROJECT_AUTHOR : author field from Project Settings/Notes dialog
 ---TRACK_GROUP_NAME:X : track group name, X should be 1..64
----RULER_LANE_NAME:X : ruler lane name, X should be 0..8
----MARKER_GUID:X : discouraged. see GetRegionOrMarker, GetSetRegionOrMarkerInfo_String
----MARKER_INDEX_FROM_GUID:{GUID} : discouraged. see GetRegionOrMarker, GetSetRegionOrMarkerInfo_String
+---MARKER_GUID:X : get the GUID (unique ID) of the marker or region with index X, where X is the index passed to EnumProjectMarkers, not necessarily the displayed number (read-only)
+---MARKER_INDEX_FROM_GUID:{GUID} : get the GUID index of the marker or region with GUID {GUID} (read-only)
 ---OPENCOPY_CFGIDX : integer for the configuration of format to use when creating copies/applying FX. 0=wave (auto-depth), 1=APPLYFX_FORMAT, 2=RECORD_FORMAT
 ---RECORD_PATH : recording directory -- may be blank or a relative path, to get the effective path see GetProjectPathEx()
 ---RECORD_PATH_SECONDARY : secondary recording directory
@@ -1938,9 +2166,9 @@ function reaper.GetSetProjectInfo(project, desc, value, is_set) end
 ---RENDER_FORMAT : base64-encoded sink configuration (see project files, etc). Callers can also pass a simple 4-byte string (non-base64-encoded), e.g. "evaw" or "l3pm", to use default settings for that sink type.
 ---RENDER_FORMAT2 : base64-encoded secondary sink configuration. Callers can also pass a simple 4-byte string (non-base64-encoded), e.g. "evaw" or "l3pm", to use default settings for that sink type, or "" to disable secondary render.
 ---&nbsp;&nbsp;&nbsp;&nbsp;Formats available on this machine:
----&nbsp;&nbsp;&nbsp;&nbsp;"wave" "aiff" "caff" "raw " "mp3l" "wvpk" "OggS" "flac" "ddp " "iso " "oggv" "FFMP" "XAVF" "GIF " "LCF "
+---&nbsp;&nbsp;&nbsp;&nbsp;"wave" "aiff" "caff" "raw " "iso " "ddp " "flac" "mp3l" "oggv" "OggS" "FFMP" "WMF " "GIF " "LCF " "wvpk"
 ---@param project ReaProject|nil|0
----@param desc string
+---@param desc GetSetProjectInfo_String_Field
 ---@param valuestrNeedBig string
 ---@param is_set boolean
 ---@return boolean rv
@@ -1953,16 +2181,6 @@ function reaper.GetSetProjectInfo_String(project, desc, valuestrNeedBig, is_set)
 ---@param notes string
 ---@return string notes
 function reaper.GetSetProjectNotes(proj, set, notes) end
-
----"GUID" (read-only), "P_NAME". See GetNumRegionsOrMarkers, GetRegionOrMarker, GetRegionOrMarkerInfo_Value, SetRegionOrMarkerInfo_Value
----@param proj ReaProject|nil|0
----@param regionOrMarker ProjectMarker
----@param parameterName string
----@param stringNeedBig string
----@param setNewValue boolean
----@return boolean rv
----@return string stringNeedBig
-function reaper.GetSetRegionOrMarkerInfo_String(proj, regionOrMarker, parameterName, stringNeedBig, setNewValue) end
 
 ----1 == query,0=clear,1=set,>1=toggle . returns new value
 ---@param val integer
@@ -2086,12 +2304,15 @@ function reaper.GetSetTrackGroupMembershipEx(tr, groupname, offset, setmask, set
 ---@return integer rv
 function reaper.GetSetTrackGroupMembershipHigh(tr, groupname, setmask, setvalue) end
 
+---@alias GetSetTrackSendInfo_String_Field
+---| "'P_EXT:xyz'" char * : extension-specific persistent data
+
 ---Gets/sets a send attribute string:
 ---P_EXT:xyz : char * : extension-specific persistent data
 ---@param tr MediaTrack
 ---@param category integer
 ---@param sendidx integer
----@param parmname string
+---@param parmname GetSetTrackSendInfo_String_Field
 ---@param stringNeedBig string
 ---@param setNewValue boolean
 ---@return boolean rv
@@ -2353,6 +2574,22 @@ function reaper.GetTrackReceiveUIMute(track, recv_index) end
 ---@return number pan
 function reaper.GetTrackReceiveUIVolPan(track, recv_index) end
 
+---@alias GetTrackSendInfo_Value_Field
+---| "'B_MUTE'" bool *
+---| "'B_PHASE'" bool * : true to flip phase
+---| "'B_MONO'" bool *
+---| "'D_VOL'" double * : 1.0 = +0dB etc
+---| "'D_PAN'" double * : -1..+1
+---| "'D_PANLAW'" double * : 1.0=+0.0db, 0.5=-6dB, -1.0 = projdef etc
+---| "'I_SENDMODE'" int * : 0=post-fader, 1=pre-fx, 2=post-fx (deprecated), 3=post-fx
+---| "'I_AUTOMODE'" int * : automation mode (-1=use track automode, 0=trim/off, 1=read, 2=touch, 3=write, 4=latch)
+---| "'I_SRCCHAN'" int * : -1 for no audio send. Low 10 bits specify channel offset, and higher bits specify channel count. (srcchan>>10) == 0 for stereo, 1 for mono, 2 for 4 channel, 3 for 6 channel, etc.
+---| "'I_DSTCHAN'" int * : low 10 bits are destination index, &1024 set to mix to mono.
+---| "'I_MIDIFLAGS'" int * : low 5 bits=source channel 0=all, 1-16, 31=MIDI send disabled, next 5 bits=dest channel, 0=orig, 1-16=chan. &1024 for faders-send MIDI vol/pan. (>>14)&255 = src bus (0 for all, 1 for normal, 2+). (>>22)&255=destination bus (0 for all, 1 for normal, 2+)
+---| "'P_DESTTRACK'" MediaTrack * : destination track, only applies for sends/recvs (read-only)
+---| "'P_SRCTRACK'" MediaTrack * : source track, only applies for sends/recvs (read-only)
+---| "'P_ENV:<envchunkname'" TrackEnvelope * : call with :<VOLENV, :<PANENV, etc appended (read-only)
+
 ---Get send/receive/hardware output numerical-value attributes.
 ---category is <0 for receives, 0=sends, >0 for hardware outputs
 ---parameter names:
@@ -2374,7 +2611,7 @@ function reaper.GetTrackReceiveUIVolPan(track, recv_index) end
 ---@param tr MediaTrack
 ---@param category integer
 ---@param sendidx integer
----@param parmname string
+---@param parmname GetTrackSendInfo_Value_Field
 ---@return number num
 function reaper.GetTrackSendInfo_Value(tr, category, sendidx, parmname) end
 
@@ -3491,14 +3728,6 @@ function reaper.resolve_fn(in, out) end
 ---@return string out
 function reaper.resolve_fn2(in, out, checkSubDir) end
 
----Resolve a wildcard string. Any wildcards that are valid in the Big Clock can be resolved using this function. Pass in timePosition=-1 to use the current project playback position.
----@param project ReaProject|nil|0
----@param timePosition number
----@param wildcards string
----@param resolvedString string
----@return string resolvedString
-function reaper.ResolveWildcards(project, timePosition, wildcards, resolvedString) end
-
 ---Get the named command for the given command ID. The returned string will not start with '_' (e.g. it will return "SWS_ABOUT"), it will be NULL if command_id is a native action.
 ---@param command_id integer
 ---@return string str
@@ -3626,6 +3855,40 @@ function reaper.SetItemStateChunk(item, str, isundo) end
 ---@return integer rv
 function reaper.SetMasterTrackVisibility(flag) end
 
+---@alias SetMediaItemInfo_Value_Field
+---| "'B_MUTE'" bool * : muted (item solo overrides). setting this value will clear C_MUTE_SOLO.
+---| "'B_MUTE_ACTUAL'" bool * : muted (ignores solo). setting this value will not affect C_MUTE_SOLO.
+---| "'C_LANEPLAYS'" char * : on fixed lane tracks, 0=this item lane does not play, 1=this item lane plays exclusively, 2=this item lane plays and other lanes also play, -1=this item is on a non-visible, non-playing lane on a formerly fixed-lane track (read-only)
+---| "'C_MUTE_SOLO'" char * : solo override (-1=soloed, 0=no override, 1=unsoloed). note that this API does not automatically unsolo other items when soloing (nor clear the unsolos when clearing the last soloed item), it must be done by the caller via action or via this API.
+---| "'B_LOOPSRC'" bool * : loop source
+---| "'B_ALLTAKESPLAY'" bool * : all takes play
+---| "'B_UISEL'" bool * : selected in arrange view
+---| "'C_BEATATTACHMODE'" char * : item timebase, -1=track or project default, 1=beats (position, length, rate), 2=beats (position only). for auto-stretch timebase: C_BEATATTACHMODE=1, C_AUTOSTRETCH=1
+---| "'C_AUTOSTRETCH:'" char * : auto-stretch at project tempo changes, 1=enabled, requires C_BEATATTACHMODE=1
+---| "'C_LOCK'" char * : locked, &1=locked
+---| "'D_VOL'" double * : item volume,  0=-inf, 0.5=-6dB, 1=+0dB, 2=+6dB, etc
+---| "'D_POSITION'" double * : item position in seconds
+---| "'D_LENGTH'" double * : item length in seconds
+---| "'D_SNAPOFFSET'" double * : item snap offset in seconds
+---| "'D_FADEINLEN'" double * : item manual fadein length in seconds
+---| "'D_FADEOUTLEN'" double * : item manual fadeout length in seconds
+---| "'D_FADEINDIR'" double * : item fadein curvature, -1..1
+---| "'D_FADEOUTDIR'" double * : item fadeout curvature, -1..1
+---| "'D_FADEINLEN_AUTO'" double * : item auto-fadein length in seconds, -1=no auto-fadein
+---| "'D_FADEOUTLEN_AUTO'" double * : item auto-fadeout length in seconds, -1=no auto-fadeout
+---| "'C_FADEINSHAPE'" int * : fadein shape, 0..6, 0=linear
+---| "'C_FADEOUTSHAPE'" int * : fadeout shape, 0..6, 0=linear
+---| "'I_GROUPID'" int * : group ID, 0=no group
+---| "'I_LASTY'" int * : Y-position (relative to top of track) in pixels (read-only)
+---| "'I_LASTH'" int * : height in pixels (read-only)
+---| "'I_CUSTOMCOLOR'" int * : custom color, OS dependent color|0x1000000 (i.e. ColorToNative(r,g,b)|0x1000000). If you do not |0x1000000, then it will not be used, but will store the color
+---| "'I_CURTAKE'" int * : active take number
+---| "'IP_ITEMNUMBER'" int : item number on this track (read-only, returns the item number directly)
+---| "'F_FREEMODE_Y'" float * : free item positioning or fixed lane Y-position. 0=top of track, 1.0=bottom of track
+---| "'F_FREEMODE_H'" float * : free item positioning or fixed lane height. 0.5=half the track height, 1.0=full track height
+---| "'I_FIXEDLANE'" int * : fixed lane of item (fine to call with setNewValue, but returned value is read-only)
+---| "'B_FIXEDLANE_HIDDEN'" bool * : true if displaying only one fixed lane and this item is in a different lane (read-only)
+
 ---Set media item numerical-value attributes.
 ---B_MUTE : bool * : muted (item solo overrides). setting this value will clear C_MUTE_SOLO.
 ---B_MUTE_ACTUAL : bool * : muted (ignores solo). setting this value will not affect C_MUTE_SOLO.
@@ -3660,7 +3923,7 @@ function reaper.SetMasterTrackVisibility(flag) end
 ---I_FIXEDLANE : int * : fixed lane of item (fine to call with setNewValue, but returned value is read-only)
 ---B_FIXEDLANE_HIDDEN : bool * : true if displaying only one fixed lane and this item is in a different lane (read-only)
 ---@param item MediaItem
----@param parmname string
+---@param parmname SetMediaItemInfo_Value_Field
 ---@param newvalue number
 ---@return boolean rv
 function reaper.SetMediaItemInfo_Value(item, parmname, newvalue) end
@@ -3690,6 +3953,54 @@ function reaper.SetMediaItemSelected(item, selected) end
 ---@param source PCM_source
 ---@return boolean rv
 function reaper.SetMediaItemTake_Source(take, source) end
+
+---@alias SetMediaItemTakeInfo_Value_Field
+---| "'D_STARTOFFS'" double * : start offset in source media, in seconds
+---| "'D_VOL'" double * : take volume, 0=-inf, 0.5=-6dB, 1=+0dB, 2=+6dB, etc, negative if take polarity is flipped
+---| "'D_PAN'" double * : take pan, -1..1
+---| "'D_PANLAW'" double * : take pan law, -1=default, 0.5=-6dB, 1.0=+0dB, etc
+---| "'D_PLAYRATE'" double * : take playback rate, 0.5=half speed, 1=normal, 2=double speed, etc
+---| "'D_PITCH'" double * : take pitch adjustment in semitones, -12=one octave down, 0=normal, +12=one octave up, etc
+---| "'B_PPITCH'" bool * : preserve pitch when changing playback rate
+---| "'I_LASTY'" int * : Y-position (relative to top of track) in pixels (read-only)
+---| "'I_LASTH'" int * : height in pixels (read-only)
+---| "'I_CHANMODE'" int * : channel mode, 0=normal, 1=reverse stereo, 2=downmix, 3=left, 4=right
+---| "'I_PITCHMODE'" int * : pitch shifter mode, -1=project default, otherwise high 2 bytes=shifter, low 2 bytes=parameter
+---| "'I_STRETCHFLAGS'" int * : stretch marker flags (&7 mask for mode override: 0=default, 1=balanced, 2/3/6=tonal, 4=transient, 5=no pre-echo)
+---| "'F_STRETCHFADESIZE'" float * : stretch marker fade size in seconds (0.0025 default)
+---| "'I_RECPASSID'" int * : record pass ID
+---| "'I_TAKEFX_NCH'" int * : number of internal audio channels for per-take FX to use (OK to call with setNewValue, but the returned value is read-only)
+---| "'I_CUSTOMCOLOR'" int * : custom color, OS dependent color|0x1000000 (i.e. ColorToNative(r,g,b)|0x1000000). If you do not |0x1000000, then it will not be used, but will store the color
+---| "'IP_SPECEDIT:CNT'" int : spectral edit count (read-only)
+---| "'IP_SPECEDIT:DELETE:x'" int : read or write this key to remove the spectral edit specified
+---| "'IP_SPECEDIT:ADD'" int : read or write this key to add a new spectral edit (returns index)
+---| "'IP_SPECEDIT:SORT'" int : read or write this key to re-sort spectral edits (be sure to do this following a position change or insert of new edit)
+---| "'I_SPECEDIT:FFT_SIZE'" int * : FFT size used by spectral edits for this take
+---| "'D_SPECEDIT:x:POSITION'" double * : position of spectral edit start (changing this requires a resort of spectral edits)
+---| "'D_SPECEDIT:x:LENGTH'" double * : length of spectral edit
+---| "'F_SPECEDIT:x:GAIN'" float * : gain of spectral edit
+---| "'F_SPECEDIT:x:FADE_IN'" float * : fade-in size 0..1
+---| "'F_SPECEDIT:x:FADE_OUT'" float * : fade-out size 0..1
+---| "'F_SPECEDIT:x:FADE_LOW'" float * : fade-lf size 0..1
+---| "'F_SPECEDIT:x:FADE_HI'" float * : fade-hf size 0..1
+---| "'I_SPECEDIT:x:CHAN'" int * : channel index, -1 for omni
+---| "'I_SPECEDIT:x:FLAGS'" int * : flags, &1=bypassed, &2=solo
+---| "'F_SPECEDIT:x:GATE_THRESH'" float * : gate threshold
+---| "'F_SPECEDIT:x:GATE_FLOOR'" float * : gate floor
+---| "'F_SPECEDIT:x:COMP_THRESH'" float * : comp threshold
+---| "'F_SPECEDIT:x:COMP_RATIO'" float * : comp ratio
+---| "'B_SPECEDIT:x:SELECTED'" bool * : selection state
+---| "'I_SPECEDIT:x:TOPFREQ_CNT'" int * : (read-only) number of top frequency-points
+---| "'I_SPECEDIT:x:TOPFREQ_ADD:pos:val'" int * : reading or writing will insert top frequency-point with position/value pair, returns index
+---| "'I_SPECEDIT:x:TOPFREQ_DEL:y'" int * : reading or writing will delete top frequency-point y. there will always be at least one point.
+---| "'F_SPECEDIT:x:TOPFREQ_POS:y'" float * : (read-only) get position of top frequency-point y
+---| "'F_SPECEDIT:x:TOPFREQ_FREQ:y'" float * : (read-only) get frequency of top frequency-point y
+---| "'I_SPECEDIT:x:BOTFREQ_CNT'" int * : number of bottom frequency-points
+---| "'I_SPECEDIT:x:BOTFREQ_ADD:pos:val'" int * : reading or writing will insert bottom frequency-point with position/value pair, returns index
+---| "'I_SPECEDIT:x:BOTFREQ_DEL:y'" int * : reading or writing will delete bottom frequency-point y. there will always be at least one point.
+---| "'F_SPECEDIT:x:BOTFREQ_POS:y'" float * : (read-only) get position of bottom frequency-point y
+---| "'F_SPECEDIT:x:BOTFREQ_FREQ:y'" float * : (read-only) get frequency of bottom frequency-point y
+---| "'IP_TAKENUMBER'" int : take number (read-only, returns the take number directly)
 
 ---Set media item take numerical-value attributes.
 ---D_STARTOFFS : double * : start offset in source media, in seconds
@@ -3739,10 +4050,73 @@ function reaper.SetMediaItemTake_Source(take, source) end
 ---F_SPECEDIT:x:BOTFREQ_FREQ:y : float * : (read-only) get frequency of bottom frequency-point y
 ---IP_TAKENUMBER : int : take number (read-only, returns the take number directly)
 ---@param take MediaItem_Take
----@param parmname string
+---@param parmname SetMediaItemTakeInfo_Value_Field
 ---@param newvalue number
 ---@return boolean rv
 function reaper.SetMediaItemTakeInfo_Value(take, parmname, newvalue) end
+
+---@alias SetMediaTrackInfo_Value_Field
+---| "'B_MUTE'" bool * : muted
+---| "'B_PHASE'" bool * : track phase inverted
+---| "'B_RECMON_IN_EFFECT'" bool * : record monitoring in effect (current audio-thread playback state, read-only)
+---| "'IP_TRACKNUMBER'" int : track number 1-based, 0=not found, -1=master track (read-only, returns the int directly)
+---| "'I_SOLO'" int * : soloed, 0=not soloed, 1=soloed, 2=soloed in place, 5=safe soloed, 6=safe soloed in place
+---| "'B_SOLO_DEFEAT'" bool * : when set, if anything else is soloed and this track is not muted, this track acts soloed
+---| "'I_FXEN'" int * : fx enabled, 0=bypassed, !0=fx active
+---| "'I_RECARM'" int * : record armed, 0=not record armed, 1=record armed
+---| "'I_RECINPUT'" int * : record input, <0=no input. if 4096 set, input is MIDI and low 5 bits represent channel (0=all, 1-16=only chan), next 6 bits represent physical input (63=all, 62=VKB). If 4096 is not set, low 10 bits (0..1023) are input start channel (ReaRoute/Loopback start at 512). If 2048 is set, input is multichannel input (using track channel count), or if 1024 is set, input is stereo input, otherwise input is mono.
+---| "'I_RECMODE'" int * : record mode, 0=input, 1=stereo out, 2=none, 3=stereo out w/latency compensation, 4=midi output, 5=mono out, 6=mono out w/ latency compensation, 7=midi overdub, 8=midi replace
+---| "'I_RECMODE_FLAGS'" int * : record mode flags, &3=output recording mode (0=post fader, 1=pre-fx, 2=post-fx/pre-fader)
+---| "'I_RECMON'" int * : record monitoring, 0=off, 1=normal, 2=not when playing (tape style)
+---| "'I_RECMONITEMS'" int * : monitor items while recording, 0=off, 1=on
+---| "'B_AUTO_RECARM'" bool * : automatically set record arm when selected (does not immediately affect recarm state, script should set directly if desired)
+---| "'I_VUMODE'" int * : track vu mode, &1:disabled, &30==0:stereo peaks, &30==2:multichannel peaks, &30==4:stereo RMS, &30==8:combined RMS, &30==12:LUFS-M, &30==16:LUFS-S (readout=max), &30==20:LUFS-S (readout=current), &32:LUFS calculation on channels 1+2 only
+---| "'I_AUTOMODE'" int * : track automation mode, 0=trim/off, 1=read, 2=touch, 3=write, 4=latch
+---| "'I_NCHAN'" int * : number of track channels, 2-128, even numbers only
+---| "'I_SELECTED'" int * : track selected, 0=unselected, 1=selected
+---| "'I_WNDH'" int * : current TCP window height in pixels including envelopes (read-only)
+---| "'I_TCPH'" int * : current TCP window height in pixels not including envelopes (read-only)
+---| "'I_TCPY'" int * : current TCP window Y-position in pixels relative to top of arrange view (read-only)
+---| "'I_MCPX'" int * : current MCP X-position in pixels relative to mixer container (read-only)
+---| "'I_MCPY'" int * : current MCP Y-position in pixels relative to mixer container (read-only)
+---| "'I_MCPW'" int * : current MCP width in pixels (read-only)
+---| "'I_MCPH'" int * : current MCP height in pixels (read-only)
+---| "'I_FOLDERDEPTH'" int * : folder depth change, 0=normal, 1=track is a folder parent, -1=track is the last in the innermost folder, -2=track is the last in the innermost and next-innermost folders, etc
+---| "'I_FOLDERCOMPACT'" int * : folder collapsed state (only valid on folders), 0=normal, 1=collapsed, 2=fully collapsed
+---| "'I_MIDIHWOUT'" int * : track midi hardware output index, <0=disabled, low 5 bits are which channels (0=all, 1-16), next 5 bits are output device index (0-31)
+---| "'I_MIDI_INPUT_CHANMAP'" int * : -1 maps to source channel, otherwise 1-16 to map to MIDI channel
+---| "'I_MIDI_CTL_CHAN'" int * : -1 no link, 0-15 link to MIDI volume/pan on channel, 16 link to MIDI volume/pan on all channels
+---| "'I_MIDI_TRACKSEL_FLAG'" int * : MIDI editor track list options: &1=expand media items, &2=exclude from list, &4=auto-pruned
+---| "'I_PERFFLAGS'" int * : track performance flags, &1=no media buffering, &2=no anticipative FX
+---| "'I_CUSTOMCOLOR'" int * : custom color, OS dependent color|0x1000000 (i.e. ColorToNative(r,g,b)|0x1000000). If you do not |0x1000000, then it will not be used, but will store the color
+---| "'I_HEIGHTOVERRIDE'" int * : custom height override for TCP window, 0 for none, otherwise size in pixels
+---| "'I_SPACER'" int * : 1=TCP track spacer above this trackB_HEIGHTLOCK : bool * : track height lock (must set I_HEIGHTOVERRIDE before locking)
+---| "'D_VOL'" double * : trim volume of track, 0=-inf, 0.5=-6dB, 1=+0dB, 2=+6dB, etc
+---| "'D_PAN'" double * : trim pan of track, -1..1
+---| "'D_WIDTH'" double * : width of track, -1..1
+---| "'D_DUALPANL'" double * : dualpan position 1, -1..1, only if I_PANMODE==6
+---| "'D_DUALPANR'" double * : dualpan position 2, -1..1, only if I_PANMODE==6
+---| "'I_PANMODE'" int * : pan mode, 0=classic 3.x, 3=new balance, 5=stereo pan, 6=dual pan
+---| "'D_PANLAW'" double * : pan law of track, <0=project default, 0.5=-6dB, 0.707..=-3dB, 1=+0dB, 1.414..=-3dB with gain compensation, 2=-6dB with gain compensation, etc
+---| "'I_PANLAW_FLAGS'" int * : pan law flags, 0=sine taper, 1=hybrid taper with deprecated behavior when gain compensation enabled, 2=linear taper, 3=hybrid taper
+---| "'B_SHOWINMIXER'" bool * : track control panel visible in mixer (do not use on master track)
+---| "'B_SHOWINTCP'" bool * : track control panel visible in arrange view (do not use on master track)
+---| "'B_MAINSEND'" bool * : track sends audio to parent
+---| "'C_MAINSEND_OFFS'" char * : channel offset of track send to parent
+---| "'C_MAINSEND_NCH'" char * : channel count of track send to parent (0=use all child track channels, 1=use one channel only)
+---| "'I_FREEMODE'" int * : 1=track free item positioning enabled, 2=track fixed lanes enabled (call UpdateTimeline() after changing)
+---| "'I_NUMFIXEDLANES'" int * : number of track fixed lanes (fine to call with setNewValue, but returned value is read-only)
+---| "'C_LANESCOLLAPSED'" char * : fixed lane collapse state (1=lanes collapsed, 2=track displays as non-fixed-lanes but hidden lanes exist)
+---| "'C_LANESETTINGS'" char * : fixed lane settings (&1=auto-remove empty lanes at bottom, &2=do not auto-comp new recording, &4=newly recorded lanes play exclusively (else add lanes in layers), &8=big lanes (else small lanes), &16=add new recording at bottom (else record into first available lane), &32=hide lane buttons
+---| "'C_LANEPLAYS:N'" char * :  on fixed lane tracks, 0=lane N does not play, 1=lane N plays exclusively, 2=lane N plays and other lanes also play (fine to call with setNewValue, but returned value is read-only)
+---| "'C_ALLLANESPLAY'" char * : on fixed lane tracks, 0=no lanes play, 1=all lanes play, 2=some lanes play (fine to call with setNewValue 0 or 1, but returned value is read-only)
+---| "'C_BEATATTACHMODE'" char * : track timebase, -1=project default, 0=time, 1=beats (position, length, rate), 2=beats (position only)
+---| "'F_MCP_FXSEND_SCALE'" float * : scale of fx+send area in MCP (0=minimum allowed, 1=maximum allowed)
+---| "'F_MCP_FXPARM_SCALE'" float * : scale of fx parameter area in MCP (0=minimum allowed, 1=maximum allowed)
+---| "'F_MCP_SENDRGN_SCALE'" float * : scale of send area as proportion of the fx+send total area (0=minimum allowed, 1=maximum allowed)
+---| "'F_TCP_FXPARM_SCALE'" float * : scale of TCP parameter area when TCP FX are embedded (0=min allowed, default, 1=max allowed)
+---| "'I_PLAY_OFFSET_FLAG'" int * : track media playback offset state, &1=bypassed, &2=offset value is measured in samples (otherwise measured in seconds)
+---| "'D_PLAY_OFFSET'" double * : track media playback offset, units depend on I_PLAY_OFFSET_FLAG
 
 ---Set track numerical-value attributes.
 ---B_MUTE : bool * : muted
@@ -3808,7 +4182,7 @@ function reaper.SetMediaItemTakeInfo_Value(take, parmname, newvalue) end
 ---I_PLAY_OFFSET_FLAG : int * : track media playback offset state, &1=bypassed, &2=offset value is measured in samples (otherwise measured in seconds)
 ---D_PLAY_OFFSET : double * : track media playback offset, units depend on I_PLAY_OFFSET_FLAG
 ---@param tr MediaTrack
----@param parmname string
+---@param parmname SetMediaTrackInfo_Value_Field
 ---@param newvalue number
 ---@return boolean rv
 function reaper.SetMediaTrackInfo_Value(tr, parmname, newvalue) end
@@ -3852,7 +4226,7 @@ function reaper.SetOnlyTrackSelected(track) end
 ---@param division number
 function reaper.SetProjectGrid(project, division) end
 
----discouraged. see GetNumRegionsOrMarkers, GetRegionOrMarker, SetRegionOrMarkerInfo_Value, GetSetRegionOrMarkerInfo_String. Note: this function can't clear a marker's name (an empty string will leave the name unchanged), see SetProjectMarker4.
+---Note: this function can't clear a marker's name (an empty string will leave the name unchanged), see SetProjectMarker4.
 ---@param markrgnindexnumber integer
 ---@param isrgn boolean
 ---@param pos number
@@ -3861,7 +4235,7 @@ function reaper.SetProjectGrid(project, division) end
 ---@return boolean rv
 function reaper.SetProjectMarker(markrgnindexnumber, isrgn, pos, rgnend, name) end
 
----discouraged. see GetNumRegionsOrMarkers, GetRegionOrMarker, SetRegionOrMarkerInfo_Value, GetSetRegionOrMarkerInfo_String. Note: this function can't clear a marker's name (an empty string will leave the name unchanged), see SetProjectMarker4.
+---Note: this function can't clear a marker's name (an empty string will leave the name unchanged), see SetProjectMarker4.
 ---@param proj ReaProject|nil|0
 ---@param markrgnindexnumber integer
 ---@param isrgn boolean
@@ -3871,7 +4245,7 @@ function reaper.SetProjectMarker(markrgnindexnumber, isrgn, pos, rgnend, name) e
 ---@return boolean rv
 function reaper.SetProjectMarker2(proj, markrgnindexnumber, isrgn, pos, rgnend, name) end
 
----discouraged. see GetNumRegionsOrMarkers, GetRegionOrMarker, SetRegionOrMarkerInfo_Value, GetSetRegionOrMarkerInfo_String. Note: this function can't clear a marker's name (an empty string will leave the name unchanged), see SetProjectMarker4.
+---Note: this function can't clear a marker's name (an empty string will leave the name unchanged), see SetProjectMarker4.
 ---@param proj ReaProject|nil|0
 ---@param markrgnindexnumber integer
 ---@param isrgn boolean
@@ -3882,7 +4256,7 @@ function reaper.SetProjectMarker2(proj, markrgnindexnumber, isrgn, pos, rgnend, 
 ---@return boolean rv
 function reaper.SetProjectMarker3(proj, markrgnindexnumber, isrgn, pos, rgnend, name, color) end
 
----discouraged. see GetNumRegionsOrMarkers, GetRegionOrMarker, SetRegionOrMarkerInfo_Value, GetSetRegionOrMarkerInfo_String. color should be 0 to not change, or ColorToNative(r,g,b)|0x1000000, flags&1 to clear name
+---color should be 0 to not change, or ColorToNative(r,g,b)|0x1000000, flags&1 to clear name
 ---@param proj ReaProject|nil|0
 ---@param markrgnindexnumber integer
 ---@param isrgn boolean
@@ -3894,7 +4268,7 @@ function reaper.SetProjectMarker3(proj, markrgnindexnumber, isrgn, pos, rgnend, 
 ---@return boolean rv
 function reaper.SetProjectMarker4(proj, markrgnindexnumber, isrgn, pos, rgnend, name, color, flags) end
 
----discouraged. See SetProjectMarkerByIndex2.
+---See SetProjectMarkerByIndex2.
 ---@param proj ReaProject|nil|0
 ---@param markrgnidx integer
 ---@param isrgn boolean
@@ -3906,7 +4280,7 @@ function reaper.SetProjectMarker4(proj, markrgnindexnumber, isrgn, pos, rgnend, 
 ---@return boolean rv
 function reaper.SetProjectMarkerByIndex(proj, markrgnidx, isrgn, pos, rgnend, IDnumber, name, color) end
 
----discouraged. see GetNumRegionsOrMarkers, GetRegionOrMarker, SetRegionOrMarkerInfo_Value, GetSetRegionOrMarkerInfo_String. Differs from SetProjectMarker4 in that markrgnidx is 0 for the first marker/region, 1 for the next, etc (see EnumProjectMarkers3), rather than representing the displayed marker/region ID number (see SetProjectMarker3). IDnumber < 0 to ignore. Function will fail if attempting to set a duplicate ID number for a region (duplicate ID numbers for markers are OK). flags&1 to clear name. If flags&2, markers will not be re-sorted, and after making updates, you MUST call SetProjectMarkerByIndex2 with markrgnidx=-1 and flags&2 to force re-sort/UI updates.
+---Differs from SetProjectMarker4 in that markrgnidx is 0 for the first marker/region, 1 for the next, etc (see EnumProjectMarkers3), rather than representing the displayed marker/region ID number (see SetProjectMarker3). IDnumber < 0 to ignore. Function will fail if attempting to set a duplicate ID number for a region (duplicate ID numbers for markers are OK). flags&1 to clear name. If flags&2, markers will not be re-sorted, and after making updates, you MUST call SetProjectMarkerByIndex2 with markrgnidx=-1 and flags&2 to force re-sort/UI updates.
 ---@param proj ReaProject|nil|0
 ---@param markrgnidx integer
 ---@param isrgn boolean
@@ -3926,14 +4300,6 @@ function reaper.SetProjectMarkerByIndex2(proj, markrgnidx, isrgn, pos, rgnend, I
 ---@param value string
 ---@return integer rv
 function reaper.SetProjExtState(proj, extname, key, value) end
-
----"D_STARTPOS", "D_ENDPOS" (= D_STARTPOS for markers), "I_NUMBER" (displayed index number), "I_LANENUMBER", "I_CUSTOMCOLOR", "B_UISEL", "B_HIDDEN". See GetNumRegionsOrMarkers, GetRegionOrMarker, GetRegionOrMarkerInfo_Value, GetSetRegionOrMarkerInfo_String
----@param proj ReaProject|nil|0
----@param regionOrMarker ProjectMarker
----@param parameterName string
----@param setNewValue number
----@return number num
-function reaper.SetRegionOrMarkerInfo_Value(proj, regionOrMarker, parameterName, setNewValue) end
 
 ---Add (flag > 0) or remove (flag < 0) a track from this region when using the region render matrix. If adding, flag==2 means force mono, flag==4 means force stereo, flag==N means force N/2 channels.
 ---@param proj ReaProject|nil|0
@@ -4021,11 +4387,6 @@ function reaper.SetTempoTimeSigMarker(proj, ptidx, timepos, measurepos, beatpos,
 ---col_mixerbg : Empty mixer list area
 ---col_arrangebg : Empty arrange view area
 ---arrange_vgrid : Empty arrange view area vertical grid shading
----tcp_pinned_track_gap : Track panel color between pinned and unpinned tracks
----tcp_pinned_track_gap_unreachable : Track panel color between pinned and unpinned tracks when some tracks are unreachable
----tcp_pinned_track_gap_mode : Track panel fill mode between pinned and unpinned tracks
----pinned_track_gap : Arrange view color between pinned and unpinned tracks
----pinned_track_gap_mode : Arrange view fill mode between pinned and unpinned tracks
 ---col_fadearm : Fader background when automation recording
 ---col_fadearm2 : Fader background when automation playing
 ---col_fadearm3 : Fader background when in inactive touch/latch
@@ -4421,6 +4782,19 @@ function reaper.SetTrackMIDINoteNameEx(proj, track, pitch, chan, name) end
 ---@param selected boolean
 function reaper.SetTrackSelected(track, selected) end
 
+---@alias SetTrackSendInfo_Value_Field
+---| "'B_MUTE'" bool *
+---| "'B_PHASE'" bool * : true to flip phase
+---| "'B_MONO'" bool *
+---| "'D_VOL'" double * : 1.0 = +0dB etc
+---| "'D_PAN'" double * : -1..+1
+---| "'D_PANLAW'" double * : 1.0=+0.0db, 0.5=-6dB, -1.0 = projdef etc
+---| "'I_SENDMODE'" int * : 0=post-fader, 1=pre-fx, 2=post-fx (deprecated), 3=post-fx
+---| "'I_AUTOMODE'" int * : automation mode (-1=use track automode, 0=trim/off, 1=read, 2=touch, 3=write, 4=latch)
+---| "'I_SRCCHAN'" int * : -1 for no audio send. Low 10 bits specify channel offset, and higher bits specify channel count. (srcchan>>10) == 0 for stereo, 1 for mono, 2 for 4 channel, 3 for 6 channel, etc.
+---| "'I_DSTCHAN'" int * : low 10 bits are destination index, &1024 set to mix to mono.
+---| "'I_MIDIFLAGS'" int * : low 5 bits=source channel 0=all, 1-16, 31=MIDI send disabled, next 5 bits=dest channel, 0=orig, 1-16=chan. &1024 for faders-send MIDI vol/pan. (>>14)&255 = src bus (0 for all, 1 for normal, 2+). (>>22)&255=destination bus (0 for all, 1 for normal, 2+)
+
 ---Set send/receive/hardware output numerical-value attributes, return true on success.
 ---category is <0 for receives, 0=sends, >0 for hardware outputs
 ---parameter names:
@@ -4439,7 +4813,7 @@ function reaper.SetTrackSelected(track, selected) end
 ---@param tr MediaTrack
 ---@param category integer
 ---@param sendidx integer
----@param parmname string
+---@param parmname SetTrackSendInfo_Value_Field
 ---@param newvalue number
 ---@return boolean rv
 function reaper.SetTrackSendInfo_Value(tr, category, sendidx, parmname, newvalue) end
@@ -8915,10 +9289,56 @@ function reaper.Xen_GetMediaSourceSamples(src, destbuf, destbufoffset, numframes
 function reaper.Xen_StartSourcePreview(source, gain, loop, outputchanindexIn) end
 
 ---Stop audio preview. id -1 stops all.
----ReaScript/EEL2 Built-in Function List
 ---@param preview_id integer
 ---@return integer rv
 function reaper.Xen_StopSourcePreview(preview_id) end
+
+---Get the current http communication port from Soundminer.
+---@return integer rv
+function reaper.sm_getPort() end
+
+---Return's whether the cursor position in reaper should auto advance to the end of the clip after spotting or not.
+---@return boolean rv
+function reaper.sm_getadvance() end
+
+---Return's metadata for a record.
+---@param filepath string
+---@return string str
+---@return string filepath
+function reaper.sm_metadata(filepath) end
+
+---Query Soundminer from nvk_CREATE.
+---@param query string
+---@param offset integer
+---@param maxlimit integer
+---@return string str
+---@return string query
+function reaper.sm_nvk_CREATE(query, offset, maxlimit) end
+
+---Bring back the current sounds on display from Soundminer for nvk_CREATE.
+---@param offset integer
+---@param maxlimit integer
+---@return string str
+function reaper.sm_nvk_CREATE_current(offset, maxlimit) end
+
+---Return's a real filepath for a file, resolving it as necesary. Return's nil if offline.
+---@param path string
+---@return string str
+---@return string path
+function reaper.sm_resolvepath(path) end
+
+---Set's whether the cursor position in reaper should auto advance to the end of the clip after spotting or not.
+---@param flag boolean
+function reaper.sm_setadvance(flag) end
+
+---Set the format of data received from Soundminer.  Defaults to json.
+---@param format integer
+function reaper.sm_setformat(format) end
+
+---Return's Soundminer app version and extension version. App version will be blank on connection error. (Not launched or http interface not running).
+---ReaScript/EEL2 Built-in Function List
+---@return string str
+function reaper.sm_version() end
 
 ---is_new_value,filename,sectionID,cmdID,mode,resolution,val,contextstr = reaper.get_action_context()
 ---Returns contextual information about the script, typically MIDI/OSC input values.
