@@ -1274,7 +1274,7 @@ function reaper.GetMediaItem_Track(item) end
 ---| "'B_ALLTAKESPLAY'" bool * : all takes play
 ---| "'B_UISEL'" bool * : selected in arrange view
 ---| "'C_BEATATTACHMODE'" char * : item timebase, -1=track or project default, 1=beats (position, length, rate), 2=beats (position only). for auto-stretch timebase: C_BEATATTACHMODE=1, C_AUTOSTRETCH=1
----| "'C_AUTOSTRETCH:'" char * : auto-stretch at project tempo changes, 1=enabled, requires C_BEATATTACHMODE=1
+---| "'C_AUTOSTRETCH'" : char * : auto-stretch at project tempo changes, 1=enabled, requires C_BEATATTACHMODE=1
 ---| "'C_LOCK'" char * : locked, &1=locked
 ---| "'D_VOL'" double * : item volume,  0=-inf, 0.5=-6dB, 1=+0dB, 2=+6dB, etc
 ---| "'D_POSITION'" double * : item position in seconds
@@ -2014,6 +2014,20 @@ function reaper.GetSetItemState2(item, str, isundo) end
 ---| "'P_NOTES'" char * : item note text (do not write to returned pointer, use setNewValue to update)
 ---| "'P_EXT:xyz'" char * : extension-specific persistent data
 ---| "'GUID'" GUID * : 16-byte GUID, can query or update. If using a _String() function, GUID is a string {xyz-...}.
+---| "'P_EXT:alt'"
+---| "'P_EXT:character'"
+---| "'P_EXT:description'"
+---| "'P_EXT:line'"
+---| "'P_EXT:log'"
+---| "'P_EXT:nvk_AUTODOPPLER'"
+---| "'P_EXT:nvk_automute'"
+---| "'P_EXT:nvk_CREATE_STRING'"
+---| "'P_EXT:nvk_fade'"
+---| "'P_EXT:nvk_item_s'"
+---| "'P_EXT:nvk_item_type'"
+---| "'P_EXT:nvk_render_preset'"
+---| "'P_EXT:parenthetical'"
+---| "'P_EXT:nvk_TOGGLE_VOL'"
 
 ---Gets/sets an item attribute string:
 ---P_NOTES : char * : item note text (do not write to returned pointer, use setNewValue to update)
@@ -2031,6 +2045,9 @@ function reaper.GetSetMediaItemInfo_String(item, parmname, stringNeedBig, setNew
 ---| "'P_NAME'" char * : take name
 ---| "'P_EXT:xyz'" char * : extension-specific persistent data
 ---| "'GUID'" GUID * : 16-byte GUID, can query or update. If using a _String() function, GUID is a string {xyz-...}.
+---| "'P_EXT:nvk_CREATE_TakeProcessor'"
+---| "'P_EXT:nvk_fade_overshoot'"
+---| "'P_EXT:nvk_take_source_type_v2'"
 
 ---Gets/sets a take attribute string:
 ---P_NAME : char * : take name
@@ -2055,6 +2072,11 @@ function reaper.GetSetMediaItemTakeInfo_String(tk, parmname, stringNeedBig, setN
 ---| "'P_EXT:xyz'" char * : extension-specific persistent data
 ---| "'P_UI_RECT:tcp.mute'" char * : read-only, allows querying screen position + size of track WALTER elements (tcp.size queries screen position and size of entire TCP, etc).
 ---| "'GUID'" GUID * : 16-byte GUID, can query or update. If using a _String() function, GUID is a string {xyz-...}.
+---| "'P_EXT:CHARACTERS'"
+---| "'P_EXT:nvk_AUTODOPPLER'"
+---| "'P_EXT:nvk_TRACK_AUTOMUTE'"
+---| "'P_EXT:SCENES'"
+---| "'P_EXT:nvk_track_color'"
 
 ---Get or set track string attributes.
 ---P_NAME : char * : track name (on master returns NULL)
@@ -2107,6 +2129,14 @@ function reaper.GetSetProjectGrid(project, set, division, swingmode, swingamt) e
 ---| "'RENDER_TAILMS'" tail length in ms to render (only used if RENDER_BOUNDSFLAG and RENDER_TAILFLAG are set)
 ---| "'RENDER_ADDTOPROJ'" &1=add rendered files to project, &2=do not render files that are likely silent
 ---| "'RENDER_DITHER'" &1=dither, &2=noise shaping, &4=dither stems, &8=noise shaping on stems
+---| "'RENDER_NORMALIZE'" &1=enable, (&14==0)=LUFS-I, (&14==2)=RMS, (&14==4)=peak, (&14==6)=true peak, (&14==8)=LUFS-M max, (&14==10)=LUFS-S max, &64=enable brickwall limit, &128=brickwall limit true peak, (&(256|2048)==256)=only normalize files that are too loud, (&(256|2048)==2048)=only normalize files that are too quiet, &512=apply fade-in, &1024=apply fade-out, (&(32|4096)==32)=normalize stems as if files play together (common gain), (&(32|4096)==4096)=normalize to loudest file, (&(32|4096)==4128)=normalize as if files play together, &8192=adjust mono media additional -3dB, &(1<<16)=pad start with silence, &(2<<16)=pad end with silence, &(4<<16)=disable all render postprocessing, &(32<<16)=limit as if files play together
+---| "'RENDER_NORMALIZE_TARGET'" render normalization target (0.5 means -6.02dB, requires RENDER_NORMALIZE&1)
+---| "'RENDER_BRICKWALL'" render brickwall limit (0.5 means -6.02dB, requires RENDER_NORMALIZE&64)
+---| "'RENDER_FADEIN'" render fade-in (0.001 means 1 ms, requires RENDER_NORMALIZE&512)
+---| "'RENDER_FADEOUT'" render fade-out (0.001 means 1 ms, requires RENDER_NORMALIZE&1024)
+---| "'RENDER_FADEINSHAPE'" render fade-in shape
+---| "'RENDER_FADEOUTSHAPE'" render fade-out shape
+---| "'RENDER_PADSTART'" pad render start with silence (0.001 means 1ms, requires RENDER_NORMALIZE&(1<<16))RENDER_PADEND: pad render end with silence (0.001 means 1ms, requires RENDER_NORMALIZE&(2<<16))PROJECT_SRATE : sample rate (ignored unless PROJECT_SRATE_USE set)
 ---| "'PROJECT_SRATE_USE'" set to 1 if project sample rate is used
 ---| "'RULER_DEFAULT_REGION_LANE_VISIBLE'" 1 if default region lane is visible (preference to hide all regions not enabled and ruler tall enough to display), 0 otherwise (read-only)
 ---| "'RULER_DEFAULT_MARKER_LANE_VISIBLE'" 1 if default marker lane is visible (preference to hide all markers not enabled and ruler tall enough to display), 0 otherwise (read-only)
@@ -3910,7 +3940,7 @@ function reaper.SetMasterTrackVisibility(flag) end
 ---| "'B_ALLTAKESPLAY'" bool * : all takes play
 ---| "'B_UISEL'" bool * : selected in arrange view
 ---| "'C_BEATATTACHMODE'" char * : item timebase, -1=track or project default, 1=beats (position, length, rate), 2=beats (position only). for auto-stretch timebase: C_BEATATTACHMODE=1, C_AUTOSTRETCH=1
----| "'C_AUTOSTRETCH:'" char * : auto-stretch at project tempo changes, 1=enabled, requires C_BEATATTACHMODE=1
+---| "'C_AUTOSTRETCH'" : char * : auto-stretch at project tempo changes, 1=enabled, requires C_BEATATTACHMODE=1
 ---| "'C_LOCK'" char * : locked, &1=locked
 ---| "'D_VOL'" double * : item volume,  0=-inf, 0.5=-6dB, 1=+0dB, 2=+6dB, etc
 ---| "'D_POSITION'" double * : item position in seconds
