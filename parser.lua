@@ -1463,7 +1463,7 @@ local function generate_stub(func)
 			end
 		end
 		if create_alias then
-			alias = short_name .. "_Field"
+			alias = short_name .. "_Param"
 			table.insert(lines, "---@alias " .. alias)
 			for line in func.description:gmatch("[^\n]+") do
 				local parmname, desc = line:match("^(%S+) : (.*)$")
