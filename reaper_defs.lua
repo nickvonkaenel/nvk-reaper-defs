@@ -2136,7 +2136,8 @@ function reaper.GetSetProjectGrid(project, set, division, swingmode, swingamt) e
 ---| "'RENDER_FADEOUT'" render fade-out (0.001 means 1 ms, requires RENDER_NORMALIZE&1024)
 ---| "'RENDER_FADEINSHAPE'" render fade-in shape
 ---| "'RENDER_FADEOUTSHAPE'" render fade-out shape
----| "'RENDER_PADSTART'" pad render start with silence (0.001 means 1ms, requires RENDER_NORMALIZE&(1<<16))RENDER_PADEND: pad render end with silence (0.001 means 1ms, requires RENDER_NORMALIZE&(2<<16))PROJECT_SRATE : sample rate (ignored unless PROJECT_SRATE_USE set)
+---| "'RENDER_PADSTART'" pad render start with silence (0.001 means 1ms, requires RENDER_NORMALIZE&(1<<16))RENDER_PADEND: pad render end with silence (0.001 means 1ms, requires RENDER_NORMALIZE&(2<<16))
+---| "'PROJECT_SRATE'" : sample rate (ignored unless PROJECT_SRATE_USE set)
 ---| "'PROJECT_SRATE_USE'" set to 1 if project sample rate is used
 ---| "'RULER_DEFAULT_REGION_LANE_VISIBLE'" 1 if default region lane is visible (preference to hide all regions not enabled and ruler tall enough to display), 0 otherwise (read-only)
 ---| "'RULER_DEFAULT_MARKER_LANE_VISIBLE'" 1 if default marker lane is visible (preference to hide all markers not enabled and ruler tall enough to display), 0 otherwise (read-only)
@@ -2163,7 +2164,8 @@ function reaper.GetSetProjectGrid(project, set, division, swingmode, swingamt) e
 ---RENDER_FADEOUT: render fade-out (0.001 means 1 ms, requires RENDER_NORMALIZE&1024)
 ---RENDER_FADEINSHAPE: render fade-in shape
 ---RENDER_FADEOUTSHAPE: render fade-out shape
----RENDER_PADSTART: pad render start with silence (0.001 means 1ms, requires RENDER_NORMALIZE&(1<<16))RENDER_PADEND: pad render end with silence (0.001 means 1ms, requires RENDER_NORMALIZE&(2<<16))PROJECT_SRATE : sample rate (ignored unless PROJECT_SRATE_USE set)
+---RENDER_PADSTART: pad render start with silence (0.001 means 1ms, requires RENDER_NORMALIZE&(1<<16))RENDER_PADEND: pad render end with silence (0.001 means 1ms, requires RENDER_NORMALIZE&(2<<16))
+---PROJECT_SRATE : sample rate (ignored unless PROJECT_SRATE_USE set)
 ---PROJECT_SRATE_USE : set to 1 if project sample rate is used
 ---RULER_DEFAULT_REGION_LANE_VISIBLE : 1 if default region lane is visible (preference to hide all regions not enabled and ruler tall enough to display), 0 otherwise (read-only)
 ---RULER_DEFAULT_MARKER_LANE_VISIBLE : 1 if default marker lane is visible (preference to hide all markers not enabled and ruler tall enough to display), 0 otherwise (read-only)
