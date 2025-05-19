@@ -1852,7 +1852,7 @@ function reaper.GetRegionOrMarker(proj, index, guidStr) end
 ---"D_STARTPOS", "D_ENDPOS" (= D_STARTPOS for markers), "I_INDEX" (internal index), "I_NUMBER" (displayed index number), "I_LANENUMBER" (can be set, but returned value is read-only), "I_CUSTOMCOLOR", "I_DISPLAYEDCOLOR", "B_ISREGION", "B_UISEL", "B_HIDDEN". See GetNumRegionsOrMarkers, GetRegionOrMarker, SetRegionOrMarkerInfo_Value, GetSetRegionOrMarkerInfo_String
 ---@param proj ReaProject|nil|0
 ---@param regionOrMarker ProjectMarker
----@param parameterName string
+---@param parameterName GetRegionOrMarkerInfo_Value_Param
 ---@return number num
 function reaper.GetRegionOrMarkerInfo_Value(proj, regionOrMarker, parameterName) end
 
@@ -2265,7 +2265,7 @@ function reaper.GetSetProjectNotes(proj, set, notes) end
 ---"GUID" (read-only), "P_NAME". See GetNumRegionsOrMarkers, GetRegionOrMarker, GetRegionOrMarkerInfo_Value, SetRegionOrMarkerInfo_Value
 ---@param proj ReaProject|nil|0
 ---@param regionOrMarker ProjectMarker
----@param parameterName string
+---@param parameterName GetSetRegionOrMarkerInfo_String_Param
 ---@param stringNeedBig string
 ---@param setNewValue boolean
 ---@return boolean rv
@@ -4411,7 +4411,7 @@ function reaper.SetProjExtState(proj, extname, key, value) end
 ---"D_STARTPOS", "D_ENDPOS" (= D_STARTPOS for markers), "I_NUMBER" (displayed index number), "I_LANENUMBER" (can be set, but returned value is read-only, "I_CUSTOMCOLOR", "B_UISEL", "B_HIDDEN". See GetNumRegionsOrMarkers, GetRegionOrMarker, GetRegionOrMarkerInfo_Value, GetSetRegionOrMarkerInfo_String
 ---@param proj ReaProject|nil|0
 ---@param regionOrMarker ProjectMarker
----@param parameterName string
+---@param parameterName SetRegionOrMarkerInfo_Value_Param
 ---@param setNewValue number
 ---@return number num
 function reaper.SetRegionOrMarkerInfo_Value(proj, regionOrMarker, parameterName, setNewValue) end

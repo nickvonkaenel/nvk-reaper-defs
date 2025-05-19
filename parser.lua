@@ -1433,6 +1433,7 @@ local alias_strings = {
 local alias_field_names = {
 	parmname = true,
 	desc = true,
+	parameterName = true,
 }
 
 local additional_p_ext_vals
