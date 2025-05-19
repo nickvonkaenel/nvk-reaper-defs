@@ -1838,8 +1838,18 @@ function reaper.GetProjExtState(proj, extname, key) end
 function reaper.GetRegionOrMarker(proj, index, guidStr) end
 
 ---@alias GetRegionOrMarkerInfo_Value_Param
+---| "'D_STARTPOS'"
+---| "'D_ENDPOS'"
+---| "'I_INDEX'"
+---| "'I_NUMBER'"
+---| "'I_LANENUMBER'"
+---| "'I_CUSTOMCOLOR'"
+---| "'I_DISPLAYEDCOLOR'"
+---| "'B_ISREGION'"
+---| "'B_UISEL'"
+---| "'B_HIDDEN'"
 
----"D_STARTPOS", "D_ENDPOS" (= D_STARTPOS for markers), "I_INDEX" (internal index), "I_NUMBER" (displayed index number), "I_LANENUMBER", "I_CUSTOMCOLOR", "I_DISPLAYEDCOLOR", "B_ISREGION", "B_UISEL", "B_HIDDEN". See GetNumRegionsOrMarkers, GetRegionOrMarker, SetRegionOrMarkerInfo_Value, GetSetRegionOrMarkerInfo_String
+---"D_STARTPOS", "D_ENDPOS" (= D_STARTPOS for markers), "I_INDEX" (internal index), "I_NUMBER" (displayed index number), "I_LANENUMBER" (can be set, but returned value is read-only), "I_CUSTOMCOLOR", "I_DISPLAYEDCOLOR", "B_ISREGION", "B_UISEL", "B_HIDDEN". See GetNumRegionsOrMarkers, GetRegionOrMarker, SetRegionOrMarkerInfo_Value, GetSetRegionOrMarkerInfo_String
 ---@param proj ReaProject|nil|0
 ---@param regionOrMarker ProjectMarker
 ---@param parameterName string
@@ -2129,22 +2139,25 @@ function reaper.GetSetProjectGrid(project, set, division, swingmode, swingamt) e
 ---| "'RENDER_TAILMS'" tail length in ms to render (only used if RENDER_BOUNDSFLAG and RENDER_TAILFLAG are set)
 ---| "'RENDER_ADDTOPROJ'" &1=add rendered files to project, &2=do not render files that are likely silent
 ---| "'RENDER_DITHER'" &1=dither, &2=noise shaping, &4=dither stems, &8=noise shaping on stems
----| "'RENDER_NORMALIZE'" &1=enable, (&14==0)=LUFS-I, (&14==2)=RMS, (&14==4)=peak, (&14==6)=true peak, (&14==8)=LUFS-M max, (&14==10)=LUFS-S max, &64=enable brickwall limit, &128=brickwall limit true peak, (&(256|2048)==256)=only normalize files that are too loud, (&(256|2048)==2048)=only normalize files that are too quiet, &512=apply fade-in, &1024=apply fade-out, (&(32|4096)==32)=normalize stems as if files play together (common gain), (&(32|4096)==4096)=normalize to loudest file, (&(32|4096)==4128)=normalize as if files play together, &8192=adjust mono media additional -3dB, &(1<<16)=pad start with silence, &(2<<16)=pad end with silence, &(4<<16)=disable all render postprocessing, &(32<<16)=limit as if files play together
+---| "'RENDER_NORMALIZE'" &1=enable normalization, (&14==0)=LUFS-I, (&14==2)=RMS, (&14==4)=peak, (&14==6)=true peak, (&14==8)=LUFS-M max, (&14==10)=LUFS-S max, &16=adjust mono media -3dB, &(16|(8<<16))=adjust mono media +3dB, (&(32|4096)==32)=normalize stems as if files play together (common gain), (&(32|4096)==4096)=normalize to loudest file, (&(32|4096)==(32|4096))=normalize as if files play together (common gain), &64=enable brickwall limit, &128=brickwall limit true peak, (&(256|2048)==256)=only normalize files that are too loud, (&(256|2048)==2048)=only normalize files that are too quiet, &512=apply fade-in, &1024=apply fade-out, &16384=trim starting silence, &32768=trim ending silence, &(1<<16)=pad start with silence, &(2<<16)=pad end with silence, &(4<<16)=disable all render postprocessing, &(32<<16)=limit as if files play together
 ---| "'RENDER_NORMALIZE_TARGET'" render normalization target (0.5 means -6.02dB, requires RENDER_NORMALIZE&1)
 ---| "'RENDER_BRICKWALL'" render brickwall limit (0.5 means -6.02dB, requires RENDER_NORMALIZE&64)
 ---| "'RENDER_FADEIN'" render fade-in (0.001 means 1 ms, requires RENDER_NORMALIZE&512)
 ---| "'RENDER_FADEOUT'" render fade-out (0.001 means 1 ms, requires RENDER_NORMALIZE&1024)
 ---| "'RENDER_FADEINSHAPE'" render fade-in shape
 ---| "'RENDER_FADEOUTSHAPE'" render fade-out shape
----| "'RENDER_PADSTART'" pad render start with silence (0.001 means 1ms, requires RENDER_NORMALIZE&(1<<16))RENDER_PADEND: pad render end with silence (0.001 means 1ms, requires RENDER_NORMALIZE&(2<<16))
----| "'PROJECT_SRATE'" : sample rate (ignored unless PROJECT_SRATE_USE set)
+---| "'RENDER_PADSTART'" pad render start with silence (0.001 means 1ms, requires RENDER_NORMALIZE&(1<<16))
+---| "'RENDER_PADEND'" pad render end with silence (0.001 means 1ms, requires RENDER_NORMALIZE&(2<<16))
+---| "'RENDER_TRIMSTART'" trim render start threshold (0.5 means -6.02dB, requires RENDER_NORMALIZE&16384)
+---| "'RENDER_TRIMEND'" trim render end threshold (0.5 means -6.02dB, requires RENDER_NORMALIZE&32768)
+---| "'PROJECT_SRATE'" sample rate (ignored unless PROJECT_SRATE_USE set)
 ---| "'PROJECT_SRATE_USE'" set to 1 if project sample rate is used
 ---| "'RULER_DEFAULT_REGION_LANE_VISIBLE'" 1 if default region lane is visible (preference to hide all regions not enabled and ruler tall enough to display), 0 otherwise (read-only)
 ---| "'RULER_DEFAULT_MARKER_LANE_VISIBLE'" 1 if default marker lane is visible (preference to hide all markers not enabled and ruler tall enough to display), 0 otherwise (read-only)
----| "'RULER_LANE_COLOR:X'" ruler lane default color, color&0x1000000 if used, X should be 0..8
+---| "'RULER_LANE_COLOR:X'" ruler lane default color, color&0x1000000 if used
 ---| "'RULER_LANE_HIDDEN:X'" 1 if ruler lane is hidden, 0 otherwise
 ---| "'RULER_LANE_VISIBLE:X'" 1 if ruler lane is visible (not hidden and ruler tall enough to display), 0 otherwise (read-only)
----| "'RULER_LANE_TIMEBASE:X'" ruler lane default timebase, -1=project default, 0=time, 1=beats (position, length, rate), 2=beats (position only), X should be 0..8
+---| "'RULER_LANE_TIMEBASE:X'" ruler lane default timebase, -1=project default, 0=time, 1=beats (position, length, rate), 2=beats (position only)
 
 ---Get or set project information.
 ---RENDER_SETTINGS : &(1|2)=0:master mix, &1=stems+master mix, &2=stems only, &4=multichannel tracks to multichannel files, &8=use render matrix, &16=tracks with only mono media to mono files, &32=selected media items, &64=selected media items via master, &128=selected tracks via master, &256=embed transients if format supports, &512=embed metadata if format supports, &1024=embed take markers if format supports, &2048=2nd pass render
@@ -2157,22 +2170,25 @@ function reaper.GetSetProjectGrid(project, set, division, swingmode, swingamt) e
 ---RENDER_TAILMS : tail length in ms to render (only used if RENDER_BOUNDSFLAG and RENDER_TAILFLAG are set)
 ---RENDER_ADDTOPROJ : &1=add rendered files to project, &2=do not render files that are likely silent
 ---RENDER_DITHER : &1=dither, &2=noise shaping, &4=dither stems, &8=noise shaping on stems
----RENDER_NORMALIZE: &1=enable, (&14==0)=LUFS-I, (&14==2)=RMS, (&14==4)=peak, (&14==6)=true peak, (&14==8)=LUFS-M max, (&14==10)=LUFS-S max, &64=enable brickwall limit, &128=brickwall limit true peak, (&(256|2048)==256)=only normalize files that are too loud, (&(256|2048)==2048)=only normalize files that are too quiet, &512=apply fade-in, &1024=apply fade-out, (&(32|4096)==32)=normalize stems as if files play together (common gain), (&(32|4096)==4096)=normalize to loudest file, (&(32|4096)==4128)=normalize as if files play together, &8192=adjust mono media additional -3dB, &(1<<16)=pad start with silence, &(2<<16)=pad end with silence, &(4<<16)=disable all render postprocessing, &(32<<16)=limit as if files play together
+---RENDER_NORMALIZE: &1=enable normalization, (&14==0)=LUFS-I, (&14==2)=RMS, (&14==4)=peak, (&14==6)=true peak, (&14==8)=LUFS-M max, (&14==10)=LUFS-S max, &16=adjust mono media -3dB, &(16|(8<<16))=adjust mono media +3dB, (&(32|4096)==32)=normalize stems as if files play together (common gain), (&(32|4096)==4096)=normalize to loudest file, (&(32|4096)==(32|4096))=normalize as if files play together (common gain), &64=enable brickwall limit, &128=brickwall limit true peak, (&(256|2048)==256)=only normalize files that are too loud, (&(256|2048)==2048)=only normalize files that are too quiet, &512=apply fade-in, &1024=apply fade-out, &16384=trim starting silence, &32768=trim ending silence, &(1<<16)=pad start with silence, &(2<<16)=pad end with silence, &(4<<16)=disable all render postprocessing, &(32<<16)=limit as if files play together
 ---RENDER_NORMALIZE_TARGET: render normalization target (0.5 means -6.02dB, requires RENDER_NORMALIZE&1)
 ---RENDER_BRICKWALL: render brickwall limit (0.5 means -6.02dB, requires RENDER_NORMALIZE&64)
 ---RENDER_FADEIN: render fade-in (0.001 means 1 ms, requires RENDER_NORMALIZE&512)
 ---RENDER_FADEOUT: render fade-out (0.001 means 1 ms, requires RENDER_NORMALIZE&1024)
 ---RENDER_FADEINSHAPE: render fade-in shape
 ---RENDER_FADEOUTSHAPE: render fade-out shape
----RENDER_PADSTART: pad render start with silence (0.001 means 1ms, requires RENDER_NORMALIZE&(1<<16))RENDER_PADEND: pad render end with silence (0.001 means 1ms, requires RENDER_NORMALIZE&(2<<16))
+---RENDER_PADSTART: pad render start with silence (0.001 means 1ms, requires RENDER_NORMALIZE&(1<<16))
+---RENDER_PADEND: pad render end with silence (0.001 means 1ms, requires RENDER_NORMALIZE&(2<<16))
+---RENDER_TRIMSTART: trim render start threshold (0.5 means -6.02dB, requires RENDER_NORMALIZE&16384)
+---RENDER_TRIMEND: trim render end threshold (0.5 means -6.02dB, requires RENDER_NORMALIZE&32768)
 ---PROJECT_SRATE : sample rate (ignored unless PROJECT_SRATE_USE set)
 ---PROJECT_SRATE_USE : set to 1 if project sample rate is used
 ---RULER_DEFAULT_REGION_LANE_VISIBLE : 1 if default region lane is visible (preference to hide all regions not enabled and ruler tall enough to display), 0 otherwise (read-only)
 ---RULER_DEFAULT_MARKER_LANE_VISIBLE : 1 if default marker lane is visible (preference to hide all markers not enabled and ruler tall enough to display), 0 otherwise (read-only)
----RULER_LANE_COLOR:X : ruler lane default color, color&0x1000000 if used, X should be 0..8
+---RULER_LANE_COLOR:X : ruler lane default color, color&0x1000000 if used
 ---RULER_LANE_HIDDEN:X : 1 if ruler lane is hidden, 0 otherwise
 ---RULER_LANE_VISIBLE:X : 1 if ruler lane is visible (not hidden and ruler tall enough to display), 0 otherwise (read-only)
----RULER_LANE_TIMEBASE:X : ruler lane default timebase, -1=project default, 0=time, 1=beats (position, length, rate), 2=beats (position only), X should be 0..8
+---RULER_LANE_TIMEBASE:X : ruler lane default timebase, -1=project default, 0=time, 1=beats (position, length, rate), 2=beats (position only)
 ---@param project ReaProject|nil|0
 ---@param desc GetSetProjectInfo_Param
 ---@param value number
@@ -2185,7 +2201,8 @@ function reaper.GetSetProjectInfo(project, desc, value, is_set) end
 ---| "'PROJECT_TITLE'" title field from Project Settings/Notes dialog
 ---| "'PROJECT_AUTHOR'" author field from Project Settings/Notes dialog
 ---| "'TRACK_GROUP_NAME:X'" track group name, X should be 1..64
----| "'RULER_LANE_NAME:X'" ruler lane name, X should be 0..8
+---| "'RULER_LANE_TYPE:X'" ruler lane type, "region" or "marker". X should be -1 to create a new lane, returned value is read-only
+---| "'RULER_LANE_NAME:X'" ruler lane name
 ---| "'MARKER_GUID:X'" discouraged. see GetRegionOrMarker, GetSetRegionOrMarkerInfo_String
 ---| "'MARKER_INDEX_FROM_GUID:{GUID}'" discouraged. see GetRegionOrMarker, GetSetRegionOrMarkerInfo_String
 ---| "'OPENCOPY_CFGIDX'" integer for the configuration of format to use when creating copies/applying FX. 0=wave (auto-depth), 1=APPLYFX_FORMAT, 2=RECORD_FORMAT
@@ -2207,7 +2224,8 @@ function reaper.GetSetProjectInfo(project, desc, value, is_set) end
 ---PROJECT_TITLE : title field from Project Settings/Notes dialog
 ---PROJECT_AUTHOR : author field from Project Settings/Notes dialog
 ---TRACK_GROUP_NAME:X : track group name, X should be 1..64
----RULER_LANE_NAME:X : ruler lane name, X should be 0..8
+---RULER_LANE_TYPE:X : ruler lane type, "region" or "marker". X should be -1 to create a new lane, returned value is read-only
+---RULER_LANE_NAME:X : ruler lane name
 ---MARKER_GUID:X : discouraged. see GetRegionOrMarker, GetSetRegionOrMarkerInfo_String
 ---MARKER_INDEX_FROM_GUID:{GUID} : discouraged. see GetRegionOrMarker, GetSetRegionOrMarkerInfo_String
 ---OPENCOPY_CFGIDX : integer for the configuration of format to use when creating copies/applying FX. 0=wave (auto-depth), 1=APPLYFX_FORMAT, 2=RECORD_FORMAT
@@ -2241,6 +2259,8 @@ function reaper.GetSetProjectInfo_String(project, desc, valuestrNeedBig, is_set)
 function reaper.GetSetProjectNotes(proj, set, notes) end
 
 ---@alias GetSetRegionOrMarkerInfo_String_Param
+---| "'GUID'"
+---| "'P_NAME'"
 
 ---"GUID" (read-only), "P_NAME". See GetNumRegionsOrMarkers, GetRegionOrMarker, GetRegionOrMarkerInfo_Value, SetRegionOrMarkerInfo_Value
 ---@param proj ReaProject|nil|0
@@ -4380,8 +4400,15 @@ function reaper.SetProjectMarkerByIndex2(proj, markrgnidx, isrgn, pos, rgnend, I
 function reaper.SetProjExtState(proj, extname, key, value) end
 
 ---@alias SetRegionOrMarkerInfo_Value_Param
+---| "'D_STARTPOS'"
+---| "'D_ENDPOS'"
+---| "'I_NUMBER'"
+---| "'I_LANENUMBER'"
+---| "'I_CUSTOMCOLOR'"
+---| "'B_UISEL'"
+---| "'B_HIDDEN'"
 
----"D_STARTPOS", "D_ENDPOS" (= D_STARTPOS for markers), "I_NUMBER" (displayed index number), "I_LANENUMBER", "I_CUSTOMCOLOR", "B_UISEL", "B_HIDDEN". See GetNumRegionsOrMarkers, GetRegionOrMarker, GetRegionOrMarkerInfo_Value, GetSetRegionOrMarkerInfo_String
+---"D_STARTPOS", "D_ENDPOS" (= D_STARTPOS for markers), "I_NUMBER" (displayed index number), "I_LANENUMBER" (can be set, but returned value is read-only, "I_CUSTOMCOLOR", "B_UISEL", "B_HIDDEN". See GetNumRegionsOrMarkers, GetRegionOrMarker, GetRegionOrMarkerInfo_Value, GetSetRegionOrMarkerInfo_String
 ---@param proj ReaProject|nil|0
 ---@param regionOrMarker ProjectMarker
 ---@param parameterName string

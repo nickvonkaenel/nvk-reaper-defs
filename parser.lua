@@ -1466,9 +1466,15 @@ local function generate_stub(func)
 			alias = short_name .. "_Param"
 			table.insert(lines, "---@alias " .. alias)
 			for line in func.description:gmatch("[^\n]+") do
-				local parmname, desc = line:match("^(%S-)%s*: (.*)$")
-				if parmname and desc then
-					table.insert(lines, string.format("---| \"'%s'\" %s", parmname, desc))
+				if short_name:find("RegionOrMarker") then
+					for parmname in line:gmatch('"(%S-)"') do
+						table.insert(lines, string.format("---| \"'%s'\"", parmname))
+					end
+				else
+					local parmname, desc = line:match("^(%S-)%s*: (.*)$")
+					if parmname and desc then
+						table.insert(lines, string.format("---| \"'%s'\" %s", parmname, desc))
+					end
 				end
 			end
 			-- add user defined p_ext values
@@ -1642,7 +1648,7 @@ if file_path == "" or not r.file_exists(file_path) then
 		return
 	end
 	file_path = new_path:gsub("^file:/+", "")
-	r.SetExtState("ReaScript_API_Generator", "html_file_path", file_path, true)
+	r.SetExtState("ReaScript_API_Generator", "html_file_path", file_path, false)
 end
 
 local function read_file(path)
