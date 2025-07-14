@@ -1,0 +1,433 @@
+	"REAPER.ATEXIT lua": {
+		"prefix": "r.atexit",
+		"scope": "lua",
+		"body": "r.atexit(${1:function})$0",
+		"description": "Adds code to be executed when the script finishes or is ended by the user. Typically used to clean up after the user terminates defer() or runloop() code."
+	},
+	"REAPER.DEFER lua": {
+		"prefix": "r.defer",
+		"scope": "lua",
+		"body": "r.defer(${1:function})$0",
+		"description": "Adds code to be called back by REAPER. Used to create persistent ReaScripts that continue to run and respond to input, while the user does other tasks. Identical to runloop().Note that no undo point will be automatically created when the script finishes, unless you create it explicitly."
+	},
+	"REAPER.GET_ACTION_CONTEXT lua": {
+		"prefix": "r.get_action_context",
+		"scope": "lua",
+		"body": "r.get_action_context()$0",
+		"description": "is_new_value,filename,sectionID,cmdID,mode,resolution,val = r.get_action_context()Returns contextual information about the script, typically MIDI/OSC input values.val will be set to a relative or absolute value depending on mode (=0: absolute mode, >0: relative modes). resolution=127 for 7-bit resolution, =16383 for 14-bit resolution.Notes: sectionID, and cmdID will be set to -1 if the script is not part of the action list. mode, resolution and val will be set to -1 if the script was not triggered via MIDI/OSC."
+	},
+	"GFX.R lua": {
+		"prefix": "gfx.r",
+		"scope": "lua",
+		"body": "gfx.r$0",
+		"description": "These represent the current red, green, blue, and alpha components used by drawing operations (0.0..1.0). "
+	},
+	"GFX.G lua": {
+		"prefix": "gfx.g",
+		"scope": "lua",
+		"body": "gfx.g$0",
+		"description": "These represent the current red, green, blue, and alpha components used by drawing operations (0.0..1.0). "
+	},
+	"GFX.B lua": {
+		"prefix": "gfx.b",
+		"scope": "lua",
+		"body": "gfx.b$0",
+		"description": "These represent the current red, green, blue, and alpha components used by drawing operations (0.0..1.0). "
+	},
+	"GFX.A lua": {
+		"prefix": "gfx.a",
+		"scope": "lua",
+		"body": "gfx.a$0",
+		"description": "These represent the current red, green, blue, and alpha components used by drawing operations (0.0..1.0). "
+	},
+	"GFX.W lua": {
+		"prefix": "gfx.w",
+		"scope": "lua",
+		"body": "gfx.w$0",
+		"description": "These are set to the current width and height of the UI framebuffer. "
+	},
+	"GFX.H lua": {
+		"prefix": "gfx.h",
+		"scope": "lua",
+		"body": "gfx.h$0",
+		"description": "These are set to the current width and height of the UI framebuffer. "
+	},
+	"GFX.X lua": {
+		"prefix": "gfx.x",
+		"scope": "lua",
+		"body": "gfx.x$0",
+		"description": "These set the \"current\" graphics position in x,y. You can set these yourselves, and many of the drawing functions update them as well. "
+	},
+	"GFX.Y lua": {
+		"prefix": "gfx.y",
+		"scope": "lua",
+		"body": "gfx.y$0",
+		"description": "These set the \"current\" graphics position in x,y. You can set these yourselves, and many of the drawing functions update them as well. "
+	},
+	"GFX.MODE lua": {
+		"prefix": "gfx.mode",
+		"scope": "lua",
+		"body": "gfx.mode$0",
+		"description": "Set to 0 for default options. Add 1.0 for additive blend mode (if you wish to do subtractive, set gfx.a to negative and use gfx.mode as additive). Add 2.0 to disable source alpha for gfx.blit(). Add 4.0 to disable filtering for gfx.blit(). "
+	},
+	"GFX.CLEAR lua": {
+		"prefix": "gfx.clear",
+		"scope": "lua",
+		"body": "gfx.clear$0",
+		"description": "If set to a value greater than -1.0, this will result in the framebuffer being cleared to that color. the color for this one is packed RGB (0..255), i.e. red+green*256+blue*65536. The default is 0 (black). "
+	},
+	"GFX.DEST lua": {
+		"prefix": "gfx.dest",
+		"scope": "lua",
+		"body": "gfx.dest$0",
+		"description": "Defaults to -1, set to 0..1024-1 to have drawing operations go to an offscreen buffer (or loaded image)."
+	},
+	"GFX.TEXTH lua": {
+		"prefix": "gfx.texth",
+		"scope": "lua",
+		"body": "gfx.texth$0",
+		"description": "Set to the height of a line of text in the current font. Do not modify this variable."
+	},
+	"GFX.EXT_RETINA lua": {
+		"prefix": "gfx.ext_retina",
+		"scope": "lua",
+		"body": "gfx.ext_retina$0",
+		"description": "If set to 1.0 on initialization, will be updated to 2.0 if high resolution display is supported, and if so gfx.w/gfx.h/etc will be doubled."
+	},
+	"GFX.MOUSE_X lua": {
+		"prefix": "gfx.mouse_x",
+		"scope": "lua",
+		"body": "gfx.mouse_x$0",
+		"description": "gfx.mouse_x and gfx.mouse_y are set to the coordinates of the mouse relative to the graphics window."
+	},
+	"GFX.MOUSE_Y lua": {
+		"prefix": "gfx.mouse_y",
+		"scope": "lua",
+		"body": "gfx.mouse_y$0",
+		"description": "gfx.mouse_x and gfx.mouse_y are set to the coordinates of the mouse relative to the graphics window."
+	},
+	"GFX.MOUSE_WHEEL lua": {
+		"prefix": "gfx.mouse_wheel",
+		"scope": "lua",
+		"body": "gfx.mouse_wheel$0",
+		"description": "mouse wheel (and horizontal wheel) positions. These will change typically by 120 or a multiple thereof, the caller should clear the state to 0 after reading it."
+	},
+	"GFX.MOUSE_HWHEEL lua": {
+		"prefix": "gfx.mouse_hwheel",
+		"scope": "lua",
+		"body": "gfx.mouse_hwheel$0",
+		"description": "mouse wheel (and horizontal wheel) positions. These will change typically by 120 or a multiple thereof, the caller should clear the state to 0 after reading it."
+	},
+	"GFX.ARC lua": {
+		"prefix": "gfx.arc",
+		"scope": "lua",
+		"body": "gfx.arc(${1:x}, ${2:y}, ${3:r}, ${4:ang1}, ${5:ang2}, ${6:[,antialias]})$0",
+		"description": "Draws an arc of the circle centered at x,y, with ang1/ang2 being specified in radians."
+	},
+	"GFX.BLIT lua": {
+		"prefix": "gfx.blit",
+		"scope": "lua",
+		"body": "gfx.blit(${1:source}, ${2:scale}, ${3:rotation})$0",
+		"description": "If three parameters are specified, copies the entirity of the source bitmap to gfx.x,gfx.y using current opacity and copy mode (set with gfx.a, gfx.mode). You can specify scale (1.0 is unscaled) and rotation (0.0 is not rotated, angles are in radians).For the \"source\" parameter specify -1 to use the main framebuffer as source, or an image index (see gfx.loadimg())."
+	},
+	"GFX.BLITEXT lua": {
+		"prefix": "gfx.blitext",
+		"scope": "lua",
+		"body": "gfx.blitext(${1:source}, ${2:coordinatelist}, ${3:rotation})$0",
+		"description": "Deprecated, use gfx.blit instead."
+	},
+	"GFX.BLURTO lua": {
+		"prefix": "gfx.blurto",
+		"scope": "lua",
+		"body": "gfx.blurto(${1:x}, ${2:y})$0",
+		"description": "Blurs the region of the screen between gfx.x,gfx.y and x,y, and updates gfx.x,gfx.y to x,y."
+	},
+	"GFX.CIRCLE lua": {
+		"prefix": "gfx.circle",
+		"scope": "lua",
+		"body": "gfx.circle(${1:x}, ${2:y}, ${3:r}, ${4:[,fill,antialias]})$0",
+		"description": "Draws a circle, optionally filling/antialiasing. "
+	},
+	"GFX.CLIENTTOSCREEN lua": {
+		"prefix": "gfx.clienttoscreen",
+		"scope": "lua",
+		"body": "gfx.clienttoscreen(${1:x}, ${2:y})$0",
+		"description": "Converts the coordinates x,y to screen coordinates, returns those values."
+	},
+	"GFX.DELTABLIT lua": {
+		"prefix": "gfx.deltablit",
+		"scope": "lua",
+		"body": "gfx.deltablit(${1:srcimg}, ${2:srcx}, ${3:srcy}, ${4:srcw}, ${5:srch}, ${6:destx}, ${7:desty}, ${8:destw}, ${9:desth}, ${10:dsdx}, ${11:dtdx}, ${12:dsdy}, ${13:dtdy}, ${14:dsdxdy}, ${15:dtdxdy})$0",
+		"description": "Blits from srcimg(srcx,srcy,srcw,srch) to destination (destx,desty,destw,desth). Source texture coordinates are s/t, dsdx represents the change in s coordinate for each x pixel, dtdy represents the change in t coordinate for each y pixel, etc. dsdxdy represents the change in dsdx for each line. "
+	},
+	"GFX.DOCK lua": {
+		"prefix": "gfx.dock",
+		"scope": "lua",
+		"body": "gfx.dock(${1:v}, ${2:[,wx,wy,ww,wh]})$0",
+		"description": "Call with v=-1 to query docked state, otherwise v>=0 to set docked state. State is &1 if docked, second byte is docker index (or last docker index if undocked). If wx-wh specified, additional values will be returned with the undocked window position/size"
+	},
+	"GFX.DRAWCHAR lua": {
+		"prefix": "gfx.drawchar",
+		"scope": "lua",
+		"body": "gfx.drawchar(${1:char})$0",
+		"description": "Draws the character (can be a numeric ASCII code as well), to gfx.x, gfx.y, and moves gfx.x over by the size of the character."
+	},
+	"GFX.DRAWNUMBER lua": {
+		"prefix": "gfx.drawnumber",
+		"scope": "lua",
+		"body": "gfx.drawnumber(${1:n}, ${2:ndigits})$0",
+		"description": "Draws the number n with ndigits of precision to gfx.x, gfx.y, and updates gfx.x to the right side of the drawing. The text height is gfx.texth."
+	},
+	"GFX.DRAWSTR lua": {
+		"prefix": "gfx.drawstr",
+		"scope": "lua",
+		"body": "gfx.drawstr(\"${1:str}\", ${2:[,flags,right,bottom]})$0",
+		"description": "Draws a string at gfx.x, gfx.y, and updates gfx.x/gfx.y so that subsequent draws will occur in a similar place.If flags, right ,bottom passed in:flags&1: center horizontallyflags&2: right justifyflags&4: center verticallyflags&8: bottom justifyflags&256: ignore right/bottom, otherwise text is clipped to (gfx.x, gfx.y, right, bottom)"
+	},
+	"GFX.GETCHAR lua": {
+		"prefix": "gfx.getchar",
+		"scope": "lua",
+		"body": "gfx.getchar(${1:[char]})$0",
+		"description": "If char is 0 or omitted, returns a character from the keyboard queue, or 0 if no character is available, or -1 if the graphics window is not open. If char is specified and nonzero, that character's status will be checked, and the function will return greater than 0 if it is pressed.Common values are standard ASCII, such as 'a', 'A', '=' and '1', but for many keys multi-byte values are used, including 'home', 'up', 'down', 'left', 'rght', 'f1'.. 'f12', 'pgup', 'pgdn', 'ins', and 'del'. Modified and special keys can also be returned, including:Ctrl/Cmd+A..Ctrl+Z as 1..26Ctrl/Cmd+Alt+A..Z as 257..282Alt+A..Z as 'A'+256..'Z'+25627 for ESC13 for Enter' ' for space"
+	},
+	"GFX.GETDROPFILE lua": {
+		"prefix": "gfx.getdropfile",
+		"scope": "lua",
+		"body": "gfx.getdropfile(${1:idx})$0",
+		"description": "Returns success,string for dropped file index idx. call gfx.dropfile(-1) to clear the list when finished."
+	},
+	"GFX.GETFONT lua": {
+		"prefix": "gfx.getfont",
+		"scope": "lua",
+		"body": "gfx.getfont()$0",
+		"description": "Returns current font index, and the actual font face used by this font (if available)."
+	},
+	"GFX.GETIMGDIM lua": {
+		"prefix": "gfx.getimgdim",
+		"scope": "lua",
+		"body": "gfx.getimgdim(${1:handle})$0",
+		"description": "Retreives the dimensions of an image specified by handle, returns w, h pair."
+	},
+	"GFX.GETPIXEL lua": {
+		"prefix": "gfx.getpixel",
+		"scope": "lua",
+		"body": "gfx.getpixel()$0",
+		"description": "Returns r,g,b values [0..1] of the pixel at (gfx.x,gfx.y)"
+	},
+	"GFX.GRADRECT lua": {
+		"prefix": "gfx.gradrect",
+		"scope": "lua",
+		"body": "gfx.gradrect(${1:x}, ${2:y}, ${3:w}, ${4:h}, ${5:r}, ${6:g}, ${7:b}, ${8:a}, ${9:[, drdx, dgdx, dbdx, dadx, drdy, dgdy, dbdy, dady]})$0",
+		"description": "Fills a gradient rectangle with the color and alpha specified. drdx-dadx reflect the adjustment (per-pixel) applied for each pixel moved to the right, drdy-dady are the adjustment applied for each pixel moved toward the bottom. Normally drdx=adjustamount/w, drdy=adjustamount/h, etc."
+	},
+	"GFX.INIT lua": {
+		"prefix": "gfx.init",
+		"scope": "lua",
+		"body": "gfx.init(\"${1:name}\", ${2:[,width,height,dockstate,xpos,ypos]})$0",
+		"description": "Initializes the graphics window with title name. Suggested width and height can be specified.Once the graphics window is open, gfx.update() should be called periodically. "
+	},
+	"GFX.LINE lua": {
+		"prefix": "gfx.line",
+		"scope": "lua",
+		"body": "gfx.line(${1:x}, ${2:y}, ${3:x2}, ${4:y2}, ${5:[,aa]})$0",
+		"description": "Draws a line from x,y to x2,y2, and if aa is not specified or 0.5 or greater, it will be antialiased. "
+	},
+	"GFX.LINETO lua": {
+		"prefix": "gfx.lineto",
+		"scope": "lua",
+		"body": "gfx.lineto(${1:x}, ${2:y}, ${3:[,aa]})$0",
+		"description": "Draws a line from gfx.x,gfx.y to x,y. If aa is 0.5 or greater, then antialiasing is used. Updates gfx.x and gfx.y to x,y."
+	},
+	"GFX.LOADIMG lua": {
+		"prefix": "gfx.loadimg",
+		"scope": "lua",
+		"body": "gfx.loadimg(${1:image}, \"${2:filename}\")$0",
+		"description": "Load image from filename into slot 0..1024-1 specified by image. Returns the image index if success, otherwise -1 if failure. The image will be resized to the dimensions of the image file. "
+	},
+	"GFX.MEASURECHAR lua": {
+		"prefix": "gfx.measurechar",
+		"scope": "lua",
+		"body": "gfx.measurechar(${1:char})$0",
+		"description": "Measures the drawing dimensions of a character with the current font (as set by gfx.setfont). Returns width and height of character."
+	},
+	"GFX.MEASURESTR lua": {
+		"prefix": "gfx.measurestr",
+		"scope": "lua",
+		"body": "gfx.measurestr(\"${1:str}\")$0",
+		"description": "Measures the drawing dimensions of a string with the current font (as set by gfx.setfont). Returns width and height of string."
+	},
+	"GFX.MULADDRECT lua": {
+		"prefix": "gfx.muladdrect",
+		"scope": "lua",
+		"body": "gfx.muladdrect(${1:x}, ${2:y}, ${3:w}, ${4:h}, ${5:mul_r}, ${6:mul_g}, ${7:mul_b}, ${8:[,mul_a,add_r,add_g,add_b,add_a]})$0",
+		"description": "Multiplies each pixel by mul_* and adds add_*, and updates in-place. Useful for changing brightness/contrast, or other effects."
+	},
+	"GFX.PRINTF lua": {
+		"prefix": "gfx.printf",
+		"scope": "lua",
+		"body": "gfx.printf(\"${1:format}\", ${2:[, ...]})$0",
+		"description": "Formats and draws a string at gfx.x, gfx.y, and updates gfx.x/gfx.y accordingly (the latter only if the formatted string contains newline). For more information on format strings, see sprintf()"
+	},
+	"GFX.QUIT lua": {
+		"prefix": "gfx.quit",
+		"scope": "lua",
+		"body": "gfx.quit()$0",
+		"description": "Closes the graphics window."
+	},
+	"GFX.RECT lua": {
+		"prefix": "gfx.rect",
+		"scope": "lua",
+		"body": "gfx.rect(${1:x}, ${2:y}, ${3:w}, ${4:h}, ${5:[,filled]})$0",
+		"description": "Fills a rectangle at x,y, w,h pixels in dimension, filled by default. "
+	},
+	"GFX.RECTTO lua": {
+		"prefix": "gfx.rectto",
+		"scope": "lua",
+		"body": "gfx.rectto(${1:x}, ${2:y})$0",
+		"description": "Fills a rectangle from gfx.x,gfx.y to x,y. Updates gfx.x,gfx.y to x,y. "
+	},
+	"GFX.ROUNDRECT lua": {
+		"prefix": "gfx.roundrect",
+		"scope": "lua",
+		"body": "gfx.roundrect(${1:x}, ${2:y}, ${3:w}, ${4:h}, ${5:radius}, ${6:[,antialias]})$0",
+		"description": "Draws a rectangle with rounded corners. "
+	},
+	"GFX.SCREENTOCLIENT lua": {
+		"prefix": "gfx.screentoclient",
+		"scope": "lua",
+		"body": "gfx.screentoclient(${1:x}, ${2:y})$0",
+		"description": "Converts the screen coordinates x,y to client coordinates, returns those values."
+	},
+	"GFX.SET lua": {
+		"prefix": "gfx.set",
+		"scope": "lua",
+		"body": "gfx.set(${1:r}, ${2:[,g,b,a,mode,dest]})$0",
+		"description": "Sets gfx.r/gfx.g/gfx.b/gfx.a/gfx.mode, sets gfx.dest if final parameter specified"
+	},
+	"GFX.SETCURSOR lua": {
+		"prefix": "gfx.setcursor",
+		"scope": "lua",
+		"body": "gfx.setcursor(${1:resource_id}, ${2:custom_cursor_name})$0",
+		"description": "Sets the mouse cursor. resource_id is a value like 32512 (for an arrow cursor), custom_cursor_name is a string like \"arrow\" (for the REAPER custom arrow cursor). resource_id must be nonzero, but custom_cursor_name is optional."
+	},
+	"GFX.SETFONT lua": {
+		"prefix": "gfx.setfont",
+		"scope": "lua",
+		"body": "gfx.setfont(${1:idx}, \"${2:[,fontface, sz, flags]}\")$0",
+		"description": "Can select a font and optionally configure it. idx=0 for default bitmapped font, no configuration is possible for this font. idx=1..16 for a configurable font, specify fontface such as \"Arial\", sz of 8-100, and optionally specify flags, which is a multibyte character, which can include 'i' for italics, 'u' for underline, or 'b' for bold. These flags may or may not be supported depending on the font and OS. After calling gfx.setfont(), gfx.texth may be updated to reflect the new average line height."
+	},
+	"GFX.SETIMGDIM lua": {
+		"prefix": "gfx.setimgdim",
+		"scope": "lua",
+		"body": "gfx.setimgdim(${1:image}, ${2:w}, ${3:h})$0",
+		"description": "Resize image referenced by index 0..1024-1, width and height must be 0-2048. The contents of the image will be undefined after the resize."
+	},
+	"GFX.SETPIXEL lua": {
+		"prefix": "gfx.setpixel",
+		"scope": "lua",
+		"body": "gfx.setpixel(${1:r}, ${2:g}, ${3:b})$0",
+		"description": "Writes a pixel of r,g,b to gfx.x,gfx.y."
+	},
+	"GFX.SHOWMENU lua": {
+		"prefix": "gfx.showmenu",
+		"scope": "lua",
+		"body": "gfx.showmenu(\"${1:str}\")$0",
+		"description": "Shows a popup menu at gfx.x,gfx.y. str is a list of fields separated by | characters. Each field represents a menu item.Fields can start with special characters:# : grayed out! : checked> : this menu item shows a submenu< : last item in the current submenuAn empty field will appear as a separator in the menu. gfx.showmenu returns 0 if the user selected nothing from the menu, 1 if the first field is selected, etc.Example:gfx.showmenu(\"first item, followed by separator||!second item, checked|>third item which spawns a submenu|#first item in submenu, grayed out|<second and last item in submenu|fourth item in top menu\")"
+	},
+	"GFX.TRANSFORMBLIT lua": {
+		"prefix": "gfx.transformblit",
+		"scope": "lua",
+		"body": "gfx.transformblit(${1:srcimg}, ${2:destx}, ${3:desty}, ${4:destw}, ${5:desth}, ${6:div_w}, ${7:div_h}, ${8:table})$0",
+		"description": "Blits to destination at (destx,desty), size (destw,desth). div_w and div_h should be 2..64, and table should point to a table of 2*div_w*div_h values (table can be a regular table or (for less overhead) a r.array). Each pair in the table represents a S,T coordinate in the source image, and the table is treated as a left-right, top-bottom list of texture coordinates, which will then be rendered to the destination."
+	},
+	"GFX.TRIANGLE lua": {
+		"prefix": "gfx.triangle",
+		"scope": "lua",
+		"body": "gfx.triangle(${1:x1}, ${2:y1}, ${3:x2}, ${4:y2}, ${5:x3}, ${6:y3}, ${7:[x4,y4...]})$0",
+		"description": "Draws a filled triangle, or any convex polygon. "
+	},
+	"GFX.UPDATE lua": {
+		"prefix": "gfx.update",
+		"scope": "lua",
+		"body": "gfx.update()$0",
+		"description": "Updates the graphics display, if opened"
+	},
+	"REAPER.NEW_ARRAY lua": {
+		"prefix": "r.new_array",
+		"scope": "lua",
+		"body": "r.new_array(${1:[table|array][size]})$0",
+		"description": "Creates a new r.array object of maximum and initial size size, if specified, or from the size/values of a table/array. Both size and table/array can be specified, the size parameter will override the table/array size."
+	},
+	"REAPER.RUNLOOP lua": {
+		"prefix": "r.runloop",
+		"scope": "lua",
+		"body": "r.runloop(${1:function})$0",
+		"description": "Adds code to be called back by REAPER. Used to create persistent ReaScripts that continue to run and respond to input, while the user does other tasks. Identical to defer().Note that no undo point will be automatically created when the script finishes, unless you create it explicitly."
+	},
+	"{REAPER.ARRAY}.CLEAR lua": {
+		"prefix": "{r.array}.clear",
+		"scope": "lua",
+		"body": "{r.array}.clear(${1:[value, offset, size]})$0",
+		"description": "Sets the value of zero or more items in the array. If value not specified, 0.0 is used. offset is 1-based, if size omitted then the maximum amount available will be set."
+	},
+	"{REAPER.ARRAY}.CONVOLVE lua": {
+		"prefix": "{r.array}.convolve",
+		"scope": "lua",
+		"body": "{r.array}.convolve(${1:[src, srcoffs, size, destoffs]})$0",
+		"description": "Convolves complex value pairs from r.array, starting at 1-based srcoffs, reading/writing to 1-based destoffs. size is in normal items (so it must be even)"
+	},
+	"{REAPER.ARRAY}.COPY lua": {
+		"prefix": "{r.array}.copy",
+		"scope": "lua",
+		"body": "{r.array}.copy(${1:[src, srcoffs, size, destoffs]})$0",
+		"description": "Copies values from r.array or table, starting at 1-based srcoffs, writing to 1-based destoffs."
+	},
+	"{REAPER.ARRAY}.FFT lua": {
+		"prefix": "{r.array}.fft",
+		"scope": "lua",
+		"body": "{r.array}.fft(${1:size}, ${2:[, permute, offset]})$0",
+		"description": "Performs a forward FFT of size. size must be a power of two between 4 and 32768 inclusive. If permute is specified and true, the values will be shuffled following the FFT to be in normal order."
+	},
+	"{REAPER.ARRAY}.FFT_REAL lua": {
+		"prefix": "{r.array}.fft_real",
+		"scope": "lua",
+		"body": "{r.array}.fft_real(${1:size}, ${2:[, permute, offset]})$0",
+		"description": "Performs a forward real->complex FFT of size. size must be a power of two between 4 and 32768 inclusive. If permute is specified and true, the values will be shuffled following the FFT to be in normal order."
+	},
+	"{REAPER.ARRAY}.GET_ALLOC lua": {
+		"prefix": "{r.array}.get_alloc",
+		"scope": "lua",
+		"body": "{r.array}.get_alloc()$0",
+		"description": "Returns the maximum (allocated) size of the array."
+	},
+	"{REAPER.ARRAY}.IFFT lua": {
+		"prefix": "{r.array}.ifft",
+		"scope": "lua",
+		"body": "{r.array}.ifft(${1:size}, ${2:[, permute, offset]})$0",
+		"description": "Performs a backwards FFT of size. size must be a power of two between 4 and 32768 inclusive. If permute is specified and true, the values will be shuffled before the IFFT to be in fft-order."
+	},
+	"{REAPER.ARRAY}.IFFT_REAL lua": {
+		"prefix": "{r.array}.ifft_real",
+		"scope": "lua",
+		"body": "{r.array}.ifft_real(${1:size}, ${2:[, permute, offset]})$0",
+		"description": "Performs a backwards complex->real FFT of size. size must be a power of two between 4 and 32768 inclusive. If permute is specified and true, the values will be shuffled before the IFFT to be in fft-order."
+	},
+	"{REAPER.ARRAY}.MULTIPLY lua": {
+		"prefix": "{r.array}.multiply",
+		"scope": "lua",
+		"body": "{r.array}.multiply(${1:[src, srcoffs, size, destoffs]})$0",
+		"description": "Multiplies values from r.array, starting at 1-based srcoffs, reading/writing to 1-based destoffs."
+	},
+	"{REAPER.ARRAY}.RESIZE lua": {
+		"prefix": "{r.array}.resize",
+		"scope": "lua",
+		"body": "{r.array}.resize(${1:size})$0",
+		"description": "Resizes an array object to size. size must be [0..max_size]."
+	},
+	"{REAPER.ARRAY}.TABLE lua": {
+		"prefix": "{r.array}.table",
+		"scope": "lua",
+		"body": "{r.array}.table(${1:[offset, size]})$0",
+		"description": "Returns a new table with values from items in the array. Offset is 1-based and if size is omitted all available values are used."
+	},
+

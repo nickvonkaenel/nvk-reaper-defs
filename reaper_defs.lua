@@ -28,7 +28,6 @@ reaper = {}
 ---@class (exact) ProjectMarker : userdata
 ---@class (exact) unsupported: boolean?
 
-
 ---creates a new media item.
 ---@param tr MediaTrack
 ---@return MediaItem rv
@@ -219,7 +218,7 @@ function reaper.CountEnvelopePointsEx(envelope, autoitem_idx) end
 ---@return integer rv
 function reaper.CountMediaItems(proj) end
 
----discouraged. see GetNumRegionsOrMarkers, GetRegionOrMarker. num_markersOut and num_regionsOut may be NULL.
+---num_markersOut and num_regionsOut may be NULL.
 ---@param proj ReaProject|nil|0
 ---@return integer rv
 ---@return integer num_markers
@@ -734,7 +733,6 @@ function reaper.EnumPitchShiftModes(mode) end
 ---@return string str
 function reaper.EnumPitchShiftSubModes(mode, submode) end
 
----discouraged. see GetNumRegionsOrMarkers, GetRegionOrMarker
 ---@param idx integer
 ---@return integer rv
 ---@return boolean isrgn
@@ -744,7 +742,6 @@ function reaper.EnumPitchShiftSubModes(mode, submode) end
 ---@return integer markrgnindexnumber
 function reaper.EnumProjectMarkers(idx) end
 
----discouraged. see GetNumRegionsOrMarkers, GetRegionOrMarker
 ---@param proj ReaProject|nil|0
 ---@param idx integer
 ---@return integer rv
@@ -755,7 +752,6 @@ function reaper.EnumProjectMarkers(idx) end
 ---@return integer markrgnindexnumber
 function reaper.EnumProjectMarkers2(proj, idx) end
 
----discouraged. see GetNumRegionsOrMarkers, GetRegionOrMarker
 ---@param proj ReaProject|nil|0
 ---@param idx integer
 ---@return integer rv
@@ -1704,11 +1700,6 @@ function reaper.GetNumMIDIInputs() end
 ---@return integer rv
 function reaper.GetNumMIDIOutputs() end
 
----the total number of regions and markers in the project. See GetRegionOrMarker, GetRegionOrMarkerInfo_Value, SetRegionOrMarkerInfo_Value, GetSetRegionOrMarkerInfo_String
----@param proj ReaProject|nil|0
----@return integer rv
-function reaper.GetNumRegionsOrMarkers(proj) end
-
 ---Returns number of take markers. See GetTakeMarker, SetTakeMarker, DeleteTakeMarker
 ---@param take MediaItem_Take
 ---@return integer rv
@@ -1829,32 +1820,6 @@ function reaper.GetProjectTimeSignature2(proj) end
 ---@return integer rv
 ---@return string val
 function reaper.GetProjExtState(proj, extname, key) end
-
----get a single region or marker by internal index, or if index < 0, by GUID. See GetNumRegionsOrMarkers, GetRegionOrMarkerInfo_Value, SetRegionOrMarkerInfo_Value, GetSetRegionOrMarkerInfo_String
----@param proj ReaProject|nil|0
----@param index integer
----@param guidStr string
----@return ProjectMarker rv
-function reaper.GetRegionOrMarker(proj, index, guidStr) end
-
----@alias GetRegionOrMarkerInfo_Value_Param
----| "'D_STARTPOS'"
----| "'D_ENDPOS'"
----| "'I_INDEX'"
----| "'I_NUMBER'"
----| "'I_LANENUMBER'"
----| "'I_CUSTOMCOLOR'"
----| "'I_DISPLAYEDCOLOR'"
----| "'B_ISREGION'"
----| "'B_UISEL'"
----| "'B_HIDDEN'"
-
----"D_STARTPOS", "D_ENDPOS" (= D_STARTPOS for markers), "I_INDEX" (internal index), "I_NUMBER" (displayed index number), "I_LANENUMBER" (can be set, but returned value is read-only), "I_CUSTOMCOLOR", "I_DISPLAYEDCOLOR", "B_ISREGION", "B_UISEL", "B_HIDDEN". See GetNumRegionsOrMarkers, GetRegionOrMarker, SetRegionOrMarkerInfo_Value, GetSetRegionOrMarkerInfo_String
----@param proj ReaProject|nil|0
----@param regionOrMarker ProjectMarker
----@param parameterName GetRegionOrMarkerInfo_Value_Param
----@return number num
-function reaper.GetRegionOrMarkerInfo_Value(proj, regionOrMarker, parameterName) end
 
 ---returns path where ini files are stored, other things are in subdirectories.
 ---@return string str
@@ -2129,7 +2094,7 @@ function reaper.GetSetProjectAuthor(proj, set, author) end
 function reaper.GetSetProjectGrid(project, set, division, swingmode, swingamt) end
 
 ---@alias GetSetProjectInfo_Param
----| "'RENDER_SETTINGS'" &(1|2)=0:master mix, &1=stems+master mix, &2=stems only, &4=multichannel tracks to multichannel files, &8=use render matrix, &16=tracks with only mono media to mono files, &32=selected media items, &64=selected media items via master, &128=selected tracks via master, &256=embed transients if format supports, &512=embed metadata if format supports, &1024=embed take markers if format supports, &2048=2nd pass render
+---| "'RENDER_SETTINGS'" (&(1|2)==0)=master mix, &1=stems+master mix, &2=stems only, &4=multichannel tracks to multichannel files, &8=use render matrix, &16=tracks with only mono media to mono files, &32=selected media items, &64=selected media items via master, &128=selected tracks via master, &256=embed transients if format supports, &512=embed metadata if format supports, &1024=embed take markers if format supports, &2048=2nd pass render, &4096=render razor edits, &8192=pre-fader stems (not if via master), &16384=only stem channels sent to parent, &32768=preserve source metadata if possible, &(1<<16)=preserve source start offset if possible, &(2<<16)=preserve source media sample rate if possible, &(4<<16)=if rendering selected items or razor edits, render as a single file, &(8<<16)=parallel render via master, &(16<<16)=delay render start to allow FX to initialize and load samples
 ---| "'RENDER_BOUNDSFLAG'" 0=custom time bounds, 1=entire project, 2=time selection, 3=all project regions, 4=selected media items, 5=selected project regions, 6=all project markers, 7=selected project markers
 ---| "'RENDER_CHANNELS'" number of channels in rendered file
 ---| "'RENDER_SRATE'" sample rate of rendered file (or 0 for project sample rate)
@@ -2138,8 +2103,8 @@ function reaper.GetSetProjectGrid(project, set, division, swingmode, swingamt) e
 ---| "'RENDER_TAILFLAG'" apply render tail setting when rendering: &1=custom time bounds, &2=entire project, &4=time selection, &8=all project markers/regions, &16=selected media items, &32=selected project markers/regions
 ---| "'RENDER_TAILMS'" tail length in ms to render (only used if RENDER_BOUNDSFLAG and RENDER_TAILFLAG are set)
 ---| "'RENDER_ADDTOPROJ'" &1=add rendered files to project, &2=do not render files that are likely silent
----| "'RENDER_DITHER'" &1=dither, &2=noise shaping, &4=dither stems, &8=noise shaping on stems
----| "'RENDER_NORMALIZE'" &1=enable normalization, (&14==0)=LUFS-I, (&14==2)=RMS, (&14==4)=peak, (&14==6)=true peak, (&14==8)=LUFS-M max, (&14==10)=LUFS-S max, &16=adjust mono media -3dB, &(16|(8<<16))=adjust mono media +3dB, (&(32|4096)==32)=normalize stems as if files play together (common gain), (&(32|4096)==4096)=normalize to loudest file, (&(32|4096)==(32|4096))=normalize as if files play together (common gain), &64=enable brickwall limit, &128=brickwall limit true peak, (&(256|2048)==256)=only normalize files that are too loud, (&(256|2048)==2048)=only normalize files that are too quiet, &512=apply fade-in, &1024=apply fade-out, &16384=trim starting silence, &32768=trim ending silence, &(1<<16)=pad start with silence, &(2<<16)=pad end with silence, &(4<<16)=disable all render postprocessing, &(32<<16)=limit as if files play together
+---| "'RENDER_DITHER'" &1=dither, &2=noise shaping, &4=dither stems, &8=noise shaping on stems, &16=disable all
+---| "'RENDER_NORMALIZE'" &1=enable normalization, (&14==0)=LUFS-I, (&14==2)=RMS, (&14==4)=peak, (&14==6)=true peak, (&14==8)=LUFS-M max, (&14==10)=LUFS-S max, &16=adjust mono media -3dB, &(16|(8<<16))=adjust mono media +3dB, (&(32|4096|(16<<16))==32)=normalize as if files play together, (&(32|4096|(16<<16))==4096)=normalize to loudest file, (&(32|4096|(16<<16))==(32|4096))=normalize as if files play together (common gain), (&(32|4096|(16<<16))==(16<<16))=normalize to master mix, &64=enable brickwall limit, &128=brickwall limit true peak, (&(256|2048)==256)=only normalize files that are too loud, (&(256|2048)==2048)=only normalize files that are too quiet, &512=apply fade-in, &1024=apply fade-out, &16384=trim starting silence, &32768=trim ending silence, &(1<<16)=pad start with silence, &(2<<16)=pad end with silence, &(4<<16)=disable all render postprocessing, (&((32<<16)|(64<<16))==(32<<16))=limit as if files play together, (&((32<<16)|(64<<16))==(64<<16))=limit to master mix
 ---| "'RENDER_NORMALIZE_TARGET'" render normalization target (0.5 means -6.02dB, requires RENDER_NORMALIZE&1)
 ---| "'RENDER_BRICKWALL'" render brickwall limit (0.5 means -6.02dB, requires RENDER_NORMALIZE&64)
 ---| "'RENDER_FADEIN'" render fade-in (0.001 means 1 ms, requires RENDER_NORMALIZE&512)
@@ -2150,17 +2115,12 @@ function reaper.GetSetProjectGrid(project, set, division, swingmode, swingamt) e
 ---| "'RENDER_PADEND'" pad render end with silence (0.001 means 1ms, requires RENDER_NORMALIZE&(2<<16))
 ---| "'RENDER_TRIMSTART'" trim render start threshold (0.5 means -6.02dB, requires RENDER_NORMALIZE&16384)
 ---| "'RENDER_TRIMEND'" trim render end threshold (0.5 means -6.02dB, requires RENDER_NORMALIZE&32768)
+---| "'RENDER_DELAY'" seconds to delay start of render to allow FX to initialize and load samples (requires RENDER_SETTINGS&(16<<16))
 ---| "'PROJECT_SRATE'" sample rate (ignored unless PROJECT_SRATE_USE set)
 ---| "'PROJECT_SRATE_USE'" set to 1 if project sample rate is used
----| "'RULER_DEFAULT_REGION_LANE_VISIBLE'" 1 if default region lane is visible (preference to hide all regions not enabled and ruler tall enough to display), 0 otherwise (read-only)
----| "'RULER_DEFAULT_MARKER_LANE_VISIBLE'" 1 if default marker lane is visible (preference to hide all markers not enabled and ruler tall enough to display), 0 otherwise (read-only)
----| "'RULER_LANE_COLOR:X'" ruler lane default color, color&0x1000000 if used
----| "'RULER_LANE_HIDDEN:X'" 1 if ruler lane is hidden, 0 otherwise
----| "'RULER_LANE_VISIBLE:X'" 1 if ruler lane is visible (not hidden and ruler tall enough to display), 0 otherwise (read-only)
----| "'RULER_LANE_TIMEBASE:X'" ruler lane default timebase, -1=project default, 0=time, 1=beats (position, length, rate), 2=beats (position only)
 
 ---Get or set project information.
----RENDER_SETTINGS : &(1|2)=0:master mix, &1=stems+master mix, &2=stems only, &4=multichannel tracks to multichannel files, &8=use render matrix, &16=tracks with only mono media to mono files, &32=selected media items, &64=selected media items via master, &128=selected tracks via master, &256=embed transients if format supports, &512=embed metadata if format supports, &1024=embed take markers if format supports, &2048=2nd pass render
+---RENDER_SETTINGS : (&(1|2)==0)=master mix, &1=stems+master mix, &2=stems only, &4=multichannel tracks to multichannel files, &8=use render matrix, &16=tracks with only mono media to mono files, &32=selected media items, &64=selected media items via master, &128=selected tracks via master, &256=embed transients if format supports, &512=embed metadata if format supports, &1024=embed take markers if format supports, &2048=2nd pass render, &4096=render razor edits, &8192=pre-fader stems (not if via master), &16384=only stem channels sent to parent, &32768=preserve source metadata if possible, &(1<<16)=preserve source start offset if possible, &(2<<16)=preserve source media sample rate if possible, &(4<<16)=if rendering selected items or razor edits, render as a single file, &(8<<16)=parallel render via master, &(16<<16)=delay render start to allow FX to initialize and load samples
 ---RENDER_BOUNDSFLAG : 0=custom time bounds, 1=entire project, 2=time selection, 3=all project regions, 4=selected media items, 5=selected project regions, 6=all project markers, 7=selected project markers
 ---RENDER_CHANNELS : number of channels in rendered file
 ---RENDER_SRATE : sample rate of rendered file (or 0 for project sample rate)
@@ -2169,8 +2129,8 @@ function reaper.GetSetProjectGrid(project, set, division, swingmode, swingamt) e
 ---RENDER_TAILFLAG : apply render tail setting when rendering: &1=custom time bounds, &2=entire project, &4=time selection, &8=all project markers/regions, &16=selected media items, &32=selected project markers/regions
 ---RENDER_TAILMS : tail length in ms to render (only used if RENDER_BOUNDSFLAG and RENDER_TAILFLAG are set)
 ---RENDER_ADDTOPROJ : &1=add rendered files to project, &2=do not render files that are likely silent
----RENDER_DITHER : &1=dither, &2=noise shaping, &4=dither stems, &8=noise shaping on stems
----RENDER_NORMALIZE: &1=enable normalization, (&14==0)=LUFS-I, (&14==2)=RMS, (&14==4)=peak, (&14==6)=true peak, (&14==8)=LUFS-M max, (&14==10)=LUFS-S max, &16=adjust mono media -3dB, &(16|(8<<16))=adjust mono media +3dB, (&(32|4096)==32)=normalize stems as if files play together (common gain), (&(32|4096)==4096)=normalize to loudest file, (&(32|4096)==(32|4096))=normalize as if files play together (common gain), &64=enable brickwall limit, &128=brickwall limit true peak, (&(256|2048)==256)=only normalize files that are too loud, (&(256|2048)==2048)=only normalize files that are too quiet, &512=apply fade-in, &1024=apply fade-out, &16384=trim starting silence, &32768=trim ending silence, &(1<<16)=pad start with silence, &(2<<16)=pad end with silence, &(4<<16)=disable all render postprocessing, &(32<<16)=limit as if files play together
+---RENDER_DITHER : &1=dither, &2=noise shaping, &4=dither stems, &8=noise shaping on stems, &16=disable all
+---RENDER_NORMALIZE: &1=enable normalization, (&14==0)=LUFS-I, (&14==2)=RMS, (&14==4)=peak, (&14==6)=true peak, (&14==8)=LUFS-M max, (&14==10)=LUFS-S max, &16=adjust mono media -3dB, &(16|(8<<16))=adjust mono media +3dB, (&(32|4096|(16<<16))==32)=normalize as if files play together, (&(32|4096|(16<<16))==4096)=normalize to loudest file, (&(32|4096|(16<<16))==(32|4096))=normalize as if files play together (common gain), (&(32|4096|(16<<16))==(16<<16))=normalize to master mix, &64=enable brickwall limit, &128=brickwall limit true peak, (&(256|2048)==256)=only normalize files that are too loud, (&(256|2048)==2048)=only normalize files that are too quiet, &512=apply fade-in, &1024=apply fade-out, &16384=trim starting silence, &32768=trim ending silence, &(1<<16)=pad start with silence, &(2<<16)=pad end with silence, &(4<<16)=disable all render postprocessing, (&((32<<16)|(64<<16))==(32<<16))=limit as if files play together, (&((32<<16)|(64<<16))==(64<<16))=limit to master mix
 ---RENDER_NORMALIZE_TARGET: render normalization target (0.5 means -6.02dB, requires RENDER_NORMALIZE&1)
 ---RENDER_BRICKWALL: render brickwall limit (0.5 means -6.02dB, requires RENDER_NORMALIZE&64)
 ---RENDER_FADEIN: render fade-in (0.001 means 1 ms, requires RENDER_NORMALIZE&512)
@@ -2181,14 +2141,9 @@ function reaper.GetSetProjectGrid(project, set, division, swingmode, swingamt) e
 ---RENDER_PADEND: pad render end with silence (0.001 means 1ms, requires RENDER_NORMALIZE&(2<<16))
 ---RENDER_TRIMSTART: trim render start threshold (0.5 means -6.02dB, requires RENDER_NORMALIZE&16384)
 ---RENDER_TRIMEND: trim render end threshold (0.5 means -6.02dB, requires RENDER_NORMALIZE&32768)
+---RENDER_DELAY: seconds to delay start of render to allow FX to initialize and load samples (requires RENDER_SETTINGS&(16<<16))
 ---PROJECT_SRATE : sample rate (ignored unless PROJECT_SRATE_USE set)
 ---PROJECT_SRATE_USE : set to 1 if project sample rate is used
----RULER_DEFAULT_REGION_LANE_VISIBLE : 1 if default region lane is visible (preference to hide all regions not enabled and ruler tall enough to display), 0 otherwise (read-only)
----RULER_DEFAULT_MARKER_LANE_VISIBLE : 1 if default marker lane is visible (preference to hide all markers not enabled and ruler tall enough to display), 0 otherwise (read-only)
----RULER_LANE_COLOR:X : ruler lane default color, color&0x1000000 if used
----RULER_LANE_HIDDEN:X : 1 if ruler lane is hidden, 0 otherwise
----RULER_LANE_VISIBLE:X : 1 if ruler lane is visible (not hidden and ruler tall enough to display), 0 otherwise (read-only)
----RULER_LANE_TIMEBASE:X : ruler lane default timebase, -1=project default, 0=time, 1=beats (position, length, rate), 2=beats (position only)
 ---@param project ReaProject|nil|0
 ---@param desc GetSetProjectInfo_Param
 ---@param value number
@@ -2201,10 +2156,8 @@ function reaper.GetSetProjectInfo(project, desc, value, is_set) end
 ---| "'PROJECT_TITLE'" title field from Project Settings/Notes dialog
 ---| "'PROJECT_AUTHOR'" author field from Project Settings/Notes dialog
 ---| "'TRACK_GROUP_NAME:X'" track group name, X should be 1..64
----| "'RULER_LANE_TYPE:X'" ruler lane type, "region" or "marker". X should be -1 to create a new lane, returned value is read-only
----| "'RULER_LANE_NAME:X'" ruler lane name
----| "'MARKER_GUID:X'" discouraged. see GetRegionOrMarker, GetSetRegionOrMarkerInfo_String
----| "'MARKER_INDEX_FROM_GUID:{GUID}'" discouraged. see GetRegionOrMarker, GetSetRegionOrMarkerInfo_String
+---| "'MARKER_GUID:X'" get the GUID (unique ID) of the marker or region with index X, where X is the index passed to EnumProjectMarkers, not necessarily the displayed number (read-only)
+---| "'MARKER_INDEX_FROM_GUID:{GUID}'" get the GUID index of the marker or region with GUID {GUID} (read-only)
 ---| "'OPENCOPY_CFGIDX'" integer for the configuration of format to use when creating copies/applying FX. 0=wave (auto-depth), 1=APPLYFX_FORMAT, 2=RECORD_FORMAT
 ---| "'RECORD_PATH'" recording directory -- may be blank or a relative path, to get the effective path see GetProjectPathEx()
 ---| "'RECORD_PATH_SECONDARY'" secondary recording directory
@@ -2224,10 +2177,8 @@ function reaper.GetSetProjectInfo(project, desc, value, is_set) end
 ---PROJECT_TITLE : title field from Project Settings/Notes dialog
 ---PROJECT_AUTHOR : author field from Project Settings/Notes dialog
 ---TRACK_GROUP_NAME:X : track group name, X should be 1..64
----RULER_LANE_TYPE:X : ruler lane type, "region" or "marker". X should be -1 to create a new lane, returned value is read-only
----RULER_LANE_NAME:X : ruler lane name
----MARKER_GUID:X : discouraged. see GetRegionOrMarker, GetSetRegionOrMarkerInfo_String
----MARKER_INDEX_FROM_GUID:{GUID} : discouraged. see GetRegionOrMarker, GetSetRegionOrMarkerInfo_String
+---MARKER_GUID:X : get the GUID (unique ID) of the marker or region with index X, where X is the index passed to EnumProjectMarkers, not necessarily the displayed number (read-only)
+---MARKER_INDEX_FROM_GUID:{GUID} : get the GUID index of the marker or region with GUID {GUID} (read-only)
 ---OPENCOPY_CFGIDX : integer for the configuration of format to use when creating copies/applying FX. 0=wave (auto-depth), 1=APPLYFX_FORMAT, 2=RECORD_FORMAT
 ---RECORD_PATH : recording directory -- may be blank or a relative path, to get the effective path see GetProjectPathEx()
 ---RECORD_PATH_SECONDARY : secondary recording directory
@@ -2257,20 +2208,6 @@ function reaper.GetSetProjectInfo_String(project, desc, valuestrNeedBig, is_set)
 ---@param notes string
 ---@return string notes
 function reaper.GetSetProjectNotes(proj, set, notes) end
-
----@alias GetSetRegionOrMarkerInfo_String_Param
----| "'GUID'"
----| "'P_NAME'"
-
----"GUID" (read-only), "P_NAME". See GetNumRegionsOrMarkers, GetRegionOrMarker, GetRegionOrMarkerInfo_Value, SetRegionOrMarkerInfo_Value
----@param proj ReaProject|nil|0
----@param regionOrMarker ProjectMarker
----@param parameterName GetSetRegionOrMarkerInfo_String_Param
----@param stringNeedBig string
----@param setNewValue boolean
----@return boolean rv
----@return string stringNeedBig
-function reaper.GetSetRegionOrMarkerInfo_String(proj, regionOrMarker, parameterName, stringNeedBig, setNewValue) end
 
 ----1 == query,0=clear,1=set,>1=toggle . returns new value
 ---@param val integer
@@ -3930,7 +3867,7 @@ function reaper.SetEnvelopePointEx(envelope, autoitem_idx, ptidx, timeIn, valueI
 ---@return boolean rv
 function reaper.SetEnvelopeStateChunk(env, str, isundo) end
 
----Set the extended state value for a specific section and key. persist=true means the value should be stored and reloaded the next time REAPER is opened. See GetExtState, DeleteExtState, HasExtState.
+---Set the extended state value for a specific section and key. persist=true means the value should be stored and reloaded the next time REAPER is opened. Note that with persist=true set, the value will be encoded as a text line in an .ini file and may behaved in unexpected ways if it contains any newlines: do not pass a string with newlines to this function. To save arbitrary data persistently, use base64 encoding or similar. See GetExtState, DeleteExtState, HasExtState.
 ---@param section string
 ---@param key string
 ---@param value string
@@ -4285,7 +4222,7 @@ function reaper.SetMediaItemTakeInfo_Value(take, parmname, newvalue) end
 ---@return boolean rv
 function reaper.SetMediaTrackInfo_Value(tr, parmname, newvalue) end
 
----Set the MIDI editor grid division. 0.25=quarter note, 1.0/3.0=half note tripet, etc.
+---Set the MIDI editor grid division. 0.25=quarter note, 1.0/3.0=half note tripet, etc. Sets the swing enabled/strength from the arrange settings.
 ---@param project ReaProject|nil|0
 ---@param division number
 function reaper.SetMIDIEditorGrid(project, division) end
@@ -4324,7 +4261,7 @@ function reaper.SetOnlyTrackSelected(track) end
 ---@param division number
 function reaper.SetProjectGrid(project, division) end
 
----discouraged. see GetNumRegionsOrMarkers, GetRegionOrMarker, SetRegionOrMarkerInfo_Value, GetSetRegionOrMarkerInfo_String. Note: this function can't clear a marker's name (an empty string will leave the name unchanged), see SetProjectMarker4.
+---Note: this function can't clear a marker's name (an empty string will leave the name unchanged), see SetProjectMarker4.
 ---@param markrgnindexnumber integer
 ---@param isrgn boolean
 ---@param pos number
@@ -4333,7 +4270,7 @@ function reaper.SetProjectGrid(project, division) end
 ---@return boolean rv
 function reaper.SetProjectMarker(markrgnindexnumber, isrgn, pos, rgnend, name) end
 
----discouraged. see GetNumRegionsOrMarkers, GetRegionOrMarker, SetRegionOrMarkerInfo_Value, GetSetRegionOrMarkerInfo_String. Note: this function can't clear a marker's name (an empty string will leave the name unchanged), see SetProjectMarker4.
+---Note: this function can't clear a marker's name (an empty string will leave the name unchanged), see SetProjectMarker4.
 ---@param proj ReaProject|nil|0
 ---@param markrgnindexnumber integer
 ---@param isrgn boolean
@@ -4343,7 +4280,7 @@ function reaper.SetProjectMarker(markrgnindexnumber, isrgn, pos, rgnend, name) e
 ---@return boolean rv
 function reaper.SetProjectMarker2(proj, markrgnindexnumber, isrgn, pos, rgnend, name) end
 
----discouraged. see GetNumRegionsOrMarkers, GetRegionOrMarker, SetRegionOrMarkerInfo_Value, GetSetRegionOrMarkerInfo_String. Note: this function can't clear a marker's name (an empty string will leave the name unchanged), see SetProjectMarker4.
+---Note: this function can't clear a marker's name (an empty string will leave the name unchanged), see SetProjectMarker4.
 ---@param proj ReaProject|nil|0
 ---@param markrgnindexnumber integer
 ---@param isrgn boolean
@@ -4354,7 +4291,7 @@ function reaper.SetProjectMarker2(proj, markrgnindexnumber, isrgn, pos, rgnend, 
 ---@return boolean rv
 function reaper.SetProjectMarker3(proj, markrgnindexnumber, isrgn, pos, rgnend, name, color) end
 
----discouraged. see GetNumRegionsOrMarkers, GetRegionOrMarker, SetRegionOrMarkerInfo_Value, GetSetRegionOrMarkerInfo_String. color should be 0 to not change, or ColorToNative(r,g,b)|0x1000000, flags&1 to clear name
+---color should be 0 to not change, or ColorToNative(r,g,b)|0x1000000, flags&1 to clear name
 ---@param proj ReaProject|nil|0
 ---@param markrgnindexnumber integer
 ---@param isrgn boolean
@@ -4366,7 +4303,7 @@ function reaper.SetProjectMarker3(proj, markrgnindexnumber, isrgn, pos, rgnend, 
 ---@return boolean rv
 function reaper.SetProjectMarker4(proj, markrgnindexnumber, isrgn, pos, rgnend, name, color, flags) end
 
----discouraged. See SetProjectMarkerByIndex2.
+---See SetProjectMarkerByIndex2.
 ---@param proj ReaProject|nil|0
 ---@param markrgnidx integer
 ---@param isrgn boolean
@@ -4378,7 +4315,7 @@ function reaper.SetProjectMarker4(proj, markrgnindexnumber, isrgn, pos, rgnend, 
 ---@return boolean rv
 function reaper.SetProjectMarkerByIndex(proj, markrgnidx, isrgn, pos, rgnend, IDnumber, name, color) end
 
----discouraged. see GetNumRegionsOrMarkers, GetRegionOrMarker, SetRegionOrMarkerInfo_Value, GetSetRegionOrMarkerInfo_String. Differs from SetProjectMarker4 in that markrgnidx is 0 for the first marker/region, 1 for the next, etc (see EnumProjectMarkers3), rather than representing the displayed marker/region ID number (see SetProjectMarker3). IDnumber < 0 to ignore. Function will fail if attempting to set a duplicate ID number for a region (duplicate ID numbers for markers are OK). flags&1 to clear name. If flags&2, markers will not be re-sorted, and after making updates, you MUST call SetProjectMarkerByIndex2 with markrgnidx=-1 and flags&2 to force re-sort/UI updates.
+---Differs from SetProjectMarker4 in that markrgnidx is 0 for the first marker/region, 1 for the next, etc (see EnumProjectMarkers3), rather than representing the displayed marker/region ID number (see SetProjectMarker3). IDnumber < 0 to ignore. Function will fail if attempting to set a duplicate ID number for a region (duplicate ID numbers for markers are OK). flags&1 to clear name. If flags&2, markers will not be re-sorted, and after making updates, you MUST call SetProjectMarkerByIndex2 with markrgnidx=-1 and flags&2 to force re-sort/UI updates.
 ---@param proj ReaProject|nil|0
 ---@param markrgnidx integer
 ---@param isrgn boolean
@@ -4398,23 +4335,6 @@ function reaper.SetProjectMarkerByIndex2(proj, markrgnidx, isrgn, pos, rgnend, I
 ---@param value string
 ---@return integer rv
 function reaper.SetProjExtState(proj, extname, key, value) end
-
----@alias SetRegionOrMarkerInfo_Value_Param
----| "'D_STARTPOS'"
----| "'D_ENDPOS'"
----| "'I_NUMBER'"
----| "'I_LANENUMBER'"
----| "'I_CUSTOMCOLOR'"
----| "'B_UISEL'"
----| "'B_HIDDEN'"
-
----"D_STARTPOS", "D_ENDPOS" (= D_STARTPOS for markers), "I_NUMBER" (displayed index number), "I_LANENUMBER" (can be set, but returned value is read-only, "I_CUSTOMCOLOR", "B_UISEL", "B_HIDDEN". See GetNumRegionsOrMarkers, GetRegionOrMarker, GetRegionOrMarkerInfo_Value, GetSetRegionOrMarkerInfo_String
----@param proj ReaProject|nil|0
----@param regionOrMarker ProjectMarker
----@param parameterName SetRegionOrMarkerInfo_Value_Param
----@param setNewValue number
----@return number num
-function reaper.SetRegionOrMarkerInfo_Value(proj, regionOrMarker, parameterName, setNewValue) end
 
 ---Add (flag > 0) or remove (flag < 0) a track from this region when using the region render matrix. If adding, flag==2 means force mono, flag==4 means force stereo, flag==N means force N/2 channels.
 ---@param proj ReaProject|nil|0
@@ -4502,11 +4422,6 @@ function reaper.SetTempoTimeSigMarker(proj, ptidx, timepos, measurepos, beatpos,
 ---col_mixerbg : Empty mixer list area
 ---col_arrangebg : Empty arrange view area
 ---arrange_vgrid : Empty arrange view area vertical grid shading
----tcp_pinned_track_gap : Track panel color between pinned and unpinned tracks
----tcp_pinned_track_gap_unreachable : Track panel color between pinned and unpinned tracks when some tracks are unreachable
----tcp_pinned_track_gap_mode : Track panel fill mode between pinned and unpinned tracks
----pinned_track_gap : Arrange view color between pinned and unpinned tracks
----pinned_track_gap_mode : Arrange view fill mode between pinned and unpinned tracks
 ---col_fadearm : Fader background when automation recording
 ---col_fadearm2 : Fader background when automation playing
 ---col_fadearm3 : Fader background when in inactive touch/latch
@@ -5731,6 +5646,7 @@ function reaper.TrackFX_GetIOSize(track, fx) end
 ---fx_ident : type-specific identifier
 ---fx_name : name of FX (also supported as original_name)
 ---GainReduction_dB : [ReaComp + other supported compressors]
+---is_instrument : 1 if instrument, 0 if not (v7.40+)
 ---parent_container : FX ID of parent container, if any (v7.06+)
 ---container_count : [Container] number of FX in container
 ---container_item.X : FX ID of item in container (first item is container_item.0) (v7.06+)
@@ -9441,20 +9357,20 @@ function reaper.get_action_context() end
 
 ---Adds code to be called back by REAPER. Used to create persistent ReaScripts that continue to run and respond to input, while the user does other tasks. Identical to runloop().
 ---Note that no undo point will be automatically created when the script finishes, unless you create it explicitly.
----@param function function
+---@param func function
 ---@return boolean retval
-function reaper.defer(function) end
+function reaper.defer(func) end
 
 ---Adds code to be called back by REAPER. Used to create persistent ReaScripts that continue to run and respond to input, while the user does other tasks. Identical to defer().
 ---Note that no undo point will be automatically created when the script finishes, unless you create it explicitly.
----@param function function
+---@param func function
 ---@return boolean retval
-function reaper.runloop(function) end
+function reaper.runloop(func) end
 
 ---Adds code to be executed when the script finishes or is ended by the user. Typically used to clean up after the user terminates defer() or runloop() code.
----@param function function
+---@param func function
 ---@return boolean retval
-function reaper.atexit(function) end
+function reaper.atexit(func) end
 
 ---Sets action options for the script.
 ---* flag&1: script will auto-terminate if re-launched while already running
@@ -9478,7 +9394,6 @@ function reaper.gmem_read(index) end
 ---@param index integer
 ---@param value number
 function reaper.gmem_write(index, value) end
-
 
 --- @class reaper.array : { [integer]: number }
 local reaper_array = {}
@@ -9625,7 +9540,7 @@ function gfx.blitext(source, coordinatelist, rotation) end
 ---@param y number
 function gfx.blurto(x, y) end
 
----Draws a circle, optionally filling/antialiasing. 
+---Draws a circle, optionally filling/antialiasing.
 ---@param x number
 ---@param y number
 ---@param r number
@@ -9661,7 +9576,7 @@ function gfx.clienttoscreen(x, y) end
 function gfx.deltablit(srcimg, srcs, srct, srcw, srch, destx, desty, destw, desth, dsdx, dtdx, dsdy, dtdy, dsdxdy, dtdxdy, usecliprect) end
 
 ---Queries or sets the docking-state of the gfx.init()-window.
----Call with v=-1 to query docked state, otherwise v>=0 to set docked state. 
+---Call with v=-1 to query docked state, otherwise v>=0 to set docked state.
 ---State is &1 if docked, second byte is docker index (or last docker index if undocked). If you pass numbers to wx-wh, you can query window size and position additionally to the dock-stateA specific docking index does not necessarily represent a specific docker, means, you can not query/set left docker top, but rather all dockers that exist in the current screenset.
 ---So the first queried/set docker can be top-left-docker or the top docker or even one of the bottom dockers.
 ---The order doesn't seem to make any sense. Especially with more than 16 windows docked in the current screenset.
@@ -9689,7 +9604,7 @@ function gfx.drawchar(char) end
 function gfx.drawnumber(n, ndigits) end
 
 ---Draws a string at gfx.x, gfx.y, and updates gfx.x/gfx.y so that subsequent draws will occur in a similar place.You can optionally set a clipping area for the text, if you set parameter flags&256 and the parameters right and bottom.On Windows, fonts with a size > 255 may have trouble of being displayed correctly, due problems with the font-rendering and the alpha-channel. <a href="https://forum.cockos.com/showpost.php?p=2311977&postcount=7">Justin's post about this.</a>
----To overcome this, try this to disable the alpha-channel: 
+---To overcome this, try this to disable the alpha-channel:
 ---By default, gfx.blit() blits with alpha channel. You can disable this behavior by setting "gfx.mode=2" before calling gfx.blit().
 ---@param str string
 ---@param flags? number
@@ -9716,7 +9631,7 @@ function gfx.getchar(character, unicode_char) end
 
 ---Returns filenames, drag'n'dropped into a window created by gfx.init().
 ---Use idx to get a specific filename, that has been dropped into the gfx.init()-window.When returned filename starts with @fx: it is an fx dropped.
----      
+---
 ---Does NOT support mediaitems/takes or other Reaper-objects!It MUST be called BEFORE calling gfx.update, as gfx.update flushes the filelist accessible with gfx.getdropfile.
 ---@param idx number
 ---@return number retval
@@ -9771,7 +9686,7 @@ function gfx.gradrect(x, y, w, h, r, g, b, a, drdx, dgdx, dbdx, dadx, drdy, dgdy
 ---@return number retval
 function gfx.init(name, width, height, dockstate, xpos, ypos) end
 
----Draws a line from x,y to x2,y2, and if aa is not specified or 0.5 or greater, it will be antialiased. 
+---Draws a line from x,y to x2,y2, and if aa is not specified or 0.5 or greater, it will be antialiased.
 ---@param x number
 ---@param y number
 ---@param x2 number
@@ -9787,7 +9702,7 @@ function gfx.line(x, y, x2, y2, aa) end
 ---@return number retval
 function gfx.lineto(x, y, aa) end
 
----Load image from filename into slot 0..1024-1 specified by image. Returns the image index if success, otherwise -1 if failure. The image will be resized to the dimensions of the image file. 
+---Load image from filename into slot 0..1024-1 specified by image. Returns the image index if success, otherwise -1 if failure. The image will be resized to the dimensions of the image file.
 ---@param image number
 ---@param filename string
 ---@return number retval
@@ -9836,7 +9751,7 @@ function gfx.muladdrect(x, y, w, h, mul_r, mul_g, mul_b, mul_a, add_r, add_g, ad
 ---* %g = parameter as floating point (shortest representation, lowercase)
 ---* %G = parameter as floating point (shortest representation, uppercase)
 ---
----Many standard C printf() modifiers can be used, including:    
+---Many standard C printf() modifiers can be used, including:
 ---* %.10s = string, but only print up to 10 characters
 ---* %-10s = string, left justified to 10 characters
 ---* %10s = string, right justified to 10 characters
@@ -9853,7 +9768,7 @@ function gfx.printf(format, ...) end
 ---@return number retval
 function gfx.quit() end
 
----Fills a rectangle at x,y, w,h pixels in dimension, filled by default. 
+---Fills a rectangle at x,y, w,h pixels in dimension, filled by default.
 ---@param x number
 ---@param y number
 ---@param w number
@@ -9862,13 +9777,13 @@ function gfx.quit() end
 ---@return number retval
 function gfx.rect(x, y, w, h, filled) end
 
----Fills a rectangle from gfx.x,gfx.y to x,y. Updates gfx.x,gfx.y to x,y. 
+---Fills a rectangle from gfx.x,gfx.y to x,y. Updates gfx.x,gfx.y to x,y.
 ---@param x number
 ---@param y number
 ---@return number x_coordinate
 function gfx.rectto(x, y) end
 
----Draws a rectangle with rounded corners. 
+---Draws a rectangle with rounded corners.
 ---@param x number
 ---@param y number
 ---@param w number
@@ -9914,7 +9829,7 @@ function gfx.set(r, g, b, a2, mode, dest) end
 ---* 114, hand with index finger pointing
 ---* 115, a square
 ---* 116, arrow with cd
----    
+---
 ---works only with gfx-window opened.
 ---@param resource_id? number
 ---@param custom_cursor_name? string
@@ -9943,7 +9858,7 @@ function gfx.setimgdim(image, w, h) end
 ---@return number retval
 function gfx.setpixel(r, g, b) end
 
----Shows a popup menu at gfx_x,gfx_y. 
+---Shows a popup menu at gfx_x,gfx_y.
 ---str is a list of fields separated by | characters. Each field represents a menu item.
 ---Fields can start with special characters:# : grayed out
 ---* ! : checked
@@ -9970,7 +9885,7 @@ function gfx.showmenu(menu_string) end
 ---@return number retval
 function gfx.transformblit(srcimg, destx, desty, destw, desth, div_w, div_h, table) end
 
----Draws a filled triangle, or any convex polygon. 
+---Draws a filled triangle, or any convex polygon.
 ---@param x1 number
 ---@param y1 number
 ---@param x2 number
@@ -9981,7 +9896,7 @@ function gfx.transformblit(srcimg, destx, desty, destw, desth, div_w, div_h, tab
 ---@param y4? number
 ---@param ... number
 ---@return number retval
-function gfx.triangle(x1, y1, x2, y2, x3, y3, x4, y4, ... ) end
+function gfx.triangle(x1, y1, x2, y2, x3, y3, x4, y4, ...) end
 
 ---Updates the graphics display, if opened
 ---@return number retval
