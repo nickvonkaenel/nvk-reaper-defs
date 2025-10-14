@@ -1,6 +1,6 @@
 --- ReaImGui LuaCATS definitions
 ---
---- Generated for version 0.9.3.3 - API version 0.9.3
+--- Generated for version 0.10.0.2 - API version 0.10
 ---
 --- @meta  imgui
 --- @class ImGui
@@ -114,6 +114,30 @@
 ---
 --- @since 0.1
 --- @field Dir_Up integer
+---
+--- **Button > Flags > ButtonFlags\_EnableNav**
+---
+--- Do not disable navigation/tabbing. Otherwise disabled by default.
+---
+--- ---
+---
+--- **Button > Flags**
+---
+--- For InvisibleButton.
+---
+--- ---
+---
+--- **Button**
+---
+--- Most widgets return true when the value has been changed or when pressed/selected.
+---
+--- You may also use one of the many IsItem* functions (e.g. IsItemActive,
+--- IsItemHovered, etc.) to query widget state.
+---
+--- ---
+---
+--- @since 0.10
+--- @field ButtonFlags_EnableNav integer
 ---
 --- **Button > Flags > ButtonFlags\_MouseButtonLeft**
 ---
@@ -388,6 +412,74 @@
 --- @since 0.1
 --- @field ColorEditFlags_None integer
 ---
+--- **Color Edit > Flags > Alpha Preview > ColorEditFlags\_AlphaNoBg**
+---
+--- Disable rendering a checkerboard background behind transparent color.
+---
+--- ---
+---
+--- **Color Edit > Flags > Alpha Preview**
+---
+--- For ColorEdit, ColorPicker, ColorButton
+---
+--- ---
+---
+--- **Color Edit**
+---
+--- Tip: the ColorEdit* functions have a little color square that can be
+--- left-clicked to open a picker, and right-clicked to open an option menu.
+---
+--- ---
+---
+--- @since 0.10
+--- @field ColorEditFlags_AlphaNoBg integer
+---
+--- **Color Edit > Flags > Alpha Preview > ColorEditFlags\_AlphaOpaque**
+---
+--- Disable alpha in the preview.
+---    Contrary to _NoAlpha it may still be edited when calling ColorEdit4/ColorPicker4.
+---    For ColorButton this does the same as _NoAlpha.
+---
+--- ---
+---
+--- **Color Edit > Flags > Alpha Preview**
+---
+--- For ColorEdit, ColorPicker, ColorButton
+---
+--- ---
+---
+--- **Color Edit**
+---
+--- Tip: the ColorEdit* functions have a little color square that can be
+--- left-clicked to open a picker, and right-clicked to open an option menu.
+---
+--- ---
+---
+--- @since 0.10
+--- @field ColorEditFlags_AlphaOpaque integer
+---
+--- **Color Edit > Flags > Alpha Preview > ColorEditFlags\_AlphaPreviewHalf**
+---
+--- Display half opaque / half transparent preview.
+---
+--- ---
+---
+--- **Color Edit > Flags > Alpha Preview**
+---
+--- For ColorEdit, ColorPicker, ColorButton
+---
+--- ---
+---
+--- **Color Edit**
+---
+--- Tip: the ColorEdit* functions have a little color square that can be
+--- left-clicked to open a picker, and right-clicked to open an option menu.
+---
+--- ---
+---
+--- @since 0.1
+--- @field ColorEditFlags_AlphaPreviewHalf integer
+---
 --- **Color Edit > Flags > User Options > ColorEditFlags\_AlphaBar**
 ---
 --- ColorEdit, ColorPicker: show vertical alpha bar/gradient in picker.
@@ -409,52 +501,6 @@
 ---
 --- @since 0.1
 --- @field ColorEditFlags_AlphaBar integer
----
---- **Color Edit > Flags > User Options > ColorEditFlags\_AlphaPreview**
----
---- ColorEdit, ColorPicker, ColorButton: display preview as a transparent color
----    over a checkerboard, instead of opaque.
----
---- ---
----
---- **Color Edit > Flags > User Options**
----
---- (right-click on widget to change some of them)
----
---- ---
----
---- **Color Edit**
----
---- Tip: the ColorEdit* functions have a little color square that can be
---- left-clicked to open a picker, and right-clicked to open an option menu.
----
---- ---
----
---- @since 0.1
---- @field ColorEditFlags_AlphaPreview integer
----
---- **Color Edit > Flags > User Options > ColorEditFlags\_AlphaPreviewHalf**
----
---- ColorEdit, ColorPicker, ColorButton: display half opaque / half checkerboard,
----    instead of opaque.
----
---- ---
----
---- **Color Edit > Flags > User Options**
----
---- (right-click on widget to change some of them)
----
---- ---
----
---- **Color Edit**
----
---- Tip: the ColorEdit* functions have a little color square that can be
---- left-clicked to open a picker, and right-clicked to open an option menu.
----
---- ---
----
---- @since 0.1
---- @field ColorEditFlags_AlphaPreviewHalf integer
 ---
 --- **Color Edit > Flags > User Options > ColorEditFlags\_DisplayHSV**
 ---
@@ -792,9 +838,9 @@
 --- @since 0.1
 --- @field SelectableFlags_Disabled integer
 ---
---- **Combo \& List > Selectables > SelectableFlags\_DontClosePopups**
+--- **Combo \& List > Selectables > SelectableFlags\_Highlight**
 ---
---- Clicking this doesn't close parent popup window.
+--- Make the item be displayed as if it is hovered.
 ---
 --- ---
 ---
@@ -807,8 +853,26 @@
 ---
 --- ---
 ---
---- @since 0.1
---- @field SelectableFlags_DontClosePopups integer
+--- @since 0.10
+--- @field SelectableFlags_Highlight integer
+---
+--- **Combo \& List > Selectables > SelectableFlags\_NoAutoClosePopups**
+---
+--- Clicking this doesn't close parent popup window (overrides ItemFlags_AutoClosePopups)
+---
+--- ---
+---
+--- **Combo \& List > Selectables**
+---
+--- A selectable highlights when hovered, and can display another color when
+--- selected. Neighbors selectable extend their highlight bounds in order to leave
+--- no gap between them. This is so a series of selected Selectable appear
+--- contiguous.
+---
+--- ---
+---
+--- @since 0.10
+--- @field SelectableFlags_NoAutoClosePopups integer
 ---
 --- **Combo \& List > Selectables > SelectableFlags\_None**
 ---
@@ -874,37 +938,6 @@
 ---
 --- @since 0.1
 --- @field ConfigFlags_NavEnableKeyboard integer
----
---- **Context > Flags > ConfigFlags\_NavEnableSetMousePos**
----
---- Instruct navigation to move the mouse cursor.
----
---- ---
----
---- **Context > Flags**
----
---- For CreateContext and SetConfigVar(ConfigVar_Flags()).
----
---- ---
----
---- @since 0.1
---- @field ConfigFlags_NavEnableSetMousePos integer
----
---- **Context > Flags > ConfigFlags\_NavNoCaptureKeyboard**
----
---- Instruct navigation to not capture global keyboard input when
----    ConfigFlags_NavEnableKeyboard is set (see SetNextFrameWantCaptureKeyboard).
----
---- ---
----
---- **Context > Flags**
----
---- For CreateContext and SetConfigVar(ConfigVar_Flags()).
----
---- ---
----
---- @since 0.8
---- @field ConfigFlags_NavNoCaptureKeyboard integer
 ---
 --- **Context > Flags > ConfigFlags\_NoKeyboard**
 ---
@@ -990,6 +1023,12 @@
 ---
 --- ---
 ---
+--- **Context > Options**
+---
+--- You can visualize and interact with all options in Demo > Configuration
+---
+--- ---
+---
 --- @since 0.8.5
 --- @field ConfigVar_DebugBeginReturnValueLoop integer
 ---
@@ -1000,13 +1039,43 @@
 ---
 --- ---
 ---
+--- **Context > Options**
+---
+--- You can visualize and interact with all options in Demo > Configuration
+---
+--- ---
+---
 --- @since 0.8.5
 --- @field ConfigVar_DebugBeginReturnValueOnce integer
+---
+--- **Context > Options > ConfigVar\_DebugHighlightIdConflicts**
+---
+--- Highlight and show an error message popup when multiple items have conflicting
+---    identifiers.
+---    - Code should use PushID/PopID in loops, or append "##xx" to same-label identifiers.
+---    - Empty label e.g. Button("") == same ID as parent widget/node. Use Button("##xx") instead!
+---
+--- ---
+---
+--- **Context > Options**
+---
+--- You can visualize and interact with all options in Demo > Configuration
+---
+--- ---
+---
+--- @since 0.10
+--- @field ConfigVar_DebugHighlightIdConflicts integer
 ---
 --- **Context > Options > ConfigVar\_DockingNoSplit**
 ---
 --- Simplified docking mode: disable window splitting, so docking is limited to
 ---    merging multiple windows together into tab-bars.
+---
+--- ---
+---
+--- **Context > Options**
+---
+--- You can visualize and interact with all options in Demo > Configuration
 ---
 --- ---
 ---
@@ -1020,6 +1089,12 @@
 ---
 --- ---
 ---
+--- **Context > Options**
+---
+--- You can visualize and interact with all options in Demo > Configuration
+---
+--- ---
+---
 --- @since 0.7
 --- @field ConfigVar_DockingTransparentPayload integer
 ---
@@ -1027,6 +1102,12 @@
 ---
 --- Enable docking with holding Shift key
 ---    (reduce visual noise, allows dropping in wider space
+---
+--- ---
+---
+--- **Context > Options**
+---
+--- You can visualize and interact with all options in Demo > Configuration
 ---
 --- ---
 ---
@@ -1040,12 +1121,24 @@
 ---
 --- ---
 ---
+--- **Context > Options**
+---
+--- You can visualize and interact with all options in Demo > Configuration
+---
+--- ---
+---
 --- @since 0.7
 --- @field ConfigVar_DragClickToInputText integer
 ---
 --- **Context > Options > ConfigVar\_Flags**
 ---
 --- ConfigFlags_*
+---
+--- ---
+---
+--- **Context > Options**
+---
+--- You can visualize and interact with all options in Demo > Configuration
 ---
 --- ---
 ---
@@ -1059,6 +1152,12 @@
 ---
 --- ---
 ---
+--- **Context > Options**
+---
+--- You can visualize and interact with all options in Demo > Configuration
+---
+--- ---
+---
 --- @since 0.8
 --- @field ConfigVar_HoverDelayNormal integer
 ---
@@ -1066,6 +1165,12 @@
 ---
 --- Delay for IsItemHovered(HoveredFlags_DelayShort).
 ---    Usually used along with ConfigVar_HoverStationaryDelay.
+---
+--- ---
+---
+--- **Context > Options**
+---
+--- You can visualize and interact with all options in Demo > Configuration
 ---
 --- ---
 ---
@@ -1079,6 +1184,12 @@
 ---
 --- ---
 ---
+--- **Context > Options**
+---
+--- You can visualize and interact with all options in Demo > Configuration
+---
+--- ---
+---
 --- @since 0.9
 --- @field ConfigVar_HoverFlagsForTooltipMouse integer
 ---
@@ -1086,6 +1197,12 @@
 ---
 --- Default flags when using IsItemHovered(HoveredFlags_ForTooltip) or
 ---    BeginItemTooltip()/SetItemTooltip() while using keyboard/gamepad.
+---
+--- ---
+---
+--- **Context > Options**
+---
+--- You can visualize and interact with all options in Demo > Configuration
 ---
 --- ---
 ---
@@ -1099,6 +1216,12 @@
 ---
 --- ---
 ---
+--- **Context > Options**
+---
+--- You can visualize and interact with all options in Demo > Configuration
+---
+--- ---
+---
 --- @since 0.9
 --- @field ConfigVar_HoverStationaryDelay integer
 ---
@@ -1108,12 +1231,24 @@
 ---
 --- ---
 ---
+--- **Context > Options**
+---
+--- You can visualize and interact with all options in Demo > Configuration
+---
+--- ---
+---
 --- @since 0.7
 --- @field ConfigVar_InputTextCursorBlink integer
 ---
 --- **Context > Options > ConfigVar\_InputTextEnterKeepActive**
 ---
 --- Pressing Enter will keep item active and select contents (single-line only).
+---
+--- ---
+---
+--- **Context > Options**
+---
+--- You can visualize and interact with all options in Demo > Configuration
 ---
 --- ---
 ---
@@ -1132,6 +1267,12 @@
 ---
 --- ---
 ---
+--- **Context > Options**
+---
+--- You can visualize and interact with all options in Demo > Configuration
+---
+--- ---
+---
 --- @since 0.7
 --- @field ConfigVar_InputTrickleEventQueue integer
 ---
@@ -1142,12 +1283,24 @@
 ---
 --- ---
 ---
+--- **Context > Options**
+---
+--- You can visualize and interact with all options in Demo > Configuration
+---
+--- ---
+---
 --- @since 0.7
 --- @field ConfigVar_KeyRepeatDelay integer
 ---
 --- **Context > Options > ConfigVar\_KeyRepeatRate**
 ---
 --- When holding a key/button, rate at which it repeats, in seconds.
+---
+--- ---
+---
+--- **Context > Options**
+---
+--- You can visualize and interact with all options in Demo > Configuration
 ---
 --- ---
 ---
@@ -1164,12 +1317,24 @@
 ---
 --- ---
 ---
+--- **Context > Options**
+---
+--- You can visualize and interact with all options in Demo > Configuration
+---
+--- ---
+---
 --- @since 0.7
 --- @field ConfigVar_MacOSXBehaviors integer
 ---
 --- **Context > Options > ConfigVar\_MouseDoubleClickMaxDist**
 ---
 --- Distance threshold to stay in to validate a double-click, in pixels.
+---
+--- ---
+---
+--- **Context > Options**
+---
+--- You can visualize and interact with all options in Demo > Configuration
 ---
 --- ---
 ---
@@ -1182,6 +1347,12 @@
 ---
 --- ---
 ---
+--- **Context > Options**
+---
+--- You can visualize and interact with all options in Demo > Configuration
+---
+--- ---
+---
 --- @since 0.7
 --- @field ConfigVar_MouseDoubleClickTime integer
 ---
@@ -1191,13 +1362,136 @@
 ---
 --- ---
 ---
+--- **Context > Options**
+---
+--- You can visualize and interact with all options in Demo > Configuration
+---
+--- ---
+---
 --- @since 0.7
 --- @field ConfigVar_MouseDragThreshold integer
+---
+--- **Context > Options > ConfigVar\_NavCaptureKeyboard**
+---
+--- Instruct navigation to not capture global keyboard input
+---    (see SetNextFrameWantCaptureKeyboard).
+---
+--- ---
+---
+--- **Context > Options**
+---
+--- You can visualize and interact with all options in Demo > Configuration
+---
+--- ---
+---
+--- @since 0.10
+--- @field ConfigVar_NavCaptureKeyboard integer
+---
+--- **Context > Options > ConfigVar\_NavCursorVisibleAlways**
+---
+--- Navigation cursor is always visible.
+---
+--- ---
+---
+--- **Context > Options**
+---
+--- You can visualize and interact with all options in Demo > Configuration
+---
+--- ---
+---
+--- @since 0.10
+--- @field ConfigVar_NavCursorVisibleAlways integer
+---
+--- **Context > Options > ConfigVar\_NavCursorVisibleAuto**
+---
+--- Using directional navigation key makes the cursor visible.
+---    Mouse click hides the cursor.
+---
+--- ---
+---
+--- **Context > Options**
+---
+--- You can visualize and interact with all options in Demo > Configuration
+---
+--- ---
+---
+--- @since 0.10
+--- @field ConfigVar_NavCursorVisibleAuto integer
+---
+--- **Context > Options > ConfigVar\_NavEscapeClearFocusItem**
+---
+--- Pressing Escape can clear focused item + navigation id/highlight.
+---    Set to false if you want to always keep highlight on.
+---
+--- ---
+---
+--- **Context > Options**
+---
+--- You can visualize and interact with all options in Demo > Configuration
+---
+--- ---
+---
+--- @since 0.10
+--- @field ConfigVar_NavEscapeClearFocusItem integer
+---
+--- **Context > Options > ConfigVar\_NavEscapeClearFocusWindow**
+---
+--- Pressing Escape can clear focused window as well
+---    (superset of ConfigVar_NavEscapeClearFocusItem).
+---
+--- ---
+---
+--- **Context > Options**
+---
+--- You can visualize and interact with all options in Demo > Configuration
+---
+--- ---
+---
+--- @since 0.10
+--- @field ConfigVar_NavEscapeClearFocusWindow integer
+---
+--- **Context > Options > ConfigVar\_NavMoveSetMousePos**
+---
+--- Directional/tabbing navigation teleports the mouse cursor.
+---
+--- ---
+---
+--- **Context > Options**
+---
+--- You can visualize and interact with all options in Demo > Configuration
+---
+--- ---
+---
+--- @since 0.10
+--- @field ConfigVar_NavMoveSetMousePos integer
+---
+--- **Context > Options > ConfigVar\_ScrollbarScrollByPage**
+---
+--- Enable scrolling page by page when clicking outside the scrollbar grab.
+---    When disabled, always scroll to clicked location.
+---    When enabled, Shift+Click scrolls to clicked location.
+---
+--- ---
+---
+--- **Context > Options**
+---
+--- You can visualize and interact with all options in Demo > Configuration
+---
+--- ---
+---
+--- @since 0.10
+--- @field ConfigVar_ScrollbarScrollByPage integer
 ---
 --- **Context > Options > ConfigVar\_ViewportsNoDecoration**
 ---
 --- Disable default OS window decoration. Enabling decoration can create
 ---    subsequent issues at OS levels (e.g. minimum window size).
+---
+--- ---
+---
+--- **Context > Options**
+---
+--- You can visualize and interact with all options in Demo > Configuration
 ---
 --- ---
 ---
@@ -1211,12 +1505,24 @@
 ---
 --- ---
 ---
+--- **Context > Options**
+---
+--- You can visualize and interact with all options in Demo > Configuration
+---
+--- ---
+---
 --- @since 0.7
 --- @field ConfigVar_WindowsMoveFromTitleBarOnly integer
 ---
 --- **Context > Options > ConfigVar\_WindowsResizeFromEdges**
 ---
 --- Enable resizing of windows from their edges and from the lower-left corner.
+---
+--- ---
+---
+--- **Context > Options**
+---
+--- You can visualize and interact with all options in Demo > Configuration
 ---
 --- ---
 ---
@@ -1529,15 +1835,15 @@
 ---
 --- **Drag \& Slider > Flags > SliderFlags\_AlwaysClamp**
 ---
---- Clamp value to min/max bounds when input manually with CTRL+Click.
----    By default CTRL+Click allows going out of bounds.
+--- SliderFlags_ClampOnInput | SliderFlags_ClampZeroRange
 ---
 --- ---
 ---
 --- **Drag \& Slider > Flags**
 ---
---- For DragDouble, DragInt, SliderDouble, SliderInt etc. (Those are per-item
---- flags. There are shared flags in SetConfigVar: ConfigVar_DragClickToInputText
+--- For DragDouble, DragInt, SliderDouble, SliderInt etc.
+---    (Those are per-item flags. There is a shared behavior flag too:
+---    SetConfigVar(ConfigVar_DragClickToInputText)
 ---
 --- ---
 ---
@@ -1558,8 +1864,79 @@
 ---
 --- ---
 ---
---- @since 0.1
+--- @since 0.10
 --- @field SliderFlags_AlwaysClamp integer
+---
+--- **Drag \& Slider > Flags > SliderFlags\_ClampOnInput**
+---
+--- Clamp value to min/max bounds when input manually with Ctrl+Click.
+---    By default Ctrl+Click allows going out of bounds.
+---
+--- ---
+---
+--- **Drag \& Slider > Flags**
+---
+--- For DragDouble, DragInt, SliderDouble, SliderInt etc.
+---    (Those are per-item flags. There is a shared behavior flag too:
+---    SetConfigVar(ConfigVar_DragClickToInputText)
+---
+--- ---
+---
+--- **Drag \& Slider**
+---
+--- We use the same sets of flags for Drag*() and Slider*() functions as the
+--- features are the same and it makes it easier to swap them.
+---
+--- CTRL+Click on any drag box or slider to turn them into an input box.
+--- Manually input values aren't clamped by default and can go off-bounds.
+--- Use SliderFlags_AlwaysClamp to always clamp.
+---
+--- Adjust format string to decorate the value with a prefix, a suffix, or adapt the
+--- editing and display precision e.g. "%.3f" -> 1.234; "%5.2f secs" -> 01.23 secs;
+--- "Biscuit: %.0f" -> Biscuit: 1; etc.
+---
+--- Format string may also be set to nil or use the default format ("%f" or "%d").
+---
+--- ---
+---
+--- @since 0.10
+--- @field SliderFlags_ClampOnInput integer
+---
+--- **Drag \& Slider > Flags > SliderFlags\_ClampZeroRange**
+---
+--- Clamp even if min==max==0. Otherwise due to legacy reason Drag* functions
+---    don't clamp with those values. When your clamping limits are dynamic you
+---    almost always want to use it.
+---
+--- ---
+---
+--- **Drag \& Slider > Flags**
+---
+--- For DragDouble, DragInt, SliderDouble, SliderInt etc.
+---    (Those are per-item flags. There is a shared behavior flag too:
+---    SetConfigVar(ConfigVar_DragClickToInputText)
+---
+--- ---
+---
+--- **Drag \& Slider**
+---
+--- We use the same sets of flags for Drag*() and Slider*() functions as the
+--- features are the same and it makes it easier to swap them.
+---
+--- CTRL+Click on any drag box or slider to turn them into an input box.
+--- Manually input values aren't clamped by default and can go off-bounds.
+--- Use SliderFlags_AlwaysClamp to always clamp.
+---
+--- Adjust format string to decorate the value with a prefix, a suffix, or adapt the
+--- editing and display precision e.g. "%.3f" -> 1.234; "%5.2f secs" -> 01.23 secs;
+--- "Biscuit: %.0f" -> Biscuit: 1; etc.
+---
+--- Format string may also be set to nil or use the default format ("%f" or "%d").
+---
+--- ---
+---
+--- @since 0.10
+--- @field SliderFlags_ClampZeroRange integer
 ---
 --- **Drag \& Slider > Flags > SliderFlags\_Logarithmic**
 ---
@@ -1571,8 +1948,9 @@
 ---
 --- **Drag \& Slider > Flags**
 ---
---- For DragDouble, DragInt, SliderDouble, SliderInt etc. (Those are per-item
---- flags. There are shared flags in SetConfigVar: ConfigVar_DragClickToInputText
+--- For DragDouble, DragInt, SliderDouble, SliderInt etc.
+---    (Those are per-item flags. There is a shared behavior flag too:
+---    SetConfigVar(ConfigVar_DragClickToInputText)
 ---
 --- ---
 ---
@@ -1604,8 +1982,9 @@
 ---
 --- **Drag \& Slider > Flags**
 ---
---- For DragDouble, DragInt, SliderDouble, SliderInt etc. (Those are per-item
---- flags. There are shared flags in SetConfigVar: ConfigVar_DragClickToInputText
+--- For DragDouble, DragInt, SliderDouble, SliderInt etc.
+---    (Those are per-item flags. There is a shared behavior flag too:
+---    SetConfigVar(ConfigVar_DragClickToInputText)
 ---
 --- ---
 ---
@@ -1638,8 +2017,9 @@
 ---
 --- **Drag \& Slider > Flags**
 ---
---- For DragDouble, DragInt, SliderDouble, SliderInt etc. (Those are per-item
---- flags. There are shared flags in SetConfigVar: ConfigVar_DragClickToInputText
+--- For DragDouble, DragInt, SliderDouble, SliderInt etc.
+---    (Those are per-item flags. There is a shared behavior flag too:
+---    SetConfigVar(ConfigVar_DragClickToInputText)
 ---
 --- ---
 ---
@@ -1663,14 +2043,50 @@
 --- @since 0.1
 --- @field SliderFlags_NoRoundToFormat integer
 ---
+--- **Drag \& Slider > Flags > SliderFlags\_NoSpeedTweaks**
+---
+--- Disable keyboard modifiers altering tweak speed.
+---    Useful if you want to alter tweak speed yourself based on your own logic.
+---
+--- ---
+---
+--- **Drag \& Slider > Flags**
+---
+--- For DragDouble, DragInt, SliderDouble, SliderInt etc.
+---    (Those are per-item flags. There is a shared behavior flag too:
+---    SetConfigVar(ConfigVar_DragClickToInputText)
+---
+--- ---
+---
+--- **Drag \& Slider**
+---
+--- We use the same sets of flags for Drag*() and Slider*() functions as the
+--- features are the same and it makes it easier to swap them.
+---
+--- CTRL+Click on any drag box or slider to turn them into an input box.
+--- Manually input values aren't clamped by default and can go off-bounds.
+--- Use SliderFlags_AlwaysClamp to always clamp.
+---
+--- Adjust format string to decorate the value with a prefix, a suffix, or adapt the
+--- editing and display precision e.g. "%.3f" -> 1.234; "%5.2f secs" -> 01.23 secs;
+--- "Biscuit: %.0f" -> Biscuit: 1; etc.
+---
+--- Format string may also be set to nil or use the default format ("%f" or "%d").
+---
+--- ---
+---
+--- @since 0.10
+--- @field SliderFlags_NoSpeedTweaks integer
+---
 --- **Drag \& Slider > Flags > SliderFlags\_None**
 ---
 --- ---
 ---
 --- **Drag \& Slider > Flags**
 ---
---- For DragDouble, DragInt, SliderDouble, SliderInt etc. (Those are per-item
---- flags. There are shared flags in SetConfigVar: ConfigVar_DragClickToInputText
+--- For DragDouble, DragInt, SliderDouble, SliderInt etc.
+---    (Those are per-item flags. There is a shared behavior flag too:
+---    SetConfigVar(ConfigVar_DragClickToInputText)
 ---
 --- ---
 ---
@@ -1696,15 +2112,16 @@
 ---
 --- **Drag \& Slider > Flags > SliderFlags\_WrapAround**
 ---
---- Enable wrapping around from max to min and from min to max
----    (only supported by DragXXX() functions for now).
+--- Enable wrapping around from max to min and from min to max.
+---    Only supported by Drag* functions for now.
 ---
 --- ---
 ---
 --- **Drag \& Slider > Flags**
 ---
---- For DragDouble, DragInt, SliderDouble, SliderInt etc. (Those are per-item
---- flags. There are shared flags in SetConfigVar: ConfigVar_DragClickToInputText
+--- For DragDouble, DragInt, SliderDouble, SliderInt etc.
+---    (Those are per-item flags. There is a shared behavior flag too:
+---    SetConfigVar(ConfigVar_DragClickToInputText)
 ---
 --- ---
 ---
@@ -2007,17 +2424,6 @@
 --- Supports loading fonts from the system by family name or from a file.
 --- Glyphs may contain colors in COLR/CPAL format.
 ---
---- This API currently has multiple limitations (v1.0 blockers):
---- - ReaImGui rasterizes glyphs only from the Basic Latin and Latin Supplement
----   Unicode blocks (U+0020 to U+00FF). UTF-8 is fully supported internally,
----   however characters outside those blocks are displayed as '?'.
----   See [issue #5](https://github.com/cfillion/reaimgui/issues/5).
---- - Dear ImGui does not support using new fonts in the middle of a frame.
----   Because of this, fonts must first be registered using Attach before any
----   other context functions are used in the same defer cycle.
----   (Attaching a font is a heavy operation and should ideally be done outside
----   of the defer loop.)
----
 --- ---
 ---
 --- @since 0.4
@@ -2031,17 +2437,6 @@
 ---
 --- Supports loading fonts from the system by family name or from a file.
 --- Glyphs may contain colors in COLR/CPAL format.
----
---- This API currently has multiple limitations (v1.0 blockers):
---- - ReaImGui rasterizes glyphs only from the Basic Latin and Latin Supplement
----   Unicode blocks (U+0020 to U+00FF). UTF-8 is fully supported internally,
----   however characters outside those blocks are displayed as '?'.
----   See [issue #5](https://github.com/cfillion/reaimgui/issues/5).
---- - Dear ImGui does not support using new fonts in the middle of a frame.
----   Because of this, fonts must first be registered using Attach before any
----   other context functions are used in the same defer cycle.
----   (Attaching a font is a heavy operation and should ideally be done outside
----   of the defer loop.)
 ---
 --- ---
 ---
@@ -2057,21 +2452,138 @@
 --- Supports loading fonts from the system by family name or from a file.
 --- Glyphs may contain colors in COLR/CPAL format.
 ---
---- This API currently has multiple limitations (v1.0 blockers):
---- - ReaImGui rasterizes glyphs only from the Basic Latin and Latin Supplement
----   Unicode blocks (U+0020 to U+00FF). UTF-8 is fully supported internally,
----   however characters outside those blocks are displayed as '?'.
----   See [issue #5](https://github.com/cfillion/reaimgui/issues/5).
---- - Dear ImGui does not support using new fonts in the middle of a frame.
----   Because of this, fonts must first be registered using Attach before any
----   other context functions are used in the same defer cycle.
----   (Attaching a font is a heavy operation and should ideally be done outside
----   of the defer loop.)
----
 --- ---
 ---
 --- @since 0.4
 --- @field FontFlags_None integer
+---
+--- **Image > Image Set > ImageFlags\_NoErrors**
+---
+--- Return nil instead of returning an error.
+---
+--- ---
+---
+--- **Image > Image Set**
+---
+--- Helper to automatically select and scale an image to the DPI scale of
+--- the current window upon usage.
+---
+--- ImageSet objects may be used in any function that expect an image as parameter.
+---
+--- Usage:
+---
+---     local set = ImGui.CreateImageSet()
+---     ImGui.ImageSet_Add(set, 1.0, ImGui.CreateImage('32x32.png'))
+---     ImGui.ImageSet_Add(set, 2.0, ImGui.CreateImage('64x64.png'))
+---
+---     local function frame()
+---       ImGui.Image(ctx, set, ImGui.Image_GetSize(set))
+---       -- ...
+---     end
+---
+--- ---
+---
+--- **Image**
+---
+--- ReaImGui currently supports loading PNG and JPEG bitmap images.
+--- Flat vector images may be loaded as fonts, see CreateFont.
+---
+--- UV parameters are texture coordinates in a scale of 0.0 (top/left) to 1.0
+--- (bottom/right). Use values below 0.0 or above 1.0 to tile the image.
+---
+--- Width/height are limited to 8192 pixels.
+---
+--- There are also image functions in the DrawList API such as
+--- DrawList_AddImageQuad and DrawList_AddImageRounded.
+---
+--- Caching of image objects may be implemented like this:
+---
+---     local images = {}
+---     local function imageFromCache(fn)
+---       local img = images[fn]
+---       if not img then
+---         img = {}
+---         images[fn] = img
+---       end
+---
+---       if not ImGui.ValidatePtr(img.inst, 'ImGui_Image*') then
+---         if img.inst then images[img.inst] = nil end
+---         img.inst = ImGui.CreateImage(fn)
+---         local prev = images[img.inst]
+---         if prev and prev ~= img then prev.inst = nil end
+---         images[img.inst] = img
+---       end
+---
+---       return img.inst
+---     end
+---
+--- ---
+---
+--- @since 0.10
+--- @field ImageFlags_NoErrors integer
+---
+--- **Image > Image Set > ImageFlags\_None**
+---
+--- ---
+---
+--- **Image > Image Set**
+---
+--- Helper to automatically select and scale an image to the DPI scale of
+--- the current window upon usage.
+---
+--- ImageSet objects may be used in any function that expect an image as parameter.
+---
+--- Usage:
+---
+---     local set = ImGui.CreateImageSet()
+---     ImGui.ImageSet_Add(set, 1.0, ImGui.CreateImage('32x32.png'))
+---     ImGui.ImageSet_Add(set, 2.0, ImGui.CreateImage('64x64.png'))
+---
+---     local function frame()
+---       ImGui.Image(ctx, set, ImGui.Image_GetSize(set))
+---       -- ...
+---     end
+---
+--- ---
+---
+--- **Image**
+---
+--- ReaImGui currently supports loading PNG and JPEG bitmap images.
+--- Flat vector images may be loaded as fonts, see CreateFont.
+---
+--- UV parameters are texture coordinates in a scale of 0.0 (top/left) to 1.0
+--- (bottom/right). Use values below 0.0 or above 1.0 to tile the image.
+---
+--- Width/height are limited to 8192 pixels.
+---
+--- There are also image functions in the DrawList API such as
+--- DrawList_AddImageQuad and DrawList_AddImageRounded.
+---
+--- Caching of image objects may be implemented like this:
+---
+---     local images = {}
+---     local function imageFromCache(fn)
+---       local img = images[fn]
+---       if not img then
+---         img = {}
+---         images[fn] = img
+---       end
+---
+---       if not ImGui.ValidatePtr(img.inst, 'ImGui_Image*') then
+---         if img.inst then images[img.inst] = nil end
+---         img.inst = ImGui.CreateImage(fn)
+---         local prev = images[img.inst]
+---         if prev and prev ~= img then prev.inst = nil end
+---         images[img.inst] = img
+---       end
+---
+---       return img.inst
+---     end
+---
+--- ---
+---
+--- @since 0.10
+--- @field ImageFlags_None integer
 ---
 --- **Item \& Status > Hovered Flags > HoveredFlags\_AllowWhenBlockedByActiveItem**
 ---
@@ -2128,7 +2640,7 @@
 ---
 --- **Item \& Status > Hovered Flags > HoveredFlags\_NoNavOverride**
 ---
---- Disable using gamepad/keyboard navigation state when active, always query mouse.
+--- Disable using keyboard/gamepad navigation state when active, always query mouse.
 ---
 --- ---
 ---
@@ -2435,6 +2947,118 @@
 ---
 --- @since 0.1
 --- @field HoveredFlags_RootWindow integer
+---
+--- **Item \& Status > Item Flags > ItemFlags\_AllowDuplicateId**
+---
+--- Allow submitting an item with the same identifier as an item already
+---    submitted this frame without triggering a warning tooltip if
+---    ConfigVar_ConfigDebugHighlightIdConflicts is set.
+---
+--- ---
+---
+--- **Item \& Status > Item Flags**
+---
+--- For PushItemFlag, shared by all items.
+---
+--- ---
+---
+--- @since 0.10
+--- @field ItemFlags_AllowDuplicateId integer
+---
+--- **Item \& Status > Item Flags > ItemFlags\_AutoClosePopups**
+---
+--- MenuItem/Selectable automatically close their parent popup window.
+---    Default = true
+---
+--- ---
+---
+--- **Item \& Status > Item Flags**
+---
+--- For PushItemFlag, shared by all items.
+---
+--- ---
+---
+--- @since 0.10
+--- @field ItemFlags_AutoClosePopups integer
+---
+--- **Item \& Status > Item Flags > ItemFlags\_ButtonRepeat**
+---
+--- Any button-like behavior will have repeat mode enabled (based on
+---    ConfigVar_KeyRepeatDelay and ConfigVar_KeyRepeatRate values). Note that you
+---    can also call IsItemActive after any button to tell if it is being held.
+---    Default = false
+---
+--- ---
+---
+--- **Item \& Status > Item Flags**
+---
+--- For PushItemFlag, shared by all items.
+---
+--- ---
+---
+--- @since 0.10
+--- @field ItemFlags_ButtonRepeat integer
+---
+--- **Item \& Status > Item Flags > ItemFlags\_NoNav**
+---
+--- Disable any form of focusing (keyboard/gamepad directional navigation and
+---    SetKeyboardFocusHere calls). Default = false
+---
+--- ---
+---
+--- **Item \& Status > Item Flags**
+---
+--- For PushItemFlag, shared by all items.
+---
+--- ---
+---
+--- @since 0.10
+--- @field ItemFlags_NoNav integer
+---
+--- **Item \& Status > Item Flags > ItemFlags\_NoNavDefaultFocus**
+---
+--- Disable item being a candidate for default focus (e.g. used by title bar
+---    items). Default = false
+---
+--- ---
+---
+--- **Item \& Status > Item Flags**
+---
+--- For PushItemFlag, shared by all items.
+---
+--- ---
+---
+--- @since 0.10
+--- @field ItemFlags_NoNavDefaultFocus integer
+---
+--- **Item \& Status > Item Flags > ItemFlags\_NoTabStop**
+---
+--- Disable keyboard tabbing. This is a "lighter" version of ItemFlags_NoNav.
+---    Default = false.
+---
+--- ---
+---
+--- **Item \& Status > Item Flags**
+---
+--- For PushItemFlag, shared by all items.
+---
+--- ---
+---
+--- @since 0.10
+--- @field ItemFlags_NoTabStop integer
+---
+--- **Item \& Status > Item Flags > ItemFlags\_None**
+---
+--- ---
+---
+--- **Item \& Status > Item Flags**
+---
+--- For PushItemFlag, shared by all items.
+---
+--- ---
+---
+--- @since 0.10
+--- @field ItemFlags_None integer
 ---
 --- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_0**
 ---
@@ -3003,6 +3627,8 @@
 ---
 --- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_LeftAlt**
 ---
+--- See also Mod_Alt
+---
 --- ---
 ---
 --- @since 0.6
@@ -3026,6 +3652,8 @@
 ---
 --- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_LeftCtrl**
 ---
+--- See also Mod_Ctrl
+---
 --- ---
 ---
 --- @since 0.6
@@ -3033,12 +3661,16 @@
 ---
 --- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_LeftShift**
 ---
+--- See also Mod_Shift
+---
 --- ---
 ---
 --- @since 0.6
 --- @field Key_LeftShift integer
 ---
 --- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_LeftSuper**
+---
+--- See also Mod_Super
 ---
 --- ---
 ---
@@ -3053,6 +3685,8 @@
 --- @field Key_M integer
 ---
 --- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_Menu**
+---
+--- Also known as the application key
 ---
 --- ---
 ---
@@ -3088,6 +3722,15 @@
 ---
 --- @since 0.6
 --- @field Key_O integer
+---
+--- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_Oem102**
+---
+--- Key next to the left shift on ISO keyboards.
+---
+--- ---
+---
+--- @since 0.10
+--- @field Key_Oem102 integer
 ---
 --- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_P**
 ---
@@ -3149,6 +3792,8 @@
 ---
 --- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_RightAlt**
 ---
+--- See also Mod_Alt
+---
 --- ---
 ---
 --- @since 0.6
@@ -3172,6 +3817,8 @@
 ---
 --- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_RightCtrl**
 ---
+--- See also Mod_Ctrl
+---
 --- ---
 ---
 --- @since 0.6
@@ -3179,12 +3826,16 @@
 ---
 --- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_RightShift**
 ---
+--- See also Mod_Shift
+---
 --- ---
 ---
 --- @since 0.6
 --- @field Key_RightShift integer
 ---
 --- **Keyboard \& Mouse > Keyboard > Named Keys > Keyboard > Key\_RightSuper**
+---
+--- See also Mod_Super
 ---
 --- ---
 ---
@@ -3581,6 +4232,29 @@
 --- @since 0.1
 --- @field MouseCursor_NotAllowed integer
 ---
+--- **Keyboard \& Mouse > Mouse > Mouse Cursor > MouseCursor\_Progress**
+---
+--- When waiting for something to process/load, but application is still interactive.
+---
+--- ---
+---
+--- **Keyboard \& Mouse > Mouse**
+---
+--- To refer to a mouse button, you may use named enums in your code e.g.
+--- MouseButton_Left, MouseButton_Right.
+---
+--- You can also use regular integer: it is forever guaranteed that
+--- 0=Left, 1=Right, 2=Middle. Buttons 3 and 4 do not have a named enum.
+---
+--- Dragging operations are only reported after mouse has moved a certain distance
+--- away from the initial clicking position (see 'lock_threshold' parameters and
+--- 'ConfigVar_MouseDragThreshold').
+---
+--- ---
+---
+--- @since 0.10
+--- @field MouseCursor_Progress integer
+---
 --- **Keyboard \& Mouse > Mouse > Mouse Cursor > MouseCursor\_ResizeAll**
 ---
 --- (Unused by Dear ImGui functions)
@@ -3718,6 +4392,29 @@
 ---
 --- @since 0.1
 --- @field MouseCursor_TextInput integer
+---
+--- **Keyboard \& Mouse > Mouse > Mouse Cursor > MouseCursor\_Wait**
+---
+--- When waiting for something to process/load.
+---
+--- ---
+---
+--- **Keyboard \& Mouse > Mouse**
+---
+--- To refer to a mouse button, you may use named enums in your code e.g.
+--- MouseButton_Left, MouseButton_Right.
+---
+--- You can also use regular integer: it is forever guaranteed that
+--- 0=Left, 1=Right, 2=Middle. Buttons 3 and 4 do not have a named enum.
+---
+--- Dragging operations are only reported after mouse has moved a certain distance
+--- away from the initial clicking position (see 'lock_threshold' parameters and
+--- 'ConfigVar_MouseDragThreshold').
+---
+--- ---
+---
+--- @since 0.10
+--- @field MouseCursor_Wait integer
 ---
 --- **Keyboard \& Mouse > Shortcuts > Flags > InputFlags\_None**
 ---
@@ -4552,6 +5249,15 @@
 --- @since 0.1
 --- @field Col_HeaderHovered integer
 ---
+--- **Style > Colors > Col\_InputTextCursor**
+---
+--- InputText cursor/caret
+---
+--- ---
+---
+--- @since 0.10
+--- @field Col_InputTextCursor integer
+---
 --- **Style > Colors > Col\_MenuBarBg**
 ---
 --- ---
@@ -4568,14 +5274,14 @@
 --- @since 0.1
 --- @field Col_ModalWindowDimBg integer
 ---
---- **Style > Colors > Col\_NavHighlight**
+--- **Style > Colors > Col\_NavCursor**
 ---
---- Gamepad/keyboard: current highlighted item.
+--- Color of keyboard/gamepad navigation cursor/rectangle, when visible
 ---
 --- ---
 ---
---- @since 0.1
---- @field Col_NavHighlight integer
+--- @since 0.10
+--- @field Col_NavCursor integer
 ---
 --- **Style > Colors > Col\_NavWindowingDimBg**
 ---
@@ -4840,7 +5546,18 @@
 --- @since 0.1
 --- @field Col_TextDisabled integer
 ---
+--- **Style > Colors > Col\_TextLink**
+---
+--- Hyperlink color
+---
+--- ---
+---
+--- @since 0.10
+--- @field Col_TextLink integer
+---
 --- **Style > Colors > Col\_TextSelectedBg**
+---
+--- Selected text inside an InputText
 ---
 --- ---
 ---
@@ -4873,6 +5590,15 @@
 ---
 --- @since 0.1
 --- @field Col_TitleBgCollapsed integer
+---
+--- **Style > Colors > Col\_TreeLines**
+---
+--- Tree node hierarchy outlines when using TreeNodeFlags_DrawLines
+---
+--- ---
+---
+--- @since 0.10
+--- @field Col_TreeLines integer
 ---
 --- **Style > Colors > Col\_WindowBg**
 ---
@@ -4988,6 +5714,15 @@
 ---
 --- @since 0.1
 --- @field StyleVar_GrabRounding integer
+---
+--- **Style > Variables > StyleVar\_ImageBorderSize**
+---
+--- Thickness of border around Image calls.
+---
+--- ---
+---
+--- @since 0.10
+--- @field StyleVar_ImageBorderSize integer
 ---
 --- **Style > Variables > StyleVar\_IndentSpacing**
 ---
@@ -5105,6 +5840,15 @@
 --- @since 0.9
 --- @field StyleVar_TabBarBorderSize integer
 ---
+--- **Style > Variables > StyleVar\_TabBarOverlineSize**
+---
+--- Thickness of tab-bar overline, which highlights the selected tab-bar.
+---
+--- ---
+---
+--- @since 0.10
+--- @field StyleVar_TabBarOverlineSize integer
+---
 --- **Style > Variables > StyleVar\_TabBorderSize**
 ---
 --- Thickness of border around tabs.
@@ -5140,6 +5884,24 @@
 ---
 --- @since 0.9.1
 --- @field StyleVar_TableAngledHeadersTextAlign integer
+---
+--- **Style > Variables > StyleVar\_TreeLinesRounding**
+---
+--- Radius of lines connecting child nodes to the vertical line.
+---
+--- ---
+---
+--- @since 0.10
+--- @field StyleVar_TreeLinesRounding integer
+---
+--- **Style > Variables > StyleVar\_TreeLinesSize**
+---
+--- Thickness of outlines when using TreeNodeFlags_DrawLines.
+---
+--- ---
+---
+--- @since 0.10
+--- @field StyleVar_TreeLinesSize integer
 ---
 --- **Style > Variables > StyleVar\_WindowBorderSize**
 ---
@@ -6229,9 +6991,11 @@
 ---
 --- **Table > Header \& Columns > Column Flags > Input Configuration > TableColumnFlags\_NoHeaderLabel**
 ---
---- TableHeadersRow will not submit horizontal label for this column.
----    Convenient for some small columns. Name will still appear in context menu
----    or in angled headers.
+--- TableHeadersRow will submit an empty label for this column.
+---    Convenient for some small columns.
+---    Name will still appear in context menu or in angled headers.
+---    You may append into this cell by calling TableSetColumnIndex right after
+---    the TableHeadersRow call.
 ---
 --- ---
 ---
@@ -10507,9 +11271,9 @@
 ---
 --- **Text \& Scalar Input > Flags > Callback features > InputTextFlags\_CallbackEdit**
 ---
---- Callback on any edit (note that InputText() already returns true on edit,
----    the callback is useful mainly to manipulate the underlying buffer while
----    focus is active).
+--- Callback on any edit. Note that InputText already returns true on edit +
+---    you can always use IsItemEdited. The callback is useful to manipulate the
+---    underlying buffer while focus is active.
 ---
 --- ---
 ---
@@ -10586,8 +11350,8 @@
 ---
 --- **Text \& Scalar Input > Flags > Inputs > InputTextFlags\_EnterReturnsTrue**
 ---
---- Return 'true' when Enter is pressed (as opposed to every time the value was
----    modified). Consider looking at the IsItemDeactivatedAfterEdit function.
+--- Return true when Enter is pressed (as opposed to every time the value was
+---    modified). Consider using IsItemDeactivatedAfterEdit instead!
 ---
 --- ---
 ---
@@ -10681,6 +11445,26 @@
 ---
 --- @since 0.9.2
 --- @field InputTextFlags_DisplayEmptyRefVal integer
+---
+--- **Text \& Scalar Input > Flags > Other options > InputTextFlags\_ElideLeft**
+---
+--- When text doesn't fit, elide left side to ensure right side stays visible.
+---    Useful for path/filenames. Single-line only!
+---
+--- ---
+---
+--- **Text \& Scalar Input > Flags**
+---
+--- Most of these are only useful for InputText*() and not for InputDoubleX,
+--- InputIntX etc.
+---
+--- (Those are per-item flags. There are shared flags in SetConfigVar:
+--- ConfigVar_InputTextCursorBlink and ConfigVar_InputTextEnterKeepActive.)
+---
+--- ---
+---
+--- @since 0.10
+--- @field InputTextFlags_ElideLeft integer
 ---
 --- **Text \& Scalar Input > Flags > Other options > InputTextFlags\_NoHorizontalScroll**
 ---
@@ -10838,6 +11622,55 @@
 --- @since 0.1
 --- @field TreeNodeFlags_DefaultOpen integer
 ---
+--- **Tree Node > Flags > TreeNodeFlags\_DrawLinesFull**
+---
+--- Horizontal lines to child nodes.
+---    Vertical line drawn down to TreePop() position: cover full contents.
+---    Faster (for large trees).
+---
+--- ---
+---
+--- **Tree Node > Flags**
+---
+--- For TreeNode, TreeNodeEx and CollapsingHeader.
+---
+--- ---
+---
+--- @since 0.10
+--- @field TreeNodeFlags_DrawLinesFull integer
+---
+--- **Tree Node > Flags > TreeNodeFlags\_DrawLinesNone**
+---
+--- No lines drawn
+---
+--- ---
+---
+--- **Tree Node > Flags**
+---
+--- For TreeNode, TreeNodeEx and CollapsingHeader.
+---
+--- ---
+---
+--- @since 0.10
+--- @field TreeNodeFlags_DrawLinesNone integer
+---
+--- **Tree Node > Flags > TreeNodeFlags\_DrawLinesToNodes**
+---
+--- Horizontal lines to child nodes.
+---    Vertical line drawn down to bottom-most child node.
+---    Slower (for large trees).
+---
+--- ---
+---
+--- **Tree Node > Flags**
+---
+--- For TreeNode, TreeNodeEx and CollapsingHeader.
+---
+--- ---
+---
+--- @since 0.10
+--- @field TreeNodeFlags_DrawLinesToNodes integer
+---
 --- **Tree Node > Flags > TreeNodeFlags\_FramePadding**
 ---
 --- Use FramePadding (even for an unframed text node) to vertically align text
@@ -10870,6 +11703,21 @@
 --- @since 0.1
 --- @field TreeNodeFlags_Framed integer
 ---
+--- **Tree Node > Flags > TreeNodeFlags\_LabelSpanAllColumns**
+---
+--- Label will span all columns of its container table
+---
+--- ---
+---
+--- **Tree Node > Flags**
+---
+--- For TreeNode, TreeNodeEx and CollapsingHeader.
+---
+--- ---
+---
+--- @since 0.10
+--- @field TreeNodeFlags_LabelSpanAllColumns integer
+---
 --- **Tree Node > Flags > TreeNodeFlags\_Leaf**
 ---
 --- No collapsing, no arrow (use as a convenience for leaf nodes).
@@ -10884,6 +11732,22 @@
 ---
 --- @since 0.1
 --- @field TreeNodeFlags_Leaf integer
+---
+--- **Tree Node > Flags > TreeNodeFlags\_NavLeftJumpsToParent**
+---
+--- Nav: left arrow moves back to parent. This is processed in TreePop when
+---    there's an unfullfilled Left nav request remaining.
+---
+--- ---
+---
+--- **Tree Node > Flags**
+---
+--- For TreeNode, TreeNodeEx and CollapsingHeader.
+---
+--- ---
+---
+--- @since 0.10
+--- @field TreeNodeFlags_NavLeftJumpsToParent integer
 ---
 --- **Tree Node > Flags > TreeNodeFlags\_NoAutoOpenOnLog**
 ---
@@ -10932,9 +11796,8 @@
 ---
 --- **Tree Node > Flags > TreeNodeFlags\_OpenOnArrow**
 ---
---- Only open when clicking on the arrow part.
----    If TreeNodeFlags_OpenOnDoubleClick is also set, single-click arrow or
----    double-click all box to open.
+--- Open when clicking on the arrow part (default for multi-select unless any
+---    _OpenOnXXX behavior is set explicitly). Both behaviors may be combined.
 ---
 --- ---
 ---
@@ -10949,7 +11812,8 @@
 ---
 --- **Tree Node > Flags > TreeNodeFlags\_OpenOnDoubleClick**
 ---
---- Need double-click to open node.
+--- Open on double-click instead of simple click (default for multi-select unless
+---    any _OpenOnXXX behavior is set explicitly). Both behaviors may be combined.
 ---
 --- ---
 ---
@@ -10979,7 +11843,7 @@
 ---
 --- **Tree Node > Flags > TreeNodeFlags\_SpanAllColumns**
 ---
---- Frame will span all columns of its container table (text will still fit in current column).
+--- Frame will span all columns of its container table (label will still fit in current column).
 ---
 --- ---
 ---
@@ -11025,7 +11889,7 @@
 --- @since 0.1
 --- @field TreeNodeFlags_SpanFullWidth integer
 ---
---- **Tree Node > Flags > TreeNodeFlags\_SpanTextWidth**
+--- **Tree Node > Flags > TreeNodeFlags\_SpanLabelWidth**
 ---
 --- Narrow hit box + narrow hovering highlight, will only cover the label text.
 ---
@@ -11038,7 +11902,7 @@
 --- ---
 ---
 --- @since 0.9.1
---- @field TreeNodeFlags_SpanTextWidth integer
+--- @field TreeNodeFlags_SpanLabelWidth integer
 ---
 --- **Utility > Conditions > Cond\_Always**
 ---
@@ -11276,7 +12140,7 @@
 --- @since 0.9
 --- @field ChildFlags_AutoResizeY integer
 ---
---- **Window > Child Windows > Child Flags > ChildFlags\_Border**
+--- **Window > Child Windows > Child Flags > ChildFlags\_Borders**
 ---
 --- Show an outer border and enable WindowPadding.
 ---
@@ -11316,8 +12180,8 @@
 ---
 --- ---
 ---
---- @since 0.9
---- @field ChildFlags_Border integer
+--- @since 0.10
+--- @field ChildFlags_Borders integer
 ---
 --- **Window > Child Windows > Child Flags > ChildFlags\_FrameStyle**
 ---
@@ -11367,7 +12231,7 @@
 ---
 --- **Window > Child Windows > Child Flags > ChildFlags\_NavFlattened**
 ---
---- Share focus scope, allow gamepad/keyboard navigation to cross over parent
+--- Share focus scope, allow keyboard/gamepad navigation to cross over parent
 ---    border to this child or between sibling child windows.
 ---
 --- ---
@@ -11895,7 +12759,7 @@
 ---
 --- **Window > Flags > WindowFlags\_NoNavFocus**
 ---
---- No focusing toward this window with gamepad/keyboard navigation
+--- No focusing toward this window with keyboard/gamepad navigation
 ---    (e.g. skipped by CTRL+TAB).
 ---
 --- ---
@@ -11921,7 +12785,7 @@
 ---
 --- **Window > Flags > WindowFlags\_NoNavInputs**
 ---
---- No gamepad/keyboard navigation within the window.
+--- No keyboard/gamepad navigation within the window.
 ---
 --- ---
 ---
@@ -12384,6 +13248,7 @@ local ImGui = {}
 --- @class (exact) ImGui_Font             : ImGui_Resource
 --- @class (exact) ImGui_Function         : ImGui_Resource
 --- @class (exact) ImGui_Image            : ImGui_Resource
+--- @class (exact) ImGui_Bitmap           : ImGui_Image
 --- @class (exact) ImGui_ImageSet         : ImGui_Image
 --- @class (exact) ImGui_ListClipper      : ImGui_Resource
 --- @class (exact) ImGui_TextFilter       : ImGui_Resource
@@ -12500,49 +13365,6 @@ function ImGui.CheckboxFlags(ctx, label, flags, flags_value) end
 --- @param flags? integer default value = `ButtonFlags_None`
 --- @return boolean retval
 function ImGui.InvisibleButton(ctx, str_id, size_w, size_h, flags) end
-
---- **Button > PopButtonRepeat**
----
---- See PushButtonRepeat
----
---- ---
----
---- **Button**
----
---- Most widgets return true when the value has been changed or when pressed/selected.
----
---- You may also use one of the many IsItem* functions (e.g. IsItemActive,
---- IsItemHovered, etc.) to query widget state.
----
---- ---
----
---- @since 0.1
---- @param ctx ImGui_Context
-function ImGui.PopButtonRepeat(ctx) end
-
---- **Button > PushButtonRepeat**
----
---- In 'repeat' mode, Button*() functions return repeated true in a typematic
---- manner (using ConfigVar_KeyRepeatDelay/ConfigVar_KeyRepeatRate settings).
----
---- Note that you can call IsItemActive after any Button to tell if the button is
---- held in the current frame.
----
---- ---
----
---- **Button**
----
---- Most widgets return true when the value has been changed or when pressed/selected.
----
---- You may also use one of the many IsItem* functions (e.g. IsItemActive,
---- IsItemHovered, etc.) to query widget state.
----
---- ---
----
---- @since 0.1
---- @param ctx ImGui_Context
---- @param repeat boolean
-function ImGui.PushButtonRepeat(ctx, repeat) end
 
 --- **Button > RadioButton**
 ---
@@ -12809,6 +13631,8 @@ function ImGui.EndCombo(ctx) end
 ---
 --- This is essentially a thin wrapper to using BeginChild/EndChild with the
 --- ChildFlags_FrameStyle flag for stylistic changes + displaying a label.
+--- If you don't need a label you can probably simply use BeginChild with the
+--- ChildFlags_FrameStyle flag for the same result.
 ---
 --- ---
 ---
@@ -12831,6 +13655,8 @@ function ImGui.BeginListBox(ctx, label, size_w, size_h) end
 ---
 --- This is essentially a thin wrapper to using BeginChild/EndChild with the
 --- ChildFlags_FrameStyle flag for stylistic changes + displaying a label.
+--- If you don't need a label you can probably simply use BeginChild with the
+--- ChildFlags_FrameStyle flag for the same result.
 ---
 --- ---
 ---
@@ -12850,6 +13676,8 @@ function ImGui.EndListBox(ctx) end
 ---
 --- This is essentially a thin wrapper to using BeginChild/EndChild with the
 --- ChildFlags_FrameStyle flag for stylistic changes + displaying a label.
+--- If you don't need a label you can probably simply use BeginChild with the
+--- ChildFlags_FrameStyle flag for the same result.
 ---
 --- ---
 ---
@@ -12895,11 +13723,6 @@ function ImGui.Selectable(ctx, label, p_selected, flags, size_w, size_h) end
 ---
 --- List clipper objects may only be attached to the context they were created for.
 ---
---- Fonts are (currently) a special case: they must be attached to the context
---- before usage. Furthermore, fonts may only be attached or detached immediately
---- after the context is created or before any other function calls modifying the
---- context per defer cycle. See "limitations" in the font API documentation.
----
 --- ---
 ---
 --- @since 0.8
@@ -12917,7 +13740,7 @@ function ImGui.Attach(ctx, obj) end
 ---
 --- ---
 ---
---- @since 0.5
+--- @since 0.10
 --- @param label string
 --- @param config_flags? integer default value = `ConfigFlags_None`
 --- @nodiscard
@@ -12986,6 +13809,12 @@ function ImGui.GetTime(ctx) end
 ---
 --- ---
 ---
+--- **Context > Options**
+---
+--- You can visualize and interact with all options in Demo > Configuration
+---
+--- ---
+---
 --- @since 0.7
 --- @param ctx ImGui_Context
 --- @param var_idx integer
@@ -12993,6 +13822,12 @@ function ImGui.GetTime(ctx) end
 function ImGui.GetConfigVar(ctx, var_idx) end
 
 --- **Context > Options > SetConfigVar**
+---
+--- ---
+---
+--- **Context > Options**
+---
+--- You can visualize and interact with all options in Demo > Configuration
 ---
 --- ---
 ---
@@ -13296,7 +14131,7 @@ function ImGui.SetDragDropPayload(ctx, type, data, cond) end
 --- **Drag \& Slider > Drag Sliders**
 ---
 --- Speed are per-pixel of mouse movement (v_speed=0.2: mouse needs to move by 5
---- pixels to increase value by 1). For gamepad/keyboard navigation, minimum speed
+--- pixels to increase value by 1). For keyboard/gamepad navigation, minimum speed
 --- is Max(v_speed, minimum_step_at_given_precision).
 ---
 --- Use v_min < v_max to clamp edits to given limits. Note that CTRL+Click manual
@@ -13343,7 +14178,7 @@ function ImGui.DragDouble(ctx, label, v, v_speed, v_min, v_max, format, flags) e
 --- **Drag \& Slider > Drag Sliders**
 ---
 --- Speed are per-pixel of mouse movement (v_speed=0.2: mouse needs to move by 5
---- pixels to increase value by 1). For gamepad/keyboard navigation, minimum speed
+--- pixels to increase value by 1). For keyboard/gamepad navigation, minimum speed
 --- is Max(v_speed, minimum_step_at_given_precision).
 ---
 --- Use v_min < v_max to clamp edits to given limits. Note that CTRL+Click manual
@@ -13392,7 +14227,7 @@ function ImGui.DragDouble2(ctx, label, v1, v2, v_speed, v_min, v_max, format, fl
 --- **Drag \& Slider > Drag Sliders**
 ---
 --- Speed are per-pixel of mouse movement (v_speed=0.2: mouse needs to move by 5
---- pixels to increase value by 1). For gamepad/keyboard navigation, minimum speed
+--- pixels to increase value by 1). For keyboard/gamepad navigation, minimum speed
 --- is Max(v_speed, minimum_step_at_given_precision).
 ---
 --- Use v_min < v_max to clamp edits to given limits. Note that CTRL+Click manual
@@ -13443,7 +14278,7 @@ function ImGui.DragDouble3(ctx, label, v1, v2, v3, v_speed, v_min, v_max, format
 --- **Drag \& Slider > Drag Sliders**
 ---
 --- Speed are per-pixel of mouse movement (v_speed=0.2: mouse needs to move by 5
---- pixels to increase value by 1). For gamepad/keyboard navigation, minimum speed
+--- pixels to increase value by 1). For keyboard/gamepad navigation, minimum speed
 --- is Max(v_speed, minimum_step_at_given_precision).
 ---
 --- Use v_min < v_max to clamp edits to given limits. Note that CTRL+Click manual
@@ -13496,7 +14331,7 @@ function ImGui.DragDouble4(ctx, label, v1, v2, v3, v4, v_speed, v_min, v_max, fo
 --- **Drag \& Slider > Drag Sliders**
 ---
 --- Speed are per-pixel of mouse movement (v_speed=0.2: mouse needs to move by 5
---- pixels to increase value by 1). For gamepad/keyboard navigation, minimum speed
+--- pixels to increase value by 1). For keyboard/gamepad navigation, minimum speed
 --- is Max(v_speed, minimum_step_at_given_precision).
 ---
 --- Use v_min < v_max to clamp edits to given limits. Note that CTRL+Click manual
@@ -13542,7 +14377,7 @@ function ImGui.DragDoubleN(ctx, label, values, speed, min, max, format, flags) e
 --- **Drag \& Slider > Drag Sliders**
 ---
 --- Speed are per-pixel of mouse movement (v_speed=0.2: mouse needs to move by 5
---- pixels to increase value by 1). For gamepad/keyboard navigation, minimum speed
+--- pixels to increase value by 1). For keyboard/gamepad navigation, minimum speed
 --- is Max(v_speed, minimum_step_at_given_precision).
 ---
 --- Use v_min < v_max to clamp edits to given limits. Note that CTRL+Click manual
@@ -13592,7 +14427,7 @@ function ImGui.DragFloatRange2(ctx, label, v_current_min, v_current_max, v_speed
 --- **Drag \& Slider > Drag Sliders**
 ---
 --- Speed are per-pixel of mouse movement (v_speed=0.2: mouse needs to move by 5
---- pixels to increase value by 1). For gamepad/keyboard navigation, minimum speed
+--- pixels to increase value by 1). For keyboard/gamepad navigation, minimum speed
 --- is Max(v_speed, minimum_step_at_given_precision).
 ---
 --- Use v_min < v_max to clamp edits to given limits. Note that CTRL+Click manual
@@ -13639,7 +14474,7 @@ function ImGui.DragInt(ctx, label, v, v_speed, v_min, v_max, format, flags) end
 --- **Drag \& Slider > Drag Sliders**
 ---
 --- Speed are per-pixel of mouse movement (v_speed=0.2: mouse needs to move by 5
---- pixels to increase value by 1). For gamepad/keyboard navigation, minimum speed
+--- pixels to increase value by 1). For keyboard/gamepad navigation, minimum speed
 --- is Max(v_speed, minimum_step_at_given_precision).
 ---
 --- Use v_min < v_max to clamp edits to given limits. Note that CTRL+Click manual
@@ -13688,7 +14523,7 @@ function ImGui.DragInt2(ctx, label, v1, v2, v_speed, v_min, v_max, format, flags
 --- **Drag \& Slider > Drag Sliders**
 ---
 --- Speed are per-pixel of mouse movement (v_speed=0.2: mouse needs to move by 5
---- pixels to increase value by 1). For gamepad/keyboard navigation, minimum speed
+--- pixels to increase value by 1). For keyboard/gamepad navigation, minimum speed
 --- is Max(v_speed, minimum_step_at_given_precision).
 ---
 --- Use v_min < v_max to clamp edits to given limits. Note that CTRL+Click manual
@@ -13739,7 +14574,7 @@ function ImGui.DragInt3(ctx, label, v1, v2, v3, v_speed, v_min, v_max, format, f
 --- **Drag \& Slider > Drag Sliders**
 ---
 --- Speed are per-pixel of mouse movement (v_speed=0.2: mouse needs to move by 5
---- pixels to increase value by 1). For gamepad/keyboard navigation, minimum speed
+--- pixels to increase value by 1). For keyboard/gamepad navigation, minimum speed
 --- is Max(v_speed, minimum_step_at_given_precision).
 ---
 --- Use v_min < v_max to clamp edits to given limits. Note that CTRL+Click manual
@@ -13792,7 +14627,7 @@ function ImGui.DragInt4(ctx, label, v1, v2, v3, v4, v_speed, v_min, v_max, forma
 --- **Drag \& Slider > Drag Sliders**
 ---
 --- Speed are per-pixel of mouse movement (v_speed=0.2: mouse needs to move by 5
---- pixels to increase value by 1). For gamepad/keyboard navigation, minimum speed
+--- pixels to increase value by 1). For keyboard/gamepad navigation, minimum speed
 --- is Max(v_speed, minimum_step_at_given_precision).
 ---
 --- Use v_min < v_max to clamp edits to given limits. Note that CTRL+Click manual
@@ -16120,15 +16955,12 @@ function ImGui.DrawList_PathStroke(draw_list, col_rgba, flags, thickness) end
 
 --- **Font > CreateFont**
 ---
---- Load a font matching a font family name or from a font file.
---- The font will remain valid while it's attached to a context. See Attach.
+--- Load a font matching a font family name.
 ---
 --- The family name can be an installed font or one of the generic fonts:
 --- sans-serif, serif, monospace, cursive, fantasy.
 ---
---- If 'family_or_file' specifies a path to a font file (contains a / or \\):
---- - The first byte of 'flags' is used as the font index within the file
---- - The font styles in 'flags' are simulated by the font renderer
+--- See CreateFontFromFile.
 ---
 --- ---
 ---
@@ -16137,34 +16969,52 @@ function ImGui.DrawList_PathStroke(draw_list, col_rgba, flags, thickness) end
 --- Supports loading fonts from the system by family name or from a file.
 --- Glyphs may contain colors in COLR/CPAL format.
 ---
---- This API currently has multiple limitations (v1.0 blockers):
---- - ReaImGui rasterizes glyphs only from the Basic Latin and Latin Supplement
----   Unicode blocks (U+0020 to U+00FF). UTF-8 is fully supported internally,
----   however characters outside those blocks are displayed as '?'.
----   See [issue #5](https://github.com/cfillion/reaimgui/issues/5).
---- - Dear ImGui does not support using new fonts in the middle of a frame.
----   Because of this, fonts must first be registered using Attach before any
----   other context functions are used in the same defer cycle.
----   (Attaching a font is a heavy operation and should ideally be done outside
----   of the defer loop.)
----
 --- ---
 ---
---- @since 0.9
---- @param family_or_file string
---- @param size integer
+--- @since 0.10
+--- @param family string
 --- @param flags? integer default value = `FontFlags_None`
 --- @nodiscard
 --- @return ImGui_Font retval
-function ImGui.CreateFont(family_or_file, size, flags) end
+function ImGui.CreateFont(family, flags) end
+
+--- **Font > CreateFontFromFile**
+---
+--- Load a font from a file. Available characters are limited to those
+--- contained in the file.
+---
+--- Bits 0-15 of 'index' are the the index of the face in the font file (starting
+--- from 0). Set to 0 if the font file contains only one font face.
+--- Bits 16-30 (for TrueType GX and OpenType Font Variations only) specify the
+--- named instance index for the current face index (starting from 1).
+--- 0 ignores named instances.
+---
+--- The font styles in 'flags' are simulated by the rasterizer.
+--- See also CreateFontFromMem.
+---
+--- ---
+---
+--- **Font**
+---
+--- Supports loading fonts from the system by family name or from a file.
+--- Glyphs may contain colors in COLR/CPAL format.
+---
+--- ---
+---
+--- @since 0.10
+--- @param file string
+--- @param index? integer default value = `0`
+--- @param flags? integer default value = `FontFlags_None`
+--- @nodiscard
+--- @return ImGui_Font retval
+function ImGui.CreateFontFromFile(file, index, flags) end
 
 --- **Font > CreateFontFromMem**
 ---
 --- Requires REAPER v6.44 or newer for EEL and Lua. Use CreateFont or
 --- explicitely specify data_sz to support older versions.
 ---
---- - The first byte of 'flags' is used as the font index within the file
---- - The font styles in 'flags' are simulated by the font renderer
+--- See CreateFontFromFile for the meaning of 'index' and 'flags'.
 ---
 --- ---
 ---
@@ -16173,26 +17023,15 @@ function ImGui.CreateFont(family_or_file, size, flags) end
 --- Supports loading fonts from the system by family name or from a file.
 --- Glyphs may contain colors in COLR/CPAL format.
 ---
---- This API currently has multiple limitations (v1.0 blockers):
---- - ReaImGui rasterizes glyphs only from the Basic Latin and Latin Supplement
----   Unicode blocks (U+0020 to U+00FF). UTF-8 is fully supported internally,
----   however characters outside those blocks are displayed as '?'.
----   See [issue #5](https://github.com/cfillion/reaimgui/issues/5).
---- - Dear ImGui does not support using new fonts in the middle of a frame.
----   Because of this, fonts must first be registered using Attach before any
----   other context functions are used in the same defer cycle.
----   (Attaching a font is a heavy operation and should ideally be done outside
----   of the defer loop.)
----
 --- ---
 ---
---- @since 0.9.3
+--- @since 0.10
 --- @param data string
---- @param size integer
+--- @param index? integer default value = `0`
 --- @param flags? integer default value = `FontFlags_None`
 --- @nodiscard
 --- @return ImGui_Font retval
-function ImGui.CreateFontFromMem(data, size, flags) end
+function ImGui.CreateFontFromMem(data, index, flags) end
 
 --- **Font > GetFont**
 ---
@@ -16205,17 +17044,6 @@ function ImGui.CreateFontFromMem(data, size, flags) end
 --- Supports loading fonts from the system by family name or from a file.
 --- Glyphs may contain colors in COLR/CPAL format.
 ---
---- This API currently has multiple limitations (v1.0 blockers):
---- - ReaImGui rasterizes glyphs only from the Basic Latin and Latin Supplement
----   Unicode blocks (U+0020 to U+00FF). UTF-8 is fully supported internally,
----   however characters outside those blocks are displayed as '?'.
----   See [issue #5](https://github.com/cfillion/reaimgui/issues/5).
---- - Dear ImGui does not support using new fonts in the middle of a frame.
----   Because of this, fonts must first be registered using Attach before any
----   other context functions are used in the same defer cycle.
----   (Attaching a font is a heavy operation and should ideally be done outside
----   of the defer loop.)
----
 --- ---
 ---
 --- @since 0.4
@@ -16226,7 +17054,7 @@ function ImGui.GetFont(ctx) end
 --- **Font > GetFontSize**
 ---
 --- Get current font size (= height in pixels) of current font with current scale
---- applied.
+--- applied. See also GetTextLineHeight and GetFrameHeight.
 ---
 --- ---
 ---
@@ -16234,17 +17062,6 @@ function ImGui.GetFont(ctx) end
 ---
 --- Supports loading fonts from the system by family name or from a file.
 --- Glyphs may contain colors in COLR/CPAL format.
----
---- This API currently has multiple limitations (v1.0 blockers):
---- - ReaImGui rasterizes glyphs only from the Basic Latin and Latin Supplement
----   Unicode blocks (U+0020 to U+00FF). UTF-8 is fully supported internally,
----   however characters outside those blocks are displayed as '?'.
----   See [issue #5](https://github.com/cfillion/reaimgui/issues/5).
---- - Dear ImGui does not support using new fonts in the middle of a frame.
----   Because of this, fonts must first be registered using Attach before any
----   other context functions are used in the same defer cycle.
----   (Attaching a font is a heavy operation and should ideally be done outside
----   of the defer loop.)
 ---
 --- ---
 ---
@@ -16264,17 +17081,6 @@ function ImGui.GetFontSize(ctx) end
 --- Supports loading fonts from the system by family name or from a file.
 --- Glyphs may contain colors in COLR/CPAL format.
 ---
---- This API currently has multiple limitations (v1.0 blockers):
---- - ReaImGui rasterizes glyphs only from the Basic Latin and Latin Supplement
----   Unicode blocks (U+0020 to U+00FF). UTF-8 is fully supported internally,
----   however characters outside those blocks are displayed as '?'.
----   See [issue #5](https://github.com/cfillion/reaimgui/issues/5).
---- - Dear ImGui does not support using new fonts in the middle of a frame.
----   Because of this, fonts must first be registered using Attach before any
----   other context functions are used in the same defer cycle.
----   (Attaching a font is a heavy operation and should ideally be done outside
----   of the defer loop.)
----
 --- ---
 ---
 --- @since 0.4
@@ -16283,8 +17089,7 @@ function ImGui.PopFont(ctx) end
 
 --- **Font > PushFont**
 ---
---- Change the current font. Use nil to push the default font.
---- The font object must have been registered using Attach. See PopFont.
+--- Change the current font. Pass font=nil to only change the size. See PopFont.
 ---
 --- ---
 ---
@@ -16293,23 +17098,13 @@ function ImGui.PopFont(ctx) end
 --- Supports loading fonts from the system by family name or from a file.
 --- Glyphs may contain colors in COLR/CPAL format.
 ---
---- This API currently has multiple limitations (v1.0 blockers):
---- - ReaImGui rasterizes glyphs only from the Basic Latin and Latin Supplement
----   Unicode blocks (U+0020 to U+00FF). UTF-8 is fully supported internally,
----   however characters outside those blocks are displayed as '?'.
----   See [issue #5](https://github.com/cfillion/reaimgui/issues/5).
---- - Dear ImGui does not support using new fonts in the middle of a frame.
----   Because of this, fonts must first be registered using Attach before any
----   other context functions are used in the same defer cycle.
----   (Attaching a font is a heavy operation and should ideally be done outside
----   of the defer loop.)
----
 --- ---
 ---
---- @since 0.4
+--- @since 0.10
 --- @param ctx ImGui_Context
 --- @param font ImGui_Font|nil
-function ImGui.PushFont(ctx, font) end
+--- @param font_size_base_unscaled number
+function ImGui.PushFont(ctx, font, font_size_base_unscaled) end
 
 --- **Function > CreateFunctionFromEEL**
 ---
@@ -16533,7 +17328,7 @@ function ImGui.Function_SetValue_String(func, name, value) end
 ---
 --- @since 0.9
 --- @param file string
---- @param flags? integer default value = `nil`
+--- @param flags? integer default value = `ImageFlags_None`
 --- @nodiscard
 --- @return ImGui_Image retval
 function ImGui.CreateImage(file, flags) end
@@ -16582,7 +17377,7 @@ function ImGui.CreateImage(file, flags) end
 ---
 --- @since 0.9.2
 --- @param bitmap LICE_IBitmap
---- @param flags? integer default value = `nil`
+--- @param flags? integer default value = `ImageFlags_None`
 --- @nodiscard
 --- @return ImGui_Image retval
 function ImGui.CreateImageFromLICE(bitmap, flags) end
@@ -16632,14 +17427,14 @@ function ImGui.CreateImageFromLICE(bitmap, flags) end
 ---
 --- @since 0.9
 --- @param data string
---- @param flags? integer default value = `nil`
+--- @param flags? integer default value = `ImageFlags_None`
 --- @nodiscard
 --- @return ImGui_Image retval
 function ImGui.CreateImageFromMem(data, flags) end
 
---- **Image > Image**
+--- **Image > CreateImageFromSize**
 ---
---- Adds 2.0 to the provided size if a border is visible.
+--- Create a blank image of the specified dimensions. See Image_SetPixels_Array.
 ---
 --- ---
 ---
@@ -16679,7 +17474,57 @@ function ImGui.CreateImageFromMem(data, flags) end
 ---
 --- ---
 ---
---- @since 0.8
+--- @since 0.10
+--- @param width integer
+--- @param height integer
+--- @param flags? integer default value = `ImageFlags_None`
+--- @nodiscard
+--- @return ImGui_Image retval
+function ImGui.CreateImageFromSize(width, height, flags) end
+
+--- **Image > Image**
+---
+--- Adds StyleVar_ImageBorderSize on each side.
+---
+--- ---
+---
+--- **Image**
+---
+--- ReaImGui currently supports loading PNG and JPEG bitmap images.
+--- Flat vector images may be loaded as fonts, see CreateFont.
+---
+--- UV parameters are texture coordinates in a scale of 0.0 (top/left) to 1.0
+--- (bottom/right). Use values below 0.0 or above 1.0 to tile the image.
+---
+--- Width/height are limited to 8192 pixels.
+---
+--- There are also image functions in the DrawList API such as
+--- DrawList_AddImageQuad and DrawList_AddImageRounded.
+---
+--- Caching of image objects may be implemented like this:
+---
+---     local images = {}
+---     local function imageFromCache(fn)
+---       local img = images[fn]
+---       if not img then
+---         img = {}
+---         images[fn] = img
+---       end
+---
+---       if not ImGui.ValidatePtr(img.inst, 'ImGui_Image*') then
+---         if img.inst then images[img.inst] = nil end
+---         img.inst = ImGui.CreateImage(fn)
+---         local prev = images[img.inst]
+---         if prev and prev ~= img then prev.inst = nil end
+---         images[img.inst] = img
+---       end
+---
+---       return img.inst
+---     end
+---
+--- ---
+---
+--- @since 0.10
 --- @param ctx ImGui_Context
 --- @param image ImGui_Image
 --- @param image_size_w number
@@ -16688,13 +17533,12 @@ function ImGui.CreateImageFromMem(data, flags) end
 --- @param uv0_y? number default value = `0.0`
 --- @param uv1_x? number default value = `1.0`
 --- @param uv1_y? number default value = `1.0`
---- @param tint_col_rgba? integer default value = `0xFFFFFFFF`
---- @param border_col_rgba? integer default value = `0x00000000`
-function ImGui.Image(ctx, image, image_size_w, image_size_h, uv0_x, uv0_y, uv1_x, uv1_y, tint_col_rgba, border_col_rgba) end
+function ImGui.Image(ctx, image, image_size_w, image_size_h, uv0_x, uv0_y, uv1_x, uv1_y) end
 
 --- **Image > ImageButton**
 ---
---- Adds StyleVar_FramePadding*2.0 to provided size.
+--- Draws a background based on regular Button color + optionally an inner
+--- background if specified. Adds StyleVar_FramePadding to provided size.
 ---
 --- ---
 ---
@@ -16749,6 +17593,115 @@ function ImGui.Image(ctx, image, image_size_w, image_size_h, uv0_x, uv0_y, uv1_x
 --- @return boolean retval
 function ImGui.ImageButton(ctx, str_id, image, image_size_w, image_size_h, uv0_x, uv0_y, uv1_x, uv1_y, bg_col_rgba, tint_col_rgba) end
 
+--- **Image > ImageWithBg**
+---
+--- Draws a background based on regular Button color + optionally an inner
+--- background if specified. Adds StyleVar_FramePadding to provided size.
+---
+--- ---
+---
+--- **Image**
+---
+--- ReaImGui currently supports loading PNG and JPEG bitmap images.
+--- Flat vector images may be loaded as fonts, see CreateFont.
+---
+--- UV parameters are texture coordinates in a scale of 0.0 (top/left) to 1.0
+--- (bottom/right). Use values below 0.0 or above 1.0 to tile the image.
+---
+--- Width/height are limited to 8192 pixels.
+---
+--- There are also image functions in the DrawList API such as
+--- DrawList_AddImageQuad and DrawList_AddImageRounded.
+---
+--- Caching of image objects may be implemented like this:
+---
+---     local images = {}
+---     local function imageFromCache(fn)
+---       local img = images[fn]
+---       if not img then
+---         img = {}
+---         images[fn] = img
+---       end
+---
+---       if not ImGui.ValidatePtr(img.inst, 'ImGui_Image*') then
+---         if img.inst then images[img.inst] = nil end
+---         img.inst = ImGui.CreateImage(fn)
+---         local prev = images[img.inst]
+---         if prev and prev ~= img then prev.inst = nil end
+---         images[img.inst] = img
+---       end
+---
+---       return img.inst
+---     end
+---
+--- ---
+---
+--- @since 0.10
+--- @param ctx ImGui_Context
+--- @param image ImGui_Image
+--- @param image_size_w number
+--- @param image_size_h number
+--- @param uv0_x? number default value = `0.0`
+--- @param uv0_y? number default value = `0.0`
+--- @param uv1_x? number default value = `1.0`
+--- @param uv1_y? number default value = `1.0`
+--- @param bg_col_rgba? integer default value = `0x00000000`
+--- @param tint_col_rgba? integer default value = `0xFFFFFFFF`
+function ImGui.ImageWithBg(ctx, image, image_size_w, image_size_h, uv0_x, uv0_y, uv1_x, uv1_y, bg_col_rgba, tint_col_rgba) end
+
+--- **Image > Image\_GetPixels\_Array**
+---
+--- Read the pixel data of the given rectangle. Pixel format is 0xRRGGBBAAp+0.
+---
+--- ---
+---
+--- **Image**
+---
+--- ReaImGui currently supports loading PNG and JPEG bitmap images.
+--- Flat vector images may be loaded as fonts, see CreateFont.
+---
+--- UV parameters are texture coordinates in a scale of 0.0 (top/left) to 1.0
+--- (bottom/right). Use values below 0.0 or above 1.0 to tile the image.
+---
+--- Width/height are limited to 8192 pixels.
+---
+--- There are also image functions in the DrawList API such as
+--- DrawList_AddImageQuad and DrawList_AddImageRounded.
+---
+--- Caching of image objects may be implemented like this:
+---
+---     local images = {}
+---     local function imageFromCache(fn)
+---       local img = images[fn]
+---       if not img then
+---         img = {}
+---         images[fn] = img
+---       end
+---
+---       if not ImGui.ValidatePtr(img.inst, 'ImGui_Image*') then
+---         if img.inst then images[img.inst] = nil end
+---         img.inst = ImGui.CreateImage(fn)
+---         local prev = images[img.inst]
+---         if prev and prev ~= img then prev.inst = nil end
+---         images[img.inst] = img
+---       end
+---
+---       return img.inst
+---     end
+---
+--- ---
+---
+--- @since 0.10
+--- @param image ImGui_Bitmap
+--- @param x integer
+--- @param y integer
+--- @param w integer
+--- @param h integer
+--- @param pixels reaper.array
+--- @param offset? integer default value = `0`
+--- @param pitch? integer default value = `0`
+function ImGui.Image_GetPixels_Array(image, x, y, w, h, pixels, offset, pitch) end
+
 --- **Image > Image\_GetSize**
 ---
 --- ---
@@ -16794,6 +17747,59 @@ function ImGui.ImageButton(ctx, str_id, image, image_size_w, image_size_h, uv0_x
 --- @return number w
 --- @return number h
 function ImGui.Image_GetSize(image) end
+
+--- **Image > Image\_SetPixels\_Array**
+---
+--- Write the pixel data of the given rectangle. Pixel format is 0xRRGGBBAAp+0.
+---
+--- ---
+---
+--- **Image**
+---
+--- ReaImGui currently supports loading PNG and JPEG bitmap images.
+--- Flat vector images may be loaded as fonts, see CreateFont.
+---
+--- UV parameters are texture coordinates in a scale of 0.0 (top/left) to 1.0
+--- (bottom/right). Use values below 0.0 or above 1.0 to tile the image.
+---
+--- Width/height are limited to 8192 pixels.
+---
+--- There are also image functions in the DrawList API such as
+--- DrawList_AddImageQuad and DrawList_AddImageRounded.
+---
+--- Caching of image objects may be implemented like this:
+---
+---     local images = {}
+---     local function imageFromCache(fn)
+---       local img = images[fn]
+---       if not img then
+---         img = {}
+---         images[fn] = img
+---       end
+---
+---       if not ImGui.ValidatePtr(img.inst, 'ImGui_Image*') then
+---         if img.inst then images[img.inst] = nil end
+---         img.inst = ImGui.CreateImage(fn)
+---         local prev = images[img.inst]
+---         if prev and prev ~= img then prev.inst = nil end
+---         images[img.inst] = img
+---       end
+---
+---       return img.inst
+---     end
+---
+--- ---
+---
+--- @since 0.10
+--- @param image ImGui_Bitmap
+--- @param x integer
+--- @param y integer
+--- @param w integer
+--- @param h integer
+--- @param pixels reaper.array
+--- @param offset? integer default value = `0`
+--- @param pitch? integer default value = `0`
+function ImGui.Image_SetPixels_Array(image, x, y, w, h, pixels, offset, pitch) end
 
 --- **Image > Image Set > CreateImageSet**
 ---
@@ -16938,9 +17944,10 @@ function ImGui.ImageSet_Add(set, scale, image) end
 ---
 --- Tooltips windows by exception are opted out of disabling.
 ---
---- BeginDisabled(false) essentially does nothing useful but is provided to
---- facilitate use of boolean expressions.
---- If you can avoid calling BeginDisabled(false)/EndDisabled() best to avoid it.
+--- BeginDisabled(false)/EndDisabled essentially does nothing but is provided to
+--- facilitate use of boolean expressions (as a micro-optimization: if you have tens
+--- of thousands of BeginDisabled(false)/EndDisabled() pairs, you might want to
+--- refactor your code to avoid making those calls)
 ---
 --- ---
 ---
@@ -16966,6 +17973,29 @@ function ImGui.DebugStartItemPicker(ctx) end
 --- @since 0.5.5
 --- @param ctx ImGui_Context
 function ImGui.EndDisabled(ctx) end
+
+--- **Item \& Status > PopItemFlag**
+---
+--- See PushItemFlag
+---
+--- ---
+---
+--- @since 0.10
+--- @param ctx ImGui_Context
+function ImGui.PopItemFlag(ctx) end
+
+--- **Item \& Status > PushItemFlag**
+---
+--- Modify specified shared item flag for certain widgets.
+--- Example: `PushItemFlag(ItemFlags_NoTabStop, true)`.
+---
+--- ---
+---
+--- @since 0.10
+--- @param ctx ImGui_Context
+--- @param option integer
+--- @param enabled boolean
+function ImGui.PushItemFlag(ctx, option, enabled) end
 
 --- **Item \& Status > SetNextItemAllowOverlap**
 ---
@@ -17069,55 +18099,9 @@ function ImGui.PushItemWidth(ctx, item_width) end
 --- @param item_width number
 function ImGui.SetNextItemWidth(ctx, item_width) end
 
---- **Item \& Status > Focus \& Activation > PopTabStop**
----
---- See PushTabStop
----
---- ---
----
---- **Item \& Status > Focus \& Activation**
----
---- Prefer using "SetItemDefaultFocus()" over
---- "if(IsWindowAppearing()) SetScrollHereY()" when applicable to signify
---- "this is the default item".
----
---- ---
----
---- @since 0.8.5
---- @param ctx ImGui_Context
-function ImGui.PopTabStop(ctx) end
-
---- **Item \& Status > Focus \& Activation > PushTabStop**
----
---- Allow focusing using TAB/Shift-TAB, enabled by default but you can disable it
---- for certain widgets
----
---- ---
----
---- **Item \& Status > Focus \& Activation**
----
---- Prefer using "SetItemDefaultFocus()" over
---- "if(IsWindowAppearing()) SetScrollHereY()" when applicable to signify
---- "this is the default item".
----
---- ---
----
---- @since 0.8.5
---- @param ctx ImGui_Context
---- @param tab_stop boolean
-function ImGui.PushTabStop(ctx, tab_stop) end
-
 --- **Item \& Status > Focus \& Activation > SetItemDefaultFocus**
 ---
---- Make last item the default focused item of a window.
----
---- ---
----
---- **Item \& Status > Focus \& Activation**
----
---- Prefer using "SetItemDefaultFocus()" over
---- "if(IsWindowAppearing()) SetScrollHereY()" when applicable to signify
---- "this is the default item".
+--- Make last item the default focused item of a newly appearing window.
 ---
 --- ---
 ---
@@ -17132,18 +18116,22 @@ function ImGui.SetItemDefaultFocus(ctx) end
 ---
 --- ---
 ---
---- **Item \& Status > Focus \& Activation**
----
---- Prefer using "SetItemDefaultFocus()" over
---- "if(IsWindowAppearing()) SetScrollHereY()" when applicable to signify
---- "this is the default item".
----
---- ---
----
 --- @since 0.1
 --- @param ctx ImGui_Context
 --- @param offset? integer default value = `0`
 function ImGui.SetKeyboardFocusHere(ctx, offset) end
+
+--- **Item \& Status > Focus \& Activation > SetNavCursorVisible**
+---
+--- Alter visibility of keyboard/gamepad cursor. By default: shown when using an
+--- arrow key, hidden when clicking with the mouse.
+---
+--- ---
+---
+--- @since 0.10
+--- @param ctx ImGui_Context
+--- @param visible boolean
+function ImGui.SetNavCursorVisible(ctx, visible) end
 
 --- **Item \& Status > Item\/Widgets Utilities and Query Functions > IsAnyItemActive**
 ---
@@ -17931,6 +18919,36 @@ function ImGui.IsMousePosValid(ctx, mouse_pos_x, mouse_pos_y) end
 --- @return boolean retval
 function ImGui.IsMouseReleased(ctx, button) end
 
+--- **Keyboard \& Mouse > Mouse > IsMouseReleasedWithDelay**
+---
+--- Delayed mouse release (use sparingly!). Generally used with
+--- `delay >= ConfigVar_MouseDoubleClickTime` + combined with a
+--- `GetMouseClickedCount()==1` test. This is a very rarely used UI idiom,
+--- but some apps use this: e.g. MS Explorer single click on an icon to rename.
+---
+--- ---
+---
+--- **Keyboard \& Mouse > Mouse**
+---
+--- To refer to a mouse button, you may use named enums in your code e.g.
+--- MouseButton_Left, MouseButton_Right.
+---
+--- You can also use regular integer: it is forever guaranteed that
+--- 0=Left, 1=Right, 2=Middle. Buttons 3 and 4 do not have a named enum.
+---
+--- Dragging operations are only reported after mouse has moved a certain distance
+--- away from the initial clicking position (see 'lock_threshold' parameters and
+--- 'ConfigVar_MouseDragThreshold').
+---
+--- ---
+---
+--- @since 0.10
+--- @param ctx ImGui_Context
+--- @param button integer
+--- @param delay number
+--- @return boolean retval
+function ImGui.IsMouseReleasedWithDelay(ctx, button, delay) end
+
 --- **Keyboard \& Mouse > Mouse > ResetMouseDragDelta**
 ---
 --- ---
@@ -18311,9 +19329,32 @@ function ImGui.PopClipRect(ctx) end
 --- @param intersect_with_current_clip_rect boolean
 function ImGui.PushClipRect(ctx, clip_rect_min_x, clip_rect_min_y, clip_rect_max_x, clip_rect_max_y, intersect_with_current_clip_rect) end
 
+--- **Layout > Layout Cursor Positioning > GetContentRegionAvail**
+---
+--- Available space from current position. This is your best friend.
+---
+--- ---
+---
+--- **Layout > Layout Cursor Positioning**
+---
+--- By "cursor" we mean the current output position.
+--- The typical widget behavior is to output themselves at the current cursor
+--- position, then move the cursor one line down.
+---
+--- You can call SameLine() between widgets to undo the last carriage return and
+--- output at the right of the preceding widget.
+---
+--- ---
+---
+--- @since 0.1
+--- @param ctx ImGui_Context
+--- @return number x
+--- @return number y
+function ImGui.GetContentRegionAvail(ctx) end
+
 --- **Layout > Layout Cursor Positioning > GetCursorPos**
 ---
---- Cursor position in window
+--- Cursor position in window-local coordinates.
 ---
 --- ---
 ---
@@ -18336,7 +19377,7 @@ function ImGui.GetCursorPos(ctx) end
 
 --- **Layout > Layout Cursor Positioning > GetCursorPosX**
 ---
---- Cursor X position in window
+--- Cursor X position in window-local coordinates.
 ---
 --- ---
 ---
@@ -18358,7 +19399,7 @@ function ImGui.GetCursorPosX(ctx) end
 
 --- **Layout > Layout Cursor Positioning > GetCursorPosY**
 ---
---- Cursor Y position in window
+--- Cursor Y position in window-local coordinates.
 ---
 --- ---
 ---
@@ -18380,7 +19421,9 @@ function ImGui.GetCursorPosY(ctx) end
 
 --- **Layout > Layout Cursor Positioning > GetCursorScreenPos**
 ---
---- Cursor position in absolute screen coordinates (useful to work with the DrawList API).
+--- Cursor position in absolute screen coordinates.
+--- Prefer using this rather than GetCursorPos (it's also more useful to work with
+--- the DrawList API).
 ---
 --- ---
 ---
@@ -18404,6 +19447,7 @@ function ImGui.GetCursorScreenPos(ctx) end
 --- **Layout > Layout Cursor Positioning > GetCursorStartPos**
 ---
 --- Initial cursor position in window coordinates.
+--- Call GetCursorScreenPos after Begin to get the absolute coordinates version.
 ---
 --- ---
 ---
@@ -18570,8 +19614,9 @@ function ImGui.CreateListClipper(ctx) end
 
 --- **List Clipper > ListClipper\_Begin**
 ---
---- - items_count: Use INT_MAX if you don't know how many items you have
---- (in which case the cursor won't be advanced in the final step)
+--- - items_count: Use INT_MAX from NumericLimits_Int if you don't know how many
+--- items you have (in which case the cursor won't be advanced in the final step,
+--- and you can call SeekCursorForItem manually if you need)
 --- - items_height: Use -1.0 to be calculated automatically on first step.
 ---   Otherwise pass in the distance between your items, typically
 ---   GetTextLineHeightWithSpacing or GetFrameHeightWithSpacing.
@@ -18838,6 +19883,61 @@ function ImGui.ListClipper_IncludeItemByIndex(clipper, item_index) end
 --- @param item_begin integer
 --- @param item_end integer
 function ImGui.ListClipper_IncludeItemsByIndex(clipper, item_begin, item_end) end
+
+--- **List Clipper > ListClipper\_SeekCursorForItem**
+---
+--- Seek cursor toward given item. This is automatically called while stepping.
+--- The only reason to call this is: you can use ListClipper_Begin(INT_MAX) if you
+--- don't know item count ahead of time. In this case, after all steps are done,
+--- you'll want to call SeekCursorForItem(items_count).
+---
+--- ---
+---
+--- **List Clipper**
+---
+--- Helper to manually clip large list of items.
+---
+--- If you have lots evenly spaced items and you have random access to the list,
+--- you can perform coarse clipping based on visibility to only submit items that
+--- are in view.
+---
+--- The clipper calculates the range of visible items and advance the cursor to
+--- compensate for the non-visible items we have skipped.
+--- (Dear ImGui already clip items based on their bounds but: it needs to first
+--- layout the item to do so, and generally fetching/submitting your own data incurs
+--- additional cost. Coarse clipping using a list clipper allows you to easily
+--- scale using lists with tens of thousands of items without a problem.)
+---
+--- Usage:
+---
+---     if not ImGui.ValidatePtr(clipper, 'ImGui_ListClipper*') then
+---       clipper = ImGui.CreateListClipper(ctx)
+---     end
+---     ImGui.ListClipper_Begin(clipper, 1000) -- We have 1000 elements, evenly spaced
+---     while ImGui.ListClipper_Step(clipper) do
+---       local display_start, display_end = ImGui.ListClipper_GetDisplayRange(clipper)
+---       for row = display_start, display_end - 1 do
+---         ImGui.Text(ctx, ("line number %d"):format(row))
+---       end
+---     end
+---
+--- Generally what happens is:
+--- - Clipper lets you process the first element (DisplayStart = 0, DisplayEnd = 1)
+---   regardless of it being visible or not.
+--- - User code submit that one element.
+--- - Clipper can measure the height of the first element
+--- - Clipper calculate the actual range of elements to display based on the current
+---   clipping rectangle, position the cursor before the first visible element.
+--- - User code submit visible elements.
+--- - The clipper also handles various subtleties related to keyboard/gamepad
+---   navigation, wrapping etc.
+---
+--- ---
+---
+--- @since 0.10
+--- @param clipper ImGui_ListClipper
+--- @param items_count integer
+function ImGui.ListClipper_SeekCursorForItem(clipper, items_count) end
 
 --- **List Clipper > ListClipper\_Step**
 ---
@@ -19654,16 +20754,40 @@ function ImGui.PopStyleVar(ctx, count) end
 ---
 --- Temporarily modify a style variable.
 --- Call PopStyleVar to undo after use (before the end of the frame).
---- See StyleVar_* for possible values of 'var_idx'.
+--- See StyleVar_* for possible values of 'idx'.
 ---
 --- ---
 ---
 --- @since 0.1
 --- @param ctx ImGui_Context
---- @param var_idx integer
+--- @param idx integer
 --- @param val1 number
 --- @param val2? number default value = `nil`
-function ImGui.PushStyleVar(ctx, var_idx, val1, val2) end
+function ImGui.PushStyleVar(ctx, idx, val1, val2) end
+
+--- **Style > Variables > PushStyleVarX**
+---
+--- Modify the X component of a style variable. See PushStyleVar.
+---
+--- ---
+---
+--- @since 0.10
+--- @param ctx ImGui_Context
+--- @param idx integer
+--- @param val_x number
+function ImGui.PushStyleVarX(ctx, idx, val_x) end
+
+--- **Style > Variables > PushStyleVarY**
+---
+--- Modify the X component of a style variable. See PushStyleVar.
+---
+--- ---
+---
+--- @since 0.10
+--- @param ctx ImGui_Context
+--- @param idx integer
+--- @param val_y number
+function ImGui.PushStyleVarY(ctx, idx, val_y) end
 
 --- **Tab Bar > BeginTabBar**
 ---
@@ -20908,7 +22032,7 @@ function ImGui.DebugTextEncoding(ctx, text) end
 
 --- **Text > GetFrameHeight**
 ---
---- GetFontSize + StyleVar_FramePadding.y * 2
+--- GetTextLineHeight + StyleVar_FramePadding.y * 2
 ---
 --- ---
 ---
@@ -20919,7 +22043,7 @@ function ImGui.GetFrameHeight(ctx) end
 
 --- **Text > GetFrameHeightWithSpacing**
 ---
---- GetFontSize + StyleVar_FramePadding.y * 2 + StyleVar_ItemSpacing.y
+--- GetTextLineHeight + StyleVar_FramePadding.y * 2 + StyleVar_ItemSpacing.y
 --- (distance in pixels between 2 consecutive lines of framed widgets).
 ---
 --- ---
@@ -20931,7 +22055,8 @@ function ImGui.GetFrameHeightWithSpacing(ctx) end
 
 --- **Text > GetTextLineHeight**
 ---
---- Same as GetFontSize
+--- Total height of a line of text
+--- (typically higher than GetFontSize depending on the font).
 ---
 --- ---
 ---
@@ -20942,7 +22067,7 @@ function ImGui.GetTextLineHeight(ctx) end
 
 --- **Text > GetTextLineHeightWithSpacing**
 ---
---- GetFontSize + StyleVar_ItemSpacing.y
+--- GetTextLineHeight + StyleVar_ItemSpacing.y
 --- (distance in pixels between 2 consecutive lines of text).
 ---
 --- ---
@@ -21016,6 +22141,31 @@ function ImGui.TextColored(ctx, col_rgba, text) end
 --- @param ctx ImGui_Context
 --- @param text string
 function ImGui.TextDisabled(ctx, text) end
+
+--- **Text > TextLink**
+---
+--- Hyperlink text button, returns true when clicked.
+---
+--- ---
+---
+--- @since 0.10
+--- @param ctx ImGui_Context
+--- @param label string
+--- @return boolean retval
+function ImGui.TextLink(ctx, label) end
+
+--- **Text > TextLinkOpenURL**
+---
+--- Hyperlink text button, automatically open file/url when clicked
+---
+--- ---
+---
+--- @since 0.10
+--- @param ctx ImGui_Context
+--- @param label string
+--- @param url? string default value = `nil`
+--- @return boolean retval
+function ImGui.TextLinkOpenURL(ctx, label, url) end
 
 --- **Text > TextWrapped**
 ---
@@ -21599,6 +22749,7 @@ function ImGui.ProgressBar(ctx, fraction, size_arg_w, size_arg_h, overlay) end
 --- - ImGui_Font*
 --- - ImGui_Function*
 --- - ImGui_Image*
+---   - ImGui_Bitmap*
 ---   - ImGui_ImageSet*
 --- - ImGui_ListClipper*
 --- - ImGui_TextFilter*
@@ -21763,6 +22914,24 @@ function ImGui.PopID(ctx) end
 --- @param ctx ImGui_Context
 --- @param str_id string
 function ImGui.PushID(ctx, str_id) end
+
+--- **Utility > Logging\/Capture > DebugLog**
+---
+--- Add a line to the debug log window. See ShowDebugLogWindow.
+---
+--- ---
+---
+--- **Utility > Logging\/Capture**
+---
+--- All text output from the interface can be captured into tty/file/clipboard.
+--- By default, tree nodes are automatically opened during logging.
+---
+--- ---
+---
+--- @since 0.10
+--- @param ctx ImGui_Context
+--- @param text string
+function ImGui.DebugLog(ctx, text) end
 
 --- **Utility > Logging\/Capture > LogFinish**
 ---
@@ -22085,112 +23254,6 @@ function ImGui.BeginChild(ctx, str_id, size_w, size_h, child_flags, window_flags
 --- @param ctx ImGui_Context
 function ImGui.EndChild(ctx) end
 
---- **Window > Content Region > GetContentRegionAvail**
----
---- == GetContentRegionMax() - GetCursorPos()
----
---- ---
----
---- **Window > Content Region**
----
---- Retrieve available space from a given point.
---- GetContentRegionAvail() is frequently useful.
----
---- ---
----
---- **Window**
----
---- Functions for creating and manipulating windows.
---- Note that the bottom of the window stack always contains a window called "Debug".
----
---- ---
----
---- @since 0.1
---- @param ctx ImGui_Context
---- @return number x
---- @return number y
-function ImGui.GetContentRegionAvail(ctx) end
-
---- **Window > Content Region > GetContentRegionMax**
----
---- Current content boundaries (typically window boundaries including scrolling,
---- or current column boundaries), in windows coordinates.
----
---- ---
----
---- **Window > Content Region**
----
---- Retrieve available space from a given point.
---- GetContentRegionAvail() is frequently useful.
----
---- ---
----
---- **Window**
----
---- Functions for creating and manipulating windows.
---- Note that the bottom of the window stack always contains a window called "Debug".
----
---- ---
----
---- @since 0.1
---- @param ctx ImGui_Context
---- @return number x
---- @return number y
-function ImGui.GetContentRegionMax(ctx) end
-
---- **Window > Content Region > GetWindowContentRegionMax**
----
---- Content boundaries max (roughly (0,0)+Size-Scroll) where Size can be
---- overridden with SetNextWindowContentSize, in window coordinates.
----
---- ---
----
---- **Window > Content Region**
----
---- Retrieve available space from a given point.
---- GetContentRegionAvail() is frequently useful.
----
---- ---
----
---- **Window**
----
---- Functions for creating and manipulating windows.
---- Note that the bottom of the window stack always contains a window called "Debug".
----
---- ---
----
---- @since 0.1
---- @param ctx ImGui_Context
---- @return number x
---- @return number y
-function ImGui.GetWindowContentRegionMax(ctx) end
-
---- **Window > Content Region > GetWindowContentRegionMin**
----
---- Content boundaries min (roughly (0,0)-Scroll), in window coordinates.
----
---- ---
----
---- **Window > Content Region**
----
---- Retrieve available space from a given point.
---- GetContentRegionAvail() is frequently useful.
----
---- ---
----
---- **Window**
----
---- Functions for creating and manipulating windows.
---- Note that the bottom of the window stack always contains a window called "Debug".
----
---- ---
----
---- @since 0.1
---- @param ctx ImGui_Context
---- @return number x
---- @return number y
-function ImGui.GetWindowContentRegionMin(ctx) end
-
 --- **Window > Debug Windows > ShowAboutWindow**
 ---
 --- Create About window.
@@ -22398,6 +23461,7 @@ function ImGui.GetWindowDpiScale(ctx) end
 --- **Window > Properties > GetWindowHeight**
 ---
 --- Get current window height (shortcut for (GetWindowSize().h).
+--- It is unlikely you ever need to use this!
 ---
 --- ---
 ---
@@ -22425,8 +23489,9 @@ function ImGui.GetWindowHeight(ctx) end
 
 --- **Window > Properties > GetWindowPos**
 ---
---- Get current window position in screen space (note: it is unlikely you need to
---- use this. Consider using current layout pos instead, GetCursorScreenPos()).
+--- Get current window position in screen space.
+--- It is unlikely you ever need to use this!
+--- Consider always using GetCursorScreenPos and GetContentRegionAvail instead.
 ---
 --- ---
 ---
@@ -22455,8 +23520,9 @@ function ImGui.GetWindowPos(ctx) end
 
 --- **Window > Properties > GetWindowSize**
 ---
---- Get current window size (note: it is unlikely you need to use this.
---- Consider using GetCursorScreenPos() and e.g. GetContentRegionAvail() instead)
+--- Get current window size.
+--- It is unlikely you ever need to use this!
+--- Consider always using GetCursorScreenPos and GetContentRegionAvail instead.
 ---
 --- ---
 ---
@@ -22486,6 +23552,7 @@ function ImGui.GetWindowSize(ctx) end
 --- **Window > Properties > GetWindowWidth**
 ---
 --- Get current window width (shortcut for (GetWindowSize().w).
+--- It is unlikely you ever need to use this!
 ---
 --- ---
 ---
