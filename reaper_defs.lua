@@ -218,7 +218,7 @@ function reaper.CountEnvelopePointsEx(envelope, autoitem_idx) end
 ---@return integer rv
 function reaper.CountMediaItems(proj) end
 
----discouraged. see GetNumRegionsOrMarkers, GetRegionOrMarker. num_markersOut and num_regionsOut may be NULL.
+---num_markersOut and num_regionsOut may be NULL.
 ---@param proj ReaProject|nil|0
 ---@return integer rv
 ---@return integer num_markers
@@ -564,6 +564,7 @@ function reaper.DeleteActionShortcut(section, cmdID, shortcutidx) end
 ---For automation items, pass autoitem_idx|0x10000000 to base ptidx on the number of points in one full loop iteration,
 ---even if the automation item is trimmed so that not all points are visible.
 ---Otherwise, ptidx will be based on the number of visible points in the automation item, including all loop iterations.
+---Prior to REAPER v7.46, this function interpreted the 0x10000000 autoitem_idx flag backwards.
 ---See CountEnvelopePointsEx, GetEnvelopePointEx, SetEnvelopePointEx, InsertEnvelopePointEx.
 ---@param envelope TrackEnvelope
 ---@param autoitem_idx integer
@@ -733,7 +734,6 @@ function reaper.EnumPitchShiftModes(mode) end
 ---@return string str
 function reaper.EnumPitchShiftSubModes(mode, submode) end
 
----discouraged. see GetNumRegionsOrMarkers, GetRegionOrMarker
 ---@param idx integer
 ---@return integer rv
 ---@return boolean isrgn
@@ -743,7 +743,6 @@ function reaper.EnumPitchShiftSubModes(mode, submode) end
 ---@return integer markrgnindexnumber
 function reaper.EnumProjectMarkers(idx) end
 
----discouraged. see GetNumRegionsOrMarkers, GetRegionOrMarker
 ---@param proj ReaProject|nil|0
 ---@param idx integer
 ---@return integer rv
@@ -754,7 +753,6 @@ function reaper.EnumProjectMarkers(idx) end
 ---@return integer markrgnindexnumber
 function reaper.EnumProjectMarkers2(proj, idx) end
 
----discouraged. see GetNumRegionsOrMarkers, GetRegionOrMarker
 ---@param proj ReaProject|nil|0
 ---@param idx integer
 ---@return integer rv
@@ -1076,6 +1074,7 @@ function reaper.GetEnvelopePointByTime(envelope, time) end
 ---For automation items, pass autoitem_idx|0x10000000 to base ptidx on the number of points in one full loop iteration,
 ---even if the automation item is trimmed so that not all points are visible.
 ---Otherwise, ptidx will be based on the number of visible points in the automation item, including all loop iterations.
+---Prior to REAPER v7.46, this function interpreted the 0x10000000 autoitem_idx flag backwards.
 ---See GetEnvelopePointEx, SetEnvelopePointEx, InsertEnvelopePointEx, DeleteEnvelopePointEx.
 ---@param envelope TrackEnvelope
 ---@param autoitem_idx integer
@@ -1088,6 +1087,7 @@ function reaper.GetEnvelopePointByTimeEx(envelope, autoitem_idx, time) end
 ---For automation items, pass autoitem_idx|0x10000000 to base ptidx on the number of points in one full loop iteration,
 ---even if the automation item is trimmed so that not all points are visible.
 ---Otherwise, ptidx will be based on the number of visible points in the automation item, including all loop iterations.
+---When using full loop iteration automation item mode, the time returned will be the project time of the first iteration of the point, and selection state will only be set if all visible instances of the point in the automation item are selected.
 ---See CountEnvelopePointsEx, SetEnvelopePointEx, InsertEnvelopePointEx, DeleteEnvelopePointEx.
 ---@param envelope TrackEnvelope
 ---@param autoitem_idx integer
@@ -1287,6 +1287,7 @@ function reaper.GetMediaItem_Track(item) end
 ---| "'D_FADEOUTLEN_AUTO'" double * : item auto-fadeout length in seconds, -1=no auto-fadeout
 ---| "'C_FADEINSHAPE'" int * : fadein shape, 0..6, 0=linear
 ---| "'C_FADEOUTSHAPE'" int * : fadeout shape, 0..6, 0=linear
+---| "'I_FADELPF'" int * : low pass frequency fade, &1=fade-in, &2=fade-out
 ---| "'I_GROUPID'" int * : group ID, 0=no group
 ---| "'I_LASTY'" int * : Y-position (relative to top of track) in pixels (read-only)
 ---| "'I_LASTH'" int * : height in pixels (read-only)
@@ -1322,6 +1323,7 @@ function reaper.GetMediaItem_Track(item) end
 ---D_FADEOUTLEN_AUTO : double * : item auto-fadeout length in seconds, -1=no auto-fadeout
 ---C_FADEINSHAPE : int * : fadein shape, 0..6, 0=linear
 ---C_FADEOUTSHAPE : int * : fadeout shape, 0..6, 0=linear
+---I_FADELPF : int * : low pass frequency fade, &1=fade-in, &2=fade-out
 ---I_GROUPID : int * : group ID, 0=no group
 ---I_LASTY : int * : Y-position (relative to top of track) in pixels (read-only)
 ---I_LASTH : int * : height in pixels (read-only)
@@ -1565,6 +1567,7 @@ function reaper.GetMediaSourceType(source) end
 ---| "'I_PANLAW_FLAGS'" int * : pan law flags, 0=sine taper, 1=hybrid taper with deprecated behavior when gain compensation enabled, 2=linear taper, 3=hybrid taper
 ---| "'B_SHOWINMIXER'" bool * : track control panel visible in mixer (do not use on master track)
 ---| "'B_SHOWINTCP'" bool * : track control panel visible in arrange view (do not use on master track)
+---| "'B_TCPPIN'" bool * : track is pinned to top of arrange view
 ---| "'B_MAINSEND'" bool * : track sends audio to parent
 ---| "'C_MAINSEND_OFFS'" char * : channel offset of track send to parent
 ---| "'C_MAINSEND_NCH'" char * : channel count of track send to parent (0=use all child track channels, 1=use one channel only)
@@ -1632,6 +1635,7 @@ function reaper.GetMediaSourceType(source) end
 ---P_ENV:<envchunkname or P_ENV:{GUID... : TrackEnvelope * : (read-only) chunkname can be <VOLENV, <PANENV, etc; GUID is the stringified envelope GUID.
 ---B_SHOWINMIXER : bool * : track control panel visible in mixer (do not use on master track)
 ---B_SHOWINTCP : bool * : track control panel visible in arrange view (do not use on master track)
+---B_TCPPIN : bool * : track is pinned to top of arrange view
 ---B_MAINSEND : bool * : track sends audio to parent
 ---C_MAINSEND_OFFS : char * : channel offset of track send to parent
 ---C_MAINSEND_NCH : char * : channel count of track send to parent (0=use all child track channels, 1=use one channel only)
@@ -1668,7 +1672,21 @@ function reaper.GetMIDIInputName(dev, nameout) end
 ---@param nameout string
 ---@return boolean rv
 ---@return string nameout
+function reaper.GetMIDIInputNameNoAlias(dev, nameout) end
+
+---returns true if device present
+---@param dev integer
+---@param nameout string
+---@return boolean rv
+---@return string nameout
 function reaper.GetMIDIOutputName(dev, nameout) end
+
+---returns true if device present
+---@param dev integer
+---@param nameout string
+---@return boolean rv
+---@return string nameout
+function reaper.GetMIDIOutputNameNoAlias(dev, nameout) end
 
 ---Get the leftmost track visible in the mixer
 ---@return MediaTrack rv
@@ -1705,11 +1723,6 @@ function reaper.GetNumMIDIInputs() end
 ---returns max number of real midi hardware outputs
 ---@return integer rv
 function reaper.GetNumMIDIOutputs() end
-
----the total number of regions and markers in the project. See GetRegionOrMarker, GetRegionOrMarkerInfo_Value, SetRegionOrMarkerInfo_Value, GetSetRegionOrMarkerInfo_String
----@param proj ReaProject|nil|0
----@return integer rv
-function reaper.GetNumRegionsOrMarkers(proj) end
 
 ---Returns number of take markers. See GetTakeMarker, SetTakeMarker, DeleteTakeMarker
 ---@param take MediaItem_Take
@@ -1831,32 +1844,6 @@ function reaper.GetProjectTimeSignature2(proj) end
 ---@return integer rv
 ---@return string val
 function reaper.GetProjExtState(proj, extname, key) end
-
----get a single region or marker by internal index, or if index < 0, by GUID. See GetNumRegionsOrMarkers, GetRegionOrMarkerInfo_Value, SetRegionOrMarkerInfo_Value, GetSetRegionOrMarkerInfo_String
----@param proj ReaProject|nil|0
----@param index integer
----@param guidStr string
----@return ProjectMarker rv
-function reaper.GetRegionOrMarker(proj, index, guidStr) end
-
----@alias GetRegionOrMarkerInfo_Value_Param
----| "'D_STARTPOS'"
----| "'D_ENDPOS'"
----| "'I_INDEX'"
----| "'I_NUMBER'"
----| "'I_LANENUMBER'"
----| "'I_CUSTOMCOLOR'"
----| "'I_DISPLAYEDCOLOR'"
----| "'B_ISREGION'"
----| "'B_UISEL'"
----| "'B_HIDDEN'"
-
----"D_STARTPOS", "D_ENDPOS" (= D_STARTPOS for markers), "I_INDEX" (internal index), "I_NUMBER" (displayed index number), "I_LANENUMBER" (can be set, but returned value is read-only), "I_CUSTOMCOLOR", "I_DISPLAYEDCOLOR", "B_ISREGION", "B_UISEL", "B_HIDDEN". See GetNumRegionsOrMarkers, GetRegionOrMarker, SetRegionOrMarkerInfo_Value, GetSetRegionOrMarkerInfo_String
----@param proj ReaProject|nil|0
----@param regionOrMarker ProjectMarker
----@param parameterName GetRegionOrMarkerInfo_Value_Param
----@return number num
-function reaper.GetRegionOrMarkerInfo_Value(proj, regionOrMarker, parameterName) end
 
 ---returns path where ini files are stored, other things are in subdirectories.
 ---@return string str
@@ -2148,6 +2135,7 @@ function reaper.GetSetProjectGrid(project, set, division, swingmode, swingamt) e
 ---| "'RENDER_FADEOUT'" render fade-out (0.001 means 1 ms, requires RENDER_NORMALIZE&1024)
 ---| "'RENDER_FADEINSHAPE'" render fade-in shape
 ---| "'RENDER_FADEOUTSHAPE'" render fade-out shape
+---| "'RENDER_FADELPF'" render low pass frequency fade, &1=fade-in, &2=fade-out
 ---| "'RENDER_PADSTART'" pad render start with silence (0.001 means 1ms, requires RENDER_NORMALIZE&(1<<16))
 ---| "'RENDER_PADEND'" pad render end with silence (0.001 means 1ms, requires RENDER_NORMALIZE&(2<<16))
 ---| "'RENDER_TRIMSTART'" trim render start threshold (0.5 means -6.02dB, requires RENDER_NORMALIZE&16384)
@@ -2155,11 +2143,7 @@ function reaper.GetSetProjectGrid(project, set, division, swingmode, swingamt) e
 ---| "'RENDER_DELAY'" seconds to delay start of render to allow FX to initialize and load samples (requires RENDER_SETTINGS&(16<<16))
 ---| "'PROJECT_SRATE'" sample rate (ignored unless PROJECT_SRATE_USE set)
 ---| "'PROJECT_SRATE_USE'" set to 1 if project sample rate is used
----| "'RULER_HEIGHT'" ruler height in pixels
----| "'RULER_LANE_COLOR:X'" ruler lane default color, color&0x1000000 if used
----| "'RULER_LANE_HIDDEN:X'" 1 if ruler lane is hidden, 0 otherwise
----| "'RULER_LANE_VISIBLE:X'" 1 if ruler lane is visible (not hidden and ruler tall enough to display), 0 otherwise (read-only)
----| "'RULER_LANE_TIMEBASE:X'" ruler lane default timebase, -1=project default, 0=time, 1=beats (position, length, rate), 2=beats (position only)
+---| "'PROJECT_TIMEBASE'" 0=time, 1=beats position, length, rate, 2=beats position only (read-only)PROJECT_TIMEBASE_FLAGS : &1=timebase affects MIDI items, &2=in beats timebase, auto-stretch media items at tempo changes (read-only)PROJECT_TCP_UI_FLAGS : &1=pinning tracks to top of arrange view is overridden, &2=hiding tracks in arrange view is overridden
 
 ---Get or set project information.
 ---RENDER_SETTINGS : (&(1|2)==0)=master mix, &1=stems+master mix, &2=stems only, &4=multichannel tracks to multichannel files, &8=use render matrix, &16=tracks with only mono media to mono files, &32=selected media items, &64=selected media items via master, &128=selected tracks via master, &256=embed transients if format supports, &512=embed metadata if format supports, &1024=embed take markers if format supports, &2048=2nd pass render, &4096=render razor edits, &8192=pre-fader stems (not if via master), &16384=only stem channels sent to parent, &32768=preserve source metadata if possible, &(1<<16)=preserve source start offset if possible, &(2<<16)=preserve source media sample rate if possible, &(4<<16)=if rendering selected items or razor edits, render as a single file, &(8<<16)=parallel render via master, &(16<<16)=delay render start to allow FX to initialize and load samples
@@ -2179,6 +2163,7 @@ function reaper.GetSetProjectGrid(project, set, division, swingmode, swingamt) e
 ---RENDER_FADEOUT: render fade-out (0.001 means 1 ms, requires RENDER_NORMALIZE&1024)
 ---RENDER_FADEINSHAPE: render fade-in shape
 ---RENDER_FADEOUTSHAPE: render fade-out shape
+---RENDER_FADELPF: render low pass frequency fade, &1=fade-in, &2=fade-out
 ---RENDER_PADSTART: pad render start with silence (0.001 means 1ms, requires RENDER_NORMALIZE&(1<<16))
 ---RENDER_PADEND: pad render end with silence (0.001 means 1ms, requires RENDER_NORMALIZE&(2<<16))
 ---RENDER_TRIMSTART: trim render start threshold (0.5 means -6.02dB, requires RENDER_NORMALIZE&16384)
@@ -2186,11 +2171,7 @@ function reaper.GetSetProjectGrid(project, set, division, swingmode, swingamt) e
 ---RENDER_DELAY: seconds to delay start of render to allow FX to initialize and load samples (requires RENDER_SETTINGS&(16<<16))
 ---PROJECT_SRATE : sample rate (ignored unless PROJECT_SRATE_USE set)
 ---PROJECT_SRATE_USE : set to 1 if project sample rate is used
----RULER_HEIGHT : ruler height in pixels
----RULER_LANE_COLOR:X : ruler lane default color, color&0x1000000 if used
----RULER_LANE_HIDDEN:X : 1 if ruler lane is hidden, 0 otherwise
----RULER_LANE_VISIBLE:X : 1 if ruler lane is visible (not hidden and ruler tall enough to display), 0 otherwise (read-only)
----RULER_LANE_TIMEBASE:X : ruler lane default timebase, -1=project default, 0=time, 1=beats (position, length, rate), 2=beats (position only)
+---PROJECT_TIMEBASE : 0=time, 1=beats position, length, rate, 2=beats position only (read-only)PROJECT_TIMEBASE_FLAGS : &1=timebase affects MIDI items, &2=in beats timebase, auto-stretch media items at tempo changes (read-only)PROJECT_TCP_UI_FLAGS : &1=pinning tracks to top of arrange view is overridden, &2=hiding tracks in arrange view is overridden
 ---@param project ReaProject|nil|0
 ---@param desc GetSetProjectInfo_Param
 ---@param value number
@@ -2203,10 +2184,8 @@ function reaper.GetSetProjectInfo(project, desc, value, is_set) end
 ---| "'PROJECT_TITLE'" title field from Project Settings/Notes dialog
 ---| "'PROJECT_AUTHOR'" author field from Project Settings/Notes dialog
 ---| "'TRACK_GROUP_NAME:X'" track group name, X should be 1..64
----| "'RULER_LANE_TYPE:X'" ruler lane type, "region" or "marker". X should be -1 to create a new lane, returned value is read-only
----| "'RULER_LANE_NAME:X'" ruler lane name
----| "'MARKER_GUID:X'" discouraged. see GetRegionOrMarker, GetSetRegionOrMarkerInfo_String
----| "'MARKER_INDEX_FROM_GUID:{GUID}'" discouraged. see GetRegionOrMarker, GetSetRegionOrMarkerInfo_String
+---| "'MARKER_GUID:X'" get the GUID (unique ID) of the marker or region with index X, where X is the index passed to EnumProjectMarkers, not necessarily the displayed number (read-only)
+---| "'MARKER_INDEX_FROM_GUID:{GUID}'" get the GUID index of the marker or region with GUID {GUID} (read-only)
 ---| "'OPENCOPY_CFGIDX'" integer for the configuration of format to use when creating copies/applying FX. 0=wave (auto-depth), 1=APPLYFX_FORMAT, 2=RECORD_FORMAT
 ---| "'RECORD_PATH'" recording directory -- may be blank or a relative path, to get the effective path see GetProjectPathEx()
 ---| "'RECORD_PATH_SECONDARY'" secondary recording directory
@@ -2226,10 +2205,8 @@ function reaper.GetSetProjectInfo(project, desc, value, is_set) end
 ---PROJECT_TITLE : title field from Project Settings/Notes dialog
 ---PROJECT_AUTHOR : author field from Project Settings/Notes dialog
 ---TRACK_GROUP_NAME:X : track group name, X should be 1..64
----RULER_LANE_TYPE:X : ruler lane type, "region" or "marker". X should be -1 to create a new lane, returned value is read-only
----RULER_LANE_NAME:X : ruler lane name
----MARKER_GUID:X : discouraged. see GetRegionOrMarker, GetSetRegionOrMarkerInfo_String
----MARKER_INDEX_FROM_GUID:{GUID} : discouraged. see GetRegionOrMarker, GetSetRegionOrMarkerInfo_String
+---MARKER_GUID:X : get the GUID (unique ID) of the marker or region with index X, where X is the index passed to EnumProjectMarkers, not necessarily the displayed number (read-only)
+---MARKER_INDEX_FROM_GUID:{GUID} : get the GUID index of the marker or region with GUID {GUID} (read-only)
 ---OPENCOPY_CFGIDX : integer for the configuration of format to use when creating copies/applying FX. 0=wave (auto-depth), 1=APPLYFX_FORMAT, 2=RECORD_FORMAT
 ---RECORD_PATH : recording directory -- may be blank or a relative path, to get the effective path see GetProjectPathEx()
 ---RECORD_PATH_SECONDARY : secondary recording directory
@@ -2259,20 +2236,6 @@ function reaper.GetSetProjectInfo_String(project, desc, valuestrNeedBig, is_set)
 ---@param notes string
 ---@return string notes
 function reaper.GetSetProjectNotes(proj, set, notes) end
-
----@alias GetSetRegionOrMarkerInfo_String_Param
----| "'GUID'"
----| "'P_NAME'"
-
----"GUID" (read-only), "P_NAME". See GetNumRegionsOrMarkers, GetRegionOrMarker, GetRegionOrMarkerInfo_Value, SetRegionOrMarkerInfo_Value
----@param proj ReaProject|nil|0
----@param regionOrMarker ProjectMarker
----@param parameterName GetSetRegionOrMarkerInfo_String_Param
----@param stringNeedBig string
----@param setNewValue boolean
----@return boolean rv
----@return string stringNeedBig
-function reaper.GetSetRegionOrMarkerInfo_String(proj, regionOrMarker, parameterName, stringNeedBig, setNewValue) end
 
 ----1 == query,0=clear,1=set,>1=toggle . returns new value
 ---@param val integer
@@ -2528,7 +2491,7 @@ function reaper.GetThingFromPoint(screen_x, screen_y) end
 ---@return integer rv
 function reaper.GetToggleCommandState(command_id) end
 
----For the main action context, the MIDI editor, or the media explorer, returns the toggle state of the action. 0=off, 1=on, -1=NA because the action does not have on/off states. For the MIDI editor, the action state for the most recently focused window will be returned.
+---Returns the toggle state of the action. section 0=main, 100=main alt, 32060=MIDI editor, 32061=MIDI event list editor, 32062=MIDI inline editor (toggle feedback not supported), 32063=Media Explorer, 32065=Crossfade Editor. Returns 0=off, 1=on, -1=NA because the action does not have on/off states. For the MIDI editor, the action state for the most recently focused window will be returned.
 ---@param section_id integer
 ---@param command_id integer
 ---@return integer rv
@@ -3912,6 +3875,7 @@ function reaper.SetEnvelopePoint(envelope, ptidx, timeIn, valueIn, shapeIn, tens
 ---For automation items, pass autoitem_idx|0x10000000 to base ptidx on the number of points in one full loop iteration,
 ---even if the automation item is trimmed so that not all points are visible.
 ---Otherwise, ptidx will be based on the number of visible points in the automation item, including all loop iterations.
+---Prior to REAPER v7.46, this function interpreted the 0x10000000 autoitem_idx flag backwards.
 ---See CountEnvelopePointsEx, GetEnvelopePointEx, InsertEnvelopePointEx, DeleteEnvelopePointEx.
 ---@param envelope TrackEnvelope
 ---@param autoitem_idx integer
@@ -3978,6 +3942,7 @@ function reaper.SetMasterTrackVisibility(flag) end
 ---| "'D_FADEOUTLEN_AUTO'" double * : item auto-fadeout length in seconds, -1=no auto-fadeout
 ---| "'C_FADEINSHAPE'" int * : fadein shape, 0..6, 0=linear
 ---| "'C_FADEOUTSHAPE'" int * : fadeout shape, 0..6, 0=linear
+---| "'I_FADELPF'" int * : low pass frequency fade, &1=fade-in, &2=fade-out
 ---| "'I_GROUPID'" int * : group ID, 0=no group
 ---| "'I_LASTY'" int * : Y-position (relative to top of track) in pixels (read-only)
 ---| "'I_LASTH'" int * : height in pixels (read-only)
@@ -4012,6 +3977,7 @@ function reaper.SetMasterTrackVisibility(flag) end
 ---D_FADEOUTLEN_AUTO : double * : item auto-fadeout length in seconds, -1=no auto-fadeout
 ---C_FADEINSHAPE : int * : fadein shape, 0..6, 0=linear
 ---C_FADEOUTSHAPE : int * : fadeout shape, 0..6, 0=linear
+---I_FADELPF : int * : low pass frequency fade, &1=fade-in, &2=fade-out
 ---I_GROUPID : int * : group ID, 0=no group
 ---I_LASTY : int * : Y-position (relative to top of track) in pixels (read-only)
 ---I_LASTH : int * : height in pixels (read-only)
@@ -4201,6 +4167,7 @@ function reaper.SetMediaItemTakeInfo_Value(take, parmname, newvalue) end
 ---| "'I_PANLAW_FLAGS'" int * : pan law flags, 0=sine taper, 1=hybrid taper with deprecated behavior when gain compensation enabled, 2=linear taper, 3=hybrid taper
 ---| "'B_SHOWINMIXER'" bool * : track control panel visible in mixer (do not use on master track)
 ---| "'B_SHOWINTCP'" bool * : track control panel visible in arrange view (do not use on master track)
+---| "'B_TCPPIN'" bool * : track is pinned to top of arrange view
 ---| "'B_MAINSEND'" bool * : track sends audio to parent
 ---| "'C_MAINSEND_OFFS'" char * : channel offset of track send to parent
 ---| "'C_MAINSEND_NCH'" char * : channel count of track send to parent (0=use all child track channels, 1=use one channel only)
@@ -4266,6 +4233,7 @@ function reaper.SetMediaItemTakeInfo_Value(take, parmname, newvalue) end
 ---P_ENV:<envchunkname or P_ENV:{GUID... : TrackEnvelope * : (read-only) chunkname can be <VOLENV, <PANENV, etc; GUID is the stringified envelope GUID.
 ---B_SHOWINMIXER : bool * : track control panel visible in mixer (do not use on master track)
 ---B_SHOWINTCP : bool * : track control panel visible in arrange view (do not use on master track)
+---B_TCPPIN : bool * : track is pinned to top of arrange view
 ---B_MAINSEND : bool * : track sends audio to parent
 ---C_MAINSEND_OFFS : char * : channel offset of track send to parent
 ---C_MAINSEND_NCH : char * : channel count of track send to parent (0=use all child track channels, 1=use one channel only)
@@ -4329,7 +4297,7 @@ function reaper.SetOnlyTrackSelected(track) end
 ---@param division number
 function reaper.SetProjectGrid(project, division) end
 
----discouraged. see GetNumRegionsOrMarkers, GetRegionOrMarker, SetRegionOrMarkerInfo_Value, GetSetRegionOrMarkerInfo_String. Note: this function can't clear a marker's name (an empty string will leave the name unchanged), see SetProjectMarker4.
+---Note: this function can't clear a marker's name (an empty string will leave the name unchanged), see SetProjectMarker4.
 ---@param markrgnindexnumber integer
 ---@param isrgn boolean
 ---@param pos number
@@ -4338,7 +4306,7 @@ function reaper.SetProjectGrid(project, division) end
 ---@return boolean rv
 function reaper.SetProjectMarker(markrgnindexnumber, isrgn, pos, rgnend, name) end
 
----discouraged. see GetNumRegionsOrMarkers, GetRegionOrMarker, SetRegionOrMarkerInfo_Value, GetSetRegionOrMarkerInfo_String. Note: this function can't clear a marker's name (an empty string will leave the name unchanged), see SetProjectMarker4.
+---Note: this function can't clear a marker's name (an empty string will leave the name unchanged), see SetProjectMarker4.
 ---@param proj ReaProject|nil|0
 ---@param markrgnindexnumber integer
 ---@param isrgn boolean
@@ -4348,7 +4316,7 @@ function reaper.SetProjectMarker(markrgnindexnumber, isrgn, pos, rgnend, name) e
 ---@return boolean rv
 function reaper.SetProjectMarker2(proj, markrgnindexnumber, isrgn, pos, rgnend, name) end
 
----discouraged. see GetNumRegionsOrMarkers, GetRegionOrMarker, SetRegionOrMarkerInfo_Value, GetSetRegionOrMarkerInfo_String. Note: this function can't clear a marker's name (an empty string will leave the name unchanged), see SetProjectMarker4.
+---Note: this function can't clear a marker's name (an empty string will leave the name unchanged), see SetProjectMarker4.
 ---@param proj ReaProject|nil|0
 ---@param markrgnindexnumber integer
 ---@param isrgn boolean
@@ -4359,7 +4327,7 @@ function reaper.SetProjectMarker2(proj, markrgnindexnumber, isrgn, pos, rgnend, 
 ---@return boolean rv
 function reaper.SetProjectMarker3(proj, markrgnindexnumber, isrgn, pos, rgnend, name, color) end
 
----discouraged. see GetNumRegionsOrMarkers, GetRegionOrMarker, SetRegionOrMarkerInfo_Value, GetSetRegionOrMarkerInfo_String. color should be 0 to not change, or ColorToNative(r,g,b)|0x1000000, flags&1 to clear name
+---color should be 0 to not change, or ColorToNative(r,g,b)|0x1000000, flags&1 to clear name
 ---@param proj ReaProject|nil|0
 ---@param markrgnindexnumber integer
 ---@param isrgn boolean
@@ -4371,7 +4339,7 @@ function reaper.SetProjectMarker3(proj, markrgnindexnumber, isrgn, pos, rgnend, 
 ---@return boolean rv
 function reaper.SetProjectMarker4(proj, markrgnindexnumber, isrgn, pos, rgnend, name, color, flags) end
 
----discouraged. See SetProjectMarkerByIndex2.
+---See SetProjectMarkerByIndex2.
 ---@param proj ReaProject|nil|0
 ---@param markrgnidx integer
 ---@param isrgn boolean
@@ -4383,7 +4351,7 @@ function reaper.SetProjectMarker4(proj, markrgnindexnumber, isrgn, pos, rgnend, 
 ---@return boolean rv
 function reaper.SetProjectMarkerByIndex(proj, markrgnidx, isrgn, pos, rgnend, IDnumber, name, color) end
 
----discouraged. see GetNumRegionsOrMarkers, GetRegionOrMarker, SetRegionOrMarkerInfo_Value, GetSetRegionOrMarkerInfo_String. Differs from SetProjectMarker4 in that markrgnidx is 0 for the first marker/region, 1 for the next, etc (see EnumProjectMarkers3), rather than representing the displayed marker/region ID number (see SetProjectMarker3). IDnumber < 0 to ignore. Function will fail if attempting to set a duplicate ID number for a region (duplicate ID numbers for markers are OK). flags&1 to clear name. If flags&2, markers will not be re-sorted, and after making updates, you MUST call SetProjectMarkerByIndex2 with markrgnidx=-1 and flags&2 to force re-sort/UI updates.
+---Differs from SetProjectMarker4 in that markrgnidx is 0 for the first marker/region, 1 for the next, etc (see EnumProjectMarkers3), rather than representing the displayed marker/region ID number (see SetProjectMarker3). IDnumber < 0 to ignore. Function will fail if attempting to set a duplicate ID number for a region (duplicate ID numbers for markers are OK). flags&1 to clear name. If flags&2, markers will not be re-sorted, and after making updates, you MUST call SetProjectMarkerByIndex2 with markrgnidx=-1 and flags&2 to force re-sort/UI updates.
 ---@param proj ReaProject|nil|0
 ---@param markrgnidx integer
 ---@param isrgn boolean
@@ -4403,23 +4371,6 @@ function reaper.SetProjectMarkerByIndex2(proj, markrgnidx, isrgn, pos, rgnend, I
 ---@param value string
 ---@return integer rv
 function reaper.SetProjExtState(proj, extname, key, value) end
-
----@alias SetRegionOrMarkerInfo_Value_Param
----| "'D_STARTPOS'"
----| "'D_ENDPOS'"
----| "'I_NUMBER'"
----| "'I_LANENUMBER'"
----| "'I_CUSTOMCOLOR'"
----| "'B_UISEL'"
----| "'B_HIDDEN'"
-
----"D_STARTPOS", "D_ENDPOS" (= D_STARTPOS for markers), "I_NUMBER" (displayed index number), "I_LANENUMBER" (can be set, but returned value is read-only, "I_CUSTOMCOLOR", "B_UISEL", "B_HIDDEN". See GetNumRegionsOrMarkers, GetRegionOrMarker, GetRegionOrMarkerInfo_Value, GetSetRegionOrMarkerInfo_String
----@param proj ReaProject|nil|0
----@param regionOrMarker ProjectMarker
----@param parameterName SetRegionOrMarkerInfo_Value_Param
----@param setNewValue number
----@return number num
-function reaper.SetRegionOrMarkerInfo_Value(proj, regionOrMarker, parameterName, setNewValue) end
 
 ---Add (flag > 0) or remove (flag < 0) a track from this region when using the region render matrix. If adding, flag==2 means force mono, flag==4 means force stereo, flag==N means force N/2 channels.
 ---@param proj ReaProject|nil|0
@@ -5778,6 +5729,7 @@ function reaper.TrackFX_GetIOSize(track, fx) end
 ---container_nch_in : number of input pins for container
 ---container_nch_out : number of output pints for container
 ---container_nch_feedback : number of internal feedback channels enabled in container
+---channel_config : reading returns 3 values: requested channel count (0 = VST3 auto), channel mode (0=multichannel, 1=multi-mono, 2=multi-stereo), and supported flags (&1=multichannel is supported, &2=automatic channel count is supported, &4=multi-mono is supported, &8=multi-stereo is supported). writing accepts 1 or more values, channel count, and channel mode if specified. VST3 bus sizes are only advisory, plug-ins may not use the value. Not supported for containers, containers should use container_nch etc.
 ---focused : reading returns 1 if focused. Writing a positive value to this sets the FX UI as "last focused."
 ---last_touched : reading returns two integers, one indicates whether FX is the last-touched FX, the second indicates which parameter was last touched. Writing a negative value ensures this plug-in is not set as last touched, otherwise the FX is set "last touched," and last touched parameter index is set to the value in the string (if valid).
 --- FX indices for tracks can have 0x1000000 added to them in order to reference record input FX (normal tracks) or hardware output FX (master track). FX indices can have 0x2000000 added to them, in which case they will be used to address FX in containers. To address a container, the 1-based subitem is multiplied by one plus the count of the FX chain and added to the 1-based container item index. e.g. to address the third item in the container at the second position of the track FX chain for tr, the index would be 0x2000000 + 3*(TrackFX_GetCount(tr)+1) + 2. This can be extended to sub-containers using TrackFX_GetNamedConfigParm with container_count and similar logic. In REAPER v7.06+, you can use the much more convenient method to navigate hierarchies, see TrackFX_GetNamedConfigParm with parent_container and container_item.X.
@@ -5978,6 +5930,7 @@ function reaper.TrackFX_SetEQParam(track, fxidx, bandtype, bandidx, paramtype, v
 ---container_nch_in : number of input pins for container
 ---container_nch_out : number of output pints for container
 ---container_nch_feedback : number of internal feedback channels enabled in container
+---channel_config : reading returns 3 values: requested channel count (0 = VST3 auto), channel mode (0=multichannel, 1=multi-mono, 2=multi-stereo), and supported flags (&1=multichannel is supported, &2=automatic channel count is supported, &4=multi-mono is supported, &8=multi-stereo is supported). writing accepts 1 or more values, channel count, and channel mode if specified. VST3 bus sizes are only advisory, plug-ins may not use the value. Not supported for containers, containers should use container_nch etc.
 ---focused : reading returns 1 if focused. Writing a positive value to this sets the FX UI as "last focused."
 ---last_touched : reading returns two integers, one indicates whether FX is the last-touched FX, the second indicates which parameter was last touched. Writing a negative value ensures this plug-in is not set as last touched, otherwise the FX is set "last touched," and last touched parameter index is set to the value in the string (if valid).
 --- FX indices for tracks can have 0x1000000 added to them in order to reference record input FX (normal tracks) or hardware output FX (master track). FX indices can have 0x2000000 added to them, in which case they will be used to address FX in containers. To address a container, the 1-based subitem is multiplied by one plus the count of the FX chain and added to the 1-based container item index. e.g. to address the third item in the container at the second position of the track FX chain for tr, the index would be 0x2000000 + 3*(TrackFX_GetCount(tr)+1) + 2. This can be extended to sub-containers using TrackFX_GetNamedConfigParm with container_count and similar logic. In REAPER v7.06+, you can use the much more convenient method to navigate hierarchies, see TrackFX_GetNamedConfigParm with parent_container and container_item.X.
@@ -6401,10 +6354,17 @@ function reaper.BR_GetMidiTakeTempoInfo(take) end
 ---@return string details
 function reaper.BR_GetMouseCursorContext() end
 
----[BR] Returns envelope that was captured with the last call to BR_GetMouseCursorContext. In case the envelope belongs to take, takeEnvelope will be true.
+---[BR] Returns envelope that was captured with the last call to BR_GetMouseCursorContext. In case the envelope belongs to take, takeEnvelope will be true. See BR_GetMouseCursorContext_EnvelopeEx.
 ---@return TrackEnvelope rv
 ---@return boolean takeEnvelope
 function reaper.BR_GetMouseCursorContext_Envelope() end
+
+---[BR] Returns envelope that was captured with the last call to BR_GetMouseCursorContext. In case the envelope belongs to take, takeEnvelope will be true. Automation item and point index are -1 if the mouse cursor is not over one.
+---@return TrackEnvelope rv
+---@return boolean takeEnvelope
+---@return integer autoItemIdx
+---@return integer pointIdx
+function reaper.BR_GetMouseCursorContext_EnvelopeEx() end
 
 ---[BR] Returns item under mouse cursor that was captured with the last call to BR_GetMouseCursorContext. Note that the function will return item even if mouse cursor is over some other track lane element like stretch marker or envelope. This enables for easier identification of items when you want to ignore elements within the item.
 ---@return MediaItem rv
@@ -6820,10 +6780,10 @@ function reaper.BR_Win32_ScreenToClient(hwnd, xIn, yIn) end
 ---[BR] Equivalent to win32 API SendMessage().
 ---@param hwnd userdata
 ---@param msg integer
----@param lParam integer
 ---@param wParam integer
+---@param lParam integer
 ---@return integer rv
-function reaper.BR_Win32_SendMessage(hwnd, msg, lParam, wParam) end
+function reaper.BR_Win32_SendMessage(hwnd, msg, wParam, lParam) end
 
 ---[BR] Equivalent to win32 API SetFocus().
 ---@param hwnd userdata
@@ -7124,6 +7084,11 @@ function reaper.CF_SetCustomColor(index, color) end
 ---@param set boolean
 function reaper.CF_SetMediaSourceOnline(src, set) end
 
+---Scroll the TCP to the specified track (if non-null) + extraPixels.
+---@param track MediaTrack
+---@param extraPixels integer
+function reaper.CF_SetTcpScroll(track, extraPixels) end
+
 ---Open the given file or URL in the default application. See also CF_LocateInExplorer.
 ---@param file string
 ---@return boolean rv
@@ -7154,13 +7119,13 @@ function reaper.FNG_FreeMidiTake(midiTake) end
 ---@return RprMidiNote rv
 function reaper.FNG_GetMidiNote(midiTake, index) end
 
----[FNG] Get MIDI note property
+---[FNG] Get MIDI note property. Supported properties: CHANNEL, LENGTH, MUTED, PITCH, POSITION, SELECTED and VELOCITY.
 ---@param midiNote RprMidiNote
 ---@param property string
 ---@return integer rv
 function reaper.FNG_GetMidiNoteIntProperty(midiNote, property) end
 
----[FNG] Set MIDI note property
+---[FNG] Set MIDI note property. See FNG_GetMidiNoteIntProperty for the list of supported properties.
 ---@param midiNote RprMidiNote
 ---@param property string
 ---@param value integer
@@ -9415,10 +9380,60 @@ function reaper.Xen_GetMediaSourceSamples(src, destbuf, destbufoffset, numframes
 function reaper.Xen_StartSourcePreview(source, gain, loop, outputchanindexIn) end
 
 ---Stop audio preview. id -1 stops all.
----ReaScript/EEL2 Built-in Function List
 ---@param preview_id integer
 ---@return integer rv
 function reaper.Xen_StopSourcePreview(preview_id) end
+
+---Return's Soundminer's Extension version.
+---@return string str
+function reaper.sm_ext_version() end
+
+---Get the current http communication port from Soundminer.
+---@return integer rv
+function reaper.sm_getPort() end
+
+---Return's whether the cursor position in reaper should auto advance to the end of the clip after spotting or not.
+---@return boolean rv
+function reaper.sm_getadvance() end
+
+---Return's metadata for a record.
+---@param filepath string
+---@return string str
+---@return string filepath
+function reaper.sm_metadata(filepath) end
+
+---Query Soundminer from nvk_CREATE.
+---@param query string
+---@param offset integer
+---@param maxlimit integer
+---@return string str
+---@return string query
+function reaper.sm_nvk_CREATE(query, offset, maxlimit) end
+
+---Bring back the current sounds on display from Soundminer for nvk_CREATE.
+---@param offset integer
+---@param maxlimit integer
+---@return string str
+function reaper.sm_nvk_CREATE_current(offset, maxlimit) end
+
+---Return's a real filepath for a file, resolving it as necesary. Return's nil if offline.
+---@param path string
+---@return string str
+---@return string path
+function reaper.sm_resolvepath(path) end
+
+---Set's whether the cursor position in reaper should auto advance to the end of the clip after spotting or not.
+---@param flag boolean
+function reaper.sm_setadvance(flag) end
+
+---Set the format of data received from Soundminer.  Defaults to json.
+---@param format integer
+function reaper.sm_setformat(format) end
+
+---Return's Soundminer app version and extension version. App version will be blank on connection error. (Not launched or http interface not running).
+---ReaScript/EEL2 Built-in Function List
+---@return string str
+function reaper.sm_version() end
 
 ---is_new_value,filename,sectionID,cmdID,mode,resolution,val,contextstr = reaper.get_action_context()
 ---Returns contextual information about the script, typically MIDI/OSC input values.
