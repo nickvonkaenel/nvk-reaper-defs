@@ -2194,6 +2194,7 @@ function reaper.GetSetProjectInfo(project, desc, value, is_set) end
 ---| "'RECTAG'" project recording tag wildcard ($rectag). Can be used in Preferences/Audio/Recording to auto-name recorded files.
 ---| "'RENDER_FILE'" render directory
 ---| "'RENDER_PATTERN'" render file name (may contain wildcards)
+---| "'RENDER_EXTRAFILEDIR'" alternate path for renderedfile.wav.rpp and render_stats.html
 ---| "'RENDER_METADATA'" get or set the metadata saved with the project (not metadata embedded in project media). Example, ID3 album name metadata: valuestr="ID3:TALB" to get, valuestr="ID3:TALB|my album name" to set. Call with valuestr="" and is_set=false to get a semicolon-separated list of defined project metadata identifiers.
 ---| "'RENDER_TARGETS'" semicolon separated list of files that would be written if the project is rendered using the most recent render settings
 ---| "'RENDER_STATS'" (read-only) semicolon separated list of statistics for the most recently rendered files. call with valuestr="XXX" to run an action (for example, "42437"=dry run render selected items) before returning statistics.
@@ -2215,6 +2216,7 @@ function reaper.GetSetProjectInfo(project, desc, value, is_set) end
 ---RECTAG : project recording tag wildcard ($rectag). Can be used in Preferences/Audio/Recording to auto-name recorded files.
 ---RENDER_FILE : render directory
 ---RENDER_PATTERN : render file name (may contain wildcards)
+---RENDER_EXTRAFILEDIR : alternate path for renderedfile.wav.rpp and render_stats.html
 ---RENDER_METADATA : get or set the metadata saved with the project (not metadata embedded in project media). Example, ID3 album name metadata: valuestr="ID3:TALB" to get, valuestr="ID3:TALB|my album name" to set. Call with valuestr="" and is_set=false to get a semicolon-separated list of defined project metadata identifiers.
 ---RENDER_TARGETS : semicolon separated list of files that would be written if the project is rendered using the most recent render settings
 ---RENDER_STATS : (read-only) semicolon separated list of statistics for the most recently rendered files. call with valuestr="XXX" to run an action (for example, "42437"=dry run render selected items) before returning statistics.
@@ -4501,6 +4503,8 @@ function reaper.SetTempoTimeSigMarker(proj, ptidx, timepos, measurepos, beatpos,
 ---fadezone_drawmode : Media item fade quiet zone fill mode
 ---fadearea_color : Media item fade full area fill color
 ---fadearea_drawmode : Media item fade full area fill mode
+---lpffadecol : Media item LPF fade color
+---lpffademode : Media item LPF fade fill mode
 ---col_mi_fade2 : Media item edges of controls
 ---col_mi_fade2_drawmode : Media item edges of controls blend mode
 ---item_grouphl : Media item edge when selected via grouping
@@ -9012,6 +9016,213 @@ function reaper.NF_UpdateSWSMarkerRegionSubWindow() end
 ---@param nIndex integer
 ---@return integer rv
 function reaper.NF_Win32_GetSystemMetrics(nIndex) end
+
+---[NVK] Attaches an additional database for searching. All search operations will query across all attached databases.
+---@param dbPath string
+---@param alias string
+---@return boolean rv
+---@return string error
+function reaper.NVK_AudioDB_AttachDatabase(dbPath, alias) end
+
+---[NVK] Cancels the currently running asynchronous directory scan.
+function reaper.NVK_AudioDB_CancelScan() end
+
+---[NVK] Removes all files from the database.
+function reaper.NVK_AudioDB_ClearAll() end
+
+---[NVK] Closes the currently open audio database.
+function reaper.NVK_AudioDB_Close() end
+
+---[NVK] Detaches a previously attached database by alias.
+---@param alias string
+---@return boolean rv
+function reaper.NVK_AudioDB_DetachDatabase(alias) end
+
+---[NVK] Returns a pipe-separated list of attached database aliases (main|db1|db2...). Returns string length.
+---@param out string
+---@return integer rv
+---@return string out
+function reaper.NVK_AudioDB_GetAttachedDatabases(out) end
+
+---[NVK] Gets information about a specific file in the database.
+---@param filePath string
+---@return boolean rv
+---@return string description
+---@return number dateModified
+---@return number fileSize
+function reaper.NVK_AudioDB_GetFileInfo(filePath) end
+
+---[NVK] Returns the path to the currently open database, or empty string if none.
+---@return string str
+function reaper.NVK_AudioDB_GetPath() end
+
+---[NVK] Gets the current progress of an asynchronous scan. Returns true if scan is active.
+---@return boolean rv
+---@return integer filesScanned
+---@return integer filesAdded
+---@return integer filesUpdated
+---@return integer filesSkipped
+---@return integer totalEstimate
+---@return string currentFile
+function reaper.NVK_AudioDB_GetScanProgress() end
+
+---[NVK] Retrieves a search result as a Lua table string. Format: { file = [[path]], d = [[desc]], s = 44100, i = 320, n = 2, l = 10.5, a = [[author]] }. Returns true if index is valid.
+---@param index integer
+---@return boolean rv
+---@return string luaTable
+function reaper.NVK_AudioDB_GetSearchResult(index) end
+
+---[NVK] Retrieves multiple search results at once. Paths and descriptions are newline-separated. Returns actual count.
+---@param startIndex integer
+---@param count integer
+---@return integer rv
+---@return string filePaths
+---@return string descriptions
+function reaper.NVK_AudioDB_GetSearchResultsBatch(startIndex, count) end
+
+---[NVK] Returns the total number of files in the database.
+---@return integer rv
+function reaper.NVK_AudioDB_GetTotalFileCount() end
+
+---[NVK] Returns the database schema version.
+---@return string str
+function reaper.NVK_AudioDB_GetVersion() end
+
+---[NVK] Imports audio files from a REAPER .ReaperFileList file. clearDatabase=true rebuilds from scratch (2x faster).
+---@param fileListPath string
+---@param clearDatabase boolean
+---@return boolean rv
+---@return integer filesAdded
+---@return integer filesUpdated
+---@return integer filesSkipped
+---@return string error
+function reaper.NVK_AudioDB_ImportFileList(fileListPath, clearDatabase) end
+
+---[NVK] Returns true if an audio database is currently open.
+---@return boolean rv
+function reaper.NVK_AudioDB_IsOpen() end
+
+---[NVK] Returns true if an asynchronous directory scan is currently in progress.
+---@return boolean rv
+function reaper.NVK_AudioDB_IsScanningInProgress() end
+
+---[NVK] Opens or creates an SQLite audio database at the specified path. Returns true on success.
+---@param dbPath string
+---@return boolean rv
+---@return string error
+function reaper.NVK_AudioDB_Open(dbPath) end
+
+---[NVK] Removes a file from the database by path.
+---@param filePath string
+---@return boolean rv
+function reaper.NVK_AudioDB_RemoveFile(filePath) end
+
+---[NVK] Scans a directory for audio files and adds them to the database. Returns true on success.
+---@param rootPath string
+---@param recursive boolean
+---@param checkModifiedDates boolean
+---@return boolean rv
+---@return integer filesAdded
+---@return integer filesUpdated
+---@return integer filesSkipped
+---@return string error
+function reaper.NVK_AudioDB_ScanDirectory(rootPath, recursive, checkModifiedDates) end
+
+---[NVK] Starts an asynchronous directory scan in the background. Returns true if scan started successfully.
+---@param rootPath string
+---@param recursive boolean
+---@param checkModifiedDates boolean
+---@return boolean rv
+function reaper.NVK_AudioDB_ScanDirectoryAsync(rootPath, recursive, checkModifiedDates) end
+
+---[NVK] Performs advanced search with AND/OR/NOT operators. Example: 'kick AND (snare OR clap) NOT reverb'. Returns result count.
+---@param queryString string
+---@return integer rv
+function reaper.NVK_AudioDB_SearchAdvanced(queryString) end
+
+---[NVK] Searches database for files matching search term in field (path/filename/description/all). Returns result count.
+---@param searchTerm string
+---@param fieldName string
+---@return integer rv
+function reaper.NVK_AudioDB_SearchSimple(searchTerm, fieldName) end
+
+---[NVK] Searches database with result limit for better performance. Limits to maxResults (200 if <=0). Returns result count.
+---@param searchTerm string
+---@param fieldName string
+---@param maxResults integer
+---@return integer rv
+function reaper.NVK_AudioDB_SearchSimpleLimit(searchTerm, fieldName, maxResults) end
+
+---[NVK] Optimizes the database by reclaiming unused space.
+function reaper.NVK_AudioDB_Vacuum() end
+
+---[NVK] Counts the number of child items under the given NVK Folder Item.
+---@param folderItem MediaItem
+---@return integer rv
+function reaper.NVK_CountFolderItemChildren(folderItem) end
+
+---[NVK] Counts the number of NVK Folder Items in a given project. 0 = active project.
+---@param project ReaProject|nil|0
+---@return integer rv
+function reaper.NVK_CountFolderItems(project) end
+
+---[NVK] Counts the number of selected NVK Folder Items in a given project. 0 = active project.
+---@param project ReaProject|nil|0
+---@return integer rv
+function reaper.NVK_CountSelectedFolderItems(project) end
+
+---[NVK] Counts the number of NVK Folder Items on a given track.
+---@param track MediaTrack
+---@return integer rv
+function reaper.NVK_CountTrackFolderItems(track) end
+
+---[NVK] Gets the NVK Folder Item at the given index in the given project. 0 = active project.
+---@param project ReaProject|nil|0
+---@param index integer
+---@return MediaItem rv
+function reaper.NVK_GetFolderItem(project, index) end
+
+---[NVK] Gets the child item of the given NVK Folder Item at the given index.
+---@param folderItem MediaItem
+---@param index integer
+---@return MediaItem rv
+function reaper.NVK_GetFolderItemChild(folderItem, index) end
+
+---[NVK] Gets the selected NVK Folder Item at the given index in the given project. 0 = active project.
+---@param project ReaProject|nil|0
+---@param index integer
+---@return MediaItem rv
+function reaper.NVK_GetSelectedFolderItem(project, index) end
+
+---[NVK] Gets the NVK Folder Item at the given index on the given track.
+---@param track MediaTrack
+---@param index integer
+---@return MediaItem rv
+function reaper.NVK_GetTrackFolderItem(track, index) end
+
+---[NVK] Returns the version of the NVK Reaper API.
+---@return string str
+function reaper.NVK_GetVersion() end
+
+---[NVK] Checks if the given item is an NVK Folder Item.
+---@param item MediaItem
+---@return boolean rv
+function reaper.NVK_IsFolderItem(item) end
+
+---[NVK] Checks if the given NVK Folder Item is selected.
+---@param item MediaItem
+---@return boolean rv
+function reaper.NVK_IsFolderItemSelected(item) end
+
+---[NVK] Selects all NVK Folder Items in the given project. 0 = active project. selected = true to select, false to unselect, defaults to true.
+---@param project ReaProject|nil|0
+---@param selectedIn boolean?
+function reaper.NVK_SelectAllFolderItems(project, selectedIn) end
+
+---[NVK] Sets the given NVK Folder Item to be selected (true) or unselected (false).
+---@param item MediaItem
+---@param selected boolean
+function reaper.NVK_SetFolderItemSelected(item, selected) end
 
 ---Show the about dialog of the given package entry.
 ---The repository index is downloaded asynchronously if the cached copy doesn't exist or is older than one week.
