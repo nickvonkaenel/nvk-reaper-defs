@@ -9131,6 +9131,10 @@ function reaper.NVK_IsFolderItem(item) end
 ---@return boolean rv
 function reaper.NVK_IsFolderItemSelected(item) end
 
+---[NVK] Check if folder items monitoring is currently running.
+---@return boolean rv
+function reaper.NVK_IsFolderItemsRunning() end
+
 ---[NVK] Returns true if the name starts with a valid UCS (Universal Category System) CatID.
 ---@param name string
 ---@return boolean rv
@@ -9192,6 +9196,12 @@ function reaper.NVK_SelectChildrenItems(project, folderItem) end
 ---@param item MediaItem
 ---@param selected boolean
 function reaper.NVK_SetFolderItemSelected(item, selected) end
+
+---[NVK] Start folder items monitoring. No-op if already running.
+function reaper.NVK_StartFolderItems() end
+
+---[NVK] Stop folder items monitoring and clear folder item markers.
+function reaper.NVK_StopFolderItems() end
 
 ---Show the about dialog of the given package entry.
 ---The repository index is downloaded asynchronously if the cached copy doesn't exist or is older than one week.

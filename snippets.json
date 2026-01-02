@@ -10266,6 +10266,12 @@
 		"body": "r.NVK_IsFolderItemSelected(${1:item})$0",
 		"description": "[NVK] Checks if the given NVK Folder Item is selected."
 	},
+	"NVK_IsFolderItemsRunning lua": {
+		"prefix": "r.NVK_IsFolderItemsRunning",
+		"scope": "lua",
+		"body": "r.NVK_IsFolderItemsRunning()$0",
+		"description": "[NVK] Check if folder items monitoring is currently running."
+	},
 	"NVK_IsUCS lua": {
 		"prefix": "r.NVK_IsUCS",
 		"scope": "lua",
@@ -10337,6 +10343,18 @@
 		"scope": "lua",
 		"body": "r.NVK_SetFolderItemSelected(${1:item}, ${2:selected})$0",
 		"description": "[NVK] Sets the given NVK Folder Item to be selected (true) or unselected (false)."
+	},
+	"NVK_StartFolderItems lua": {
+		"prefix": "r.NVK_StartFolderItems",
+		"scope": "lua",
+		"body": "r.NVK_StartFolderItems()$0",
+		"description": "[NVK] Start folder items monitoring. No-op if already running."
+	},
+	"NVK_StopFolderItems lua": {
+		"prefix": "r.NVK_StopFolderItems",
+		"scope": "lua",
+		"body": "r.NVK_StopFolderItems()$0",
+		"description": "[NVK] Stop folder items monitoring and clear folder item markers."
 	},
 	"NamedCommandLookup lua": {
 		"prefix": "r.NamedCommandLookup",
