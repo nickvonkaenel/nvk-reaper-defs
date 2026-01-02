@@ -607,7 +607,7 @@ if file_path == "" or not r.file_exists(file_path) then
 	if not retval then
 		return
 	end
-	file_path = new_path:gsub("^file:/+", "")
+	file_path = new_path:gsub("^file://", "")
 	r.SetExtState("ReaScript_API_Generator", "html_file_path", file_path, false)
 end
 
@@ -623,6 +623,9 @@ local function read_file(path)
 end
 
 local html_defs = read_file(file_path)
+if not html_defs then
+	return
+end
 --------------------------------------------------------------------------------
 
 local function get_nvim_config_path()

@@ -1540,13 +1540,15 @@ function reaper.GetMediaSourceType(source) end
 ---| "'I_AUTOMODE'" int * : track automation mode, 0=trim/off, 1=read, 2=touch, 3=write, 4=latch
 ---| "'I_NCHAN'" int * : number of track channels, 2-128, even numbers only
 ---| "'I_SELECTED'" int * : track selected, 0=unselected, 1=selected
----| "'I_WNDH'" int * : current TCP window height in pixels including envelopes (read-only)
----| "'I_TCPH'" int * : current TCP window height in pixels not including envelopes (read-only)
----| "'I_TCPY'" int * : current TCP window Y-position in pixels relative to top of arrange view (read-only)
----| "'I_MCPX'" int * : current MCP X-position in pixels relative to mixer container (read-only)
----| "'I_MCPY'" int * : current MCP Y-position in pixels relative to mixer container (read-only)
+---| "'I_WNDH'" int * : current TCP height in pixels including envelopes (read-only)
+---| "'I_TCPH'" int * : current TCP height in pixels not including envelopes (read-only)
+---| "'I_TCPY'" int * : current TCP Y-position in pixels relative to top of arrange view (read-only)
+---| "'I_TCPSCREENY'" int * : current TCP Y-position in pixels relative to screen (read-only)
 ---| "'I_MCPW'" int * : current MCP width in pixels (read-only)
 ---| "'I_MCPH'" int * : current MCP height in pixels (read-only)
+---| "'I_MCPX'" int * : current MCP X-position in pixels relative to mixer container (read-only)
+---| "'I_MCPY'" int * : current MCP Y-position in pixels relative to mixer container (read-only)
+---| "'I_MCPSCREENX'" int * : current MCP X-position in pixels relative to screen (read-only)
 ---| "'I_FOLDERDEPTH'" int * : folder depth change, 0=normal, 1=track is a folder parent, -1=track is the last in the innermost folder, -2=track is the last in the innermost and next-innermost folders, etc
 ---| "'I_FOLDERCOMPACT'" int * : folder collapsed state (only valid on folders), 0=normal, 1=collapsed, 2=fully collapsed
 ---| "'I_MIDIHWOUT'" int * : track midi hardware output index, <0=disabled, low 5 bits are which channels (0=all, 1-16), next 5 bits are output device index (0-31)
@@ -1607,13 +1609,15 @@ function reaper.GetMediaSourceType(source) end
 ---I_AUTOMODE : int * : track automation mode, 0=trim/off, 1=read, 2=touch, 3=write, 4=latch
 ---I_NCHAN : int * : number of track channels, 2-128, even numbers only
 ---I_SELECTED : int * : track selected, 0=unselected, 1=selected
----I_WNDH : int * : current TCP window height in pixels including envelopes (read-only)
----I_TCPH : int * : current TCP window height in pixels not including envelopes (read-only)
----I_TCPY : int * : current TCP window Y-position in pixels relative to top of arrange view (read-only)
----I_MCPX : int * : current MCP X-position in pixels relative to mixer container (read-only)
----I_MCPY : int * : current MCP Y-position in pixels relative to mixer container (read-only)
+---I_WNDH : int * : current TCP height in pixels including envelopes (read-only)
+---I_TCPH : int * : current TCP height in pixels not including envelopes (read-only)
+---I_TCPY : int * : current TCP Y-position in pixels relative to top of arrange view (read-only)
+---I_TCPSCREENY : int * : current TCP Y-position in pixels relative to screen (read-only)
 ---I_MCPW : int * : current MCP width in pixels (read-only)
 ---I_MCPH : int * : current MCP height in pixels (read-only)
+---I_MCPX : int * : current MCP X-position in pixels relative to mixer container (read-only)
+---I_MCPY : int * : current MCP Y-position in pixels relative to mixer container (read-only)
+---I_MCPSCREENX : int * : current MCP X-position in pixels relative to screen (read-only)
 ---I_FOLDERDEPTH : int * : folder depth change, 0=normal, 1=track is a folder parent, -1=track is the last in the innermost folder, -2=track is the last in the innermost and next-innermost folders, etc
 ---I_FOLDERCOMPACT : int * : folder collapsed state (only valid on folders), 0=normal, 1=collapsed, 2=fully collapsed
 ---I_MIDIHWOUT : int * : track midi hardware output index, <0=disabled, low 5 bits are which channels (0=all, 1-16), next 5 bits are output device index (0-31)
@@ -4142,13 +4146,15 @@ function reaper.SetMediaItemTakeInfo_Value(take, parmname, newvalue) end
 ---| "'I_AUTOMODE'" int * : track automation mode, 0=trim/off, 1=read, 2=touch, 3=write, 4=latch
 ---| "'I_NCHAN'" int * : number of track channels, 2-128, even numbers only
 ---| "'I_SELECTED'" int * : track selected, 0=unselected, 1=selected
----| "'I_WNDH'" int * : current TCP window height in pixels including envelopes (read-only)
----| "'I_TCPH'" int * : current TCP window height in pixels not including envelopes (read-only)
----| "'I_TCPY'" int * : current TCP window Y-position in pixels relative to top of arrange view (read-only)
----| "'I_MCPX'" int * : current MCP X-position in pixels relative to mixer container (read-only)
----| "'I_MCPY'" int * : current MCP Y-position in pixels relative to mixer container (read-only)
+---| "'I_WNDH'" int * : current TCP height in pixels including envelopes (read-only)
+---| "'I_TCPH'" int * : current TCP height in pixels not including envelopes (read-only)
+---| "'I_TCPY'" int * : current TCP Y-position in pixels relative to top of arrange view (read-only)
+---| "'I_TCPSCREENY'" int * : current TCP Y-position in pixels relative to screen (read-only)
 ---| "'I_MCPW'" int * : current MCP width in pixels (read-only)
 ---| "'I_MCPH'" int * : current MCP height in pixels (read-only)
+---| "'I_MCPX'" int * : current MCP X-position in pixels relative to mixer container (read-only)
+---| "'I_MCPY'" int * : current MCP Y-position in pixels relative to mixer container (read-only)
+---| "'I_MCPSCREENX'" int * : current MCP X-position in pixels relative to screen (read-only)
 ---| "'I_FOLDERDEPTH'" int * : folder depth change, 0=normal, 1=track is a folder parent, -1=track is the last in the innermost folder, -2=track is the last in the innermost and next-innermost folders, etc
 ---| "'I_FOLDERCOMPACT'" int * : folder collapsed state (only valid on folders), 0=normal, 1=collapsed, 2=fully collapsed
 ---| "'I_MIDIHWOUT'" int * : track midi hardware output index, <0=disabled, low 5 bits are which channels (0=all, 1-16), next 5 bits are output device index (0-31)
@@ -4207,13 +4213,15 @@ function reaper.SetMediaItemTakeInfo_Value(take, parmname, newvalue) end
 ---I_AUTOMODE : int * : track automation mode, 0=trim/off, 1=read, 2=touch, 3=write, 4=latch
 ---I_NCHAN : int * : number of track channels, 2-128, even numbers only
 ---I_SELECTED : int * : track selected, 0=unselected, 1=selected
----I_WNDH : int * : current TCP window height in pixels including envelopes (read-only)
----I_TCPH : int * : current TCP window height in pixels not including envelopes (read-only)
----I_TCPY : int * : current TCP window Y-position in pixels relative to top of arrange view (read-only)
----I_MCPX : int * : current MCP X-position in pixels relative to mixer container (read-only)
----I_MCPY : int * : current MCP Y-position in pixels relative to mixer container (read-only)
+---I_WNDH : int * : current TCP height in pixels including envelopes (read-only)
+---I_TCPH : int * : current TCP height in pixels not including envelopes (read-only)
+---I_TCPY : int * : current TCP Y-position in pixels relative to top of arrange view (read-only)
+---I_TCPSCREENY : int * : current TCP Y-position in pixels relative to screen (read-only)
 ---I_MCPW : int * : current MCP width in pixels (read-only)
 ---I_MCPH : int * : current MCP height in pixels (read-only)
+---I_MCPX : int * : current MCP X-position in pixels relative to mixer container (read-only)
+---I_MCPY : int * : current MCP Y-position in pixels relative to mixer container (read-only)
+---I_MCPSCREENX : int * : current MCP X-position in pixels relative to screen (read-only)
 ---I_FOLDERDEPTH : int * : folder depth change, 0=normal, 1=track is a folder parent, -1=track is the last in the innermost folder, -2=track is the last in the innermost and next-innermost folders, etc
 ---I_FOLDERCOMPACT : int * : folder collapsed state (only valid on folders), 0=normal, 1=collapsed, 2=fully collapsed
 ---I_MIDIHWOUT : int * : track midi hardware output index, <0=disabled, low 5 bits are which channels (0=all, 1-16), next 5 bits are output device index (0-31)
@@ -4505,6 +4513,10 @@ function reaper.SetTempoTimeSigMarker(proj, ptidx, timepos, measurepos, beatpos,
 ---fadearea_drawmode : Media item fade full area fill mode
 ---lpffadecol : Media item LPF fade color
 ---lpffademode : Media item LPF fade fill mode
+---col_mi_left : Media item left edge overlay
+---col_mi_leftb : Media item left edge overlay blend mode
+---col_mi_leftsel : Media item left edge overlay (selected)
+---col_mi_leftselb : Media item left edge overlay blend mode (selected)
 ---col_mi_fade2 : Media item edges of controls
 ---col_mi_fade2_drawmode : Media item edges of controls blend mode
 ---item_grouphl : Media item edge when selected via grouping
@@ -9017,144 +9029,41 @@ function reaper.NF_UpdateSWSMarkerRegionSubWindow() end
 ---@return integer rv
 function reaper.NF_Win32_GetSystemMetrics(nIndex) end
 
----[NVK] Attaches an additional database for searching. All search operations will query across all attached databases.
----@param dbPath string
----@param alias string
+---[NVK] Clears search results (default keeps database open). Set unload to true to close the database connection. Returns success status and error message if failed.
+---@param unloadIn boolean?
 ---@return boolean rv
 ---@return string error
-function reaper.NVK_AudioDB_AttachDatabase(dbPath, alias) end
+function reaper.NVK_AudioDB_Clear(unloadIn) end
 
----[NVK] Cancels the currently running asynchronous directory scan.
-function reaper.NVK_AudioDB_CancelScan() end
-
----[NVK] Removes all files from the database.
-function reaper.NVK_AudioDB_ClearAll() end
-
----[NVK] Closes the currently open audio database.
-function reaper.NVK_AudioDB_Close() end
-
----[NVK] Detaches a previously attached database by alias.
----@param alias string
+---[NVK] Loads a .ReaperFileList file into a SQLite database for persistent search. If already loaded and reload is false, uses existing database. If reload is true, rebuilds the database. Returns success status and error message if failed.
+---@param path string
+---@param reloadIn boolean?
 ---@return boolean rv
-function reaper.NVK_AudioDB_DetachDatabase(alias) end
+---@return string error
+function reaper.NVK_AudioDB_Load(path, reloadIn) end
 
----[NVK] Returns a pipe-separated list of attached database aliases (main|db1|db2...). Returns string length.
----@param out string
----@return integer rv
----@return string out
-function reaper.NVK_AudioDB_GetAttachedDatabases(out) end
-
----[NVK] Gets information about a specific file in the database.
----@param filePath string
----@return boolean rv
----@return string description
----@return number dateModified
----@return number fileSize
-function reaper.NVK_AudioDB_GetFileInfo(filePath) end
-
----[NVK] Returns the path to the currently open database, or empty string if none.
----@return string str
-function reaper.NVK_AudioDB_GetPath() end
-
----[NVK] Gets the current progress of an asynchronous scan. Returns true if scan is active.
----@return boolean rv
----@return integer filesScanned
----@return integer filesAdded
----@return integer filesUpdated
----@return integer filesSkipped
----@return integer totalEstimate
----@return string currentFile
-function reaper.NVK_AudioDB_GetScanProgress() end
-
----[NVK] Retrieves a search result as a Lua table string. Format: { file = [[path]], d = [[desc]], s = 44100, i = 320, n = 2, l = 10.5, a = [[author]] }. Returns true if index is valid.
+---[NVK] Gets the search result at the specified index as a Lua table string (use load() to parse). Returns a table with file, d, a, s, i, n, l keys. Buffer will automatically resize to fit the result. Returns true on success, false if index is out of range.
 ---@param index integer
 ---@return boolean rv
----@return string luaTable
-function reaper.NVK_AudioDB_GetSearchResult(index) end
+---@return string result
+function reaper.NVK_AudioDB_Result(index) end
 
----[NVK] Retrieves multiple search results at once. Paths and descriptions are newline-separated. Returns actual count.
----@param startIndex integer
----@param count integer
+---[NVK] Returns the current search results count and sets isPendingOut to true if a debounced search is still pending.
 ---@return integer rv
----@return string filePaths
----@return string descriptions
-function reaper.NVK_AudioDB_GetSearchResultsBatch(startIndex, count) end
+---@return boolean isPending
+function reaper.NVK_AudioDB_ResultsCount() end
 
----[NVK] Returns the total number of files in the database.
+---[NVK] Searches the SQLite database using FTS5 full-text search. Supports boolean operators: -term (exclude), term1,term2 (OR), "exact phrase" (exact match). If debounce > 0, delays search by that many milliseconds (cancels pending searches). Returns count if cached/immediate, or -1 if search is pending.
+---@param query string
+---@param debounceIn integer?
 ---@return integer rv
-function reaper.NVK_AudioDB_GetTotalFileCount() end
+function reaper.NVK_AudioDB_Search(query, debounceIn) end
 
----[NVK] Returns the database schema version.
----@return string str
-function reaper.NVK_AudioDB_GetVersion() end
-
----[NVK] Imports audio files from a REAPER .ReaperFileList file. clearDatabase=true rebuilds from scratch (2x faster).
----@param fileListPath string
----@param clearDatabase boolean
+---[NVK] Sorts the current search results by the specified metadata key (name, ext, path, d, a, s, i, n, l). Ascending defaults to true. Uses pre-built indexes for instant sorting. Returns true on success.
+---@param key string
+---@param ascendingIn boolean?
 ---@return boolean rv
----@return integer filesAdded
----@return integer filesUpdated
----@return integer filesSkipped
----@return string error
-function reaper.NVK_AudioDB_ImportFileList(fileListPath, clearDatabase) end
-
----[NVK] Returns true if an audio database is currently open.
----@return boolean rv
-function reaper.NVK_AudioDB_IsOpen() end
-
----[NVK] Returns true if an asynchronous directory scan is currently in progress.
----@return boolean rv
-function reaper.NVK_AudioDB_IsScanningInProgress() end
-
----[NVK] Opens or creates an SQLite audio database at the specified path. Returns true on success.
----@param dbPath string
----@return boolean rv
----@return string error
-function reaper.NVK_AudioDB_Open(dbPath) end
-
----[NVK] Removes a file from the database by path.
----@param filePath string
----@return boolean rv
-function reaper.NVK_AudioDB_RemoveFile(filePath) end
-
----[NVK] Scans a directory for audio files and adds them to the database. Returns true on success.
----@param rootPath string
----@param recursive boolean
----@param checkModifiedDates boolean
----@return boolean rv
----@return integer filesAdded
----@return integer filesUpdated
----@return integer filesSkipped
----@return string error
-function reaper.NVK_AudioDB_ScanDirectory(rootPath, recursive, checkModifiedDates) end
-
----[NVK] Starts an asynchronous directory scan in the background. Returns true if scan started successfully.
----@param rootPath string
----@param recursive boolean
----@param checkModifiedDates boolean
----@return boolean rv
-function reaper.NVK_AudioDB_ScanDirectoryAsync(rootPath, recursive, checkModifiedDates) end
-
----[NVK] Performs advanced search with AND/OR/NOT operators. Example: 'kick AND (snare OR clap) NOT reverb'. Returns result count.
----@param queryString string
----@return integer rv
-function reaper.NVK_AudioDB_SearchAdvanced(queryString) end
-
----[NVK] Searches database for files matching search term in field (path/filename/description/all). Returns result count.
----@param searchTerm string
----@param fieldName string
----@return integer rv
-function reaper.NVK_AudioDB_SearchSimple(searchTerm, fieldName) end
-
----[NVK] Searches database with result limit for better performance. Limits to maxResults (200 if <=0). Returns result count.
----@param searchTerm string
----@param fieldName string
----@param maxResults integer
----@return integer rv
-function reaper.NVK_AudioDB_SearchSimpleLimit(searchTerm, fieldName, maxResults) end
-
----[NVK] Optimizes the database by reclaiming unused space.
-function reaper.NVK_AudioDB_Vacuum() end
+function reaper.NVK_AudioDB_Sort(key, ascendingIn) end
 
 ---[NVK] Counts the number of child items under the given NVK Folder Item.
 ---@param folderItem MediaItem
@@ -9175,6 +9084,14 @@ function reaper.NVK_CountSelectedFolderItems(project) end
 ---@param track MediaTrack
 ---@return integer rv
 function reaper.NVK_CountTrackFolderItems(track) end
+
+---[NVK] Fixes/updates all NVK Folder Items in the given project. 0 = active project.
+---@param project ReaProject|nil|0
+function reaper.NVK_FolderItemsFix(project) end
+
+---[NVK] Returns the path to the NVK config file.
+---@return string str
+function reaper.NVK_GetConfigPath() end
 
 ---[NVK] Gets the NVK Folder Item at the given index in the given project. 0 = active project.
 ---@param project ReaProject|nil|0
@@ -9214,10 +9131,62 @@ function reaper.NVK_IsFolderItem(item) end
 ---@return boolean rv
 function reaper.NVK_IsFolderItemSelected(item) end
 
+---[NVK] Returns true if the name starts with a valid UCS (Universal Category System) CatID.
+---@param name string
+---@return boolean rv
+function reaper.NVK_IsUCS(name) end
+
+---[NVK] Checks if the given track is a valid folder track that can have NVK Folder Items.
+---@param track MediaTrack
+---@return boolean rv
+function reaper.NVK_IsValidFolderTrack(track) end
+
+---[NVK] Clears search results and marks all databases as not searchable (default keeps them in memory). Set unload to true to actually unload databases from memory. Returns success status and error message if failed.
+---@param unloadIn boolean?
+---@return boolean rv
+---@return string error
+function reaper.NVK_MediaDB_Clear(unloadIn) end
+
+---[NVK] Loads a .ReaperFileList file into memory and marks it as searchable. If already loaded and reload is false, just marks as searchable. If reload is true, rescans the file. Returns success status and error message if failed.
+---@param path string
+---@param reloadIn boolean?
+---@return boolean rv
+---@return string error
+function reaper.NVK_MediaDB_Load(path, reloadIn) end
+
+---[NVK] Gets the search result at the specified index as a string containing FILE and DATA lines. Buffer will automatically resize to fit the result. Returns true on success, false if index is out of range.
+---@param index integer
+---@return boolean rv
+---@return string result
+function reaper.NVK_MediaDB_Result(index) end
+
+---[NVK] Searches currently searchable databases for the specified query. Supports boolean operators: -term (exclude), term1,term2 (OR), "exact phrase" (exact match). Returns count of results found.
+---@param query string
+---@return integer rv
+function reaper.NVK_MediaDB_Search(query) end
+
+---[NVK] Sorts the current search results by the specified metadata key (single lowercase letter a-z, or special multi-character key). ascending defaults to true. Invalid keys return unsorted results (or reversed if ascending is false). Returns true on success.
+---@param key string
+---@param ascendingIn boolean?
+---@return boolean rv
+function reaper.NVK_MediaDB_Sort(key, ascendingIn) end
+
+---[NVK] Reloads settings from the Lua config file. Returns true on success.
+---@return boolean rv
+function reaper.NVK_ReloadSettings() end
+
+---[NVK] Runs the last executed action.
+function reaper.NVK_RunLastAction() end
+
 ---[NVK] Selects all NVK Folder Items in the given project. 0 = active project. selected = true to select, false to unselect, defaults to true.
 ---@param project ReaProject|nil|0
 ---@param selectedIn boolean?
 function reaper.NVK_SelectAllFolderItems(project, selectedIn) end
+
+---[NVK] Selects the cached children items of the given NVK Folder Item. Children are cached during NVK_FolderItemsFix. 0 = active project.
+---@param project ReaProject|nil|0
+---@param folderItem MediaItem
+function reaper.NVK_SelectChildrenItems(project, folderItem) end
 
 ---[NVK] Sets the given NVK Folder Item to be selected (true) or unselected (false).
 ---@param item MediaItem
