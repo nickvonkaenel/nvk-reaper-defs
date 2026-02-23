@@ -4185,13 +4185,13 @@
 	"GetSet_LoopTimeRange lua": {
 		"prefix": "r.GetSet_LoopTimeRange",
 		"scope": "lua",
-		"body": "start, end = r.GetSet_LoopTimeRange(${1:isSet}, ${2:isLoop}, ${3:start}, ${4:end}, ${5:allowautoseek})$0",
+		"body": "start, end = r.GetSet_LoopTimeRange(${1:isSet}, ${2:isLoop}, ${3:start}, ${4:_end}, ${5:allowautoseek})$0",
 		"description": ""
 	},
 	"GetSet_LoopTimeRange2 lua": {
 		"prefix": "r.GetSet_LoopTimeRange2",
 		"scope": "lua",
-		"body": "start, end = r.GetSet_LoopTimeRange2(0, ${2:isSet}, ${3:isLoop}, ${4:start}, ${5:end}, ${6:allowautoseek})$0",
+		"body": "start, end = r.GetSet_LoopTimeRange2(0, ${2:isSet}, ${3:isLoop}, ${4:start}, ${5:_end}, ${6:allowautoseek})$0",
 		"description": ""
 	},
 	"GetSubProjectFromSource lua": {
@@ -10218,6 +10218,12 @@
 		"body": "r.NVK_FolderItemsFix(0)$0",
 		"description": "[NVK] Fixes/updates all NVK Folder Items in the given project. 0 = active project."
 	},
+	"NVK_FolderItems_DeleteUnnamed lua": {
+		"prefix": "r.NVK_FolderItems_DeleteUnnamed",
+		"scope": "lua",
+		"body": "r.NVK_FolderItems_DeleteUnnamed(0)$0",
+		"description": "[NVK] Deletes all unnamed folder items in the given project. 0 = active project."
+	},
 	"NVK_GetConfigPath lua": {
 		"prefix": "r.NVK_GetConfigPath",
 		"scope": "lua",
@@ -10313,6 +10319,66 @@
 		"scope": "lua",
 		"body": "r.NVK_MediaDB_Sort(${1:key}, ${2:ascendingIn})$0",
 		"description": "[NVK] Sorts the current search results by the specified metadata key (single lowercase letter a-z, or special multi-character key). ascending defaults to true. Invalid keys return unsorted results (or reversed if ascending is false). Returns true on success."
+	},
+	"NVK_NameFolderItem lua": {
+		"prefix": "r.NVK_NameFolderItem",
+		"scope": "lua",
+		"body": "r.NVK_NameFolderItem(${1:item}, ${2:name})$0",
+		"description": "[NVK] Sets the name of an item. For folder items, applies custom naming logic (notes, IMGRESOURCEFLAGS). For non-folder items, just sets the take name."
+	},
+	"NVK_Preview_Create lua": {
+		"prefix": "r.NVK_Preview_Create",
+		"scope": "lua",
+		"body": "r.NVK_Preview_Create(${1:source})$0",
+		"description": "[NVK] Create a new preview object from a PCM_source. Use NVK_Preview_Play to start playback."
+	},
+	"NVK_Preview_GetOutputTrack lua": {
+		"prefix": "r.NVK_Preview_GetOutputTrack",
+		"scope": "lua",
+		"body": "r.NVK_Preview_GetOutputTrack(${1:preview})$0",
+		"description": "[NVK] Get the output track for the preview, or NULL if outputting to hardware."
+	},
+	"NVK_Preview_GetPeak lua": {
+		"prefix": "r.NVK_Preview_GetPeak",
+		"scope": "lua",
+		"body": "rv, peakvol = r.NVK_Preview_GetPeak(${1:preview}, ${2:channel})$0",
+		"description": "[NVK] Get the peak volume for a channel (0-based)."
+	},
+	"NVK_Preview_GetValue lua": {
+		"prefix": "r.NVK_Preview_GetValue",
+		"scope": "lua",
+		"body": "rv, value = r.NVK_Preview_GetValue(${1:preview}, ${2:name})$0",
+		"description": "[NVK] Get a preview parameter value. Supported names: B_LOOP, B_PPITCH, D_FADEINLEN, D_FADEOUTLEN, D_LENGTH, D_MEASUREALIGN, D_PAN, D_PITCH, D_PLAYRATE, D_POSITION, D_VOLUME, I_OUTCHAN, I_PITCHMODE."
+	},
+	"NVK_Preview_Play lua": {
+		"prefix": "r.NVK_Preview_Play",
+		"scope": "lua",
+		"body": "r.NVK_Preview_Play(${1:preview})$0",
+		"description": "[NVK] Start preview playback. Returns false if the preview is invalid."
+	},
+	"NVK_Preview_SetOutputTrack lua": {
+		"prefix": "r.NVK_Preview_SetOutputTrack",
+		"scope": "lua",
+		"body": "r.NVK_Preview_SetOutputTrack(${1:preview}, 0, ${3:track})$0",
+		"description": "[NVK] Set the output track for the preview. Use I_OUTCHAN to output to hardware instead."
+	},
+	"NVK_Preview_SetValue lua": {
+		"prefix": "r.NVK_Preview_SetValue",
+		"scope": "lua",
+		"body": "r.NVK_Preview_SetValue(${1:preview}, ${2:name}, ${3:newValue})$0",
+		"description": "[NVK] Set a preview parameter value. See NVK_Preview_GetValue for supported names."
+	},
+	"NVK_Preview_Stop lua": {
+		"prefix": "r.NVK_Preview_Stop",
+		"scope": "lua",
+		"body": "r.NVK_Preview_Stop(${1:preview})$0",
+		"description": "[NVK] Stop preview playback. The preview object is destroyed and should not be used after calling this."
+	},
+	"NVK_Preview_StopAll lua": {
+		"prefix": "r.NVK_Preview_StopAll",
+		"scope": "lua",
+		"body": "r.NVK_Preview_StopAll()$0",
+		"description": "[NVK] Stop all active previews."
 	},
 	"NVK_ReloadSettings lua": {
 		"prefix": "r.NVK_ReloadSettings",
@@ -13383,7 +13449,7 @@
 	"image_resolve_fn lua": {
 		"prefix": "r.image_resolve_fn",
 		"scope": "lua",
-		"body": "r.image_resolve_fn(${1:in}, ${2:out})$0",
+		"body": "r.image_resolve_fn(${1:_in}, ${2:out})$0",
 		"description": ""
 	},
 	"joystick_create lua": {
@@ -13515,19 +13581,19 @@
 	"relative_fn lua": {
 		"prefix": "r.relative_fn",
 		"scope": "lua",
-		"body": "r.relative_fn(${1:in}, ${2:out})$0",
+		"body": "r.relative_fn(${1:_in}, ${2:out})$0",
 		"description": "Makes a filename 'in' relative to the current project, if any."
 	},
 	"resolve_fn lua": {
 		"prefix": "r.resolve_fn",
 		"scope": "lua",
-		"body": "r.resolve_fn(${1:in}, ${2:out})$0",
+		"body": "r.resolve_fn(${1:_in}, ${2:out})$0",
 		"description": "See resolve_fn2."
 	},
 	"resolve_fn2 lua": {
 		"prefix": "r.resolve_fn2",
 		"scope": "lua",
-		"body": "r.resolve_fn2(${1:in}, ${2:out}, ${3:checkSubDir})$0",
+		"body": "r.resolve_fn2(${1:_in}, ${2:out}, ${3:checkSubDir})$0",
 		"description": "Resolves a filename 'in' by using project settings etc. If no file found, out will be a copy of in."
 	},
 	"sm_ext_version lua": {

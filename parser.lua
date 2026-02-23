@@ -100,6 +100,33 @@ local function parse_lua_signature(sig)
 				name = name:gsub("</?i>", ""):gsub("</?b>", "")
 				-- Also replace dots in parameter names (e.g. r.left => r_left)
 				name = name:gsub("%.", "_")
+				-- Rename reserved keywords
+				local reserved = {
+					["end"] = true,
+					["in"] = true,
+					["function"] = true,
+					["local"] = true,
+					["return"] = true,
+					["then"] = true,
+					["if"] = true,
+					["else"] = true,
+					["elseif"] = true,
+					["while"] = true,
+					["for"] = true,
+					["do"] = true,
+					["repeat"] = true,
+					["until"] = true,
+					["break"] = true,
+					["nil"] = true,
+					["true"] = true,
+					["false"] = true,
+					["and"] = true,
+					["or"] = true,
+					["not"] = true,
+				}
+				if reserved[name] then
+					name = "_" .. name
+				end
 			end
 			local optional = false
 			if type_str:match("^optional%s+") then
@@ -395,6 +422,15 @@ local alias_field_names = {
 	parameterName = true,
 }
 
+local function add_alias(lines, line)
+	local parmname, desc = line:match("^(%S-)%s*: (.*)$")
+	if parmname and desc then
+		table.insert(lines, string.format("---| '%s' %s", parmname, desc))
+		return true
+	end
+	return false
+end
+
 local additional_p_ext_vals
 --------------------------------------------------------------------------------
 -- Generate the annotated Lua stub for a given parsed function.
@@ -426,15 +462,16 @@ local function generate_stub(func)
 			alias = short_name .. "_Param"
 			table.insert(lines, "---@alias " .. alias)
 			for line in func.description:gmatch("[^\n]+") do
-				if short_name:find("RegionOrMarker") then
+				if line:find("trackB_HEIGHTLOCK") then -- special case where the defs are kinda broken
+					local line1, line2 = line:match("(.-this track)(.+)")
+					add_alias(lines, line1)
+					add_alias(lines, line2)
+				elseif short_name:find("RegionOrMarker") then
 					for parmname in line:gmatch('"(%S-)"') do
 						table.insert(lines, string.format("---| \"'%s'\"", parmname))
 					end
 				else
-					local parmname, desc = line:match("^(%S-)%s*: (.*)$")
-					if parmname and desc then
-						table.insert(lines, string.format("---| \"'%s'\" %s", parmname, desc))
-					end
+					add_alias(lines, line)
 				end
 			end
 			-- add user defined p_ext values
@@ -659,7 +696,7 @@ for _, func in ipairs(funcs) do
 	table.insert(output, "") -- add a blank line between functions
 end
 table.insert(output, read_file(script_path .. "/footer.lua"))
-defs_to_snippets(read_file(script_path .. "/imgui_defs.lua"))
+defs_to_snippets(read_file(script_path .. "/defs/imgui_defs.lua"))
 
 local snippets_str = snippets_to_json(read_file(script_path .. "/snippets_header.json"))
 
@@ -675,7 +712,7 @@ local function write_file(path, content)
 	return file
 end
 
-write_file(script_path .. "/reaper_defs.lua", table.concat(output, "\n"))
+write_file(script_path .. "/defs/reaper_defs.lua", table.concat(output, "\n"))
 write_file(script_path .. "/snippets.json", snippets_str)
 if r.file_exists(nvim_snippets_path) then
 	write_file(nvim_snippets_path, snippets_str)
