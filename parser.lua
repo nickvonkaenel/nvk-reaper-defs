@@ -623,8 +623,7 @@ local function defs_to_snippets(defs)
 			elseif line == "---" or line == "--- ---" then
 				-- ignore
 			else
-				line = line:gsub("\\", "") -- remove unnecessary escapes
-				table.insert(desc_tbl, line:match("^%s*%-%-%-%s*(.+)%s*$"))
+				table.insert(desc_tbl, line:gsub("\\", ""):match("^%s*%-%-%-%s*(.+)%s*$"))
 			end
 		end
 		snippets[func:gsub("%.", "_")] = {
@@ -644,7 +643,7 @@ if file_path == "" or not r.file_exists(file_path) then
 	if not retval then
 		return
 	end
-	file_path = new_path:gsub("^file://", "")
+	file_path = new_path:gsub("^file:/+", "")
 	r.SetExtState("ReaScript_API_Generator", "html_file_path", file_path, false)
 end
 
