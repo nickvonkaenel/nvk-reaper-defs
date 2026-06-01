@@ -2,7 +2,7 @@
 ---
 --- Generated for version 0.10.0.2 - API version 0.10
 ---
---- @meta  imgui
+--- @meta imgui
 --- @class ImGui
 ---
 --- **Button > Cardinal Directions > Dir\_Down**
@@ -18457,9 +18457,9 @@ function ImGui.IsKeyDown(ctx, key) end
 --- @since 0.9
 --- @param ctx ImGui_Context
 --- @param key integer
---- @param repeat? boolean default value = `true`
+--- @param repeat_flag? boolean default value = `true`
 --- @return boolean retval
-function ImGui.IsKeyPressed(ctx, key, repeat) end
+function ImGui.IsKeyPressed(ctx, key, repeat_flag) end
 
 --- **Keyboard \& Mouse > Keyboard > IsKeyReleased**
 ---
@@ -18752,9 +18752,9 @@ function ImGui.IsAnyMouseDown(ctx) end
 --- @since 0.1
 --- @param ctx ImGui_Context
 --- @param button integer
---- @param repeat? boolean default value = `false`
+--- @param repeat_flag? boolean default value = `false`
 --- @return boolean retval
-function ImGui.IsMouseClicked(ctx, button, repeat) end
+function ImGui.IsMouseClicked(ctx, button, repeat_flag) end
 
 --- **Keyboard \& Mouse > Mouse > IsMouseDoubleClicked**
 ---
